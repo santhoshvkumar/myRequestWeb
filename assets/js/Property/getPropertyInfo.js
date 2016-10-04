@@ -298,17 +298,17 @@ function getPropertyInfo(editPropertyID){
                       if (imageUrl1 == null || imageUrl1 == "") {
                           $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
                       } else {
-                          $("#imgEnergyPerformanceCertificate").attr("src", domainAddressImage + imageUrl1);
+                          $("#imgEnergyPerformanceCertificate").attr("src", domainAddress + imageUrl1);
                       }
                       if (imageUrl2 == null || imageUrl2 == "") {
                           $("#imgElectricityCertificate").attr("src", "assets/img/noImage.gif");
                       } else {
-                          $("#imgElectricityCertificate").attr("src", domainAddressImage + imageUrl2);
+                          $("#imgElectricityCertificate").attr("src", domainAddress + imageUrl2);
                       }
                       if (imageUrl3 == null || imageUrl3 == "") {
                           $("#imgGasCertificate").attr("src", "assets/img/noImage.gif");
                       } else {
-                          $("#imgGasCertificate").attr("src", domainAddressImage + imageUrl3);
+                          $("#imgGasCertificate").attr("src", domainAddress + imageUrl3);
                       }
 
                      
@@ -319,17 +319,17 @@ function getPropertyInfo(editPropertyID){
                            var getLogoImagePath = imageUrl4.slice(0,4);
                           if(getLogoImagePath=="api/"){
                               getLogoImagePath = imageUrl4.slice(4);
-                              $("#imgHmoUploadPic").attr("src", domainAddressImage + getLogoImagePath).show();
+                              $("#imgHmoUploadPic").attr("src", domainAddress + getLogoImagePath).show();
                           }
                           else{
-                              $("#imgHmoUploadPic").attr("src", domainAddressImage + imageUrl4).show();
+                              $("#imgHmoUploadPic").attr("src", domainAddress + imageUrl4).show();
                           }
                       }
 
                       if (imageUrl5 == null || imageUrl5 == "") {
                           $("#imgLegCertificate").attr("src", "assets/img/noImage.gif");
                       } else {
-                          $("#imgLegCertificate").attr("src", domainAddressImage + imageUrl5);
+                          $("#imgLegCertificate").attr("src", domainAddress + imageUrl5);
                       }
 
                       isFourExistNo = 0;

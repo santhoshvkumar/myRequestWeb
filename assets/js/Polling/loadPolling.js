@@ -188,10 +188,10 @@ function loadPolling(){
             var getLogoImagePath = logo.slice(0,4);
             if(getLogoImagePath=="api/"){
                 getLogoImagePath = logo.slice(4);
-                $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
             }
             else{
-                $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
             }
         }
 

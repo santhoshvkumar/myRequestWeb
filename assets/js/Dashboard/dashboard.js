@@ -233,10 +233,10 @@
                 var getLogoImagePath = logo.slice(0,4);
                 if(getLogoImagePath=="api/"){
                     getLogoImagePath = logo.slice(4);
-                    $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+                    $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
                 }
                 else{
-                    $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+                    $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
                 }
                 
                 $.get(domainAddress + 'getDashboardDetails/' + adminUserID, {}, function(result) {
@@ -312,7 +312,7 @@
                             checkApiUrl = result.records[workLogNotes].GetImage;
                             checkApiUrl = checkApiUrl.slice(0,3);
                             if(checkApiUrl=="api"){
-                                getImage = domainAddressImage+result.records[workLogNotes].GetImage;
+                                getImage = domainAddress+result.records[workLogNotes].GetImage;
                             } 
                             else{
                                 getImage = domainAddress+result.records[workLogNotes].GetImage;
@@ -367,7 +367,7 @@
                             } else {
                                 
                                 if(result.records[workLogNotes].WorkAssignedBy==adminUserName){
-                                    logo = domainAddressImage + logo;
+                                    logo = domainAddress + logo;
                                 }
                                 else{
                                     logo = domainAddress + logo;

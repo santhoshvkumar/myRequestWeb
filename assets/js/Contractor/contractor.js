@@ -254,10 +254,10 @@
         var getLogoImagePath = logo.slice(0,4);
         if(getLogoImagePath=="api/"){
             getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
         }
         else{
-            $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+            $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
         }
       }
 
@@ -489,7 +489,7 @@
                       imageUrl2 = "";
                   } else {
                       imageUrl2 = result.records[contractor].image2;
-                      $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                      $("#imgContract").attr('src', domainAddress + imageUrl2);
                       $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
                   }
 
@@ -498,7 +498,7 @@
                       imageUrl3 = "";
                   } else {
                       imageUrl3 = result.records[contractor].tradeCertificateImage;
-                      $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                      $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
                       $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");
                   }
 
@@ -657,9 +657,9 @@
                   $(".help-block").hide();
                   $(".help-block").text("");
                   $(".btnSubmitContractor").attr("disabled", false);
-                  $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                  $("#imgContract").attr('src', domainAddress + imageUrl2);
                   $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
-                  $(".fileupload-preview2").text(domainAddressImage + imageUrl2);
+                  $(".fileupload-preview2").text(domainAddress + imageUrl2);
                   $(".btnSubmitContractor").attr("disabled", false);
                   $("#getLoadingModalContent").removeClass('md-show');
                   $("#progressbox2").hide();
@@ -736,9 +736,9 @@
                   imageUrl3 = result;
                   $(".help-block").hide();
                   $(".help-block").text("");
-                  $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                  $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
                   $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");
-                  $(".fileupload-preview3").text(domainAddressImage + imageUrl3);
+                  $(".fileupload-preview3").text(domainAddress + imageUrl3);
                   $(".btnSubmitContractor").attr("disabled", false);
                   $("#getLoadingModalContent").removeClass('md-show');
                   $("#progressbox3").hide();
@@ -2125,12 +2125,12 @@
                           if(getContractImagePath=="api/"){
                               getContractImagePath = result.records[contractor].image2.slice(4);
                               imageUrl2 = getContractImagePath;
-                              $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                              $("#imgContract").attr('src', domainAddress + imageUrl2);
                               
                           }
                           else{
                             imageUrl2 = result.records[contractor].image2;
-                            $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                            $("#imgContract").attr('src', domainAddress + imageUrl2);
                           }
                           
                           $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
@@ -2144,11 +2144,11 @@
                           if(getTradeImagePath=="api/"){
                               getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(4);
                               imageUrl3 = getTradeImagePath;
-                              $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                              $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
                           }
                           else{
                             imageUrl3 = result.records[contractor].tradeCertificateImage;
-                            $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                            $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
                           }
 
                           $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");

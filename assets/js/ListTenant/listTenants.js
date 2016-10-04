@@ -159,10 +159,10 @@ $(document).ready(function() {
         var getLogoImagePath = logo.slice(0,4);
         if(getLogoImagePath=="api/"){
             getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
         }
         else{
-            $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+            $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
         }
     }
 
@@ -521,10 +521,10 @@ $("#userImageUrl").off('click').on('change', function() {
                 $(".help-block").hide();
                 $(".help-block").text("");
                 $(".btnSubmitTenant").attr("disabled", false);
-                $("#imgContract").attr('src', domainAddressImage + result);
+                $("#imgContract").attr('src', domainAddress + result);
                 $("#imgContract").css("height", "80px").css("width", "110px").css("border", "");
                 $(".fileupload-preview1").hide();
-                $(".fileupload-preview1").text(domainAddressImage + result);
+                $(".fileupload-preview1").text(domainAddress + result);
                 $(".btnSubmitTenant").attr("disabled", false);
                 $("#getLoadingModalContent").removeClass('md-show');
 

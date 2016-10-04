@@ -132,7 +132,7 @@
                  $("#getLoadingModalContent").removeClass('md-show');
              }
          }); // End's here
-         $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+         $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
      }
 
      getExistTermsAndCondition();

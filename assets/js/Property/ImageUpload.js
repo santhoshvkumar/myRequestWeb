@@ -72,9 +72,9 @@ function ImageUpload() {
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
 
-                    $("#imgEnergyPerformanceCertificate").attr('src', domainAddressImage + imageUrl1);
+                    $("#imgEnergyPerformanceCertificate").attr('src', domainAddress + imageUrl1);
                     $("#imgEnergyPerformanceCertificate").css("height", "80px").css("width", "100px").css("border", "");
-                    $(".fileupload-preview1").text(domainAddressImage + imageUrl1);
+                    $(".fileupload-preview1").text(domainAddress + imageUrl1);
                     $("#getLoadingModalContent").removeClass('md-show');
                     $(".btnSubmitProperty").attr("disabled", false);
                     $("#progressbox1").hide();
@@ -162,9 +162,9 @@ function ImageUpload() {
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
 
-                    $("#imgElectricityCertificate").attr('src', domainAddressImage + imageUrl2);
+                    $("#imgElectricityCertificate").attr('src', domainAddress + imageUrl2);
                     $("#imgElectricityCertificate").css("height", "80px").css("width", "100px").css("border", "");
-                    $(".fileupload-preview2").text(domainAddressImage + imageUrl2);
+                    $(".fileupload-preview2").text(domainAddress + imageUrl2);
                     $("#getLoadingModalContent").removeClass('md-show');
                     $(".btnSubmitProperty").attr("disabled", false);
                     $("#progressbox2").hide();
@@ -252,9 +252,9 @@ function ImageUpload() {
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
 
-                    $("#imgGasCertificate").attr('src', domainAddressImage + imageUrl3);
+                    $("#imgGasCertificate").attr('src', domainAddress + imageUrl3);
                     $("#imgGasCertificate").css("height", "80px").css("width", "100px").css("border", "");
-                    $(".fileupload-preview3").text(domainAddressImage + imageUrl3);
+                    $(".fileupload-preview3").text(domainAddress + imageUrl3);
                     $("#getLoadingModalContent").removeClass('md-show');
                     $(".btnSubmitProperty").attr("disabled", false);
                     $("#progressbox3").hide();
@@ -340,9 +340,9 @@ function ImageUpload() {
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
 
-                    $("#imgLegCertificate").attr('src', domainAddressImage + imageUrl5);
+                    $("#imgLegCertificate").attr('src', domainAddress + imageUrl5);
                     $("#imgLegCertificate").css("height", "80px").css("width", "100px").css("border", "");
-                    $(".fileupload-preview5").text(domainAddressImage + imageUrl5);
+                    $(".fileupload-preview5").text(domainAddress + imageUrl5);
                     $("#getLoadingModalContent").removeClass('md-show');
                     $(".btnSubmitProperty").attr("disabled", false);
                     $("#progressbox5").hide();
@@ -431,10 +431,10 @@ function ImageUpload() {
 
                     $(".errorInfo").text("");
 
-                    $("#imgHmoUploadPic").attr('src', domainAddressImage + imageUrl4);
+                    $("#imgHmoUploadPic").attr('src', domainAddress + imageUrl4);
                     $("#imgHmoUploadPic").css("height", "100px").css("width", "120px").css("border", "");
 
-                    $(".fileupload-preview4").text(domainAddressImage + imageUrl4);
+                    $(".fileupload-preview4").text(domainAddress + imageUrl4);
 
 
                     $(".btnSubmitProperty").attr("disabled", false);

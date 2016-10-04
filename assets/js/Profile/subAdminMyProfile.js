@@ -306,7 +306,7 @@
      } else {
          $(".forAdmin").show();
          $(".forSuperAdmin").hide();
-         $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+         $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
      }
 
 
@@ -429,9 +429,9 @@
                  $(".help-block").hide();
                  $(".help-block").text("");
                  $(".btnUpdate").attr("disabled", false);
-                 $("#adminLogoImage").attr('src', domainAddressImage + imageUrl1);
+                 $("#adminLogoImage").attr('src', domainAddress + imageUrl1);
                  $("#adminLogoImage").css("height", "80px").css("width", "110px");
-                 $(".fileupload-preview1").text(domainAddressImage + imageUrl1);
+                 $(".fileupload-preview1").text(domainAddress + imageUrl1);
              }
 
          },
@@ -568,7 +568,7 @@
                  if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "") {
                      $("#adminLogoImage").show();
                  } else {
-                     $("#adminLogoImage").attr('src', domainAddressImage + result.records[getUserInfo].Logo);
+                     $("#adminLogoImage").attr('src', domainAddress + result.records[getUserInfo].Logo);
 
                      $("#adminLogoImage").css("height", "80px").css("width", "110px");
 

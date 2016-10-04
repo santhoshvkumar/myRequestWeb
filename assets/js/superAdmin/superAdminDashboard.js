@@ -348,9 +348,9 @@
                   filePath = result;
                   console.log(filePath);
 
-                  $("#imgAdminLogo").attr('src', domainAddressImage + filePath);
+                  $("#imgAdminLogo").attr('src', domainAddress + filePath);
                   $("#imgAdminLogo").css("height", "80px").css("width", "100px");
-                  $(".fileupload-preview1").text(domainAddressImage + filePath);
+                  $(".fileupload-preview1").text(domainAddress + filePath);
                   $(".help-block").hide();
                   $(".help-block").text("");
                   $("#btnSubmitAdmin").attr("disabled", false);
@@ -1193,7 +1193,7 @@
                       if (result.records[getAdmin].Logo == "" || result.records[getAdmin].Logo == null) {
                           $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
                       } else {
-                          $("#imgAdminLogo").attr("src", domainAddressImage + result.records[getAdmin].Logo);
+                          $("#imgAdminLogo").attr("src", domainAddress + result.records[getAdmin].Logo);
                       }
                       filePath = result.records[getAdmin].Logo;
                       $(".md-input-wrapper").addClass("md-input-filled");

@@ -83,7 +83,7 @@
       } else {
           $(".getUserName").text(adminUserName);
           $(".getLettingAgencyBusinessName").text("Sub Admin - " + businessName + " - " + lettingAgencyCode);
-          $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+          $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
       }
 
 

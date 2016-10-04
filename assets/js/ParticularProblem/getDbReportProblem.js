@@ -308,7 +308,7 @@ function getDbReportProblem(getProblemID) {
                 $(".getUserImage").attr('src','assets/img/sign-in.jpg');
               } else {
                 if(userRegisterID == null || userRegisterID == 0){
-                  $(".getUserImage").attr("src", domainAddressImage + UserImage);
+                  $(".getUserImage").attr("src", domainAddress + UserImage);
                 }
                 else{
                   $(".getUserImage").attr("src", domainAddress + UserImage);
@@ -415,10 +415,10 @@ function getDbReportProblem(getProblemID) {
                         var getLogoImagePath = logo.slice(0,4);
                         if(getLogoImagePath=="api/"){
                            getLogoImagePath = logo.slice(4);
-                           getImgValue = domainAddressImage + getLogoImagePath;
+                           getImgValue = domainAddress + getLogoImagePath;
                         }
                         else{
-                           getImgValue = domainAddressImage + logo;
+                           getImgValue = domainAddress + logo;
                         }
 
                           
@@ -439,7 +439,7 @@ function getDbReportProblem(getProblemID) {
                   getImgValue = "assets/img/sign-in.jpg";
               } else {
                 if(userRegisterID== null || userRegisterID == ""){
-                  getImgValue = domainAddressImage + UserImage;
+                  getImgValue = domainAddress + UserImage;
                 }
                 else{
                   getImgValue = domainAddress + UserImage;

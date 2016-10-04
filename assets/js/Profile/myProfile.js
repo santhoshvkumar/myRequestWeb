@@ -326,10 +326,10 @@
           var getLogoImagePath = logo.slice(0,4);
           if(getLogoImagePath=="api/"){
               getLogoImagePath = logo.slice(4);
-              $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+              $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
           }
           else{
-              $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+              $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
           }
       }
 
@@ -426,9 +426,9 @@
                   $(".help-block").hide();
                   $(".help-block").text("");
                   $(".btnUpdate").attr("disabled", false);
-                  $("#adminLogoImage").attr('src', domainAddressImage + imageUrl1);
+                  $("#adminLogoImage").attr('src', domainAddress + imageUrl1);
                   $("#adminLogoImage").css("height", "80px").css("width", "110px");
-                  $(".fileupload-preview1").text(domainAddressImage + imageUrl1);
+                  $(".fileupload-preview1").text(domainAddress + imageUrl1);
                   $("#getLoadingModalContent").removeClass('md-show');
                   $("#progressbox1").hide();
               }
@@ -747,10 +747,10 @@
                       var getLogoImagePath = result.records[getUserInfo].Logo.slice(0,4);
                     if(getLogoImagePath=="api/"){
                         getLogoImagePath = result.records[getUserInfo].Logo.slice(4);
-                        $("#adminLogoImage").attr("src", domainAddressImage + getLogoImagePath).show();
+                        $("#adminLogoImage").attr("src", domainAddress + getLogoImagePath).show();
                     }
                     else{
-                        $("#adminLogoImage").attr("src", domainAddressImage + result.records[getUserInfo].Logo).show();
+                        $("#adminLogoImage").attr("src", domainAddress + result.records[getUserInfo].Logo).show();
                     }
 
                       $("#adminLogoImage").css("height", "80px").css("width", "110px");

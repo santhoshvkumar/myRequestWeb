@@ -138,7 +138,7 @@
              }
 
             }); // End's here
-           $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+           $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
        }
 
        getExistPrivacypolicy()

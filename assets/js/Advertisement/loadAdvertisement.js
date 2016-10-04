@@ -76,10 +76,10 @@ function loadAdvertisement() {
             var getLogoImagePath = logo.slice(0,4);
             if(getLogoImagePath=="api/"){
                 getLogoImagePath = logo.slice(4);
-                $(".myRequestAdminLogo").attr("src", domainAddressImage + getLogoImagePath).show();
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
             }
             else{
-                $(".myRequestAdminLogo").attr("src", domainAddressImage + logo).show();
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
             }
         }
 
@@ -159,9 +159,9 @@ function loadAdvertisement() {
                     $(".btnSubmitAdvertisement").attr("disabled", false);
                     $("#getLoadingModalContent").removeClass('md-show');
                     $('#progressbox1').hide();
-                    $("#imgAdvertisementImage").attr('src', domainAddressImage + imageUrl1);
+                    $("#imgAdvertisementImage").attr('src', domainAddress + imageUrl1);
                     $("#imgAdvertisementImage").css("height", "80px").css("width", "110px").css("border", "");
-                    $(".fileupload-preview1").text(domainAddressImage + imageUrl1);
+                    $(".fileupload-preview1").text(domainAddress + imageUrl1);
 
                 }
 
@@ -270,7 +270,7 @@ function loadAdvertisement() {
                     getAdImage = resultAllAdvertisement.records[Advertisement].Image1;
                 }
 
-                $(".allAdvertisementList").append("<tr id='rowID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "'> <td id='inputAdvertisementURL-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='width: 400px;'> <img src='" + domainAddressImage + getAdImage + "' name='" + resultAllAdvertisement.records[Advertisement].AdvertisementImageURL + "' id='editAdvertisementImage-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='width: 400px;height:100px;'/></td><td id='advertisementURL-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='vertical-align: middle;'><a href='" + resultAllAdvertisement.records[Advertisement].AdvertisementURL + "' target='_blank'>" + resultAllAdvertisement.records[Advertisement].AdvertisementURL + "</a></td> <td style='vertical-align: middle;'><a class='editAdvertisement' id='editAdvertisementID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='cursor:pointer;'>  <i class='fa fa-pencil  pencil fa-1x'></i> </a></td> <td style='vertical-align: middle;'><a class='deleteAdvertisement' id='deleteAdvertisementID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='cursor:pointer;'> <i class='fa fa-trash  trash fa-1x'></i> </a></td></tr> <input type='hidden' id='hiddenAdvertisementImage-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' value='" + resultAllAdvertisement.records[Advertisement].Image1 + "' />");
+                $(".allAdvertisementList").append("<tr id='rowID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "'> <td id='inputAdvertisementURL-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='width: 400px;'> <img src='" + domainAddress + getAdImage + "' name='" + resultAllAdvertisement.records[Advertisement].AdvertisementImageURL + "' id='editAdvertisementImage-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='width: 400px;height:100px;'/></td><td id='advertisementURL-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='vertical-align: middle;'><a href='" + resultAllAdvertisement.records[Advertisement].AdvertisementURL + "' target='_blank'>" + resultAllAdvertisement.records[Advertisement].AdvertisementURL + "</a></td> <td style='vertical-align: middle;'><a class='editAdvertisement' id='editAdvertisementID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='cursor:pointer;'>  <i class='fa fa-pencil  pencil fa-1x'></i> </a></td> <td style='vertical-align: middle;'><a class='deleteAdvertisement' id='deleteAdvertisementID-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' style='cursor:pointer;'> <i class='fa fa-trash  trash fa-1x'></i> </a></td></tr> <input type='hidden' id='hiddenAdvertisementImage-" + resultAllAdvertisement.records[Advertisement].AdvertisementID + "' value='" + resultAllAdvertisement.records[Advertisement].Image1 + "' />");
             }
 
             $("#getLoadingModalContent").removeClass('md-show');
@@ -292,7 +292,7 @@ function loadAdvertisement() {
                     imageUrl1 = "";
                 } else {
                     imageUrl1 = editAdvertisementImageURL;
-                    $("#imgAdvertisementImage").attr('src', domainAddressImage + editAdvertisementImageURL);
+                    $("#imgAdvertisementImage").attr('src', domainAddress + editAdvertisementImageURL);
                     $("#imgAdvertisementImage").css("height", "80px").css("width", "100px");
                 }
                 $(".md-input-wrapper").addClass("md-input-filled");
