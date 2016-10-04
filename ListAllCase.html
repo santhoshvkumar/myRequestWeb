@@ -1,0 +1,639 @@
+﻿<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-32x32.png" sizes="32x32">
+
+    <title>myRequest-Repair Requests</title>
+    <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+    <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/main.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/custom.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/bootstrap-switch.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css" />
+    <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/loaders.css" />
+    <link rel="stylesheet" href="assets/css/modalEffects.css">
+
+    <style>
+        .select2-close-mask {
+            z-index: 2099;
+        }
+
+        .select2-dropdown {
+            z-index: 3051;
+        }
+
+        #sidebar_main .menu_section>ul>li.current_listAllCase>a .menu_title {
+            color: #4285F4;
+        }
+
+        .current_listAllCase > a > span.menu_icon > i.fa {
+            color: #4285F4;
+        }
+    </style>
+</head>
+
+<body class="sidebar_main_swipe">
+
+    <div class="md-modal md-effect-19" id="getLoadingModalContent">
+        <div class="md-content commonGetLoading" style="width: 50%;">
+
+            <div>
+                <div class="wrapper wrapper-content">
+
+                    <br />
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <div class="loaders">
+                                    <div class="loader">
+                                        <div class="loader-inner pacman">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <h2 class="loadingText">Loading...</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mainBody">
+        <!-- main header -->
+        <header id="header_main">
+            <div class="header_main_content">
+                <nav class="uk-navbar">
+                    <!-- main sidebar switch -->
+                    <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                        <span class="sSwitchIcon"></span>
+                    </a>
+                    <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                        <a href="" class="getLettingAgencyBusinessName"></a>
+                    </div>
+
+                    <div class="uk-float-left" style="margin-left:5%;">
+                        <input type="text" id="searchCase" name="search" required class="md-input searchCase" placeholder="Search" />
+                    </div>
+
+                    <button type="button" class="md-btn md-btn-primary btnSearch" style="margin:8px;"><i class="fa fa-search"></i></button>
+
+                    <div class="uk-navbar-flip">
+                        <ul class="uk-navbar-nav user_actions">
+                            <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light" style="color:#000;">&#xE5D0;</i></a></li>
+                            <li><a href="#" class="user_action_icon " data-uk-modal="{target:'#modal_header_footer'}" style="color:#000;"><i class="material-icons md-24 md-light" style="color:#000;">&#xE39F;</i> Create Case </a></li>
+
+                            <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                                <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                <div class="uk-dropdown uk-dropdown-small topHeaderName">
+                                    <ul class="uk-nav js-uk-prevent">
+                                        <li><a href="myProfilePage.html">myProfile</a></li>
+                                        <li class="logOut"><a href="index.html">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                    <!--   <div class="uk-grid" >
+
+
+                        <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+
+                                <div class="uk-navbar-flip">
+                                    <button type="button" class="md-btn md-btn-primary createCaseButton" data-uk-modal="{target:'#modal_header_footer'}"> <span class="createCasePlus">+</span> <span class="createCaseText">Create Case</span> </button>
+                                    <ul class="uk-navbar-nav user_actions" style="float:right;">
+
+
+                                        <li data-uk-dropdown="{mode:'click'}">
+                                            <a class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                            <div class="uk-dropdown uk-dropdown-small uk-dropdown-flip">
+                                                <ul class="uk-nav js-uk-prevent">
+                                                    <li><a href="myProfilePage.html">myProfile</a></li>
+                                                    <li><a href="index.html">Logout</a></li>
+                                                </ul>
+                                            </div>
+                                        </li>
+                                    </ul>
+
+                                </div>
+
+                            </div>
+                        </div>
+                    </div> -->
+
+                </nav>
+            </div>
+            <div class="header_main_search_form">
+                <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+                <form class="uk-form">
+                    <input type="text" class="header_main_search_input" />
+                    <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+                </form>
+            </div>
+        </header>
+        <!-- main header end -->
+        <!-- main sidebar -->
+        <aside id="sidebar_main">
+            <div class="sidebar_main_header">
+                <div class="sidebar_logo">
+                    <a href="Dashboard.html" class="sSidebar_hide">
+                        <img src="assets/img/logo.jpg" class="myRequestAdminLogo" alt="myRequestLogo" />
+                    </a>
+                    <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
+                </div>
+
+            </div>
+            <div w3-include-html="LettingAgentMenu.html"></div>
+        </aside>
+        <!-- main sidebar endd -->
+
+        <div id="page_content">
+            <div id="page_content_inner">
+
+
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-medium-1-3">
+                        <div class="parsley-row">
+                            <button type="button" class="md-btn md-btn-primary " id="getExcel"><i class="fa fa-file-excel-o fa-2x"></i> Export To Excel</button>
+                            <button type="button" class="md-btn md-btn-primary " id="advancedSearch"><i class="fa fa-search fa-2x"></i>  Advanced Search</button>
+                            <!--  <span class="loading"><img src="assets/img/loadingGreen.gif" class="imgLoading"/></span> -->
+                        </div>
+                    </div>
+
+
+                    <div class="uk-width-medium-1-3">
+                        <div class="parsley-row">
+                            <h3 class="heading" style="font-family: Avenir;color:white;text-align: center; font-weight: 100; margin-top: 10px;"> List All Requests</h3>
+                        </div>
+                    </div>
+
+
+                    <div class="uk-width-medium-1-4">
+                        <div class="parsley-row">
+                            <select class="" id="getAssignStatusType" style="width: 100%">
+                                <option value="">All</option>
+                                <option value="Awaiting Info">Awaiting Info</option>
+                                <option value="Assigned">Assigned</option>
+                                <option value="Approved">Approved</option>
+                                <option value="Awaitng Approval">Awaitng Approval</option>
+                                <option value="CheckIn">CheckIn</option>
+                                <option value="Started">Started</option>
+                                <option value="Completed">Completed</option>
+                                <option value="Closed">Closed</option>
+                            </select>
+                        </div>
+                    </div>
+
+
+                </div>
+
+
+
+
+
+                <div class="md-card">
+                    <div class="md-card-content large-padding contractorContent" id="formRow" style="display:none;">
+                        <div id="form_validation" class="uk-form-stacked">
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-2">
+                                    <div class="parsley-row">
+                                        <label for="validTill">Start Date<span class="req">*</span></label>
+                                        <input class="md-input" type="text" id="startDate" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                    </div>
+                                </div>
+                                <div class="uk-width-medium-1-2">
+                                    <div class="parsley-row">
+                                        <label for="validTill">End Date<span class="req">*</span></label>
+                                        <input class="md-input" type="text" id="endDateValue" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                    </div>
+                                </div>
+
+                            </div>
+
+                            <div class="uk-grid">
+                                <div class="uk-width-1-1">
+                                    <button type="submit" class="md-btn md-btn-primary" id="searchadvancebutton"><i class="fa fa-search"></i> Search</button>
+                                    <button type="button" class="md-btn md-btn-primary " id="btnPrintAllProblems"><i class="fa fa-print"></i> Print PDF</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="md-card uk-margin-medium-bottom">
+                    <div class="md-card-content">
+                        <div class="uk-overflow-container">
+                            <table id="caseList" class="uk-table uk-table-striped">
+                                <thead>
+                                    <tr>
+                                        <th style="text-align: center;">Request #</th>
+                                        <th>Request Image</th>
+                                        <th>Speciality Name</th>
+                                        <th>Contractor Name</th>
+                                        <th>Raised By</th>
+                                        <th>EmailID</th>
+                                        <th>Phone Number</th>
+
+                                        <th>Status</th>
+                                        <th id="fixedAmount" style="display:none;">Fixed Amount</th>
+                                        <th id="closed" style="display:none;">Close</th>
+
+                                    </tr>
+                                </thead>
+                                <tbody class="ListAllProblem"></tbody>
+
+                                <tfoot class="hide-if-no-paging">
+                                    <tr>
+                                        <td colspan="30">
+                                            <div class="loading"><img src="assets/img/loadingGreen.gif" /> Loading </div>
+                                            <button type="button" class="md-btn md-btn-primary loadMoreButton" id="btnGetProblemList">Load More Cases</button>
+                                        </td>
+                                    </tr>
+                                </tfoot>
+
+
+                            </table>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+                <div class="uk-modal" id="modal_header_footer">
+                    <div class="uk-modal-dialog" style="width:30%;">
+                        <div class="uk-modal-header modelHeaderStyle">
+                            <h3 class="uk-modal-title fontStyle">Create Request</h3>
+                        </div>
+                        <p> 
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <form id="FileURLUploadRequestImage1" method="post" enctype="multipart/form-data" action="ajaxrequestimage.php" class="form-horizontal">
+                                            <div class="">
+                                                <img id="imgRequestImage" style="width: 100%;border: 1px solid rgba(0, 0, 0, 0.12);" src="assets/img/noImage.gif" class="">
+                                            </div>
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                <div class="input-group-btn" style="margin-left: auto;margin-right: auto;width: 150px;margin-top: -50px;">
+                                                    <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Upload Image<input type="file" id="requestImageUrl1" name="photoimg" style="height: 40px;"></span></span>
+                                                </div>
+                                                <div id="preview1" style="display:none"></div>
+                                                <div class='progressbox getProgressBox' id='progressbox1'>
+                                                    <div class="progressbar" id="progressbar1" style="display:none">
+                                                        <span id="statustxt1" class="getStatusText"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="specialityDescription">Request Description<span class="req">*</span></label>
+                                        <textarea class="md-input" id="caseNotes" cols="10" rows="2" data-parsley-trigger="keyup"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+ 
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Tradesman Required<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseSpecialisation" required class="md-input" style="width:100%;">
+                                            <option value="0">Select Speciality</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                           
+ 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Available Contractor<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseContractor" required class="md-input" style="width:100%;">
+                                            <option value="0">Select Speciality to view Contractor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+
+ 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Property<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseProperty" required class="md-input" style="width:100%;">
+                                            <option value="0">Select the Property</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+                          
+                            <div class="uk-grid" data-uk-grid-margin>  
+                                <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <label>When to Respond<span class="req">*</span></label>
+                                            <div class="md-input-wrapper md-input-filled">
+                                                <input class="md-input" type="text" id="inputWhenDate" data-uk-datepicker="{format:'DD.MM.YYYY}" placeholder="Date & Time" /> 
+                                                
+                                                <input class="md-input" type="text" id="inputWhenTime" data-uk-timepicker placeholder="Select When to respond time" style="display: none;"/>
+
+                                                <input class="md-input" type="text" id="inputWhenToRespond" style="display: none;"/>
+
+                                            </div>
+                                            
+                                        </div>
+                                </div>
+                            </div>
+                    </p>
+                    
+                    <div class="uk-modal-footer uk-text-right">
+                         <span class="help-block"></span>
+                        <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                        <button type="button" class="md-btn md-btn-flat btnSubmit" id="addCase">Submit</button>
+                    </div>
+                </div>
+                </div>
+
+
+
+                <div class="uk-modal" id="modalContractorModal">
+                    <div class="uk-modal-dialog">
+                        <div class="uk-modal-header">
+                            <h3 class="uk-modal-title">myRequest - Contractor Information</h3>
+                        </div>
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                    <img id="contractorImage" alt="contractorImage" />
+                                </div>
+                            </div>
+                            <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-user"></i> <span id="contractorName" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-phone"></i> <span id="contractorPhone" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-envelope"></i> <span id="contractorEmail" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-location-arrow"></i> <span id="contractorCity" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-map-marker"></i> <span id="contractorState" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-globe"></i> <span id="contractorZip" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                        <div class="uk-width-medium-1-1">
+                                            <div class="parsley-row">
+                                                <i class="fa fa-calendar"></i> <span id="contractorValidTill" style="margin: 15px;"></span>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-1">
+                                <div id="calendar">
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sAwaitingInfo"></div>
+                                        <div class="statistics" style="display:inline-block;">Awaiting Info <span class="awaitingInfoCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sAwaitingApproval"></div>
+                                        <div class="statistics" style="display:inline-block;">Awaiting Approval <span class="awaitingApprovalCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sApproved"></div>
+                                        <div class="statistics" style="display:inline-block;">Approved <span class="approvedCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sAssigned"></div>
+                                        <div class="statistics" style="display:inline-block;">Assigned <span class="assignedCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sCheckIn"></div>
+                                        <div class="statistics" style="display:inline-block;">CheckIn <span class="checkInCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sStarted"></div>
+                                        <div class="statistics" style="display:inline-block;">Started <span class="startedCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sCompleted"></div>
+                                        <div class="statistics" style="display:inline-block;">Completed <span class="completedCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <div style="text-align:left;">
+                                        <div class="sClosed"></div>
+                                        <div class="statistics" style="display:inline-block;">Closed <span class="closedCount">(0)</span></div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-modal-footer uk-text-right">
+                            <button type="button" class="md-btn md-btn-flat uk-modal-close reset">OK</button>
+                        </div>
+
+                    </div>
+
+
+
+                </div>
+            </div>
+        </div>
+
+
+        <!-- google web fonts -->
+        <script>
+            WebFontConfig = {
+                google: {
+                    families: [
+                        'Source+Code+Pro:400,700:latin',
+                        'Roboto:400,300,500,700,400italic:latin'
+                    ]
+                }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+
+        <!-- common functions -->
+        <script src="assets/js/common.min.js"></script>
+        <!-- uikit functions -->
+        <script src="assets/js/uikit_custom.min.js"></script>
+        <!-- altair common functions/helpers -->
+        <script src="assets/js/altair_admin_common.min.js"></script>
+        <script src="assets/js/w3data.js"></script>
+        <script src="assets/js/select2.min.js"></script>
+
+        <!-- page specific plugins -->
+        <!-- parsley (validation) -->
+        <script>
+            // load parsley config (altair_admin_common.js)
+            altair_forms.parsley_validation_config();
+        </script>
+        <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+        <!--  forms validation functions -->
+        <script src="assets/js/pages/forms_validation.min.js"></script>
+        <script src="assets/js/appUrl.js"></script>
+        <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+        <script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
+        <script src="assets/js/moment-timezone-with-data-2010-2020.js"></script>
+        <script src="assets/js/jstz.min.js"></script>
+        <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+        <script src="assets/js/screenfull.js"></script>
+        <script type="text/javascript" src="assets/js/Cases/listAllCase.js"></script>
+        <script src="assets/js/logOutClearCatch.js"></script>
+        <script>
+            $(function() {
+                // enable hires images
+                altair_helpers.retina_images();
+                // fastClick (touch devices)
+                if (Modernizr.touch) {
+                    FastClick.attach(document.body);
+                }
+                w3IncludeHTML();
+            });
+        </script>
+
+        <script>
+
+        </script>
+    </div>
+    <div class="md-overlay"></div>
+</body>
+
+</html>

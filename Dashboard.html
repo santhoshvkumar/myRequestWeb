@@ -1,0 +1,943 @@
+﻿<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-32x32.png" sizes="32x32">
+    <link rel="stylesheet" href="bower_components/c3js-chart/c3.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" href="assets/css/main.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/loaders.css" />
+    <link rel="stylesheet" href="assets/css/modalEffects.css">
+    <title>myRequest-Dashboard</title>
+    <link href="assets/fullcalendar/fullcalendar/fullcalendar.css" rel="stylesheet" type="text/css" />
+    <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+    <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/custom.css" media="all">
+    <style>
+        .select2-close-mask {
+            z-index: 2099;
+        }
+        
+        .select2-dropdown {
+            z-index: 3051;
+        }
+
+        #sidebar_main .menu_section>ul>li.current_dashboard>a .menu_title {
+            color: #4285F4;
+        }
+
+        .current_dashboard > a > span.menu_icon > i.fa {
+            color: #4285F4;
+        }
+    </style>
+</head>
+
+<body class="sidebar_main_swipe " class="boxed_layout">
+
+
+    <div class="md-modal md-effect-19" id="getLoadingModalContent">
+        <div class="md-content commonGetLoading" style="width: 50%;">
+
+            <div>
+                <div class="wrapper wrapper-content">
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <div class="loaders">
+                                    <div class="loader">
+                                        <div class="loader-inner pacman">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <h2 class="loading">Loading...</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mainBody">
+        <!-- main header -->
+        <header id="header_main">
+            <div class="header_main_content">
+                <nav class="uk-navbar">
+                    <!-- main sidebar switch -->
+                    <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                        <span class="sSwitchIcon"></span>
+                    </a>
+                    <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                        <a href="" class="getLettingAgencyBusinessName"></a>
+                    </div>
+
+                    <div class="uk-navbar-flip">
+                        <ul class="uk-navbar-nav user_actions">
+                            <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE5D0;</i></a></li>
+                            <!-- <li><a href="#" class="user_action_icon " data-uk-modal="{target:'#modal_header_footer'}" style="color:#000;"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE39F;</i> Create Case </a></li> -->
+
+                            <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                                <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                <div class="uk-dropdown uk-dropdown-small">
+                                    <ul class="uk-nav js-uk-prevent">
+                                        <li><a href="myProfilePage.html">myProfile</a></li>
+                                        <li class="Logout"><a href="index.html">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+        </header>
+        <!-- main header endd -->
+
+        <!-- main sidebar -->
+        <aside id="sidebar_main" class="accordion_mode">
+            <div class="sidebar_main_header">
+                <div class="sidebar_logo">
+                    <a href="Dashboard.html" class="sSidebar_hide">
+                        <img src="assets/img/myRequestLogo.png" class="myRequestAdminLogo" alt="myRequestLogo" />
+                    </a>
+                    <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
+                </div>
+
+            </div>
+            <div id="lettingAgentMenu" w3-include-html="LettingAgentMenu.html"></div>
+            <div id="superAdminMenu" w3-include-html="SuperAdminMenu.html"></div>
+        </aside>
+        <!-- main sidebar endd -->
+
+        <div id="page_content">
+            <div id="page_content_inner">
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-6-10">
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <!-- Internal Grid One -->
+                            <div class="uk-width-1-2">
+                                <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                    <div class="md-card md-card-hover md-card-overlay" style="height: 166px;">
+                                        <div class="md-card-content uk-flex uk-flex-center uk-flex-middle" id="getAwaitingApprovalCases" style="cursor:pointer;">
+                                            <span class="epc_chart_text"><span class="countUpMe noOfApprovalRequired">0</span></span>
+                                        </div>
+                                        <div class="md-card-overlay-content awatingApproval">
+                                            <div class="uk-clearfix md-card-overlay-header">
+                                                <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                <h3>
+                                                                        Awaiting Approval
+                                                                        </h3>
+                                            </div>
+                                            # of Approval needed <span class="noOfApprovalRequired">0</span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="uk-width-1-1">
+                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
+                                                <span class="epc_chart_text" style="font-size:17px;"><i class="material-icons">&#xE858;</i>/ 30 Days </span>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3>Subscription</h3>
+                                                </div>
+                                                <table>
+                                                    <tr>
+                                                        <td># of Tenancy :</td>
+                                                        <td></td>
+                                                        <td><b class="dashTenants"></b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Due :</td>
+                                                        <td></td>
+                                                        <td><i class="fa fa-gbp" style="padding: 0px;"></i> <b class="dashTotalAmount"></b></td>
+                                                    </tr>
+                                                    <tr>
+                                                        <td>Days Left :</td>
+                                                        <td></td>
+                                                        <td><b class="dashTotalDaysLeft"></b></td>
+                                                    </tr>
+                                                </table>
+                                                <br/>
+                                                <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:6px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:white;" target="_blank">Pay Now</a></button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Subscription Ends Here -->
+                                <br/>
+                                <div class="uk-width-1-1">
+                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
+                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfTenants">0</span></span>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3> Tenant App </h3>
+                                                </div>
+
+                                                <td style="font-family:Avenir-Heavy;"> # of Tenant :</td> <span class="noOfTenants">0</span>
+                                                <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <br/> <br/> <br/>
+                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- Tenant App Ends Here -->
+                                <br/>
+                                <div class="uk-width-1-1">
+                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
+                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfContractors">0</span></span>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3> Contractor App</h3>
+                                                </div>
+
+                                                <td style="font-family:Avenir-Heavy;"> # of Contractor :</td> <span class="noOfContractors">0</span>
+                                                <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <br/> <br/> <br/>
+                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <br/>
+                                <div class="uk-width-1-1">
+                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
+                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfAppContractors">0</span></span>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3> Commission Earned</h3>
+                                                </div>
+
+                                                <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span>
+                                                <br/> <br/> <br/> Commission Earned :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <br/> <br/> <br/>
+                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <!--   Awating Approval Ends -->
+
+
+                            <div class="uk-width-medium-1-2">
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-2">
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardYellow" id="getOutStandingAmountRepairs" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+                                                    <b class="uk-text-muted headerSpanText">Repair Charges</b>
+                                                    <h3 style="margin-left: 0px;margin-top: 5px;"><i class="fa fa-gbp" style="padding: 0px;"></i> <span class="countUpMe" id="dashAmount">0</span></h3>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium-1-2">
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardYellow" id="getOutStandingAmountRepairs" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+
+                                                    <b class="uk-text-muted headerSpanText"># of Open Issues</b>
+                                                    <h2 style="margin-left: 20px;margin-top: 15px;"> 
+                                                            <span class="countUpMe" id="dashOpen1" style="padding:10px;">0</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-2">
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardYellow" id="getOutStandingPropery" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+
+                                                    <b class="uk-text-muted headerSpanText"># of Properties</b>
+                                                    <h2 style="margin-left: 20px;margin-top: 15px;">
+                                                            <span class="countUpMe" id="dashPproperties" style="padding:10px;">0</span></h2>
+                                                </div>
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-width-medium-1-2">
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardYellow" id="getTenants" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+                                                    <!-- <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
+                                                    <b class="uk-text-muted headerSpanText"># of Tenants</b>
+                                                    <h2 style="margin-left: 20px;margin-top: 15px;"> 
+                                                            <span  class="countUpMe" id="dashTenants" style="padding:10px;">0</span></h2>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-2">
+
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardOrange" id="getTenants" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+                                                    <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
+                                                    <b class="uk-text-muted headerSpanText"># MoveIn</b>
+                                                    <h2 style="margin-left: 20px;margin-top: 15px;"> 
+                                                            <span  class="countUpMoveIn" id="utilityCount" style="padding:10px;">0</span></h2>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+
+                                    <div class="uk-width-medium-1-2">
+
+                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                            <div class="md-card dashboardOrange" id="getTenants" style="cursor: pointer;height: 100px;">
+                                                <div class="md-card-content">
+                                                    <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
+                                                    <b class="uk-text-muted headerSpanText"># MoveOut</b>
+                                                    <h2 style="margin-left: 20px;margin-top: 15px;"> 
+                                                            <span  class="countUpMoveOut" id="utilityCount" style="padding:10px;">0</span></h2>
+                                                </div>
+                                            </div>
+
+                                        </div>
+
+                                    </div>
+                                </div>
+                                <br/> <br/>
+
+                                <div class="hierarchical_show">
+                                    <div class="md-card getRepairStatus ">
+                                        <!-- Repair Status Starts -->
+                                        <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">
+                                                    Repair Status
+                                                </h3>
+                                        <hr style="margin-bottom: 0px;" />
+                                        <div class="md-card-content" style="background-color:#ececec">
+                                            <div class="uk-width-1-1" id="repairStatus">
+                                                <canvas id="smallPieChartLocAdmin" style="width:100%"></canvas>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- Repair Status Ends Here -->
+                                </div>
+                                <br/> <br/>
+
+
+                                <div class="uk-grid hierarchical_show">
+                                    <div class="uk-width-1-2">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="md-card-content">
+                                                <div class="epc_chart" data-percent="70" data-bar-color="#009688">
+                                                    <span class="epc_chart_text"><span class="countUpMe">70</span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3>
+                                                                    Telephone
+                                                                </h3>
+                                                </div>
+                                                # Interest :20.<br /> # Not Interest :100.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-2">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="md-card-content">
+                                                <div class="epc_chart" data-percent="33" data-bar-color="#009688">
+                                                    <span class="epc_chart_text"><span class="countUpMe">33</span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3>
+                                                                    Media
+                                                                </h3>
+                                                </div>
+                                                # Interest :20.<br /> # Not Interest :100.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid hierarchical_show">
+                                    <!-- Utitlity Interest Count -->
+                                    <div class="uk-width-1-2">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="md-card-content">
+                                                <div class="epc_chart" data-percent="50" data-bar-color="#009688">
+                                                    <span class="epc_chart_text"><span class="countUpMe">50</span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3>
+                                                                    Gas & Electricity 
+                                                                </h3>
+                                                </div>
+                                                # Interest :100.<br /> # Not Interest :100.
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-1-2">
+                                        <div class="md-card md-card-hover md-card-overlay">
+                                            <div class="md-card-content">
+                                                <div class="epc_chart" data-percent="20" data-bar-color="#009688">
+                                                    <span class="epc_chart_text"><span class="countUpMe">20</span>%</span>
+                                                </div>
+                                            </div>
+                                            <div class="md-card-overlay-content">
+                                                <div class="uk-clearfix md-card-overlay-header">
+                                                    <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                                    <h3>
+                                                                    Broadband
+                                                                </h3>
+                                                </div>
+                                                # Interest :20.<br /> # Not Interest :80.
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <!-- End Utitlity Interest Count -->
+                            </div>
+
+                        </div>
+                        <!-- Internal Grid Ends Here -->
+                    </div> <!-- 6-10 -->
+
+
+
+                    <div class="uk-width-4-10 hierarchical_show">
+                        <div class="parsley-row">
+                            <div class="md-card md-card-hover">
+                                <div class="uk-grid getTenantWorkList" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="md-card getRepairStatus hierarchical_show">
+                                            <!-- Repair Status Starts -->
+                                            <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">
+                                                    Tenancy Status
+                                                </h3>
+                                            <hr style="margin-bottom: 0px;" />
+
+                                            <div class="md-card-content" style="background-color:#ececec">
+                                                <div class="uk-overflow-container">
+                                                    <table class="uk-table uk-table-striped" id="tenantUtilityListData">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Name</th>
+                                                                <th>Address</th>
+                                                                <th>End Date</th>
+                                                                <th>Action</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="tenantUtility">
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Showing Propery Ends Here -->
+                        <br/><br/>
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-1-1">
+
+                                <div class="parsley-row hierarchical_show  minuteMargin">
+                                    <div class="md-card">
+                                        <div id="clndr_events" class="clndr-wrapper">
+                                            <script>
+                                                // calendar events
+                                                clndrEvents = [{
+                                                    date: '2015-08-08',
+                                                    title: 'Doctor appointment',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '10:00',
+                                                    timeEnd: '11:00'
+                                                }, {
+                                                    date: '2015-08-09',
+                                                    title: 'John\'s Birthday',
+                                                    url: 'javascript:void(0)'
+                                                }, {
+                                                    date: '2015-08-09',
+                                                    title: 'Party',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '08:00',
+                                                    timeEnd: '08:30'
+                                                }, {
+                                                    date: '2015-08-13',
+                                                    title: 'Meeting',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '18:00',
+                                                    timeEnd: '18:20'
+                                                }, {
+                                                    date: '2015-08-18',
+                                                    title: 'Work Out',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '07:00',
+                                                    timeEnd: '08:00'
+                                                }, {
+                                                    date: '2015-08-18',
+                                                    title: 'Business Meeting',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '11:10',
+                                                    timeEnd: '11:45'
+                                                }, {
+                                                    date: '2015-08-23',
+                                                    title: 'Meeting',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '20:25',
+                                                    timeEnd: '20:50'
+                                                }, {
+                                                    date: '2015-08-26',
+                                                    title: 'Haircut',
+                                                    url: 'javascript:void(0)'
+                                                }, {
+                                                    date: '2015-08-26',
+                                                    title: 'Lunch with Katy',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '08:45',
+                                                    timeEnd: '09:45'
+                                                }, {
+                                                    date: '2015-08-26',
+                                                    title: 'Concept review',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '15:00',
+                                                    timeEnd: '16:00'
+                                                }, {
+                                                    date: '2015-08-27',
+                                                    title: 'Swimming Poll',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '13:50',
+                                                    timeEnd: '14:20'
+                                                }, {
+                                                    date: '2015-08-29',
+                                                    title: 'Team Meeting',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '17:25',
+                                                    timeEnd: '18:15'
+                                                }, {
+                                                    date: '2015-09-02',
+                                                    title: 'Dinner with John',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '16:25',
+                                                    timeEnd: '18:45'
+                                                }, {
+                                                    date: '2015-09-13',
+                                                    title: 'Business Meeting',
+                                                    url: 'javascript:void(0)',
+                                                    timeStart: '10:00',
+                                                    timeEnd: '11:00'
+                                                }]
+                                            </script>
+                                            <script id="clndr_events_template" type="text/x-handlebars-template">
+                                                <div class="md-card-toolbar adminCalendar">
+                                                    <div class="md-card-toolbar-actions">
+                                                        <!--<i class="md-icon clndr_add_event material-icons">&#xE145;</i>-->
+                                                        <i class="md-icon clndr_today material-icons">&#xE8DF;</i>
+                                                        <i class="md-icon clndr_previous material-icons">&#xE408;</i>
+                                                        <i class="md-icon clndr_next material-icons uk-margin-remove">&#xE409;</i>
+                                                    </div>
+                                                    <h3 class="md-card-toolbar-heading-text">
+                                                                        {{ month }} {{ year }}
+                                                                    </h3>
+                                                </div>
+                                                <div class="clndr_days">
+                                                    <div class="clndr_days_names">
+                                                        {{#each daysOfTheWeek}}
+                                                        <div class="day-header">{{ this }}</div>
+                                                        {{/each}}
+                                                    </div>
+                                                    <div class="clndr_days_grid">
+                                                        {{#each days}}
+                                                        <div class="{{ this.classes }}" {{#if this.id }} id="{{ this.id }}" {{/if}}>
+                                                            <span>{{ this.day }}</span>
+                                                        </div>
+                                                        {{/each}}
+                                                    </div>
+                                                </div>
+                                                <div class="clndr_events">
+                                                    <i class="material-icons clndr_events_close_button">&#xE5CD;</i> {{#each eventsThisMonth}}
+                                                    <div class="clndr_event" data-clndr-event="{{ dateFormat this.date format='YYYY-MM-DD' }}">
+                                                        <a href="{{ this.url }}">
+                                                            <span class="clndr_event_title">{{ this.title }}</span>
+                                                            <span class="clndr_event_more_info">
+                                                                                {{~dateFormat this.date format='MMM Do'}}
+                                                                                {{~#ifCond this.timeStart '||' this.timeEnd}} ({{/ifCond}}
+                                                                                {{~#if this.timeStart }} {{~this.timeStart~}} {{/if}}
+                                                                                {{~#ifCond this.timeStart '&&' this.timeEnd}} - {{/ifCond}}
+                                                                                {{~#if this.timeEnd }} {{~this.timeEnd~}} {{/if}}
+                                                                                {{~#ifCond this.timeStart '||' this.timeEnd}}){{/ifCond~}}
+                                                                            </span>
+                                                        </a>
+                                                    </div>
+                                                    {{/each}}
+                                                </div>
+                                            </script>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Calander Over Here -->
+                        <div class="uk-grid hierarchical_show" data-uk-grid-margin>
+                            <div class="uk-width-1-1">
+                                <div class="parsley-row">
+                                    <div class="md-card">
+                                        <div class="md-card-content">
+                                            Messages <b style="float:right;padding-right:10px;">Last Two days Messages: <b class="MessageCount"> </b> </b>
+
+
+                                            <br/><br/>
+
+                                            <div class="uk-overflow-container">
+
+                                                <div class="portlet" style="overflow-y: hidden !important;">
+                                                    
+                                                    <div class="portlet-body messagesPortletBody">
+                                                    
+                                                        <div data-always-visible="1" data-rail-visible1="1">
+                                                         
+                                                            <ul class="chats messageNotesContent">
+                                                            </ul>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- Messages End Here -->
+                    </div>
+                </div>
+
+
+                <div class="uk-modal" id="modal_header_footer">
+                    <div class="uk-modal-dialog" style="width:30%;">
+                        <div class="uk-modal-header modelHeaderStyle">
+                            <h3 class="uk-modal-title fontStyle">Create Request</h3>
+                        </div>
+                        <p> 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <form id="FileURLUploadRequestImage1" method="post" enctype="multipart/form-data" action="ajaxrequestimage.php" class="form-horizontal">
+                                            <div class="">
+                                                <img id="imgRequestImage" style="width: 100%;border: 1px solid rgba(0, 0, 0, 0.12);" src="assets/img/noImage.gif" class="">
+                                            </div>
+                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                <div class="input-group-btn" style="margin-left: auto;margin-right: auto;width: 150px;margin-top: -50px;">
+                                                    <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Upload Image<input type="file" id="requestImageUrl1" name="photoimg" style="height: 40px;"></span></span>
+                                                </div>
+                                                <div id="preview1" style="display:none"></div>
+                                                <div class='progressbox getProgressBox' id='progressbox1'>
+                                                    <div class="progressbar" id="progressbar1" style="display:none">
+                                                        <span id="statustxt1" class="getStatusText"></span>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="specialityDescription">Request Description<span class="req">*</span></label>
+                                        <textarea class="md-input" id="caseNotes" cols="10" rows="2" data-parsley-trigger="keyup"></textarea>
+                                    </div>
+                                </div>
+                            </div>
+
+ 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Tradesman Required<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseSpecialisation" required class="md-input" style="width:100%;">
+                                            <option value="0">Select the Speciality</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+ 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Available Contractor<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseContractor" required class="md-input" style="width:100%;">
+                                            <option value="0">Select the Speciality to view Contractor</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+ 
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="Email">Property<span class="req">*</span></label>
+                                    </div>
+                                    <div class="parsley-row">
+                                        <select id="caseProperty" required class="md-input" style="width:100%;">
+                                            <option value="0">Select the Property</option>
+                                        </select>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-grid" data-uk-grid-margin>  
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label>When to Respond<span class="req">*</span></label>
+                                        <div class="md-input-wrapper md-input-filled">
+                                            <input class="md-input" type="text" id="inputWhenDate" data-uk-datepicker="{format:'DD.MM.YYYY}" placeholder="Date & Time" /> 
+                                            
+                                            <input class="md-input" type="text" id="inputWhenTime" data-uk-timepicker placeholder="Select When to respond time" style="display: none;"/>
+
+                                            <input class="md-input" type="text" id="inputWhenToRespond" style="display: none;"/>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </p>
+
+                       
+                        <div class="uk-modal-footer uk-text-right">
+                            <span class="help-block"></span>
+                            <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                            <button type="button" class="md-btn md-btn-flat btnSubmit" id="addCase">Submit</button>
+                        </div>
+                    </div>
+                </div>
+                <div class="uk-modal" id="calenderCaseModal">
+                    <div class="uk-modal-dialog">
+                        <div class="uk-modal-header">
+                            <h3 class="uk-modal-title" style="cursor: pointer;" id="caseName"></h3>
+                        </div>
+                        <p>
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <img id="caseProblemImage" alt="caseProblemImage" />
+                                    </div>
+                                </div>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label for="getfirstName">Name<span class="req">*</span></label>
+                                        <input type="text" id="getfirstName" name="getfirstName" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="getSpeciality">Speciality<span class="req">*</span></label>
+                                        <input type="text" id="calSpecialisation" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="getCity">City<span class="req">*</span></label>
+                                        <input type="text" id="calcity" name="getCity" required class="md-input" readonly/>
+                                    </div>
+
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="calEmail">Email<span class="req">*</span></label>
+                                        <input type="text" id="calEmail" name="calEmail" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                </div>
+
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label for="getaddress">Address<span class="req">*</span></label>
+                                        <input type="text" id="inputAddress" name="getaddress" required class="md-input" readonly/>
+
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="getcountry">Country<span class="req">*</span></label>
+                                        <input type="text" id="inputCountry" name="getcountry" required class="md-input" readonly/>
+
+                                    </div>
+                                    <br/>
+
+                                    <div class="parsley-row">
+                                        <label for="calZip">Post Code<span class="req">*</span></label>
+                                        <input type="text" id="calZip" name="calZip" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="calPhone">Phone Number<span class="req">*</span></label>
+                                        <input type="text" id="calPhone" name="calPhone" required class="md-input" readonly/>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <br/>
+                            <div class="portlet" style="width: 500px; height=440px; overflow-y:hidden;">
+                                <div class="portlet-title">
+                                    <div class="caption">
+                                        <i class="fa fa-comments"></i>Work Logs
+                                    </div>
+                                    <div class="tools">
+                                        <a href="" class="collapse"></a>
+                                    </div>
+                                </div>
+                                <div class="portlet-body" id="chats" style="width: 495px;">
+                                    <div class="scroller" data-always-visible="1" data-rail-visible1="1">
+                                        <ul class="chats NotesContent">
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-modal-footer uk-text-right">
+                                <button type="button" class="md-btn md-btn-flat uk-modal-close reset">OK</button>
+                            </div>
+                       </p> 
+                    </div>
+                </div>
+
+            </div>  <!-- page inner container -->
+            </div> <!-- page content -->
+
+                
+            
+        <!-- google web fontss -->
+        <script>
+            WebFontConfig = {
+                google: {
+                    families: [
+                        'Source+Code+Pro:400,700:latin',
+                        'Roboto:400,300,500,700,400italic:latin'
+                    ]
+                }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+        <!-- common functions -->
+        <script src="assets/js/common.min.js"></script>
+        <!-- uikit functions -->
+        <script src="assets/js/uikit_custom.min.js"></script>
+        <!-- altair common functions/helpers -->
+        <script src="assets/js/altair_admin_common.min.js"></script>
+        <!-- page specific plugins -->
+        <script src="assets/js/w3data.js"></script>
+        <!-- fullcalendar -->
+        <script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js"></script>
+        <!-- peity (small charts) -->
+        <script src="bower_components/peity/jquery.peity.min.js"></script>
+        <!--  calendar functions -->
+        <!-- c3.js (charts) -->
+        <script src="bower_components/c3js-chart/c3.min.js"></script>
+        <!-- chartist -->
+        <script src="bower_components/jquery.easy-pie-chart/dist/jquery.easypiechart.min.js"></script>
+        <script src="bower_components/chartist/dist/chartist.min.js"></script>
+        <script src="bower_components/chartist/dist/Chart.min.js"></script>
+        <!-- handlebars.js -->
+        <script src="bower_components/handlebars/handlebars.min.js"></script>
+        <script src="assets/js/custom/handlebars_helpers.min.js"></script>
+        <!-- CLNDR -->
+        <script src="bower_components/clndr/src/clndr.js"></script>
+        <!--  dashbord functions -->
+        <script src="assets/js/pages/dashboard.min.js"></script>
+        <script src="assets/js/select2.min.js"></script>
+        <!--  charts functions -->
+
+        <script src="assets/js/appUrl.js"></script>
+
+        <script src="assets/js/validationCheck.js"></script>
+        <script src="assets/js/screenfull.js"></script>
+        <script type="text/javascript" src="assets/js/loaders.js"></script>
+        <script type="text/javascript" src="assets/js/modalEffects.js"></script>
+        <script type="text/javascript" src="assets/js/modalEffectsClassie.js"></script>
+
+        <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+
+        <script src="assets/js/logOutClearCatch.js"></script>
+        <!-- All Functionality -->
+        <script type="text/javascript" src="assets/js/Dashboard/dashboard.js"></script>
+        <script>
+            $(function() {
+                // enable hires images
+                altair_helpers.retina_images();
+                // fastClick (touch devices)
+                if (Modernizr.touch) {
+                    FastClick.attach(document.body);
+                }
+                w3IncludeHTML();
+            });
+        </script>
+    </div>
+    <div class="md-overlay"></div>
+</body>
+
+</html>

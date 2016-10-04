@@ -1,0 +1,384 @@
+<!doctype html>
+<!--[if lte IE 9]> <html class="lte-ie9" lang="en"> <![endif]-->
+<!--[if gt IE 9]><!--> <html lang="en"> <!--<![endif]-->
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <!-- Remove Tap Highlight on Windows Phone IE -->
+    <meta name="msapplication-tap-highlight" content="no"/>
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-32x32.png" sizes="32x32">
+
+    <title>My Profile</title>
+
+    <!-- additional styles for plugins -->
+    <!-- fullcalendar -->
+    <link rel="stylesheet" href="bower_components/fullcalendar/dist/fullcalendar.min.css">
+    
+    <!-- uikit -->
+    <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+
+    <!-- flag icons -->
+    <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+
+    <!-- altair admin -->
+    <link rel="stylesheet" href="assets/css/main.min.css" media="all">
+
+    <link rel="stylesheet" href="assets/css/custom.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <!-- matchMedia polyfill for testing media queries in JS -->
+    <!--[if lte IE 9]>
+        <script type="text/javascript" src="bower_components/matchMedia/matchMedia.js"></script>
+        <script type="text/javascript" src="bower_components/matchMedia/matchMedia.addListener.js"></script>
+    <![endif]-->
+
+</head>
+<body class="sidebar_main_swipe">
+     <div id="mainBody">
+    <!-- main header -->
+    <header id="header_main">
+        <div class="header_main_content">
+            <nav class="uk-navbar">
+                <!-- main sidebar switch -->
+                <a href="plugins_calendar.html#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                    <span class="sSwitchIcon"></span>
+                </a>
+                <!-- secondary sidebar switch -->
+                <a href="plugins_calendar.html#" id="sidebar_secondary_toggle" class="sSwitch sSwitch_right sidebar_secondary_check">
+                    <span class="sSwitchIcon"></span>
+                </a>
+                <a href="" class="getLettingAgencyBusinessName" style="color:white;line-height:50px;font-size:18px;"></a>
+    
+               
+                <div class="uk-navbar-flip">
+                    <ul class="uk-navbar-nav user_actions">
+                       
+                      
+                        <li data-uk-dropdown="{mode:'click'}">
+                            <a  class="user_action_image"><span class="getUserName" style="font-family: Avenir-Heavy;color:black;"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                            <div class="uk-dropdown uk-dropdown-small uk-dropdown-flip">
+                                <ul class="uk-nav js-uk-prevent">
+                                    <li><a href="MyProfile.html">My profile</a></li>
+                                    <li class="logOut"><a href="index.html">Logout</a></li>
+                                </ul>
+                            </div>
+                        </li>
+                    </ul>
+                </div>
+                
+            </nav>
+        </div>
+        
+    </header><!-- main header end -->
+
+    <!-- main sidebar -->
+    <aside id="sidebar_main">
+        <div class="sidebar_main_header">
+            <div class="sidebar_logo">
+                <a class=" menuDashBoard sSidebar_hide">
+                    <img src="assets/img/logo.jpg" class="myRequestAdminLogo" alt="myRequestLogo"/>
+                </a>
+                <a href="Dashboard.html" class="sSidebar_show"><img src="assets/img/logo_main_small.png" alt="" height="32" width="32"/></a>
+            </div>
+           
+        </div>  
+        <div class="menu_section">
+            <ul>
+                 <li title="Dashboard">
+                    <a class="menuDashBoard">
+                        <span class="menu_icon"><i class="fa fa-desktop fa-2x"></i></span>
+                        <span class="menu_title">Dashboard</span>
+                    </a>
+                </li>
+                <li title="CreateAdmin" class="forSuperAdmin" style="display:none">
+                    <a id="menuCreateAdmin">
+                        <span class="menu_icon"><i class="fa fa-user fa-2x"></i></span>
+                        <span class="menu_title">Create Admin</span>
+                    </a>
+                </li>
+                <li title="Speciality" class="forAdmin" style="display:none">
+                    <a id="menuSpeciality">
+                        <span class="menu_icon"><i class="fa fa-anchor fa-2x"></i></span>
+                        <span class="menu_title">Create Speciality</span>
+                    </a>
+                </li>
+                
+
+                <li title="ListProperty" class="forAdmin" style="display:none">
+                    <a id="menuListPropery">
+                        <span class="menu_icon"><i class="fa fa-building fa-2x"></i></span>
+                        <span class="menu_title">Add Property</span>
+                    </a>
+                </li>
+
+                <li title="Contractor" class="forAdmin" style="display:none">
+                    <a id="menuContractor">
+                        <span class="menu_icon"><i class="fa fa-user fa-2x"></i></span>
+                        <span class="menu_title">Add Contractor</span>
+                    </a>
+                </li>
+               
+                <li title="ListTenant" class="forAdmin" style="display:none">
+                    <a id="menuListTenant">
+                        <span class="menu_icon"><i class="fa fa-group fa-2x"></i></span>
+                        <span class="menu_title">Add Tenants</span>
+                    </a>
+                </li>
+
+                <li title="ListAllCase" class="forAdmin" style="display:none">
+                    <a id="menuListAllCase">
+                        <span class="menu_icon"><i class="fa fa-wrench fa-2x"></i></span>
+                        <span class="menu_title">List All Case</span>
+                    </a>
+                </li>
+                <li title="Advertisement" class="forAdmin" style="display:none">
+                    <a id="menuAdvertisement">
+                        <span class="menu_icon"><i class="fa fa-plus fa-2x"></i></span>
+                        <span class="menu_title">Advertisement</span>
+                    </a>
+                </li>
+                  <li title="TermsAndCondition" class="forAdmin" style="display:none">
+                    <a id="menuTerms">
+                        <span class="menu_icon"><i class="fa fa-list fa-2x"></i></span>
+                        <span class="menu_title">Terms And Conditions</span>
+                    </a>
+                </li>
+                 <li title="PrivacyPolicy" class="forAdmin" style="display:none">
+                    <a id="menuPrivacy">
+                        <span class="menu_icon"><i class="fa fa-lock fa-2x"></i></span>
+                        <span class="menu_title">Privacy Policy</span>
+                    </a>
+                </li>
+
+                 <li title="NewsLetter">
+                    <a id="menuNewsLetter">
+                        <span class="menu_icon"><i class="fa fa-newspaper-o fa-2x"></i></span>
+                        <span class="menu_title">News Letter</span>
+                    </a>
+                </li>
+
+                <li title="Utility" >
+                    <a href="UtilityStatus.html" >
+                        <span class="menu_icon"><i class="fa fa-list fa-2x"></i></span>
+                        <span class="menu_title">Utility Status</span>
+                    </a>
+                </li>
+
+                <li title="CreateSubAdmin">
+                            <a href="CreateSubAdmin.html">
+                            <span class="menu_icon"><i class="fa fa-user fa-2x"></i></span>
+                            <span class="menu_title">Create Sub Admin</span>
+                           </a>
+                          </li> 
+
+                 <div class="scroll-bar" style="height: 10px; top: 0px;"></div>
+                 
+                 <img src="assets/img/myRequestDark.png" class="myRequestLogo" style="display: inline;bottom: 0px;position: static;width: 155px;height: auto;margin-left: 50px;" />
+                 
+            </ul>
+            
+        </div>
+    </aside><!-- main sidebar end -->
+
+    <div id="page_content">
+        <div id="page_content_inner">
+
+            <h3 class="heading_b uk-margin-bottom">My Profile</h3>
+
+            <div class="md-card">
+                <div class="md-card-content large-padding">
+                    <div id="form_validation" class="uk-form-stacked">
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                    <label for="firstName">First Name<span class="req">*</span></label>
+                                    <input type="text" id="inputFirstName" required class="md-input" />
+                                </div>
+                            </div>
+                             <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                    <label for="lastName">Last Name<span class="req">*</span></label>
+                                    <input type="text" id="inputLastName"   required class="md-input" />
+                                </div>
+                            </div>
+                            
+                        </div>  
+
+                            
+
+                         <div class="uk-grid">
+                           
+                                
+                               <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                 <label for="email">EmailID<span class="req">*</span></label>
+                                    <input type="text" id="inputEmail"  data-parsley-trigger="change" required  class="md-input" />
+                                </div>
+                            </div>  
+                           
+
+                             <div class="uk-width-medium-1-2">
+                                <div class="parsley-row">
+                                    <label for="phonenumber">Phone Number<span class="req">*</span></label>
+                                    <input type="text" id="inputPhoneNumber" required class="md-input inputPhoneNumber" maxlength="10" />
+                                    <span class="phno-prefix">+44 </span>
+                                </div>
+                            </div>
+
+
+                           
+                           
+                             
+
+
+
+                        </div>
+
+
+                        
+                       
+
+                     
+                        
+                        <div class="uk-grid" data-uk-grid-margin>
+                            
+                            <div class="uk-width-medium-1-2">
+                                <form id="FileURLUploadImage2" method="post" enctype="multipart/form-data" action="ajaximage.php" class="form-horizontal">
+
+                                 <div class="">
+                                    <img id="adminLogoImage" style="height: 80px; width: 100px;" src="assets/img/noImage.gif" class="">
+                                </div>
+
+                                <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                    <div class="input-group-btn" style="margin: -50px 10px 10px 110px;">
+                                            <span class="btn btn-default btn-file" style="margin: 10px;"><span class="md-btn md-btn-primary fileupload-new">Upload Photo <input type="file" id="adminLogo" name="photoimg"></span></span>
+                                        </div>
+                                        <div id="preview1" style="display:none"></div>
+
+
+                                        <div class='progressbox getProgressBox' id='progressbox1'>
+                                            <div class="progressbar" id="progressbar1" style="display:none">
+                                                <span id="statustxt1" class="getStatusText"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                 </form>
+
+                               
+                             </div>
+                        </div>
+                    </div>
+                    <br/>
+                           
+                    <div class="uk-grid">
+                        <div class="uk-width-1-3">
+                            <button  class="md-btn md-btn-primary btnUpdate">Update</button>
+                            <span class="help-block" style="color:red;"></span>
+                        </div>
+                        <span style="display:none;">
+                            <input type="text" id="inputAgencyName" name="inputAgencyName" required class="md-input" placeholder="Agency Name" />
+                        </span>
+                    </div> 
+                </div>
+                    
+                    
+                </div>
+            </div>
+        </div>
+
+               
+
+
+    </div>
+
+
+
+
+    <div class="uk-modal" id="modalAgreeSkip">
+        <div class="uk-modal-dialog">
+            <div class="uk-modal-header">
+                <h3  class="uk-modal-title">Is Agree ?</h3>
+            </div>
+            <p> 
+                <p>In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. </p>
+                <p>Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.</p>
+
+                <p>The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.</p>
+
+                <p>A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.</p>
+            </p>
+            <p>
+                <span class="help-block"></span>
+            </p>
+            <div class="uk-modal-footer uk-text-right">
+                <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Skip</button>
+                <button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>
+                
+            </div>
+        </div>
+    </div>
+
+   
+
+    
+    <!-- google web fonts -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                    'Source+Code+Pro:400,700:latin',
+                    'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+    <!-- common functions -->
+    <script src="assets/js/common.min.js"></script>
+    <!-- uikit functions -->
+    <script src="assets/js/uikit_custom.min.js"></script>
+    <!-- altair common functions/helpers -->
+    <script src="assets/js/altair_admin_common.min.js"></script>
+    <script src="assets/js/jquery.maskedinput.js" type="text/javascript"></script>
+    <!-- page specific plugins -->
+    <!-- parsley (validation) -->
+    <script>
+    // load parsley config (altair_admin_common.js)
+    altair_forms.parsley_validation_config();
+    </script>
+    <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <!--  forms validation functions -->
+    <script src="assets/js/pages/forms_validation.min.js"></script>
+    <script src="assets/js/pages/components_notifications.min.js"></script>
+    <script src="assets/js/appUrl.js"></script>
+    <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+    <script src="assets/js/Profile/subAdminMyProfile.js"></script>
+    <script src="assets/js/logOutClearCatch.js"></script>
+    <script>
+        $(function() {
+            // enable hires images
+            altair_helpers.retina_images();
+            // fastClick (touch devices)
+            if(Modernizr.touch) {
+                FastClick.attach(document.body);
+            }
+        });
+    </script>
+
+   </div></body>
+</html>

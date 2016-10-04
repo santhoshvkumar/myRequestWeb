@@ -1,0 +1,546 @@
+function getPropertyInfo(editPropertyID){
+              $(".getTenantList").html('');
+              count = 0;
+              $(".utilityIcon").show();
+              $(".utilityIconLabel").show();
+              finalTenantCount = 0;
+              $("#hiddenPropertyID").val(editPropertyID);
+              $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
+                  //console.log(resultGetProperty);
+                  for (var property in resultGetProperty.records) {
+                      isAppInstalled = resultGetProperty.records[property].IsAppInstalled;
+                      if (isAppInstalled == 1) {
+                          $('.appYes > div').addClass('checked');
+                          $('.appNo > div').removeClass('checked');
+                      } else {
+                          $('.appYes > div').removeClass('checked');
+                          $('.appNo > div').addClass('checked');
+                      }
+
+                      occupancy = resultGetProperty.records[property].Occupancy;
+                      if (occupancy == "Single") {
+                          $('.occupancySingle > div').addClass('checked');
+                          $('.occupancyMultiple > div').removeClass('checked');
+                      } else {
+                          $('.occupancySingle > div').removeClass('checked');
+                          $('.occupancyMultiple > div').addClass('checked');
+                      }
+
+                      hmoOccupanyType = resultGetProperty.records[property].HmoOccupanyType;
+                      if (hmoOccupanyType == "Single") {
+                          $('.propSingle > div').addClass('checked');
+                          $('.propMultiple > div').removeClass('checked');
+                          $(".hmoInputTenent").hide();
+                          $(".hmoLicenseNumber").hide();
+                          $("#inputHMONoOfTenent").val(resultGetProperty.records[property].NoOfTenants);
+                      } else {
+                          $('.propSingle > div').removeClass('checked');
+                          $('.propMultiple > div').addClass('checked');
+                          $(".hmoLicenseNumber").show();
+                          $(".hmoInputTenent").show();
+                          $("#inputHMONoOfTenent").val(resultGetProperty.records[property].NoOfTenants);
+                      }
+
+                      homeInsurance = resultGetProperty.records[property].HomeInsurance;
+                      if (homeInsurance == 1) {
+                          $('.homeInsurYes > div').addClass('checked');
+                          $('.homeInsurNo > div').removeClass('checked');
+                      } else {
+                          $('.homeInsurYes > div').removeClass('checked');
+                          $('.homeInsurNo > div').addClass('checked');
+                      }
+
+                      getPropertyManaged = resultGetProperty.records[property].PropManaged;
+                      if (getPropertyManaged == 1) {
+                          $('.propManageFull > div').addClass('checked');
+                          $('.propManageSemi > div').removeClass('checked');
+                          $('.propManageLet > div').removeClass('checked');
+                      } else {
+                          $('.propManageFull > div').removeClass('checked');
+                          $('.propManageSemi > div').addClass('checked');
+                          $('.propManageLet > div').removeClass('checked');
+                      }
+
+
+                      var isLeadTenant = resultGetProperty.records[property].IsLeadTenant;
+                      $("#isLeadTenant").val(resultGetProperty.records[property].IsLeadTenant);
+                      if (isLeadTenant = 1) {
+                          $('.leadTenant > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
+                          $('.electricity > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
+                          $("#getTenant").prop("checked", true);
+                      } else {
+                          $('.leadTenant > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                          $('.leadTenant > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                          $("#getTenant").prop("checked", false);
+                      }
+
+                      isVoid = resultGetProperty.records[property].IsVoid;
+                      if (isVoid == 1) {
+                          $('.agency > div').addClass('checked');
+                          $('.landlord > div').removeClass('checked');
+                      } else {
+                          $('.agency > div').removeClass('checked');
+                          $('.landlord > div').addClass('checked');
+                      }
+                      $("#inputLandlordTitle").val(resultGetProperty.records[property].Title);
+                      $("#select2-inputLandlordTitle-container").html(resultGetProperty.records[property].Title);
+                      $("#getName").val(resultGetProperty.records[property].PropOwnerName);
+                      $("#getLastName").val(resultGetProperty.records[property].PropOwnerLastName);
+                      isFourExistNo = resultGetProperty.records[property].PropOwnerPhone.slice(0, 3);
+                      if (isFourExistNo == "+44") {
+                          $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone.slice(3));
+                      } else {
+                          $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone);
+                      }
+
+                      var hiddenIsEconomy7 = $("#hiddenIsEconomy7").val();
+                      //getPropertyList(hiddenIsEconomy7);
+
+                      var isEconomy7 = resultGetProperty.records[property].Economy7;
+                      $("#hiddenIsEconomy7").val(resultGetProperty.records[property].Economy7);
+                      if (isEconomy7 == "on") {
+                          $('.economy7 > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
+                          $('.economy7 > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
+                          $("#inputEconomy7").prop("checked", true);
+                          $("#inputRead2").show();
+                          $(".electMeter").show();
+                      } else {
+                          $('.economy7 > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                          $('.economy7 > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                          $("#inputEconomy7").prop("checked", false);
+                      }
+
+                      var hiddenIsWaterMeter = $("#hiddenIsWaterMeter").val();
+                      // getPropertyList(hiddenIsWaterMeter);
+
+
+                      var isWaterMeter = resultGetProperty.records[property].WaterMeter;
+                      $("#hiddenIsWaterMeter").val(resultGetProperty.records[property].WaterMeter);
+                      if (isWaterMeter == "on") {
+                          $('.waterMeter > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
+                          $('.waterMeter > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
+                          $("#inputWaterMeter").prop("checked", true);
+                          $(".waterMet").show();
+                          $("#inputWater").show();
+                          $(".waterAuthority").show();
+                          $("#inputWaterAuthority").show();
+                      } else {
+                          $('.waterMeter > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                          $('.waterMeter > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                          $("#inputWaterMeter").prop("checked", false);
+                      }
+
+                      $("#select2-inputFuel-container").html(resultGetProperty.records[property].FuelType);
+                      $("#select2-inputSupplierElectric-container").html(resultGetProperty.records[property].SupplierElectric);
+                      $("#select2-inputSupplierGas-container").html(resultGetProperty.records[property].SupplierGas);
+                      $("#inputRead1").val(resultGetProperty.records[property].ElectricSupplier1);
+                      $("#inputRead2").val(resultGetProperty.records[property].ElectricSupplier2);
+                      $("#inputGas").val(resultGetProperty.records[property].GasMeterRead);
+                      $("#inputWater").val(resultGetProperty.records[property].WaterMeterRead);
+                      // $("#inputWaterAuthority").val(resultGetProperty.records[property].WaterAuthority);
+                      $("#inputWaterAuthority").select2();
+                      $("#select2-inputWaterAuthority-container").html(resultGetProperty.records[property].WaterAuthority);
+                      // $("#inputTaxAuthority").val(resultGetProperty.records[property].TaxAuthority);
+                      $("#inputTaxAuthority").select2();
+                      $("#select2-inputTaxAuthority-container").html(resultGetProperty.records[property].TaxAuthority);
+
+
+                      $("#inputEmailID").val(resultGetProperty.records[property].PropOwnerEmail);
+                      $("#inputState").val(resultGetProperty.records[property].PropState);
+                      $("#select2-inputState-container").html(resultGetProperty.records[property].PropState);
+
+                      $("#inputCity").append("<option value='" + resultGetProperty.records[property].PropCity + "'>" + resultGetProperty.records[property].PropCity + "</option>");
+
+
+                      $("#inputCity").select2();
+
+                      $("#select2-inputCity-container").html(resultGetProperty.records[property].PropCity);
+
+
+                      $("#inputState1").val(resultGetProperty.records[property].LandlordState);
+                      $("#select2-inputState1-container").html(resultGetProperty.records[property].LandlordState);
+
+
+                      $("#inputCity1").append("<option value='" + resultGetProperty.records[property].LandlordCity + "'>" + resultGetProperty.records[property].LandlordCity + "</option>");
+
+
+                      $("#inputCity1").select2();
+
+                      $("#select2-inputCity1-container").html(resultGetProperty.records[property].LandlordCity);
+
+
+
+
+                      $("#inpuZip1").val(resultGetProperty.records[property].LandlordPostCode);
+                      $("#inputAddress1").val(resultGetProperty.records[property].LandlordAddress);
+
+
+                      $("#select2-inputProperty-container").html(resultGetProperty.records[property].PropertyType);
+                      $("#select2-inputBedrooms-container").html(resultGetProperty.records[property].Bedrooms);
+                      $("#select2-inputPropertyStatus-container").html(resultGetProperty.records[property].PropertyStatus);
+                      $("#inpuZip").val(resultGetProperty.records[property].PropPostalCode);
+                      $("#inputAddress").val(resultGetProperty.records[property].PropAddress);
+                      $("#inputLocation").val(resultGetProperty.records[property].PropLocation);
+                      $("#inpuCountry").val(resultGetProperty.records[property].PropCountry);
+
+                      $("#hiddenIsLandlordInsurance").val(resultGetProperty.records[property].IsLandLordInsurance);
+                      if (resultGetProperty.records[property].IsLandLordInsurance == 1) {
+                          $('.isLandLordInsurance > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
+                          $('.isLandLordInsurance > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
+                          $("#getAvail").prop("checked", true);
+                          $(".getIsVoid").css('display', 'block');
+                      } else {
+                          $('.isLandLordInsurance > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                          $('.isLandLordInsurance > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                          $("#getAvail").prop("checked", false);
+                          $(".getIsVoid").css('display', 'none');
+                      }
+
+                      $("#hiddenIsRentProtectionInsurance").val(resultGetProperty.records[property].IsLegalRentProtection);
+                      if (resultGetProperty.records[property].IsLegalRentProtection == 1) {
+                          $('.isRentProtectionInsurance > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
+                          $('.isRentProtectionInsurance > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
+                          $("#getAvail").prop("checked", true);
+                          $(".getIsVoid").css('display', 'block');
+                      } else {
+                          $('.isRentProtectionInsurance > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                          $('.isRentProtectionInsurance > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                          $("#getAvail").prop("checked", false);
+                          $(".getIsVoid").css('display', 'none');
+                      }
+
+                      $(".bno-prefix").show();
+                      $(".mno-prefix").show();
+                      $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
+                      $("#inputMobile-1").css("padding", "10px 25px 12px 32px");
+
+                      $("#inputHmoLicenseNumber").val(resultGetProperty.records[property].HmoLicenseNumb);
+                      var getEneryPerformanceValidFrom = resultGetProperty.records[property].EpcValidFrom;
+                      var formatEneryPerformanceValidFrom = getEneryPerformanceValidFrom.split("-");
+                      var getFinalEneryPerformanceValidFrom = formatEneryPerformanceValidFrom[2] + "." + formatEneryPerformanceValidFrom[1] + "." + formatEneryPerformanceValidFrom[0];
+                      if (getFinalEneryPerformanceValidFrom == "00.00.0000") {
+                          $("#validFrom").val('');
+                      } else {
+                          $("#validFrom").val(getFinalEneryPerformanceValidFrom);
+                      }
+
+                      var getEneryPerformanceValidTo = resultGetProperty.records[property].EpcValidTill;
+                      var formatEneryPerformanceValidTo = getEneryPerformanceValidTo.split("-");
+                      var getFinalEneryPerformanceValidTo = formatEneryPerformanceValidTo[2] + "." + formatEneryPerformanceValidTo[1] + "." + formatEneryPerformanceValidTo[0];
+                      if (getFinalEneryPerformanceValidTo == "00.00.0000") {
+                          $("#validTo").val('');
+                      } else {
+                          $("#validTo").val(getFinalEneryPerformanceValidTo);
+                      }
+
+                      var getElectricityCertificateValidFrom = resultGetProperty.records[property].ElectricCertValidFrom;
+                      var formatElectricityCertificateValidFrom = getElectricityCertificateValidFrom.split("-");
+                      var getFinalElectricityCertificateValidFrom = formatElectricityCertificateValidFrom[2] + "." + formatElectricityCertificateValidFrom[1] + "." + formatElectricityCertificateValidFrom[0];
+
+                      if (getFinalElectricityCertificateValidFrom == "00.00.0000") {
+                          $("#electricityValidFrom").val('');
+                      } else {
+                          $("#electricityValidFrom").val(getFinalElectricityCertificateValidFrom);
+                      }
+                      var getElectricityCertificateValidTo = resultGetProperty.records[property].ElectricCertValidTill;
+                      var formatElectricityCertificateValidTo = getElectricityCertificateValidTo.split("-");
+                      var getFinalElectricityCertificateValidTo = formatElectricityCertificateValidTo[2] + "." + formatElectricityCertificateValidTo[1] + "." + formatElectricityCertificateValidTo[0];
+
+                      if (getFinalElectricityCertificateValidTo == "00.00.0000") {
+                          $("#electricityValidTo").val('');
+                      } else {
+                          $("#electricityValidTo").val(getFinalElectricityCertificateValidTo);
+                      }
+                      var getGasCertificateValidFrom = resultGetProperty.records[property].GasCertValidFrom;
+                      var formatGasCertificateValidFrom = getGasCertificateValidFrom.split("-");
+                      var getFinalGasCertificateValidFrom = formatGasCertificateValidFrom[2] + "." + formatGasCertificateValidFrom[1] + "." + formatGasCertificateValidFrom[0];
+
+                      if (getFinalGasCertificateValidFrom == "00.00.0000") {
+                          $("#gasValidFrom").val('');
+                      } else {
+                          $("#gasValidFrom").val(getFinalGasCertificateValidFrom);
+                      }
+                      var getGasCertificateValidTo = resultGetProperty.records[property].GasCertValidTill;
+                      var formatGasCertificateValidTo = getGasCertificateValidTo.split("-");
+                      var getFinalGasCertificateValidTo = formatGasCertificateValidTo[2] + "." + formatGasCertificateValidTo[1] + "." + formatGasCertificateValidTo[0];
+
+                      if (getFinalGasCertificateValidTo == "00.00.0000") {
+                          $("#gasValidTo").val('');
+                      } else {
+                          $("#gasValidTo").val(getFinalGasCertificateValidTo);
+                      }
+                      var getLegCertificateValidFrom = resultGetProperty.records[property].LegCertValidFrom;
+                      var formatLegCertificateValidFrom = getLegCertificateValidFrom.split("-");
+                      var getFinalLegCertificateValidFrom = formatLegCertificateValidFrom[2] + "." + formatLegCertificateValidFrom[1] + "." + formatLegCertificateValidFrom[0];
+
+                      if (getFinalLegCertificateValidFrom == "00.00.0000") {
+                          $("#legValidFrom").val('');
+                      } else {
+                          $("#legValidFrom").val(getFinalLegCertificateValidFrom);
+                      }
+                      var getLegCertificateValidTo = resultGetProperty.records[property].LegCertValidTill;
+                      var formatLegCertificateValidTo = getLegCertificateValidTo.split("-");
+                      var getFinalLegCertificateValidTo = formatLegCertificateValidTo[2] + "." + formatLegCertificateValidTo[1] + "." + formatLegCertificateValidTo[0];
+
+                      if (getFinalLegCertificateValidTo == "00.00.0000") {
+                          $("#legValidTo").val('');
+                      } else {
+                          $("#legValidTo").val(getFinalLegCertificateValidTo);
+                      }
+
+
+
+                      imageUrl1 = resultGetProperty.records[property].EpcCertificate;
+                      imageUrl2 = resultGetProperty.records[property].ElectricCetificate;
+                      imageUrl3 = resultGetProperty.records[property].GasCertificate;
+                      imageUrl4 = resultGetProperty.records[property].HmoUploadPic;
+                      imageUrl5 = resultGetProperty.records[property].LegCertificate;
+                      if (imageUrl1 == null || imageUrl1 == "") {
+                          $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
+                      } else {
+                          $("#imgEnergyPerformanceCertificate").attr("src", domainAddressImage + imageUrl1);
+                      }
+                      if (imageUrl2 == null || imageUrl2 == "") {
+                          $("#imgElectricityCertificate").attr("src", "assets/img/noImage.gif");
+                      } else {
+                          $("#imgElectricityCertificate").attr("src", domainAddressImage + imageUrl2);
+                      }
+                      if (imageUrl3 == null || imageUrl3 == "") {
+                          $("#imgGasCertificate").attr("src", "assets/img/noImage.gif");
+                      } else {
+                          $("#imgGasCertificate").attr("src", domainAddressImage + imageUrl3);
+                      }
+
+                     
+
+                      if (imageUrl4 == null || imageUrl4 == "") {
+                          $("#imgHmoUploadPic").attr("src", "assets/img/noImage.gif");
+                      } else {
+                           var getLogoImagePath = imageUrl4.slice(0,4);
+                          if(getLogoImagePath=="api/"){
+                              getLogoImagePath = imageUrl4.slice(4);
+                              $("#imgHmoUploadPic").attr("src", domainAddressImage + getLogoImagePath).show();
+                          }
+                          else{
+                              $("#imgHmoUploadPic").attr("src", domainAddressImage + imageUrl4).show();
+                          }
+                      }
+
+                      if (imageUrl5 == null || imageUrl5 == "") {
+                          $("#imgLegCertificate").attr("src", "assets/img/noImage.gif");
+                      } else {
+                          $("#imgLegCertificate").attr("src", domainAddressImage + imageUrl5);
+                      }
+
+                      isFourExistNo = 0;
+
+                      if (resultGetProperty.records[property].UserReg == undefined || resultGetProperty.records[property].UserReg == "undefined") {
+                          $(".btnSubmitPropertyMoveOut").hide();
+                      } else {
+                          $(".btnSubmitPropertyMoveOut").show();
+                      }
+                      for (var addProperty in resultGetProperty.records[property].UserReg) {
+                          count++;
+                          $(".newAdd").remove();
+                          getAddTenant(count);
+                          $("#hiddenNewPropertyTenant-" + count).val(true);
+                          $("#btnAddUserTenant-" + count).hide();
+                          $("#btnRemoveUserTenant-" + count).show();
+                          $("#hiddenUserRegID-" + count).val(resultGetProperty.records[property].UserReg[addProperty].UserID);
+                          $("#hiddenAddPropertyID-" + count).val(resultGetProperty.records[property].UserReg[addProperty].AddPropertyID);
+                          $("#inputName-" + count).val(resultGetProperty.records[property].UserReg[addProperty].Name);
+
+                          $("#inputLastName-" + count).val(resultGetProperty.records[property].UserReg[addProperty].LastName);
+
+
+                          $("#select2-inputTitle-" + count + "-container").html(resultGetProperty.records[property].UserReg[addProperty].TitleName);
+
+                          $("#inputEmail-" + count).val(resultGetProperty.records[property].UserReg[addProperty].EmailID);
+
+                          if (resultGetProperty.records[property].UserReg[addProperty].TenancyStart != "" && resultGetProperty.records[property].UserReg[addProperty].TenancyStart != null) {
+                              var selectStartDate = resultGetProperty.records[property].UserReg[addProperty].TenancyStart.split("-");
+                              var tenancyStart = selectStartDate[2] + "." + selectStartDate[1] + "." + selectStartDate[0];
+
+                              $("#inputStartDate-" + count).val(tenancyStart);
+
+                          }
+
+
+                          if (resultGetProperty.records[property].UserReg[addProperty].TenancyEnd != "" && resultGetProperty.records[property].UserReg[addProperty].TenancyEnd != null) {
+                              var selectEndDate = resultGetProperty.records[property].UserReg[addProperty].TenancyEnd.split("-");
+                              var tenancyEnd = selectEndDate[2] + "." + selectEndDate[1] + "." + selectEndDate[0];
+
+                              $("#inputEndDate-" + count).val(tenancyEnd);
+
+                          }
+
+
+
+                          isFourExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 3);
+                          if (isFourExistNo == "+44") {
+                              $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(3));
+                          } else {
+                              $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber);
+                          }
+
+                          $("#inputMobile-" + count).css("padding", "10px 25px 12px 33px");
+                          $(".promno-prefix").show();
+                          if (resultGetProperty.records[property].UserReg[addProperty].AppInstalled == 1) {
+                              $("#getIsAppInstallCheck-" + count).css("border", "1px solid greenyellow");
+                          } else {
+                              $("#getIsAppInstallCheck-" + count).css("border", "1px solid red");
+                          }
+
+                          if (resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant == 1) {
+                              $("#isLeadTenant-" + count).prop("checked", true);
+                          } else {
+                              $("#isLeadTenant-" + count).prop("checked", false);
+                          }
+
+
+
+                      }
+
+                      var utilityCount = 0;
+                      for (var getUtility in resultGetProperty.records[property].Utility) {
+                          utilityCount++;
+                          $("#hiddenAddress-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].Address);
+                          $("#hiddenElectricSupplier1-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].ElectricSupplier1);
+                          $("#hiddenElectricSupplier2-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].ElectricSupplier2);
+                          $("#hiddenFuelType-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].FuelType);
+                          $("#hiddenGasMeterRead-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].GasMeterRead);
+                          $("#hiddenSupplierElectric-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].SupplierElectric);
+                          $("#hiddenSupplierGas-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].SupplierGas);
+                          $("#hiddenTenancyStart-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].TenancyStart);
+                          $("#hiddenTenancyEnd-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].TenancyEnd);
+                          $("#hiddenWaterMeterRead-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].WaterMeterRead);
+
+                          if (utilityCount == 1 || $("#hiddenIsGas-" + utilityCount).val() == "true") {
+                              $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
+                              $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
+                              $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
+
+                          }
+
+                          if (utilityCount == 1 || $("#hiddenIsWater-" + utilityCount).val() == "true") {
+                              $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
+                              $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
+                              $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
+
+                          }
+
+
+                          
+                          if (utilityCount == 1 || $("#hiddenIsElectricity-" + utilityCount).val() == "true") {
+                              $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
+                              $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
+                              $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
+
+                          }
+
+
+
+                          if (utilityCount == 1 || $("#hiddenIsCouncil-" + utilityCount).val() == "true") {
+                              $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
+                              $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
+                              $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
+
+                          }
+                          $("#hiddenIsGas-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsGas);
+                          $("#hiddenIsElectricity-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsElectricity);
+                          $("#hiddenIsWater-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsWater);
+                          $("#hiddenIsCouncil-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsCouncil);
+                          $("#hiddenAvailTenantInsurance-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsTenantInsurance);
+ 
+                          if (resultGetProperty.records[property].Utility[getUtility].IsGas=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in") {
+                              $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas_select.png");
+                          }
+                          if (resultGetProperty.records[property].Utility[getUtility].IsElectricity=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                              $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity_select.png");
+                          if (resultGetProperty.records[property].Utility[getUtility].IsWater=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                              $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water_select.png");
+                          if (resultGetProperty.records[property].Utility[getUtility].IsCouncil=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                              $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council_select.png");
+                      }
+                      getAddRemove(count);
+                  }
+
+                  $(".propertyContent").show();
+                  $(".utilityInfo").show();
+                  $(".landlordInfo").show();
+                  $(".propMandatoryContent").show();
+                  $(".btnSubmitProperty").html("Update Property");
+                  $(".md-input-wrapper").addClass("md-input-filled");
+                  $("#getLoadingModalContent").removeClass('md-show');
+
+
+                  $.get(domainAddress + "GetUserUtilityListByProperty/" + editPropertyID, {}, function(result) {
+                      //console.log(result);
+                      $(".getPropertyUtility").show();
+                      if (result.record_count == 0) {
+                          $(".propertyUtility").html('');
+                          $(".propertyUtility").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> </tr>");
+                      } else {
+                          $(".propertyUtility").html('');
+                          var isElectricity = "";
+                          var isGas = "";
+                          var isWater = "";
+                          var isCouncil = "";
+                          var electricity = "";
+                          var water = "";
+                          var gas = "";
+                          var council = "";
+                          var cElectricity = "";
+                          var cGas = "";
+                          var cWater = "";
+                          var cCouncil = "";
+                          var getUtilityIcon = "";
+                          var utilityStatusCheck = "";
+                          getUtilityIcon = new Array();
+                          for (var propertyUtility in result.records) {
+                              if (result.records[propertyUtility].IsElectricity == 0 && result.records[propertyUtility].IsGas == 0 && result.records[propertyUtility].IsWater == 0 && result.records[propertyUtility].IsCouncil == 0) {
+                                  utilityStatusCheck = "Not Applicable";
+                              } else {
+                                  utilityStatusCheck = result.records[propertyUtility].Status;
+                              }
+
+                              if (result.records[propertyUtility].IsElectricity == 1) {
+                                  isElectricity = '<i class="fa fa-check"></i>';
+                                  cElectricity = "Green";
+                              } else {
+                                  isElectricity = '<i class="fa fa-times"></i>';
+                                  cElectricity = "Red";
+                              }
+
+                              if (result.records[propertyUtility].IsGas == 1) {
+                                  isGas = '<i class="fa fa-check"></i>';
+                                  cGas = "Green";
+                              } else {
+                                  isGas = '<i class="fa fa-times"></i>';
+                                  cGas = "Red";
+                              }
+
+                              if (result.records[propertyUtility].IsWater == 1) {
+                                  isWater = '<i class="fa fa-check"></i>';
+                                  cWater = "Green";
+                              } else {
+                                  isWater = '<i class="fa fa-times"></i>';
+                                  cWater = "Red";
+                              }
+
+                              if (result.records[propertyUtility].IsCouncil == 1) {
+                                  isCouncil = '<i class="fa fa-check"></i>';
+                                  cCouncil = "Green";
+                              } else {
+                                  isCouncil = '<i class="fa fa-times"></i>';
+                                  cCouncil = "Red";
+                              }
+
+
+                              $(".propertyUtility").append("<tr> <td>" + result.records[propertyUtility].UtilityRegType + "</td> <td>" + result.records[propertyUtility].Name + "</td> <td>" + result.records[propertyUtility].EmailID + "</td> <td>" + result.records[propertyUtility].MobileNumber + "</td> <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td>  <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + utilityStatusCheck + "</td> </tr>");
+                          }
+                      }
+                  }); // GetUserUtilityListByProperty/
+
+              }); // GetPropertyRegister/
+  } // getPropertyInfo

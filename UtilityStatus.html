@@ -1,0 +1,1048 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-32x32.png" sizes="32x32">
+
+    <title>myRequest-Utility Management</title>
+    <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+    <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/main.css" media="all">
+    <link rel="stylesheet" href="assets/css/custom.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css"/>
+     <link rel="stylesheet" type="text/css" href="assets/css/loaders.css"/>
+    <link rel="stylesheet" href="assets/css/modalEffects.css">
+    <style>
+        #sidebar_main .menu_section>ul>li.current_utilityStatus>a .menu_title {
+            color: #4285F4;
+        }
+
+        .current_utilityStatus > a > span.menu_icon > i.fa {
+            color: #4285F4;
+        }
+    </style>
+</head>
+
+<body class="sidebar_main_swipe">
+    <div class="md-modal md-effect-19" id="getLoadingModalContent">
+           <div class="md-content commonGetLoading" style="width: 50%;">
+
+               <div>
+                   <div class="wrapper wrapper-content">
+
+                       <br/>
+
+                       <div class="row">
+                           <div class="col-md-12">
+                               <div class="center">
+                                  <div class="loaders">
+                                    <div class="loader">
+                                        <div class="loader-inner pacman">
+                                          <div></div>
+                                          <div></div>
+                                          <div></div>
+                                          <div></div>
+                                          <div></div>
+                                        </div>
+                                     </div>
+                                </div>
+                               </div>
+                           </div>
+                       </div>
+
+                       <br/>
+
+                       <div class="row">
+                           <div class="col-md-12">
+                               <div class="center">
+                                   <h2 class="loading">Loading...</h2>
+                               </div>
+                           </div>
+                       </div>
+
+                   </div>
+               </div>
+           </div>
+        </div>
+    <div id="mainBody">
+    <!-- main header -->
+    <header id="header_main">
+        <div class="header_main_content">
+              <nav class="uk-navbar">
+                    <!-- main sidebar switch -->
+                    <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                        <span class="sSwitchIcon"></span>
+                    </a>
+                   <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                          <a href="" class="getLettingAgencyBusinessName"></a>
+                   </div>
+                    <div class="uk-float-left" style="margin-left:5%;"> 
+                         <input type="text" id="inputSearch" name="search" required class="md-input searchCase" placeholder="Search"/>
+                    </div>  
+
+                    <button type="button" class="md-btn md-btn-primary btnSearch" style="margin:8px;"><i class="fa fa-search"></i></button> 
+                   
+                
+                      <div class="uk-navbar-flip">
+                        <ul class="uk-navbar-nav user_actions">
+                            <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE5D0;</i></a></li>
+                            
+                            <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                                <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                <div class="uk-dropdown uk-dropdown-small">
+                                    <ul class="uk-nav js-uk-prevent">
+                                            <li><a href="myProfilePage.html">myProfile</a></li>
+                                            <li class="logOut"><a href="index.html">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+        </div>
+        <div class="header_main_search_form">
+            <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+            <form class="uk-form">
+                <input type="text" class="header_main_search_input" />
+                <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+            </form>
+        </div>	
+    </header>
+    <!-- main header end -->
+
+    <!-- main sidebar -->
+    <aside id="sidebar_main">
+        <div class="sidebar_main_header">
+            <div class="sidebar_logo">
+                <a href="Dashboard.html" class="sSidebar_hide">
+                      <img src="assets/img/logo.jpg" class="myRequestAdminLogo" alt="myRequestLogo"/>
+                </a>
+                <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
+            </div>
+
+        </div>
+        <div w3-include-html="LettingAgentMenu.html"></div>
+    </aside>
+    <!-- main sidebar enddd -->
+
+    <div id="page_content">
+        <div id="page_content_inner">
+
+           <h3 class="heading_b uk-margin-bottom" style="text-align: center;">Utility Management Status</h3>
+
+                    <div class="uk-grid getUserUtilityListContact" data-uk-grid-margin data-uk-grid-match id="user_profile" >
+                        <div class="uk-width-large-7-10">
+                            <div class="md-card">
+                                <div class="user_heading utilityStatusHeader">
+                                   
+                                     <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
+                                      <div class="uk-width-large-1-1">
+                                            <div class="user_heading_content">
+                                                <h2 class="heading_b uk-margin-bottom"><span class="uk-text-truncate" id="inputAddress"></span><span class="sub-heading" id="inputCity" style="color:grey;"></span></h2>
+                                             </div>
+                                         </div>
+                                          
+                                    </div>
+                                </div>
+                                <div class="user_content">
+                                    <ul id="user_profile_tabs" class="uk-tab" data-uk-tab="{connect:'#user_profile_tabs_content', animation:'slide-horizontal'}" data-uk-sticky="{ top: 48, media: 960 }">
+                                        <li><a href="#">Details</a></li>
+                                        <li class="uk-active"><a href="#">Tenants</a></li>
+                                    </ul>
+                                    <ul id="user_profile_tabs_content" class="uk-switcher uk-margin">
+                                        <li>
+                                            <div class="uk-grid uk-margin-medium-top uk-margin-large-bottom" data-uk-grid-margin>
+                                                <div class="uk-width-large-1-2">
+                                                    <h4 class="heading_c uk-margin-small-bottom">Basic Info</h4>
+                                                    <ul class="md-list">
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a>Landlord Building Insurance</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="landLordInsurance"></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">Property Managed</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="propMgnt"></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">Accountability for Void Billing</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="isVoidProg"></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">Property Type</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="propType"></span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="uk-width-large-1-2">
+                                                    <h4 class="heading_c uk-margin-small-bottom">LandLord Details</h4>
+                                                    <ul class="md-list">
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">LandLord Name</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="landLordName"></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">LandLord Email</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="landLordEmail"></span>
+                                                            </div>
+                                                        </li>
+                                                        <li>
+                                                            <div class="md-list-content">
+                                                                <span class="md-list-heading"><a href="#">LandLord Mobile</a></span>
+                                                                <span class="uk-text-small uk-text-muted" id="landLordMobile"></span>
+                                                            </div>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </div>
+                                           
+                                        </li>
+                                        <li>
+                                           <div class="uk-grid getPropertyUtility" data-uk-grid-margin style="display:none;">
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped utilityStatusTable" id="propertyUtilityListData">
+
+                                                                                <thead class="utilityStatusContent"> 
+                                                                                <tr>
+                                                                                    <th>Utility Type</th>
+                                                                                    <th>Tenant Name</th>
+                                                                                    <th>EmailID</th>
+                                                                                    <th>Mobile Number</th>
+                                                                                    <th>Request Date</th>
+                                                                                    <th>Electricity</th>
+                                                                                    <th>Gas</th>
+                                                                                    <th>Water</th>
+                                                                                    <th>Council</th>
+                                                                                    <th>Status</th>
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody class="propertyUtility">
+                                                                                                    
+                                                                                
+                                                                                </tbody>            
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                    
+                                                </div> 
+                                            </div>
+                                              
+                                            <h3>Gas <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forGas" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Fuel Type</th>
+                                                                                    <th>Gas Suppliers</th>
+                                                                                    <th>Gas Meter Reading</th>
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                     
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="gasFuelType"></span></td>
+
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="gasSuppliers"></span></td>
+
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="gasMeterReading"></span></td>
+
+                                                                                      <td class="gasTd"><select id="inputGasInfo" required class="md-input" style="width:100%;" >
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputGasNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                     <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="Gas" style="color:#1d9d74;cursor:pointer;" id="gasSubmit"></i> </td>
+                                                                                    
+                                                                                </tbody> 
+                                                                                          
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forGas -->
+
+
+
+                                            <h3>Electricity <span class="errorElectricityInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forElectricity" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Electricity Supplier</th>
+                                                                                    <th>Economy</th>
+                                                                                    <th>Electricity Meter Reading1</th>
+                                                                                    <th>Electricity Meter Reading2</th>
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                    
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="electricitySupplier"></span></td>
+
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="electricityEconomy"></span></td>
+
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="electricityMeterReading1"></span></td>
+
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="electricityMeterReading2"></span></td>
+
+                                                                                      <td class="gasTd"><select id="inputElectricityInfo" required class="md-input" style="width:100%;" >
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputElectricityNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                     <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="Electricity" style="color:#1d9d74;cursor:pointer;" id="electricitySubmit"></i> </td>
+                                                                                     
+                                                                                </tbody>
+                                                                                               
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forElectricity -->
+
+
+
+                                            <h3>Council <span class="errorCouncilInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forCouncil" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Council Tax Authority</th>
+                                                                                    
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                    
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="councilAuthority"></span></td>
+
+                                                                                   
+                                                                                      <td class="gasTd"><select id="inputCouncilInfo" required class="md-input" style="width:100%;" >
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputCouncilNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                    <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="Council" style="color:#1d9d74;cursor:pointer;" id="councilSubmit"></i> </td>
+                                                                                    
+                                                                                </tbody> 
+                                                                                            
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forCouncil -->
+
+
+
+                                            <h3>Water &amp; Sewerage <span class="errorWaterInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forWaterSewerage" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Water & Sewerage Authority</th>
+                                                                                    <th>Water Meter Reading</th>
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                    
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                       <td class="gasTd"><span class="uk-text-small " id="waterAuthority"></span></td>
+
+                                                                                       <td class="gasTd"><span class="uk-text-small " id="waterMeterRead"></span></td>
+
+                                                                                        <td class="gasTd"><select id="inputWaterActionInfo" required class="md-input" style="width:100%;" >
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputWaterNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                    <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="Water" style="color:#1d9d74;cursor:pointer;" id="waterSubmit"></i> </td>
+                                                                                    
+                                                                                </tbody>
+                                                                                          
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forWater&Sewerage -->
+
+
+                                            <h3>Broadband <span class="errorBroadbandInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forBroadband" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Broadband Provider</th>
+                                                                                    
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                    
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="getBroadBandProvider"></span></td>
+ 
+                                                                                      <td class="gasTd"><select id="inputBroadbandInfo" required class="md-input" style="width:100%;" >
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputBroadbandNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                    <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="BroadBand" style="color:#1d9d74;cursor:pointer;" id="broadbandSubmit"></i> </td>
+                                                                                   
+                                                                                </tbody>
+                                                                                             
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forBroadBand -->
+
+
+                                            <h3>Media <span class="errorMediaInfo" style="color: red;font-size: 12px;"></span> </h3> 
+
+                                            <div class="uk-grid forMedia" data-uk-grid-margin>
+                                              <div class="uk-width-medium-1-1">
+                                                    <div class="parsley-row">
+                                                        <div class="md-card md-card-hover">
+                                                            <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                                              <div class="uk-width-medium-1-1">
+                                                                   
+                                                                       <div class="uk-overflow-container">
+                                                                            <table class="uk-table uk-table-striped notificationTable" id="propertyUtilityListData">
+
+                                                                                <thead class="notificationContent"> 
+                                                                                <tr>
+                                                                                    <th>Media Provider</th>
+                                                                                    
+                                                                                    <th>Action Taken</th>
+                                                                                    <th>Notes</th>
+                                                                                    <th>Post</th>
+                                                                                    
+                                                                                </tr>
+                                                                                </thead>
+                                                                                <tbody>
+                                                                                      <td class="gasTd"><span class="uk-text-small " id="getMediaProvider"></span></td>
+ 
+                                                                                      <td class="gasTd"><select id="inputMediaInfo" required class="md-input" style="width:100%;">
+                                                                                        <option value="0">Action Taken</option>
+                                                                                        <option value="Data Submitted">Data Submitted</option>
+                                                                                        <option value="Submitted With Meter Read">Submitted With Meter Read</option>
+                                                                                        <option value="Submitted Without Meter Read">Submitted Without Meter Read</option>
+                                                                                        <option value="Re-Submitted">Re-Submitted</option>
+                                                                                        <option value="New Request">New Request</option>
+                                                                                        <option value="Updated">Updated</option>
+                                                                                    </select></td>
+
+                                                                                    <td class="gasTd"><textarea class="md-input" id="inputMediaNotes" data-parsley-trigger="keyup"></textarea></td>
+
+                                                                                    <td class="gasTd"><i class="fa fa-sign-in fa-2x btnSubmitGas" value="Media" style="color:#1d9d74;cursor:pointer;" id="mediaSubmit"></i> </td>
+                                                                                   
+                                                                                </tbody>
+                                                                                             
+                                                                            </table>
+                                                                        </div>      
+                                                                    </div>
+
+                                                                 </div>     
+                                                            </div>      
+                                                        </div> 
+                                                </div> 
+                                            </div> <!-- forMedia -->
+
+                                            </li>
+                                            <li>
+                                            <ul class="md-list">
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Optio rem aut a.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">20 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">16</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">467</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Reprehenderit sed quia voluptatem veniam modi.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">22 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">4</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">604</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Praesentium nisi hic numquam laudantium quia vero.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">15 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">17</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">328</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Accusantium aut earum omnis harum molestiae perspiciatis itaque.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">26 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">25</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">543</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Qui ullam quis harum et quia dicta.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">20 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">1</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">104</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Sunt id ducimus ut ipsa debitis reprehenderit est.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">14 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">14</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">824</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Aut eos optio neque et.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">25 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">8</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">797</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Magnam vero magnam exercitationem in id odit aliquid omnis.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">06 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">24</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">206</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Fuga laudantium necessitatibus blanditiis laboriosam id qui.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">12 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">9</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">255</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Repellendus eos porro rerum repellat qui autem.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">21 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">18</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">538</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>	
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Veritatis sint sint qui est fugit.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">07 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">9</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">150</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">In voluptates ipsa maxime dolorem magnam minima.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">18 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">1</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">255</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Aut quod quo quisquam adipisci unde consequuntur accusamus.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">06 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">15</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">784</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Debitis possimus maxime consectetur modi eligendi recusandae porro ab.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">13 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">11</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">661</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Laborum ducimus aut id.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">27 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">1</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">686</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Ut temporibus architecto corrupti rerum quia.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">27 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">13</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">226</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Quam ad vel veritatis quisquam praesentium.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">21 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">9</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">473</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Est temporibus ut maiores laboriosam eum eum.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">15 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">13</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">337</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>    
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Quia aspernatur id quia eos autem suscipit.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">18 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">24</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">609</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                                <li>
+                                                    <div class="md-list-content">
+                                                        <span class="md-list-heading"><a href="#">Possimus aut neque laborum aspernatur et ea.</a></span>
+                                                        <div class="uk-margin-small-top">
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE192;</i> <span class="uk-text-muted uk-text-small">23 Apr 2016</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE0B9;</i> <span class="uk-text-muted uk-text-small">15</span>
+                                                        </span>
+                                                        <span class="uk-margin-right">
+                                                            <i class="material-icons">&#xE417;</i> <span class="uk-text-muted uk-text-small">275</span>
+                                                        </span>
+                                                        </div>
+                                                    </div>
+                                                </li>
+                                            </ul>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-large-3-10">
+                            <div class="md-card">
+                                <div class="md-card-content" style="height: 1085px;">
+                                    <div class="uk-margin-medium-bottom">
+                                        <h3 class="heading_c uk-margin-bottom">Logs</h3>
+                                        <div class="timeline" style="height: 1065px;overflow-y: scroll;">
+                                            
+                                                 
+                                        </div>
+                                </div>
+                            </div>
+                        </div>  
+                    </div>                        
+               
+          
+            <div class="uk-grid" data-uk-grid-margin>
+                <div class="uk-width-medium-1-1">
+                    <div class="parsley-row">  
+                         <h3 class="heading_a uk-margin-bottom" style="font-family:Avenir-Heavy;color:white;">Utility Management List </h3> 
+                    </div>  
+                </div>    
+             
+            </div>
+
+        </div>
+
+            <div class="md-card uk-margin-medium-bottom">
+
+                <div class="md-card-content">
+                    <div class="uk-overflow-container">
+                        <table id="utilityList" class="uk-table uk-table-striped">
+                            <thead> 
+                                <tr>
+                                   <th>Utility Type</th>
+                                    <th>Property Address</th>
+                                    <th>Tenant Name</th>
+                                    <th>Request Date</th>
+                                    <th>Status</th>
+                                    <th>Update</th>
+                                </tr>
+                            </thead>    
+                            <tbody class="adminUtilityList">
+
+
+                            </tbody>
+                        </table>
+                         
+                    </div>	
+                </div>
+            </div>  	
+
+
+              <div class="parsley-row" style="margin-left:420px;"> 
+                         <button id="leftArrow" type="button" class="md-btn md-btn-primary leftArrow"><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;"></i> </button> 
+                         <button id="previousPage" type="button" class="md-btn md-btn-primary previousPage"><i class="fa fa-angle-left" style="padding-right: 0px;"></i> Previous</button>
+                        <input type="number" id="enterPageNO" placeholder="Page #" min="0"/>
+                        <button id="nextPage" type="button" class="md-btn md-btn-primary nextPage">Next  <i class="fa fa-angle-right"></i></button>
+                        <button id="rightArrow" type="button" class="md-btn md-btn-primary rightArrow"><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i> </button>
+                    </div>
+
+            </div>
+
+
+
+            <input type="hidden" id="hiddenUtilityID" value="0" />
+            <input type="hidden" id="hiddenPropertyID" value="0" />
+            <input type="hidden" id="hiddenUserRegID" value="0" />
+             </div>
+              </div>
+    <!-- google web fonts -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                    'Source+Code+Pro:400,700:latin',
+                    'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
+
+
+
+    <!-- common functions -->
+    <script src="assets/js/common.min.js"></script>
+    <!-- uikit functions -->
+    <script src="assets/js/uikit_custom.min.js"></script>
+    <!-- altair common functions/helpers -->
+    <script src="assets/js/altair_admin_common.min.js"></script>
+    <script src="assets/js/w3data.js"></script>
+    <!-- page specific plugins -->
+    <!-- parsley (validation) -->
+    <script>
+        // load parsley config (altair_admin_common.js)
+        altair_forms.parsley_validation_config();
+    </script>
+    <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+
+    <!--  forms validation functions -->
+    <script src="assets/js/appUrl.js"></script>
+    <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+    <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+    <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/moment.min.js"></script>
+    <script src="assets/js/UtilityStatus/utilityLogSubmit.js"></script>
+    <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+    <script src="assets/js/screenfull.js"></script>
+    <script src="assets/js/UtilityState/utilityStatus.js"></script>
+    <script>
+    var lastPage  =0;
+        $(function() {
+            // enable hires images
+            altair_helpers.retina_images();
+            // fastClick (touch devices)
+            if (Modernizr.touch) {
+                FastClick.attach(document.body);
+            }
+            w3IncludeHTML();
+        });
+    </script>
+</div>
+<div class="md-overlay"></div>
+</body>
+</html>

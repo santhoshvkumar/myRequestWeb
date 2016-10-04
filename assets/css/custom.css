@@ -1,0 +1,2357 @@
+.dataTables_filter {
+    padding: 10px;
+}
+
+.epc_chart_text{
+    margin-top: 15px;
+}
+
+#mobilebutton {
+    border: 1px solid;
+}
+
+
+.dashboardYellow {
+    border: 2px #FCDB34 solid;
+}
+
+.dashboardOrange {
+    border: 2px #837221 solid;
+}
+
+.utilityYellow {
+    border: 2px #FCDB34 solid;
+}
+
+.utilityOrange {
+    border: 2px #837221 solid;
+}
+
+.utilityGreen {
+    border: 2px #008000 solid;
+}
+
+.fontStyle{
+
+    text-align: center;
+}
+
+.getBroadBand {
+    border: 1px solid;
+}
+
+.getEnergy {
+    border: 1px solid;
+}
+
+.getGas {
+    border: 1px solid;
+}
+
+.getTv {
+    border: 1px solid;
+}
+
+.uk-datepicker-table {
+    background-color: #fff !important;
+}
+
+.uk-datepicker-nav {
+    margin-bottom: 0px;
+}
+
+.middleAlgin {
+    vertical-align: middle !important;
+}
+
+.gridBox {
+    border: 1px solid #D4CBCB;
+    margin-left: -30px;
+    border-radius: 50px;
+}
+
+.uk-datepicker {
+    z-index: 999999 !important;
+}
+
+.gridAvatar {
+    min-width: 75px !important;
+    height: 76px !important;
+    margin-left: -35px;
+}
+
+.gridUserAvatar {
+    min-width: 75px !important;
+    height: 76px !important;
+    margin-right: 0px;
+}
+
+.userHeadText {
+    color: #565656 !important;
+}
+
+#header_main {
+    background: #FCDB34 !important;
+}
+.select2-container--open .select2-dropdown--below{
+    margin-top: 0px !important;
+}
+.overflowContent {
+    white-space: nowrap;
+    width: 25em;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    color: #4A4A4A;
+}
+
+.dateTimePad {
+    padding-top: 10px;
+}
+
+.clndr .clndr_days .clndr_days_grid .day.today > span {
+    background-color: #4A4A4A;
+    border-color: #FED235;
+    border-style: solid;
+    border-width: 3px;
+}
+
+.events_visible .clndr .clndr_days .day-active > span {
+    background-color: #4A4A4A;
+    border-width: 3px;
+    color: #fff;
+    border-color: #FED235 !important;
+    box-shadow: 0 0 0 1px #FED235;
+}
+
+.clndr .clndr_days .clndr_days_grid .day.event > span {
+    border-color: #FED235 !important;
+}
+
+.lblDateTime {
+    float: right;
+    color: #9B9B9B;
+}
+
+.messageNotesContent {
+    overflow-y: scroll !important;
+    height: 420px !important;
+    padding-left: 0px !important;
+}
+
+.messagesPortletBody {
+    background: #FAFAFA !important;
+}
+
+.cardPadding {
+    padding: 16px !important;
+}
+
+.countUpUtility {
+    padding-left: 20px;
+}
+
+.scroll-content {
+    background-color: rgb(250, 250, 250) !important;
+}
+
+.utilityCard {
+    height: 70px;
+}
+
+.user_heading {
+    background: #FED235;
+}
+
+.utilityCardContent {
+    padding-top: 10px !important;
+}
+
+.searchCase {
+    font-family: Avenir !important;
+    background: #FAFAFA !important;
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.12), 0px 2px 2px 0px rgba(0, 0, 0, 0.24);
+    border-radius: 2px;
+    margin-top: 3px !important;
+    height: 35px;
+    font-size: 14px !important;
+    padding-left: 20px !important;
+    color: #4A4A4A !important;
+}
+
+.getAdvertisement {
+    width: 56%;
+    font-family: Avenir-Heavy !important;
+    border: solid 1px;
+}
+
+.createCaseButton {
+    font-family: Avenir-Heavy !important;
+    color: white !important;
+    margin-top: 5px !important;
+    border-radius: 40px !important;
+}
+
+.topGrid {
+    margin: 20px 0px 0px 0px;
+}
+
+.getAdmin {
+    border: solid 1px;
+}
+
+.createCasePlus {
+    border-right: 1px solid grey;
+    font-size: 15px;
+    padding-right: 8px;
+}
+
+.createCaseText {
+    padding-left: 8px;
+}
+
+#sidebar_main .sidebar_main_header {
+    height: 100px !important;
+    border-bottom: 8px solid #FCDB34 !important;
+}
+
+.myRequestAdminLogo {
+    width: 90px;
+    height: 90px;
+    display: none;
+    border-radius: 50px;
+}
+
+#sidebar_main .sidebar_main_header .sidebar_logo {
+    height: 100px;
+    line-height: 48px;
+}
+
+body {
+    background: url(../img/bg.png) no-repeat center center fixed;
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+#sidebar_main .menu_section>ul>li.current_section>a .menu_title {
+    color: #4285F4;
+}
+
+.current_section > a > span.menu_icon > i.fa {
+    color: #4285F4;
+}
+
+.uk-width-medium-1-4 .parsley-row .md-input .mno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-4 .parsley-row .mno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .mno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .mno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .promno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .propermno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .promno-prefix {
+    top: -33px;
+    left: 8px;
+    position: relative;
+    display: none;
+    width: 30px;
+}
+
+.uk-width-medium-1-3 .parsley-row .propermno-prefix {
+    top: -31px;
+    left: 8px;
+    position: relative;
+    width: 30px;
+}
+
+.uk-width-medium-1-4 .parsley-row .md-input .ano-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-4 .parsley-row .ano-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .ano-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .ano-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+#getExcel {
+    font-family: Avenir-Heavy;
+    border: solid 1px;
+}
+
+#noteNewText {
+    font-family: Avenir-Heavy;
+    background-color: #F3F3F3 !important;
+    height: 55px;
+    width: 90%;
+    padding: 6px 12px;
+    font-size: 14px;
+    line-height: 1.42857143;
+    color: #555;
+    background-color: #fff;
+    background-image: none;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    -webkit-box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    box-shadow: inset 0 1px 1px rgba(0,0,0,.075);
+    -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
+    -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+}
+
+.modelHeaderStyle {
+    background-color: #FCDB34 !important;
+    height: 50px !important;
+    margin-top: -24px !important;
+    padding-top: 18px !important;
+}
+
+.fontStyle {
+    font-family: Avenir !important;
+}
+
+.btnSubmit {
+    background-color: #fcdb34;
+}
+
+#advancedSearch {
+    font-family: Avenir-Heavy;
+    border: solid 1px;
+}
+
+.btnback {
+    font-family: Avenir-Heavy;
+    border: solid 1px;
+}
+
+.btnPrintPartProblems {
+    font-family: Avenir-Heavy;
+    border: solid 1px;
+}
+
+.btnGetExcel {
+    font-family: Avenir-Heavy;
+    border: solid 1px;
+}
+
+.btnApproveClose {
+    margin: 10px 30px;
+}
+
+#btnApprove {
+    float: right;
+    margin: 0px 5px 0px 5px;
+    background: green;
+    border: solid 1px;
+}
+
+#btnClosedd {
+    float: right;
+    border-radius: 6px;
+    border: solid 1px;
+}
+
+#leftArrow {
+    color: #000;
+    font-size: 20px;
+    background-color: #FCDB34;
+    padding-left: 0px;
+}
+
+#rightArrow {
+    color: #000;
+    font-size: 20px;
+    background-color: #FCDB34;
+    padding-right: 0px;
+}
+
+#previousPage {
+    font-size: 15px;
+    border: solid 1px;
+}
+
+#enterPageNO {
+    width: 40px;
+    text-align: center;
+    height: 30px;
+}
+
+#nextPage {
+    font-size: 15px;
+    border: solid 1px;
+}
+
+.uk-btn-CenterAlign {
+    text-align: center;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+}
+
+.uk-navbar {
+    height: 47px;
+}
+
+#saveSpeciality {
+    height: 32px;
+    margin-top: -28px;
+    margin-left: 16px;
+}
+
+#inputAverageCharges {
+    padding: 19px 10px 12px 20px;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .avgPound-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .avgPound-prefix {
+    top: -45px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .startDate-suffix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .startDate-suffix {
+    top: -44px;
+    right: -20px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: right;
+}
+
+#inputStartDate{
+    width: 100px;
+    
+}
+.label1{
+  top: -6px !important;  
+}
+
+
+#inputEndDate{
+     width: 100px;
+     
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .endDate-suffix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .endDate-suffix {
+    top: -45px;
+    right: -25px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: right;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .startTime-suffix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .startTime-suffix {
+    top: -45px;
+    right: -20px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: right;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .endTime-suffix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .endTime-suffix {
+    top: -45px;
+    right: -20px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: right;
+}
+ 
+
+input:not([type]).md-input,
+input[type=text].md-input,
+input[type=password].md-input,
+input[type=datetime].md-input,
+input[type=datetime-local].md-input,
+input[type=date].md-input,
+input[type=month].md-input,
+input[type=time].md-input,
+input[type=week].md-input,
+input[type=number].md-input,
+input[type=email].md-input,
+input[type=url].md-input,
+input[type=search].md-input,
+input[type=tel].md-input,
+input[type=color].md-input,
+select.md-input,
+textarea.md-input {
+    font: 400 15px/18px Aviner-Roman;
+}
+
+.md-input-wrapper>label {
+    font: 400 15px/18px Aviner-Roman;
+}
+
+.heading_a {
+    font: 400 18px/24px Avenir-Heavy;
+    color: #fff;
+}
+
+.heading_b {
+    font: 400 22px/28px Avenir-Heavy;
+    color: #fff;
+}
+
+.md-Search {
+    border-color: #fff !important;
+    box-shadow: inset 0 -1px 0 #fff;
+}
+
+.addFontBlack {
+    font-family: Avenir-Heavy;
+}
+
+.addFontGray {
+    font-family: Avenir-Heavy;
+    color: #4A4A4A;
+}
+
+.addFont {
+    font-family: Avenir-Heavy;
+    color: #fff;
+}
+
+.btn-file input {
+    font-family: Avenir-Roman;
+    color: #fff;
+    background: #4A4A4A;
+    border-radius: 4px;
+}
+
+.fa {
+    padding-right: 10px;
+    margin-top: 5px;
+}
+
+.md-btn-primary,
+.md-btn-primary:active,
+.md-btn-primary:focus,
+.md-btn-primary:hover {
+    background: #4A4A4A;
+    border-radius: 4px;
+    color: #fff;
+    font-size: 10px;
+}
+
+.select2-results__option {
+    font-family: Avenir-Roman;
+}
+
+.select2-container--default .select2-selection--single .select2-selection__rendered {
+    font-family: Avenir-Roman;
+}
+
+.getLettingAgencyBusinessName {
+    font-family: Avenir;
+    color: black;
+    line-height: 50px;
+    font-size: 15px;
+}
+
+.uk-margin-top {
+    margin-top: 30px !important;
+}
+
+label {
+    font-family: Avenir-Roman;
+}
+
+.inline-label {
+    font-family: Avenir-Roman;
+}
+
+.uk-dropdown>ul>li>a {
+    font-family: Avenir-Roman;
+}
+
+.headerSpanText {
+    font-family: Avenir-Heavy;
+    font-size: 14px;
+    /*margin: 20px !important;*/
+}
+
+.minuteMargin {
+    margin-top: 3px;
+}
+
+.chartHeader {
+    line-height: 20px;
+    padding: 20px;
+    font-size: 16px;
+    color: #797979;
+}
+
+.rowInfo {
+    margin-left: 50px;
+    line-height: 3;
+}
+
+.uk-table tfoot td,
+.uk-table tfoot th,
+.uk-table thead th {
+    font-family: Avenir;
+    color: #4A4A4A;
+    font-size: 14px;
+    text-align: center;
+    font-weight: 500;
+}
+
+.uk-table-striped tbody tr:nth-of-type(odd) {
+    background: rgba(246, 246, 246, 100);
+    border: 1px solid #D9D9D9;
+    box-shadow: 0px 2px 4px 0px rgba(0, 0, 0, 0.50);
+    text-align: center;
+}
+
+.uk-table td {
+    border-bottom-color: None;
+    font-family: Avenir-Roman;
+    font-size: 14px;
+    text-align: center;
+}
+
+#inputVisitCharges {
+    padding: 19px 10px 12px 20px;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .visitPound-prefix {
+    display: block;
+}
+
+.heading_a+.uk-grid,
+.heading_b+.uk-grid,
+.heading_c+.uk-grid,
+.heading_list+.uk-grid {
+    margin-bottom: 30px;
+}
+
+.md-card.md-card-overlay .md-card-overlay-content {
+    background-color: #FED235;
+    font-family: Avenir-Roman;
+}
+
+.uk-width-medium-1-3 .parsley-row .visitPound-prefix {
+    top: -45px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: left;
+}
+
+.gallery_image_title {
+    margin-bottom: 20px;
+    font-size: 15px;
+}
+
+.borderRight {
+    border-right: 1px solid #D9D9D9;
+}
+
+
+.btnEndWork{
+    float: right;
+    margin-right: -125px;
+}
+
+.btnStartWork{
+    float: right;
+    margin-right: -125px;
+}
+
+.widthCardGal {
+    width: 90%;
+    margin-left: 20px;
+}
+
+.widthCardUsersList {
+    width: 99%;
+    margin: 10px;
+}
+
+.gallery_grid_image_caption {
+    margin: 20px;
+}
+
+.googleMap {
+    margin-top: 50px;
+    height: 500px;
+    background: #fff;
+    border: 1px solid #777777;
+    padding: 4px;
+}
+
+.propertyLocationGoogleMap {
+    border: 1px solid #777777;
+    padding: 0px;
+    margin-left: 18px;
+    width: 100%;
+    height: 100%;
+}
+
+.md-card.md-card-overlay .md-card-overlay-header h3 {
+    font: 400 16px/30px Avenir-Roman !important;
+}
+
+.epc_chart {
+    text-align: center;
+}
+
+.md-card.md-card-overlay .md-card-content {
+    height: 150px;
+}
+
+.epc_chart {
+    height: 150px;
+    padding-top: 15px;
+}
+
+#inputHourlyRate {
+    padding: 19px 10px 12px 20px;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .hrPound-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .hrPound-prefix {
+    top: -45px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .bno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .bno-prefix {
+    top: -43px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .cno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .cno-prefix {
+    top: -43px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .cphno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .cphno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-4 .parsley-row .md-input .cphno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-4 .parsley-row .cphno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .emerno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .emerno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .adminEmerno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .adminEmerno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+
+.uk-width-medium-1-4 .parsley-row .md-input .adminEmerno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-4 .parsley-row .adminEmerno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.mainAdminPhoneNumber .phno-prefix {
+    top: -40px;
+    left: 3px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.mainAdminEmergencyNumber .adminEmerno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.mainAdminEmergencyElectricityNumber .emerElectno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .emerElectno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .emerElectno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-4 .parsley-row .md-input .emerElectno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-4 .parsley-row .emerElectno-prefix {
+    top: -40px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-3 .parsley-row .md-input .emerElecNo-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-3 .parsley-row .emerElecNo-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-1 .parsley-row .md-input .dno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-1 .parsley-row .dno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-1 .parsley-row .md-input .eno-prefix {
+    display: block;
+}
+
+.uk-width-medium-1-1 .parsley-row .eno-prefix {
+    top: -42px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-2 .parsley-row .inputPhoneNumber .phno-prefix {
+    display: block;
+}
+
+.parsley-row .phno-prefix {
+    top: -40px;
+    left: 3px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-2 .parsley-row .inputPhoneNumber .subAdminPhno-prefix {
+    display: block;
+}
+
+.parsley-row .subAdminPhno-prefix {
+    top: -42px;
+    left: 3px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.uk-width-medium-1-2 .parsley-row .emergencyNumber .mno-prefix {
+    display: block;
+}
+
+.parsley-row .emerno-prefix {
+    top: -40px;
+    left: 3px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.parsley-row .inputMobile .mno-prefix {
+    display: block;
+}
+
+.parsley-row .mno-prefix {
+    top: -32px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.tenantcno-prefix {
+    display: block;
+}
+
+.tenantcno-prefix {
+    top: -43px;
+    left: 5px;
+    position: relative;
+    font-size: 15px;
+    display: none;
+    width: 30px;
+    float: left;
+}
+
+.forAdmin {
+    display: none;
+}
+
+.has-switch {
+    width: 120px !important;
+}
+
+.bootbox {
+    margin-top: 45px !important;
+}
+
+.modal {
+    margin-top: 45px !important;
+    padding: 0px 0px 0px 180px;
+}
+
+.problemImage {
+    height: 280px;
+}
+
+.imgRequestImage {
+   /*padding-top: 25px !important;
+   width: 200%;*/
+}
+
+.imageSelect{
+   /*width: 104px !important;*/
+}
+
+.reportCountTdSpan {
+    border-radius: 15px;
+    height: 20px !important;
+    width: 17px !important;
+    background-color: #57B5E3 !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    color: #fff !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+.reportCountTdSpan {
+    border-radius: 15px;
+    height: 20px !important;
+    width: 17px !important;
+    background-color: #57B5E3 !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    color: #fff !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+.reportNoCountTdSpan {
+    height: 20px !important;
+    width: 17px !important;
+    background-color: red !important;
+    padding-left: 6px !important;
+    padding-right: 6px !important;
+    color: #fff !important;
+    padding-top: 1px !important;
+    padding-bottom: 1px !important;
+}
+
+#contractorImageUrl1 {
+    display: block !important;
+    width: 200px !important;
+    /* height: 57px !important; */
+    margin: -10px;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+#contractImageUrl {
+    display: block !important;
+    width: 200px !important;
+    /* height: 57px !important; */
+    margin: -10px;
+    opacity: 0 !important;
+    overflow: hidden !important;
+}
+
+.progressbox {
+    border: 1px solid #0099CC;
+
+    padding: 1px;
+    position: relative;
+    width: 150px;
+    border-radius: 3px;
+    margin: 0px 20px;
+    display: none;
+    text-align: left;
+}
+
+.progressbar {
+    height: 20px;
+    border-radius: 3px;
+    background-color: #117dc2;
+    width: 1%;
+}
+
+.statusOfContractor {
+    font-size: 22px;
+}
+
+#statustxt1 {
+    top: 3px;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+    color: #000000;
+}
+
+#statustxt2 {
+    top: 3px;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+    color: #000000;
+}
+
+#statustxt3 {
+    top: 3px;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+    color: #000000;
+}
+
+#statustxt4 {
+    top: 3px;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+    color: #000000;
+}
+
+#statustxt5 {
+    top: 3px;
+    left: 40%;
+    position: absolute;
+    display: inline-block;
+    color: #000000;
+}
+
+.loadMoreButton {
+    float: left;
+    width: 100%;
+}
+
+.linkColor {
+    color: #4A4A4A !important;
+    text-decoration: none !important;
+}
+
+.problemUserName {
+    border-left: 1px solid #CFCFCF;
+    margin-left: -10px;
+    height: 280px;
+}
+
+.portlet {
+    clear: both;
+    margin-top: 0px;
+    margin-bottom: 25px;
+    padding: 0px;
+    -webkit-box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
+    box-shadow1: 0 1px 4px rgba(0, 0, 0, 0.07);
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+.portlet > .portlet-title {
+    background-color: #eee;
+    border-radius: 4px 4px 0 0;
+    padding: 10px 10px 2px 10px;
+    height: 38px;
+}
+
+.portlet > .portlet-title > .caption {
+    color: #333;
+    float: left;
+    display: inline-block;
+    font-size: 16px;
+    line-height: 16px;
+    font-weight: 400;
+    margin: 0;
+    padding: 0;
+    margin-top: 1px;
+}
+
+.portlet > .portlet-title > .caption > i {
+    float: left;
+    margin-top: 2px;
+    display: inline-block !important;
+    font-size: 13px;
+    margin-right: 5px;
+    color: #666;
+}
+
+.portlet > .portlet-title > .tools {
+    margin-top: 0px;
+}
+
+.portlet > .portlet-title > .tools,
+.portlet > .portlet-title > .actions {
+    display: inline-block;
+    padding: 0;
+    margin: 0;
+    margin-top: 3px;
+    float: right;
+}
+
+.portlet > .portlet-body {
+    clear: both;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 0px 0px 4px 4px;
+}
+
+#chats {
+    height: 215px;
+}
+
+.slimScrollDiv {
+    height: 200px !important;
+}
+
+.scroller {
+    height: 350px !important;
+}
+
+.notesScroller {
+    height: 200px !important;
+}
+
+.notesScroller {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 12px;
+    overflow: auto;
+}
+
+.scroller {
+    padding: 0px;
+    margin: 0px;
+    padding-right: 12px;
+    overflow: auto;
+}
+
+.portlet-body .slimScrollBar {
+    margin-right: 0px;
+}
+
+.slimScrollBar {
+    opacity: 0 !important;
+}
+
+.chats li {
+    list-style: none;
+    padding: 5px 0;
+    margin: 10px auto;
+    font-size: 12px;
+}
+
+.chats li.out .message {
+    border: 1px solid #ddd;
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    margin-right: 65px;
+    text-align: right;
+}
+
+.chats li .message {
+    display: block;
+    padding: 5px;
+    position: relative;
+}
+
+.chats li.out img.avatar {
+    float: right;
+    margin-left: 10px;
+}
+
+.chats li img.avatar {
+    height: 45px;
+    width: 45px;
+    -webkit-border-radius: 50% !important;
+    -moz-border-radius: 50% !important;
+    border-radius: 50% !important;
+}
+
+.chats li.out .message .arrow {
+    display: block;
+    position: absolute;
+    top: 5px;
+    right: -8px;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-left: 8px solid #ddd;
+}
+
+.chats li.out .name,
+.chats li.out .datetime {
+    text-align: right;
+}
+
+.chats li .name {
+    color: #444;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+a {
+    text-shadow: none !important;
+    color: #4A4A4A;
+}
+
+.chats li.out .name,
+.chats li.out .datetime {
+    text-align: right;
+}
+
+.chats li .datetime {
+    color: #333;
+    font-size: 13px;
+    font-weight: 400;
+}
+
+.chats li .message .body {
+    display: block;
+}
+
+.chats li.in img.avatar {
+    float: left;
+    margin-right: 10px;
+}
+
+
+.chats li.in .message {
+    -webkit-border-radius: 4px;
+    -moz-border-radius: 4px;
+    border-radius: 4px;
+    text-align: left;
+    border: 1px solid #ddd;
+    margin-left: 65px;
+    background: #fafafa;
+}
+
+.chats li.in .message .arrow {
+    display: block;
+    position: absolute;
+    top: 5px;
+    left: -8px;
+    width: 0;
+    height: 0;
+    border-top: 8px solid transparent;
+    border-bottom: 8px solid transparent;
+    border-right: 8px solid #ddd;
+}
+
+.awaitingInfo {
+    background: lightblue;
+    height: 20px;
+    width: 100px;
+}
+
+.sAwaitingInfo {
+    background: lightblue;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.sAwaitingApproval {
+    background: #0097a7;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.sApproved {
+    background: blue;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.sAssigned {
+    background: lightgrey;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.move-In {
+    background: orange;
+    height: 20px;
+    width: 100px;
+}
+
+.sMove-In {
+    background: orange;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.move-Out {
+    background: red;
+    height: 20px;
+    width: 100px;
+}
+
+.sMove-Out {
+    background: red;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.updated {
+    background: green;
+    height: 20px;
+    width: 100px;
+}
+
+.sUpdated {
+    background: green;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.checkIn {
+    background: orange;
+    height: 20px;
+    width: 100px;
+}
+
+.sCheckIn {
+    background: orange;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.started {
+    background: brown;
+    height: 20px;
+    width: 100px;
+}
+
+.sStarted {
+    background: brown;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.completed {
+    background: green;
+    height: 20px;
+    width: 100px;
+}
+
+.sCompleted {
+    background: green;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.closed {
+    background: purple;
+    height: 20px;
+    width: 100px;
+}
+
+.sClosed {
+    background: purple;
+    display: inline-block;
+    width: 25px;
+    height: 25px;
+    margin: 10px 5px -5px 0px;
+}
+
+.processing {
+    background: purple;
+    height: 20px;
+    width: 100px;
+}
+
+.reScheduled {
+    background: orange;
+    height: 20px;
+    width: 100px;
+}
+
+.awaitingInfoPie {
+    background: blue;
+    height: 20px;
+    width: 100px;
+}
+
+.assignedPie {
+    background: orange;
+    height: 20px;
+    width: 100px;
+}
+
+.awaitingApprovalPie {
+    background: green;
+    height: 20px;
+    width: 100px;
+}
+
+.approvedPie {
+    background: yellow;
+    height: 20px;
+    width: 100px;
+}
+
+.completedPie {
+    background: red;
+    height: 20px;
+    width: 100px;
+}
+
+.closedPie {
+    background: purple;
+    height: 20px;
+    width: 100px;
+}
+
+.statistics {
+    font-size: 14px;
+}
+
+#pieChartLocAdmin {
+    margin-top: 80px;
+}
+
+#sidebar_main .sidebar_main_header {
+    background-image: url("");
+    background-color: rgba(11, 13, 14, 0.82) !important;
+    text-align: center;
+}
+
+.input-symbol span {
+    position: relative;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 1em;
+    pointer-events: none;
+}
+
+.input-symbol input {
+    text-indent: 1em;
+    margin-left: -1em;
+    font-size: 1em;
+}
+
+#dashChats {
+    height: 600px;
+}
+
+.dashNotes {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    font-size: 14px;
+}
+
+.ipadMessage {
+    border-radius: 4px !important;
+    text-align: left !important;
+    border: 1px solid #ddd !important;
+    margin-left: -5px  !important;
+    background: #fafafa !important;
+}
+
+.ListTwoDay {
+    display: none;
+}
+
+.lblPolling {
+    font-family: Avenir-Heavy;
+    color: white;
+}
+
+.getPolling {
+    cursor: pointer;
+}
+
+.pollingBorder {
+    border: solid 1px;
+}
+
+.getPrivacyPolicy {
+    border: solid 1px;
+}
+
+.getTenant {
+    border: solid 1px;
+}
+
+.getTermsAndCondition {
+    border: solid 1px;
+}
+
+.contractorBorder {
+    border: solid 1px;
+}
+
+.getProperty {
+    border: solid 1px;
+}
+
+.getNewsLetter {
+    border: solid 1px;
+}
+
+ 
+
+.getContractorImage {
+    border-radius: 50%;
+    width: 70px;
+    height: 70px;
+    border: 2px solid black;
+}
+
+.estimatedNotesArea {
+    width: 250px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.bodyNotes {
+    width: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.getUserName {
+    font-family: Avenir-Heavy;
+    color: black;
+}
+
+.faCog {
+    color: black;
+}
+
+.myRequestTopLogo {
+    display: inline !important;
+    bottom: 0px !important;
+    position: static !important;
+    width: 186px !important;
+    height: auto !important;
+    margin-left: 0px !important;
+}
+
+.myRequestLogo {
+    display: inline;
+    bottom: 0px;
+    position: static;
+    width: 188px;
+    height: auto;
+    margin-left: 20px;
+}
+
+.topGrid {
+    margin: 10px 0px 0px 0px;
+}
+
+.caseRow {
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+}
+
+.utilityAdImage {
+    width: 100%;
+    height: 197px;
+}
+
+.timeline:before {
+    height: 1065px !important;
+}
+
+@media only screen and (max-width:1090px) {
+    .ListTwoDay {
+        display: block !important;
+    }
+}
+
+@media only screen and (max-width:1200px) {
+    .ListTwoDay {
+        display: block !important;
+    }
+}
+
+#header_main .sSwitch .sSwitchIcon,
+#header_main .sSwitch .sSwitchIcon:after,
+#header_main .sSwitch .sSwitchIcon:before {
+    background: #191414 !important;
+}
+
+.icheckbox_md.checked,
+.icheckbox_md.hover.checked {
+    background: rgb(255, 179, 0) !important;
+    border-color: rgb(255, 179, 0) !important;
+}
+
+.sidebar_main_active #sidebar_main {
+    box-shadow: 0 0 4px rgba(0, 0, 0, .14), 2px 4px 8px rgba(0, 0, 0, .28);
+}
+
+#sidebar_main {
+    width: 240px;
+    border-right: 1px solid rgba(0, 0, 0, .12);
+    position: fixed;
+    height: 100%;
+    top: 0;
+    bottom: 0;
+    z-index: 1204;
+    background: #fff;
+    transition: all 280ms cubic-bezier(.4, 0, .2, 1);
+}
+
+.sidebar_main_active #page_content:before {
+    opacity: 1;
+    z-index: 1184;
+}
+
+#page_content:before {
+    content: '';
+    position: fixed;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background: rgba(0, 0, 0, .3);
+    display: block;
+    opacity: 0;
+    -webkit-transition: opacity 400ms;
+    transition: opacity 400ms;
+    z-index: -1;
+}
+
+@media only screen and (min-width: 1220px) {
+    .sidebar_main_active #header_main,
+    .sidebar_main_active #page_content,
+    .sidebar_main_active #top_bar {
+        margin-left: 0px !important;
+    }
+}
+
+@media only screen and (min-width: 1520px) {
+    .sidebar_main_active #header_main,
+    .sidebar_main_active #page_content,
+    .sidebar_main_active #top_bar {
+        margin-left: 0px !important;
+    }
+}
+
+@media only screen and (min-width: 3220px) {
+    .sidebar_main_active #header_main,
+    .sidebar_main_active #page_content,
+    .sidebar_main_active #top_bar {
+        margin-left: 0px !important;
+    }
+}
+
+.uk-datepicker-nav {
+    margin-bottom: 15px;
+    text-align: center;
+    line-height: 20px;
+    background: #FCDB34;
+    padding: 10px 0;
+}
+
+.uk-datepicker-table a.uk-active {
+    background-color: #FCDB34;
+    color: #fff;
+}
+
+.utilitRequestList {
+    margin: -50px 2px 2px 30px;
+}
+
+
+/*.select2-container {
+    box-sizing: border-box;
+    display: inline-block;
+    margin-top: 15px !important;
+    position: relative;
+    vertical-align: middle;
+}*/
+
+.select2-dropdown--below {
+    border-top: none;
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    width: 148px;
+    margin: -15px 2px 2px 0px !important;
+}
+
+.gasContent {
+    padding-left: 36px;
+}
+
+.gasHeader {
+    background-color: #FED235;
+    height: 4px;
+    width: 100%;
+}
+
+.electricityHeader {
+    background-color: #FED235;
+    height: 4px;
+    width: 100%;
+}
+
+.waterHeader {
+    background-color: #FED235;
+    height: 4px;
+    width: 100%;
+}
+
+.sewerageHeader {
+    background-color: #FED235;
+    height: 4px;
+    width: 100%;
+}
+
+.tableColor {
+    background-color: #FED235;
+}
+
+.utilityRequestTop {
+    height: 130px;
+    background: #212025 !important;
+}
+
+.head {
+    color: black;
+}
+
+.gasTd {
+    vertical-align: middle !important;
+}
+
+#inputGasNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+#inputElectricityNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+#inputCouncilNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+#inputWaterNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+#inputBroadbandNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+#inputMediaNotes {
+    min-height: 60px;
+    overflow-y: scroll !important;
+    height: 20px !important;
+}
+
+.btnSubmitWater {
+    width: 135px;
+    margin-top: 170px;
+}
+
+.notificationHeader {
+    background: black;
+    height: 150px;
+}
+
+.notificationTable {
+    border: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.notificationContent {
+    background: #FED235;
+}
+
+.tenancyDate {
+    margin: -30px 2px 2px 62px;
+}
+
+.utilityStatusHeader {
+    background: black;
+    height: 150px;
+}
+
+.utilityStatusTable {
+    border: 1px solid rgba(128, 128, 128, 0.25);
+}
+
+.utilityStatusContent {
+    background: #FED235;
+}
+
+.sewerageContent {
+    padding-right: 1px;
+}
+
+.utilityRequestHeader {
+    background: black;
+    height: 150px;
+}
+
+.requestLogo {
+    display: inline !important;
+    bottom: 0px !important;
+    position: static !important;
+    width: 50% !important;
+    height: auto !important;
+}
+
+.reqiurementStatus {
+    margin: 11px 2px 2px -16px;
+}
+
+.createdDateLWorkLog {
+    font-size: 11px;
+    margin: -29px 10px 2px 2px;
+}
+
+.requestAdminLogo {
+    display: inline !important;
+    bottom: 0px !important;
+    position: static !important;
+    width: 50% !important;
+    height: auto !important;
+}
+
+.serviceProviderType{
+    margin-top: 30px;
+}
+
+.providerType{
+    margin-top: 30px;
+}
+
+.advertisementOfferType{
+    margin-top: 30px;
+}
+
+.adminCalendar{
+    background-color: #FED235 !important;
+}
+
+.awatingApproval{
+    background-color: #FFA500 !important;
+    font-family: Avenir-Roman !important;
+}
+
+.landlord-prefix {
+    top: -41px !important;
+    left: 7px !important;
+    position: relative !important;
+    font-size: 14px !important;
+    width: 30px !important;
+    float: left !important;
+}
+#inputPhoneNo1{
+    font-size: 16px;
+}
+
+#inputAlternateNo{
+    font-size: 16px;
+}
+
+/*#inputMobileNumber{
+    font-style: normal;
+    font-variant: normal;
+    font-weight: 400;
+    font-stretch: normal;
+    font-size: 15px;
+    line-height: 17px;
+}*/
+.startIcon{
+   margin-left: 15px;
+}
+
+.endIcon{
+   margin-left: 15px; 
+}
+
+.topHeaderName{
+    margin-left: 170px !important;
+}
+
+.case-prefix {
+    top: -41px !important;
+    left: 5px !important;
+    position: relative !important;
+    font-size: 15px !important;
+    width: 30px !important;
+    float: left !important;
+}
+
+#btnFixedAmount{
+    color:green !important;
+    font-size: 20px !important;
+    display: none;
+}
+
+.subAdminNumber{
+    font-size: 14px !important;
+}
+
+.tenant-prefix{
+    top: -42px !important;
+    left: 2px !important;
+    position: relative !important;
+    font-size: 15px !important;
+    width: 30px !important;
+    float: left !important;
+}
+
+.loaders{
+    margin-left: 90px;
+}
+
+.loading{
+    margin-left: 60px;
+}
+
+.loadingText{
+    margin-left: 60px;
+}
+
+form#FileURLUploadImage1 {
+    margin-bottom: 15px;
+}
+
+.contractorTime{
+    top: 0px !important;
+}
+
+.dashWorkLogDate{
+    float:right;
+    color:#888888;
+}
+
+.dashWorkLogContent{
+    color:#888888;
+    font-size:14px;
+}
+
+.dashWorkLogCaseNo{
+    color:#888888;
+    font-size:14px;
+}
+
+.imgUserCircle{
+    border-radius: 50%;
+}
+
+#owl-demo .item{
+  margin: 3px;
+}
+.md-bg-yellow{
+    background-color: #fcdb34;
+}
+
+.md-bg-green{
+    background-color: #1bb51b;
+}
+
+.md-color-black{
+    color: #000;
+}
+
+.mdCaseCard{
+    margin-left: 20px;
+    margin-right: 20px;
+}
+
+.problemImageZoom{
+    width:100%;
+}
+
+.specialityText{
+    display:none;
+}
+
+.specialityHide{
+    display:none;
+}
+
+.clientImage {
+    border-radius: 50%;
+    overflow: hidden;
+    width: 70px;
+    height: 70px;
+    border: 2px solid black;
+}
+.clientImage img {
+    display: block;
+    min-width: 100%;
+    min-height: 100%;
+}
+
+.uk-width-medium-1-2 > div.caseInfo{
+    margin-top: 10px;
+}
+
+.getContractorImg{
+    display:none;
+    text-align: center;
+}
+
+.setContractorName{
+    display:none;
+    text-align: center;
+}
+
+.contractorAcceptTxt{
+    display:none;
+}
+
+.contractorText{
+    display:none;
+}
+.showContractor{
+    display:none;
+}
+
+.changeContractor{
+    display:none;
+}
+
+.contractorListData{
+    margin: 10px 10px 10px -10px;
+    display:none;
+}
+
+
+.contractorsApplied{
+    display:none;
+    padding-left: 20px;
+    margin-top: -20px;
+}
+
+.requestLog{
+    box-shadow: inset 0px 1px 3px 0px rgba(0,0,0,0.25); 
+    background: #F6F6F6; 
+    margin-left: 0px; 
+    padding-bottom: 20px;
+}
+
+.requestPortlet{
+    margin-top:-36px;
+}
+
+.problemNotes{
+    width:500px;
+    display:none;
+}
+
+.requestChats{
+    height: 468px !important;
+}
+
+.btnAddNotes{
+    float:right;
+    height: 55px;
+}
+
+.getStartWork{
+    display: none;
+}
+
+.googleMap > div{
+    width: 99% !important;
+    height: 98% !important;
+}
+
+.workLogPadding{
+    padding: 10px;
+}
+
+.NotesContent{
+    width: 98%;
+}
+
+#fixedCaseModal{
+    margin-top:-20px;
+}
+
+.workLogTop{
+    margin-top: 75px;
+}
+ 
+#lettingAgentMenu{
+    display: none;
+}
+
+#superAdminMenu{
+    display: none;
+}
+
+
+
+
+@media screen and (max-width: 32em) {
+   .borderMiddle{
+    margin: 20px;
+   }
+
+   .borderLast{
+    margin: 20px;
+   }
+
+   #inputStartDate{
+    width: 100%;
+   }
+
+   #inputEndDate{
+    width: 100%;
+   }
+
+   .googleMap > div {
+        width: 95% !important;
+        height: 98% !important;
+    }
+}
+
+@media screen and (max-width: 64em) {
+   .borderMiddle{
+        margin: 20px;
+   }
+
+   .borderLast{
+    margin: 20px;
+   }
+
+   #inputStartDate{
+    width: 100%;
+   }
+
+   #inputEndDate{
+    width: 100%;
+   }
+
+   .googleMapRow{
+    width: 95% !important;
+   }
+
+   .googleMap > div {
+        width: 98% !important;
+        height: 98% !important;
+    }
+}
