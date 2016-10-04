@@ -179,6 +179,10 @@
       }
   });
 
+  $(window).load(function () {
+      $("#getLoadingModalContent").removeClass('md-show');
+  });
+
   $(document).ready(function() {
       console.log("ready call");
       adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -462,9 +466,7 @@
                   $("#radio_demo_inline_5").val(result.records[contractor].IsEmergencyAvailability);
                   $("#inputContractValidTill").val(result.records[contractor].ContractValidTill);
                   $("#inputTradeCertificateNo").val(result.records[contractor].TradeCertificateNo);
-                  $("#imgContractor").val(result.records[contractor].imageurl1);
-                  $("#imgContract").val(result.records[contractor].imageurl2);
-                  $("#imgTradeCertificate").val(result.records[contractor].imageUrl3);
+                  
                   
                   if (result.records[contractor].ContractValidTill != "" && result.records[contractor].ContractValidTill != null) {
                       var selectDate = result.records[contractor].ContractValidTill.split("-");
@@ -1819,7 +1821,7 @@
 
                   if (result.record_count == 0 && result.All_Records_Count == 0) {
                       $(".allContractorList").html('');
-                      $(".allContractorList").append('<div><div class="md-card md-card-hover"><div class="md-card-head"> <div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/no_image_found.png" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div></div>');
+                      $(".allContractorList").append('<div class="md-card md-card-hover"><div class="md-card-head"> <div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/no_image_found.png" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div>');
                       $("#getLoadingModalContent").removeClass('md-show');
                       $(".getPagination").hide();
                   } else {
@@ -1837,7 +1839,7 @@
       var contractorValidity = "";
       if (resultAllContractor.record_count == 0) {
           $("#nextPage").attr("disabled", true);
-          $(".allContractorList").append('<div><div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i></div><div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/noImage.gif" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div></div>');
+          $(".allContractorList").append('<div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i></div><div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/noImage.gif" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div>');
 
       } else {
           $(".allContractorList").html('');
@@ -1876,7 +1878,7 @@
                   contractorUserImage = domainAddress + resultAllContractor.records[Contractor].Image1;
               }
 
-              $(".allContractorList").append('<div><div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav"><li class="editContractor" id="editContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"><a href="#"><i class="material-icons uk-margin-small-right">&#xE150;</i> Edit</a></li><li class="deleteContractor" id="deleteContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="material-icons uk-margin-small-right">&#xE872;</i> Remove</a></li><li class="approve" id="approve-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="fa fa-archive approve" style="color:grey;"></i> Approve / Reject</a></li>   </ul></div></div><div class="uk-text-center"><img class="md-card-head-avatar" style="width: 93px;height: 89px;" src="' + contractorUserImage + '" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate" style="font-weight: bold;font-size: 15px;">' + resultAllContractor.records[Contractor].ContractorName + '</span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].SpecialityName + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">' + contractorValidity + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].phoneNo1 + '</span></div></li></ul></div></div></div>');
+              $(".allContractorList").append('<div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav"><li class="editContractor" id="editContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"><a href="#"><i class="material-icons uk-margin-small-right">&#xE150;</i> Edit</a></li><li class="deleteContractor" id="deleteContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="material-icons uk-margin-small-right">&#xE872;</i> Remove</a></li><li class="approve" id="approve-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="fa fa-archive approve" style="color:grey;"></i> Approve / Reject</a></li>   </ul></div></div><div class="uk-text-center"><img class="md-card-head-avatar" style="width: 93px;height: 89px;" src="' + contractorUserImage + '" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate" style="font-weight: bold;font-size: 15px;">' + resultAllContractor.records[Contractor].ContractorName + '</span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].SpecialityName + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">' + contractorValidity + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].phoneNo1 + '</span></div></li></ul></div></div>');
 
               if (resultAllContractor.records[Contractor].IsApprove == 1) {
                   $("#approve-" + resultAllContractor.records[Contractor].ContractorID).css('color', 'green');
@@ -1886,18 +1888,18 @@
                   $("#reject-" + resultAllContractor.records[Contractor].ContractorID).css('color', 'red');
               }
           } // main for loop
-          $(window).trigger("resize");
+          
           $("#getLoadingModalContent").removeClass('md-show');
-
-          $('#contractorList').DataTable({
-              createdRow: function(row) {
-                  $('td', row).attr('tabindex', 0);
-              }
-          });
-          $(".dataTables_paginate").hide();
-          $(".dataTables_length").hide();
-          $(".dataTables_info").hide();
-          $("#contractorList_filter").hide();
+          $(window).trigger("resize");
+          // $('#contractorList').DataTable({
+          //     createdRow: function(row) {
+          //         $('td', row).attr('tabindex', 0);
+          //     }
+          // });
+          // $(".dataTables_paginate").hide();
+          // $(".dataTables_length").hide();
+          // $(".dataTables_info").hide();
+          // $("#contractorList_filter").hide();
 
 
 
@@ -2119,8 +2121,18 @@
                           $("#imgContract").attr("src", "assets/img/noImage.gif");
                           imageUrl2 = "";
                       } else {
-                          imageUrl2 = result.records[contractor].image2;
-                          $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                          var getContractImagePath = result.records[contractor].image2.slice(0,4);
+                          if(getContractImagePath=="api/"){
+                              getContractImagePath = result.records[contractor].image2.slice(4);
+                              imageUrl2 = getContractImagePath;
+                              $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                              
+                          }
+                          else{
+                            imageUrl2 = result.records[contractor].image2;
+                            $("#imgContract").attr('src', domainAddressImage + imageUrl2);
+                          }
+                          
                           $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
                       }
 
@@ -2128,8 +2140,17 @@
                           $("#imgTradeCertificate").attr("src", "assets/img/noImage.gif");
                           imageUrl3 = "";
                       } else {
-                          imageUrl3 = result.records[contractor].tradeCertificateImage;
-                          $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                          var getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(0,4);
+                          if(getTradeImagePath=="api/"){
+                              getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(4);
+                              imageUrl3 = getTradeImagePath;
+                              $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                          }
+                          else{
+                            imageUrl3 = result.records[contractor].tradeCertificateImage;
+                            $("#imgTradeCertificate").attr('src', domainAddressImage + imageUrl3);
+                          }
+
                           $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");
                       }
 
