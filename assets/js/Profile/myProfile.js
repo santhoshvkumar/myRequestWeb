@@ -789,7 +789,7 @@
           $(".md-input-wrapper").addClass("md-input-filled");
 
           if (IsUpdate) {
-            window.location.href = 'https://myrequest.co.uk/myRequestAdmin/Dashboard.html';
+            window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
           }
       });
   }

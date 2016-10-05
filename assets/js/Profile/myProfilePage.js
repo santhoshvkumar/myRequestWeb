@@ -1015,7 +1015,7 @@
          $(".md-input-wrapper").addClass("md-input-filled");
 
          if (IsUpdate) {
-             window.location.href = 'https://myrequest.co.uk/myRequestAdmin/Dashboard.html';
+             window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
          }
      });
  }
@@ -1304,7 +1304,7 @@
                      imageUrl1 = "";
                      $("#progressbox1").hide();
                      UIkit.modal.alert("Profile Updated Successfully");
-                     window.location.href = 'https://myrequest.co.uk/myRequestAdmin/Dashboard.html';
+                     window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
                  } else {
                      $("#progressbox1").hide();
                      UIkit.modal.alert(dataCheck.message_text);
