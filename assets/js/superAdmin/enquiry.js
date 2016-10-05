@@ -87,7 +87,7 @@ $(function() {
         }
         
         getAllNewAdminList();
-        getEnquiryList(getValue);
+
         $(".forSuperAdmin").show();
 
 
@@ -107,6 +107,7 @@ $(function() {
       return Array(+(zero > 0 && zero)).join("0") + num;
     }
 
+    /*
     $(".btnSearch").click(function () {
         getValue = $("#inputSearch").val();
         getEnquiryList(getValue);
@@ -137,10 +138,9 @@ $(function() {
             } // ajax success
         }); // ajax POSTS
      } // getContractorsList
-
+    */
 
     function getAllNewAdminList(){
-        console.log("getAllAdminList called");
         $.get(domainAddress+"GetAllNewAdminDetails",{},function(result){
             console.log(result);
             $(".allNewAdminList").html('');
@@ -161,17 +161,7 @@ $(function() {
                     } 
 
                 }
-                  //$("#getLoadingModalContent").removeClass('md-show'); 
-
-/*                 $('#enquiryList').DataTable({
-                    createdRow: function ( row ) {
-                        $('td', row).attr('tabindex', 0);
-                    }
-                });
-              $(".dataTables_paginate").hide();
-              $(".dataTables_length").hide();
-              $(".dataTables_info").hide();
-              //$("#enquiryList_filter").hide();*/
+             
 
                 $(".approve").on('click',function(){
                     var getAdminID = this.id.replace('approve-','');
@@ -182,7 +172,6 @@ $(function() {
                     lettingAgencyCode = businessName.trim().charAt(0).toLowerCase()+businessName.trim().substr(businessName.length - 1).toLowerCase()+zeroPad(getAdminID, 5);
 
                     UIkit.modal.confirm('Are you sure want to Approve?', function(e){
-                        console.log(e); 
                         isApproveStatus = 1;
                         var dataForm = '{"IsApprove":"'+isApproveStatus+'","BusinessEmailID":"'+businessEmailID+'","LettingAgencyCode":"'+lettingAgencyCode+'","BusinessName":"'+businessName+'"}';
                         var sendURL = domainAddress + 'UpdateAdminIsApprove/' + getAdminID;
@@ -225,7 +214,7 @@ $(function() {
                             data: dataForm,
                             success: function(dataCheck) {
                                console.log(dataCheck);
-                               getAllNewAdminList();
+                               getAllNewAdminList()
                                UIkit.modal.alert('New Admin Rejected Successfully');
                                $("#isApprove-"+getAdminID).bootstrapSwitch('setState', false);
                             }

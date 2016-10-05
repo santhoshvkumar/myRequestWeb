@@ -104,7 +104,7 @@
       $("#inputTitle").select2();
       $("#inputState").select2()
           .on("change", function(e) {
-              console.log("change val=" + $("#inputState").val());
+              //console.log("change val=" + $("#inputState").val());
               var stateID = $("#inputState").val();
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
                   $("#inputCity").html('');
@@ -255,29 +255,29 @@
   });
 
   $("#enterPageNO").on("change", function(e) {
-      console.log("THis is called" + $("#enterPageNO").val());
+      //console.log("THis is called" + $("#enterPageNO").val());
       if ($("#enterPageNO").val() < lastPage) {
           maxProp++;
           $("#enterPageNO").val(maxProp);
       }
 
-      console.log("next inital count : " + adminCountLimit + " page # : " + maxProp);
+      //console.log("next inital count : " + adminCountLimit + " page # : " + maxProp);
       adminCountLimit = 9 * ($("#enterPageNO").val() - 1);
-      console.log("change count : " + adminCountLimit);
+      //console.log("change count : " + adminCountLimit);
       $("#getLoadingModalContent").addClass('md-show');
       getAllAdminList(getValue);
   });
 
   $("#enterPageNO").keyup(function() {
-      console.log("THis is called " + $("#enterPageNO").val());
+      //console.log("THis is called " + $("#enterPageNO").val());
       if ($("#enterPageNO").val() < lastPage) {
           maxProp++;
           $("#enterPageNO").val(maxProp);
       }
 
-      console.log("next inital count : " + adminCountLimit + " page # : " + maxProp);
+      //console.log("next inital count : " + adminCountLimit + " page # : " + maxProp);
       adminCountLimit = 9 * ($("#enterPageNO").val() - 1);
-      console.log("change count : " + adminCountLimit);
+      //console.log("change count : " + adminCountLimit);
 
       getAllAdminList(getValue);
   });
@@ -376,12 +376,12 @@
           $("#inputAutoGenerate").val("");
           $(".md-input-wrapper").removeClass("md-input-filled");
       } else {
-          console.log("LastAdminID : " + getLastAdminID);
+          //console.log("LastAdminID : " + getLastAdminID);
           var nextAdminID = parseInt(getLastAdminID) + parseInt(1);
-          console.log("NextAdminID : " + nextAdminID);
+          //console.log("NextAdminID : " + nextAdminID);
 
           autoCode = inputBusinessName.trim().charAt(0).toLowerCase() + inputBusinessName.trim().substr(inputBusinessName.length - 1).toLowerCase() + zeroPad(nextAdminID, 5);
-          console.log("Autocode : " + autoCode);
+          //console.log("Autocode : " + autoCode);
           $("#inputAutoGenerate").val(autoCode);
 
       }
@@ -970,19 +970,19 @@
           $("#enterPageNO").attr("disabled", false);
           $(".allAdminList").html('');
           if (result.record_count == result.All_Records_Count) {
-              console.log("equal to 9");
+              //console.log("equal to 9");
               $("#nextPage").attr("disabled", "disabled");
           } else if (result.record_count < 9 && result.record_count != 0) {
-              console.log("less than 9");
+              //console.log("less than 9");
               $("#nextPage").attr("disabled", "disabled");
           } else if (result.record_count >= 9) {
-              console.log("great than 9");
+              //console.log("great than 9");
               $("#nextLastPage").removeAttr("disabled");
               //$("#nextLastPage").show();
           }
           lastPage = parseInt(result.All_Records_Count / 9) + 1;
           console.log(lastPage);
-          console.log("getAllAdminList called");
+          //console.log("getAllAdminList called");
           $(".allAdminList").html('');
           if (result.record_count == 0) {
               $(".allAdminList").append("<tr> <td id='autoGenerate-0'>No records Found</td> <td id='adminName-0'> </td> <td id='businessName-0'> </td> <td id='emailID-0'> </td> <td id='isApproved-0'> </td> <td class='editAdmin' id='editAdmin-0'> </td> <td class='deleteAdmin' id='deleteAdmin-0'> </td> </tr>");
@@ -1005,8 +1005,7 @@
                   } 
                   $(".allAdminList").append("<tr> <td id='autoGenerate-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AutoGenerate + "</td> <td id='adminName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i></td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;' data-toggle='modal' class='config' href='Contractor.html#CreateContractorModal'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
 
-                 
-
+                
                   if (result.records[adminInfo].IsApproved == 1) {
                       $("#approve-" + result.records[adminInfo].Admin_ID).css('color', 'green');
                       $("#reject-" + result.records[adminInfo].Admin_ID).css('color', '');
@@ -1040,7 +1039,7 @@
 
                   }
               });
-              console.log(getAdminID);
+              //console.log(getAdminID);
 
           });
 
@@ -1053,7 +1052,7 @@
               lettingAgencyCode = businessName.trim().charAt(0).toLowerCase() + businessName.trim().substr(businessName.length - 1).toLowerCase() + zeroPad(getAdminID, 5);
 
               UIkit.modal.confirm('Are you sure want to Approve?', function(e) {
-                  console.log(e);
+                  //console.log(e);
                   isApproveStatus = 1;
                   var dataForm = '{"IsApprove":"' + isApproveStatus + '","BusinessEmailID":"' + businessEmailID + '","LettingAgencyCode":"' + lettingAgencyCode + '","BusinessName":"' + businessName + '"}';
                   var sendURL = domainAddress + 'UpdateAdminIsApprove/' + getAdminID;
@@ -1115,7 +1114,7 @@
               $("#hiddenAdminID").val(editAdminID);
 
               $.get(domainAddress + "getAdminDetails/" + editAdminID, {}, function(result) {
-                  console.log(result);
+                  //console.log(result);
                   var isFourExistNo = 0;
                   var isEmerFourExistNo = 0;
                   for (var getAdmin in result.records) {
@@ -1209,7 +1208,7 @@
 
               UIkit.modal.confirm('Are you sure?', function() {
                   $.post(domainAddress + 'DeleteAdminDetails/' + getAdminID, function(e) {
-                      console.log(e);
+                      //console.log(e);
                       $("#rowID-" + getAdminID).remove();
                       getAllAdminList(getValue);
                       UIkit.modal.alert('Admin Deleted Successfully');
