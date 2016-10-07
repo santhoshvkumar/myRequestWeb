@@ -6,7 +6,7 @@ function getDbReportProblem(getProblemID) {
           $(".noteHide").html('');
           $(".NotesContent").html('');
           for (Problem in resultProblem.ProblemRecord) {
-
+              $("#getRequestID").text("Request # "+resultProblem.ProblemRecord[Problem].RequestID);
               problemID = resultProblem.ProblemRecord[Problem].ProblemID;
               var Notes = resultProblem.ProblemRecord[Problem].Notes;
               userRegisterID = resultProblem.ProblemRecord[Problem].UserRegisterID;

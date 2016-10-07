@@ -212,8 +212,7 @@
                     <div class="uk-width-medium-1-3">
                         <div class="parsley-row">
                             <div class="parsley-row caseRow">
-                                <h3 class="heading_b uk-margin-bottom">Request # <?php echo $problemID;
-?></h3>
+                                <h3 class="heading_b uk-margin-bottom" id="getRequestID"></h3>
                             </div>
                         </div>
                     </div>
