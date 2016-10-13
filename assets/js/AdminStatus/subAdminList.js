@@ -294,7 +294,7 @@
                  $('#progressbox1').show();
                  $('#progressbar1').show();
                  console.log('z ' + result);
-                 filePath = result.slice(4);
+                 filePath = result;
 
                  $("#imgAdminLogo").attr('src', domainAddress + filePath);
                  $("#imgAdminLogo").css("height", "80px").css("width", "100px").css("border", "");
