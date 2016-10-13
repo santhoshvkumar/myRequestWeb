@@ -527,7 +527,7 @@ function getDbReportProblem(getProblemID) {
           });
           /*********** To add new notes for particular Problem **********/
           $(".btnAddNotes").on('click', function() {
-              //console.log(getNoteProblemID);
+              $("#getLoadingModalContent").addClass('md-show');
               var notesVal = $("#noteNewText").val();
               userID = localStorage.getItem("MyRequest_AdminID");
               var adminUserName = localStorage.getItem("MyRequest_UserName");
@@ -585,6 +585,7 @@ function getDbReportProblem(getProblemID) {
                               // });
 
                               $("#noteNewText").val('');
+                              $("#getLoadingModalContent").removeClass('md-show');
                               // $(".addNewNotesText").show();
                               // $(".noteHide").hide();
                               // $(".addNewNotes").hide();

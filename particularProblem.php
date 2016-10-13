@@ -475,7 +475,7 @@
                         </div>
 
                         <hr class="contractorsApplied" />
-
+                        <br/>
                         <div class="uk-grid contractorsApplied" data-uk-grid-margin>
                             <div class="uk-width-medium-1-1">
                                 <div> 
@@ -538,7 +538,7 @@
 
                 </div> <!-- mdCaseCard -->
                 
-
+                <br/>
 
             </div> <!-- page_conent_inner -->
         </div> <!-- page_content -->
@@ -574,24 +574,7 @@
             </div>
         </div> 
 
-        <div class="modal fade" id="CreateAllProblemModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <button type="button" class="close" data-dismiss="modal" aria-hidden="true"></button>
-                        <h4 class="modal-title">Report Problem</h4>
-                    </div>
-                    <div class="modal-body">
-                        <span class="ProblemText"></span>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-success" data-dismiss="modal">OK</button>
-                    </div>
-                </div><!-- /.modal-content -->
-            </div> <!-- /.modal-dialog -->
-        </div>
-        <!-- END MODAL FORM-->
-
+        
         <!-- google web fonts -->
         <script>
             WebFontConfig = {
