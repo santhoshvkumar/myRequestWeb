@@ -628,6 +628,7 @@
         <!--  forms validation functions -->
         <script src="assets/js/pages/forms_validation.min.js"></script>
         <script src="assets/js/appUrl.js"></script>
+        <script src="assets/js/const.js"></script>
         <script src="assets/js/validationCheck.js" type="text/javascript"></script>
         <script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-formhelpers.js"></script>
@@ -662,7 +663,7 @@
         </script>
         <script>
             var getProblemID = 0;
-
+            var requestID = 0;
             getProblemID = "<?php echo $problemID;?>";
         </script>
 

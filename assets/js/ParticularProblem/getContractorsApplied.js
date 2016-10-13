@@ -50,7 +50,7 @@ function getContractorsApplied(getProblemID) {
                               $(".statusColor").html('<button type="button" class="md-btn md-btn-success" id="btnApproved">Approved</button>');
                               $("#btnApproved").show();
                               $("#btnApprove").hide();
-                              var dataWorkLogForm = '{"Status":"Approved","Content":"Admin has assigned you to Request # ' + getProblemID + ' ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
+                              var dataWorkLogForm = '{"Status":"Approved","Content":"Admin has assigned you to Request # ' + requestID + ' ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
                               console.log(dataWorkLogForm);
                               var sendWorkLogURL = domainAddress + 'CreateProblemWorkLog';
                               console.log(sendWorkLogURL);
@@ -82,7 +82,7 @@ function getContractorsApplied(getProblemID) {
                               $.get(domainAddress + "/push/AdminToContractor.php", {
                                   getContractorID: contractorID,
                                   AdminID: adminUserID,
-                                  Message: "Approved by Admin for Request # ",
+                                  Message: pushMessageTenantAdminApproved.format(requestID),
                                   CaseID: getProblemID
                               }, function(e) {
                                   console.log(e);
@@ -90,7 +90,7 @@ function getContractorsApplied(getProblemID) {
                               $.get(domainAddress + "/push/AdminToTenant.php", {
                                   getUserTenantID: userRegisterID,
                                   AdminID: adminUserID,
-                                  Message: "Contractor "+getContractorName+" has been assigned for Request # ",
+                                  Message: pushMessageContractorAdminApproved.format(getContractorName,requestID),
                                   CaseID: getProblemID
                               }, function(e) {
                                   console.log(e);
