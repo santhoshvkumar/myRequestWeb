@@ -6,7 +6,8 @@ function getDbReportProblem(getProblemID) {
           $(".noteHide").html('');
           $(".NotesContent").html('');
           for (Problem in resultProblem.ProblemRecord) {
-
+              $("#getRequestID").text("Request # "+resultProblem.ProblemRecord[Problem].RequestID);
+              requestID = resultProblem.ProblemRecord[Problem].RequestID;
               problemID = resultProblem.ProblemRecord[Problem].ProblemID;
               var Notes = resultProblem.ProblemRecord[Problem].Notes;
               userRegisterID = resultProblem.ProblemRecord[Problem].UserRegisterID;
@@ -526,7 +527,7 @@ function getDbReportProblem(getProblemID) {
           });
           /*********** To add new notes for particular Problem **********/
           $(".btnAddNotes").on('click', function() {
-              //console.log(getNoteProblemID);
+              $("#getLoadingModalContent").addClass('md-show');
               var notesVal = $("#noteNewText").val();
               userID = localStorage.getItem("MyRequest_AdminID");
               var adminUserName = localStorage.getItem("MyRequest_UserName");
@@ -551,8 +552,8 @@ function getDbReportProblem(getProblemID) {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
-                                  ToContractor:"Message added by admin for Request # "+getProblemID+" : "+notesVal,
-                                  ToTenant:"Message added by admin for Request # "+getProblemID+" : "+notesVal,
+                                  ToContractor:pushMessageAdminNotes.format(requestID,notesVal),
+                                  ToTenant:pushMessageAdminNotes.format(requestID,notesVal),
                                   ForBoth:1,
                                   CaseID:getProblemID
                               }, function(e) {
@@ -584,6 +585,7 @@ function getDbReportProblem(getProblemID) {
                               // });
 
                               $("#noteNewText").val('');
+                              $("#getLoadingModalContent").removeClass('md-show');
                               // $(".addNewNotesText").show();
                               // $(".noteHide").hide();
                               // $(".addNewNotes").hide();

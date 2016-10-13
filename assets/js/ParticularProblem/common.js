@@ -54,7 +54,7 @@ $(".btnStartWork").click(function() {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
-                                  Message:"Request # "+getProblemID+", Work has been started at "+getStartTime,
+                                  Message:pushMessageWorkStart.format(requestID,getStartTime),
                                   ForBoth:1,
                                   CaseID:getProblemID
                               }, function(e) {
@@ -143,7 +143,7 @@ $(".btnEndWork").click(function() {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
-                                  Message:"Request # "+getProblemID+", Work successfully completed at "+getEndTime,
+                                  Message:pushMessageWorkEnd.format(requestID,getEndTime),
                                   ForBoth:1,
                                   CaseID:getProblemID
                               }, function(e) {

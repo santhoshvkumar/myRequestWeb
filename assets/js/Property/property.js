@@ -456,6 +456,7 @@ var getPropLat, getPropLong;
          url: sendURL,
          data: dataForm,
          success: function(dataCheck) {
+            localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeSet );
              var modal = UIkit.modal("#modalAgreeSkip");
              modal.hide();
              var modalUtilityList = UIkit.modal("#modalUtilityList");
