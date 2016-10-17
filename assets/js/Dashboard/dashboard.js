@@ -244,6 +244,12 @@
                         if(result.records[getDashBoardValues].TotalAmount==null){
                             result.records[getDashBoardValues].TotalAmount=0;
                         }
+                        if(result.records[getDashBoardValues].NoCompleted==null){
+                            result.records[getDashBoardValues].NoCompleted=0;
+                        }
+                        if(result.records[getDashBoardValues].NoOpen==null){
+                            result.records[getDashBoardValues].NoOpen=0;
+                        }
                         $("#dashCompleted").text(result.records[getDashBoardValues].NoCompleted);
                         $("#dashOpen1").text(result.records[getDashBoardValues].NoOpen);
                         $("#dashAmount").text(result.records[getDashBoardValues].TotalAmount);
