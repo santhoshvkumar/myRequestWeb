@@ -479,7 +479,7 @@ function getPropertyInfo(editPropertyID){
                       $(".getPropertyUtility").show();
                       if (result.record_count == 0) {
                           $(".propertyUtility").html('');
-                          $(".propertyUtility").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> </tr>");
+                          $(".propertyUtility").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> <td></td> </tr>");
                       } else {
                           $(".propertyUtility").html('');
                           var isElectricity = "";
