@@ -68,6 +68,7 @@ function loadAdvertisement() {
             window.location.href = "index.html";
         } else {
             $(".getUserName").text(adminUserName);
+            $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
         }
 
         if (adminType == "SuperAdmin") {

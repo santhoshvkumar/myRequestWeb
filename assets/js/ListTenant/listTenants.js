@@ -151,6 +151,7 @@ $(document).ready(function() {
         window.location.href = "index.html";
     } else {
         $(".getUserName").text(adminUserName);
+        $("#FileURLUploadImage1").attr("action",domainAddress+"uploadUserImage.php");
     }
 
     if (adminType == "SuperAdmin") {

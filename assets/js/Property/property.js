@@ -137,6 +137,11 @@ var getPropLat, getPropLong;
          window.location.href = "index.html";
      } else {
          $(".getUserName").text(adminUserName);
+         $("#FileURLUploadImage4").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage3").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage5").attr("action",domainAddress+"ajaximage.php");
      }
 
      if (adminType == "SuperAdmin") {

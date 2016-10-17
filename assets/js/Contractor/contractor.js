@@ -246,6 +246,9 @@
           window.location.href = "index.html";
       } else {
           $(".getUserName").text(adminUserName);
+          $("#FileURLUploadImage1").attr("action",domainAddress+"uploadUserImage.php");
+          $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
+          $("#FileURLUploadImage3").attr("action",domainAddress+"ajaximage.php");
       }
 
       if (adminType == "SuperAdmin") {
