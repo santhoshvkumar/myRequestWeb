@@ -298,7 +298,7 @@
                   };
 
 
-                  UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
+                  UIkit.modal.alert(messagePaymentDue.format(modulus), {
                       center: true
                   }).on('hide.uk.modal', function() {
                       // custome js code

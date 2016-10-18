@@ -3,7 +3,7 @@
 var getDateDiff = function( adminUserID ) {
     var isFilled = localStorage.getItem( "MyRequest_profileFill" );
     if ( isFilled === "true" ) {
-        window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
+        window.location.href = domainAgentAddress+'MyProfile.html';
     }
     $.get( domainAddress + "GetDateDiff/" + adminUserID, {}, function( result ) {
         var getDiffDate = parseInt( result.records[ 0 ].DiffDate ), diffDate = 30 - getDiffDate, modulus = Math.abs( diffDate );
@@ -23,7 +23,7 @@ var getDateDiff = function( adminUserID ) {
                 }, options ) ).show();
                 return modal;
             };
-            UIkit.modal.alert( "You have Due by " + modulus + " days Please Pay to proceed Further", {
+            UIkit.modal.alert(messagePaymentDue.format(modulus), {
                 center: true
             } ).on( 'hide.uk.modal', function() {
                 // custome js code

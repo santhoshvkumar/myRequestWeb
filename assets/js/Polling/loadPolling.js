@@ -132,7 +132,7 @@ function loadPolling(){
         localStorage.setItem("MyRequest_RepairStatus", "");
         var isFilled = localStorage.getItem("MyRequest_profileFill");
         if (isFilled == "true") {
-            window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
+            window.location.href = domainAgentAddress+'MyProfile.html';
         }
 
          $(".md-overlay").css("background","rgba(0,0,0,0.5)");
@@ -165,7 +165,7 @@ function loadPolling(){
                 };
 
 
-                UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
+                UIkit.modal.alert(messagePaymentDue.format(modulus), {
                     center: true
                 }).on('hide.uk.modal', function() {
                     // custome js code
