@@ -399,7 +399,9 @@ var getPropLat, getPropLong;
          $("#inputTaxAuthority").html("<option value='0'>Select Council</option>");
          var getResult = JSON.parse(result);
          for (inputTaxAuthority in getResult.records) {
-             $("#inputTaxAuthority").append("<option value='" + getResult.records[inputTaxAuthority].CouncilName + "'>" + getResult.records[inputTaxAuthority].CouncilName + "</option>");
+            if(getResult.records[inputTaxAuthority].CouncilName!="Name"){
+                $("#inputTaxAuthority").append("<option value='" + getResult.records[inputTaxAuthority].CouncilName + "'>" + getResult.records[inputTaxAuthority].CouncilName + "</option>");
+            }
          }
          $("#inputTaxAuthority").select2();
      });
