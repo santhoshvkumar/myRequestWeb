@@ -1249,7 +1249,7 @@
       var lastName = $("#inputLastName").val();
       var email = $("#inputContractorEmailID").val();
 
-      var addressLine1 = $("#inputAddressLine1").val();
+      var addressLine1 = $("#inputAddressLine1").val().replace(/["']/g, "`");
       var addressLin2 = $("#inputAddressLine2").val();
       var locality = $("#inputLocality").val();
       var state = $("#select2-inputState-container").html();

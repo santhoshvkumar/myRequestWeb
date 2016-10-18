@@ -307,7 +307,7 @@ function getAddTenant(count) {
 
     $(".btnAddUserTenant").on('click', function() {
         var hiddenPropertyID = $("#hiddenPropertyID").val();
-        var inputPropertyAddress = $("#inputAddress").val();
+        var inputPropertyAddress = $("#inputAddress").val().replace(/["']/g, "`");
         var getCountValue = this.id.replace("btnAddUserTenant-", "");
         var inputName = $("#inputName-" + getCountValue).val();
         var inputTitle = $("#inputTitle-" + getCountValue).val();

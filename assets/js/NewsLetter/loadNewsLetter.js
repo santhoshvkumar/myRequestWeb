@@ -327,7 +327,7 @@ function loadNewsLetter() {
         var newsLetterID = $("#hiddenNewsLetterID").val();
         $("#getLoadingModalContent").addClass('md-show');
         var inputDropValue = $("#inputDropValue").val();
-        var newsLetterName = $("#inputNewsLetterName").val();
+        var newsLetterName = $("#inputNewsLetterName").val().replace(/["']/g, "`");
         adminUserID = localStorage.getItem("MyRequest_AdminID");
         var newsLetterFor = "";
         var newsLetterDescription = encodeURI(tinyMCE.activeEditor.getContent()).replace(/'/g, "`");

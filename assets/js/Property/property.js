@@ -409,7 +409,7 @@ var getPropLat, getPropLong;
 
  /*
  $("#inpuZip").on('blur', function(e) {
-     var getAddress = $("#inputAddress").val();
+     var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
      var getCounty = $("#select2-inputState-container").html();
      var state = $("#select2-inputCity-container").html();
      var postalCode = $("#inpuZip").val();
