@@ -82,7 +82,11 @@ var dataAddPropertyForm = "";
 var dataAddPropertyFormArr = new Array();
 var agencyCode = localStorage.getItem('MyRequest_LettingAgencyCode');
 var getValue = "";
-
+var hiddenIsElectricity = "";
+var hiddenIsGas = "";
+var hiddenIsWater = "";
+var hiddenIsCouncil = "";
+var hiddenAvailTenantInsurance = "";
 
 $(window).load(function() {
     $("#getLoadingModalContent").removeClass('md-show');
@@ -289,11 +293,11 @@ $(".btnSubmitTenantProperty").click(function() {
     var mobileNumber = $("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
-    var hiddenIsElectricity = $("#hiddenIsElectricity").val();
-    var hiddenIsGas = $("#hiddenIsGas").val();
-    var hiddenIsWater = $("#hiddenIsWater").val();
-    var hiddenIsCouncil = $("#hiddenIsCouncil").val();
-    var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
+    hiddenIsElectricity = $("#hiddenIsElectricity").val();
+    hiddenIsGas = $("#hiddenIsGas").val();
+    hiddenIsWater = $("#hiddenIsWater").val();
+    hiddenIsCouncil = $("#hiddenIsCouncil").val();
+    hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
 
     if (title == "Select Title") {
         $(".help-block").css("border-color", "red");
@@ -375,12 +379,12 @@ $(".btnSubmitTenantInsurance").click(function() {
     var mobileNumber = $("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
-    var hiddenIsElectricity = $("#hiddenIsElectricity").val();
-    var hiddenIsGas = $("#hiddenIsGas").val();
-    var hiddenIsWater = $("#hiddenIsWater").val();
-    var hiddenIsCouncil = $("#hiddenIsCouncil").val();
+    hiddenIsElectricity = $("#hiddenIsElectricity").val();
+    hiddenIsGas = $("#hiddenIsGas").val();
+    hiddenIsWater = $("#hiddenIsWater").val();
+    hiddenIsCouncil = $("#hiddenIsCouncil").val();
     var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
-    var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance").val();
+    hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance").val();
     var hiddenPropertyAddress = $('#hiddenPropertyAddress').val();
     var currentdate = new Date();
     var getDateValue = currentdate.getDate() + "." + (currentdate.getMonth() + 1) + "." + currentdate.getFullYear();
@@ -1172,7 +1176,8 @@ $(".btnSubmitTenant").click(function() {
         return false;
     } 
         else {
-            dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "'}";
+            var propertyAddress = $("#caseProperty :selected").attr("ref");
+            dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+propertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
             dataAddPropertyFormArr.push(dataAddPropertyForm);
             gotoDB();
         }
@@ -1182,7 +1187,7 @@ $(".btnSubmitTenant").click(function() {
 
 
     function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","AddProperty":"' + dataAddPropertyFormArr + '","IsLeadTenant":"' + hiddenIsLeadTenant + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
