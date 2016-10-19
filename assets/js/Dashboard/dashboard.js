@@ -648,6 +648,7 @@
 
             getTenantUtilityStatus(adminUserID);
             
+            getPropertyExpiryInfo(adminUserID);
 
         }); // ready
 
@@ -1533,3 +1534,21 @@
         });
     });
   });
+
+
+  function getPropertyExpiryInfo(adminUserID){
+    $.get(domainAddress+"GetPropertyExpiryInfo/"+adminUserID,{},function(result){
+        //console.log(result);
+        $(".getPropertyExpiryInfo").html('');
+        if(result.record_count==0){
+            $(".getPropertyExpiryInfo").append("<tr id='rowID-0'> <td>No records found </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr> ");
+        }
+        else{
+            for(propertyExpInfo in result.records){
+                $(".getPropertyExpiryInfo").append("<tr id='propertyExp-"+result.records[propertyExpInfo].PropertyRegister+"'> <td id='propAddress-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].PropAddress+"</td> <td id='epcValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].EpcValidTill+" </td> <td id='patValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].ElectricCertValidTill+"</td> <td id='gasCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'>"+result.records[propertyExpInfo].GasCertValidTill+" </td> <td id='legCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'>"+result.records[propertyExpInfo].LegCertValidTill+" </td> </tr>");
+ 
+            }
+
+        }
+    });
+  }
