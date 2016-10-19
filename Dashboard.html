@@ -35,6 +35,10 @@
         .current_dashboard > a > span.menu_icon > i.fa {
             color: #4285F4;
         }
+
+        .uk-datepicker{
+            width: 20%;
+        }
     </style>
 </head>
 
@@ -206,7 +210,7 @@
                                                 <td style="font-family:Avenir-Heavy;"> # of Tenant :</td> <span class="noOfTenants">0</span>
                                                 <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <button class="md-btn md-btn-primary btnSubmitTenantMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
                                             </div>
                                         </div>
                                     </div>
@@ -229,7 +233,7 @@
                                                 <td style="font-family:Avenir-Heavy;"> # of Contractor :</td> <span class="noOfContractors">0</span>
                                                 <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <button class="md-btn md-btn-primary btnSubmitContractorMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
                                             </div>
                                         </div>
                                     </div>
@@ -240,7 +244,7 @@
 
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
-                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfAppContractors">0</span></span>
+                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfCommission">1</span></span>
                                             </div>
                                             <div class="md-card-overlay-content">
                                                 <div class="uk-clearfix md-card-overlay-header">
@@ -248,10 +252,10 @@
                                                     <h3> Commission Earned</h3>
                                                 </div>
 
-                                                <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span>
-                                                <br/> <br/> <br/> Commission Earned :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <!-- <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span> -->
+                                                <!-- <br/> <br/> <br/>  -->Commission Earned :<b> <span class="countUpMe">1</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <!-- <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -852,6 +856,52 @@
                             </div>
                             <div class="uk-modal-footer uk-text-right">
                                 <button type="button" class="md-btn md-btn-flat uk-modal-close reset">OK</button>
+                            </div>
+                       </p> 
+                    </div>
+                </div>
+
+
+
+
+
+                <div class="uk-modal" id="getTenancyRenew">
+                    <div class="uk-modal-dialog">
+                        <div class="uk-modal-header">
+                            <h3 class="uk-modal-title" style="text-align: center;">Tenancy Renewal</h3>
+                        </div>
+                        <p>
+                            <div class="uk-grid" data-uk-grid-margin>
+                                 
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="inputTenantName">Name<span class="req">*</span></label>
+                                        <input type="text" id="inputTenantName" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputTenantAddress">Property Address<span class="req">*</span></label>
+                                        <input type="text" id="inputTenantAddress" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputNewStartDate">Start Date<span class="req">*</span></label>
+                                        <input type="text" id="inputNewStartDate" required class="md-input" readonly/>
+                                    </div>
+
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputNewEndDate">End Date<span class="req">*</span></label>
+                                        <input type="text" id="inputNewEndDate" required class="md-input" data-uk-datepicker="{format:"YYYY.MM.DD"}"/>
+                                    </div>
+                                    <br/>
+                                </div>
+  
+                            </div>
+                            <br/>
+                            
+                            <div class="uk-modal-footer uk-text-right">
+                                <button type="button" class="md-btn md-btn-flat uk-modal-close" id="btnTenancyRenewal">OK</button>
                             </div>
                        </p> 
                     </div>

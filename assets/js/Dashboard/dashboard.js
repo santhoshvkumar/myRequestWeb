@@ -1080,7 +1080,7 @@
                 else{
                     for(tenant in resultTenantUtility.records){
                         $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).html("");
-                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].PropertyRegister + "'><td id='propName-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenLettingAgencyCode-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].LettingAgencyCode+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
+                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenLettingAgencyCode-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].LettingAgencyCode+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
 
                         for(getUtility in resultTenantUtility.records[tenant].Utility){
                             $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).append("<input type='hidden' id='hiddenIsElectricity-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].ElectricityStatus+"' />  <input type='hidden' id='hiddenIsGas-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].GasStatus+"' /> <input type='hidden' id='hiddenIsWater-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].WaterStatus+"' /> <input type='hidden' id='hiddenIsCouncil-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].CouncilStatus+"' /> <input type='hidden' id='hiddenAvailTenantInsurance-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].IsTenantInsurance+"' />");
@@ -1089,22 +1089,49 @@
 
                     $(".reneval").on('click',function(){
                         var tenantID = this.id.replace('reneval-','');
-                        UIkit.modal.confirm('Are you sure to renew tenant ?', function() {
-                            console.log("yes renew tenant");
-                            var dataForm = '{"TenantID":"' + tenantID + '"}';
-                            var sendURL = domainAddress + 'updateTenantDue';
+                        var tenantName = $("#propName-"+tenantID).text();
+                        var tenantPropertyAddress = $("#propAddress-"+tenantID).text();
+                        var tenantNewStartDate = $("#hiddenTenantEndDate-"+tenantID).val();
+                        var finalNewStartDate = tenantNewStartDate;
+                        var tenantNewStartDate = moment(tenantNewStartDate).format('DD.MM.YYYY');
 
-                            $.ajax({
-                                  type: "POST",
-                                  url: sendURL,
-                                  data: dataForm,
-                                  success: function(dataCheck) {
-                                      console.log(dataCheck);
-                                      getTenantUtilityStatus(adminUserID);
-                                      UIkit.modal.alert('Renewal date updated Successfully');
-                                  }
+                        UIkit.modal.confirm('Do you want to renew the tenancy ?', function() {
+                            console.log("yes renew tenant");
+                            var modal = UIkit.modal("#getTenancyRenew");
+                            modal.show();
+                            
+                            $(".md-input-wrapper").addClass("md-input-filled");
+                            $("#inputTenantName").val(tenantName);
+                            $("#inputTenantAddress").val(tenantPropertyAddress);
+                            $("#inputNewStartDate").val(tenantNewStartDate);
+                            
+                            $("#btnTenancyRenewal").click(function(){
+                                var tenantEndDate = $("#inputNewEndDate").val();
+                                var getDate = tenantEndDate.split('.');
+                                var finalEndStartDate = getDate[2]+"-"+getDate[1]+"-"+getDate[0];
+                                var dataForm = '{"TenantID":"' + tenantID + '","AdminID":"'+adminUserID+'","StartDate":"'+finalNewStartDate+'","EndDate":"'+finalEndStartDate+'"}';
+                                console.log(dataForm);
+                                var sendURL = domainAddress + 'updateTenantDue';
+
+                                $.ajax({
+                                      type: "POST",
+                                      url: sendURL,
+                                      data: dataForm,
+                                      success: function(dataCheck) {
+                                          console.log(dataCheck);
+                                          if(dataCheck.status=="success"){
+                                            getTenantUtilityStatus(adminUserID);
+                                            UIkit.modal.alert('Renewal date updated Successfully');
+                                          }
+                                          else{
+                                            UIkit.modal.alert(dataCheck.message_text);
+                                          }
+                                          
+                                      }
+                                });
                             });
-                        });
+
+                        }); // confirm prompt
                     });
 
                     $(".moveOut").on('click',function(){
@@ -1469,3 +1496,40 @@
             }
 
         }); // #addCase
+
+
+  $(".btnSubmitTenantMail").click(function(){
+    console.log("click tmail");
+    UIkit.modal.confirm('Are you sure to send mail to Tenants who are yet to install the app?', function() {
+        var dataForm = '{"AdminID":"'+adminUserID+'"}';
+        console.log(dataForm);
+        var sendURL = domainAddress + 'SendTenantReminderMail';
+        console.log(sendURL);
+        $.ajax({
+            type: "POST",
+            url: sendURL,
+            data: dataForm,
+            success: function(dataCheck) {
+                console.log(dataCheck);
+            }
+        });
+    });
+  });
+
+  $(".btnSubmitContractorMail").click(function(){
+    console.log("click cmail");
+    UIkit.modal.confirm('Are you sure to send mail to Contractors who are yet to install the app?', function() {
+        var dataForm = '{"AdminID":"'+adminUserID+'"}';
+        console.log(dataForm);
+        var sendURL = domainAddress + 'SendContractorReminderMail';
+        console.log(sendURL);
+        $.ajax({
+            type: "POST",
+            url: sendURL,
+            data: dataForm,
+            success: function(dataCheck) {
+                console.log(dataCheck);
+            }
+        });
+    });
+  });
