@@ -144,6 +144,7 @@ function getAddTenant(count) {
         //console.log("inputEndDate blur called");
         var getCountValue = this.id.replace("inputEndDate-", "");
         var inputStartDate = $("#inputStartDate-" + getCountValue).val();
+        var inputEndDate = $("#inputEndDate-" + getCountValue).val();
         var getBtnCount = $(".btnSubmitTenantInsurance").attr("value");
         //console.log("Click Process Count : " + getBtnCount);
         var hiddenIsElectricity = $("#hiddenIsElectricity-" + getBtnCount).val();
@@ -158,63 +159,70 @@ function getAddTenant(count) {
             $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
             return false;
         } else {
-            $("#getErrorMsg-" + getCountValue).hide();
-            $("#getErrorMsg-" + getCountValue).text("");
-            $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
-            $(".getTenantsInfo").css("color","#444");
-            $(".btnSubmitProperty").attr("disabled",false);
-            $(".errorInfo").hide();
-            $(".errorInfo").text('');
-            var userRegID = $("#hiddenUserRegID-" + getCountValue).val();
-            var newPropertyTenant = $("#hiddenNewPropertyTenant-" + getCountValue).val();
-            $(".btnSubmitTenantInsurance").attr("value", getCountValue);
-            if (userRegID == 0 || newPropertyTenant == "false") {
+            var getDate = inputStartDate.split(".");
+            var setStartDate = getDate[2]+","+getDate[1]+","+getDate[0];
+            var getEDate = inputEndDate.split(".");
+            var setEndDate = getEDate[2]+","+getEDate[1]+","+getEDate[0];
+            
+            var firstDate = new Date(setEndDate);
+            var secondDate = new Date(setStartDate);
 
-                var modal = UIkit.modal("#modalTenantInsurance");
-                modal.show();
+            var checkEndDateValue = firstDate < secondDate;
 
-                if (getCountValue == 1 || hiddenIsGas == "true") {
-                    $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                    $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                    $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
-
-                }
-
-                if (getCountValue == 1 || hiddenIsWater == "true") {
-                    $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                    $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                    $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
-
-                }
-
-
-
-                if (getCountValue == 1 || hiddenIsElectricity == "true") {
-                    $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                    $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                    $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
-
-                }
-
-
-
-                if (getCountValue == 1 || hiddenIsCouncil == "true") {
-                    $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                    $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                    $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-
-                }
-
-
-            } else {
-                var modal = UIkit.modal("#modalTenantInsurance");
-                modal.show();
-
-
+            if(checkEndDateValue){
+                UIkit.modal.alert("Tenancy End should not be less then Tenancy Start");
             }
+            else{
+               $("#getErrorMsg-" + getCountValue).hide();
+                $("#getErrorMsg-" + getCountValue).text("");
+                $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
+                $(".getTenantsInfo").css("color","#444");
+                $(".btnSubmitProperty").attr("disabled",false);
+                $(".errorInfo").hide();
+                $(".errorInfo").text('');
+                var userRegID = $("#hiddenUserRegID-" + getCountValue).val();
+                var newPropertyTenant = $("#hiddenNewPropertyTenant-" + getCountValue).val();
+                $(".btnSubmitTenantInsurance").attr("value", getCountValue);
+                if (userRegID == 0 || newPropertyTenant == "false") {
 
+                    var modal = UIkit.modal("#modalTenantInsurance");
+                    modal.show();
+
+                    if (getCountValue == 1 || hiddenIsGas == "true") {
+                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
+                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
+                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+
+                    }
+
+                    if (getCountValue == 1 || hiddenIsWater == "true") {
+                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
+                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
+                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+
+                    }
+
+
+
+                    if (getCountValue == 1 || hiddenIsElectricity == "true") {
+                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
+                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
+                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+
+                    }
+ 
+                    if (getCountValue == 1 || hiddenIsCouncil == "true") {
+                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
+                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
+                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
+
+                    }
+                } else {
+                    var modal = UIkit.modal("#modalTenantInsurance");
+                    modal.show();
+                } 
+            }
         }
-
     });
 
 
