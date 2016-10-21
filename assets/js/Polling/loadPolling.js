@@ -317,6 +317,9 @@ function loadPolling(){
         $("#inputPollingTitle").val('');
         $("#inputPollingOption1").val('');
         $("#inputPollingOption2").val('');
+        $("#inputPollingTitle").attr("disabled", false);
+        $("#inputPollingOption1").attr("disabled", false);
+        $("#inputPollingOption2").attr("disabled", false);
         $("#inputDropValue").val("For Both Contractor & Tenant");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitPolling").show();
@@ -360,7 +363,6 @@ $(".btnSearch").click(function () {
         var isPollingSet = 0;
         var pollingID = $("#hiddenPollingID").val();
         var pollingTitle = $("#inputPollingTitle").val().replace(/["']/g, "`");
-        $("#getLoadingModalContent").addClass('md-show');
         var inputDropValue = $("#inputDropValue").val();
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
         userID = localStorage.getItem("ReportUserID");
