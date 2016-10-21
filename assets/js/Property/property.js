@@ -112,7 +112,7 @@ var getPropLat, getPropLong;
  var getValue = "";
  var totalRecordCount = 0;
  var getTenantObjArr = new Array();
-
+ var mapCountCheck = 0;
 
  $(document).ready(function() {
 
@@ -409,36 +409,40 @@ var getPropLat, getPropLong;
 
 
 
- /*
+ 
  $("#inpuZip").on('blur', function(e) {
-     var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
-     var getCounty = $("#select2-inputState-container").html();
-     var state = $("#select2-inputCity-container").html();
-     var postalCode = $("#inpuZip").val();
-     var wholeAddress = getAddress + " " + getCounty + "," + state + ", " + postalCode + ", United Kingdom";
-     var Latitude = "";
-     var Longitude = "";
-     console.log(wholeAddress);
-     var modalUtilityList = UIkit.modal("#googleMap");
-     $(".propertyLocationGoogleMap").html("");
-     $(".propertyLocationGoogleMap").googleMap({
-         zoom: 10, // Initial zoom level (optional)
-         type: "ROADMAP" // Map type (optional)
-     });
-     $(".propertyLocationGoogleMap").addMarker({
-         address: wholeAddress, // Postal address
-         zoom: 10,
-         draggable: true,
-         success: function(e) {
-             getLatitude = e.lat;
-             getLongitude = e.lon;
+         var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
+         var getCounty = $("#select2-inputState-container").html();
+         var getCity = $("#select2-inputCity-container").html();
+         var postalCode = $("#inpuZip").val();
+         var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + ", United Kingdom";
+         var Latitude = "";
+         var Longitude = "";
+         
+         if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
+            console.log("No Address Details Fetched");
          }
-     });
-     modalUtilityList.show();
-
-
+         else{
+           console.log(wholeAddress);
+           var modalUtilityList = UIkit.modal("#googleMap");
+             $(".propertyLocationGoogleMap").html("");
+             $(".propertyLocationGoogleMap").googleMap({
+                 zoom: 10, // Initial zoom level (optional)
+                 type: "ROADMAP" // Map type (optional)
+             });
+             $(".propertyLocationGoogleMap").addMarker({
+                 address: wholeAddress, // Postal address
+                 zoom: 10,
+                 draggable: true,
+                 success: function(e) {
+                     getLatitude = e.lat;
+                     getLongitude = e.lon;
+                 }
+             });
+             modalUtilityList.show(); 
+         }
  }); // inputAddress
- */
+ 
 
 
  $(".btnSubmitProperty").click(function() {
