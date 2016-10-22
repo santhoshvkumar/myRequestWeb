@@ -191,7 +191,6 @@ function utilityLogSubmit() {
 
 
     $(".btnSubmitGas").click(function() {
-        $("#getLoadingModalContent").addClass('md-show');
         var hiddenUtilityID = $("#hiddenUtilityID").val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
         var hiddenUserRegID = localStorage.getItem("UtilityUserID");
@@ -316,7 +315,7 @@ function utilityLogSubmit() {
         if (successCondition) {
             var dataForm = '{"UtilityID":"' + hiddenUtilityID + '","PropertyID":"' + hiddenPropertyID + '","UserRegID":"' + hiddenUserRegID + '","Notes":"' + inputNotes + '","ActionTaken":"' + actionTaken + '","UtilityType":"' + getSelectedType + '"}';
             console.log(dataForm);
-
+            $("#getLoadingModalContent").addClass('md-show');
             var sendURL = domainAddress + 'CreateUtilityLog';
             console.log(sendURL);
 
