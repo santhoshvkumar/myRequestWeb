@@ -1552,8 +1552,10 @@
             for(propertyExpInfo in result.records){
                 if(result.records[propertyExpInfo].EpcValidTill=="-" && result.records[propertyExpInfo].ElectricCertValidTill=="-" && result.records[propertyExpInfo].GasCertValidTill=="-" && result.records[propertyExpInfo].LegCertValidTill=="-"){
                     //No expiry found for PropertyAddress
+                    $(".getPropertyExpiryInfo").html("<tr id='rowID-0'> <td>No records found </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr> ");
                 }
                 else{
+                    $("#rowID-0").hide();
                     if(result.records[propertyExpInfo].EpcDiffDate <= 0){
                         getEpcColor = "red";
                     }
