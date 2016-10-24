@@ -365,10 +365,15 @@ function getUtilityLogs(editUtilityID) {
         if (result.record_count == 0) {
             $(".timeline").append('<div class="timeline_item" id="notesID-0"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date">  <span>  </span>  </div>  <div class="timeline_content">No Logs found<div class="timeline_content_addon">  <blockquote> No Logs found </blockquote>  </div>  </div>    </div>');
         } else {
-
+            var getUtilityType = "";
             for (var utilityLog in result.records) {
-
-                $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[utilityLog].RequirementStatus + ' <div class="timeline_content_addon">  <blockquote>  ' + result.records[utilityLog].Content + ' </blockquote>  </div>  </div>    </div>');
+                if(result.records[utilityLog].UtilityType==null || result.records[utilityLog].UtilityType=="null"){
+                    getUtilityType = "";
+                }
+                else{
+                    getUtilityType = ' For '+ result.records[utilityLog].UtilityType;
+                }
+                $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[utilityLog].RequirementStatus + getUtilityType+' <div class="timeline_content_addon">  <blockquote>  ' + result.records[utilityLog].Content + ' </blockquote>  </div>  </div>    </div>');
             }
         }
 
