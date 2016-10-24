@@ -2303,7 +2303,21 @@ form#FileURLUploadImage1 {
     display: none;
 }
 
+.yetToExpire{
+   background: rgba(17, 97, 17, 0.72);
+   height: 20px;
+   width: 20px;
+   border: 1px solid black;
+   border-radius: 5px;
+}
 
+.expired{
+   background: red;
+   height: 20px;
+   width: 20px;
+   border: 1px solid black;
+   border-radius: 5px;
+}
 
 
 @media screen and (max-width: 32em) {

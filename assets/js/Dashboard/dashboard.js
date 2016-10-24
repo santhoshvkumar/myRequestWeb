@@ -1539,16 +1539,52 @@
   function getPropertyExpiryInfo(adminUserID){
     $.get(domainAddress+"GetPropertyExpiryInfo/"+adminUserID,{},function(result){
         //console.log(result);
+        var getEpcColor="";
+        var getPatColor="";
+        var getGasCertColor="";
+        var getLegionColor="";
+
         $(".getPropertyExpiryInfo").html('');
         if(result.record_count==0){
             $(".getPropertyExpiryInfo").append("<tr id='rowID-0'> <td>No records found </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr> ");
         }
         else{
             for(propertyExpInfo in result.records){
-                $(".getPropertyExpiryInfo").append("<tr id='propertyExp-"+result.records[propertyExpInfo].PropertyRegister+"'> <td id='propAddress-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].PropAddress+"</td> <td id='epcValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].EpcValidTill+" </td> <td id='patValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].ElectricCertValidTill+"</td> <td id='gasCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'>"+result.records[propertyExpInfo].GasCertValidTill+" </td> <td id='legCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'>"+result.records[propertyExpInfo].LegCertValidTill+" </td> </tr>");
- 
-            }
+                if(result.records[propertyExpInfo].EpcValidTill=="-" && result.records[propertyExpInfo].ElectricCertValidTill=="-" && result.records[propertyExpInfo].GasCertValidTill=="-" && result.records[propertyExpInfo].LegCertValidTill=="-"){
+                    //No expiry found for PropertyAddress
+                }
+                else{
+                    if(result.records[propertyExpInfo].EpcDiffDate <= 0){
+                        getEpcColor = "red";
+                    }
+                    else if (result.records[propertyExpInfo].EpcDiffDate > 0) {
+                        getEpcColor = "rgba(17, 97, 17, 0.72)";
+                    }
 
+                    if(result.records[propertyExpInfo].ElectricCertDiffDate <= 0){
+                        getPatColor = "red";
+                    }
+                    else if (result.records[propertyExpInfo].ElectricCertDiffDate > 0) {
+                        getPatColor = "rgba(17, 97, 17, 0.72)";
+                    }
+
+                    if(result.records[propertyExpInfo].GasCertDiffDate <= 0){
+                        getGasCertColor = "red";
+                    }
+                    else if (result.records[propertyExpInfo].GasCertDiffDate > 0) {
+                        getGasCertColor = "rgba(17, 97, 17, 0.72)";
+                    }
+
+                    if(result.records[propertyExpInfo].LegCertDiffDate <= 0){
+                        getLegionColor = "red";
+                    }
+                    else if (result.records[propertyExpInfo].LegCertDiffDate > 0) {
+                        getLegionColor = "rgba(17, 97, 17, 0.72)";
+                    }
+
+                    $(".getPropertyExpiryInfo").append("<tr id='propertyExp-"+result.records[propertyExpInfo].PropertyRegister+"'> <td id='propAddress-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].PropAddress+"</td> <td id='epcValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getEpcColor+";font-weight:bold;'> "+moment(result.records[propertyExpInfo].EpcValidTill).format('Do MMM YYYY')+" </td> <td id='patValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getPatColor+";font-weight:bold;'> "+moment(result.records[propertyExpInfo].ElectricCertValidTill).format('Do MMM YYYY')+"</td> <td id='gasCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getGasCertColor+";font-weight:bold;'>"+moment(result.records[propertyExpInfo].GasCertValidTill).format('Do MMM YYYY')+" </td> <td id='legCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'  style='color:"+getLegionColor+";font-weight:bold;'>"+moment(result.records[propertyExpInfo].LegCertValidTill).format('Do MMM YYYY')+" </td> </tr>");
+                }
+            }
         }
     });
   }
