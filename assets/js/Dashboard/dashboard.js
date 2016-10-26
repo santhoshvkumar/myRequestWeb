@@ -119,40 +119,7 @@
                 window.location.href = domainAgentAddress+'MyProfile.html';
             }
 
-            //Not to allow Page
-            if (adminType != "SuperAdmin") {
-                $.get(domainAddress + "GetDateDiff/" + adminUserID, {}, function(result) {
-/*                    if(resumessageNotesContentlt.records[0].DiffDate==null){
-                        result.records[0].DiffDate = 0;
-                    }*/
-                    var getDiffDate = parseInt(result.records[0].DiffDate);
-                        
-                    $(".dashTotalDaysLeft").text(30 - getDiffDate);
-                    var diffDate = 30 - getDiffDate;
-
-                    if (diffDate < -6) {
-                        $("#mainBody").css("opacity", "0.1");
-                        $("#mainBody").css("pointer-events", "none");
-                        $("#mainBody").css("outline", "none");
-                        var modulus = Math.abs(diffDate);
-                        UIkit.modal.alert = function(content, options) {
-                            var modal = UIkit.modal.dialog(([
-                                '<div class="uk-margin uk-modal-content">' + String(content) + ' <br > for immediate assitance Pls contact  <a href="mailto:enquiry@myrequest.co.uk"> Drop Us Mail </a></div>',
-                                '<div class="uk-modal-footer uk-text-right">  <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:6px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:#fcdb34" target="_blank">Pay Now</a></button></div>'
-                            ]).join(""), UIkit.$.extend({
-                                bgclose: false,
-                                keyboard: false
-                            }, options)).show();
-                            return modal;
-                        };
-                        UIkit.modal.alert(messagePaymentDue.format(modulus), {
-                            center: true
-                        }).on('hide.uk.modal', function() {
-                            // custome js code
-                        });
-                    }
-                }); // End's here
-            }
+             
             var getNumberOfDays = (parseInt(localStorage.getItem("MyRequest_myDiffDate")) / 30) * 100;
             $(".noOfDays").prop("data-percent", getNumberOfDays);
             $(".noOfDays").attr("data-percent", getNumberOfDays);
@@ -225,6 +192,7 @@
                     //var myLine = new Chart(document.getElementById("pieChartLoc").getContext("2d")).Pie(pieChartData);
                 }); // GetAllProblemWorkStatusCount
             } else {
+                getDateDiff(adminUserID);
                 $(".forAdmin").show();
                 $(".forSuperAdmin").hide();
                 $("#pieChartLoc").hide();

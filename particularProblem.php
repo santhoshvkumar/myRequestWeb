@@ -622,6 +622,7 @@
         <script src="bower_components/lightbox/dist/js/lightbox.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/screenfull.js"></script>
+        <script src="assets/js/checkDateDiff.js"></script>
         <script src="assets/js/ParticularProblem/particularProblem.js"></script>
         <script src="assets/js/ParticularProblem/getDbReportProblem.js"></script>
         <script src="assets/js/ParticularProblem/getProblemSpeciality.js"></script>

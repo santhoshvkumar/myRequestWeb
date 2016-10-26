@@ -114,6 +114,7 @@
                 
             }
             else{
+                getDateDiff(adminUserID);
                 var getLogoImagePath = logo.slice(0,4);
                 if(getLogoImagePath=="api/"){
                     getLogoImagePath = logo.slice(4);
