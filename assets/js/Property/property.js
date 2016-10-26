@@ -129,7 +129,7 @@ var getPropLat, getPropLong;
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
      //Not to allow Page
-     getDateDiff(adminUserID);
+     
 
 
      localStorage.setItem("MyRequest_RepairStatus", "");
@@ -147,6 +147,7 @@ var getPropLat, getPropLong;
      if (adminType == "SuperAdmin") {
 
      } else {
+        getDateDiff(adminUserID);
         var getLogoImagePath = logo.slice(0,4);
         if(getLogoImagePath=="api/"){
             getLogoImagePath = logo.slice(4);
