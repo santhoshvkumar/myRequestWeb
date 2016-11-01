@@ -943,7 +943,7 @@
                  $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 10px 32px");
                  $(".adminEmerno-prefix").show();
                  $(".emerElectno-prefix").show();
-                 if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "") {
+                 if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "" || result.records[getUserInfo].Logo=="Fail upload folder with read access.") {
                      $("#adminLogoImage").show();
                  } else {
 
