@@ -389,14 +389,20 @@
      } else {
          $(".forAdmin").show();
          $(".forSuperAdmin").hide();
-         var getLogoImagePath = logo.slice(0,4);
-        if(getLogoImagePath=="api/"){
-            getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-        }
-        else{
+         if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+         }
+         else{
             $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-        }
+            var getLogoImagePath = logo.slice(0,4);
+            if(getLogoImagePath=="api/"){
+                getLogoImagePath = logo.slice(4);
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+            }
+            else{
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            }
+         }
      }
 
      $("#inputTitle").select2();
