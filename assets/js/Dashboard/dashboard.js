@@ -116,10 +116,43 @@
             var isFilled = localStorage.getItem("MyRequest_profileFill");
             if (isFilled == "true") {
 
-                window.location.href = domainAgentAddress+'MyProfile.html';
+                window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
             }
 
-             
+            //Not to allow Page
+            if (adminType != "SuperAdmin") {
+                $.get(domainAddress + "GetDateDiff/" + adminUserID, {}, function(result) {
+/*                    if(resumessageNotesContentlt.records[0].DiffDate==null){
+                        result.records[0].DiffDate = 0;
+                    }*/
+                    var getDiffDate = parseInt(result.records[0].DiffDate);
+                        
+                    $(".dashTotalDaysLeft").text(30 - getDiffDate);
+                    var diffDate = 30 - getDiffDate;
+
+                    if (diffDate < -6) {
+                        $("#mainBody").css("opacity", "0.1");
+                        $("#mainBody").css("pointer-events", "none");
+                        $("#mainBody").css("outline", "none");
+                        var modulus = Math.abs(diffDate);
+                        UIkit.modal.alert = function(content, options) {
+                            var modal = UIkit.modal.dialog(([
+                                '<div class="uk-margin uk-modal-content">' + String(content) + ' <br > for immediate assitance Pls contact  <a href="mailto:enquiry@myrequest.co.uk"> Drop Us Mail </a></div>',
+                                '<div class="uk-modal-footer uk-text-right">  <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:6px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:#fcdb34" target="_blank">Pay Now</a></button></div>'
+                            ]).join(""), UIkit.$.extend({
+                                bgclose: false,
+                                keyboard: false
+                            }, options)).show();
+                            return modal;
+                        };
+                        UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
+                            center: true
+                        }).on('hide.uk.modal', function() {
+                            // custome js code
+                        });
+                    }
+                }); // End's here
+            }
             var getNumberOfDays = (parseInt(localStorage.getItem("MyRequest_myDiffDate")) / 30) * 100;
             $(".noOfDays").prop("data-percent", getNumberOfDays);
             $(".noOfDays").attr("data-percent", getNumberOfDays);
@@ -140,14 +173,7 @@
                         $("#dashComplaints").text(result.records[getDashBoardValuesForSuperadmin].TotalComplaints);
                         $("#dashOpen1").text(result.records[getDashBoardValuesForSuperadmin].NoOpen);
                         $("#dashClose").text(result.records[getDashBoardValuesForSuperadmin].NoCompleted);
-                         
-                        if(result.records[getDashBoardValuesForSuperadmin].TotalAmount.length > 7){
-                            $("#dashAmount").css("font-size","20px");
-                        }
-                        else{
-                            $("#dashAmount").css("font-size","24px");
-                        }
-                        $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount);
+                        $("#dashAmount1").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount);
 
                         getTotalAmount = result.records[getDashBoardValuesForSuperadmin].TotalAmount;
                         $(".dashTotalAmount").text(getTotalAmount);
@@ -156,40 +182,6 @@
                     }
                 });
 
-
-                 $.get(domainAddress + 'GetTotalTenantsForSuperAdmin', {}, function(result) {
-                    if(result.record_count == 0){
-                        $("#dashTenants").text(result.record_count);
-                    }else{
-                        $("#dashPproperties").text(result.record_count);
-                        $("#dashTenants").text(result.records[0].TenantCount);
-                        $(".noOfAppInstalled").text(result.records[0].TenantCountInstalledApp);
-                        $(".noOfTenants").text(result.records[0].TenantCount);
-                        var totalCount = parseInt(result.records[0].TenantCountInstalledApps) / parseInt(result.records[0].TenantCount);
-                        totalCount = parseInt(totalCount * 100);
-                        $(".noOfApps").prop("data-percent", totalCount);
-                        $(".noOfApps").attr("data-percent", totalCount);
-                    }
-                });
-
-
-                 $.get(domainAddress + 'GetTotalTenantContractorsForSuperAdmin', {}, function(result) {
-                    //console.log(result);
-                    if (result.record_count == 0) {
-                       
-                    } else {
-                          
-                        if(result.records[1].TotalAppContractors==null){
-                            result.records[1].TotalAppContractors = 0;
-                        }
-                        $(".noOfAppContractors").text(result.records[1].TotalAppContractors);
-                        $(".noOfContractors").text(result.records[1].TotalContractors);
-                        var totalContrtorCount = parseInt(result.records[1].TotalAppContractors) / parseInt(result.records[1].TotalContractors);
-                        totalContrtorCount = parseInt(totalContrtorCount * 100);
-                        $(".noOfContractorApps").prop("data-percent", totalContrtorCount);
-                        $(".noOfContractorApps").attr("data-percent", totalContrtorCount);
-                    }   
-                });
 
                 $.get(domainAddress + "GetAllProblemWorkStatusCount", {}, function(result) {
                     //console.log(result);
@@ -230,42 +222,19 @@
                         pieChartData.push(statusCount);
                         //console.log(pieChartData);
                     }
-                   
-                    var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
+                    //var myLine = new Chart(document.getElementById("pieChartLoc").getContext("2d")).Pie(pieChartData);
                 }); // GetAllProblemWorkStatusCount
-
-
-                $.get(domainAddress + "GetUtilityStatusCountForSuperAdmin", {}, function(result) {
-                    //console.log(result);
-                        $(".countUpMoveIn").html(result.countMoveIn);
-                        $(".countUpMoveOut").text(result.countMoveOut);
-                      
-                 });//GetAllUtilityStatusCountAdmin
-
-
-                $.get(domainAddress + "GetAllApprovalListRequestForSuperAdmin", {}, function(result) {
-                    //console.log(result);
-                    $(".noOfApprovalRequired").text(result.record_count);
-                });
-
-                getLastTwoDaysMessages(0);
-
-                getPropertyExpiryInfo(0);
-
-                getTenantUtilityStatus(0);
-
             } else {
-                getDateDiff(adminUserID);
                 $(".forAdmin").show();
                 $(".forSuperAdmin").hide();
                 $("#pieChartLoc").hide();
 
                 $(".getLettingAgencyBusinessName").text("Dashboard - " + businessName + " - " + lettingAgencyCode);
+
                 if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
                     $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
-                 }
-                 else{
-                    $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+                }
+                else{
                     var getLogoImagePath = logo.slice(0,4);
                     if(getLogoImagePath=="api/"){
                         getLogoImagePath = logo.slice(4);
@@ -274,18 +243,14 @@
                     else{
                         $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
                     }
-                 }
+                }
+
+                
                 
                 $.get(domainAddress + 'getDashboardDetails/' + adminUserID, {}, function(result) {
                     for (var getDashBoardValues in result.records) {
                         if(result.records[getDashBoardValues].TotalAmount==null){
                             result.records[getDashBoardValues].TotalAmount=0;
-                        }
-                        if(result.records[getDashBoardValues].NoCompleted==null){
-                            result.records[getDashBoardValues].NoCompleted=0;
-                        }
-                        if(result.records[getDashBoardValues].NoOpen==null){
-                            result.records[getDashBoardValues].NoOpen=0;
                         }
                         $("#dashCompleted").text(result.records[getDashBoardValues].NoCompleted);
                         $("#dashOpen1").text(result.records[getDashBoardValues].NoOpen);
@@ -304,19 +269,11 @@
                         totPerComplaints = totPerComplaints * 100;
                     }
                 }); 
-                
-
-                $.get(domainAddress + "GetAllUtilityStatusCountAdmin1/" + adminUserID, {}, function(result) {
-                    //console.log(result);
-                        $(".countUpMoveIn").html(result.countMoveIn);
-                        $(".countUpMoveOut").text(result.countMoveOut);
-                      
-                 });//GetAllUtilityStatusCountAdmin
-
+    
                 $.get(domainAddress + 'GetTotalTenants/' + adminUserID, {}, function(result) {
                     if(result.record_count == 0){
                         $("#dashTenants").text(result.record_count);
-                       
+                        $("#dashAmount").text(result.record_count);
                     }else{
                         $("#dashPproperties").text(result.record_count);
                     
@@ -345,8 +302,60 @@
                         $(".noOfContractorApps").attr("data-percent", totalContrtorCount);
                     }   
                 });
-                    
-                getLastTwoDaysMessages(adminUserID);         
+                $.get(domainAddress + 'GetLastTwoDaysMessage/' + adminUserID, {}, function(result) {
+                    //console.log(result);
+                    $(".messageNotesContent").html('');
+                    if (result.record_count == 0) {
+                        $(".noOfAppMessages").text(result.record_count);
+                        $(".noOfMessages").text(result.record_count);
+                        $(".noOfMessageApps").prop("data-percent", result.record_count);
+                        $(".noOfMessageApps").attr("data-percent", result.record_count);
+                        $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'>   </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> No Messages Found </div> <div class='uk-width-4-10'>   </div> </div>   </div> </div> </li> ");
+                    } else {
+                        $(".noOfAppMessages").text(result.record_count);
+                        $(".noOfMessages").text(result.record_count);
+                        var checkApiUrl = "";
+                        var getImage = "";
+                        for (workLogNotes in result.records) {
+                            checkApiUrl = result.records[workLogNotes].GetImage;
+                            checkApiUrl = checkApiUrl.slice(0,3);
+                            if(checkApiUrl=="api"){
+                                getImage = domainAddress+result.records[workLogNotes].GetImage;
+                            } 
+                            else{
+                                getImage = domainAddress+result.records[workLogNotes].GetImage;
+                            }
+                            $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'> <img src='"+getImage+"' class='imgUserCircle'/> </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> <h3><b>"+result.records[workLogNotes].WorkAssignedBy+"</b></h3> </div> <div class='uk-width-4-10'> <span class='dashWorkLogDate'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+"</span> </div> </div> <p class='dashWorkLogContent'>"+result.records[workLogNotes].Content+"</p> <p class='dashWorkLogCaseNo'>( Case # "+result.records[workLogNotes].ProblemID+" )</p> </div> </div> </li> <hr/>");
+                        }   
+
+
+                        $(" .getMessages").on('click', function() {
+                            var getWorkLogID = this.id.replace('getMessages-', '');
+                            var getName = $("#getMessages-" + getWorkLogID).text();
+                            //console.log(getName);
+                        });
+                        $(".sendReply").on('click', function() {
+                            var getWorkLogID = this.id.replace('sendReply-', '');
+                            var getInputReply = $("#inputReply-" + getWorkLogID).val();
+                            var getStatus = "Notes";
+                            var getProblemID = $("#hiddenProblemID-" + getWorkLogID).val();
+                            var getWorkAssignedBy = localStorage.getItem("MyRequest_UserName");
+                            if (getInputReply == "") {
+                                alert("Enter the Reply Content");
+                                return false;
+                            } else {
+                                //console.log(getWorkLogID + " || " + getInputReply + " || " + getStatus + " || " + getProblemID + " || " + getWorkAssignedBy);
+                                $("#inputReply-" + getWorkLogID).val('');
+                            }
+                        });
+                    }
+                    getMessages = result.record_count;
+                    $(".MessageCount").text(getMessages);
+
+                   
+
+                });     
+                        
     
                 $.get(domainAddress + 'GetWorkNotesDetails/' + adminUserID, {}, function(result) {
                     //console.log(result);
@@ -569,63 +578,59 @@
                     
                 }); // GetAllProblemWorkStatusCount 
 
-                
-
-
-                $.get(domainAddress + "GetAllSpecialityList/"+adminUserID, {}, function(result) {
-                    //console.log(result);
-                    $("#caseSpecialisation").html('');
-                    $("#calSpecialisation").html('');
-                    if(result.record_count==0){
-                        $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                        $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                        $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
-                        $("#calSpecialisation").html("<option value='0'>No Speciality Found</option>");
-                    }
-                    else{
-                        $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                        $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                        for (var Speciality in result.records) {
-                            $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
-                            $("#calSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
-                        }
-                        $("#caseContractor").html("");
-                        $("#caseContractor").html("<option value='0'>Select the Speciality to view Contractor</option>");
-                    }
-                    $("#caseSpecialisation").select2();
-                    $("#caseContractor").select2();
-                }); // GetAllEventList
-
-                $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
-                    //console.log(result);
-                    $("#caseProperty").html('');
-                    if(result.record_count==0){
-                        $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
-                        $("#caseProperty").html("<option value='0' ref='0'>No Property Found</option>");
-                    }
-                    else{
-                        $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
-                        for (var Property in result.records) {
-                            if(result.records[Property].PropertyRegister != undefined && result.records[Property].PropOwnerName != undefined && result.records[Property].PropAddress != undefined &&result.records[Property].PropCity != undefined && result.records[Property].PropState != undefined && result.records[Property].PropCountry != undefined && result.records[Property].PropPostalCode != undefined)
-                            {
-                            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
-                            }
-                        }
-                    }
-                    $("#caseProperty").select2();
-                }); // GetPropertyName
-
-                getTenantUtilityStatus(adminUserID);
-            
-                getPropertyExpiryInfo(adminUserID);
-
                 getCaseCalendar();
             }
 
-             
+             $.get(domainAddress + "GetAllUtilityStatusCountAdmin1/" + adminUserID, {}, function(result) {
+                //console.log(result);
+                    $(".countUpMoveIn").html(result.countMoveIn);
+                    $(".countUpMoveOut").text(result.countMoveOut);
+                  
+             });//GetAllUtilityStatusCountAdmin
 
 
-            
+            $.get(domainAddress + "GetAllSpecialityList/"+adminUserID, {}, function(result) {
+                //console.log(result);
+                $("#caseSpecialisation").html('');
+                $("#calSpecialisation").html('');
+                if(result.record_count==0){
+                    $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
+                    $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
+                    $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
+                    $("#calSpecialisation").html("<option value='0'>No Speciality Found</option>");
+                }
+                else{
+                    $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
+                    $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
+                    for (var Speciality in result.records) {
+                        $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
+                        $("#calSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
+                    }
+                    $("#caseContractor").html("");
+                    $("#caseContractor").html("<option value='0'>Select the Speciality to view Contractor</option>");
+                }
+                $("#caseSpecialisation").select2();
+                $("#caseContractor").select2();
+            }); // GetAllEventList
+
+            $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
+                //console.log(result);
+                $("#caseProperty").html('');
+                if(result.record_count==0){
+                    $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
+                    $("#caseProperty").html("<option value='0' ref='0'>No Property Found</option>");
+                }
+                else{
+                    $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
+                    for (var Property in result.records) {
+                        if(result.records[Property].PropertyRegister != undefined && result.records[Property].PropOwnerName != undefined && result.records[Property].PropAddress != undefined &&result.records[Property].PropCity != undefined && result.records[Property].PropState != undefined && result.records[Property].PropCountry != undefined && result.records[Property].PropPostalCode != undefined)
+                        {
+                        $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
+                        }
+                    }
+                }
+                $("#caseProperty").select2();
+            }); // GetPropertyName
             
             $.get(domainAddress + "GetAllCity", function(result) {
                 //console.log(result);
@@ -643,6 +648,7 @@
             });
              
 
+            getTenantUtilityStatus(adminUserID);
             
 
         }); // ready
@@ -1067,15 +1073,7 @@
         
 
         function getTenantUtilityStatus(adminUserID){
-            var getUtilityStatusUrl = "";
-            if(adminUserID==0){
-                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin";
-            }
-            else{
-                getUtilityStatusUrl = "GetTenantUtilityStatus/"+adminUserID;
-            }
-
-            $.get(domainAddress+getUtilityStatusUrl,{},function(resultTenantUtility){
+            $.get(domainAddress+"GetTenantUtilityStatus/"+adminUserID,{},function(resultTenantUtility){
                 //console.log(resultTenantUtility);
                 $(".tenantUtility").html('');
                 if(resultTenantUtility.record_count==0){
@@ -1084,7 +1082,7 @@
                 else{
                     for(tenant in resultTenantUtility.records){
                         $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).html("");
-                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenLettingAgencyCode-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].LettingAgencyCode+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
+                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].PropertyRegister + "'><td id='propName-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].PropertyRegister + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenLettingAgencyCode-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].LettingAgencyCode+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
 
                         for(getUtility in resultTenantUtility.records[tenant].Utility){
                             $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).append("<input type='hidden' id='hiddenIsElectricity-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].ElectricityStatus+"' />  <input type='hidden' id='hiddenIsGas-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].GasStatus+"' /> <input type='hidden' id='hiddenIsWater-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].WaterStatus+"' /> <input type='hidden' id='hiddenIsCouncil-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].CouncilStatus+"' /> <input type='hidden' id='hiddenAvailTenantInsurance-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].IsTenantInsurance+"' />");
@@ -1093,49 +1091,22 @@
 
                     $(".reneval").on('click',function(){
                         var tenantID = this.id.replace('reneval-','');
-                        var tenantName = $("#propName-"+tenantID).text();
-                        var tenantPropertyAddress = $("#propAddress-"+tenantID).text();
-                        var tenantNewStartDate = $("#hiddenTenantEndDate-"+tenantID).val();
-                        var finalNewStartDate = tenantNewStartDate;
-                        var tenantNewStartDate = moment(tenantNewStartDate).format('DD.MM.YYYY');
-
-                        UIkit.modal.confirm('Do you want to renew the tenancy ?', function() {
+                        UIkit.modal.confirm('Are you sure to renew tenant ?', function() {
                             console.log("yes renew tenant");
-                            var modal = UIkit.modal("#getTenancyRenew");
-                            modal.show();
-                            
-                            $(".md-input-wrapper").addClass("md-input-filled");
-                            $("#inputTenantName").val(tenantName);
-                            $("#inputTenantAddress").val(tenantPropertyAddress);
-                            $("#inputNewStartDate").val(tenantNewStartDate);
-                            
-                            $("#btnTenancyRenewal").click(function(){
-                                var tenantEndDate = $("#inputNewEndDate").val();
-                                var getDate = tenantEndDate.split('.');
-                                var finalEndStartDate = getDate[2]+"-"+getDate[1]+"-"+getDate[0];
-                                var dataForm = '{"TenantID":"' + tenantID + '","AdminID":"'+adminUserID+'","StartDate":"'+finalNewStartDate+'","EndDate":"'+finalEndStartDate+'"}';
-                                console.log(dataForm);
-                                var sendURL = domainAddress + 'updateTenantDue';
+                            var dataForm = '{"TenantID":"' + tenantID + '"}';
+                            var sendURL = domainAddress + 'updateTenantDue';
 
-                                $.ajax({
-                                      type: "POST",
-                                      url: sendURL,
-                                      data: dataForm,
-                                      success: function(dataCheck) {
-                                          console.log(dataCheck);
-                                          if(dataCheck.status=="success"){
-                                            getTenantUtilityStatus(adminUserID);
-                                            UIkit.modal.alert('Renewal date updated Successfully');
-                                          }
-                                          else{
-                                            UIkit.modal.alert(dataCheck.message_text);
-                                          }
-                                          
-                                      }
-                                });
+                            $.ajax({
+                                  type: "POST",
+                                  url: sendURL,
+                                  data: dataForm,
+                                  success: function(dataCheck) {
+                                      console.log(dataCheck);
+                                      getTenantUtilityStatus(adminUserID);
+                                      UIkit.modal.alert('Renewal date updated Successfully');
+                                  }
                             });
-
-                        }); // confirm prompt
+                        });
                     });
 
                     $(".moveOut").on('click',function(){
@@ -1500,207 +1471,3 @@
             }
 
         }); // #addCase
-
-
-  $(".btnSubmitTenantMail").click(function(){
-    console.log("click tmail");
-    UIkit.modal.confirm('Are you sure to send mail to Tenants who are yet to install the app?', function() {
-        var dataForm = '{"AdminID":"'+adminUserID+'"}';
-        console.log(dataForm);
-        var sendURL = domainAddress + 'SendTenantReminderMail';
-        console.log(sendURL);
-        $.ajax({
-            type: "POST",
-            url: sendURL,
-            data: dataForm,
-            success: function(dataCheck) {
-                console.log(dataCheck);
-            }
-        });
-    });
-  });
-
-  $(".btnSubmitContractorMail").click(function(){
-    console.log("click cmail");
-    UIkit.modal.confirm('Are you sure to send mail to Contractors who are yet to install the app?', function() {
-        var dataForm = '{"AdminID":"'+adminUserID+'"}';
-        console.log(dataForm);
-        var sendURL = domainAddress + 'SendContractorReminderMail';
-        console.log(sendURL);
-        $.ajax({
-            type: "POST",
-            url: sendURL,
-            data: dataForm,
-            success: function(dataCheck) {
-                console.log(dataCheck);
-            }
-        });
-    });
-  });
-
-
-  function getPropertyExpiryInfo(adminUserID){
-    var getUrl = "";
-    if(adminUserID==0){
-        getUrl = "GetPropertyExpiryInfoForSuperAdmin";
-    }
-    else{
-        getUrl = "GetPropertyExpiryInfo/"+adminUserID;
-    }
-
-    $.get(domainAddress+getUrl,{},function(result){
-        //console.log(result);
-        var getEpcColor="";
-        var getPatColor="";
-        var getGasCertColor="";
-        var getLegionColor="";
-
-        var getEPC = "-";
-        var getPAT = "-";
-        var getGasExp = "-";
-        var getLegCert = "-";
-
-        $(".getPropertyExpiryInfo").html('');
-        if(result.record_count==0){
-            $(".getPropertyExpiryInfo").append("<tr id='rowID-0'> <td>No records found </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr> ");
-        }
-        else{
-            
-            for(propertyExpInfo in result.records){
-                // if(result.records[propertyExpInfo].EpcValidTill=="-" && result.records[propertyExpInfo].ElectricCertValidTill=="-" && result.records[propertyExpInfo].GasCertValidTill=="-" && result.records[propertyExpInfo].LegCertValidTill=="-"){
-                //     //No expiry found for PropertyAddress
-                //     $(".getPropertyExpiryInfo").html("<tr id='rowID-0'> <td>No records found </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr> ");
-                // }
-                // else{
-                    $("#rowID-0").hide();
-                    if(result.records[propertyExpInfo].EpcDiffDate <= 0){
-                        getEpcColor = "red";
-                    }
-                    else if (result.records[propertyExpInfo].EpcDiffDate > 0) {
-                        getEpcColor = "rgba(17, 97, 17, 0.72)";
-                    }
-
-                    if(result.records[propertyExpInfo].ElectricCertDiffDate <= 0){
-                        getPatColor = "red";
-                    }
-                    else if (result.records[propertyExpInfo].ElectricCertDiffDate > 0) {
-                        getPatColor = "rgba(17, 97, 17, 0.72)";
-                    }
-
-                    if(result.records[propertyExpInfo].GasCertDiffDate <= 0){
-                        getGasCertColor = "red";
-                    }
-                    else if (result.records[propertyExpInfo].GasCertDiffDate > 0) {
-                        getGasCertColor = "rgba(17, 97, 17, 0.72)";
-                    }
-
-                    if(result.records[propertyExpInfo].LegCertDiffDate <= 0){
-                        getLegionColor = "red";
-                    }
-                    else if (result.records[propertyExpInfo].LegCertDiffDate > 0) {
-                        getLegionColor = "rgba(17, 97, 17, 0.72)";
-                    }
-
-                    getEPC = moment(result.records[propertyExpInfo].EpcValidTill).format('Do MMM YYYY');
-
-                    if(getEPC=="Invalid date"){
-                        getEPC = "-";
-                        getEpcColor = "#000";
-                    }
-
-                    getPAT = moment(result.records[propertyExpInfo].ElectricCertValidTill).format('Do MMM YYYY');
-
-                    if(getPAT=="Invalid date"){
-                        getPAT="-";
-                        getPatColor="#000";
-                    }
-
-                    getGasExp = moment(result.records[propertyExpInfo].GasCertValidTill).format('Do MMM YYYY');
-
-                    if(getGasExp=="Invalid date"){
-                        getGasExp="-";
-                        getGasCertColor="#000";
-                    }
-
-                    getLegCert = moment(result.records[propertyExpInfo].LegCertValidTill).format('Do MMM YYYY');
-
-                    if(getLegCert=="Invalid date"){
-                        getLegCert = "-";
-                        getLegionColor = "#000";
-                    }
-
-
-                    $(".getPropertyExpiryInfo").append("<tr id='propertyExp-"+result.records[propertyExpInfo].PropertyRegister+"'> <td id='propAddress-"+result.records[propertyExpInfo].PropertyRegister+"'> "+result.records[propertyExpInfo].PropAddress+"</td> <td id='epcValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getEpcColor+";font-weight:bold;'> "+getEPC+" </td> <td id='patValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getPatColor+";font-weight:bold;'> "+getPAT+"</td> <td id='gasCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"' style='color:"+getGasCertColor+";font-weight:bold;'>"+getGasExp+" </td> <td id='legCertValidTill-"+result.records[propertyExpInfo].PropertyRegister+"'  style='color:"+getLegionColor+";font-weight:bold;'>"+getLegCert+" </td> </tr>");
-                //}
-            }
-        }
-    });
-  }
-
-
-
-
-  function getLastTwoDaysMessages(adminUserID){
-    debugger;
-    var getMessageUrl = "";
-    if(adminUserID==0){
-        getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView";
-    }
-    else{
-        getMessageUrl = 'GetLastTwoDaysMessage/' + adminUserID;
-    }
-
-     $.get(domainAddress + getMessageUrl, {}, function(result) {
-        //console.log(result);
-        $(".messageNotesContent").html('');
-        if (result.record_count == 0) {
-            $(".noOfAppMessages").text(result.record_count);
-            $(".noOfMessages").text(result.record_count);
-            $(".noOfMessageApps").prop("data-percent", result.record_count);
-            $(".noOfMessageApps").attr("data-percent", result.record_count);
-            $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'>   </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> No Messages Found </div> <div class='uk-width-4-10'>   </div> </div>   </div> </div> </li> ");
-        } else {
-            $(".noOfAppMessages").text(result.record_count);
-            $(".noOfMessages").text(result.record_count);
-            var checkApiUrl = "";
-            var getImage = "";
-            for (workLogNotes in result.records) {
-                checkApiUrl = result.records[workLogNotes].GetImage;
-                checkApiUrl = checkApiUrl.slice(0,3);
-                if(checkApiUrl=="api"){
-                    getImage = domainAddress+result.records[workLogNotes].GetImage;
-                } 
-                else{
-                    getImage = domainAddress+result.records[workLogNotes].GetImage;
-                }
-                $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'> <img src='"+getImage+"' class='imgUserCircle'/> </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> <h3><b>"+result.records[workLogNotes].WorkAssignedBy+"</b></h3> </div> <div class='uk-width-4-10'> <span class='dashWorkLogDate'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+"</span> </div> </div> <p class='dashWorkLogContent'>"+result.records[workLogNotes].Content+"</p> <p class='dashWorkLogCaseNo'>( Case # "+result.records[workLogNotes].ProblemID+" )</p> </div> </div> </li> <hr/>");
-            }   
-
-
-            $(" .getMessages").on('click', function() {
-                var getWorkLogID = this.id.replace('getMessages-', '');
-                var getName = $("#getMessages-" + getWorkLogID).text();
-                //console.log(getName);
-            });
-            $(".sendReply").on('click', function() {
-                var getWorkLogID = this.id.replace('sendReply-', '');
-                var getInputReply = $("#inputReply-" + getWorkLogID).val();
-                var getStatus = "Notes";
-                var getProblemID = $("#hiddenProblemID-" + getWorkLogID).val();
-                var getWorkAssignedBy = localStorage.getItem("MyRequest_UserName");
-                if (getInputReply == "") {
-                    alert("Enter the Reply Content");
-                    return false;
-                } else {
-                    //console.log(getWorkLogID + " || " + getInputReply + " || " + getStatus + " || " + getProblemID + " || " + getWorkAssignedBy);
-                    $("#inputReply-" + getWorkLogID).val('');
-                }
-            });
-        }
-        getMessages = result.record_count;
-        $(".MessageCount").text(getMessages);
-
-       
-
-    });
-  }
