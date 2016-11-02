@@ -985,7 +985,7 @@
           //console.log("getAllAdminList called");
           $(".allAdminList").html('');
           if (result.record_count == 0) {
-              $(".allAdminList").append("<tr> <td id='autoGenerate-0'>No records Found</td> <td id='adminName-0'> </td> <td id='businessName-0'> </td> <td id='emailID-0'> </td> <td id='isApproved-0'> </td> <td class='editAdmin' id='editAdmin-0'> </td> <td class='deleteAdmin' id='deleteAdmin-0'> </td> </tr>");
+              $(".allAdminList").append("<tr> <td id='autoGenerate-0'>No records Found</td> <td id='adminName-0'> </td> <td id='businessName-0'> </td> <td id='emailID-0'> </td> <td id='getDue-0'> </td> <td id='isApproved-0'> </td> <td id='availedUtility-0'> </td> <td class='editAdmin' id='editAdmin-0'> </td> <td class='deleteAdmin' id='deleteAdmin-0'> </td> </tr>");
           } else {
               for (var adminInfo in result.records) {
                   var dueColor;
@@ -1003,7 +1003,7 @@
                   if (result.records[adminInfo].DateDiff == null || result.records[adminInfo].DateDiff == "") {
                       result.records[adminInfo].DateDiff = "-";
                   } 
-                  $(".allAdminList").append("<tr> <td id='autoGenerate-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AutoGenerate + "</td> <td id='adminName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i></td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;' data-toggle='modal' class='config' href='Contractor.html#CreateContractorModal'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
+                  $(".allAdminList").append("<tr> <td id='autoGenerate-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AutoGenerate + "</td> <td id='adminName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
 
                 
                   if (result.records[adminInfo].IsApproved == 1) {
@@ -1012,6 +1012,12 @@
                   } else {
                       $("#approve-" + result.records[adminInfo].Admin_ID).css('color', '');
                       $("#reject-" + result.records[adminInfo].Admin_ID).css('color', 'red');
+                  }
+
+                  if (result.records[adminInfo].IsUtility == 1) {
+                      $("#getAvailedUtility-" + result.records[adminInfo].Admin_ID).text("Yes").css("color","green");
+                  } else {
+                      $("#getAvailedUtility-" + result.records[adminInfo].Admin_ID).text("No").css("color","red");
                   }
               }
 

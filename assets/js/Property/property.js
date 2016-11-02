@@ -112,7 +112,7 @@ var getPropLat, getPropLong;
  var getValue = "";
  var totalRecordCount = 0;
  var getTenantObjArr = new Array();
-
+ var mapCountCheck = 0;
 
  $(document).ready(function() {
 
@@ -129,7 +129,7 @@ var getPropLat, getPropLong;
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
      //Not to allow Page
-     getDateDiff(adminUserID);
+     
 
 
      localStorage.setItem("MyRequest_RepairStatus", "");
@@ -137,19 +137,31 @@ var getPropLat, getPropLong;
          window.location.href = "index.html";
      } else {
          $(".getUserName").text(adminUserName);
+         $("#FileURLUploadImage4").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage3").attr("action",domainAddress+"ajaximage.php");
+         $("#FileURLUploadImage5").attr("action",domainAddress+"ajaximage.php");
      }
 
      if (adminType == "SuperAdmin") {
 
      } else {
-        var getLogoImagePath = logo.slice(0,4);
-        if(getLogoImagePath=="api/"){
-            getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-        }
-        else{
+        getDateDiff(adminUserID);
+        if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+         }
+         else{
             $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-        }
+            var getLogoImagePath = logo.slice(0,4);
+            if(getLogoImagePath=="api/"){
+                getLogoImagePath = logo.slice(4);
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+            }
+            else{
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            }
+         }
      }
 
 
@@ -394,7 +406,9 @@ var getPropLat, getPropLong;
          $("#inputTaxAuthority").html("<option value='0'>Select Council</option>");
          var getResult = JSON.parse(result);
          for (inputTaxAuthority in getResult.records) {
-             $("#inputTaxAuthority").append("<option value='" + getResult.records[inputTaxAuthority].CouncilName + "'>" + getResult.records[inputTaxAuthority].CouncilName + "</option>");
+            if(getResult.records[inputTaxAuthority].CouncilName!="Name"){
+                $("#inputTaxAuthority").append("<option value='" + getResult.records[inputTaxAuthority].CouncilName + "'>" + getResult.records[inputTaxAuthority].CouncilName + "</option>");
+            }
          }
          $("#inputTaxAuthority").select2();
      });
@@ -402,36 +416,40 @@ var getPropLat, getPropLong;
 
 
 
-
+ 
  $("#inpuZip").on('blur', function(e) {
-     var getAddress = $("#inputAddress").val();
-     var getCounty = $("#select2-inputState-container").html();
-     var state = $("#select2-inputCity-container").html();
-     var postalCode = $("#inpuZip").val();
-     var wholeAddress = getAddress + " " + getCounty + "," + state + ", " + postalCode + ", United Kingdom";
-     var Latitude = "";
-     var Longitude = "";
-     console.log(wholeAddress);
-     var modalUtilityList = UIkit.modal("#googleMap");
-     $(".propertyLocationGoogleMap").html("");
-     $(".propertyLocationGoogleMap").googleMap({
-         zoom: 10, // Initial zoom level (optional)
-         type: "ROADMAP" // Map type (optional)
-     });
-     $(".propertyLocationGoogleMap").addMarker({
-         address: wholeAddress, // Postal address
-         zoom: 10,
-         draggable: true,
-         success: function(e) {
-             getLatitude = e.lat;
-             getLongitude = e.lon;
+         var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
+         var getCounty = $("#select2-inputState-container").html();
+         var getCity = $("#select2-inputCity-container").html();
+         var postalCode = $("#inpuZip").val();
+         var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + ", United Kingdom";
+         var Latitude = "";
+         var Longitude = "";
+         
+         if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
+            console.log("No Address Details Fetched");
          }
-     });
-     modalUtilityList.show();
-
-
+         else{
+           console.log(wholeAddress);
+           var modalUtilityList = UIkit.modal("#googleMap");
+             $(".propertyLocationGoogleMap").html("");
+             $(".propertyLocationGoogleMap").googleMap({
+                 zoom: 10, // Initial zoom level (optional)
+                 type: "ROADMAP" // Map type (optional)
+             });
+             $(".propertyLocationGoogleMap").addMarker({
+                 address: wholeAddress, // Postal address
+                 zoom: 10,
+                 draggable: true,
+                 success: function(e) {
+                     getLatitude = e.lat;
+                     getLongitude = e.lon;
+                 }
+             });
+             modalUtilityList.show(); 
+         }
  }); // inputAddress
-
+ 
 
 
  $(".btnSubmitProperty").click(function() {

@@ -82,7 +82,11 @@ var dataAddPropertyForm = "";
 var dataAddPropertyFormArr = new Array();
 var agencyCode = localStorage.getItem('MyRequest_LettingAgencyCode');
 var getValue = "";
-
+var hiddenIsElectricity = "";
+var hiddenIsGas = "";
+var hiddenIsWater = "";
+var hiddenIsCouncil = "";
+var hiddenAvailTenantInsurance = "";
 
 $(window).load(function() {
     $("#getLoadingModalContent").removeClass('md-show');
@@ -100,70 +104,38 @@ $(document).ready(function() {
     var isFilled = localStorage.getItem("MyRequest_profileFill");
     if (isFilled == "true") {
 
-        window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
+        window.location.href = domainAgentAddress+'MyProfile.html';
     }
     $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
     $("#getLoadingModalContent").addClass('md-show');
-    //Not to allow Page
-
-    $.get(domainAddress + "GetDateDiff/" + adminUserID, {}, function(result) {
-
-        var getDiffDate = parseInt(result.records[0].DiffDate);
-
-
-        var diffDate = 30 - getDiffDate;
-
-        if (diffDate < -6) {
-            $("#mainBody").css("opacity", "0.1");
-            $("#mainBody").css("pointer-events", "none");
-            $("#mainBody").css("outline", "none");
-
-
-            var modulus = Math.abs(diffDate);
-            UIkit.modal.alert = function(content, options) {
-                var modal = UIkit.modal.dialog(([
-                    '<div class="uk-margin uk-modal-content">' + String(content) + '<br > for immediate assitance Pls contact  <a href="mailto:enquiry@myrequest.co.uk"> Drop Us Mail </a></div>',
-                    '<div class="uk-modal-footer uk-text-right">  <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:15px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:#fcdb34" target="_blank">Pay Now</a></button></div>'
-                ]).join(""), UIkit.$.extend({
-                    bgclose: false,
-                    keyboard: false
-                }, options)).show();
-                return modal;
-            };
-
-
-            UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
-                center: true
-            }).on('hide.uk.modal', function() {
-                // custome js code
-            });
-
-
-
-        }
-
-    }); // End's here
-
-
+    
 
     localStorage.setItem("MyRequest_RepairStatus", "");
     if (adminUserID == "" || adminUserID == null) {
         window.location.href = "index.html";
     } else {
         $(".getUserName").text(adminUserName);
+        $("#FileURLUploadImage1").attr("action",domainAddress+"uploadUserImage.php");
     }
 
     if (adminType == "SuperAdmin") {
 
     } else {
-        var getLogoImagePath = logo.slice(0,4);
-        if(getLogoImagePath=="api/"){
-            getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-        }
-        else{
+        getDateDiff(adminUserID);
+        if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+         }
+         else{
             $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-        }
+            var getLogoImagePath = logo.slice(0,4);
+            if(getLogoImagePath=="api/"){
+                getLogoImagePath = logo.slice(4);
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+            }
+            else{
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            }
+         }
     }
 
 
@@ -288,11 +260,11 @@ $(".btnSubmitTenantProperty").click(function() {
     var mobileNumber = $("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
-    var hiddenIsElectricity = $("#hiddenIsElectricity").val();
-    var hiddenIsGas = $("#hiddenIsGas").val();
-    var hiddenIsWater = $("#hiddenIsWater").val();
-    var hiddenIsCouncil = $("#hiddenIsCouncil").val();
-    var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
+    hiddenIsElectricity = $("#hiddenIsElectricity").val();
+    hiddenIsGas = $("#hiddenIsGas").val();
+    hiddenIsWater = $("#hiddenIsWater").val();
+    hiddenIsCouncil = $("#hiddenIsCouncil").val();
+    hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
 
     if (title == "Select Title") {
         $(".help-block").css("border-color", "red");
@@ -374,12 +346,12 @@ $(".btnSubmitTenantInsurance").click(function() {
     var mobileNumber = $("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
-    var hiddenIsElectricity = $("#hiddenIsElectricity").val();
-    var hiddenIsGas = $("#hiddenIsGas").val();
-    var hiddenIsWater = $("#hiddenIsWater").val();
-    var hiddenIsCouncil = $("#hiddenIsCouncil").val();
+    hiddenIsElectricity = $("#hiddenIsElectricity").val();
+    hiddenIsGas = $("#hiddenIsGas").val();
+    hiddenIsWater = $("#hiddenIsWater").val();
+    hiddenIsCouncil = $("#hiddenIsCouncil").val();
     var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
-    var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance").val();
+    hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance").val();
     var hiddenPropertyAddress = $('#hiddenPropertyAddress').val();
     var currentdate = new Date();
     var getDateValue = currentdate.getDate() + "." + (currentdate.getMonth() + 1) + "." + currentdate.getFullYear();
@@ -1171,7 +1143,8 @@ $(".btnSubmitTenant").click(function() {
         return false;
     } 
         else {
-            dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "'}";
+            var propertyAddress = $("#caseProperty :selected").attr("ref");
+            dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+propertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
             dataAddPropertyFormArr.push(dataAddPropertyForm);
             gotoDB();
         }
@@ -1181,7 +1154,7 @@ $(".btnSubmitTenant").click(function() {
 
 
     function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","AddProperty":"' + dataAddPropertyFormArr + '","IsLeadTenant":"' + hiddenIsLeadTenant + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';

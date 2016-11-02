@@ -610,8 +610,8 @@
         <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
         <!--  forms validation functions -->
         <script src="assets/js/pages/forms_validation.min.js"></script>
-        <script src="assets/js/appUrl.js"></script>
         <script src="assets/js/const.js"></script>
+        <script src="assets/js/appUrl.js"></script>
         <script src="assets/js/validationCheck.js" type="text/javascript"></script>
         <script src="assets/fullcalendar/fullcalendar/fullcalendar.min.js" type="text/javascript"></script>
         <script type="text/javascript" src="assets/js/bootstrap-formhelpers.js"></script>
@@ -622,6 +622,7 @@
         <script src="bower_components/lightbox/dist/js/lightbox.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <script src="assets/js/screenfull.js"></script>
+        <script src="assets/js/checkDateDiff.js"></script>
         <script src="assets/js/ParticularProblem/particularProblem.js"></script>
         <script src="assets/js/ParticularProblem/getDbReportProblem.js"></script>
         <script src="assets/js/ParticularProblem/getProblemSpeciality.js"></script>

@@ -132,50 +132,12 @@ function loadPolling(){
         localStorage.setItem("MyRequest_RepairStatus", "");
         var isFilled = localStorage.getItem("MyRequest_profileFill");
         if (isFilled == "true") {
-            window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
+            window.location.href = domainAgentAddress+'MyProfile.html';
         }
 
          $(".md-overlay").css("background","rgba(0,0,0,0.5)");
-     $("#getLoadingModalContent").addClass('md-show');
-        //Not to allow Page
-
-        $.get(domainAddress + "GetDateDiff/" + adminUserID, {}, function(result) {
-
-            var getDiffDate = parseInt(result.records[0].DiffDate);
-
-
-            var diffDate = 30 - getDiffDate;
-
-            if (diffDate < -6) {
-                $("#mainBody").css("opacity", "0.1");
-                $("#mainBody").css("pointer-events", "none");
-                $("#mainBody").css("outline", "none");
-
-
-                var modulus = Math.abs(diffDate);
-                UIkit.modal.alert = function(content, options) {
-                    var modal = UIkit.modal.dialog(([
-                        '<div class="uk-margin uk-modal-content">' + String(content) + '<br > for immediate assitance Pls contact  <a href="mailto:enquiry@myrequest.co.uk"> Drop Us Mail </a></div>',
-                        '<div class="uk-modal-footer uk-text-right">  <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:15px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:#fcdb34" target="_blank">Pay Now</a></button></div>'
-                    ]).join(""), UIkit.$.extend({
-                        bgclose: false,
-                        keyboard: false
-                    }, options)).show();
-                    return modal;
-                };
-
-
-                UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
-                    center: true
-                }).on('hide.uk.modal', function() {
-                    // custome js code
-                });
-
-
-
-            }
-
-        }); // End's here
+        $("#getLoadingModalContent").addClass('md-show');
+         
         if (adminUserID == "" || adminUserID == null) {
             window.location.href = "index.html";
         } else {
@@ -185,14 +147,21 @@ function loadPolling(){
         if (adminType == "SuperAdmin") {
 
         } else {
-            var getLogoImagePath = logo.slice(0,4);
-            if(getLogoImagePath=="api/"){
-                getLogoImagePath = logo.slice(4);
-                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-            }
-            else{
+            getDateDiff(adminUserID);
+            if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+                $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+             }
+             else{
                 $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-            }
+                var getLogoImagePath = logo.slice(0,4);
+                if(getLogoImagePath=="api/"){
+                    getLogoImagePath = logo.slice(4);
+                    $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+                }
+                else{
+                    $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+                }
+             }
         }
 
        $("#previousPage").attr("disabled",true);
@@ -317,6 +286,9 @@ function loadPolling(){
         $("#inputPollingTitle").val('');
         $("#inputPollingOption1").val('');
         $("#inputPollingOption2").val('');
+        $("#inputPollingTitle").attr("disabled", false);
+        $("#inputPollingOption1").attr("disabled", false);
+        $("#inputPollingOption2").attr("disabled", false);
         $("#inputDropValue").val("For Both Contractor & Tenant");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitPolling").show();
@@ -359,8 +331,7 @@ $(".btnSearch").click(function () {
         getAddPollingArr = new Array();
         var isPollingSet = 0;
         var pollingID = $("#hiddenPollingID").val();
-        var pollingTitle = $("#inputPollingTitle").val();
-        $("#getLoadingModalContent").addClass('md-show');
+        var pollingTitle = $("#inputPollingTitle").val().replace(/["']/g, "`");
         var inputDropValue = $("#inputDropValue").val();
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
         userID = localStorage.getItem("ReportUserID");
@@ -376,7 +347,7 @@ $(".btnSearch").click(function () {
 
 
         for (var getCount = 1; getCount <= optionCount; getCount++) {
-            getPollingList = $("#inputPollingOption" + getCount).val();
+            getPollingList = $("#inputPollingOption" + getCount).val().replace(/["']/g, "`");
 
             if(getPollingList==""){
                 isPollingSet = 0;

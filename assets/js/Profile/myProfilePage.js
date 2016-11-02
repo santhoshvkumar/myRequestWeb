@@ -364,7 +364,7 @@
                  };
 
 
-                 UIkit.modal.alert("You have Due by " + modulus + " days Please Pay to proceed Further", {
+                 UIkit.modal.alert(messagePaymentDue.format(modulus), {
                      center: true
                  }).on('hide.uk.modal', function() {
                      // custome js code
@@ -389,14 +389,20 @@
      } else {
          $(".forAdmin").show();
          $(".forSuperAdmin").hide();
-         var getLogoImagePath = logo.slice(0,4);
-        if(getLogoImagePath=="api/"){
-            getLogoImagePath = logo.slice(4);
-            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-        }
-        else{
+         if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+         }
+         else{
             $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-        }
+            var getLogoImagePath = logo.slice(0,4);
+            if(getLogoImagePath=="api/"){
+                getLogoImagePath = logo.slice(4);
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+            }
+            else{
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            }
+         }
      }
 
      $("#inputTitle").select2();
@@ -937,7 +943,7 @@
                  $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 10px 32px");
                  $(".adminEmerno-prefix").show();
                  $(".emerElectno-prefix").show();
-                 if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "") {
+                 if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "" || result.records[getUserInfo].Logo=="Fail upload folder with read access.") {
                      $("#adminLogoImage").show();
                  } else {
 

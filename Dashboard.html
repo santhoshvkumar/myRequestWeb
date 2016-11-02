@@ -35,6 +35,10 @@
         .current_dashboard > a > span.menu_icon > i.fa {
             color: #4285F4;
         }
+
+        .uk-datepicker{
+            width: 20%;
+        }
     </style>
 </head>
 
@@ -138,7 +142,7 @@
                         <div class="uk-grid" data-uk-grid-margin>
                             <!-- Internal Grid One -->
                             <div class="uk-width-1-2">
-                                <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                     <div class="md-card md-card-hover md-card-overlay" style="height: 166px;">
                                         <div class="md-card-content uk-flex uk-flex-center uk-flex-middle" id="getAwaitingApprovalCases" style="cursor:pointer;">
                                             <span class="epc_chart_text"><span class="countUpMe noOfApprovalRequired">0</span></span>
@@ -156,7 +160,7 @@
                                 </div>
                                 <br/>
                                 <div class="uk-width-1-1">
-                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                    <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
                                                 <span class="epc_chart_text" style="font-size:17px;"><i class="material-icons">&#xE858;</i>/ 30 Days </span>
@@ -192,7 +196,7 @@
                                 <!-- Subscription Ends Here -->
                                 <br/>
                                 <div class="uk-width-1-1">
-                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                    <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
                                                 <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfTenants">0</span></span>
@@ -206,7 +210,7 @@
                                                 <td style="font-family:Avenir-Heavy;"> # of Tenant :</td> <span class="noOfTenants">0</span>
                                                 <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <button class="md-btn md-btn-primary btnSubmitTenantMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
                                             </div>
                                         </div>
                                     </div>
@@ -214,7 +218,7 @@
                                 <!-- Tenant App Ends Here -->
                                 <br/>
                                 <div class="uk-width-1-1">
-                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                    <div style="cursor: default;" class="hierarchical_show  minuteMargin">
 
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
@@ -227,20 +231,20 @@
                                                 </div>
 
                                                 <td style="font-family:Avenir-Heavy;"> # of Contractor :</td> <span class="noOfContractors">0</span>
-                                                <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppContractors">0</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <button class="md-btn md-btn-primary btnSubmitContractorMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
                                 <br/>
                                 <div class="uk-width-1-1">
-                                    <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                    <div style="cursor: default;" class="hierarchical_show  minuteMargin">
 
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
-                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfAppContractors">0</span></span>
+                                                <span class="epc_chart_text"><i class="material-icons">&#xE7FD;</i><span class="countUpMe noOfCommission">1</span></span>
                                             </div>
                                             <div class="md-card-overlay-content">
                                                 <div class="uk-clearfix md-card-overlay-header">
@@ -248,10 +252,10 @@
                                                     <h3> Commission Earned</h3>
                                                 </div>
 
-                                                <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span>
-                                                <br/> <br/> <br/> Commission Earned :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                                <!-- <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span> -->
+                                                <!-- <br/> <br/> <br/>  -->Commission Earned :<b> <span class="countUpMe">1</span> </b>
                                                 <br/> <br/> <br/>
-                                                <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                                <!-- <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button> -->
                                             </div>
                                         </div>
                                     </div>
@@ -263,17 +267,17 @@
                             <div class="uk-width-medium-1-2">
                                 <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-2">
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardYellow" id="getOutStandingAmountRepairs" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
                                                     <b class="uk-text-muted headerSpanText">Repair Charges</b>
-                                                    <h3 style="margin-left: 0px;margin-top: 5px;"><i class="fa fa-gbp" style="padding: 0px;"></i> <span class="countUpMe" id="dashAmount">0</span></h3>
+                                                    <h2 style="margin-left: 0px;margin-top: 10px;"><i class="fa fa-gbp" style="padding: 0px;"></i> <span class="countUpMe" id="dashAmount">0</span></h2>
                                                 </div>
                                             </div>
                                         </div>
                                     </div>
                                     <div class="uk-width-medium-1-2">
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardYellow" id="getOutStandingAmountRepairs" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
 
@@ -287,7 +291,7 @@
                                 </div>
                                 <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-2">
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardYellow" id="getOutStandingPropery" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
 
@@ -301,7 +305,7 @@
                                     </div>
 
                                     <div class="uk-width-medium-1-2">
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardYellow" id="getTenants" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
                                                     <!-- <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
@@ -316,7 +320,7 @@
                                 <div class="uk-grid" data-uk-grid-margin>
                                     <div class="uk-width-medium-1-2">
 
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardOrange" id="getTenants" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
                                                     <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
@@ -332,7 +336,7 @@
 
                                     <div class="uk-width-medium-1-2">
 
-                                        <div style="cursor: default;" class="hierarchical_show forAdmin minuteMargin">
+                                        <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardOrange" id="getTenants" style="cursor: pointer;height: 100px;">
                                                 <div class="md-card-content">
                                                     <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
@@ -664,7 +668,94 @@
                     </div>
                 </div>
 
+               <br/><br/> 
 
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-1-1 hierarchical_show">
+                        <div class="parsley-row">
+                            <div class="md-card md-card-hover">
+                                <div class="uk-grid getTenantWorkList" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="md-card getRepairStatus hierarchical_show">
+                                            <!-- Repair Status Starts -->
+                                            <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">Property Expiry Details</h3>
+                                           
+                                            <div class="uk-grid" data-uk-grid-margin>
+                                                <div class="uk-width-1-2">
+                                                    <div class="parsley-row">
+                                                     
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-1-2">
+                                                    <div class="parsley-row">
+                                                        <div class="uk-grid" data-uk-grid-margin>
+                                                            <div class="uk-width-1-4">
+                                                                <div class="parsley-row">
+                                                                  
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-width-1-4">
+                                                                <div class="parsley-row">
+                                                                 
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-width-1-4">
+                                                                <div class="parsley-row">
+                                                                    <div style="text-align:center;">
+                                                                        <div style="display:inline-block;"><div class="yetToExpire"></div>
+                                                                        </div>
+                                                                        <div style="display:inline-block;"><span>Not Expired</span>
+                                                                        </div>
+                                                                    </div>  
+                                                                </div>
+                                                            </div>
+                                                            <div class="uk-width-1-4">
+                                                                <div class="parsley-row">
+                                                                    <div style="text-align:center;">
+                                                                        <div style="display:inline-block;"><div class="expired"></div>
+                                                                        </div>
+                                                                        <div style="display:inline-block;"><span>Expired</span>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                           
+
+                                            <div class="md-card-content" style="background-color:#ececec">
+                                                <div class="uk-overflow-container">
+                                                    <table class="uk-table uk-table-striped" id="tenantUtilityListData">
+
+                                                        <thead>
+                                                            <tr>
+                                                                <th>Property Address</th>
+                                                                <th>Energy Performance Certificate</th>
+                                                                <th>Portable Appliance Testing</th>
+                                                                <th>Gas Certificate</th>
+                                                                <th>Legionella Test</th>
+
+                                                            </tr>
+                                                        </thead>
+                                                        <tbody class="getPropertyExpiryInfo">
+
+
+                                                        </tbody>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div> 
+                    </div> 
+                </div>
+
+            
                 <div class="uk-modal" id="modal_header_footer">
                     <div class="uk-modal-dialog" style="width:30%;">
                         <div class="uk-modal-header modelHeaderStyle">
@@ -857,6 +948,52 @@
                     </div>
                 </div>
 
+
+
+
+
+                <div class="uk-modal" id="getTenancyRenew">
+                    <div class="uk-modal-dialog">
+                        <div class="uk-modal-header">
+                            <h3 class="uk-modal-title" style="text-align: center;">Tenancy Renewal</h3>
+                        </div>
+                        <p>
+                            <div class="uk-grid" data-uk-grid-margin>
+                                 
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="inputTenantName">Name<span class="req">*</span></label>
+                                        <input type="text" id="inputTenantName" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputTenantAddress">Property Address<span class="req">*</span></label>
+                                        <input type="text" id="inputTenantAddress" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputNewStartDate">Start Date<span class="req">*</span></label>
+                                        <input type="text" id="inputNewStartDate" required class="md-input" readonly/>
+                                    </div>
+
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputNewEndDate">End Date<span class="req">*</span></label>
+                                        <input type="text" id="inputNewEndDate" required class="md-input" data-uk-datepicker="{format:"YYYY.MM.DD"}"/>
+                                    </div>
+                                    <br/>
+                                </div>
+  
+                            </div>
+                            <br/>
+                            
+                            <div class="uk-modal-footer uk-text-right">
+                                <button type="button" class="md-btn md-btn-flat uk-modal-close" id="btnTenancyRenewal">OK</button>
+                            </div>
+                       </p> 
+                    </div>
+                </div>
+
             </div>  <!-- page inner container -->
             </div> <!-- page content -->
 
@@ -910,9 +1047,9 @@
         <script src="assets/js/pages/dashboard.min.js"></script>
         <script src="assets/js/select2.min.js"></script>
         <!--  charts functions -->
-
+        <script src="assets/js/const.js"></script>
         <script src="assets/js/appUrl.js"></script>
-
+        <script src="assets/js/checkDateDiff.js"></script>
         <script src="assets/js/validationCheck.js"></script>
         <script src="assets/js/screenfull.js"></script>
         <script type="text/javascript" src="assets/js/loaders.js"></script>

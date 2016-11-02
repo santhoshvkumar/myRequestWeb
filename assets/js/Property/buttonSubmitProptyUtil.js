@@ -48,11 +48,11 @@ var buttonSubmitProptyUtil = function() {
 
 
 
-    var address = $("#inputAddress").val();
+    var address = $("#inputAddress").val().replace(/["']/g, "`");
     var location = $("#inputLocation").val();
 
 
-    var feul = $("#select2-inputFuel-container").html();
+    var feul = $("#select2-inputFuel-container").html().replace(/["']/g, "`");
     var supplierElectric = $("#select2-inputSupplierElectric-container").html();
     var supplierGas = $("#select2-inputSupplierGas-container").html();
     var read1 = $("#inputRead1").val();
@@ -71,7 +71,7 @@ var buttonSubmitProptyUtil = function() {
     var bedrooms = $("#select2-inputBedrooms-container").html();
     var propertyStatus = $("#select2-inputPropertyStatus-container").html();
     var city = $("#select2-inputCity-container").html();
-    var zip = $("#inpuZip").val();
+    var zip = $("#inpuZip").val().replace(/["']/g, "`");
     var country = $("#inputCountry").val();
     getApiAddress = address + ", " + location + "," + state + "," + city + " - " + zip + ", " + country;
     console.log(getApiAddress);
@@ -89,8 +89,8 @@ var buttonSubmitProptyUtil = function() {
     var landlordState = $("#select2-inputState1-container").html();
     var landlordCity = $("#select2-inputCity1-container").html();
     var landlordZip = $("#inpuZip1").val();
-    var landlordAddress = $("#inputAddress1").val();
-    var landlordPostCode = $("#inpuZip1").val();
+    var landlordAddress = $("#inputAddress1").val().replace(/["']/g, "`");
+    var landlordPostCode = $("#inpuZip1").val().replace(/["']/g, "`");
 
 
     var hmoLicenseNumber = $("#inputHmoLicenseNumber").val();

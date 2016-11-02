@@ -9,6 +9,8 @@ var pushMessageSpecialityUpdate = "Speciality {0} has been updated for Request #
 var pushMessageWorkStart = "Request # {0}, Work has been started at {1}";
 var pushMessageWorkEnd = "Request # {0}, Work successfully completed at {1}";
 
+var messagePaymentDue = "You are due by {0} days, please pay to proceed further.";
+
 String.prototype.format = function() {
     var formatted = this;
     for( var arg in arguments ) {
