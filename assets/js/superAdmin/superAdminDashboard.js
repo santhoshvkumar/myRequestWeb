@@ -634,6 +634,7 @@
 
 
   $(".btnSubmitAdmin").click(function() {
+      var inputAvail = 0;
       var hiddenAdminID = $("#hiddenAdminID").val();
       var inputTitle = $("#select2-inputTitle-container").html();
       var adminFirstName = $("#inputFirstName").val();
@@ -649,9 +650,18 @@
       var getEmergencyNumber = "+44" + $("#inputEmergencyNumber").val();
       var getEmergencyElectricityNumber = "+44" + $("#inputEmergencyElectricityNumber").val();
       var autoGenerate = $("#inputAutoGenerate").val();
-      //var inputVoid = $("#getVoid").val();
-      var inputAvail = $("#getAvail").val();
+      var getAvailIsVoid = $("#getAvail").prop("checked");
+      if(getAvailIsVoid==true){
+        inputAvail = 1;
+      }
+      else{
+        inputAvail = 0;
+      }
+      
       var inputUtility = $("#getUtility").val();
+      if(inputUtility==undefined){
+        inputUtility=0;
+      }
       var getPassword = "Password#1";
       $("#getLoadingModalContent").addClass('md-show');
 
