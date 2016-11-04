@@ -15,10 +15,17 @@ function getContractorsApplied(getProblemID) {
                   $('#md-bg-'+resultProblem.records[getInfo].ContractorID).removeClass("md-bg-yellow");
                   $('#md-bg-'+resultProblem.records[getInfo].ContractorID).addClass("md-bg-green");
                   $('#contractorApprovedIcon-'+resultProblem.records[getInfo].ContractorID).hide();
-                  $(".contractorApprovedIcon").hide();
+                  
                 }
                 else{
                   $('#contractorApproved-'+resultProblem.records[getInfo].ContractorID).hide();
+                }
+
+                if(problemStatus2=="Completed"){
+                  $('.contractorApprovedIcon').hide();
+                }
+                else{
+                  $('.contractorApprovedIcon').show();
                 }
               }
 

@@ -218,7 +218,7 @@
           }); // #contractorValue
 
           getParticularProblemInfo(getProblemID);
-          getContractorsApplied(getProblemID);
+          
       }); // GetAllContractorUserList
       /********************** End - To Get Contractor List *******************/
 

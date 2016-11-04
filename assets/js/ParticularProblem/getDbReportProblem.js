@@ -599,4 +599,5 @@ function getDbReportProblem(getProblemID) {
           /*********** End - To add new notes for particular Problem **********/
       }); // GetParticularProblem
       /********** To get Particular Problem Details - End ********/
+      getContractorsApplied(getProblemID);
   } // getDbReportProblem
