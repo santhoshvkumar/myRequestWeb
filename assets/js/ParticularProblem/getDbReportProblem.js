@@ -331,8 +331,9 @@ function getDbReportProblem(getProblemID) {
 
 
               $(".whenDuration").text(getMoment);
-              $(".getWhen").text(createDate + " (" + getMoment + ")");
-              $(".getWhenNeeded").text(whenToRespond);
+              $(".getWhen").text(createDate + " ( raised on " + getMoment + " )");
+
+              $(".getWhenNeeded").text("( Available on "+moment(whenToRespond).format('DD/MM/2016,  h:mm A')+" )");
               $(".getAddress").text(getAddress);
               $(".problemNotes").html(Notes);
               $(".userNotes").html("<span><i class='fa fa-pencil-square-o userNotesEdits' id='editUserNotes-" + getProblemID + "'></i></span>");

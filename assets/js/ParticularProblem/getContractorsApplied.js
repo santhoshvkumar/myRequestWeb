@@ -58,7 +58,7 @@ function getContractorsApplied(getProblemID) {
                               $(".statusColor").html('<button type="button" class="md-btn md-btn-success" id="btnApproved">Approved</button>');
                               $("#btnApproved").show();
                               $("#btnApprove").hide();
-                              var dataWorkLogForm = '{"Status":"Approved","Content":"Admin has assigned you to Request # ' + requestID + ' ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
+                              var dataWorkLogForm = '{"Status":"Approved","Content":"Admin has assigned '+getContractorName+' to Request # ' + requestID + ' ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
                               console.log(dataWorkLogForm);
                               var sendWorkLogURL = domainAddress + 'CreateProblemWorkLog';
                               console.log(sendWorkLogURL);
@@ -68,21 +68,22 @@ function getContractorsApplied(getProblemID) {
                                   data: dataWorkLogForm,
                                   success: function(dataCheck) {
                                       console.log(dataCheck);
-
-                                      var dataWorkLogForm = '{"Status":"Assigned","Content":"Contractor '+getContractorName+' has been assigned ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
-                                      console.log(dataWorkLogForm);
-                                      var sendWorkLogURL = domainAddress + 'CreateProblemWorkLog';
-                                      console.log(sendWorkLogURL);
-                                      $.ajax({
-                                          type: "POST",
-                                          url: sendWorkLogURL,
-                                          data: dataWorkLogForm,
-                                          success: function(dataCheck) {
-                                              console.log(dataCheck);
-                                              getDbReportProblem(getProblemID);
-                                              getContractorsApplied(getProblemID);
-                                          }
-                                      });
+                                      getDbReportProblem(getProblemID);
+                                      getContractorsApplied(getProblemID);
+                                      // var dataWorkLogForm = '{"Status":"Assigned","Content":"Contractor '+getContractorName+' has been assigned ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
+                                      // console.log(dataWorkLogForm);
+                                      // var sendWorkLogURL = domainAddress + 'CreateProblemWorkLog';
+                                      // console.log(sendWorkLogURL);
+                                      // $.ajax({
+                                      //     type: "POST",
+                                      //     url: sendWorkLogURL,
+                                      //     data: dataWorkLogForm,
+                                      //     success: function(dataCheck) {
+                                      //         console.log(dataCheck);
+                                      //         getDbReportProblem(getProblemID);
+                                      //         getContractorsApplied(getProblemID);
+                                      //     }
+                                      // });
 
                                        
                                   }
