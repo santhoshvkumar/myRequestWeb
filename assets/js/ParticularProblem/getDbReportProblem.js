@@ -37,7 +37,7 @@ function getDbReportProblem(getProblemID) {
               var getFixedAmount = resultProblem.ProblemRecord[Problem].FixedAmount;
               getSpecialityID = resultProblem.ProblemRecord[Problem].SpecialityID;
               var getAddress = resultProblem.ProblemRecord[Problem].GetAddress;
-
+              
               if(getSpecialityID!=""){
                 getProblemSpeciality(getSpecialityID);
               }
@@ -142,7 +142,7 @@ function getDbReportProblem(getProblemID) {
                   $(".statusColor").html("");
                   var str = "Approved";
                   var result = str.fontcolor("blue");
-                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid blue;"> Approved</div> </div>');
+                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid blue;">Approved</div> </div>');
                   $(".rescheduleshowbtn").show();
                   $(".assignshowbtn").hide();
                   $(".assignRescheduleBtn").addClass("btn-success");
@@ -162,7 +162,7 @@ function getDbReportProblem(getProblemID) {
                   $(".statusColor").html("");
                   var str = "Started";
                   var result = str.fontcolor("brown");
-                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid brown;"> Started</div> </div>');
+                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid brown;">Started</div> </div>');
                   $(".rescheduleshowbtn").show();
                   $(".assignshowbtn").hide();
                   $(".assignRescheduleBtn").addClass("btn-success");
@@ -182,7 +182,7 @@ function getDbReportProblem(getProblemID) {
                   $(".statusColor").html("");
                   var str = "Completed";
                   var result = str.fontcolor("green");
-                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid green;"> Completed</div> </div>');
+                  $(".statusColor").html('<div class="md-card md-card-hover widthCardGal"> <div class="gallery_grid_item md-card-content" style="text-align:center;padding: 10px;border-left: 5px solid green;">Completed</div> </div>');
                   $(".rescheduleshowbtn").hide();
                   $(".assignshowbtn").hide();
                   $(".assignRescheduleBtn").addClass("btn-success");
@@ -598,7 +598,8 @@ function getDbReportProblem(getProblemID) {
               } // else if(notesVal != "")
           }); // btnAddNotes
           /*********** End - To add new notes for particular Problem **********/
+          getContractorsApplied(getProblemID);
       }); // GetParticularProblem
       /********** To get Particular Problem Details - End ********/
-      getContractorsApplied(getProblemID);
+      
   } // getDbReportProblem

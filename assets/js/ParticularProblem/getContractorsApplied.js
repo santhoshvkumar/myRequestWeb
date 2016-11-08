@@ -20,7 +20,7 @@ function getContractorsApplied(getProblemID) {
                 else{
                   $('#contractorApproved-'+resultProblem.records[getInfo].ContractorID).hide();
                 }
-
+                
                 if(problemStatus2=="Completed"){
                   $('.contractorApprovedIcon').hide();
                 }

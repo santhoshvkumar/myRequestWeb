@@ -750,6 +750,7 @@
                                                     getBlockDates = new Array();
                                                     for (Problem in resultProblemList.ProblemCONTRACTORRecord) {
                                                         getProblemID = resultProblemList.ProblemCONTRACTORRecord[Problem].ProblemID;
+                                                        getRequestID = resultProblemList.ProblemCONTRACTORRecord[Problem].RequestID;
                                                         getProblemNotes = resultProblemList.ProblemCONTRACTORRecord[Problem].Notes;
                                                         getStartDate = resultProblemList.ProblemCONTRACTORRecord[Problem].StartDate;
                                                         getEndDate = resultProblemList.ProblemCONTRACTORRecord[Problem].EndDate;
@@ -774,9 +775,9 @@
                                                             }
 
                                                             if (getContractorName != null) {
-                                                                getTitle = "Case # " + getProblemID;
+                                                                getTitle = "Request # " + getRequestID;
                                                             } else {
-                                                                getTitle = "Case # " + getProblemID + " CTOR Yet to Assign";
+                                                                getTitle = "Request # " + getRequestID + " CTOR Yet to Assign";
                                                             }
 
                                                             newItem = {
