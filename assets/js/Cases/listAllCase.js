@@ -784,7 +784,8 @@
                                                                 'title': getTitle,
                                                                 'start': getStartDate,
                                                                 'end': getEndDate,
-                                                                'backgroundColor': getColor
+                                                                'backgroundColor': getColor,
+                                                                'problemID':getProblemID
                                                             };
                                                             getBlockDates.push(newItem);
 
@@ -803,7 +804,7 @@
                                                         eventClick: function(calEvent, jsEvent, view) {
                                                             //console.log('Event: ' + calEvent.title);
                                                             var getCaseInfo = calEvent.title.split(' ');
-                                                            var getCaseID = getCaseInfo[2];
+                                                            var getCaseID = calEvent.problemID;
                                                             //console.log(getCaseID);
                                                             window.location.href = "particularProblem.php?ProblemID=" + getCaseID;
                                                         }
