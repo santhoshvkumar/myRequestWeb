@@ -50,6 +50,66 @@
             }, 800);
          });  // SearchSpeciality
 
+         $("#inputHMONoOfTenent").keyup(function(e) {
+            count = $("#inputHMONoOfTenent").val();
+            if(count==""){
+
+            }
+            else{
+                if (count == 1) {
+                    $("#singleHmo").prop("checked",true);
+                    $("#multipleHmo").prop("checked",false);
+                    $('.propSingle > div').addClass('checked');
+                    $('.propMultiple > div').removeClass('checked');
+                    $("#imgHmoUploadPic").css("border","");
+                    $(".hmoInputTenent").hide();
+                    $(".hmoLicenseNumber").hide();
+                } else {
+                    $("#singleHmo").prop("checked",false);
+                    $("#multipleHmo").prop("checked",true);
+                    $('.propSingle > div').removeClass('checked');
+                    $('.propMultiple > div').addClass('checked');
+                    $(".hmoInputTenent").show('slow');
+                    $(".hmoLicenseNumber").show('slow');
+                }
+
+                $(".getTenantList").html('');
+                for(var i=1;i<=count;i++){
+                    getAddTenant(i);
+                    $("#getIsAppInstallCheck-"+i).css("height", "610px");
+                }
+                getAddRemove(count);
+            }
+            
+        });
+
+         $("#inputHMONoOfTenent").on('change',function(){
+            count = $("#inputHMONoOfTenent").val();
+            if (count == 1) {
+                $("#singleHmo").prop("checked",true);
+                $("#multipleHmo").prop("checked",false);
+                $('.propSingle > div').addClass('checked');
+                $('.propMultiple > div').removeClass('checked');
+                $("#imgHmoUploadPic").css("border","");
+                $(".hmoInputTenent").hide();
+                $(".hmoLicenseNumber").hide();
+            } else {
+                $("#singleHmo").prop("checked",false);
+                $("#multipleHmo").prop("checked",true);
+                $('.propSingle > div').removeClass('checked');
+                $('.propMultiple > div').addClass('checked');
+                $(".hmoInputTenent").show('slow');
+                $(".hmoLicenseNumber").show('slow');
+            }
+
+            $(".getTenantList").html('');
+            for(var i=1;i<=count;i++){
+                getAddTenant(i);
+                $("#getIsAppInstallCheck-"+i).css("height", "610px");
+            }
+            getAddRemove(count);
+         });
+
          $("#inputHMONoOfTenent").keydown(function(e) {
              // Allow: backspace, delete, tab, escape, enter and .
              if ($.inArray(e.keyCode, [46, 8, 9, 27, 13, 110, 190]) !== -1 ||
