@@ -468,6 +468,38 @@
                                             </div>
                                         </div>
 
+
+                                        <div class="md-card md-card-hover contractorRating">
+                                            <div class="uk-grid" data-uk-grid-margin>
+                                                <div class="uk-width-medium-1-1">
+                                                    <div class="md-card-content">
+                                                        <div class="uk-overflow-container">
+                                                            <table class="uk-table uk-table-striped">
+                                                                <thead>
+                                                                    <tr>
+                                                                        <th>Quality Rating</th>
+                                                                        <th>Punctuality Rating</th>
+                                                                        <th>StaffBehavior Rating</th>
+                                                                        <th>Over All Rating</th>
+                                                                        <th>Notes</th>
+                                                                    </tr>
+                                                                </thead>
+                                                                <tbody class="getContractorRating">
+                                                                    <tr>
+                                                                        <td id="qualityRating"></td>
+                                                                        <td id="punctualityRating"></td>
+                                                                        <td id="staffBehaviorRating"></td>
+                                                                        <td id="overAllRating"></td>
+                                                                        <td id="notesRating"></td>
+                                                                    </tr>
+                                                                </tbody>
+                                                            </table>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+
                                     </div>
                                 </div>
                             </div> <!-- mdCard uk-grid -->

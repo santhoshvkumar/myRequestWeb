@@ -2238,6 +2238,11 @@ form#FileURLUploadImage1 {
     display:none;
 }
 
+.contractorRating{
+    margin: 10px 10px 10px -10px;
+    display:none;
+}
+
 
 .contractorsApplied{
     display:none;
