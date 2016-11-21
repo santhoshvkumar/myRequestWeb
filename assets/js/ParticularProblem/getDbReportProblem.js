@@ -96,6 +96,8 @@ function getDbReportProblem(getProblemID) {
                   $(".assignRescheduleBtn").text("Send Notification to Contractor");
                   $("#btnClosedd").show();
                   $("#btnApprove").hide();
+                  $("#noteNewText").attr("disabled",false);
+                  $(".btnAddNotes").attr("disabled",false);
               } else if (problemStatus2 == "Assigned") {
 
                   $(".statusColor").html("");
@@ -116,6 +118,8 @@ function getDbReportProblem(getProblemID) {
                   $("#inputEndTime").attr("disabled",false);
                   $("#btnApprove").show();
                   $("#amountListData").hide();
+                  $("#noteNewText").attr("disabled",false);
+                  $(".btnAddNotes").attr("disabled",false);
               } else if (problemStatus2 == "Awaiting Approval") {
 
                   $(".statusColor").html("");
@@ -137,6 +141,8 @@ function getDbReportProblem(getProblemID) {
                   $("#inputEndTime").attr("disabled",false);
                   $("#amountListData").show();
                   $("#btnApprove").show();
+                  $("#noteNewText").attr("disabled",false);
+                  $(".btnAddNotes").attr("disabled",false);
               } else if (problemStatus2 == "Approved") {
                   //console.log("problem status Approved");
                   $(".statusColor").html("");
@@ -157,6 +163,8 @@ function getDbReportProblem(getProblemID) {
                   $("#inputEndTime").attr("disabled",false);
                   $("#amountListData").hide();
                   $("#btnApprove").hide();
+                  $("#noteNewText").attr("disabled",false);
+                  $(".btnAddNotes").attr("disabled",false);
               } else if (problemStatus2 == "Started") {
                   //console.log("problem status Started");
                   $(".statusColor").html("");
@@ -177,6 +185,8 @@ function getDbReportProblem(getProblemID) {
                   $("#inputEndTime").attr("disabled",false);
                   $("#btnApprove").hide();
                   $("#amountListData").hide();
+                  $("#noteNewText").attr("disabled",false);
+                  $(".btnAddNotes").attr("disabled",false);
               } else if (problemStatus2 == "Completed") {
 
                   $(".statusColor").html("");
@@ -197,6 +207,8 @@ function getDbReportProblem(getProblemID) {
                   $("#inputEndTime").attr("disabled",true);
                   $("#btnApprove").hide();
                   $("#amountListData").show();
+                  $("#noteNewText").attr("disabled",true);
+                  $(".btnAddNotes").attr("disabled",true);
               } else if (problemStatus2 == "Closed") {
 
                   $(".statusColor").html("");
@@ -217,6 +229,8 @@ function getDbReportProblem(getProblemID) {
                   $("#btnClosedd").hide();
                   $("#btnApprove").hide();
                   $("#amountListData").hide();
+                  $("#noteNewText").attr("disabled",true);
+                  $(".btnAddNotes").attr("disabled",true);
               }
               if (localProblemStatus == "Closed") {
                   $("#btnClosedd-" + resultProblem.ProblemRecord[Problem].ProblemID).hide();
@@ -331,7 +345,7 @@ function getDbReportProblem(getProblemID) {
 
 
               $(".whenDuration").text(getMoment);
-              $(".getWhen").text(createDate + " ( raised on " + getMoment + " )");
+              $(".getWhen").text(createDate + " ( raised " + getMoment + " )");
 
               $(".getWhenNeeded").text("( Available on "+moment(whenToRespond).format('DD/MM/2016,  h:mm A')+" )");
               $(".getAddress").text(getAddress);

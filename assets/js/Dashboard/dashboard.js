@@ -700,7 +700,7 @@
             localStorage.setItem("MyRequest_RepairStatus", "Completed");
             window.location.href = "ListAllCase.html";
         });
-        $("#getOpenRepairs").click(function() {
+        $(".getOpenRequest").click(function() {
             localStorage.setItem("MyRequest_RepairStatus", "!Completed");
             window.location.href = "ListAllCase.html";
         });
