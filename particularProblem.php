@@ -486,10 +486,18 @@
                                                                 </thead>
                                                                 <tbody class="getContractorRating">
                                                                     <tr>
-                                                                        <td id="qualityRating"></td>
-                                                                        <td id="punctualityRating"></td>
-                                                                        <td id="staffBehaviorRating"></td>
-                                                                        <td id="overAllRating"></td>
+                                                                        <td> 
+                                                                            <img id="qualityRating" src="" alt="qualityRating" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <img id="punctualityRating" src="" alt="punctualityRating" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <img id="staffBehaviorRating" src="" alt="staffBehaviorRating" />
+                                                                        </td>
+                                                                        <td>
+                                                                            <img id="overAllRating" src="" alt="overAllRating" />
+                                                                        </td>
                                                                         <td id="notesRating"></td>
                                                                     </tr>
                                                                 </tbody>

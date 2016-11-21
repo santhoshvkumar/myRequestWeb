@@ -214,10 +214,10 @@ function getDbReportProblem(getProblemID) {
                   $("#amountListData").show();
                   $("#noteNewText").attr("disabled",true);
                   $(".btnAddNotes").attr("disabled",true);
-                  $("#qualityRating").text(resultProblem.ProblemRecord[Problem].QualityRating);
-                  $("#punctualityRating").text(resultProblem.ProblemRecord[Problem].PunctualityRating);
-                  $("#staffBehaviorRating").text(resultProblem.ProblemRecord[Problem].StaffBehaviorRating);
-                  $("#overAllRating").text(resultProblem.ProblemRecord[Problem].ContractorRating);
+                  $("#qualityRating").attr("src","assets/img/Rating/select_"+resultProblem.ProblemRecord[Problem].QualityRating+".png");
+                  $("#punctualityRating").attr("src","assets/img/Rating/select_"+resultProblem.ProblemRecord[Problem].PunctualityRating+".png");
+                  $("#staffBehaviorRating").attr("src","assets/img/Rating/select_"+resultProblem.ProblemRecord[Problem].StaffBehaviorRating+".png");
+                  $("#overAllRating").attr("src","assets/img/Rating/select_"+resultProblem.ProblemRecord[Problem].ContractorRating+".png");
                   $("#notesRating").text(resultProblem.ProblemRecord[Problem].NotesRating);
                   $(".contractorRating").show();
               } else if (problemStatus2 == "Closed") {
