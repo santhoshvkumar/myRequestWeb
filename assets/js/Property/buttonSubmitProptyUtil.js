@@ -25,10 +25,10 @@ var buttonSubmitProptyUtil = function() {
     var getAgency = $('.agency > div').hasClass('checked');
     var getLandlord = $('.landlord > div').hasClass('checked');
     if (getAgency == true) {
-        isVoid = "Yes";
+        isVoid = "Agency";
     }
     if (getLandlord == true) {
-        isVoid = "No";
+        isVoid = "Landlord";
     }
 
 
@@ -36,12 +36,12 @@ var buttonSubmitProptyUtil = function() {
     var getHMOSingle = $('.propSingle > div').hasClass('checked');
     var getHMOMultiple = $('.propMultiple > div').hasClass('checked');
     if (getHMOSingle == true) {
-        hmoOccupancy = "No";
+        hmoOccupancy = "Single";
         $(".hmoInputTenent").hide();
         $(".hmoLicenseNumber").hide();
     }
     if (getHMOMultiple == true) {
-        hmoOccupancy = "Yes";
+        hmoOccupancy = "Multiple";
         $(".hmoInputTenent").show();
         $(".hmoLicenseNumber").show();
     }
@@ -259,17 +259,12 @@ var buttonSubmitProptyUtil = function() {
                 $("#gasValidTo").val('');
                 $("#legValidFrom").val('');
                 $("#legValidTo").val('');
-                $('.appYes > div').removeClass('checked');
-                $('.appNo > div').removeClass('checked');
-                $('.occupancySingle > div').removeClass('checked');
-                $('.occupancyMultiple > div').removeClass('checked');
-                $('.homeInsurYes > div').removeClass('checked');
-                $('.homeInsurNo > div').removeClass('checked');
-                $('.propManageFull > div').removeClass('checked');
-                $('.propManageSemi > div').removeClass('checked');
-                $('.propManageLet > div').removeClass('checked');
-                $('.agency > div').removeClass('checked');
-                $('.landlord > div').removeClass('checked');
+                $('#landBuildInsurYes').iCheck('uncheck');
+                $('#landBuildInsurNo').iCheck('check');
+                $('#propertyManageFull').iCheck('uncheck');
+                $('#propertyManageSemi').iCheck('uncheck');
+                $('#propertyManageLet').iCheck('uncheck');
+                $("#singleHmo").iCheck('check');
                 $("#imgHmoUploadPic").attr("src", "assets/img/noImage.gif");
                 $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
                 $("#imgElectricityCertificate").attr("src", "assets/img/noImage.gif");
@@ -367,19 +362,12 @@ var buttonSubmitProptyUtil = function() {
                 $("#gasValidTo").val('');
                 $("#legValidFrom").val('');
                 $("#legValidTo").val('');
-                $('.appYes > div').removeClass('checked');
-                $('.appNo > div').removeClass('checked');
-                $('.occupancySingle > div').removeClass('checked');
-                $('.occupancyMultiple > div').removeClass('checked');
-                $('.propSingle > div').removeClass('checked');
-                $('.propMultiple > div').removeClass('checked');
-                $('.homeInsurYes > div').removeClass('checked');
-                $('.homeInsurNo > div').removeClass('checked');
-                $('.propManageFull > div').removeClass('checked');
-                $('.propManageSemi > div').removeClass('checked');
-                $('.propManageLet > div').removeClass('checked');
-                $('.agency > div').removeClass('checked');
-                $('.landlord > div').removeClass('checked');
+                $('#landBuildInsurYes').iCheck('uncheck');
+                $('#landBuildInsurNo').iCheck('check');
+                $('#propertyManageFull').iCheck('uncheck');
+                $('#propertyManageSemi').iCheck('uncheck');
+                $('#propertyManageLet').iCheck('uncheck');
+                $("#singleHmo").iCheck('check');
                 $("#imgHmoUploadPic").attr("src", "assets/img/noImage.gif");
                 $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
                 $("#imgElectricityCertificate").attr("src", "assets/img/noImage.gif");
@@ -439,7 +427,7 @@ var buttonSubmitProptyUtil = function() {
             }
         });
     } // sec if
-
+    isEdit=false;
     $(".md-input-wrapper").removeClass("md-input-filled");
     $(".propertyContent").hide();
     $(".landlordInfo").hide();

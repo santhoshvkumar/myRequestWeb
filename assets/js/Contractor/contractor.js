@@ -423,7 +423,7 @@
                   }
 
                   isAppInstalled = result.records[contractor].isAppInstalled;
-                  //console.log(isAppInstalled);
+                  
                   if (isAppInstalled == 1) {
                       $("#getBorderColor").css("border", "1px solid greenyellow");
                       $('.appYes > div').addClass('checked');
@@ -433,8 +433,7 @@
                       $('.appYes > div').removeClass('checked');
                       $('.appNo > div').addClass('checked');
                   }
-                  // $("#radio_demo_inline_1").val(result.records[contractor].IsSmartPhone);
-                  $("#radio_demo_inline_5").val(result.records[contractor].IsEmergencyAvailability);
+                  
                   $("#inputContractValidTill").val(result.records[contractor].ContractValidTill);
                   $("#inputTradeCertificateNo").val(result.records[contractor].TradeCertificateNo);
                   
@@ -753,16 +752,14 @@
       $("#select2-inputSpeciality-container").html("Select Speciality");
       $(".mno-prefix").hide();
       $(".ano-prefix").hide();
-      $('.smartYes > div').removeClass('checked');
-      $('.smartNo > div').removeClass('checked');
-      $('.agency > div').removeClass('checked');
-      $('.independent > div').removeClass('checked');
-      $('.appYes > div').removeClass('checked');
-      $('.appNo > div').removeClass('checked');
-      $('.emergencyAvailable > div').removeClass('checked');
-      $('.emergencyNotAvailable > div').removeClass('checked');
-      $('.liabilityInsurance > div').removeClass('checked');
-      $('.liabilityNotInsurance > div').removeClass('checked');
+      $('#ownSmartPhoneYes').iCheck('uncheck');
+      $('#ownSmartPhoneNo').iCheck('uncheck');
+      $('#emergencyYes').iCheck('uncheck');
+      $('#emergencyNo').iCheck('uncheck');
+      $('#agencyCheck').iCheck('uncheck');
+      $('#independentCheck').iCheck('uncheck');
+      $('#liabilityYes').iCheck('uncheck');
+      $('#liabilityNo').iCheck('uncheck');
       $("#inputTradeCertificateNo").val('');
       $("#inputValidTill").val('');
       $("#inputContractValidTill").val('');
@@ -783,7 +780,7 @@
       imageUrl1 = "";
       imageUrl2 = "";
       imageUrl3 = "";
-      $("#getBorderColor").css("border", "");
+      $("#user_edit_form").css("border", "");
       $(".md-input-wrapper").addClass("md-input-filled");
 
   });
@@ -1550,16 +1547,14 @@
                       $("#inputHourlyRate").val('');
                       $("#inputSpeciality").val(0);
                       $("#select2-inputSpeciality-container").html("Select Speciality");
-                      $('.smartYes > div').removeClass('checked');
-                      $('.smartNo > div').removeClass('checked');
-                      $('.agency > div').removeClass('checked');
-                      $('.independent > div').removeClass('checked');
-                      $('.appYes > div').removeClass('checked');
-                      $('.appNo > div').removeClass('checked');
-                      $('.emergencyAvailable > div').removeClass('checked');
-                      $('.emergencyNotAvailable > div').removeClass('checked');
-                      $('.liabilityInsurance > div').removeClass('checked');
-                      $('.liabilityNotInsurance > div').removeClass('checked');
+                      $('#ownSmartPhoneYes').iCheck('uncheck');
+                      $('#ownSmartPhoneNo').iCheck('uncheck');
+                      $('#emergencyYes').iCheck('uncheck');
+                      $('#emergencyNo').iCheck('uncheck');
+                      $('#agencyCheck').iCheck('uncheck');
+                      $('#independentCheck').iCheck('uncheck');
+                      $('#liabilityYes').iCheck('uncheck');
+                      $('#liabilityNo').iCheck('uncheck');
                       $("#inputTradeCertificateNo").val('');
                       $("#inputValidTill").val('');
                       $("#inputContractValidTill").val('');
@@ -1570,6 +1565,7 @@
                       $("#progressbox2").hide();
                       $("#progressbox3").hide();
                       $(".contractorContent").hide();
+                      $("#user_edit_form").css("border", "");
                       isSmartPhone = "";
                       isAgency = "";
                       isAppInstalled = "";
@@ -1617,16 +1613,14 @@
                       $("#inputHourlyRate").val('');
                       $("#inputSpeciality").val(0);
                       $("#select2-inputSpeciality-container").html("Select Speciality");
-                      $('.smartYes > div').removeClass('checked');
-                      $('.smartNo > div').removeClass('checked');
-                      $('.agency > div').removeClass('checked');
-                      $('.independent > div').removeClass('checked');
-                      $('.appYes > div').removeClass('checked');
-                      $('.appNo > div').removeClass('checked');
-                      $('.emergencyAvailable > div').removeClass('checked');
-                      $('.emergencyNotAvailable > div').removeClass('checked');
-                      $('.liabilityInsurance > div').removeClass('checked');
-                      $('.liabilityNotInsurance > div').removeClass('checked');
+                      $('#ownSmartPhoneYes').iCheck('uncheck');
+                      $('#ownSmartPhoneNo').iCheck('uncheck');
+                      $('#emergencyYes').iCheck('uncheck');
+                      $('#emergencyNo').iCheck('uncheck');
+                      $('#agencyCheck').iCheck('uncheck');
+                      $('#independentCheck').iCheck('uncheck');
+                      $('#liabilityYes').iCheck('uncheck');
+                      $('#liabilityNo').iCheck('uncheck');
                       $("#inputTradeCertificateNo").val('');
                       $("#inputValidTill").val('');
                       $("#inputContractValidTill").val('');
@@ -1638,6 +1632,7 @@
                       $("#progressbox3").hide();
                       $("#hiddenContractorID").val(0);
                       $(".contractorContent").hide();
+                      $("#user_edit_form").css("border", "");
                       isSmartPhone = "";
                       isAgency = "";
                       isAppInstalled = "";
@@ -1647,7 +1642,6 @@
                       imageUrl2 = "";
                       imageUrl3 = "";
                       $(".md-input-wrapper").removeClass("md-input-filled");
-
                       $("#getBorderColor").css("border", "");
                       $(".editContractorStatus").hide();
                   }
@@ -1975,8 +1969,7 @@
 
 
                       $("#inputZip").val(result.records[contractor].Zip);
-                      //$("#inputCountry").val(result.records[contractor].country);
-                      //console.log("Mobile Number : "+result.records[contractor].phoneNo1.slice(0,3));
+                      
                       isFourExistNo = result.records[contractor].phoneNo1.slice(0, 3);
                       if (isFourExistNo == "+44") {
                           $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(3));
@@ -1985,7 +1978,7 @@
                       }
 
                       if (result.records[contractor].alternateNo != null) {
-                          //console.log("Alternate Number : "+result.records[contractor].alternateNo.slice(0,3));
+                          
                           isFourExistAtNo = result.records[contractor].alternateNo.slice(0, 3);
                           if (isFourExistAtNo == "+44") {
                               $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(3));
@@ -2027,48 +2020,36 @@
 
 
                       if (isSmartPhone == 1) {
-                          $('.smartYes > div').addClass('checked');
-                          $('.smartNo > div').removeClass('checked');
+                          $('#ownSmartPhoneYes').iCheck('check');
                       } else {
-                          $('.smartYes > div').removeClass('checked');
-                          $('.smartNo > div').addClass('checked');
+                          $('#ownSmartPhoneNo').iCheck('check');
                       }
-
+ 
                       isAgency = result.records[contractor].isAgency;
                       if (isAgency == 1) {
-                          $('.agency > div').addClass('checked');
-                          $('.independent > div').removeClass('checked');
+                          $('#agencyCheck').iCheck('check');
                       } else {
-                          $('.agency > div').removeClass('checked');
-                          $('.independent > div').addClass('checked');
+                          $('#independentCheck').iCheck('check');
                       }
 
                       isEmergencyAvailable = result.records[contractor].isEmergencyAvailability;
                       if (isEmergencyAvailable == 1) {
-                          $('.emergencyAvailable > div').addClass('checked');
-                          $('.emergencyNotAvailable > div').removeClass('checked');
+                          $('#emergencyYes').iCheck('check');
                       } else {
-                          $('.emergencyAvailable > div').removeClass('checked');
-                          $('.emergencyNotAvailable > div').addClass('checked');
+                          $('#emergencyNo').iCheck('check');
                       }
                       isLiabilityInsurance = result.records[contractor].isLiabilityInsurance;
                       if (isLiabilityInsurance == 1) {
-                          $('.liabilityInsurance > div').addClass('checked');
-                          $('.liabilityNotInsurance > div').removeClass('checked');
+                          $('#liabilityYes').iCheck('check');                    
                       } else {
-                          $('.liabilityInsurance > div').removeClass('checked');
-                          $('.liabilityNotInsurance > div').addClass('checked');
+                          $('#liabilityNo').iCheck('check');
                       }
 
                       isAppInstalled = result.records[contractor].isAppInstalled;
                       if (isAppInstalled == 1) {
-                          $("#getBorderColor").css("border", "1px solid greenyellow");
-                          $('.appYes > div').addClass('checked');
-                          $('.appNo > div').removeClass('checked');
+                          $("#user_edit_form").css("border", "2px solid greenyellow");
                       } else {
-                          $("#getBorderColor").css("border", "1px solid red");
-                          $('.appYes > div').removeClass('checked');
-                          $('.appNo > div').addClass('checked');
+                          $("#user_edit_form").css("border", "2px solid red");
                       }
 
                       

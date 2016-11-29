@@ -1,4 +1,4 @@
-var getPropLat, getPropLong;
+var getPropLat, getPropLong, isEdit=false;
  $(function() {
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
@@ -115,11 +115,8 @@ var getPropLat, getPropLong;
  var mapCountCheck = 0;
 
  $(document).ready(function() {
-
-
      $("#inputCountry").val("UK");
      var country = $("#inputCountry").val();
-
      adminUserID = localStorage.getItem("MyRequest_AdminID");
      var adminUserName = localStorage.getItem("MyRequest_UserName");
      var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -128,10 +125,7 @@ var getPropLat, getPropLong;
      var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
-     //Not to allow Page
-     
-
-
+    
      localStorage.setItem("MyRequest_RepairStatus", "");
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
@@ -163,37 +157,16 @@ var getPropLat, getPropLong;
             }
          }
      }
-
-
-
-
+ 
      $('.economy7 > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
      $('.economy7 > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
      $("#inputEconomy7").prop("checked", true);
-
-
+ 
      $('.waterMeter > span').css('box-shadow', 'rgba(255, 179, 0, 0.498039) 0px 0px 0px 7px inset').css('border-color', 'rgba(255, 179, 0, 0.498039)').css('transition', 'border 0.4s').css('box-shadow', '0.4s').css('background-color', '1.2s').css('background-color', 'rgba(255, 179, 0, 0.498039)');
      $('.waterMeter > span > small').css('left', '18px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(255, 179, 0)');
      $("#inputWaterMeter").prop("checked", true);
-
-
-
-     $('#inputWaterMeter').on('change', function() {
-         if (this.value == '1'); {
-             $("#inputWater").toggle();
-             $(".waterMet").toggle();
-             $(".waterAuthority").toggle();
-             $("#inputWaterAuthority").toggle();
-             $("#inputWaterAuthority").select2();
-             // $("#select2-inputWaterAuthority-container").toggle(); 
-         }
-         if (this.value == '0'); {
-             $("#inputWaterAuthority").hide();
-             $("#inputWaterAuthority").select2();
-             //$("#select2-inputWaterAuthority-container").hide(); 
-         }
-
-     });
+ 
+     
 
 
      $(".hmoInputTenent").hide();
@@ -216,14 +189,11 @@ var getPropLat, getPropLong;
 
      maxProp++;
      $("#enterPageNO").val(maxProp);
-
      getPropertyList(getValue);
      $(".getTenantList").html('');
      getAddTenant(count);
      getAddRemove(count);
      $("#getIsAppInstallCheck-" + count).css("height", "610px");
-
-
 
      $("#inputState").select2()
          .on("change", function(e) {
@@ -237,31 +207,19 @@ var getPropLat, getPropLong;
 
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
      $("#getLoadingModalContent").addClass('md-show');
-
-
      $(".getLettingAgencyBusinessName").text("Add Property - " + businessName + " - " + lettingAgencyCode);
-
-
      $("#inputWaterAuthority").select2();
      $("#inputLandlordTitle").select2();
-
      $("#inputProperty").select2();
-     //$(".select2").css("margin-top","-56px");
      $("#inputBedrooms").select2();
-     //$(".select2").css("margin-top","-56px");
      $("#inputPropertyStatus").select2();
-     //$(".select2").css("margin-top","-56px");
      $("#inputFuel").select2();
-     //$(".select2").css("margin-top","-8px");
      $("#inputSupplierElectric").select2();
-     //$(".select2").css("margin-top","-8px");
      $("#inputSupplierGas").select2();
-     //$(".select2").css("margin-top","-8px");
-     //$(".select2").css("margin-top","-8px");
-     //$(".select2").css("margin-top","-8px");
-     $('.propSingle > div').addClass('checked');
-     $('.homeInsurNo > div').addClass('checked');
-     $('.agency > div').addClass('checked');
+     $('#singleHmo').iCheck('check');
+     $('#landBuildInsurYes').iCheck('uncheck');
+     $('#landBuildInsurNo').iCheck('check');
+     $('#voidPartYes').iCheck('check');
      $(".btnSubmitPropertyMoveOut").hide();
      $(".landlordInfo").hide();
      $(".utilityInfo").hide();
@@ -270,85 +228,68 @@ var getPropLat, getPropLong;
      $(".utilityIconLabel").hide();
      $(".ele2").hide();
      $(".ele3").hide();
-     $("#singleHmo").prop('checked', true);
-     $("#radio_demo_inline_3").prop('checked', true);
-     $("#radio_demo_inline_6").prop('checked', true);
      getCityCouncilList();
      $("#inputTaxAuthority").select2();
-
-     $('#inputGas').keypress(function(event) {
-         if (event.which < 46 || event.which >= 58 || event.which == 47) {
-             event.preventDefault();
-         }
-
-         if (event.which == 46 && $(this).val().indexOf('.') != -1) {
-             this.value = '';
-         }
-     });
-     $('#inputRead1').keypress(function(event) {
-         if (event.which < 46 || event.which >= 58 || event.which == 47) {
-             event.preventDefault();
-         }
-
-         if (event.which == 46 && $(this).val().indexOf('.') != -1) {
-             this.value = '';
-         }
-     });
-     $('#inputRead2').keypress(function(event) {
-         if (event.which < 46 || event.which >= 58 || event.which == 47) {
-             event.preventDefault();
-         }
-
-         if (event.which == 46 && $(this).val().indexOf('.') != -1) {
-             this.value = '';
-         }
-     });
-     $('#inputWater').keypress(function(event) {
-         if (event.which < 46 || event.which >= 58 || event.which == 47) {
-             event.preventDefault();
-         }
-
-         if (event.which == 46 && $(this).val().indexOf('.') != -1) {
-             this.value = '';
-         }
-     });
-
-
      $(".utilityImage").hide();
      $(".utilityLabel").hide();
  }); // ready
 
 
+    $('#inputWaterMeter').on('change', function() {
+         if (this.value == '1'); {
+             $("#inputWater").toggle();
+             $(".waterMet").toggle();
+             $(".waterAuthority").toggle();
+             $("#inputWaterAuthority").toggle();
+             $("#inputWaterAuthority").select2();
+         }
+         if (this.value == '0'); {
+             $("#inputWaterAuthority").hide();
+             $("#inputWaterAuthority").select2();
+         }
 
- $("#inputEconomy7").on('change', function() {
-     if (this.checked) {
-         $("#hiddenIsEconomy7").val(1);
-         $(".electMeter").show();
-     } else {
-         $("#hiddenIsEconomy7").val(0);
-         $(".electMeter").hide();
-     }
- });
+     });
+
+
+    $('#inputGas').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    $('#inputRead1').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    $('#inputRead2').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    $('#inputWater').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
 
 
 
- $('#inputFuel').on('change', function() {
-
-     console.log(this.value);
-
-     if (this.value == '1') {
-         $("#inputGas").show();
-         $(".ele1").show();
-     }
-     if (this.value == '2') {
-         $("#inputGas").hide();
-         $(".ele1").hide();
-     }
-     if (this.value == '3') {
-         $("#inputGas").hide();
-         $(".ele1").hide();
-     }
- });
 
 
 
@@ -492,9 +433,6 @@ var getPropLat, getPropLong;
      getValueOfTenant();
  });
 
- $(".btnSearch").click(function() {
-
- });
 
  $(".btnSubmit").click(function() {
      var latitude = $("#latitude").val();

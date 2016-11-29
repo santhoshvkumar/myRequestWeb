@@ -5,6 +5,7 @@ function getPropertyInfo(editPropertyID){
               $(".utilityIconLabel").show();
               finalTenantCount = 0;
               $("#hiddenPropertyID").val(editPropertyID);
+              isEdit=true;
               $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
                   //console.log(resultGetProperty);
                   for (var property in resultGetProperty.records) {
@@ -28,14 +29,14 @@ function getPropertyInfo(editPropertyID){
 
                       hmoOccupanyType = resultGetProperty.records[property].HmoOccupanyType;
                       if (hmoOccupanyType == "Single") {
-                          $('.propSingle > div').addClass('checked');
-                          $('.propMultiple > div').removeClass('checked');
+                          $("#singleHmo").iCheck('check');
+                          $("#multipleHmo").iCheck('uncheck');
                           $(".hmoInputTenent").hide();
                           $(".hmoLicenseNumber").hide();
                           $("#inputHMONoOfTenent").val(resultGetProperty.records[property].NoOfTenants);
                       } else {
-                          $('.propSingle > div').removeClass('checked');
-                          $('.propMultiple > div').addClass('checked');
+                          $("#singleHmo").iCheck('uncheck');
+                          $("#multipleHmo").iCheck('check');
                           $(".hmoLicenseNumber").show();
                           $(".hmoInputTenent").show();
                           $("#inputHMONoOfTenent").val(resultGetProperty.records[property].NoOfTenants);
@@ -43,22 +44,27 @@ function getPropertyInfo(editPropertyID){
 
                       homeInsurance = resultGetProperty.records[property].HomeInsurance;
                       if (homeInsurance == 1) {
-                          $('.homeInsurYes > div').addClass('checked');
-                          $('.homeInsurNo > div').removeClass('checked');
+                          $('#landBuildInsurYes').iCheck('check');
+                          $('#landBuildInsurNo').iCheck('uncheck');
                       } else {
-                          $('.homeInsurYes > div').removeClass('checked');
-                          $('.homeInsurNo > div').addClass('checked');
+                          $('#landBuildInsurYes').iCheck('uncheck');
+                          $('#landBuildInsurNo').iCheck('check');
                       }
 
                       getPropertyManaged = resultGetProperty.records[property].PropManaged;
-                      if (getPropertyManaged == 1) {
-                          $('.propManageFull > div').addClass('checked');
-                          $('.propManageSemi > div').removeClass('checked');
-                          $('.propManageLet > div').removeClass('checked');
+                      if (getPropertyManaged == "Full") {
+                        $('#propertyManageFull').iCheck('check');
+                        $('#propertyManageSemi').iCheck('uncheck');
+                        $('#propertyManageLet').iCheck('uncheck');
+                      }
+                      else if (getPropertyManaged == "Semi") {
+                        $('#propertyManageFull').iCheck('uncheck');
+                        $('#propertyManageSemi').iCheck('check');
+                        $('#propertyManageLet').iCheck('uncheck');
                       } else {
-                          $('.propManageFull > div').removeClass('checked');
-                          $('.propManageSemi > div').addClass('checked');
-                          $('.propManageLet > div').removeClass('checked');
+                        $('#propertyManageFull').iCheck('uncheck');
+                        $('#propertyManageSemi').iCheck('uncheck');
+                        $('#propertyManageLet').iCheck('check');
                       }
 
 
@@ -75,12 +81,12 @@ function getPropertyInfo(editPropertyID){
                       }
 
                       isVoid = resultGetProperty.records[property].IsVoid;
-                      if (isVoid == 1) {
-                          $('.agency > div').addClass('checked');
-                          $('.landlord > div').removeClass('checked');
+                      if (isVoid == "Agency") {
+                          $("#voidPartYes").iCheck('check');
+                          $("#voidPartNo").iCheck('uncheck');
                       } else {
-                          $('.agency > div').removeClass('checked');
-                          $('.landlord > div').addClass('checked');
+                          $("#voidPartYes").iCheck('uncheck');
+                          $("#voidPartNo").iCheck('check');
                       }
                       $("#inputLandlordTitle").val(resultGetProperty.records[property].Title);
                       $("#select2-inputLandlordTitle-container").html(resultGetProperty.records[property].Title);
@@ -339,10 +345,13 @@ function getPropertyInfo(editPropertyID){
                       } else {
                           $(".btnSubmitPropertyMoveOut").show();
                       }
+
                       for (var addProperty in resultGetProperty.records[property].UserReg) {
                           count++;
                           $(".newAdd").remove();
                           getAddTenant(count);
+                          if(count!=1)
+                          $("#closeCard-"+count).show();
                           $("#hiddenNewPropertyTenant-" + count).val(true);
                           $("#btnAddUserTenant-" + count).hide();
                           $("#btnRemoveUserTenant-" + count).show();

@@ -22,22 +22,15 @@ var clearAllValues = function() {
     $("#gasValidTo").val('');
     $("#legValidFrom").val('');
     $("#legValidTo").val('');
-    $('.appYes > div').removeClass('checked');
-    $('.appNo > div').removeClass('checked');
-    $('.occupancySingle > div').removeClass('checked');
-    $('.occupancyMultiple > div').removeClass('checked');
-    $('.homeInsurYes > div').removeClass('checked');
-    $('.homeInsurNo > div').addClass('checked');
-    $('.propManageFull > div').removeClass('checked');
-    $('.propManageSemi > div').removeClass('checked');
-    $('.propManageLet > div').removeClass('checked');
-    $("#singleHmo").prop('checked');
-    $('.propSingle > div').addClass('checked');
-    $('.propMultiple > div').removeClass('checked');
+    $("#voidPartYes").iCheck('check');
+    $("#voidPartNo").iCheck('uncheck');
+    $('#landBuildInsurYes').iCheck('uncheck');
+    $('#landBuildInsurNo').iCheck('check');
+    $('#propertyManageFull').iCheck('uncheck');
+    $('#propertyManageSemi').iCheck('uncheck');
+    $('#propertyManageLet').iCheck('uncheck');
+    $("#singleHmo").iCheck('check');
     $(".hmoInputTenent").hide();
-    $("#singleHmo").prop('checked',true);
-    $("#radio_demo_inline_5").prop('checked',true);
-    $("#radio_demo_inline_6").prop('checked',true);
     $("#imgHmoUploadPic").attr("src", "assets/img/noImage.gif");
     $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
     $("#imgElectricityCertificate").attr("src", "assets/img/noImage.gif");
@@ -96,7 +89,6 @@ var clearAllValues = function() {
     $("#inputRead2").val('');
     $("#inputGas").val('');
     $("#inputWater").val('');
-    
     $("#getLastName").val('');
     $("#inputAddress1").val('');
     $("#inpuZip1").val('');
@@ -111,7 +103,6 @@ var clearAllValues = function() {
     $(".mno-prefix").hide();
     $("#inputMobileNumber").removeAttr('style');
     $("#inputHMONoOfTenent").val(1);
-    //$("#inputSewerageAuthority").val('');
     $("#select2-inputTaxAuthority-container").html("Select Council Tax Authoriy");
     $(".utilityInfo").hide();
     $(".btnSubmitProperty").text("Add Property & Update Utility");

@@ -31,11 +31,12 @@
         .select2-dropdown {
             z-index: 3051;
         }
+        
         #sidebar_main .menu_section>ul>li.current_contractor>a .menu_title {
             color: #4285F4;
         }
-
-        .current_contractor > a > span.menu_icon > i.fa {
+        
+        .current_contractor> a> span.menu_icon> i.fa {
             color: #4285F4;
         }
     </style>
@@ -530,12 +531,12 @@
                                                             </div>
                                                             <div>
                                                                 <span class="icheck-inline smartYes">
-                                                    <input type="radio" name="radio_demo_inline1" id="radio_demo_inline_1" data-md-icheck />
-                                                    <label for="radio_demo_inline_1" class="inline-label">Yes</label>
+                                                    <input type="radio" name="radio_demo_inline1" id="ownSmartPhoneYes" data-md-icheck />
+                                                    <label for="radio_demo_inline_1a" class="inline-label">Yes</label>
                                                 </span>
                                                                 <span class="icheck-inline smartNo">
-                                                    <input type="radio" name="radio_demo_inline1" id="radio_demo_inline_2" data-md-icheck />
-                                                    <label for="radio_demo_inline_2" class="inline-label">No</label>
+                                                    <input type="radio" name="radio_demo_inline1" id="ownSmartPhoneNo" data-md-icheck />
+                                                    <label for="radio_demo_inline_1b" class="inline-label">No</label>
                                                 </span>
                                                             </div>
                                                         </div>
@@ -546,12 +547,12 @@
                                                             </div>
                                                             <div>
                                                                 <span class="icheck-inline emergencyAvailable">
-                                                    <input type="radio" name="radio_demo_inline4" id="radio_demo_inline_5" data-md-icheck />
-                                                    <label for="radio_demo_inline_5" class="inline-label">Yes</label>
+                                                    <input type="radio" name="radio_demo_inline4" id="emergencyYes" data-md-icheck />
+                                                    <label for="radio_demo_inline_4a" class="inline-label">Yes</label>
                                                 </span>
                                                                 <span class="icheck-inline emergencyNotAvailable">
-                                                    <input type="radio" name="radio_demo_inline4" id="radio_demo_inline_6" data-md-icheck />
-                                                    <label for="radio_demo_inline_6" class="inline-label">No</label>
+                                                    <input type="radio" name="radio_demo_inline4" id="emergencyNo" data-md-icheck />
+                                                    <label for="radio_demo_inline_4b" class="inline-label">No</label>
                                                 </span>
                                                             </div>
                                                         </div>
@@ -562,12 +563,12 @@
                                                             </div>
                                                             <div>
                                                                 <span class="icheck-inline agency">
-                                                    <input type="radio" name="radio_demo_inline2"   data-md-icheck />
-                                                    <label for="radio_demo_inline_1" class="inline-label agencyLabel">Agency</label>
+                                                    <input type="radio" name="radio_demo_inline2" id="agencyCheck" data-md-icheck />
+                                                    <label for="radio_demo_inline_2a" class="inline-label agencyLabel">Agency</label>
                                                 </span>
                                                                 <span class="icheck-inline independent">
-                                                    <input type="radio" name="radio_demo_inline2"   data-md-icheck />
-                                                    <label for="radio_demo_inline_2" class="inline-label agencyLabel">Independent</label>
+                                                    <input type="radio" name="radio_demo_inline2" id="independentCheck" data-md-icheck />
+                                                    <label for="radio_demo_inline_2b" class="inline-label agencyLabel">Independent</label>
                                                 </span>
                                                                 <span style="display:none;">
                                                     <input type="text" id="inputAgencyName" name="inputAgencyName" required class="md-input" placeholder="Agency Name" />
@@ -576,24 +577,24 @@
                                                         </div>
 
 
-                                                        <div class="uk-width-medium-1-4 emergencyLabel">
+                                                        <div class="uk-width-medium-1-4">
                                                             <div class="parsley-row">
                                                                 <label for="liabilityInsurance" class="liabilityInsuranceLabel">Liability Insurance<span class="req">*</span></label>
                                                             </div>
                                                             <div>
                                                                 <span class="icheck-inline liabilityInsurance">
-                                                    <input type="radio" name="radio_demo_inline5"   data-md-icheck />
-                                                    <label for="radio_demo_inline_1" class="inline-label">Yes</label>
+                                                    <input type="radio" name="radio_demo_inline5" id="liabilityYes" data-md-icheck />
+                                                    <label for="radio_demo_inline_5a" class="inline-label">Yes</label>
                                                 </span>
                                                                 <span class="icheck-inline liabilityNotInsurance">
-                                                    <input type="radio" name="radio_demo_inline5"   data-md-icheck />
-                                                    <label for="radio_demo_inline_2" class="inline-label">No</label>
+                                                    <input type="radio" name="radio_demo_inline5" id="liabilityNo" data-md-icheck />
+                                                    <label for="radio_demo_inline_5b" class="inline-label">No</label>
                                                 </span>
                                                             </div>
                                                         </div>
- 
+
                                                     </div>
- 
+
 
                                                     <div class="uk-grid" data-uk-grid-margin>
                                                         <div class="uk-width-medium-1-4">
@@ -643,7 +644,7 @@
                                                                     <div class="fileupload fileupload-new" data-provides="fileupload">
 
                                                                         <div class="input-group-btn" style="margin: -80px 10px 10px 130px;">
-                                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Select File</span><input type="file" id="tradeCertificateImage" name="photoimg" style="height: 40px;margin-top: -10px;"> </span>
+                                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Select File</span><input type="file" id="tradeCertificateImage" name="photoimg" style="height: 40px;margin-top: -10px;">                                                                            </span>
                                                                         </div>
                                                                         <div id="preview3" style="display:none"></div>
 
@@ -660,11 +661,11 @@
                                                         </div>
 
                                                     </div>
- 
+
 
                                                 </div>
                                                 <!-- form_validation -->
- 
+
                                                 <br/>
 
                                                 <input type="hidden" id="hiddenContractorValidTill" value="0" />
@@ -676,13 +677,17 @@
                                                         <input type="hidden" id="hiddenContractorID" value="0" />
                                                     </div>
                                                 </div>
-                                            </div> <!-- contractorContent -->
+                                            </div>
+                                            <!-- contractorContent -->
                                         </li>
                                     </ul>
-                                </div> <!-- user_content -->
+                                </div>
+                                <!-- user_content -->
                             </div>
-                        </div> <!-- 8 - 10 -->
-                    </div><!-- uk-grid -->
+                        </div>
+                        <!-- 8 - 10 -->
+                    </div>
+                    <!-- uk-grid -->
                 </div>
             </div>
 
@@ -694,7 +699,7 @@
         </div>
     </div>
 
-    
+
 
     <div class="uk-modal" id="specialityModal">
         <div class="uk-modal-dialog">
@@ -733,7 +738,7 @@
     </div>
 
 
-   
+
 
     <!-- google web fonts -->
     <script>

@@ -29,6 +29,20 @@ function getAddTenant(count) {
         UIkit.modal.confirm('Are you sure to remove ?', function() {
             $("#getIsAppInstallCheck-" + getCountValue).remove();
             count--;
+            if(count==1){
+                $("#inputHMONoOfTenent").val(count);
+                $("#singleHmo").iCheck('check');
+                $("#multipleHmo").iCheck('uncheck');
+                $(".hmoInputTenent").hide('slow');
+                $(".hmoLicenseNumber").hide();
+                var hiddenPropertyID = $("#hiddenPropertyID").val();
+                if (hiddenPropertyID == 0) {
+                    $("#btnAddUserTenant-" + count).hide();
+                } else {
+                    $("#btnAddUserTenant-" + count).show();
+                }
+            }
+            
         });
 
     });
@@ -695,8 +709,8 @@ function getAddRemove(count) {
         getAddTenant(count);
         getAddRemove(count);
         $("#inputHMONoOfTenent").val(count);
-        $('.propSingle > div').removeClass('checked');
-        $('.propMultiple > div').addClass('checked');
+        $("#singleHmo").iCheck('uncheck');
+        $("#multipleHmo").iCheck('check');
         $(".hmoInputTenent").show('slow');
         $(".hmoLicenseNumber").show();
         var hiddenPropertyID = $("#hiddenPropertyID").val();

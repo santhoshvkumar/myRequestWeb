@@ -79,21 +79,61 @@ function changesRadioProperty() {
             $(".hmoInputTenent").show('slow');
             $(".hmoLicenseNumber").show('slow');
             $("#inputHMONoOfTenent").val(2);
-            $(".getTenantList").html('');
-            getAddTenant(1);
-            getAddTenant(2);
-            getAddRemove(2);
-            $("#getIsAppInstallCheck-1").css("height", "610px");
-            $("#getIsAppInstallCheck-2").css("height", "610px");
+            if(isEdit==false){
+                $(".getTenantList").html('');
+                getAddTenant(1);
+                getAddTenant(2);
+                $("#closeCard-1").hide();
+                $("#closeCard-2").show();
+                getAddRemove(2);
+                $("#getIsAppInstallCheck-1").css("height", "610px");
+                $("#getIsAppInstallCheck-2").css("height", "610px");
+            }
+
         } else {
             $("#imgHmoUploadPic").css("border","");
             $(".hmoInputTenent").hide();
             $(".hmoLicenseNumber").hide();
             $("#inputHMONoOfTenent").val(1);
-            $(".getTenantList").html('');
-            getAddTenant(1);
-            getAddRemove(1);
-            $("#getIsAppInstallCheck-1").css("height", "610px");
+            if(isEdit==false){
+                $(".getTenantList").html('');
+                getAddTenant(1);
+                $("#closeCard-1").hide();
+                getAddRemove(1);
+                $("#getIsAppInstallCheck-1").css("height", "610px");
+            }
+        }
+        isEdit=false;
+    });
+
+
+     $("#inputEconomy7").on('change', function() {
+        if (this.checked) {
+            $("#hiddenIsEconomy7").val(1);
+            $(".electMeter").show();
+        } else {
+            $("#hiddenIsEconomy7").val(0);
+            $(".electMeter").hide();
+        }
+    });
+
+
+
+    $('#inputFuel').on('change', function() {
+
+        console.log(this.value);
+
+        if (this.value == '1') {
+            $("#inputGas").show();
+            $(".ele1").show();
+        }
+        if (this.value == '2') {
+            $("#inputGas").hide();
+            $(".ele1").hide();
+        }
+        if (this.value == '3') {
+            $("#inputGas").hide();
+            $(".ele1").hide();
         }
     });
 }
