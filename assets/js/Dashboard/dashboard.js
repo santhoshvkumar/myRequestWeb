@@ -322,10 +322,10 @@
                     
                         $(".noOfAppInstalled").text(result.records[0].TenantCountInstalledApp);
                         $(".noOfTenants").text(result.records[0].TenantCount);
-                        var totalCount = parseInt(result.records[0].TenantCountInstalledApps) / parseInt(result.records[0].TenantCount);
+                        var totalCount = parseInt(result.records[0].TenantCountInstalledApp) / parseInt(result.records[0].TenantCount);
                         totalCount = parseInt(totalCount * 100);
-                        $(".noOfApps").prop("data-percent", totalCount);
-                        $(".noOfApps").attr("data-percent", totalCount);
+                        $(".countTenantAppInstalled").prop("data-percent", totalCount);
+                        $(".countTenantAppInstalled").attr("data-percent", totalCount);
                     }
                 });
                 $.get(domainAddress + 'GetAdminTenantContractorListCount/' + adminUserID, {}, function(result) {
@@ -341,8 +341,8 @@
                         $(".noOfContractors").text(result.records[1].TotalContractors);
                         var totalContrtorCount = parseInt(result.records[1].TotalAppContractors) / parseInt(result.records[1].TotalContractors);
                         totalContrtorCount = parseInt(totalContrtorCount * 100);
-                        $(".noOfContractorApps").prop("data-percent", totalContrtorCount);
-                        $(".noOfContractorApps").attr("data-percent", totalContrtorCount);
+                        $(".countContractorAppInstalled").prop("data-percent", totalContrtorCount);
+                        $(".countContractorAppInstalled").attr("data-percent", totalContrtorCount);
                     }   
                 });
                     
@@ -1641,7 +1641,7 @@
 
 
   function getLastTwoDaysMessages(adminUserID){
-    debugger;
+    
     var getMessageUrl = "";
     if(adminUserID==0){
         getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView";
