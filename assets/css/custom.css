@@ -2324,6 +2324,13 @@ form#FileURLUploadImage1 {
    border-radius: 5px;
 }
 
+.closeMap{
+    cursor: pointer;
+    font-size: 30px !important;
+    font-weight: bold;
+    float: right;
+}
+
 
 @media screen and (max-width: 32em) {
    .borderMiddle{

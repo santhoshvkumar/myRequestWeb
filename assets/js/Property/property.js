@@ -355,8 +355,10 @@ var getPropLat, getPropLong, isEdit=false;
      });
  } // getCityCouncilList(); 
 
-
-
+ $(".closeMap").click(function(){
+     var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
+     modalUtilityList.hide(); 
+ });
  
  $("#inpuZip").on('blur', function(e) {
          var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
@@ -372,22 +374,49 @@ var getPropLat, getPropLong, isEdit=false;
          }
          else{
            console.log(wholeAddress);
-           var modalUtilityList = UIkit.modal("#googleMap");
-             $(".propertyLocationGoogleMap").html("");
-             $(".propertyLocationGoogleMap").googleMap({
-                 zoom: 10, // Initial zoom level (optional)
-                 type: "ROADMAP" // Map type (optional)
-             });
-             $(".propertyLocationGoogleMap").addMarker({
-                 address: wholeAddress, // Postal address
-                 zoom: 10,
-                 draggable: true,
-                 success: function(e) {
-                     getLatitude = e.lat;
-                     getLongitude = e.lon;
-                 }
-             });
-             modalUtilityList.show(); 
+           
+           var geocoder = new google.maps.Geocoder();
+            if (geocoder) {
+                geocoder.geocode({
+                    'address': wholeAddress
+                }, function (results, status) {
+                    if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results[0]);
+                        console.log(results[0].geometry.location.lat());
+                        console.log(results[0].geometry.location.lng());
+
+                         var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
+                         //$(".propertyLocationGoogleMap").html("");
+                          var myCenter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
+                          var mapCanvas = document.getElementById("propertyLocationGoogleMap");
+                          var mapOptions = {center: myCenter, zoom: 10};
+                          var map = new google.maps.Map(mapCanvas, mapOptions);
+                          var marker = new google.maps.Marker({position:myCenter});
+                          marker.setMap(map);
+                          setTimeout(function() {
+                              google.maps.event.trigger(map,'resize');
+                              map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
+                              map.setZoom(10);
+                           }, 100)
+                         // $(".propertyLocationGoogleMap").googleMap({
+                         //     zoom: 10, // Initial zoom level (optional)
+                         //     type: "ROADMAP" // Map type (optional)
+                         // });
+                         // $(".propertyLocationGoogleMap").addMarker({
+                         //     address: wholeAddress, // Postal address
+                         //     zoom: 10,
+                         //     draggable: true,
+                         //     success: function(e) {
+                         //         getLatitude = e.lat;
+                         //         getLongitude = e.lon;
+                         //     }
+                         // });
+                         modalUtilityList.show(); 
+                    }
+                });
+            }
+
+
          }
  }); // inputAddress
  
