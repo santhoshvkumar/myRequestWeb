@@ -11,6 +11,8 @@ var pushMessageWorkEnd = "Request # {0}, Work successfully completed at {1}";
 
 var messagePaymentDue = "You are due by {0} days, please pay to proceed further.";
 
+var newSpecialityAddedMsg = "Your agent has added {0}. Go ahead and report problem related to it.";
+
 String.prototype.format = function() {
     var formatted = this;
     for( var arg in arguments ) {

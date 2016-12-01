@@ -428,7 +428,7 @@
                  console.log(sendURL);
 
 
-                 $.get(domainAddress + "push/newSplPush.php?adminID=" + adminUserID + "&StatusMessage=" + specialityDescription, {}, function(result) {
+                 $.get(domainAddress + "push/newSplPush.php?adminID=" + adminUserID + "&StatusMessage=" + newSpecialityAddedMsg.format(specialityDescription), {}, function(result) {
                      console.log(result);
                  });
 
