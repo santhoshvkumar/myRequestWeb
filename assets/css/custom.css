@@ -10,6 +10,14 @@
     border: 1px solid;
 }
 
+.dropDownSelect2 {
+    margin-top: 17px !important;
+    width:100% !important;
+}
+
+.select2Label {
+    top: -17px !important;
+}
 
 .dashboardYellow {
     border: 2px #FCDB34 solid;
@@ -617,6 +625,7 @@ textarea.md-input {
     color: black;
     line-height: 50px;
     font-size: 15px;
+    font-weight: 800;
 }
 
 .uk-margin-top {

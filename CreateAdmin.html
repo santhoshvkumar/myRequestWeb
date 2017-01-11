@@ -135,9 +135,11 @@
                 <div class="md-card-content large-padding adminContent" style="display:none;">
                     <div id="form_validation" class="uk-form-stacked">
                         <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-4">
+                            
+                            <div class="uk-width-medium-1-5">
                                 <div class="parsley-row">
-                                    <label>Title<span class="req">*</span></label><br />
+                                   <label for="inputTitle" class="select2Label">Title<span class="req">*</span></label>
+
                                     <select id="inputTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
                                          <option value="">Select Title</option>
                                          <option value="Mr.">Mr.</option>
@@ -147,38 +149,57 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="uk-width-medium-1-4">
+                            <div class="uk-width-medium-1-5">
                                 <div class="parsley-row">
                                     <label for="firstName">First Name<span class="req">*</span></label>
                                     <input type="text" id="inputFirstName" name="firstName" required class="md-input" />
                                 </div>
                             </div>
-                            <div class="uk-width-medium-1-4">
+                            <div class="uk-width-medium-1-5">
                                 <div class="parsley-row">
                                     <label for="lastName">Last Name<span class="req">*</span></label>
                                     <input type="text" id="inputLastName" name="lastName" required class="md-input" />
                                 </div>
                             </div>
-                             <div class="uk-width-medium-1-4">
+                             <div class="uk-width-medium-1-5">
                                 <div class="parsley-row">
                                     <label for="businessName">Business Name<span class="req">*</span></label>
                                     <input type="text" id="inputBusinessName" name="businessName" required class="md-input" />
                                 </div>
                             </div>
-                        </div>
-                       
-                       
-                   
-                         <div class="uk-grid">
-                           
-                            <div class="uk-width-medium-1-3">
+                            <div class="uk-width-medium-1-5">
                                 <div class="parsley-row">
-                                    <label for="locality">Locality<span class="req">*</span></label>
-                                    <input type="text" id="inputLocality" name="locality" required class="md-input" />
+                                    <label for="emailID">Email ID<span class="req">*</span></label>
+                                    <input type="text" id="inputEmailID" name="emailID" required class="md-input" />
                                 </div>
                             </div>
-                             <div class="uk-width-medium-1-3">
+                        </div>
+                       
+                        <div class="uk-grid"  data-uk-grid-margin>
+                          
+                            <!--This is dummy Grid so that a line spacing is available-->
+                        </div>
+                   
+                         <div class="uk-grid"  data-uk-grid-margin>
+                           
+                           
+                            <div class="uk-width-medium-1-4">
                                 <div class="parsley-row">
+                                    <label for="country" class="select2Label">Country<span class="req">*</span></label>
+                                    <!--<input type="text" id="inputCountry" name="country" required class="md-input" readonly />-->
+
+                                     <select id="inputCountry"  style="width:100%; margin-top: 17px;" name="state" required class="md-input">
+                                        <option value="0">Select Country</option>
+                                        <option value="+44">UK</option>
+                                        <option value="+1">US</option>
+                                        <option value="+1">Canada</option>
+                                        <option value="+91">India</option>
+                                     </select>
+                                </div>
+                            </div>
+                             <div class="uk-width-medium-1-4">
+                                <div class="parsley-row">
+                                     <label for="country" class="select2Label">County<span class="req">*</span></label>
                                     <select id="inputState"  style="width:100%;" name="state" required class="md-input">
                                         <option value="0">Select County</option>
                                         <option value='53'>Aberdeen City</option>
@@ -321,12 +342,20 @@
                                     </select>
                                 </div>
                             </div>
-                            <div class="uk-width-medium-1-3">
+                            <div class="uk-width-medium-1-4">
                                 <div class="parsley-row">
+                                    <label for="country" class="select2Label">City<span class="req">*</span></label>
                                     <select id="inputCity" name="city" required class="md-input">
                                         <option value="0">Select Country to enable City</option>
                                         
                                     </select>
+                                </div>
+                            </div>
+
+                             <div class="uk-width-medium-1-4">
+                                <div class="parsley-row">
+                                    <label for="locality">Locality<span class="req">*</span></label>
+                                    <input type="text" id="inputLocality" name="locality" required class="md-input" />
                                 </div>
                             </div>
 
@@ -335,18 +364,8 @@
 
 
                         <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-4">
-                                <div class="parsley-row">
-                                    <label for="country">Country<span class="req">*</span></label>
-                                    <input type="text" id="inputCountry" name="country" required class="md-input" readonly />
-                                </div>
-                            </div>
-                            <div class="uk-width-medium-1-4">
-                                <div class="parsley-row">
-                                    <label for="emailID">EmailID<span class="req">*</span></label>
-                                    <input type="text" id="inputEmailID" name="emailID" required class="md-input" />
-                                </div>
-                            </div>
+                            
+                            
                             <div class="uk-width-medium-1-4">
                                 <div class="parsley-row">
                                     <label for="phoneNumber">Phone Number<span class="req">*</span></label>
@@ -355,7 +374,24 @@
                                 </div>
                             </div>
 
-                               <div class="uk-width-medium-1-4">
+                            
+                            <div class="uk-width-medium-1-4">
+                                <div class="parsley-row">
+                                    <label for="emergencyNumber">Emergency Number<span class="req">*</span></label>
+                                    <input type="text" id="inputEmergencyNumber" name="emergencyNumber" maxlength="10" required class="md-input" />
+                                    <span class="emerno-prefix">+44 </span>
+                                </div>
+                            </div>
+                             <div class="uk-width-medium-1-4">
+                                <div class="parsley-row">
+
+                                    <!--Sathish Have a look at the UI FIX-->
+                                    <label for="inputEmergencyElectricityNumber">Emergency Electricity Number<span class="req">*</span></label>
+                                    <input type="text" id="inputEmergencyElectricityNumber" name="emergencyElectricityNumber" maxlength="10" required class="md-input" />
+                                    <span class="emerelecNo-prefix">+44 </span>
+                                </div>
+                            </div>
+                            <div class="uk-width-medium-1-4">
                                 <div class="parsley-row">
                                     <label for="urlRent">Url For How To Rent<span class="req">*</span></label>
                                     <input type="text" id="inputUrlRent" name="urlRent" required class="md-input" />
@@ -366,32 +402,9 @@
                         </div>
 
 
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <label for="emergencyNumber">Emergency Number<span class="req">*</span></label>
-                                    <input type="text" id="inputEmergencyNumber" name="emergencyNumber" maxlength="10" required class="md-input" />
-                                    <span class="emerno-prefix">+44 </span>
-                                </div>
-                            </div>
-
-                             <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <label for="emergencyElectricityNumber">Emergency Electricity Number<span class="req">*</span></label>
-                                    <input type="text" id="inputEmergencyElectricityNumber" name="emergencyNumber" maxlength="10" required class="md-input" />
-                                    <span class="emerElecNo-prefix">+44 </span>
-                                </div>
-                            </div>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <label for="autoGenerate">Auto Generate<span class="req">*</span></label>
-                                    <input type="text" id="inputAutoGenerate" name="autoGenerate" required class="md-input" disabled="disabled" style="color:black;" />
-                                </div>
-                            </div>
-                        </div>
 
                          <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-1">
+                            <div class="uk-width-medium-3-10">
                                 <form id="FileURLUploadImage1" method="post" enctype="multipart/form-data" action="https://api.myrequest.co.uk/ajaximage.php" class="form-horizontal">
                                  <div class="">
                                     <img id="imgAdminLogo" style="height: 80px; width: 100px;" src="assets/img/noImage.gif" class="">
@@ -418,6 +431,10 @@
 
                                
                             </div>
+                            <div class="uk-width-7-10">
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvail" />
+                                    <label for="void"><b>IsVoid</b></label>
+                              </div>
                         </div>
 
                         
@@ -429,10 +446,7 @@
                                 <span class="help-block" style="color:red;"></span>
                                 <input type="hidden" id="hiddenAdminID" value="0" />
                             </div>
-                             <div class="uk-width-1-2">
-                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvail" />
-                             <label for="void">IsVoid</a></label>
-                               </div>
+                             
                         </div>
                     </div>
                 </div>
@@ -447,7 +461,7 @@
                         <table id="adminList" class="uk-table uk-table-striped">
                             <thead>
                             <tr>
-                                <th>Auto Generate</th>
+                               
                                 <th>Admin Name</th>
                                 <th>Business Name</th>
                                 <th>E-Mail</th>

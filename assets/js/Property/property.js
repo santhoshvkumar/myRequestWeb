@@ -1,5 +1,9 @@
 var getPropLat, getPropLong, isEdit=false;
  $(function() {
+     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode");
+
+     $(".landlord-prefix").text(getPhoneCode);
+
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
          screenfull.toggle();

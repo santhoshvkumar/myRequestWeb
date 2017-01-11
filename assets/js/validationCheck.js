@@ -2,7 +2,7 @@
 /* global  domainAddress, $ */
 /*exported validationCheckForLogin, isNumber, isValidEmailAddress */
 var sendURL = domainAddress + 'LoginAdminUser', userName = "", adminUserID = 0, adminType = "", businessName = "", lettingAgencyCode = "",  logo = "",
-    businessEmail = "", isAgreeCheck = "", diffDate, count, user, validationCheckForLogin, isNumber, isValidEmailAddress;
+    businessEmail = "", isAgreeCheck = "", diffDate, count, user, validationCheckForLogin, isNumber, isValidEmailAddress, phoneCode, country, countryCode, gmt, phoneCode;
 validationCheckForLogin = function( emailID, password, userTokenID ) {
   var dataForm = '{"Email":"' + emailID + '","Password":"' + password + '","UserToken":"' + userTokenID + '"}';
   console.log( sendURL );
@@ -24,12 +24,35 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               logo = dataCheck.records[ user ].logo;
               businessEmail = dataCheck.records[ user ].BusinessEmail;
               isAgreeCheck = dataCheck.records[ user ].IsAgreeUtility;
+              country = dataCheck.records[ user ].Country;
+              phoneCode = dataCheck.records[ user ].PhoneCode;
+              debugger;
+              switch(country){
+                    case "India":
+                        countryCode="India";
+                        gmt ="GMT+5:30";
+                        break;
+                    case "UK":
+                        countryCode="UK";
+                        gmt ="GMT+0:00";
+                        break;
+                    case "Canada":
+                        countryCode="Canada";
+                        gmt ="GMT-5:00";
+                        break;
+                    case "US":
+                        countryCode="US";
+                        gmt ="GMT-5:00";
+                        break;
+                }
             }
 
             if ( count === 0 ) {
               alert( "Please Check the UserName or Password" );
               return false;
             } else {
+
+              debugger;
               localStorage.setItem( "MyRequest_AdminID", adminUserID );
               localStorage.setItem( "MyRequest_UserName", userName );
               localStorage.setItem( "MyRequest_AdminType", adminType );
@@ -38,6 +61,9 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               localStorage.setItem( "MyRequest_LettingAgencyCode", lettingAgencyCode );
               localStorage.setItem( "MyRequest_myDiffDate", diffDate );
               localStorage.setItem( "MyRequest_Logo", logo );
+              localStorage.setItem( "MyRequest_countryCode", countryCode );
+              localStorage.setItem( "MyRequest_GMT", gmt );
+              localStorage.setItem(" MyRequest_PhoneCode", phoneCode );
               localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
               if ( adminType !== "SuperAdmin" ) {
                  $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {

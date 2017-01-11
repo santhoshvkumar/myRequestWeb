@@ -1,5 +1,5 @@
   $(function() {
-
+      var setCountryCode;
       $('#full_screen_toggle').on('click', function(e) {
           e.preventDefault();
           screenfull.toggle();
@@ -120,8 +120,14 @@
           });
 
 
-
-      $("#inputCountry").val("UK");
+      
+      $("#inputCountry").select2()
+        .on("change", function(e){
+            setCountryCode = $("#inputCountry").val();
+            $(".cphno-prefix").text(setCountryCode);
+            $(".emerno-prefix").text(setCountryCode);
+            $(".emerElec-prefix").text(setCountryCode);
+      });
 
       getAllAdminList(getValue);
       maxProp++;
@@ -170,7 +176,6 @@
       $("#select2-inputCity-container").html("Select City");
       $("#inputCountry").val("UK");
       $("#inputEmailID").val('');
-      $("#inputAutoGenerate").val('');
       $("#inputPhoneNumber").val('');
       $("#inputEmergencyNumber").val('');
       $("#inputUrlRent").val('');
@@ -366,29 +371,6 @@
           }
       }).submit();
   });
-
-
-
-
-  $("#inputBusinessName").blur(function() {
-      var inputBusinessName = $("#inputBusinessName").val();
-      if (inputBusinessName == "") {
-          $("#inputAutoGenerate").val("");
-          $(".md-input-wrapper").removeClass("md-input-filled");
-      } else {
-          //console.log("LastAdminID : " + getLastAdminID);
-          var nextAdminID = parseInt(getLastAdminID) + parseInt(1);
-          //console.log("NextAdminID : " + nextAdminID);
-
-          autoCode = inputBusinessName.trim().charAt(0).toLowerCase() + inputBusinessName.trim().substr(inputBusinessName.length - 1).toLowerCase() + zeroPad(nextAdminID, 5);
-          //console.log("Autocode : " + autoCode);
-          $("#inputAutoGenerate").val(autoCode);
-
-      }
-
-  });
-
-
 
   $("#inputTitle").on('change', function() {
       var inputTitle = $("#inputTitle").val();
@@ -643,13 +625,13 @@
       var getLocality = $("#inputLocality").val();
       var state = $("#select2-inputState-container").html();
       var city = $("#select2-inputCity-container").html();
-      var getCountry = $("#inputCountry").val();
+      var getCountry = $("#select2-inputCountry-container").html();
       var getEmail = $("#inputEmailID").val();
       var getUrl = $("#inputUrlRent").val();
-      var getPhoneNumber = "+44" + $("#inputPhoneNumber").val();
-      var getEmergencyNumber = "+44" + $("#inputEmergencyNumber").val();
-      var getEmergencyElectricityNumber = "+44" + $("#inputEmergencyElectricityNumber").val();
-      var autoGenerate = $("#inputAutoGenerate").val();
+      var getPhoneNumber = setCountryCode + $("#inputPhoneNumber").val();
+      var getEmergencyNumber = setCountryCode + $("#inputEmergencyNumber").val();
+      var getEmergencyElectricityNumber = setCountryCode + $("#inputEmergencyElectricityNumber").val();
+      var autoGenerate = $("#inputCountry").val();
       var getAvailIsVoid = $("#getAvail").prop("checked");
       if(getAvailIsVoid==true){
         inputAvail = 1;
@@ -766,7 +748,7 @@
           return false;
       }
 
-      if (getPhoneNumber == "+44") {
+      if (getPhoneNumber == "+44" || getPhoneNumber === "+91" || getPhoneNumber === "+1") {
           $(".help-block").css('color', 'red');
           $(".help-block").show();
           $(".help-block").text("* Enter the Phone Number");
@@ -787,7 +769,7 @@
           return false;
       }
 
-      if (getEmergencyNumber == "+44") {
+      if (getEmergencyNumber === "+44" || getEmergencyNumber === "+91" || getEmergencyNumber === "+1") {
           $(".help-block").css('color', 'red');
           $(".help-block").show();
           $(".help-block").text("* Enter the Emergency Number");
@@ -797,7 +779,7 @@
           return false;
       }
 
-      if (getEmergencyElectricityNumber == "+44") {
+      if (getEmergencyElectricityNumber === "+44" || getEmergencyElectricityNumber === "+91" || getEmergencyElectricityNumber === "+1") {
           $(".help-block").css('color', 'red');
           $(".help-block").show();
           $(".help-block").text("* Enter the Emergency Electricity Number");
@@ -816,7 +798,8 @@
            $("#getLoadingModalContent").removeClass('md-show');
           return false;
       } else {
-          var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + getAgency + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoCode + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
+          debugger;
+          var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + getAgency + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
           console.log(dataForm);
           if (hiddenAdminID == 0) {
               var sendURL = domainAddress + 'CreateAdmin';
@@ -840,7 +823,7 @@
                           $("#inputUrlRent").val('');
                           $("#getVoid").val('');
                           $("#getAvail").val('');
-                          $("#inputAutoGenerate").val('');
+                          
                           $("#inputPhoneNumber").val('');
                           $("#inputEmergencyNumber").val('');
                           $(".cphno-prefix").hide();
@@ -887,7 +870,7 @@
                           $("#getVoid").val('');
                           $("#getAvail").val('');
                           $("#inputUrlRent").val('');
-                          $("#inputAutoGenerate").val('');
+                          
                           $("#inputPhoneNumber").val('');
                           $("#inputEmergencyNumber").val('');
                           $(".cphno-prefix").hide();
@@ -1013,7 +996,7 @@
                   if (result.records[adminInfo].DateDiff == null || result.records[adminInfo].DateDiff == "") {
                       result.records[adminInfo].DateDiff = "-";
                   } 
-                  $(".allAdminList").append("<tr> <td id='autoGenerate-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AutoGenerate + "</td> <td id='adminName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
+                  $(".allAdminList").append("<tr>   <td id='adminName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td style='color:" + dueColor + "' id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
 
                 
                   if (result.records[adminInfo].IsApproved == 1) {
@@ -1135,6 +1118,7 @@
                   var isEmerFourExistNo = 0;
                   for (var getAdmin in result.records) {
                       filePath = result.records[getAdmin].Logo;
+                      setCountryCode = result.records[getAdmin].PhoneCode;
                       $("#inputFirstName").val(result.records[getAdmin].AdminFirstName);
                       $("#inputLastName").val(result.records[getAdmin].AdminLastName);
                       $("#inputBusinessName").val(result.records[getAdmin].BusinessName);
@@ -1159,18 +1143,13 @@
                           $("#select2-inputCity-container").html(result.records[getAdmin].City);
                       }
 
-                      $("#inputCountry").val(result.records[getAdmin].Country);
+                      $("#select2-inputCountry-container").html(result.records[getAdmin].Country);
                       $("#inputEmailID").val(result.records[getAdmin].BusinessEmail);
                       $("#inputUrlRent").val(result.records[getAdmin].UrlForRent);
 
-                      autoCode = result.records[getAdmin].BusinessName.trim().charAt(0).toLowerCase() + result.records[getAdmin].BusinessName.trim().substr(result.records[getAdmin].BusinessName.length - 1).toLowerCase() + zeroPad(editAdminID, 5);
-                      //console.log("Autocode : "+autoCode);
-
-                      $("#inputAutoGenerate").val(autoCode);
-
                       isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
                       //console.log(isFourExistNo+" === "+result.records[getAdmin].PhoneNumber.slice(3));
-                      if (isFourExistNo == "+44") {
+                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1") {
                           $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
                           $(".cphno-prefix").show();
                           $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
@@ -1182,7 +1161,7 @@
 
                       isEmerFourExistNo = result.records[getAdmin].EmergencyNumber.slice(0, 3);
                       //console.log(isEmerFourExistNo+" === "+result.records[getAdmin].EmergencyNumber.slice(3));
-                      if (isEmerFourExistNo == "+44") {
+                      if (isEmerFourExistNo === "+44" || isEmerFourExistNo === "+91" || isEmerFourExistNo === "+1") {
                           $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(3));
                           $(".emerno-prefix").show();
                           $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
@@ -1195,10 +1174,10 @@
 
                       isEmerElecFourExistNo = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 3);
                       //console.log(isEmerElecFourExistNo+" === "+result.records[getAdmin].EmergencyElectricityNumber.slice(3));
-                      if (isEmerElecFourExistNo == "+44") {
+                      if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
                           $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
                           $(".emerElecNo-prefix").show();
-                          $("#inputEmergencyElectricityNumber").css("padding", "10px 25px 12px 32px");
+                          $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
                       } else {
                           $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
                           $(".emerElecNo-prefix").hide();

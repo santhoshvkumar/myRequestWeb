@@ -1,5 +1,34 @@
   $(function() {
-            
+            debugger;
+            var getCountry = localStorage.getItem("MyRequest_countryCode");
+            switch(getCountry){
+                case "UK":
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-gbp");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-gbp");
+                    break;
+                case "US":
+                      $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-usd");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-usd");
+                    break;
+                case "India":
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-inr");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-inr");
+                    break;
+                case "Canada":
+                      $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-usd");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-usd");
+                    break;
+            }
+
+
             $('#full_screen_toggle').on('click',function(e) {
                 e.preventDefault();
                 screenfull.toggle();
@@ -95,7 +124,7 @@
             adminUserName = localStorage.getItem("MyRequest_UserName");
             var adminType = localStorage.getItem("MyRequest_AdminType");
             var businessName = localStorage.getItem("MyRequest_BusinessName");
-            var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
+           
             var logo = localStorage.getItem("MyRequest_Logo");
             if (adminType == "SuperAdmin") {
                 $(".myRequestAdminLogo").addClass("requestAdminLogo");
@@ -260,7 +289,7 @@
                 $(".forSuperAdmin").hide();
                 $("#pieChartLoc").hide();
 
-                $(".getLettingAgencyBusinessName").text("Dashboard - " + businessName + " - " + lettingAgencyCode);
+                $(".getLettingAgencyBusinessName").text("Dashboard - " + businessName);
                 if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
                     $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
                  }
@@ -1084,7 +1113,7 @@
                 else{
                     for(tenant in resultTenantUtility.records){
                         $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).html("");
-                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenLettingAgencyCode-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].LettingAgencyCode+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
+                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
 
                         for(getUtility in resultTenantUtility.records[tenant].Utility){
                             $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).append("<input type='hidden' id='hiddenIsElectricity-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].ElectricityStatus+"' />  <input type='hidden' id='hiddenIsGas-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].GasStatus+"' /> <input type='hidden' id='hiddenIsWater-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].WaterStatus+"' /> <input type='hidden' id='hiddenIsCouncil-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].CouncilStatus+"' /> <input type='hidden' id='hiddenAvailTenantInsurance-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].IsTenantInsurance+"' />");
@@ -1145,8 +1174,8 @@
                         var hiddenTenantName = $("#hiddenTenantName-"+tenantID).val();
                         var hiddenTenantEmailID = $("#hiddenTenantEmailID-"+tenantID).val();
                         var hiddenTenantPhoneNumber = $("#hiddenTenantPhoneNumber-"+tenantID).val();
-                        var hiddenLettingAgencyCode = $("#hiddenLettingAgencyCode-"+tenantID).val();
-
+                       
+                       
                         var hiddenIsElectricity = $("#hiddenIsElectricity-"+tenantID).val();
                         var hiddenIsGas = $("#hiddenIsGas-"+tenantID).val();
                         var hiddenIsWater = $("#hiddenIsWater-"+tenantID).val();
@@ -1155,8 +1184,11 @@
 
                         UIkit.modal.confirm('Are you sure to move-out tenant?', function() {
                             console.log("yes move-out tenant");
+
+                            // Need to check this LettingAgencyCode not sure why it's been USED
+
                             var getAddTenantArr = new Array();
-                            var newTenantsDataForm = "{'UserRegID':'" + tenantID + "','Name':'" + hiddenTenantName + "','Email':'" + hiddenTenantEmailID + "','Mobile':'" + hiddenTenantPhoneNumber + "','LettingAgencyCode':'" + hiddenLettingAgencyCode + "','IsElectricity':'" + hiddenIsElectricity + "','IsGas':'" + hiddenIsGas + "','IsWater':'" + hiddenIsWater + "','IsCouncil':'" + hiddenIsCouncil + "','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
+                            var newTenantsDataForm = "{'UserRegID':'" + tenantID + "','Name':'" + hiddenTenantName + "','Email':'" + hiddenTenantEmailID + "','Mobile':'" + hiddenTenantPhoneNumber + "','LettingAgencyCode':'0','IsElectricity':'" + hiddenIsElectricity + "','IsGas':'" + hiddenIsGas + "','IsWater':'" + hiddenIsWater + "','IsCouncil':'" + hiddenIsCouncil + "','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
 
                             getAddTenantArr.push(newTenantsDataForm);
 

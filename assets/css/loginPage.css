@@ -6,3 +6,15 @@
 	  background-size: cover;
 
 }
+
+
+.transparentBG {
+    background: rgba(0,0,0,0.61);
+    border: 1px solid rgba(150,150,150,0.38);
+    border-radius: 16px;
+}
+
+.loginContent {
+	margin-top:19px;
+	width:400px;
+}
