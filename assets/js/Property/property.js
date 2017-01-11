@@ -126,7 +126,6 @@ var getPropLat, getPropLong, isEdit=false;
      var adminType = localStorage.getItem("MyRequest_AdminType");
 
      var businessName = localStorage.getItem("MyRequest_BusinessName");
-     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
     
@@ -211,7 +210,7 @@ var getPropLat, getPropLong, isEdit=false;
 
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
      $("#getLoadingModalContent").addClass('md-show');
-     $(".getLettingAgencyBusinessName").text("Add Property - " + businessName + " - " + lettingAgencyCode);
+     $(".getLettingAgencyBusinessName").text("Add Property - " + businessName);
      $("#inputWaterAuthority").select2();
      $("#inputLandlordTitle").select2();
      $("#inputProperty").select2();

@@ -84,7 +84,6 @@
      var adminType = localStorage.getItem("MyRequest_AdminType");
 
      var businessName = localStorage.getItem("MyRequest_BusinessName");
-     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
      var logo = localStorage.getItem("MyRequest_Logo");
      var isFilled = localStorage.getItem("MyRequest_profileFill");
      if (isFilled == "true") {
@@ -124,7 +123,7 @@
 
 
 
-     $(".getLettingAgencyBusinessName").text("Speciality - " + businessName + " - " + lettingAgencyCode);
+     $(".getLettingAgencyBusinessName").text("Speciality - " + businessName);
 
      getSpecialityList(getValue);
      maxProp++;

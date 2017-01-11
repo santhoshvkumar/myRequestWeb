@@ -16,7 +16,6 @@ function loadNewsLetter() {
         var adminType = localStorage.getItem("MyRequest_AdminType");
 
         var businessName = localStorage.getItem("MyRequest_BusinessName");
-        var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
         var logo = localStorage.getItem("MyRequest_Logo");
         localStorage.setItem("MyRequest_RepairStatus", "");
         var isFilled = localStorage.getItem("MyRequest_profileFill");
@@ -123,7 +122,7 @@ function loadNewsLetter() {
 
         getAllNewsLetter(getValue);
 
-        $(".getLettingAgencyBusinessName").text("Newsletter - " + businessName + " - " + lettingAgencyCode);
+        $(".getLettingAgencyBusinessName").text("Newsletter - " + businessName );
 
         maxProp++;
         $("#enterPageNO").val(maxProp);

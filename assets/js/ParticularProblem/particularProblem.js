@@ -98,7 +98,6 @@
       adminUserName = localStorage.getItem("MyRequest_UserName");
       var adminType = localStorage.getItem("MyRequest_AdminType");
       var businessName = localStorage.getItem("MyRequest_BusinessName");
-      var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
       logo = localStorage.getItem("MyRequest_Logo");
       var isFilled = localStorage.getItem("MyRequest_profileFill");
 
@@ -223,7 +222,7 @@
       /********************** End - To Get Contractor List *******************/
 
 
-      $(".getLettingAgencyBusinessName").text("Particular Problem - " + businessName + " - " + lettingAgencyCode);
+      $(".getLettingAgencyBusinessName").text("Particular Problem - " + businessName );
   }); // ready
   
 

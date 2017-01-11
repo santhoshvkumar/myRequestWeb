@@ -82,7 +82,6 @@
      var adminType = localStorage.getItem("MyRequest_AdminType");
 
      var businessName = localStorage.getItem("MyRequest_BusinessName");
-     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
      var logo = localStorage.getItem("MyRequest_Logo");
      localStorage.setItem("MyRequest_RepairStatus", "");
 
@@ -136,7 +135,7 @@
      }
 
      getExistTermsAndCondition();
-     $(".getLettingAgencyBusinessName").text("Terms And Conditions - " + businessName + " - " + lettingAgencyCode);
+     $(".getLettingAgencyBusinessName").text("Terms And Conditions - " + businessName );
 
  }); //ready
 

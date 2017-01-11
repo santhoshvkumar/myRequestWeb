@@ -99,7 +99,6 @@ $(document).ready(function() {
     var adminType = localStorage.getItem("MyRequest_AdminType");
 
     var businessName = localStorage.getItem("MyRequest_BusinessName");
-    var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
     var logo = localStorage.getItem("MyRequest_Logo");
     var isFilled = localStorage.getItem("MyRequest_profileFill");
     if (isFilled == "true") {
@@ -159,7 +158,7 @@ $(document).ready(function() {
 
     $("#enterPageNO").val(maxProp);
     getTenantsList(getValue);
-    $(".getLettingAgencyBusinessName").text("Add Tenant - " + businessName + " - " + lettingAgencyCode);
+    $(".getLettingAgencyBusinessName").text("Add Tenant - " + businessName );
 
 
     adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -1154,7 +1153,7 @@ $(".btnSubmitTenant").click(function() {
 
 
     function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"+44' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';

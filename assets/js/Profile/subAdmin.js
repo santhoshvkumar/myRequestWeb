@@ -75,14 +75,13 @@
       var adminUserName = localStorage.getItem("MyRequest_UserName");
       var adminType = localStorage.getItem("MyRequest_AdminType");
       var businessName = localStorage.getItem("MyRequest_BusinessName");
-      var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
       var logo = localStorage.getItem("MyRequest_Logo");
 
       if (adminUserID == "" || adminUserID == null) {
           window.location.href = "index.html";
       } else {
           $(".getUserName").text(adminUserName);
-          $(".getLettingAgencyBusinessName").text("Sub Admin - " + businessName + " - " + lettingAgencyCode);
+          $(".getLettingAgencyBusinessName").text("Sub Admin - " + businessName );
           $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
       }
 

@@ -127,7 +127,6 @@ function loadPolling(){
         var adminType = localStorage.getItem("MyRequest_AdminType");
 
         var businessName = localStorage.getItem("MyRequest_BusinessName");
-        var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
         var logo = localStorage.getItem("MyRequest_Logo");
         localStorage.setItem("MyRequest_RepairStatus", "");
         var isFilled = localStorage.getItem("MyRequest_profileFill");
@@ -167,7 +166,7 @@ function loadPolling(){
        $("#previousPage").attr("disabled",true);
        $("#enterPageNO").val(maxProp);
 
-       $(".getLettingAgencyBusinessName").text("Polling - " + businessName + " - " + lettingAgencyCode);
+       $(".getLettingAgencyBusinessName").text("Polling - " + businessName );
 
        getallPolling(getValue);
 

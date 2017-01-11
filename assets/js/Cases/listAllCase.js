@@ -131,7 +131,6 @@
                 var adminType = localStorage.getItem("MyRequest_AdminType");
 
                 businessName = localStorage.getItem("MyRequest_BusinessName");
-                var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
                 var logo = localStorage.getItem("MyRequest_Logo");
                 localProblemStatus = localStorage.getItem("MyRequest_RepairStatus");
 
@@ -254,7 +253,7 @@
 
                 $('#startDate').val("Select Start Date");
                 $("#endDateValue").val("Select End Date");
-                $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName + " - " + lettingAgencyCode);
+                $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName );
 
 
 

@@ -123,7 +123,6 @@
   var imageUrl3 = "";
   var contractorsCountLimit = 0;
   var maxProp = 0;
-  var lettingAgencyCode = 0;
   var getValue = "";
 
 
@@ -190,7 +189,6 @@
       var adminType = localStorage.getItem("MyRequest_AdminType");
 
       var businessName = localStorage.getItem("MyRequest_BusinessName");
-      lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
       var logo = localStorage.getItem("MyRequest_Logo");
 
 
@@ -257,7 +255,7 @@
       maxProp++;
       $("#enterPageNO").val(maxProp);
 
-      $(".getLettingAgencyBusinessName").text("Contractor - " + businessName + " - " + lettingAgencyCode);
+      $(".getLettingAgencyBusinessName").text("Contractor - " + businessName);
       getContractorsList(getValue);
 
 
@@ -1509,7 +1507,7 @@
           return false;
       } else {
           $("#getLoadingModalContent").addClass('md-show');
-          var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","EmailID":"' + email + '","AddressLine1":"' + addressLine1 + '","AddressLine2":"' + addressLin2 + '","Locality":"' + locality + '","State":"' + state + '","City":"' + city + '","Zip":"' + zip + '","Country":"' + country + '","PhoneNo1":"' + phoneNo1 + '","AlternateNo":"' + alternateNo + '","StartTime":"' + startTime + '","EndTime":"' + endTime + '","AverageCharge":"' + averageCharge + '","VisitCharge":"' + visitCharge + '","HourlyRate":"' + hourlyRate + '","SpecialityID":"' + specialityID + '", "IsSmartPhone":"' + isSmartPhone + '","IsAgency":"' + isAgency + '","IsAppInstalled":"' + isAppInstalled + '","IsEmergencyAvailable":"' + isEmergencyAvailable + '","TradeCertificateNo":"' + inputTradeCertificateNo + '","ContractValidTill":"' + finalContractValidDate + '","IsLiabilityInsurance":"' + isLiabilityInsurance + '","Image1":"' + imageUrl1 + '","Image2":"' + imageUrl2 + '","TradeCertificateImage":"' + imageUrl3 + '","AdminID":"' + adminUserID + '","Os":"IOS","LettingAgencyCode":"' + lettingAgencyCode + '"}';
+          var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","EmailID":"' + email + '","AddressLine1":"' + addressLine1 + '","AddressLine2":"' + addressLin2 + '","Locality":"' + locality + '","State":"' + state + '","City":"' + city + '","Zip":"' + zip + '","Country":"' + country + '","PhoneNo1":"' + phoneNo1 + '","AlternateNo":"' + alternateNo + '","StartTime":"' + startTime + '","EndTime":"' + endTime + '","AverageCharge":"' + averageCharge + '","VisitCharge":"' + visitCharge + '","HourlyRate":"' + hourlyRate + '","SpecialityID":"' + specialityID + '", "IsSmartPhone":"' + isSmartPhone + '","IsAgency":"' + isAgency + '","IsAppInstalled":"' + isAppInstalled + '","IsEmergencyAvailable":"' + isEmergencyAvailable + '","TradeCertificateNo":"' + inputTradeCertificateNo + '","ContractValidTill":"' + finalContractValidDate + '","IsLiabilityInsurance":"' + isLiabilityInsurance + '","Image1":"' + imageUrl1 + '","Image2":"' + imageUrl2 + '","TradeCertificateImage":"' + imageUrl3 + '","AdminID":"' + adminUserID + '","Os":"IOS","LettingAgencyCode":"0"}';
           console.log(dataForm);
 
           if (contractorID == 0) {
