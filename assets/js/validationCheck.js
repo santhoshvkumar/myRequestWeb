@@ -25,24 +25,27 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               businessEmail = dataCheck.records[ user ].BusinessEmail;
               isAgreeCheck = dataCheck.records[ user ].IsAgreeUtility;
               country = dataCheck.records[ user ].Country;
-              phoneCode = dataCheck.records[ user ].PhoneCode;
-              debugger;
+              
               switch(country){
                     case "India":
                         countryCode="India";
                         gmt ="GMT+5:30";
+                        phoneCode="+91";
                         break;
                     case "UK":
                         countryCode="UK";
                         gmt ="GMT+0:00";
+                        phoneCode="+44";
                         break;
                     case "Canada":
                         countryCode="Canada";
                         gmt ="GMT-5:00";
+                        phoneCode="+1";
                         break;
                     case "US":
                         countryCode="US";
                         gmt ="GMT-5:00";
+                        phoneCode="+1";
                         break;
                 }
             }
@@ -63,7 +66,7 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               localStorage.setItem( "MyRequest_Logo", logo );
               localStorage.setItem( "MyRequest_countryCode", countryCode );
               localStorage.setItem( "MyRequest_GMT", gmt );
-              localStorage.setItem(" MyRequest_PhoneCode", phoneCode );
+              localStorage.setItem( "MyRequest_PhoneCode-prefix", phoneCode );
               localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
               if ( adminType !== "SuperAdmin" ) {
                  $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {
