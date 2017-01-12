@@ -1,5 +1,52 @@
  var lastPage = 0;
+ var getcountryCode = "";
   $(function() {
+     getcountryCode = localStorage.getItem("MyRequest_countryCode");
+      console.log(getcountryCode);
+      switch(getcountryCode){
+          case "UK":
+             
+              $("#avgPound-prefix").removeClass();
+              $("#avgPound-prefix").addClass("fa fa-gbp");
+              $("#visitPound-prefix").removeClass();
+              $("#visitPound-prefix").addClass("fa fa-gbp");
+              $("#hrPound-prefixx").removeClass();
+              $("#hrPound-prefix").addClass("fa fa-gbp");
+              break;
+          case "US":
+               
+              $("#avgPound-prefix").removeClass();
+              $("#avgPound-prefix").addClass("fa fa-usd");
+              $("#visitPound-prefix").removeClass();
+              $("#visitPound-prefix").addClass("fa fa-usd");
+              $("#hrPound-prefix").removeClass();
+              $("#hrPound-prefix").addClass("fa fa-usd");
+              break;
+          case "India":
+              console.log("myCountry"+getcountryCode);
+              $("#avgPound-prefix").removeClass();
+              $("#avgPound-prefix").addClass("fa fa-inr");
+              $("#visitPound-prefix").removeClass();
+              $("#visitPound-prefix").addClass("fa fa-inr");
+              $("#hrPound-prefix").removeClass();
+              $("#hrPound-prefix").addClass("fa fa-inr");
+              break;
+          case "Canada":
+                
+              $("#avgPound-prefix").removeClass();
+              $("#avgPound-prefix").addClass("fa fa-usd");
+              $("#visitPound-prefix").removeClass();
+              $("#visitPound-prefix").addClass("fa fa-usd");
+              $("#hrPound-prefix").removeClass();
+              $("#hrPound-prefix").addClass("fa fa-usd");
+              break;
+        }
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+    
+     
+     $(".landlord-prefix").text(getPhoneCode);
+   
+
 
 
       $('#full_screen_toggle').on('click', function(e) {
@@ -187,7 +234,6 @@
       adminUserID = localStorage.getItem("MyRequest_AdminID");
       var adminUserName = localStorage.getItem("MyRequest_UserName");
       var adminType = localStorage.getItem("MyRequest_AdminType");
-
       var businessName = localStorage.getItem("MyRequest_BusinessName");
       var logo = localStorage.getItem("MyRequest_Logo");
 
@@ -251,7 +297,7 @@
 
       });
 
-      $("#inputCountry").val("UK");
+      $("#inputCountry").val(getcountryCode);
       maxProp++;
       $("#enterPageNO").val(maxProp);
 
@@ -738,7 +784,7 @@
       $("#select2-inputState-container").html("Select County");
       $("#select2-inputCity-container").html("Select City");
       $("#inputZip").val('');
-      $("#inputCountry").val('UK');
+      $("#inputCountry").val(getcountryCode);
       $("#inputPhoneNo1").val('');
       $("#inputAlternateNo").val('');
       $("#inputStartTime").val('');
@@ -1217,8 +1263,7 @@
       var locality = $("#inputLocality").val();
       var state = $("#select2-inputState-container").html();
       var city = $("#select2-inputCity-container").html();
-      var zip = $("#inputZip").val();
-      var country = $("#inputCountry").val();
+      var zip = $("#inputZip").val();var country = $("#inputCountry").val();
       var phoneNo1 = "+44" + $("#inputPhoneNo1").val();
       var alternateNo = "+44" + $("#inputAlternateNo").val();
       var startTime = $("#inputStartTime").val();

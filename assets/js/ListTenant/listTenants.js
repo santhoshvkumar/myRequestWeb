@@ -1,4 +1,8 @@
 $(function() {
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+     
+     $(".landlord-prefix").text(getPhoneCode);
+
 
     $('#full_screen_toggle').on('click', function(e) {
         e.preventDefault();
