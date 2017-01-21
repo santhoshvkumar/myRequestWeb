@@ -1,4 +1,12 @@
- var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+ var adminType = localStorage.getItem("MyRequest_AdminType");
+ var getPhoneCode = "";
+ if(adminType == "SuperAdmin"){
+    getPhoneCode = "+44";
+ }
+ else{
+    getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+ }
+ 
  $(".btnSubmitAdmin").click(function() {
      var hiddenAdminID = $("#hiddenAdminID").val();
      var title = $("#inputSubTitle").val();

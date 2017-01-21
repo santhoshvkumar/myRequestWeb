@@ -2,11 +2,21 @@
  var inputAgencyCode = "";
  $(function() {
     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+    var adminType = localStorage.getItem("MyRequest_AdminType");
+
+    if(adminType == "SuperAdmin"){
+        $(".phno-prefix").text("+44");
+        $(".adminEmerno-prefix").text("+44");
+        $(".emerElectno-prefix").text("+44");
+        $(".subAdminPhno-prefix").text("+44");
+    }
+    else{
+        $(".phno-prefix").text(getPhoneCode);
+        $(".adminEmerno-prefix").text(getPhoneCode);
+        $(".emerElectno-prefix").text(getPhoneCode);
+        $(".subAdminPhno-prefix").text(getPhoneCode);
+    }
      
-     $(".phno-prefix").text(getPhoneCode);
-     $(".adminEmerno-prefix").text(getPhoneCode);
-     $(".emerElectno-prefix").text(getPhoneCode);
-     $(".subAdminPhno-prefix").text(getPhoneCode);
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
          screenfull.toggle();
