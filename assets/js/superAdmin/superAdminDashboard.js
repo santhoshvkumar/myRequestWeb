@@ -126,7 +126,8 @@
             setCountryCode = $("#inputCountry").val();
             $(".cphno-prefix").text(setCountryCode);
             $(".emerno-prefix").text(setCountryCode);
-            $(".emerElec-prefix").text(setCountryCode);
+            $(".emerElectno-prefix").text(setCountryCode);
+            
       });
 
       getAllAdminList(getValue);
@@ -183,7 +184,7 @@
       $("#getAvail").val('');
       $("#inputEmergencyElectricityNumber").val('');
       $(".cphno-prefix").hide();
-      $(".emerElecNo-prefix").hide();
+      $(".emerElectno-prefix").hide();
       $("#inputPhoneNumber").removeAttr("style");
       $(".emerno-prefix").hide();
       $("#inputEmergencyNumber").removeAttr("style");
@@ -596,7 +597,7 @@
   $("#inputEmergencyElectricityNumber").keyup(function() {
       var inputEmergencyElectricityNumber = $("#inputEmergencyElectricityNumber").val();
       if (inputEmergencyElectricityNumber == "") {
-          $(".emerElecNo-prefix").hide();
+          $(".emerElectno-prefix").hide();
           $("#inputEmergencyElectricityNumber").removeAttr('style');
           $("#inputEmergencyElectricityNumber").css("border-color", "red");
           $(".help-block").show();
@@ -604,7 +605,7 @@
           $(".btnSubmitAdmin").attr("disabled", true);
           return false;
       } else {
-          $(".emerElecNo-prefix").show();
+          $(".emerElectno-prefix").show();
           $("#inputEmergencyElectricityNumber").css("padding", "10px 25px 12px 32px");
           $(".help-block").hide();
           $(".help-block").text("");
@@ -831,7 +832,7 @@
 
                           $("#inputPhoneNumber").removeAttr("style");
                           $(".emerno-prefix").hide();
-                          $(".emerElecNo-prefix").hide();
+                          $(".emerElectno-prefix").hide();
                           $("#inputEmergencyNumber").removeAttr("style");
                           $("#inputEmergencyElectricityNumber").removeAttr("style");
                           $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
@@ -878,7 +879,7 @@
                           $(".cphno-prefix").hide();
                           $("#inputPhoneNumber").removeAttr("style");
                           $(".emerno-prefix").hide();
-                          $(".emerElecNo-prefix").hide();
+                          $(".emerElectno-prefix").hide();
                           $("#inputEmergencyNumber").removeAttr("style");
                           $("#inputEmergencyElectricityNumber").removeAttr("style");
                           $(".adminContent").hide();
@@ -1176,11 +1177,11 @@
                       //console.log(isEmerElecFourExistNo+" === "+result.records[getAdmin].EmergencyElectricityNumber.slice(3));
                       if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
                           $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
-                          $(".emerElecNo-prefix").show();
+                          $(".emerElectno-prefix").show();
                           $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
                       } else {
-                          $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
-                          $(".emerElecNo-prefix").hide();
+                          $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                          $(".emerElectno-prefix").hide();
                           $("#inputEmergencyElectricityNumber").removeAttr("style");
                       }
 

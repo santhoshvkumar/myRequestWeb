@@ -1,6 +1,12 @@
  var inputBusinessName = "";
  var inputAgencyCode = "";
  $(function() {
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+     
+     $(".phno-prefix").text(getPhoneCode);
+     $(".adminEmerno-prefix").text(getPhoneCode);
+     $(".emerElectno-prefix").text(getPhoneCode);
+     $(".subAdminPhno-prefix").text(getPhoneCode);
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
          screenfull.toggle();
@@ -1294,7 +1300,7 @@
          var state = $("#select2-inputState-container").html();
          var city = $("#select2-inputCity-container").html();
 
-         var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"+44' + inputPhoneNumber + '","EmergencyNumber":"+44' + inputEmergencyNumber + '","EmergencyElectricityNumber":"+44' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '"}';
+         var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '"}';
          var sendURL = domainAddress + 'updateAdminDetails/' + adminUserID;
          console.log(dataForm);
          console.log(sendURL);

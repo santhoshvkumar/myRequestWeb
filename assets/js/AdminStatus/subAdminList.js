@@ -1,9 +1,10 @@
+ var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
  $(".btnSubmitAdmin").click(function() {
      var hiddenAdminID = $("#hiddenAdminID").val();
      var title = $("#inputSubTitle").val();
      var firstName = $("#firstName").val();
      var lastName = $("#lastName").val();
-     var phoneNumber = "+44" + $("#phoneNumber").val();
+     var phoneNumber = getPhoneCode + $("#phoneNumber").val();
      var emailID = $("#emailID").val();
      var password = $("#hiddenPassword").val();
      $("#getLoadingModalContent").addClass('md-show');
@@ -56,7 +57,7 @@
 
 
 
-     if (phoneNumber == "+44") {
+     if (phoneNumber == "+44" || phoneNumber == "+91" || phoneNumber == "+1") {
          $(".errorInfo").show();
          $(".errorInfo").text("* Enter the Phone Number");
          $("#phoneNumber").css("border-color", "red");
