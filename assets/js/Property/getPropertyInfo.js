@@ -93,7 +93,7 @@ function getPropertyInfo(editPropertyID){
                       $("#getName").val(resultGetProperty.records[property].PropOwnerName);
                       $("#getLastName").val(resultGetProperty.records[property].PropOwnerLastName);
                       isFourExistNo = resultGetProperty.records[property].PropOwnerPhone.slice(0, 3);
-                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1") {
+                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
                           $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone.slice(3));
                       } else {
                           $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone);
@@ -386,7 +386,7 @@ function getPropertyInfo(editPropertyID){
 
 
                           isFourExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 3);
-                          if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1") {
+                          if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
                               $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(3));
                           } else {
                               $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber);

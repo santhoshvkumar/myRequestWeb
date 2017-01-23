@@ -347,7 +347,7 @@ $(".btnSubmitTenantInsurance").click(function() {
     var title = $("#inputTitle").val();
     var name = $("#getName").val().replace(/["']/g, "`");
     var lastName = $("#getLastName").val().replace(/["']/g, "`");
-    var mobileNumber = $("#inputMobileNumber").val();
+    var mobileNumber = getPhoneCode+"-"+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
     hiddenIsElectricity = $("#hiddenIsElectricity").val();
@@ -360,7 +360,7 @@ $(".btnSubmitTenantInsurance").click(function() {
     var currentdate = new Date();
     var getDateValue = currentdate.getDate() + "." + (currentdate.getMonth() + 1) + "." + currentdate.getFullYear();
 
-    var dataForm = '{"PropertyID":"' + propertyId + '","AdminID":"' + adminUserID + '","UserRegID":"' + hiddenTenantID + '","Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' +getPhoneCode+ '' + mobileNumber + '","Email":"' + emailID + '","IsElectricity":"' + hiddenIsElectricity + '","IsGas":"' + hiddenIsGas + '","IsWater":"' + hiddenIsWater + '","IsCouncil":"' + hiddenIsCouncil + '","IsAvailTenantInsurance":"' + hiddenAvailTenantInsurance + '","Date":"' + getDateValue + '","PropertyAddress":"' + hiddenPropertyAddress + '"}';
+    var dataForm = '{"PropertyID":"' + propertyId + '","AdminID":"' + adminUserID + '","UserRegID":"' + hiddenTenantID + '","Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","Email":"' + emailID + '","IsElectricity":"' + hiddenIsElectricity + '","IsGas":"' + hiddenIsGas + '","IsWater":"' + hiddenIsWater + '","IsCouncil":"' + hiddenIsCouncil + '","IsAvailTenantInsurance":"' + hiddenAvailTenantInsurance + '","Date":"' + getDateValue + '","PropertyAddress":"' + hiddenPropertyAddress + '"}';
     console.log(dataForm);
     var modal = UIkit.modal("#modalTenantInsurance");
     modal.hide();
@@ -703,6 +703,7 @@ function loadUserTenantsList(result) {
 
         var isFourExistNo = 0;
         $(".editTenant").on('click', function(e) {
+            debugger;
             var editTenantID = this.id.replace('editTenantID-', '');
             $("#hiddenTenantID").val(editTenantID);
             $("#getLoadingModalContent").addClass('md-show');
@@ -714,7 +715,9 @@ function loadUserTenantsList(result) {
                     $("#getName").val(resultGetTenant.records[getTenant].Name);
                     $("#getLastName").val(resultGetTenant.records[getTenant].LastName);
                     isFourExistNo = resultGetTenant.records[getTenant].PhoneNumber.slice(0, 3);
-                    if (isFourExistNo == "+44" || isFourExistNo == "+91" ||isFourExistNo == "+1") {
+                    console.log(isFourExistNo);
+                    if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
+                        debugger;
                         $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber.slice(3));
                     } else {
                         $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber);
@@ -1158,7 +1161,7 @@ $(".btnSubmitTenant").click(function() {
 
 
     function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' +getPhoneCode+ '' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' +getPhoneCode+ ''+" "+'' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
