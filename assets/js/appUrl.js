@@ -1,3 +1,3 @@
 /* exported   domainAddress */
-var domainAddress = "https://devapi.myrequest.co.uk/";
+var domainAddress = "https://dev.api.myrequest.co.uk/";
 //var domainAddress = "http://localhost:8888/myrequestapi/";
