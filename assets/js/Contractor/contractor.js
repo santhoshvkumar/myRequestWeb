@@ -1266,8 +1266,8 @@
       var state = $("#select2-inputState-container").html();
       var city = $("#select2-inputCity-container").html();
       var zip = $("#inputZip").val();var country = $("#inputCountry").val();
-      var phoneNo1 = getPhoneCode +" "+ $("#inputPhoneNo1").val();
-      var alternateNo = getPhoneCode +" "+ $("#inputAlternateNo").val();
+      var phoneNo1 = getPhoneCode+$("#inputPhoneNo1").val();
+      var alternateNo = getPhoneCode+$("#inputAlternateNo").val();
       var startTime = $("#inputStartTime").val();
       var endTime = $("#inputEndTime").val();
       var averageCharge = $("#inputAverageCharges").val();
@@ -1977,6 +1977,8 @@
 
           var isFourExistNo = 0;
           var isFourExistAtNo = 0;
+          var isOneExistNo = 0;
+          var isOneExistAtNo = 0;
           $(".editContractor").on('click', function(e) {
               $(".md-input-wrapper").addClass("md-input-filled");
               $(".contractorContent").show();
@@ -2016,19 +2018,28 @@
                       $("#inputZip").val(result.records[contractor].Zip);
                       
                       isFourExistNo = result.records[contractor].phoneNo1.slice(0, 3);
-                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
+                      isOneExistNo = result.records[contractor].phoneNo1.slice(0, 2);
+                      if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                           $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(3));
                       } else {
                           $("#inputPhoneNo1").val(result.records[contractor].phoneNo1);
                       }
 
+                      if (isOneExistNo == "+1") {
+                          $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(2));
+                      }
+
                       if (result.records[contractor].alternateNo != null) {
                           
                           isFourExistAtNo = result.records[contractor].alternateNo.slice(0, 3);
-                          if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91" || isFourExistAtNo == "+1 ") {
+                          isOneExistAtNo = result.records[contractor].alternateNo.slice(0, 2);
+                          if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91") {
                               $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(3));
                           } else {
                               $("#inputAlternateNo").val(result.records[contractor].alternateNo);
+                          }
+                          if (isOneExistAtNo == "+1") {
+                              $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(2));
                           }
                       }
 

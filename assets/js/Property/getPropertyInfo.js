@@ -93,10 +93,15 @@ function getPropertyInfo(editPropertyID){
                       $("#getName").val(resultGetProperty.records[property].PropOwnerName);
                       $("#getLastName").val(resultGetProperty.records[property].PropOwnerLastName);
                       isFourExistNo = resultGetProperty.records[property].PropOwnerPhone.slice(0, 3);
-                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
+                      isOneExistNo = resultGetProperty.records[property].PropOwnerPhone.slice(0, 2);
+                      if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                           $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone.slice(3));
                       } else {
                           $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone);
+                      }
+
+                      if (isOneExistNo == "+1") {
+                          $("#inputMobileNumber").val(resultGetProperty.records[property].PropOwnerPhone.slice(2));
                       }
 
                       var hiddenIsEconomy7 = $("#hiddenIsEconomy7").val();
@@ -339,6 +344,7 @@ function getPropertyInfo(editPropertyID){
                       }
 
                       isFourExistNo = 0;
+                      isOneExistNo = 0;
 
                       if (resultGetProperty.records[property].UserReg == undefined || resultGetProperty.records[property].UserReg == "undefined") {
                           $(".btnSubmitPropertyMoveOut").hide();
@@ -386,10 +392,14 @@ function getPropertyInfo(editPropertyID){
 
 
                           isFourExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 3);
-                          if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
+                          isOneExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 2);
+                          if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                               $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(3));
                           } else {
                               $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber);
+                          }
+                          if (isOneExistNo == "+1") {
+                              $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(2));
                           }
 
                           $("#inputMobile-" + count).css("padding", "10px 25px 12px 33px");

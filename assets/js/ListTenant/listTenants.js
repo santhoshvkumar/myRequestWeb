@@ -347,7 +347,7 @@ $(".btnSubmitTenantInsurance").click(function() {
     var title = $("#inputTitle").val();
     var name = $("#getName").val().replace(/["']/g, "`");
     var lastName = $("#getLastName").val().replace(/["']/g, "`");
-    var mobileNumber = getPhoneCode+"-"+$("#inputMobileNumber").val();
+    var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
     hiddenIsElectricity = $("#hiddenIsElectricity").val();
@@ -702,8 +702,8 @@ function loadUserTenantsList(result) {
         $("#getLoadingModalContent").removeClass('md-show');
 
         var isFourExistNo = 0;
+        var isOneExistNo = 0;
         $(".editTenant").on('click', function(e) {
-            debugger;
             var editTenantID = this.id.replace('editTenantID-', '');
             $("#hiddenTenantID").val(editTenantID);
             $("#getLoadingModalContent").addClass('md-show');
@@ -715,13 +715,17 @@ function loadUserTenantsList(result) {
                     $("#getName").val(resultGetTenant.records[getTenant].Name);
                     $("#getLastName").val(resultGetTenant.records[getTenant].LastName);
                     isFourExistNo = resultGetTenant.records[getTenant].PhoneNumber.slice(0, 3);
+                    isOneExistNo = resultGetTenant.records[getTenant].PhoneNumber.slice(0, 2);
                     console.log(isFourExistNo);
-                    if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
-                        debugger;
+                    if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                         $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber.slice(3));
                     } else {
                         $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber);
                     }
+
+                    if (isOneExistNo == "+1") {
+                        $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber.slice(2));
+                    } 
 
                     $("#inputEmailID").val(resultGetTenant.records[getTenant].EmailID);
                     $("#caseProperty").val(resultGetTenant.records[getTenant].PropertyRegister);
@@ -1053,7 +1057,7 @@ $(".btnSubmitTenant").click(function() {
     var title = $("#select2-inputTitle-container").html();
     var name = $("#getName").val().replace(/["']/g, "`");
     var lastName = $("#getLastName").val().replace(/["']/g, "`");
-    var mobileNumber = $("#inputMobileNumber").val();
+    var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
     var startDate = $("#inputStartDate").val();
     var getFormatStartDate = startDate.split(".");
@@ -1161,7 +1165,7 @@ $(".btnSubmitTenant").click(function() {
 
 
     function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' +getPhoneCode+ ''+" "+'' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
