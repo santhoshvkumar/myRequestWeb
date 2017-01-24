@@ -1266,8 +1266,8 @@
       var state = $("#select2-inputState-container").html();
       var city = $("#select2-inputCity-container").html();
       var zip = $("#inputZip").val();var country = $("#inputCountry").val();
-      var phoneNo1 = getPhoneCode + $("#inputPhoneNo1").val();
-      var alternateNo = getPhoneCode + $("#inputAlternateNo").val();
+      var phoneNo1 = getPhoneCode +" "+ $("#inputPhoneNo1").val();
+      var alternateNo = getPhoneCode +" "+ $("#inputAlternateNo").val();
       var startTime = $("#inputStartTime").val();
       var endTime = $("#inputEndTime").val();
       var averageCharge = $("#inputAverageCharges").val();
@@ -2016,7 +2016,7 @@
                       $("#inputZip").val(result.records[contractor].Zip);
                       
                       isFourExistNo = result.records[contractor].phoneNo1.slice(0, 3);
-                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1") {
+                      if (isFourExistNo == "+44" || isFourExistNo == "+91" || isFourExistNo == "+1 ") {
                           $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(3));
                       } else {
                           $("#inputPhoneNo1").val(result.records[contractor].phoneNo1);
@@ -2025,7 +2025,7 @@
                       if (result.records[contractor].alternateNo != null) {
                           
                           isFourExistAtNo = result.records[contractor].alternateNo.slice(0, 3);
-                          if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91" || isFourExistAtNo == "+1") {
+                          if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91" || isFourExistAtNo == "+1 ") {
                               $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(3));
                           } else {
                               $("#inputAlternateNo").val(result.records[contractor].alternateNo);
