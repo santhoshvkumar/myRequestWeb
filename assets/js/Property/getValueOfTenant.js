@@ -1,7 +1,7 @@
 var getValueOfTenant = function() {
     console.log("btnSubmitTenantInsurance click");
     var getBtnCount = $(".btnSubmitTenantInsurance").attr("value");
-
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
     var getElect = $("#getElect").prop("checked");
     if (getElect == true) {
         $("#hiddenIsElectricity-" + getBtnCount).val(1);
@@ -39,7 +39,7 @@ var getValueOfTenant = function() {
     var inputUserRegID = $("#hiddenUserRegID-" + getBtnCount).val();
     var inputName = $("#inputName-" + getBtnCount).val();
     var inputEmail = $("#inputEmail-" + getBtnCount).val();
-    var inputMobile = $("#inputMobile-" + getBtnCount).val();
+    var inputMobile = getPhoneCode+$("#inputMobile-" + getBtnCount).val();
     var hiddenIsElectricity = $("#hiddenIsElectricity-" + getBtnCount).val();
     var hiddenIsGas = $("#hiddenIsGas-" + getBtnCount).val();
     var hiddenIsWater = $("#hiddenIsWater-" + getBtnCount).val();
@@ -47,7 +47,7 @@ var getValueOfTenant = function() {
     var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-" + getBtnCount).val();
     var hiddenIsNewTenantUpdate = $("#hiddenIsNewTenantUpdate-" + getBtnCount).val();
 
-    var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','Email':'" + inputEmail + "','Mobile':'+44" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','IsElectricity':'" + hiddenIsElectricity + "','IsGas':'" + hiddenIsGas + "','IsWater':'" + hiddenIsWater + "','IsCouncil':'" + hiddenIsCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "'}";
+    var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','IsElectricity':'" + hiddenIsElectricity + "','IsGas':'" + hiddenIsGas + "','IsWater':'" + hiddenIsWater + "','IsCouncil':'" + hiddenIsCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "'}";
 
     getAddTenantArr.push(newTenantsDataForm);
 

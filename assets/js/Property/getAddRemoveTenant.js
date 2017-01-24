@@ -6,7 +6,7 @@ function getAddTenant(count) {
     var getMobile = "Mobile";
     var getTitle = "Title";
     var isExistUserCheck = "";
-
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
     finalTenantCount = count;
     $(".getTenantList").append('<div class="uk-width-medium-1-3" style="margin-top: 10px;"> <div class="md-card" id="getIsAppInstallCheck-' + count + '"> <div class="md-card-content large-padding"> <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span><div class="parsley-row"> <label for="inputMobile">' + getMobile + '<span class="req">*</span></label> <input type="text" id="inputMobile-' + count + '" name="inputMobile" required class="md-input inputMobile" maxlength="10"/> <span class="propermno-prefix" id="promno-prefix-'+count+'">'+localStorage.getItem("MyRequest_PhoneCode-prefix")+'</span> </div><p></p> <div class="parsley-row"  id="inputTitleContent-' + count + '"> <label for="inputTitle">' + getTitle + '</label>  <select id="inputTitle-' + count + '" name="inputTitle" required class="md-input"><option value="0">Select Title</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Ms.">Ms.</option><option value="Miss.">Miss.</option> </select></div> <p></p> <div class="parsley-row"> <label for="inputName">' + getFirstName + '<span class="req">*</span></label> <input type="text" id="inputName-' + count + '" name="inputName" required class="md-input inputName" />  </div> <p></p><div class="parsley-row"> <label for="inputLastName">' + getLastName + '<span class="req">*</span></label> <input type="text" id="inputLastName-' + count + '" name="inputLastName" required class="md-input inputLastName" /> </div><p></p> <div class="parsley-row"  id="inputEmailContent-' + count + '"> <label for=  "inputEmail">' + getEmail + '<span class="req">*</span></label> <input type="text" id="inputEmail-' + count + '"  name="inputEmail" required class="md-input inputEmail" /></div>  <p></p> <div class="uk-grid">  <div class="uk-width-medium-1-2"> <div class="parsley-row"> <label for="inputStartDate">Tenancy Start<span class="req">*</span></label> <input type="text" id="inputStartDate-' + count + '" name="inputStartDate" required class="md-input inputStartDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div>  <br/>  <div class="uk-width-medium-1-2">  <div class="parsley-row"> <label for="inputEndDate">Tenancy End<span class="req">*</span></label> <input type="text" id="inputEndDate-' + count + '" name="inputEndDate" required class="md-input inputEndDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div> </div> <p></p> <div class="parsley-row"> <div class="uk-grid">  <div class="uk-width-medium-1-3"> <div class="tenantLead">  <span class="icheck-inline" style="margin-top:20px;">  <input type="checkbox" data-switchery data-switchery-color="#ffb300"  id="isLeadTenant-' + count + '" /> <label for="user_edit_active" class="inline-label" style="font-size:13px; padding-left:0px;">Lead Tenant</label> </span>  </div> </div>       <div class="uk-width-medium-2-3">        <div class="uk-grid" style="margin-top:20px;">        <div class="uk-width-medium-1-4">    <img  id="isElectricityImg-' + count + '" src="assets/img/PropertyImg/electricity.png" style="width:70%; height:100%">    </div>  <div class="uk-width-medium-1-4">    <img   id="isGasImg-' + count + '" src="assets/img/PropertyImg/gas.png" style="width:70%; height:100%">    </div>   <div class="uk-width-medium-1-4">    <img  id="isWaterImg-' + count + '" src="assets/img/PropertyImg/water.png" style="width:70%; height:100%"> </div><div class="uk-width-medium-1-4">  <img id="isCouncilImg-' + count + '" src="assets/img/PropertyImg/council.png" style="width:70%; height:100%"></div></div>       </div><div class="uk-grid"> <div class="uk-width-1-1">  <button type="submit" class="md-btn md-btn-primary btnAddUserTenant" id="btnAddUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">+ Tenant</button> <button type="submit" class="md-btn md-btn-danger btnRemoveUserTenant" id="btnRemoveUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">- Tenant</button>  <span id="getErrorMsg-' + count + '" style="color:red;"></span> </div>  </div> </div> </div></div> <input type="hidden" id="hiddenUserRegID-' + count + '" value="0" /> <input type="hidden" id="hiddenAddPropertyID-' + count + '" value="0" />   <input type="hidden" id="hiddenIsElectricity-' + count + '" value="0" /> <input type="hidden" id="hiddenIsGas-' + count + '" value="0" /> <input type="hidden" id="hiddenIsWater-' + count + '" value="0" /> <input type="hidden" id="hiddenIsCouncil-' + count + '" value="0" /> <input type="hidden" id="hiddenAvailTenantInsurance-' + count + '" value="0" /> <input type="hidden" id="hiddenAddress-' + count + '" value="0" />  <input type="hidden" id="hiddenElectricSupplier1-' + count + '" value="0" /> <input type="hidden" id="hiddenElectricSupplier2-' + count + '" value="0" /> <input type="hidden" id="hiddenFuelType-' + count + '" value="0" /> <input type="hidden" id="hiddenGasMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierElectric-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierGas-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyStart-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyEnd-' + count + '" value="0" /> <input type="hidden" id="hiddenWaterMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenIsNewTenantUpdate-' + count + '" value="0" /> <input type="hidden" id="hiddenNewPropertyTenant-' + count + '" value="false" /> ');
 
@@ -336,7 +336,7 @@ function getAddTenant(count) {
         var inputLastName = $("#inputLastName-" + getCountValue).val();
         var isLeadTenant = $("#isLeadTenant-" + getCountValue).val();
         var inputEmail = $("#inputEmail-" + getCountValue).val();
-        var inputMobile = "+44" + $("#inputMobile-" + getCountValue).val();
+        var inputMobile = getPhoneCode+ $("#inputMobile-" + getCountValue).val();
         var inputStartDate = $("#inputStartDate-"+getCountValue).val();
         var inputEndDate = $("#inputEndDate-"+getCountValue).val();
         var appInstalled = fetchIsAppInstalled;
@@ -350,7 +350,7 @@ function getAddTenant(count) {
 
             });
         } else {
-            if (inputMobile == "+44") {
+            if (inputMobile == "+44" || inputMobile == "+91" || inputMobile == "+1") {
                 $("#getErrorMsg-" + getCountValue).show();
                 $("#getErrorMsg-" + getCountValue).text("* Enter the Mobile Number");
                 $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
@@ -431,7 +431,7 @@ function getAddTenant(count) {
         var hiddenAddPropertyID = $("#hiddenAddPropertyID-" + getCountValue).val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
         var hiddenUserRegID = $("#hiddenUserRegID-" + getCountValue).val();
-        var inputMobile = $("#inputMobile-" + getCountValue).val();
+        var inputMobile = getPhoneCode+$("#inputMobile-" + getCountValue).val();
         var inputEmail = $("#inputEmail-" + getCountValue).val();
         var inputName = $("#inputName-" + getCountValue).val();
         var hiddenAddress = $("#hiddenAddress-" + getCountValue).val();
@@ -457,7 +457,7 @@ function getAddTenant(count) {
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
          
         UIkit.modal.confirm('Are you sure to remove and move-out Tenant ?', function() {
-            var dataForm = '{"AddPropertyID":"' + hiddenAddPropertyID + '","PropertyID":"' + hiddenPropertyID + '","UserID":"' + hiddenUserRegID + '","MobileNumber":"+44' + inputMobile + '","EmailID":"' + inputEmail + '","Name":"' + inputName + '","Address":"' + hiddenAddress + '","ElectricSupplier1":"' + hiddenElectricSupplier1 + '","ElectricSupplier2":"' + hiddenElectricSupplier2 + '","FuelType":"' + hiddenFuelType + '","GasMeterRead":"' + hiddenGasMeterRead + '","SupplierElectric":"' + hiddenSupplierElectric + '","SupplierGas":"' + hiddenSupplierGas + '","TenancyStart":"' + hiddenTenancyStart + '","TenancyEnd":"' + hiddenTenancyEnd + '","WaterMeterRead":"' + hiddenWaterMeterRead + '","IsGas":"0","IsElectricity":"0","IsWater":"0","IsCouncil":"0","IsAvailTenantInsurance":"' + hiddenAvailTenantInsurance + '","UtilityRegType":"move-out","Status":"Updated","Date":"' + currentdate + '","AdminID":"' + adminUserID + '"}';
+            var dataForm = '{"AddPropertyID":"' + hiddenAddPropertyID + '","PropertyID":"' + hiddenPropertyID + '","UserID":"' + hiddenUserRegID + '","MobileNumber":"' + inputMobile + '","EmailID":"' + inputEmail + '","Name":"' + inputName + '","Address":"' + hiddenAddress + '","ElectricSupplier1":"' + hiddenElectricSupplier1 + '","ElectricSupplier2":"' + hiddenElectricSupplier2 + '","FuelType":"' + hiddenFuelType + '","GasMeterRead":"' + hiddenGasMeterRead + '","SupplierElectric":"' + hiddenSupplierElectric + '","SupplierGas":"' + hiddenSupplierGas + '","TenancyStart":"' + hiddenTenancyStart + '","TenancyEnd":"' + hiddenTenancyEnd + '","WaterMeterRead":"' + hiddenWaterMeterRead + '","IsGas":"0","IsElectricity":"0","IsWater":"0","IsCouncil":"0","IsAvailTenantInsurance":"' + hiddenAvailTenantInsurance + '","UtilityRegType":"move-out","Status":"Updated","Date":"' + currentdate + '","AdminID":"' + adminUserID + '"}';
             console.log(dataForm);
 
             var sendURL = domainAddress + 'CreateUserUtilityMoveOut';
@@ -506,8 +506,12 @@ function getReloadUserTenants(editPropertyID){
                 $("#select2-inputTitle-" + count + "-container").html(resultGetProperty.records[property].UserReg[addProperty].TitleName);
                 $("#inputEmail-" + count).val(resultGetProperty.records[property].UserReg[addProperty].EmailID);
                 isFourExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 3);
-                if (isFourExistNo == "+44") {
+                isOneExistNo = resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(0, 2);
+                if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                     $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(3));
+                }
+                else if(isOneExistNo == "+1"){
+                    $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber.slice(2));
                 } else {
                     $("#inputMobile-" + count).val(resultGetProperty.records[property].UserReg[addProperty].PhoneNumber);
                 }
