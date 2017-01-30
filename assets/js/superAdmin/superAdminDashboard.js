@@ -104,7 +104,7 @@
       $("#inputTitle").select2();
       $("#inputState").select2()
           .on("change", function(e) {
-              //console.log("change val=" + $("#inputState").val());
+              console.log("change val=" + $("#inputState").val());
               var stateID = $("#inputState").val();
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
                   $("#inputCity").html('');
@@ -118,6 +118,30 @@
 
               });
           });
+
+          $("#inputCountry").select2()
+          .on("change", function(e) {
+              //console.log("change val=" + $("#inputState").val());
+              var countryID = $("#inputCountry").val();
+              // console.log(countryID)
+              if(countryID == "+44"){
+                
+                $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+                  $("#inputState").html('');
+                  $("#inputState").html("<option value='0'>Choose State</option>");
+                  var getResult = JSON.parse(result);
+                  console.log(getResult);
+                  for (inputState in getResult.records) {
+                      $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+
+                  }
+                  $("#inputState").select2();
+
+              });
+              }
+              
+          });
+
 
 
       
@@ -164,10 +188,10 @@
 
 
 
-$("#inputCountry").change(function(){
-    country = $("#inputCountry").val();
-    alert(country);
-});
+// $("#inputCountry").change(function(){
+//     country = $("#inputCountry").val();
+//     alert(country);
+// });
 
   $(".getAdmin").click(function() {
       $(".adminContent").toggle();
