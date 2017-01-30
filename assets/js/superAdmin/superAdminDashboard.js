@@ -153,7 +153,7 @@
               return false;
           }
       });
-
+       $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
 
   }); // ready
 
@@ -163,6 +163,11 @@
   });
 
 
+
+$("#inputCountry").change(function(){
+    country = $("#inputCountry").val();
+    alert(country);
+});
 
   $(".getAdmin").click(function() {
       $(".adminContent").toggle();
