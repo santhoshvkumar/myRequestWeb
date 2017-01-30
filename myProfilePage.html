@@ -130,17 +130,17 @@
                                             <div class="user_avatar_controls">
                                                 <span class="btn-file">
                                                     <span class="fileinput-new"><i class="material-icons">&#xE2C6;</i></span>
-                                                <span class="fileinput-exists"><i class="material-icons">&#xE86A;</i></span>
-                                                <!--<input type="file" name="user_edit_avatar_control" id="user_edit_avatar_control">-->
-                                                <input type="file" id="adminLogo" name="photoimg">
-                                                <div id="preview1" style="display:none"></div>
+                                                    <span class="fileinput-exists"><i class="material-icons">&#xE86A;</i></span>
+                                                    <!--<input type="file" name="user_edit_avatar_control" id="user_edit_avatar_control">-->
+                                                    <input type="file" id="adminLogo" name="photoimg">
+                                                    <div id="preview1" style="display:none"></div>
 
 
-                                                <div class='progressbox getProgressBox' id='progressbox1'>
-                                                    <div class="progressbar" id="progressbar1" style="display:none">
-                                                        <span id="statustxt1" class="getStatusText"></span>
+                                                    <div class='progressbox getProgressBox' id='progressbox1'>
+                                                        <div class="progressbar" id="progressbar1" style="display:none">
+                                                            <span id="statustxt1" class="getStatusText"></span>
+                                                        </div>
                                                     </div>
-                                                </div>
                                                 </span>
                                                 <a href="#" class="btn-file fileinput-exists" data-dismiss="fileinput"><i class="material-icons">&#xE5CD;</i></a>
                                             </div>
@@ -173,829 +173,829 @@
                                                     <div class="uk-width-medium-1-3">
                                                         <label>Title</label><br />
                                                         <select id="inputTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
-                                                             <option value="">Select Title</option>
-                                                             <option value="Mr.">Mr.</option>
-                                                             <option value="Mrs.">Mrs.</option>
-                                                             <option value="Ms.">Ms.</option>
-                                                             <option value="Miss.">Miss.</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <label for="inputFirstName">First Name</label>
-                                                        <input class="md-input" type="text" id="inputFirstName" name="inputFirstName" />
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <label for="inputLastName">Last Name</label>
-                                                        <input class="md-input" type="text" id="inputLastName" name="inputLastName" />
-                                                    </div>
+                                                           <option value="">Select Title</option>
+                                                           <option value="Mr.">Mr.</option>
+                                                           <option value="Mrs.">Mrs.</option>
+                                                           <option value="Ms.">Ms.</option>
+                                                           <option value="Miss.">Miss.</option>
+                                                       </select>
+                                                   </div>
+                                                   <div class="uk-width-medium-1-3">
+                                                    <label for="inputFirstName">First Name</label>
+                                                    <input class="md-input" type="text" id="inputFirstName" name="inputFirstName" />
                                                 </div>
-                                                <h3 class="full_width_in_card heading_c">
-                                                    Contact info
-                                                </h3>
-                                                <div class="uk-grid">
-                                                    <div class="uk-width-1-1">
-                                                        <div class="uk-grid uk-grid-width-1-1 uk-grid-width-large-1-2" data-uk-grid-margin>
-                                                            <div>
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon material-icons">&#xE158;</i>
-                                                                    </span>
-                                                                    <label>Email</label>
-                                                                    <input type="text" class="md-input" id="inputEmail" name="inputEmail" />
-                                                                </div>
-                                                            </div>
-                                                             <div class="mainAdminSecret">
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon material-icons">&#xE88D;</i>
-
-                                                                    </span>
-                                                                    <label>Password</label>
-                                                                    <input type="text" class="md-input" name="inputPassword" id="inputPassword"  />
-                                                                </div>
-                                                            </div>
-                                                            <div class="mainAdminPhoneNumber">
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon material-icons">&#xE0CD;</i>
-                                                                    </span>
-                                                                    <label>Phone Number</label>
-                                                                    <input type="text" class="md-input inputPhoneNumber" name="inputPhoneNumber" id="inputPhoneNumber" maxlength="10" />
-                                                                    <span class="phno-prefix"> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mainAdminEmergencyNumber">
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon  material-icons">&#xE0CD;</i>
-                                                                    </span>
-                                                                    <label>Emergency Number </label>
-                                                                    <input type="text" class="md-input emergencyNumber" id="inputEmergencyNumber" name="inputEmergencyNumber" maxlength="10" />
-                                                                    <span class="adminEmerno-prefix"> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div class="mainAdminEmergencyElectricityNumber">
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon  material-icons">&#xE0CD;</i>
-                                                                    </span>
-                                                                    <label>Emergency Electricity Number</label>
-                                                                    <input type="text" class="md-input emergencyNumber" id="inputEmergencyElectricityNumber" name="inputEmergencyElectricityNumber" maxlength="10" />
-                                                                    <span class="emerElectno-prefix"> </span>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon  material-icons">&#xE80B;</i>
-                                                                    </span>
-                                                                    <label>Url For How To Rent</label>
-                                                                    <input type="text" class="md-input" data-parsley-trigger="change" id="inputUrlRent" name="inputUrlRent" />
-                                                                </div>
-                                                            </div>
-                                                        </div>
-                                                    </div>
+                                                <div class="uk-width-medium-1-3">
+                                                    <label for="inputLastName">Last Name</label>
+                                                    <input class="md-input" type="text" id="inputLastName" name="inputLastName" />
                                                 </div>
-                                                <h3 class="full_width_in_card heading_c">
-                                                    Address Details
-                                                </h3>
-                                                <div class="uk-grid">
-                                                    <div class="uk-width-1-1">
-                                                        <div class="uk-grid uk-grid-width-1-1 uk-grid-width-large-1-2" data-uk-grid-margin>
-                                                            <div>
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon material-icons">&#xE1B3;</i>
-                                                                    </span>
-                                                                    <label>Address</label>
-                                                                    <input type="text" class="md-input" id="inputLocality" name="inputLocality" />
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="fa fa-globe" aria-hidden="true"></i>
-
-                                                                    </span>
-
-                                                                    <label>County</label><br />
-                                                                    <select id="inputState" name="state" style="margin-top: 10px;" required class="md-input">
-                                           
-                                                                             <option value="0">Select County</option>
-                                                                            <option value='53'>Aberdeen City</option>
-                                                                            <option value='54'>Aberdeenshire</option>
-                                                                            <option value='55'>Angus</option>
-                                                                            <option value='56'>Argyll and Bute</option>
-                                                                            <option value='57'>Bath Avon</option>
-                                                                            <option value='58'>Bedfordshire</option>
-                                                                            <option value='59'>Belfast</option>
-                                                                            <option value='60'>Berkshire</option>
-                                                                            <option value='61'>Blaenau Gwent</option>
-                                                                            <option value='62'>Bournemouth</option>
-                                                                            <option value='63'>Bradford</option>
-                                                                            <option value='64'>Bridgend</option>
-                                                                            <option value='65'>Brighton and Hove</option>
-                                                                            <option value='66'>Bristol</option>
-                                                                            <option value='67'>Bristol Avon</option>
-                                                                            <option value='68'>Buckinghamshire</option>
-                                                                            <option value='69'>Caerphilly</option>
-                                                                            <option value='70'>Cambridgeshire</option>
-                                                                            <option value='71'>Cardiff</option>
-                                                                            <option value='72'>Carmarthenshire</option>
-                                                                            <option value='73'>Ceredigion</option>
-                                                                            <option value='74'>Channel Islands</option>
-                                                                            <option value='75'>Cheshire</option>
-                                                                            <option value='76'>City of Edinburgh</option>
-                                                                            <option value='77'>Clackmannanshire</option>
-                                                                            <option value='78'>Conwy</option>
-                                                                            <option value='79'>Cornwall</option>
-                                                                            <option value='80'>County Armagh</option>
-                                                                            <option value='81'>County Down</option>
-                                                                            <option value='82'>County Durham</option>
-                                                                            <option value='83'>County Fermanagh</option>
-                                                                            <option value='84'>County Londonderry</option>
-                                                                            <option value='85'>County Tyrone</option>
-                                                                            <option value='86'>Cumbria</option>
-                                                                            <option value='87'>Darlington</option>
-                                                                            <option value='88'>Denbighshire</option>
-                                                                            <option value='89'>Derby</option>
-                                                                            <option value='90'>Derbyshire</option>
-                                                                            <option value='91'>Devon</option>
-                                                                            <option value='92'>Dorset</option>
-                                                                            <option value='93'>Dumfries and Galloway</option>
-                                                                            <option value='94'>Dundee City</option>
-                                                                            <option value='95'>E Riding of Yorkshire</option>
-                                                                            <option value='96'>East Ayrshire</option>
-                                                                            <option value='97'>East Dunbartonshire</option>
-                                                                            <option value='98'>East Lothian</option>
-                                                                            <option value='99'>East Renfrewshire</option>
-                                                                            <option value='100'>East Sussex</option>
-                                                                            <option value='101'>Essex</option>
-                                                                            <option value='102'>Falkirk</option>
-                                                                            <option value='103'>Fife</option>
-                                                                            <option value='104'>Flintshire</option>
-                                                                            <option value='105'>Glasgow City</option>
-                                                                            <option value='106'>Gloucestershire</option>
-                                                                            <option value='107'>Greater London</option>
-                                                                            <option value='108'>Greater Manchester</option>
-                                                                            <option value='109'>Gwynedd</option>
-                                                                            <option value='110'>Hampshire</option>
-                                                                            <option value='111'>Hartlepool</option>
-                                                                            <option value='112'>Hereford and Worcester</option>
-                                                                            <option value='113'>Hertfordshire</option>
-                                                                            <option value='114'>Highland</option>
-                                                                            <option value='115'>Inverclyde</option>
-                                                                            <option value='116'>Isle of Anglesey</option>
-                                                                            <option value='117'>Isle of Man</option>
-                                                                            <option value='118'>Isle of Wight</option>
-                                                                            <option value='119'>Isles of Scilly</option>
-                                                                            <option value='120'>Kent</option>
-                                                                            <option value='121'>Kingston upon Hull</option>
-                                                                            <option value='122'>Lancashire</option>
-                                                                            <option value='123'>Leicester</option>
-                                                                            <option value='124'>Leicestershire</option>
-                                                                            <option value='125'>Lincolnshire</option>
-                                                                            <option value='126'>London</option>
-                                                                            <option value='127'>Luton</option>
-                                                                            <option value='128'>Merseyside</option>
-                                                                            <option value='129'>Merthyr Tydfil</option>
-                                                                            <option value='130'>Middlesbrough</option>
-                                                                            <option value='131'>Midlothian</option>
-                                                                            <option value='132'>Milton Keynes</option>
-                                                                            <option value='133'>Monmouthshire</option>
-                                                                            <option value='134'>Moray</option>
-                                                                            <option value='135'>Neath Port Talbot</option>
-                                                                            <option value='136'>Newport</option>
-                                                                            <option value='137'>Norfolk</option>
-                                                                            <option value='138'>North Ayrshire</option>
-                                                                            <option value='139'>North Eart Lincolnshire</option>
-                                                                            <option value='140'>North Lanarkshire</option>
-                                                                            <option value='141'>North Lincolnshire</option>
-                                                                            <option value='142'>North Somerset</option>
-                                                                            <option value='143'>North Yorkshire</option>
-                                                                            <option value='144'>Northamptonshire</option>
-                                                                            <option value='145'>Northumberland</option>
-                                                                            <option value='146'>Nottinghamshire</option>
-                                                                            <option value='147'>Orkney Islands</option>
-                                                                            <option value='148'>Oxfordshire</option>
-                                                                            <option value='149'>Pembrokeshire</option>
-                                                                            <option value='150'>Perth and Kinross</option>
-                                                                            <option value='151'>Poole</option>
-                                                                            <option value='152'>Portsmouth</option>
-                                                                            <option value='153'>Powys</option>
-                                                                            <option value='154'>Redcar and Cleveland</option>
-                                                                            <option value='155'>Renfrewshire</option>
-                                                                            <option value='156'>Rhondda Cynon Taff</option>
-                                                                            <option value='157'>Rutland</option>
-                                                                            <option value='158'>Scottish Borders</option>
-                                                                            <option value='159'>Shetland Islands</option>
-                                                                            <option value='160'>Shropshire</option>
-                                                                            <option value='161'>Somerset</option>
-                                                                            <option value='162'>South Ayrshire</option>
-                                                                            <option value='163'>South Gloucestershire</option>
-                                                                            <option value='164'>South Lanarkshire</option>
-                                                                            <option value='165'>South Yorkshire</option>
-                                                                            <option value='166'>Southampton</option>
-                                                                            <option value='167'>Staffordshire</option>
-                                                                            <option value='168'>Stirling</option>
-                                                                            <option value='169'>Stockton-on-Tees</option>
-                                                                            <option value='170'>Stoke-on-Trent</option>
-                                                                            <option value='171'>Suffolk</option>
-                                                                            <option value='172'>Surrey</option>
-                                                                            <option value='173'>Swansea</option>
-                                                                            <option value='174'>Swindon</option>
-                                                                            <option value='175'>Torfaen</option>
-                                                                            <option value='176'>Tyne and Wear</option>
-                                                                            <option value='177'>Vale of Glamorgan</option>
-                                                                            <option value='178'>Warwickshire</option>
-                                                                            <option value='179'>West Dunbart</option>
-                                                                            <option value='180'>West Lothian</option>
-                                                                            <option value='181'>West Midlands</option>
-                                                                            <option value='182'>West Sussex</option>
-                                                                            <option value='183'>West Yorkshire</option>
-                                                                            <option value='184'>Western Isles</option>
-                                                                            <option value='185'>Wiltshire</option>
-                                                                            <option value='186'>Wolverhampton</option>
-                                                                            <option value='187'>Wrexham</option>
-                                                                            <option value='188'>York</option>
-                                                                    </select>
-                                                                </div>
-                                                            </div>
-                                                            <div>
-                                                                <div class="uk-input-group">
-                                                                    <span class="uk-input-group-addon">
-                                                                        <i class="md-list-addon-icon  material-icons">&#xE52E;</i>
-                                                                    </span>
-                                                                    <label>City </label> <br />
-                                                                    <select id="inputCity" name="city" required class="md-input">
-                                                                        <option value="0">Select City</option>
-                                                                       
-                                                                      </select>
-                                                                </div>
-                                                            </div>
-
-                                                        </div>
-                                                    </div>
-                                                </div>
-
-                                                <div class="uk-grid">
-                                                    <div class="uk-width-1-1">
-                                                        <span class="help-block" style="color:red;"></span>
-                                                    </div>
-                                                </div>
-
                                             </div>
-                                        </li>
-                                        <li>
-
-                                            <div class="uk-margin-top">
-                                                <div class="uk-grid" data-uk-grid-margin>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <label>Title</label><br />
-                                                        <select id="inputSubTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
-                                                             <option value="">Select Title</option>
-                                                             <option value="Mr.">Mr.</option>
-                                                             <option value="Mrs.">Mrs.</option>
-                                                             <option value="Ms.">Ms.</option>
-                                                             <option value="Miss.">Miss.</option>
-                                                        </select>
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <div class="parsley-row">
-                                                            <label for="firstName">First Name<span class="req">*</span></label>
-                                                            <input type="text" id="firstName" name="firstName" required class="md-input" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <div class="parsley-row">
-                                                            <label for="lastName">Last Name<span class="req">*</span></label>
-                                                            <input type="text" id="lastName" name="lastName" required class="md-input" />
-                                                        </div>
-                                                    </div>
-                                                </div>
-                                                <div class="uk-grid" data-uk-grid-margin>
-
-                                                    <div class="uk-width-medium-1-3">
-                                                        <div class="parsley-row">
-                                                            <label for="email">EmailID<span class="req">*</span></label>
-                                                            <input type="text" id="emailID" data-parsley-trigger="change" required class="md-input" />
-                                                        </div>
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <div class="parsley-row">
-                                                            <label for="phonenumber">Phone Number<span class="req">*</span></label>
-                                                            <input type="text" id="phoneNumber" required class="md-input inputPhoneNumber" maxlength="10" />
-                                                            <span class="subAdminPhno-prefix subAdminNumber"> </span>
-                                                        </div>
-                                                    </div>
-                                                    <div class="uk-width-medium-1-3">
-                                                        <form id="FileURLUploadImage1" method="post" enctype="multipart/form-data" action="https://api.myrequest.co.uk/ajaximage.php" class="form-horizontal">
-
-                                                            <div class="user_heading_avatar fileinput fileinput-new" data-provides="fileinput">
-                                                                <div class="fileinput-new thumbnail">
-                                                                    <img src="assets/img/avatars/user.png" alt="user avatar" id="imgAdminLogo" />
-                                                                </div>
-                                                                <div class="fileinput-preview fileinput-exists thumbnail"></div>
-                                                                <div class="user_avatar_controls">
-                                                                    <span class="btn-file">
-                                                                        <span class="fileinput-new"><i class="material-icons">&#xE2C6;</i></span>
-                                                                    <span class="fileinput-exists"><i class="material-icons">&#xE86A;</i></span>
-                                                                    <!--<input type="file" name="user_edit_avatar_control" id="user_edit_avatar_control">-->
-                                                                    <input type="file" id="adminLogoImageUrl1" name="photoimg">
-                                                                    <div id="preview1" style="display:none"></div>
-
-
-                                                                    <div class='progressbox getProgressBox' id='progressbox1'>
-                                                                        <div class="progressbar" id="progressbar1" style="display:none">
-                                                                            <span id="statustxt1" class="getStatusText"></span>
-                                                                        </div>
-                                                                    </div>
-                                                                    </span>
-                                                                    
-                                                                </div>
+                                            <h3 class="full_width_in_card heading_c">
+                                                Contact info
+                                            </h3>
+                                            <div class="uk-grid">
+                                                <div class="uk-width-1-1">
+                                                    <div class="uk-grid uk-grid-width-1-1 uk-grid-width-large-1-2" data-uk-grid-margin>
+                                                        <div>
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon material-icons">&#xE158;</i>
+                                                                </span>
+                                                                <label>Email</label>
+                                                                <input type="text" class="md-input" id="inputEmail" name="inputEmail" />
                                                             </div>
-                                                        </form>
-
-                                                    </div>
-                                                </div>
-                                                </br>
-
-
-
-
-                                                <div class="user_heading_content">
-                                                    <h2 class="heading_b"><span class="uk-text-truncate userHeadText" id="inputBusinessName"></span><span class="sub-heading userHeadText" id="inputAgencyCode"></span></h2>
-                                                </div>
-
-                                                <div class="uk-grid">
-                                                    <div class="uk-width-1-1">
-                                                        <button type="submit" class="md-btn md-btn-primary btnSubmitAdmin">+ Sub Admin</button>
-                                                        <span class="errorInfo" style="color:red;"></span>
-                                                        <input type="hidden" id="hiddenAdminID" value="0" />
-                                                        <input type="hidden" id="hiddenPassword" value="Password#1" />
-                                                    </div>
-                                                </div>
-
-                                                <h3 class="heading_a uk-margin-bottom" style="font-family: Avenir-Heavy;color:black;">Sub Admin List</h3>
-
-                                                <div class="md-card uk-margin-medium-bottom">
-                                                    <div class="md-card-content">
-                                                        <div class="uk-overflow-container">
-                                                            <table id="subAdminList" class="uk-table uk-table-striped">
-                                                                <thead>
-                                                                    <tr>
-                                                                        <th>Sub Admin Name</th>
-                                                                        <th>Phone Number</th>
-                                                                        <th>E-Mail</th>
-                                                                        <th>Edit</th>
-                                                                        <th>Delete</th>
-                                                                    </tr>
-                                                                </thead>
-                                                                <tbody class="allSubAdminList">
-
-                                                                </tbody>
-                                                            </table>
                                                         </div>
-                                                    </div>
-                                                </div>
+                                                        <div class="mainAdminSecret">
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon material-icons">&#xE88D;</i>
 
-
-                                                <div class="uk-grid">
-                                                    <div class="uk-width-1-1">
-                                                        <span class="help-block" style="color:red;"></span>
-                                                    </div>
-                                                </div>
-
-
-
-                                            </div>
-
-
-                                            <input name="user_groups_control" id="user_groups_control" type="hidden" />
-                                        </li>
-
-                                        <li>
-                                            <div class="md-card">
-                                                <div class="md-card-content large-padding termsAndConditionContent">
-
-                                                    <div id="form_validation" class="uk-form-stacked">
-
-                                                        <div class="uk-grid">
-                                                            <div class="uk-width-1-1">
-                                                                <button type="submit" id="getAddedit" class="md-btn md-btn-primary btnAreYouSureYouWantToADD/EDIT">Are You Sure You Want To ADD/EDIT</button>
-
+                                                                </span>
+                                                                <label>Password</label>
+                                                                <input type="text" class="md-input" name="inputPassword" id="inputPassword"  />
                                                             </div>
-
-
                                                         </div>
-
-                                                        <div class="uk-grid inputTinymce" style="display:none">
-
-                                                            <div class="uk-width-1-1">
-                                                                <label class="col-md-2 control-label" for="inputDescription">Terms And Conditions</label>
-
-
-                                                                <div class="col-md-10">
-                                                                    <textarea class="md-input" id="inputTermsAndCondition" cols="10" rows="8" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."></textarea>
-
-                                                                    <iframe id="form_target" name="form_target" style="display:none"></iframe>
-                                                                    <form id="my_form" action="https://api.myrequest.co.uk/ajaximage.php" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
-                                                                        <input name="photoimg" id="getImage" type="file">
-                                                                    </form>
-
-                                                                    <div id="preview" style="display:none"></div>
-                                                                </div>
-
-
+                                                        <div class="mainAdminPhoneNumber">
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon material-icons">&#xE0CD;</i>
+                                                                </span>
+                                                                <label>Phone Number</label>
+                                                                <input type="text" class="md-input inputPhoneNumber" name="inputPhoneNumber" id="inputPhoneNumber" maxlength="10" />
+                                                                <span class="phno-prefix"> </span>
                                                             </div>
-
-
                                                         </div>
-                                                        <div class="uk-grid  inputTinymce" style="display:none">
-                                                            <div class="uk-width-1-2">
-                                                                <button type="submit" class="md-btn md-btn-primary btnSubmitTermsAndCondition">Add Terms And Condition</button>
-
-                                                                <span class="errorInfo" style="color:red;"></span>
-                                                                <input type="hidden" id="hiddenTermsAndConditionID" value="0" />
+                                                        <div class="mainAdminEmergencyNumber">
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon  material-icons">&#xE0CD;</i>
+                                                                </span>
+                                                                <label>Emergency Number </label>
+                                                                <input type="text" class="md-input emergencyNumber" id="inputEmergencyNumber" name="inputEmergencyNumber" maxlength="10" />
+                                                                <span class="adminEmerno-prefix"> </span>
+                                                            </div>
+                                                        </div>
+                                                        <div class="mainAdminEmergencyElectricityNumber">
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon  material-icons">&#xE0CD;</i>
+                                                                </span>
+                                                                <label>Emergency Electricity Number</label>
+                                                                <input type="text" class="md-input emergencyNumber" id="inputEmergencyElectricityNumber" name="inputEmergencyElectricityNumber" maxlength="10" />
+                                                                <span class="emerElectno-prefix"> </span>
+                                                            </div>
+                                                        </div>
+                                                        <div>
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon  material-icons">&#xE80B;</i>
+                                                                </span>
+                                                                <label>Url For How To Rent</label>
+                                                                <input type="text" class="md-input" data-parsley-trigger="change" id="inputUrlRent" name="inputUrlRent" />
                                                             </div>
                                                         </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </li>
-
-                                        <li>
-                                            <div class="md-card">
-                                                <div class="md-card-content large-padding privacyPolicyContent">
-                                                    <div id="form_validation" class="uk-form-stacked">
-                                                        <div class="uk-grid">
-                                                            <div class="uk-width-1-1">
-                                                                <button type="submit" id="getAddprivacy" class="md-btn md-btn-primary btnAreYouSureYouWantToADD/EDIT">Are You Sure You Want To ADD/EDIT</button>
+                                            <h3 class="full_width_in_card heading_c">
+                                                Address Details
+                                            </h3>
+                                            <div class="uk-grid">
+                                                <div class="uk-width-1-1">
+                                                    <div class="uk-grid uk-grid-width-1-1 uk-grid-width-large-1-2" data-uk-grid-margin>
+                                                        <div>
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="md-list-addon-icon material-icons">&#xE1B3;</i>
+                                                                </span>
+                                                                <label>Address</label>
+                                                                <input type="text" class="md-input" id="inputLocality" name="inputLocality" />
                                                             </div>
                                                         </div>
+                                                        <div>
+                                                            <div class="uk-input-group">
+                                                                <span class="uk-input-group-addon">
+                                                                    <i class="fa fa-globe" aria-hidden="true"></i>
 
-                                                        <div class="uk-grid inputTinymce" style="display:none">
+                                                                </span>
 
-                                                            <div class="uk-width-1-1">
-                                                                <label class="col-md-2 control-label" for="inputDescription">Privacy Policy</label>
-
-
-                                                                <div class="col-md-10">
-                                                                    <textarea class="md-input" id="inputPrivacyPolicy" cols="10" rows="8" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."></textarea>
-
-                                                                    <iframe id="form_target" name="form_target" style="display:none"></iframe>
-                                                                    <form id="my_form" action="https://api.myrequest.co.uk/ajaximage.php" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
-                                                                        <input name="photoimg" id="getImage" type="file">
-                                                                    </form>
-
-                                                                    <div id="preview" style="display:none"></div>
-                                                                </div>
-
-
-                                                            </div>
-                                                        </div>
-                                                        <div class="uk-grid  inputTinymce" style="display:none">
-                                                            <div class="uk-width-1-2">
-                                                                <button type="submit" class="md-btn md-btn-primary btnSubmitPrivacyPolicy">Add Privacy Policy</button>
-
-                                                                <span class="errorInfo" style="color:red;"></span>
-                                                                <input type="hidden" id="hiddenPrivacyPolicyID" value="0" />
-                                                            </div>
+                                                                <label>County</label><br />
+                                                                <select id="inputState" name="state" style="margin-top: 10px;" required class="md-input">
+                                                                 
+                                                                   <option value="0">Select County</option>
+                                                                   <option value='53'>Aberdeen City</option>
+                                                                   <option value='54'>Aberdeenshire</option>
+                                                                   <option value='55'>Angus</option>
+                                                                   <option value='56'>Argyll and Bute</option>
+                                                                   <option value='57'>Bath Avon</option>
+                                                                   <option value='58'>Bedfordshire</option>
+                                                                   <option value='59'>Belfast</option>
+                                                                   <option value='60'>Berkshire</option>
+                                                                   <option value='61'>Blaenau Gwent</option>
+                                                                   <option value='62'>Bournemouth</option>
+                                                                   <option value='63'>Bradford</option>
+                                                                   <option value='64'>Bridgend</option>
+                                                                   <option value='65'>Brighton and Hove</option>
+                                                                   <option value='66'>Bristol</option>
+                                                                   <option value='67'>Bristol Avon</option>
+                                                                   <option value='68'>Buckinghamshire</option>
+                                                                   <option value='69'>Caerphilly</option>
+                                                                   <option value='70'>Cambridgeshire</option>
+                                                                   <option value='71'>Cardiff</option>
+                                                                   <option value='72'>Carmarthenshire</option>
+                                                                   <option value='73'>Ceredigion</option>
+                                                                   <option value='74'>Channel Islands</option>
+                                                                   <option value='75'>Cheshire</option>
+                                                                   <option value='76'>City of Edinburgh</option>
+                                                                   <option value='77'>Clackmannanshire</option>
+                                                                   <option value='78'>Conwy</option>
+                                                                   <option value='79'>Cornwall</option>
+                                                                   <option value='80'>County Armagh</option>
+                                                                   <option value='81'>County Down</option>
+                                                                   <option value='82'>County Durham</option>
+                                                                   <option value='83'>County Fermanagh</option>
+                                                                   <option value='84'>County Londonderry</option>
+                                                                   <option value='85'>County Tyrone</option>
+                                                                   <option value='86'>Cumbria</option>
+                                                                   <option value='87'>Darlington</option>
+                                                                   <option value='88'>Denbighshire</option>
+                                                                   <option value='89'>Derby</option>
+                                                                   <option value='90'>Derbyshire</option>
+                                                                   <option value='91'>Devon</option>
+                                                                   <option value='92'>Dorset</option>
+                                                                   <option value='93'>Dumfries and Galloway</option>
+                                                                   <option value='94'>Dundee City</option>
+                                                                   <option value='95'>E Riding of Yorkshire</option>
+                                                                   <option value='96'>East Ayrshire</option>
+                                                                   <option value='97'>East Dunbartonshire</option>
+                                                                   <option value='98'>East Lothian</option>
+                                                                   <option value='99'>East Renfrewshire</option>
+                                                                   <option value='100'>East Sussex</option>
+                                                                   <option value='101'>Essex</option>
+                                                                   <option value='102'>Falkirk</option>
+                                                                   <option value='103'>Fife</option>
+                                                                   <option value='104'>Flintshire</option>
+                                                                   <option value='105'>Glasgow City</option>
+                                                                   <option value='106'>Gloucestershire</option>
+                                                                   <option value='107'>Greater London</option>
+                                                                   <option value='108'>Greater Manchester</option>
+                                                                   <option value='109'>Gwynedd</option>
+                                                                   <option value='110'>Hampshire</option>
+                                                                   <option value='111'>Hartlepool</option>
+                                                                   <option value='112'>Hereford and Worcester</option>
+                                                                   <option value='113'>Hertfordshire</option>
+                                                                   <option value='114'>Highland</option>
+                                                                   <option value='115'>Inverclyde</option>
+                                                                   <option value='116'>Isle of Anglesey</option>
+                                                                   <option value='117'>Isle of Man</option>
+                                                                   <option value='118'>Isle of Wight</option>
+                                                                   <option value='119'>Isles of Scilly</option>
+                                                                   <option value='120'>Kent</option>
+                                                                   <option value='121'>Kingston upon Hull</option>
+                                                                   <option value='122'>Lancashire</option>
+                                                                   <option value='123'>Leicester</option>
+                                                                   <option value='124'>Leicestershire</option>
+                                                                   <option value='125'>Lincolnshire</option>
+                                                                   <option value='126'>London</option>
+                                                                   <option value='127'>Luton</option>
+                                                                   <option value='128'>Merseyside</option>
+                                                                   <option value='129'>Merthyr Tydfil</option>
+                                                                   <option value='130'>Middlesbrough</option>
+                                                                   <option value='131'>Midlothian</option>
+                                                                   <option value='132'>Milton Keynes</option>
+                                                                   <option value='133'>Monmouthshire</option>
+                                                                   <option value='134'>Moray</option>
+                                                                   <option value='135'>Neath Port Talbot</option>
+                                                                   <option value='136'>Newport</option>
+                                                                   <option value='137'>Norfolk</option>
+                                                                   <option value='138'>North Ayrshire</option>
+                                                                   <option value='139'>North Eart Lincolnshire</option>
+                                                                   <option value='140'>North Lanarkshire</option>
+                                                                   <option value='141'>North Lincolnshire</option>
+                                                                   <option value='142'>North Somerset</option>
+                                                                   <option value='143'>North Yorkshire</option>
+                                                                   <option value='144'>Northamptonshire</option>
+                                                                   <option value='145'>Northumberland</option>
+                                                                   <option value='146'>Nottinghamshire</option>
+                                                                   <option value='147'>Orkney Islands</option>
+                                                                   <option value='148'>Oxfordshire</option>
+                                                                   <option value='149'>Pembrokeshire</option>
+                                                                   <option value='150'>Perth and Kinross</option>
+                                                                   <option value='151'>Poole</option>
+                                                                   <option value='152'>Portsmouth</option>
+                                                                   <option value='153'>Powys</option>
+                                                                   <option value='154'>Redcar and Cleveland</option>
+                                                                   <option value='155'>Renfrewshire</option>
+                                                                   <option value='156'>Rhondda Cynon Taff</option>
+                                                                   <option value='157'>Rutland</option>
+                                                                   <option value='158'>Scottish Borders</option>
+                                                                   <option value='159'>Shetland Islands</option>
+                                                                   <option value='160'>Shropshire</option>
+                                                                   <option value='161'>Somerset</option>
+                                                                   <option value='162'>South Ayrshire</option>
+                                                                   <option value='163'>South Gloucestershire</option>
+                                                                   <option value='164'>South Lanarkshire</option>
+                                                                   <option value='165'>South Yorkshire</option>
+                                                                   <option value='166'>Southampton</option>
+                                                                   <option value='167'>Staffordshire</option>
+                                                                   <option value='168'>Stirling</option>
+                                                                   <option value='169'>Stockton-on-Tees</option>
+                                                                   <option value='170'>Stoke-on-Trent</option>
+                                                                   <option value='171'>Suffolk</option>
+                                                                   <option value='172'>Surrey</option>
+                                                                   <option value='173'>Swansea</option>
+                                                                   <option value='174'>Swindon</option>
+                                                                   <option value='175'>Torfaen</option>
+                                                                   <option value='176'>Tyne and Wear</option>
+                                                                   <option value='177'>Vale of Glamorgan</option>
+                                                                   <option value='178'>Warwickshire</option>
+                                                                   <option value='179'>West Dunbart</option>
+                                                                   <option value='180'>West Lothian</option>
+                                                                   <option value='181'>West Midlands</option>
+                                                                   <option value='182'>West Sussex</option>
+                                                                   <option value='183'>West Yorkshire</option>
+                                                                   <option value='184'>Western Isles</option>
+                                                                   <option value='185'>Wiltshire</option>
+                                                                   <option value='186'>Wolverhampton</option>
+                                                                   <option value='187'>Wrexham</option>
+                                                                   <option value='188'>York</option>
+                                                               </select>
+                                                           </div>
+                                                       </div>
+                                                       <div>
+                                                        <div class="uk-input-group">
+                                                            <span class="uk-input-group-addon">
+                                                                <i class="md-list-addon-icon  material-icons">&#xE52E;</i>
+                                                            </span>
+                                                            <label>City </label> <br />
+                                                            <select id="inputCity" name="city" required class="md-input">
+                                                                <option value="0">Select City</option>
+                                                                
+                                                            </select>
                                                         </div>
                                                     </div>
+
                                                 </div>
                                             </div>
-                                        </li>
-                                    </ul>
+                                        </div>
+
+                                        <div class="uk-grid">
+                                            <div class="uk-width-1-1">
+                                                <span class="help-block" style="color:red;"></span>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </li>
+                                <li>
+
+                                    <div class="uk-margin-top">
+                                        <div class="uk-grid" data-uk-grid-margin>
+                                            <div class="uk-width-medium-1-3">
+                                                <label>Title</label><br />
+                                                <select id="inputSubTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
+                                                   <option value="">Select Title</option>
+                                                   <option value="Mr.">Mr.</option>
+                                                   <option value="Mrs.">Mrs.</option>
+                                                   <option value="Ms.">Ms.</option>
+                                                   <option value="Miss.">Miss.</option>
+                                               </select>
+                                           </div>
+                                           <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="firstName">First Name<span class="req">*</span></label>
+                                                <input type="text" id="firstName" name="firstName" required class="md-input" />
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="lastName">Last Name<span class="req">*</span></label>
+                                                <input type="text" id="lastName" name="lastName" required class="md-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="email">EmailID<span class="req">*</span></label>
+                                                <input type="text" id="emailID" data-parsley-trigger="change" required class="md-input" />
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="phonenumber">Phone Number<span class="req">*</span></label>
+                                                <input type="text" id="phoneNumber" required class="md-input inputPhoneNumber" maxlength="10" />
+                                                <span class="subAdminPhno-prefix subAdminNumber"> </span>
+                                            </div>
+                                        </div>
+                                        <div class="uk-width-medium-1-3">
+                                            <form id="FileURLUploadImage1" method="post" enctype="multipart/form-data" class="form-horizontal">
+
+                                                <div class="user_heading_avatar fileinput fileinput-new" data-provides="fileinput">
+                                                    <div class="fileinput-new thumbnail">
+                                                        <img src="assets/img/avatars/user.png" alt="user avatar" id="imgAdminLogo" />
+                                                    </div>
+                                                    <div class="fileinput-preview fileinput-exists thumbnail"></div>
+                                                    <div class="user_avatar_controls">
+                                                        <span class="btn-file">
+                                                            <span class="fileinput-new"><i class="material-icons">&#xE2C6;</i></span>
+                                                            <span class="fileinput-exists"><i class="material-icons">&#xE86A;</i></span>
+                                                            <!--<input type="file" name="user_edit_avatar_control" id="user_edit_avatar_control">-->
+                                                            <input type="file" id="adminLogoImageUrl1" name="photoimg">
+                                                            <div id="preview1" style="display:none"></div>
+
+
+                                                            <div class='progressbox getProgressBox' id='progressbox1'>
+                                                                <div class="progressbar" id="progressbar1" style="display:none">
+                                                                    <span id="statustxt1" class="getStatusText"></span>
+                                                                </div>
+                                                            </div>
+                                                        </span>
+                                                        
+                                                    </div>
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+                                </br>
+
+
+
+
+                                <div class="user_heading_content">
+                                    <h2 class="heading_b"><span class="uk-text-truncate userHeadText" id="inputBusinessName"></span><span class="sub-heading userHeadText" id="inputAgencyCode"></span></h2>
+                                </div>
+
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-1">
+                                        <button type="submit" class="md-btn md-btn-primary btnSubmitAdmin">+ Sub Admin</button>
+                                        <span class="errorInfo" style="color:red;"></span>
+                                        <input type="hidden" id="hiddenAdminID" value="0" />
+                                        <input type="hidden" id="hiddenPassword" value="Password#1" />
+                                    </div>
+                                </div>
+
+                                <h3 class="heading_a uk-margin-bottom" style="font-family: Avenir-Heavy;color:black;">Sub Admin List</h3>
+
+                                <div class="md-card uk-margin-medium-bottom">
+                                    <div class="md-card-content">
+                                        <div class="uk-overflow-container">
+                                            <table id="subAdminList" class="uk-table uk-table-striped">
+                                                <thead>
+                                                    <tr>
+                                                        <th>Sub Admin Name</th>
+                                                        <th>Phone Number</th>
+                                                        <th>E-Mail</th>
+                                                        <th>Edit</th>
+                                                        <th>Delete</th>
+                                                    </tr>
+                                                </thead>
+                                                <tbody class="allSubAdminList">
+
+                                                </tbody>
+                                            </table>
+                                        </div>
+                                    </div>
+                                </div>
+
+
+                                <div class="uk-grid">
+                                    <div class="uk-width-1-1">
+                                        <span class="help-block" style="color:red;"></span>
+                                    </div>
+                                </div>
+
+
+
+                            </div>
+
+
+                            <input name="user_groups_control" id="user_groups_control" type="hidden" />
+                        </li>
+
+                        <li>
+                            <div class="md-card">
+                                <div class="md-card-content large-padding termsAndConditionContent">
+
+                                    <div id="form_validation" class="uk-form-stacked">
+
+                                        <div class="uk-grid">
+                                            <div class="uk-width-1-1">
+                                                <button type="submit" id="getAddedit" class="md-btn md-btn-primary btnAreYouSureYouWantToADD/EDIT">Are You Sure You Want To ADD/EDIT</button>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        <div class="uk-grid inputTinymce" style="display:none">
+
+                                            <div class="uk-width-1-1">
+                                                <label class="col-md-2 control-label" for="inputDescription">Terms And Conditions</label>
+
+
+                                                <div class="col-md-10">
+                                                    <textarea class="md-input" id="inputTermsAndCondition" cols="10" rows="8" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."></textarea>
+
+                                                    <iframe id="form_target" name="form_target" style="display:none"></iframe>
+                                                    <form id="my_form" action="https://api.myrequest.co.uk/ajaximage.php" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+                                                        <input name="photoimg" id="getImage" type="file">
+                                                    </form>
+
+                                                    <div id="preview" style="display:none"></div>
+                                                </div>
+
+
+                                            </div>
+
+
+                                        </div>
+                                        <div class="uk-grid  inputTinymce" style="display:none">
+                                            <div class="uk-width-1-2">
+                                                <button type="submit" class="md-btn md-btn-primary btnSubmitTermsAndCondition">Add Terms And Condition</button>
+
+                                                <span class="errorInfo" style="color:red;"></span>
+                                                <input type="hidden" id="hiddenTermsAndConditionID" value="0" />
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
                             </div>
-                        </div>
-                        <div class="uk-width-large-3-10">
-                            <div class="md-card cardPadding">
-                                <div class="md-card-content">
-                                    <h3 class="heading_c uk-margin-medium-bottom">Other settings</h3>
-                                    <div class="uk-form-row">
-                                        <span class="icheck-inline avail">
-                                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvail" />
-                                            <label for="user_edit_active" class="inline-label">Avail Utility Management Services?</label>
-                                            <input type="hidden" id="hiddenIsAgree" value="0"/>
-                                         </span>
-                                    </div>
-                                    <hr class="md-hr">
-                                    <div class="uk-form-row  getIsVoid" style="display: none;">
-                                        <span class="icheck-inline void">
-                                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300" id="getVoid" />
-                                            <input type="hidden" id="hiddenIsVoid" value="0"/>
-                                            <label for="user_edit_active" class="inline-label">Part of Void Program ?</label>
-                                        </span>
-                                    </div>
-                                    <hr class="md-hr  getIsVoid" style="display: none;">
+                        </li>
 
-                                    <div class="uk-input-group inVoidProgram" style="display: none;">
-                                        <span class="uk-input-group-addon"><input type="checkbox" name="isBillingAddress" id="isBillingAddress" data-md-icheck/> </span>
-                                        <label> Use different billing address </label>
-                                    </div>
-
-                                    <br/>
-                                    <hr/>
-                                    <div class="uk-grid showBillingAddress" data-uk-grid-margin style="display: none;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="uk-grid" data-uk-grid-margin>
-                                                <div class="uk-width-medium-1-3">
-                                                    <label>Title*</label><br />
-                                                    <select id="inputBillingTitle" name="inputBillingTitle" style="width:100%;margin-top: 0px;" required class="md-input">
-                                                         <option value="0">Select Title</option>
-                                                         <option value="Mr.">Mr.</option>
-                                                         <option value="Mrs.">Mrs.</option>
-                                                         <option value="Ms.">Ms.</option>
-                                                         <option value="Miss.">Miss.</option>
-                                                    </select>
-                                                </div>
-                                                <div class="uk-width-medium-1-3">
-                                                    <label for="inputBillingFirstName">First Name</label>
-                                                    <input class="md-input" type="text" id="inputBillingFirstName" name="inputBillingFirstName" />
-                                                </div>
-                                                <div class="uk-width-medium-1-3">
-                                                    <label for="inputBillingLastName">Last Name</label>
-                                                    <input class="md-input" type="text" id="inputBillingLastName" name="inputBillingLastName" /> <br/>
-                                                </div>
+                        <li>
+                            <div class="md-card">
+                                <div class="md-card-content large-padding privacyPolicyContent">
+                                    <div id="form_validation" class="uk-form-stacked">
+                                        <div class="uk-grid">
+                                            <div class="uk-width-1-1">
+                                                <button type="submit" id="getAddprivacy" class="md-btn md-btn-primary btnAreYouSureYouWantToADD/EDIT">Are You Sure You Want To ADD/EDIT</button>
                                             </div>
                                         </div>
 
+                                        <div class="uk-grid inputTinymce" style="display:none">
 
-                                        <div class="uk-width-medium-1-1">
-                                            <label for="inputBillingAddress">Address*</label>
-                                            <input class="md-input" type="text" id="inputBillingAddress" name="inputDiffAddress" /><br/>
+                                            <div class="uk-width-1-1">
+                                                <label class="col-md-2 control-label" for="inputDescription">Privacy Policy</label>
+
+
+                                                <div class="col-md-10">
+                                                    <textarea class="md-input" id="inputPrivacyPolicy" cols="10" rows="8" data-parsley-trigger="keyup" data-parsley-maxlength="100" data-parsley-validation-threshold="10" data-parsley-minlength-message="Come on! You need to enter at least a 20 caracters long comment.."></textarea>
+
+                                                    <iframe id="form_target" name="form_target" style="display:none"></iframe>
+                                                    <form id="my_form" action="https://api.myrequest.co.uk/ajaximage.php" target="form_target" method="post" enctype="multipart/form-data" style="width:0px;height:0;overflow:hidden">
+                                                        <input name="photoimg" id="getImage" type="file">
+                                                    </form>
+
+                                                    <div id="preview" style="display:none"></div>
+                                                </div>
+
+
+                                            </div>
                                         </div>
+                                        <div class="uk-grid  inputTinymce" style="display:none">
+                                            <div class="uk-width-1-2">
+                                                <button type="submit" class="md-btn md-btn-primary btnSubmitPrivacyPolicy">Add Privacy Policy</button>
 
-                                        <div class="uk-width-medium-1-1">
-                                            <label>County*</label><br />
-                                            <select id="inputCounty" name="state" style="margin-top: 10px;width: 100%;" required class="md-input">
-               
-                                                 <option value="0">Select County</option>
-                                                <option value='53'>Aberdeen City</option>
-                                                <option value='54'>Aberdeenshire</option>
-                                                <option value='55'>Angus</option>
-                                                <option value='56'>Argyll and Bute</option>
-                                                <option value='57'>Bath Avon</option>
-                                                <option value='58'>Bedfordshire</option>
-                                                <option value='59'>Belfast</option>
-                                                <option value='60'>Berkshire</option>
-                                                <option value='61'>Blaenau Gwent</option>
-                                                <option value='62'>Bournemouth</option>
-                                                <option value='63'>Bradford</option>
-                                                <option value='64'>Bridgend</option>
-                                                <option value='65'>Brighton and Hove</option>
-                                                <option value='66'>Bristol</option>
-                                                <option value='67'>Bristol Avon</option>
-                                                <option value='68'>Buckinghamshire</option>
-                                                <option value='69'>Caerphilly</option>
-                                                <option value='70'>Cambridgeshire</option>
-                                                <option value='71'>Cardiff</option>
-                                                <option value='72'>Carmarthenshire</option>
-                                                <option value='73'>Ceredigion</option>
-                                                <option value='74'>Channel Islands</option>
-                                                <option value='75'>Cheshire</option>
-                                                <option value='76'>City of Edinburgh</option>
-                                                <option value='77'>Clackmannanshire</option>
-                                                <option value='78'>Conwy</option>
-                                                <option value='79'>Cornwall</option>
-                                                <option value='80'>County Armagh</option>
-                                                <option value='81'>County Down</option>
-                                                <option value='82'>County Durham</option>
-                                                <option value='83'>County Fermanagh</option>
-                                                <option value='84'>County Londonderry</option>
-                                                <option value='85'>County Tyrone</option>
-                                                <option value='86'>Cumbria</option>
-                                                <option value='87'>Darlington</option>
-                                                <option value='88'>Denbighshire</option>
-                                                <option value='89'>Derby</option>
-                                                <option value='90'>Derbyshire</option>
-                                                <option value='91'>Devon</option>
-                                                <option value='92'>Dorset</option>
-                                                <option value='93'>Dumfries and Galloway</option>
-                                                <option value='94'>Dundee City</option>
-                                                <option value='95'>E Riding of Yorkshire</option>
-                                                <option value='96'>East Ayrshire</option>
-                                                <option value='97'>East Dunbartonshire</option>
-                                                <option value='98'>East Lothian</option>
-                                                <option value='99'>East Renfrewshire</option>
-                                                <option value='100'>East Sussex</option>
-                                                <option value='101'>Essex</option>
-                                                <option value='102'>Falkirk</option>
-                                                <option value='103'>Fife</option>
-                                                <option value='104'>Flintshire</option>
-                                                <option value='105'>Glasgow City</option>
-                                                <option value='106'>Gloucestershire</option>
-                                                <option value='107'>Greater London</option>
-                                                <option value='108'>Greater Manchester</option>
-                                                <option value='109'>Gwynedd</option>
-                                                <option value='110'>Hampshire</option>
-                                                <option value='111'>Hartlepool</option>
-                                                <option value='112'>Hereford and Worcester</option>
-                                                <option value='113'>Hertfordshire</option>
-                                                <option value='114'>Highland</option>
-                                                <option value='115'>Inverclyde</option>
-                                                <option value='116'>Isle of Anglesey</option>
-                                                <option value='117'>Isle of Man</option>
-                                                <option value='118'>Isle of Wight</option>
-                                                <option value='119'>Isles of Scilly</option>
-                                                <option value='120'>Kent</option>
-                                                <option value='121'>Kingston upon Hull</option>
-                                                <option value='122'>Lancashire</option>
-                                                <option value='123'>Leicester</option>
-                                                <option value='124'>Leicestershire</option>
-                                                <option value='125'>Lincolnshire</option>
-                                                <option value='126'>London</option>
-                                                <option value='127'>Luton</option>
-                                                <option value='128'>Merseyside</option>
-                                                <option value='129'>Merthyr Tydfil</option>
-                                                <option value='130'>Middlesbrough</option>
-                                                <option value='131'>Midlothian</option>
-                                                <option value='132'>Milton Keynes</option>
-                                                <option value='133'>Monmouthshire</option>
-                                                <option value='134'>Moray</option>
-                                                <option value='135'>Neath Port Talbot</option>
-                                                <option value='136'>Newport</option>
-                                                <option value='137'>Norfolk</option>
-                                                <option value='138'>North Ayrshire</option>
-                                                <option value='139'>North Eart Lincolnshire</option>
-                                                <option value='140'>North Lanarkshire</option>
-                                                <option value='141'>North Lincolnshire</option>
-                                                <option value='142'>North Somerset</option>
-                                                <option value='143'>North Yorkshire</option>
-                                                <option value='144'>Northamptonshire</option>
-                                                <option value='145'>Northumberland</option>
-                                                <option value='146'>Nottinghamshire</option>
-                                                <option value='147'>Orkney Islands</option>
-                                                <option value='148'>Oxfordshire</option>
-                                                <option value='149'>Pembrokeshire</option>
-                                                <option value='150'>Perth and Kinross</option>
-                                                <option value='151'>Poole</option>
-                                                <option value='152'>Portsmouth</option>
-                                                <option value='153'>Powys</option>
-                                                <option value='154'>Redcar and Cleveland</option>
-                                                <option value='155'>Renfrewshire</option>
-                                                <option value='156'>Rhondda Cynon Taff</option>
-                                                <option value='157'>Rutland</option>
-                                                <option value='158'>Scottish Borders</option>
-                                                <option value='159'>Shetland Islands</option>
-                                                <option value='160'>Shropshire</option>
-                                                <option value='161'>Somerset</option>
-                                                <option value='162'>South Ayrshire</option>
-                                                <option value='163'>South Gloucestershire</option>
-                                                <option value='164'>South Lanarkshire</option>
-                                                <option value='165'>South Yorkshire</option>
-                                                <option value='166'>Southampton</option>
-                                                <option value='167'>Staffordshire</option>
-                                                <option value='168'>Stirling</option>
-                                                <option value='169'>Stockton-on-Tees</option>
-                                                <option value='170'>Stoke-on-Trent</option>
-                                                <option value='171'>Suffolk</option>
-                                                <option value='172'>Surrey</option>
-                                                <option value='173'>Swansea</option>
-                                                <option value='174'>Swindon</option>
-                                                <option value='175'>Torfaen</option>
-                                                <option value='176'>Tyne and Wear</option>
-                                                <option value='177'>Vale of Glamorgan</option>
-                                                <option value='178'>Warwickshire</option>
-                                                <option value='179'>West Dunbart</option>
-                                                <option value='180'>West Lothian</option>
-                                                <option value='181'>West Midlands</option>
-                                                <option value='182'>West Sussex</option>
-                                                <option value='183'>West Yorkshire</option>
-                                                <option value='184'>Western Isles</option>
-                                                <option value='185'>Wiltshire</option>
-                                                <option value='186'>Wolverhampton</option>
-                                                <option value='187'>Wrexham</option>
-                                                <option value='188'>York</option>
-                                        </select> <br/>
+                                                <span class="errorInfo" style="color:red;"></span>
+                                                <input type="hidden" id="hiddenPrivacyPolicyID" value="0" />
+                                            </div>
                                         </div>
-
-                                        <div class="uk-width-medium-1-1">
-                                            <label>City*</label> <br />
-                                            <select id="inputBillingCity" name="city" required class="md-input" style="margin-top: 10px;width: 100%;">
-                                                <option value="0">Select City</option>
-                                               
-                                              </select> <br/>
-                                        </div>
-
-                                        <div class="uk-width-medium-1-1">
-                                            <label for="inputBillingPostalCode">Postal Code*</label>
-                                            <input class="md-input" type="text" id="inputBillingPostalCode" name="inputBillingPostalCode" /><br/>
-                                        </div>
-
-
-                                        <div class="uk-width-medium-1-1">
-                                            <button class="md-btn md-btn-primary btnSubmitBillingAddress">Save Billing Details</button>
-                                            <span class="billingHelp-block" style="color:red;"></span>
-                                        </div>
-
                                     </div>
-
                                 </div>
                             </div>
-                        </div>
-                    </div>
-
+                        </li>
+                    </ul>
                 </div>
-
-                <div id="form_validation" class="uk-form-stacked">
-                </div>
-                <br/>
-
-                <div class="uk-grid">
-                    <div class="uk-width-1-3">
-                    </div>
-                    <span style="display:none;">
-                            <input type="text" id="inputAgencyName" name="inputAgencyName" required class="md-input" placeholder="Agency Name" />
+            </div>
+        </div>
+        <div class="uk-width-large-3-10">
+            <div class="md-card cardPadding">
+                <div class="md-card-content">
+                    <h3 class="heading_c uk-margin-medium-bottom">Other settings</h3>
+                    <div class="uk-form-row">
+                        <span class="icheck-inline avail">
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvail" />
+                            <label for="user_edit_active" class="inline-label">Avail Utility Management Services?</label>
+                            <input type="hidden" id="hiddenIsAgree" value="0"/>
                         </span>
+                    </div>
+                    <hr class="md-hr">
+                    <div class="uk-form-row  getIsVoid" style="display: none;">
+                        <span class="icheck-inline void">
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300" id="getVoid" />
+                            <input type="hidden" id="hiddenIsVoid" value="0"/>
+                            <label for="user_edit_active" class="inline-label">Part of Void Program ?</label>
+                        </span>
+                    </div>
+                    <hr class="md-hr  getIsVoid" style="display: none;">
+
+                    <div class="uk-input-group inVoidProgram" style="display: none;">
+                        <span class="uk-input-group-addon"><input type="checkbox" name="isBillingAddress" id="isBillingAddress" data-md-icheck/> </span>
+                        <label> Use different billing address </label>
+                    </div>
+
+                    <br/>
+                    <hr/>
+                    <div class="uk-grid showBillingAddress" data-uk-grid-margin style="display: none;">
+                        <div class="uk-width-medium-1-1">
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <label>Title*</label><br />
+                                    <select id="inputBillingTitle" name="inputBillingTitle" style="width:100%;margin-top: 0px;" required class="md-input">
+                                       <option value="0">Select Title</option>
+                                       <option value="Mr.">Mr.</option>
+                                       <option value="Mrs.">Mrs.</option>
+                                       <option value="Ms.">Ms.</option>
+                                       <option value="Miss.">Miss.</option>
+                                   </select>
+                               </div>
+                               <div class="uk-width-medium-1-3">
+                                <label for="inputBillingFirstName">First Name</label>
+                                <input class="md-input" type="text" id="inputBillingFirstName" name="inputBillingFirstName" />
+                            </div>
+                            <div class="uk-width-medium-1-3">
+                                <label for="inputBillingLastName">Last Name</label>
+                                <input class="md-input" type="text" id="inputBillingLastName" name="inputBillingLastName" /> <br/>
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="uk-width-medium-1-1">
+                        <label for="inputBillingAddress">Address*</label>
+                        <input class="md-input" type="text" id="inputBillingAddress" name="inputDiffAddress" /><br/>
+                    </div>
+
+                    <div class="uk-width-medium-1-1">
+                        <label>County*</label><br />
+                        <select id="inputCounty" name="state" style="margin-top: 10px;width: 100%;" required class="md-input">
+                         
+                           <option value="0">Select County</option>
+                           <option value='53'>Aberdeen City</option>
+                           <option value='54'>Aberdeenshire</option>
+                           <option value='55'>Angus</option>
+                           <option value='56'>Argyll and Bute</option>
+                           <option value='57'>Bath Avon</option>
+                           <option value='58'>Bedfordshire</option>
+                           <option value='59'>Belfast</option>
+                           <option value='60'>Berkshire</option>
+                           <option value='61'>Blaenau Gwent</option>
+                           <option value='62'>Bournemouth</option>
+                           <option value='63'>Bradford</option>
+                           <option value='64'>Bridgend</option>
+                           <option value='65'>Brighton and Hove</option>
+                           <option value='66'>Bristol</option>
+                           <option value='67'>Bristol Avon</option>
+                           <option value='68'>Buckinghamshire</option>
+                           <option value='69'>Caerphilly</option>
+                           <option value='70'>Cambridgeshire</option>
+                           <option value='71'>Cardiff</option>
+                           <option value='72'>Carmarthenshire</option>
+                           <option value='73'>Ceredigion</option>
+                           <option value='74'>Channel Islands</option>
+                           <option value='75'>Cheshire</option>
+                           <option value='76'>City of Edinburgh</option>
+                           <option value='77'>Clackmannanshire</option>
+                           <option value='78'>Conwy</option>
+                           <option value='79'>Cornwall</option>
+                           <option value='80'>County Armagh</option>
+                           <option value='81'>County Down</option>
+                           <option value='82'>County Durham</option>
+                           <option value='83'>County Fermanagh</option>
+                           <option value='84'>County Londonderry</option>
+                           <option value='85'>County Tyrone</option>
+                           <option value='86'>Cumbria</option>
+                           <option value='87'>Darlington</option>
+                           <option value='88'>Denbighshire</option>
+                           <option value='89'>Derby</option>
+                           <option value='90'>Derbyshire</option>
+                           <option value='91'>Devon</option>
+                           <option value='92'>Dorset</option>
+                           <option value='93'>Dumfries and Galloway</option>
+                           <option value='94'>Dundee City</option>
+                           <option value='95'>E Riding of Yorkshire</option>
+                           <option value='96'>East Ayrshire</option>
+                           <option value='97'>East Dunbartonshire</option>
+                           <option value='98'>East Lothian</option>
+                           <option value='99'>East Renfrewshire</option>
+                           <option value='100'>East Sussex</option>
+                           <option value='101'>Essex</option>
+                           <option value='102'>Falkirk</option>
+                           <option value='103'>Fife</option>
+                           <option value='104'>Flintshire</option>
+                           <option value='105'>Glasgow City</option>
+                           <option value='106'>Gloucestershire</option>
+                           <option value='107'>Greater London</option>
+                           <option value='108'>Greater Manchester</option>
+                           <option value='109'>Gwynedd</option>
+                           <option value='110'>Hampshire</option>
+                           <option value='111'>Hartlepool</option>
+                           <option value='112'>Hereford and Worcester</option>
+                           <option value='113'>Hertfordshire</option>
+                           <option value='114'>Highland</option>
+                           <option value='115'>Inverclyde</option>
+                           <option value='116'>Isle of Anglesey</option>
+                           <option value='117'>Isle of Man</option>
+                           <option value='118'>Isle of Wight</option>
+                           <option value='119'>Isles of Scilly</option>
+                           <option value='120'>Kent</option>
+                           <option value='121'>Kingston upon Hull</option>
+                           <option value='122'>Lancashire</option>
+                           <option value='123'>Leicester</option>
+                           <option value='124'>Leicestershire</option>
+                           <option value='125'>Lincolnshire</option>
+                           <option value='126'>London</option>
+                           <option value='127'>Luton</option>
+                           <option value='128'>Merseyside</option>
+                           <option value='129'>Merthyr Tydfil</option>
+                           <option value='130'>Middlesbrough</option>
+                           <option value='131'>Midlothian</option>
+                           <option value='132'>Milton Keynes</option>
+                           <option value='133'>Monmouthshire</option>
+                           <option value='134'>Moray</option>
+                           <option value='135'>Neath Port Talbot</option>
+                           <option value='136'>Newport</option>
+                           <option value='137'>Norfolk</option>
+                           <option value='138'>North Ayrshire</option>
+                           <option value='139'>North Eart Lincolnshire</option>
+                           <option value='140'>North Lanarkshire</option>
+                           <option value='141'>North Lincolnshire</option>
+                           <option value='142'>North Somerset</option>
+                           <option value='143'>North Yorkshire</option>
+                           <option value='144'>Northamptonshire</option>
+                           <option value='145'>Northumberland</option>
+                           <option value='146'>Nottinghamshire</option>
+                           <option value='147'>Orkney Islands</option>
+                           <option value='148'>Oxfordshire</option>
+                           <option value='149'>Pembrokeshire</option>
+                           <option value='150'>Perth and Kinross</option>
+                           <option value='151'>Poole</option>
+                           <option value='152'>Portsmouth</option>
+                           <option value='153'>Powys</option>
+                           <option value='154'>Redcar and Cleveland</option>
+                           <option value='155'>Renfrewshire</option>
+                           <option value='156'>Rhondda Cynon Taff</option>
+                           <option value='157'>Rutland</option>
+                           <option value='158'>Scottish Borders</option>
+                           <option value='159'>Shetland Islands</option>
+                           <option value='160'>Shropshire</option>
+                           <option value='161'>Somerset</option>
+                           <option value='162'>South Ayrshire</option>
+                           <option value='163'>South Gloucestershire</option>
+                           <option value='164'>South Lanarkshire</option>
+                           <option value='165'>South Yorkshire</option>
+                           <option value='166'>Southampton</option>
+                           <option value='167'>Staffordshire</option>
+                           <option value='168'>Stirling</option>
+                           <option value='169'>Stockton-on-Tees</option>
+                           <option value='170'>Stoke-on-Trent</option>
+                           <option value='171'>Suffolk</option>
+                           <option value='172'>Surrey</option>
+                           <option value='173'>Swansea</option>
+                           <option value='174'>Swindon</option>
+                           <option value='175'>Torfaen</option>
+                           <option value='176'>Tyne and Wear</option>
+                           <option value='177'>Vale of Glamorgan</option>
+                           <option value='178'>Warwickshire</option>
+                           <option value='179'>West Dunbart</option>
+                           <option value='180'>West Lothian</option>
+                           <option value='181'>West Midlands</option>
+                           <option value='182'>West Sussex</option>
+                           <option value='183'>West Yorkshire</option>
+                           <option value='184'>Western Isles</option>
+                           <option value='185'>Wiltshire</option>
+                           <option value='186'>Wolverhampton</option>
+                           <option value='187'>Wrexham</option>
+                           <option value='188'>York</option>
+                       </select> <br/>
+                   </div>
+
+                   <div class="uk-width-medium-1-1">
+                    <label>City*</label> <br />
+                    <select id="inputBillingCity" name="city" required class="md-input" style="margin-top: 10px;width: 100%;">
+                        <option value="0">Select City</option>
+                        
+                    </select> <br/>
                 </div>
-            </div>
-        </div>
 
-    </div>
+                <div class="uk-width-medium-1-1">
+                    <label for="inputBillingPostalCode">Postal Code*</label>
+                    <input class="md-input" type="text" id="inputBillingPostalCode" name="inputBillingPostalCode" /><br/>
+                </div>
 
 
-    <div class="uk-modal" id="modalAgreeSkip">
-        <div class="uk-modal-dialog">
-            <div class="uk-modal-header">
-                <h3 class="uk-modal-title">Is Agree ?</h3>
-            </div>
-            <p>
-                <p>In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. </p>
-                <p>Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.</p>
-
-                <p>The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.</p>
-
-                <p>A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.</p>
-            </p>
-            <p>
-                <span class="help-block"></span>
-            </p>
-            <div class="uk-modal-footer uk-text-right">
-                <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Skip</button>
-                <button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>
+                <div class="uk-width-medium-1-1">
+                    <button class="md-btn md-btn-primary btnSubmitBillingAddress">Save Billing Details</button>
+                    <span class="billingHelp-block" style="color:red;"></span>
+                </div>
 
             </div>
+
         </div>
     </div>
+</div>
+</div>
+
+</div>
+
+<div id="form_validation" class="uk-form-stacked">
+</div>
+<br/>
+
+<div class="uk-grid">
+    <div class="uk-width-1-3">
+    </div>
+    <span style="display:none;">
+        <input type="text" id="inputAgencyName" name="inputAgencyName" required class="md-input" placeholder="Agency Name" />
+    </span>
+</div>
+</div>
+</div>
+
+</div>
+
+
+<div class="uk-modal" id="modalAgreeSkip">
+    <div class="uk-modal-dialog">
+        <div class="uk-modal-header">
+            <h3 class="uk-modal-title">Is Agree ?</h3>
+        </div>
+        <p>
+            <p>In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. </p>
+            <p>Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.</p>
+
+            <p>The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.</p>
+
+            <p>A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.</p>
+        </p>
+        <p>
+            <span class="help-block"></span>
+        </p>
+        <div class="uk-modal-footer uk-text-right">
+            <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Skip</button>
+            <button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>
+
+        </div>
+    </div>
+</div>
 
 
 
 
-    <!-- google web fonts -->
-    <script>
-        WebFontConfig = {
-            google: {
-                families: [
-                    'Source+Code+Pro:400,700:latin',
-                    'Roboto:400,300,500,700,400italic:latin'
-                ]
-            }
-        };
-        (function() {
-            var wf = document.createElement('script');
-            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-            wf.type = 'text/javascript';
-            wf.async = 'true';
-            var s = document.getElementsByTagName('script')[0];
-            s.parentNode.insertBefore(wf, s);
-        })();
-    </script>
+<!-- google web fonts -->
+<script>
+WebFontConfig = {
+    google: {
+        families: [
+        'Source+Code+Pro:400,700:latin',
+        'Roboto:400,300,500,700,400italic:latin'
+        ]
+    }
+};
+(function() {
+    var wf = document.createElement('script');
+    wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+    wf.type = 'text/javascript';
+    wf.async = 'true';
+    var s = document.getElementsByTagName('script')[0];
+    s.parentNode.insertBefore(wf, s);
+})();
+</script>
 
-    <!-- common functions -->
-    <script src="assets/js/common.min.js"></script>
-    <!-- uikit functions -->
-    <script src="assets/js/uikit_custom.min.js"></script>
-    <!-- altair common functions/helpers -->
-    <script src="assets/js/altair_admin_common.min.js"></script>
-    <script src="assets/js/w3data.js"></script>
-    <!-- page specific plugins -->
-    <!-- parsley (validation) -->
-    <script>
+<!-- common functions -->
+<script src="assets/js/common.min.js"></script>
+<!-- uikit functions -->
+<script src="assets/js/uikit_custom.min.js"></script>
+<!-- altair common functions/helpers -->
+<script src="assets/js/altair_admin_common.min.js"></script>
+<script src="assets/js/w3data.js"></script>
+<!-- page specific plugins -->
+<!-- parsley (validation) -->
+<script>
         // load parsley config (altair_admin_common.js)
         altair_forms.parsley_validation_config();
-    </script>
-    <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
-    <script src="assets/js/select2.min.js"></script>
-    <!--  forms validation functions -->
-    <script src="assets/js/pages/forms_validation.min.js"></script>
-    <script src="assets/js/const.js"></script>
-    <script src="assets/js/appUrl.js"></script>
-    <script src="assets/js/validationCheck.js" type="text/javascript"></script>
-    <script src="assets/js/jquery.form.js" type="text/javascript"></script>
-    <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
-    <script src="tinymce/tinymce.min.js" type="text/javascript"></script>
-    <script src="assets/js/checkDateDiff.js"></script>
-    <script src="assets/js/Profile/myProfilePage.js"></script>
-    <script src="assets/js/AdminStatus/subAdminList.js"></script>
-    <script src="assets/js/AdminStatus/privacyPolicyList.js"></script>
-    <script src="assets/js/AdminStatus/termsConditionList.js"></script>
-    <script src="assets/js/screenfull.js"></script>
-    <script src="assets/js/logOutClearCatch.js"></script>
-    <script>
+        </script>
+        <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+        <script src="assets/js/select2.min.js"></script>
+        <!--  forms validation functions -->
+        <script src="assets/js/pages/forms_validation.min.js"></script>
+        <script src="assets/js/const.js"></script>
+        <script src="assets/js/appUrl.js"></script>
+        <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+        <script src="tinymce/tinymce.min.js" type="text/javascript"></script>
+        <script src="assets/js/checkDateDiff.js"></script>
+        <script src="assets/js/Profile/myProfilePage.js"></script>
+        <script src="assets/js/AdminStatus/subAdminList.js"></script>
+        <script src="assets/js/AdminStatus/privacyPolicyList.js"></script>
+        <script src="assets/js/AdminStatus/termsConditionList.js"></script>
+        <script src="assets/js/screenfull.js"></script>
+        <script src="assets/js/logOutClearCatch.js"></script>
+        <script>
         $(function() {
             // enable hires images
             altair_helpers.retina_images();
@@ -1013,7 +1013,7 @@
         $(".savebutton").click(function(){
             $(".btnUpdate").hide();
         });
-    </script>
+        </script>
     </div>
     <div class="md-overlay"></div>
 </body>
