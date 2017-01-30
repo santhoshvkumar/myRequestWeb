@@ -396,6 +396,7 @@
          window.location.href = "index.html";
      } else {
          $(".getUserName").text(adminUserName);
+         $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
      }
 
 
