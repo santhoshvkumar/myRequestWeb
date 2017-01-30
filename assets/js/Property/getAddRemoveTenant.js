@@ -225,13 +225,13 @@ function getAddTenant(count) {
 
                     }
  
-                    if (getCountValue == 1 || hiddenIsCouncil == "true") {
+                 
+                } else {   if (getCountValue == 1 || hiddenIsCouncil == "true") {
                         $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
                         $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
                         $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
 
                     }
-                } else {
                     var modal = UIkit.modal("#modalTenantInsurance");
                     modal.show();
                 } 
@@ -292,7 +292,7 @@ function getAddTenant(count) {
     function existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID){
         $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID, function(result) {
                console.log(result);
-                if (result.record_count == 0) {
+                if (result.record_count == 0) { 
                     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
                        console.log(result);
                         if (result.record_count == 0) {
