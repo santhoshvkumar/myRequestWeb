@@ -147,6 +147,8 @@
                     window.location.href = "index.html";
                 } else {
                     $(".getUserName").text(adminUserName);
+                    $("#FileURLUploadRequestImage1").attr("action",domainAddress+"ajaximage.php");
+
                 }
 
                 if (adminType == "SuperAdmin") {
