@@ -141,13 +141,13 @@
 
         window.location.href = domainAgentAddress+'MyProfile.html';
     }
-    
-    
+
+
     if (adminUserID == "" || adminUserID == null) {
         window.location.href = "index.html";
     } else {
         $(".getUserName").text(adminUserName);
-        $("#FileURLUploadRequestImage1").attr("action",domainAddress+"ajaximage.php");
+        $("#imgRequestImage").attr("action",domainAddress+"ajaximage.php");
 
     }
 
@@ -199,14 +199,14 @@
                         $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
                     }
                     else{
-                       $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
-                       for (var Speciality in result.records) {
+                     $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
+                     for (var Speciality in result.records) {
                         $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
                     }
                     $("#caseContractor").html("");
                     $("#caseContractor").html("<option value='0'>Select Speciality to view Contractor</option>");
                 }
-                
+
                 $("#caseSpecialisation").select2();
                 $("#caseContractor").select2();
                 }); // GetAllEventList
@@ -232,7 +232,7 @@
                     $("#caseProperty").select2();
                 }); // GetAllEventList
 
-    
+
 
 
     $('#startDate').on('change.bfhdatepicker', function(e) {
@@ -462,7 +462,7 @@ function loadProblems(getValue) {
 
 
 
-                                    
+
 
                                     if (localProblemStatus == "Closed") {
                                         $("#getClosed-" + data.ProblemRecord[Problem].ProblemID).hide();
@@ -485,13 +485,13 @@ function loadProblems(getValue) {
                                         $("#getFixedAmount-" + problemID).hide();
                                         $("#getFixedAmount-" + problemID).html("");
                                     }
-                                    
+
                                     $("#problemImage-" + problemID).html("<img src='assets/img/no_image.jpg' alt='NoProblemImage' style='width: 112px;height: 101px;' />");
                                     
                                     if (problemImage == null || problemImage == "null" || problemImage == "" || problemImage == "[object TiUIImageView]" || problemImage == "[object ImageView]") {
                                         $("#problemImage-" + problemID).html("<img src='assets/img/no_image.jpg' alt='NoProblemImage' style='width: 112px;height: 101px;' />");
                                     } else {
-                                        
+
                                         $("#problemImage-" + problemID).html("<img src='" + domainAddress + problemImage + "' alt='problemImage' style='width: 112px;height: 101px;' />");
                                     }
 
@@ -1093,6 +1093,7 @@ $("#requestImageUrl1").off('click').on('change', function () {
     $("#preview1").html('');
 
     $("#FileURLUploadRequestImage1").ajaxForm({
+
         target: '#preview1',
         beforeSubmit: function () {
             console.log('v');
@@ -1177,7 +1178,7 @@ $("#addCase").click(function() {
         $(".addCase").attr("disabled", true);
         return false;
     }
-    
+
     if (inputCaseNotes == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").css('color', 'red');
@@ -1197,8 +1198,8 @@ $("#addCase").click(function() {
         $(".addCase").attr("disabled", true);
         return false;
     }
-    
-    
+
+
     if (inputcaseContractor == 0) {
         $(".help-block").css("border-color", "red");
         $(".help-block").css('color', 'red');
@@ -1270,25 +1271,25 @@ $("#addCase").click(function() {
             success: function(dataCheck) {
                 console.log(dataCheck);
                 if(dataCheck.status=="success"){
-                   problemCountLimit = 0;
-                   $(".ListAllProblem").html("");
-                   loadProblems(getValue);
-                   createCaseReset();
+                 problemCountLimit = 0;
+                 $(".ListAllProblem").html("");
+                 loadProblems(getValue);
+                 createCaseReset();
 
-                   $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
-                      ContractorID: inputcaseContractor,
-                      AdminID: adminUserID,
-                      MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
-                      MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
-                      RequestID:dataCheck.RequestID
-                  }, function(e) {
-                      console.log(e);
+                 $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
+                  ContractorID: inputcaseContractor,
+                  AdminID: adminUserID,
+                  MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
+                  MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
+                  RequestID:dataCheck.RequestID
+              }, function(e) {
+                  console.log(e);
                                 }); // push/messageSendByAdminForNewCase.php
-                   
-                   $(".uk-modal").removeClass("uk-open").addClass("uk-close");
-                   UIkit.modal.alert(dataCheck.message_text);
-               }
-               else{
+
+                 $(".uk-modal").removeClass("uk-open").addClass("uk-close");
+                 UIkit.modal.alert(dataCheck.message_text);
+             }
+             else{
                 UIkit.modal.alert(dataCheck.message_text);
             }
 
