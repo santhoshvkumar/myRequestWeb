@@ -78,6 +78,7 @@
   var maxProp = 0;
   var adminUserID = 0;
   var getValue = "";
+  var countryname = "";
 
   $(document).ready(function() {
       console.log("ready call");
@@ -194,9 +195,28 @@
       $("#inputCountry").select2()
         .on("change", function(e){
             setCountryCode = $("#inputCountry").val();
-            $(".cphno-prefix").text(setCountryCode);
-            $(".emerno-prefix").text(setCountryCode);
-            $(".emerElectno-prefix").text(setCountryCode);
+            console.log(setCountryCode);
+            if(setCountryCode == "+44"){
+                $(".cphno-prefix").text(setCountryCode);
+                $(".emerno-prefix").text(setCountryCode);
+                $(".emerElectno-prefix").text(setCountryCode);
+             } else if(setCountryCode == "+1"){
+                $(".cphno-prefix").text(setCountryCode);
+                $(".emerno-prefix").text(setCountryCode);
+                $(".emerElectno-prefix").text(setCountryCode);
+             }
+             else if(setCountryCode == "+91"){
+                $(".cphno-prefix").text(setCountryCode);
+                $(".emerno-prefix").text(setCountryCode);
+                $(".emerElectno-prefix").text(setCountryCode);
+             }
+             else if(setCountryCode == "Canada"){
+              setCountryCode = '+1';
+                $(".cphno-prefix").text('+1');
+                $(".emerno-prefix").text('+1');
+                $(".emerElectno-prefix").text('+1');
+                // console.log($(".cphno-prefix").text('+1'))
+             } 
             
       });
 
@@ -692,6 +712,7 @@
 
 
   $(".btnSubmitAdmin").click(function() {
+    debugger;
       var inputAvail = 0;
       var hiddenAdminID = $("#hiddenAdminID").val();
       var inputTitle = $("#select2-inputTitle-container").html();
@@ -1225,7 +1246,7 @@
 
                       isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
                       //console.log(isFourExistNo+" === "+result.records[getAdmin].PhoneNumber.slice(3));
-                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1") {
+                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1" || isFourExistNo === "Canada") {
                           $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
                           $(".cphno-prefix").show();
                           $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
