@@ -1,38 +1,38 @@
  $(function() {
 
-                $('#full_screen_toggle').on('click', function(e) {
-                    e.preventDefault();
-                    screenfull.toggle();
-                    $window.resize();
-                })
-                var $switcher = $('#style_switcher'),
-                    $switcher_toggle = $('#style_switcher_toggle'),
-                    $theme_switcher = $('#theme_switcher'),
-                    $mini_sidebar_toggle = $('#style_sidebar_mini');
+    $('#full_screen_toggle').on('click', function(e) {
+        e.preventDefault();
+        screenfull.toggle();
+        $window.resize();
+    })
+    var $switcher = $('#style_switcher'),
+    $switcher_toggle = $('#style_switcher_toggle'),
+    $theme_switcher = $('#theme_switcher'),
+    $mini_sidebar_toggle = $('#style_sidebar_mini');
 
-                $switcher_toggle.click(function(e) {
-                    e.preventDefault();
-                    $switcher.toggleClass('switcher_active');
-                });
+    $switcher_toggle.click(function(e) {
+        e.preventDefault();
+        $switcher.toggleClass('switcher_active');
+    });
 
-                $theme_switcher.children('li').click(function(e) {
-                    e.preventDefault();
-                    var $this = $(this),
-                        this_theme = $this.attr('data-app-theme');
+    $theme_switcher.children('li').click(function(e) {
+        e.preventDefault();
+        var $this = $(this),
+        this_theme = $this.attr('data-app-theme');
 
-                    $theme_switcher.children('li').removeClass('active_theme');
-                    $(this).addClass('active_theme');
-                    $('body')
-                        .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
-                        .addClass(this_theme);
+        $theme_switcher.children('li').removeClass('active_theme');
+        $(this).addClass('active_theme');
+        $('body')
+        .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
+        .addClass(this_theme);
 
-                    if (this_theme == '') {
-                        localStorage.removeItem('altair_theme');
-                    } else {
-                        localStorage.setItem("altair_theme", this_theme);
-                    }
+        if (this_theme == '') {
+            localStorage.removeItem('altair_theme');
+        } else {
+            localStorage.setItem("altair_theme", this_theme);
+        }
 
-                });
+    });
 
                 // change input's state to checked if mini sidebar is active
                 if ((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $('body').hasClass('sidebar_mini')) {
@@ -41,16 +41,16 @@
 
                 // toggle mini sidebar
                 $mini_sidebar_toggle
-                    .on('ifChecked', function(event) {
-                        $switcher.removeClass('switcher_active');
-                        localStorage.setItem("altair_sidebar_mini", '1');
-                        location.reload(true);
-                    })
-                    .on('ifUnchecked', function(event) {
-                        $switcher.removeClass('switcher_active');
-                        localStorage.removeItem('altair_sidebar_mini');
-                        location.reload(true);
-                    });
+                .on('ifChecked', function(event) {
+                    $switcher.removeClass('switcher_active');
+                    localStorage.setItem("altair_sidebar_mini", '1');
+                    location.reload(true);
+                })
+                .on('ifUnchecked', function(event) {
+                    $switcher.removeClass('switcher_active');
+                    localStorage.removeItem('altair_sidebar_mini');
+                    location.reload(true);
+                });
 
                 // hide style switcher
                 $document.on('click keyup', function(e) {
@@ -58,139 +58,139 @@
                         if (
                             (!$(e.target).closest($switcher).length) ||
                             (e.keyCode == 27)
-                        ) {
+                            ) {
                             $switcher.removeClass('switcher_active');
-                        }
                     }
-                });
+                }
+            });
 
                 if (localStorage.getItem("altair_theme") !== null) {
                     $theme_switcher.children('li[data-app-theme=' + localStorage.getItem("altair_theme") + ']').click();
                 }
             });
 
-            var problemID = 0;
-            var problemImage = "";
-            var notes = "";
-            var unitID = 0;
-            var unitName = "";
-            var specialityID = 0;
-            var specialityName = "";
-            var problemUserNameID = 0;
-            var name = "";
-            var problemEmailID = 0;
-            var emailID = "";
-            var problemPhoneNumber = 0;
-            var phoneNumber = "";
-            var contractorID = 0;
-            var contractorName = "";
-            var buildingName = "";
-            var workName = "";
-            var workDesc = "";
-            var isAssignCheck = "";
-            var problemCountLimit = 0;
-            var getProblemDetailsAsObject = new Array();
+ var problemID = 0;
+ var problemImage = "";
+ var notes = "";
+ var unitID = 0;
+ var unitName = "";
+ var specialityID = 0;
+ var specialityName = "";
+ var problemUserNameID = 0;
+ var name = "";
+ var problemEmailID = 0;
+ var emailID = "";
+ var problemPhoneNumber = 0;
+ var phoneNumber = "";
+ var contractorID = 0;
+ var contractorName = "";
+ var buildingName = "";
+ var workName = "";
+ var workDesc = "";
+ var isAssignCheck = "";
+ var problemCountLimit = 0;
+ var getProblemDetailsAsObject = new Array();
 
-            var getBlockDates = new Array();
-            var newItem = {};
-            var getProblemID = 0;
-            var getContractorName = "";
-            var getProblemNotes = "";
-            var getStartDate = "";
-            var getEndDate = "";
-            var getProblemStatus = "";
-            var getAssignStatus = "";
-            var getColor = "";
-            var getTitle = "";
-            var workAssign = "";
-            var assignColor = "";
-            var recordCountOnReady = 0;
-            var adminUserID = 0;
-            var localProblemStatus = "";
-            var getValue = "";
-            var dataForm = "";
-            var sendURL = "";
-            var loadCountRecordValue = 0;
-            var addStartDate = "";
-            var addEndDate = "";
-            var imageUrl1 = "";
-            var inputWhenDate = "";
-            var inputWhenTime = "";
-            var getDate = "";
-            var countDateTime = 0;
-            var businessName = "";
+ var getBlockDates = new Array();
+ var newItem = {};
+ var getProblemID = 0;
+ var getContractorName = "";
+ var getProblemNotes = "";
+ var getStartDate = "";
+ var getEndDate = "";
+ var getProblemStatus = "";
+ var getAssignStatus = "";
+ var getColor = "";
+ var getTitle = "";
+ var workAssign = "";
+ var assignColor = "";
+ var recordCountOnReady = 0;
+ var adminUserID = 0;
+ var localProblemStatus = "";
+ var getValue = "";
+ var dataForm = "";
+ var sendURL = "";
+ var loadCountRecordValue = 0;
+ var addStartDate = "";
+ var addEndDate = "";
+ var imageUrl1 = "";
+ var inputWhenDate = "";
+ var inputWhenTime = "";
+ var getDate = "";
+ var countDateTime = 0;
+ var businessName = "";
 
-             $(window).load(function() {
-                $("#getLoadingModalContent").removeClass('md-show');
-            });
+ $(window).load(function() {
+    $("#getLoadingModalContent").removeClass('md-show');
+});
 
-            $(document).ready(function() {
-                console.log("ready call");
-                adminUserID = localStorage.getItem("MyRequest_AdminID");
-                var adminUserName = localStorage.getItem("MyRequest_UserName");
-                var adminType = localStorage.getItem("MyRequest_AdminType");
+ $(document).ready(function() {
+    console.log("ready call");
+    adminUserID = localStorage.getItem("MyRequest_AdminID");
+    var adminUserName = localStorage.getItem("MyRequest_UserName");
+    var adminType = localStorage.getItem("MyRequest_AdminType");
 
-                businessName = localStorage.getItem("MyRequest_BusinessName");
-                var logo = localStorage.getItem("MyRequest_Logo");
-                localProblemStatus = localStorage.getItem("MyRequest_RepairStatus");
+    businessName = localStorage.getItem("MyRequest_BusinessName");
+    var logo = localStorage.getItem("MyRequest_Logo");
+    localProblemStatus = localStorage.getItem("MyRequest_RepairStatus");
 
-                $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
-                $("#getLoadingModalContent").addClass('md-show');
-                var isFilled = localStorage.getItem("MyRequest_profileFill");
-                if (isFilled == "true") {
+    $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
+    $("#getLoadingModalContent").addClass('md-show');
+    var isFilled = localStorage.getItem("MyRequest_profileFill");
+    if (isFilled == "true") {
 
-                    window.location.href = domainAgentAddress+'MyProfile.html';
-                }
-                 
- 
-                if (adminUserID == "" || adminUserID == null) {
-                    window.location.href = "index.html";
-                } else {
-                    $(".getUserName").text(adminUserName);
-                    $("#FileURLUploadRequestImage1").attr("action",domainAddress+"ajaximage.php");
+        window.location.href = domainAgentAddress+'MyProfile.html';
+    }
+    
+    
+    if (adminUserID == "" || adminUserID == null) {
+        window.location.href = "index.html";
+    } else {
+        $(".getUserName").text(adminUserName);
+        $("#FileURLUploadRequestImage1").attr("action",domainAddress+"ajaximage.php");
 
-                }
+    }
 
-                if (adminType == "SuperAdmin") {
-                    $(".superAdmin").show();
-                } else {
-                    getDateDiff(adminUserID);
-                    $(".superAdmin").hide();
-                    if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
-                        $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
-                     }
-                     else{
-                        $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-                        var getLogoImagePath = logo.slice(0,4);
-                        if(getLogoImagePath=="api/"){
-                            getLogoImagePath = logo.slice(4);
-                            $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-                        }
-                        else{
-                            $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-                        }
-                     }
-                }
+    if (adminType == "SuperAdmin") {
+        $(".superAdmin").show();
+    } else {
+        getDateDiff(adminUserID);
+        $(".superAdmin").hide();
+        if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
+            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
+        }
+        else{
+            $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            var getLogoImagePath = logo.slice(0,4);
+            if(getLogoImagePath=="api/"){
+                getLogoImagePath = logo.slice(4);
+                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
+            }
+            else{
+                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
+            }
+        }
+    }
 
-                if (localProblemStatus == "" || localProblemStatus == null) {
+    if (localProblemStatus == "" || localProblemStatus == null) {
 
-                } else {
-                    $("#getAssignStatusType").val(localProblemStatus);
-                    if (localProblemStatus == "!Completed") {
-                        $("#getAssignStatusType").val("");
-                    }
-                }
-
-
-                $("#previousPage").attr("disabled", true);
-
-                recordCountOnReady = 0;
-
-                loadProblems(getValue);
+    } else {
+        $("#getAssignStatusType").val(localProblemStatus);
+        if (localProblemStatus == "!Completed") {
+            $("#getAssignStatusType").val("");
+        }
+    }
 
 
+    $("#previousPage").attr("disabled", true);
 
-                $.get(domainAddress + "GetAllSpecialityList/"+adminUserID, {}, function(result) {
+    recordCountOnReady = 0;
+
+    loadProblems(getValue);
+
+
+
+    $.get(domainAddress + "GetAllSpecialityList/"+adminUserID, {}, function(result) {
                     //console.log(result);
                     $("#caseSpecialisation").html('');
 
@@ -199,21 +199,21 @@
                         $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
                     }
                     else{
-                         $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
-                        for (var Speciality in result.records) {
-                            $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
-                        }
-                        $("#caseContractor").html("");
-                        $("#caseContractor").html("<option value='0'>Select Speciality to view Contractor</option>");
+                       $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
+                       for (var Speciality in result.records) {
+                        $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
                     }
-                   
-                    $("#caseSpecialisation").select2();
-                    $("#caseContractor").select2();
+                    $("#caseContractor").html("");
+                    $("#caseContractor").html("<option value='0'>Select Speciality to view Contractor</option>");
+                }
+                
+                $("#caseSpecialisation").select2();
+                $("#caseContractor").select2();
                 }); // GetAllEventList
 
 
 
-                $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
+    $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
                     //console.log(result);
                     $("#caseProperty").html('');
                     if(result.record_count==0){
@@ -225,227 +225,227 @@
                         for (var Property in result.records) {
                             if(result.records[Property].PropertyRegister != undefined && result.records[Property].PropOwnerName != undefined && result.records[Property].PropAddress != undefined &&result.records[Property].PropCity != undefined && result.records[Property].PropState != undefined && result.records[Property].PropCountry != undefined && result.records[Property].PropPostalCode != undefined)
                             {
-                            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
+                                $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
                             }
                         }
                     }
                     $("#caseProperty").select2();
                 }); // GetAllEventList
 
-                 
+    
 
 
-                $('#startDate').on('change.bfhdatepicker', function(e) {
+    $('#startDate').on('change.bfhdatepicker', function(e) {
                     //console.log(this.value);
                 });
 
 
-                $('#endDateValue').on('change.bfhdatepicker', function(e) {
+    $('#endDateValue').on('change.bfhdatepicker', function(e) {
                     //console.log(this.value);
                 });
 
 
-                $("#startDate").mouseover(function() {
-                    $("#startDate").css("cursor", "pointer");
-                });
+    $("#startDate").mouseover(function() {
+        $("#startDate").css("cursor", "pointer");
+    });
 
-                $("#endDateValue").mouseover(function() {
-                    $("#endDateValue").css("cursor", "pointer");
-                });
+    $("#endDateValue").mouseover(function() {
+        $("#endDateValue").css("cursor", "pointer");
+    });
 
-                $('#startDate').val("Select Start Date");
-                $("#endDateValue").val("Select End Date");
-                $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName );
+    $('#startDate').val("Select Start Date");
+    $("#endDateValue").val("Select End Date");
+    $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName );
 
 
 
-                $("#getAssignStatusType").select2();
+    $("#getAssignStatusType").select2();
 
             }); // ready
 
 
-            $("#inputWhenDate").on('change', function() {
-                inputWhenDate = $("#inputWhenDate").val();
-                var setDate = inputWhenDate.split('.');
-                getDate = new Date(setDate[2]+"-"+setDate[1]+"-"+setDate[0]);
-                console.log(getDate);
-                getDate = getDate.toString().slice(0,15);
-                $("#inputWhenDate").css("border-color", "");
-                $("#inputWhenDate").hide();
-                $("#inputWhenTime").show();
-            });
+ $("#inputWhenDate").on('change', function() {
+    inputWhenDate = $("#inputWhenDate").val();
+    var setDate = inputWhenDate.split('.');
+    getDate = new Date(setDate[2]+"-"+setDate[1]+"-"+setDate[0]);
+    console.log(getDate);
+    getDate = getDate.toString().slice(0,15);
+    $("#inputWhenDate").css("border-color", "");
+    $("#inputWhenDate").hide();
+    $("#inputWhenTime").show();
+});
 
-            $("#inputWhenTime").on('change', function() {
-                inputWhenTime = $("#inputWhenTime").val();
-                if(inputWhenTime!=""){
-                    countDateTime++;
-                    if(countDateTime==2){
-                        callDateTime();
-                    }
-                }
-            });
+ $("#inputWhenTime").on('change', function() {
+    inputWhenTime = $("#inputWhenTime").val();
+    if(inputWhenTime!=""){
+        countDateTime++;
+        if(countDateTime==2){
+            callDateTime();
+        }
+    }
+});
 
-            function callDateTime(){
-                $("#inputWhenDate").hide();
-                $("#inputWhenTime").hide();
-                $("#inputWhenToRespond").show();
-                $("#inputWhenToRespond").val(getDate+" "+inputWhenTime+":00");
-                $(".help-block").text('').hide();
-                $("#inputWhenToRespond").css("border-color","");
-            }
+ function callDateTime(){
+    $("#inputWhenDate").hide();
+    $("#inputWhenTime").hide();
+    $("#inputWhenToRespond").show();
+    $("#inputWhenToRespond").val(getDate+" "+inputWhenTime+":00");
+    $(".help-block").text('').hide();
+    $("#inputWhenToRespond").css("border-color","");
+}
 
-            $("#inputWhenToRespond").click(function(){
-                countDateTime=0;
-                $("#inputWhenToRespond").css("border-color", "");
-                $("#inputWhenToRespond").val('');
-                $("#inputWhenDate").val('');
-                $("#inputWhenTime").val('');
-                $("#inputWhenToRespond").hide();
-                $("#inputWhenDate").show();
-            });
-
-            
+$("#inputWhenToRespond").click(function(){
+    countDateTime=0;
+    $("#inputWhenToRespond").css("border-color", "");
+    $("#inputWhenToRespond").val('');
+    $("#inputWhenDate").val('');
+    $("#inputWhenTime").val('');
+    $("#inputWhenToRespond").hide();
+    $("#inputWhenDate").show();
+});
 
 
-            $("#advancedSearch").on('click', function() {
-                $(".md-input-wrapper").addClass("md-input-filled");
-                $("#startDate").val('Select Start Date');
-                $("#endDateValue").val('Select End Date');
-                $("#formRow").toggle('slow');
+
+
+$("#advancedSearch").on('click', function() {
+    $(".md-input-wrapper").addClass("md-input-filled");
+    $("#startDate").val('Select Start Date');
+    $("#endDateValue").val('Select End Date');
+    $("#formRow").toggle('slow');
                 /*problemCountLimit=0;
                 $(".ListAllProblem").html("");
                 loadProblems(getValue);*/
             });
 
-            $(".btnSearch").click(function() {
-                problemCountLimit = 0;
-                getValue = $("#searchCase").val();
-                $(".ListAllProblem").html("");
-                loadProblems(getValue);
-            });
+$(".btnSearch").click(function() {
+    problemCountLimit = 0;
+    getValue = $("#searchCase").val();
+    $(".ListAllProblem").html("");
+    loadProblems(getValue);
+});
 
 
-            function loadProblems(getValue) {
-                console.log("for getValue : " + getValue + " Limit : " + problemCountLimit);
+function loadProblems(getValue) {
+    console.log("for getValue : " + getValue + " Limit : " + problemCountLimit);
 
-                if (getValue == "" || getValue == undefined) {
-                    dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","ProblemStatus":"' + localProblemStatus + '","AdminID":"' + adminUserID + '"}';
-                    sendURL = domainAddress + "AllProblemByCount";
-                } else if (getValue == "ParticularAdvancedSearch") {
+    if (getValue == "" || getValue == undefined) {
+        dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","ProblemStatus":"' + localProblemStatus + '","AdminID":"' + adminUserID + '"}';
+        sendURL = domainAddress + "AllProblemByCount";
+    } else if (getValue == "ParticularAdvancedSearch") {
 
-                    dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","StartDate":"' + addStartDate + '","EndDate":"' + addEndDate + '","AdminID":"' + adminUserID + '"}';
-                    sendURL = domainAddress + "ParticularAdvancedSearch";
+        dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","StartDate":"' + addStartDate + '","EndDate":"' + addEndDate + '","AdminID":"' + adminUserID + '"}';
+        sendURL = domainAddress + "ParticularAdvancedSearch";
+    } else {
+        dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
+        sendURL = domainAddress + "SearchProblem";
+    }
+
+
+    console.log(dataForm);
+    console.log(sendURL);
+
+
+
+
+    $(".loading").show();
+    $.ajax({
+        type: "POST",
+        url: sendURL,
+        data: dataForm,
+        success: function(data) {
+            console.log(data);
+            loadCountRecordValue = data.record_count;
+            if (data.record_count == 0 || data.All_Records_Count == 0) {
+                if (recordCountOnReady == 0) {
+                    console.log("No records found on page ready");
+                    $(".ListAllProblem").html("");
+                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>");
+                    $("#getLoadingModalContent").removeClass('md-show');
                 } else {
-                    dataForm = '{"Limit":"' + parseInt(problemCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
-                    sendURL = domainAddress + "SearchProblem";
+                    console.log("that's all db values");
                 }
 
+                $(".pageCount").hide();
+                $(".loading").hide();
+                $("#btnGetProblemList").attr("disabled", true);
+                $("#SearchProblem").css("cursor", "default");
+                $(".btnAssign").attr("disabled", true);
+                $(".btnGetAll").attr("disabled", true);
+            } else {
 
-                console.log(dataForm);
-                console.log(sendURL);
+                $("#btnGetProblemList").attr("disabled", false);
+                $("#btnPrintAllProblems").attr("disabled", false);
+                $("#getExcel").attr("disabled", false);
+                $(".btnAssign").attr("disabled", false);
+                $(".btnGetAll").attr("disabled", false);
+                if (localProblemStatus == "Completed") {
+                    $("#fixedAmount").show();
+                } else {
+                    $("#fixedAmount").hide();
+                }
 
+                if (localProblemStatus == "Closed") {
+                    $("#closed").hide();
+                } else {
+                    $("#closed").show();
+                }
 
+                if (data.record_count < 5) {
+                    $("#btnGetProblemList").attr("disabled", true);
+                } else {
+                    $("#btnGetProblemList").attr("disabled", false);
+                }
 
-
-                $(".loading").show();
-                $.ajax({
-                    type: "POST",
-                    url: sendURL,
-                    data: dataForm,
-                    success: function(data) {
-                            console.log(data);
-                            loadCountRecordValue = data.record_count;
-                            if (data.record_count == 0 || data.All_Records_Count == 0) {
-                                if (recordCountOnReady == 0) {
-                                    console.log("No records found on page ready");
-                                    $(".ListAllProblem").html("");
-                                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>");
-                                    $("#getLoadingModalContent").removeClass('md-show');
-                                } else {
-                                    console.log("that's all db values");
-                                }
-
-                                $(".pageCount").hide();
-                                $(".loading").hide();
-                                $("#btnGetProblemList").attr("disabled", true);
-                                $("#SearchProblem").css("cursor", "default");
-                                $(".btnAssign").attr("disabled", true);
-                                $(".btnGetAll").attr("disabled", true);
-                            } else {
-
-                                $("#btnGetProblemList").attr("disabled", false);
-                                $("#btnPrintAllProblems").attr("disabled", false);
-                                $("#getExcel").attr("disabled", false);
-                                $(".btnAssign").attr("disabled", false);
-                                $(".btnGetAll").attr("disabled", false);
-                                if (localProblemStatus == "Completed") {
-                                    $("#fixedAmount").show();
-                                } else {
-                                    $("#fixedAmount").hide();
-                                }
-
-                                if (localProblemStatus == "Closed") {
-                                    $("#closed").hide();
-                                } else {
-                                    $("#closed").show();
-                                }
-
-                                if (data.record_count < 5) {
-                                    $("#btnGetProblemList").attr("disabled", true);
-                                } else {
-                                    $("#btnGetProblemList").attr("disabled", false);
-                                }
-
-                                for (var Problem in data.ProblemRecord) {
-                                    $(".loading").hide();
-                                    var showStatus = "";
-                                    problemID = data.ProblemRecord[Problem].ProblemID;
-                                    problemImage = decodeURIComponent(data.ProblemRecord[Problem].ProblemImage);
-                                    notes = data.ProblemRecord[Problem].ProblemNotes;
-                                    var ContractorID = data.ProblemRecord[Problem].ContractorID;
-                                    var specialityName = data.ProblemRecord[Problem].SpecialityName;
-                                    var name = data.ProblemRecord[Problem].Name;
-                                    var emailID = data.ProblemRecord[Problem].EmailID;
-                                    var phoneNumber = data.ProblemRecord[Problem].PhoneNumber;
-                                    var contractorCount = 0;
-                                    var isAssign = data.ProblemRecord[Problem].AssignStatus;
+                for (var Problem in data.ProblemRecord) {
+                    $(".loading").hide();
+                    var showStatus = "";
+                    problemID = data.ProblemRecord[Problem].ProblemID;
+                    problemImage = decodeURIComponent(data.ProblemRecord[Problem].ProblemImage);
+                    notes = data.ProblemRecord[Problem].ProblemNotes;
+                    var ContractorID = data.ProblemRecord[Problem].ContractorID;
+                    var specialityName = data.ProblemRecord[Problem].SpecialityName;
+                    var name = data.ProblemRecord[Problem].Name;
+                    var emailID = data.ProblemRecord[Problem].EmailID;
+                    var phoneNumber = data.ProblemRecord[Problem].PhoneNumber;
+                    var contractorCount = 0;
+                    var isAssign = data.ProblemRecord[Problem].AssignStatus;
 
 
-                                    if (isAssign == "Awaiting Info") {
-                                        showStatus = "AwaitingInfo";
-                                    } else if (isAssign == "Assigned") {
-                                        showStatus = "Assigned";
-                                    } else if (isAssign == "Awaiting Approval") {
-                                        showStatus = "AwaitingApproval";
-                                    } else if (isAssign == "Approved") {
-                                        showStatus = "Approved";
-                                    } else if (isAssign == "CheckIn") {
-                                        showStatus = "CheckIn";
-                                    } else if (isAssign == "Started") {
-                                        showStatus = "Started";
-                                    } else if (isAssign == "Completed") {
-                                        showStatus = "Completed";
-                                    } else if (isAssign == "Closed") {
-                                        showStatus = "Closed";
-                                    }
+                    if (isAssign == "Awaiting Info") {
+                        showStatus = "AwaitingInfo";
+                    } else if (isAssign == "Assigned") {
+                        showStatus = "Assigned";
+                    } else if (isAssign == "Awaiting Approval") {
+                        showStatus = "AwaitingApproval";
+                    } else if (isAssign == "Approved") {
+                        showStatus = "Approved";
+                    } else if (isAssign == "CheckIn") {
+                        showStatus = "CheckIn";
+                    } else if (isAssign == "Started") {
+                        showStatus = "Started";
+                    } else if (isAssign == "Completed") {
+                        showStatus = "Completed";
+                    } else if (isAssign == "Closed") {
+                        showStatus = "Closed";
+                    }
 
 
-                                    if (ContractorID == "" || ContractorID == null) {
+                    if (ContractorID == "" || ContractorID == null) {
 
-                                        contractorCount = 0;
-                                        contractorName = "";
-                                    } else {
-                                        var contractorName = "";
-                                        for (var contractor in data.ProblemRecord[Problem].Count) {
-                                            contractorCount = data.ProblemRecord[Problem].Count[contractor].CountContractor;
-                                            contractorName = data.ProblemRecord[Problem].Count[contractor].ContractorName;
-                                        }
-                                    }
+                        contractorCount = 0;
+                        contractorName = "";
+                    } else {
+                        var contractorName = "";
+                        for (var contractor in data.ProblemRecord[Problem].Count) {
+                            contractorCount = data.ProblemRecord[Problem].Count[contractor].CountContractor;
+                            contractorName = data.ProblemRecord[Problem].Count[contractor].ContractorName;
+                        }
+                    }
 
 
-                                    var getProblemCreateArr = data.ProblemRecord[Problem].DateTime.split(" ");
-                                    var getContractorDate = getProblemCreateArr[0].split("-");
-                                    var getCreateMomentDate = getContractorDate[0] + getContractorDate[1] + getContractorDate[2];
+                    var getProblemCreateArr = data.ProblemRecord[Problem].DateTime.split(" ");
+                    var getContractorDate = getProblemCreateArr[0].split("-");
+                    var getCreateMomentDate = getContractorDate[0] + getContractorDate[1] + getContractorDate[2];
                                     // var getMoment = moment(data.ProblemRecord[Problem].DateTime, "YYYYMMDD").fromNow();
                                     var getDate = moment(data.ProblemRecord[Problem].DateTime, "YYYY-MM-DD HH:mm:ss +00:00  [UTC]").local().format("YYYY-MM-DD HH:mm:ss +00:00 [UTC]");
                                     var timezone = jstz.determine();
@@ -462,7 +462,7 @@
 
 
 
-                                  
+                                    
 
                                     if (localProblemStatus == "Closed") {
                                         $("#getClosed-" + data.ProblemRecord[Problem].ProblemID).hide();
@@ -485,14 +485,14 @@
                                         $("#getFixedAmount-" + problemID).hide();
                                         $("#getFixedAmount-" + problemID).html("");
                                     }
-                                   
+                                    
                                     $("#problemImage-" + problemID).html("<img src='assets/img/no_image.jpg' alt='NoProblemImage' style='width: 112px;height: 101px;' />");
                                     
                                     if (problemImage == null || problemImage == "null" || problemImage == "" || problemImage == "[object TiUIImageView]" || problemImage == "[object ImageView]") {
                                         $("#problemImage-" + problemID).html("<img src='assets/img/no_image.jpg' alt='NoProblemImage' style='width: 112px;height: 101px;' />");
                                     } else {
                                         
-                                            $("#problemImage-" + problemID).html("<img src='" + domainAddress + problemImage + "' alt='problemImage' style='width: 112px;height: 101px;' />");
+                                        $("#problemImage-" + problemID).html("<img src='" + domainAddress + problemImage + "' alt='problemImage' style='width: 112px;height: 101px;' />");
                                     }
 
                                     if (contractorName == null || contractorName == "") {
@@ -604,12 +604,12 @@
                             
                         }); 
                             
-                });          */
+                    });          */
 
-                                $(".isArchive").off('click').on('click', function(event) {
-                                    getProblemID = this.id.replace('isArchive-', '');
+                    $(".isArchive").off('click').on('click', function(event) {
+                        getProblemID = this.id.replace('isArchive-', '');
 
-                                    UIkit.modal.confirm('Do you want to close the case?', function(e) {
+                        UIkit.modal.confirm('Do you want to close the case?', function(e) {
                                         // console.log(e);
                                         isArchiveStatus = 1;
                                         var dataForm = '{"IsArchive":"' + isArchiveStatus + '"}';
@@ -629,15 +629,15 @@
                                             }
                                         });
                                     });
-                                });
+                    });
 
 
 
 
-                                $(".getContractor").off('click').on('click', function(event) {
+                    $(".getContractor").off('click').on('click', function(event) {
 
-                                    var getProblemId = this.id.replace('contractor-', '');
-                                    var getContractorID = $("#" + this.id).attr("name");
+                        var getProblemId = this.id.replace('contractor-', '');
+                        var getContractorID = $("#" + this.id).attr("name");
                                     //console.log(getContractorID);
 
                                     $.get(domainAddress + "GetContractor/" + getContractorID, {}, function(result) {
@@ -815,53 +815,53 @@
                                                 }
                                             }); // $.get(domainAddress+"getContractorWork/"+getContractorID
 
-                                            /* modal show*/
-                                        }
+ /* modal show*/
+}
 
-                                    });
+});
 
 
 
-                                    var modal = UIkit.modal("#modalContractorModal");
+ var modal = UIkit.modal("#modalContractorModal");
 
-                                    modal.show();
+ modal.show();
                                 }); // .getContractor
 
-                                $(".problemDelete").on('click', function(e) {
-                                    getProblemID = this.id.replace('problemDeleteID-', '');
-                                    UIkit.modal.confirm('Are you sure?', function() {
-                                        $.post(domainAddress + 'DeleteProblem/' + getProblemID, function(e) {
+ $(".problemDelete").on('click', function(e) {
+    getProblemID = this.id.replace('problemDeleteID-', '');
+    UIkit.modal.confirm('Are you sure?', function() {
+        $.post(domainAddress + 'DeleteProblem/' + getProblemID, function(e) {
                                             //console.log(e);
                                             $("#rowID-" + getProblemID).remove();
                                             UIkit.modal.alert('Problem Deleted Successfully');
                                         });
-                                    });
+    });
                                 }); // deleteSpeciality
 
-                                problemCountLimit++;
-                                problemCountLimit++;
-                                problemCountLimit++;
-                                problemCountLimit++;
-                                problemCountLimit++;
+ problemCountLimit++;
+ problemCountLimit++;
+ problemCountLimit++;
+ problemCountLimit++;
+ problemCountLimit++;
 
                             } // else
                         } // success
                 }); // ajax
-            }
+}
 
 
-            $("#getAssignStatusType").on('change', function() {
-                localStorage.setItem("MyRequest_RepairStatus", this.value);
-                localProblemStatus = this.value;
-                getValue = "";
-                $(".ListAllProblem").html("");
-                problemCountLimit = 0;
-                loadProblems(getValue);
-            });
+$("#getAssignStatusType").on('change', function() {
+    localStorage.setItem("MyRequest_RepairStatus", this.value);
+    localProblemStatus = this.value;
+    getValue = "";
+    $(".ListAllProblem").html("");
+    problemCountLimit = 0;
+    loadProblems(getValue);
+});
 
 
 
-            $("#btnGetProblemList").click(function() {
+$("#btnGetProblemList").click(function() {
                 //console.log("click for problemList load");
                 $("#btnGetProblemList").attr("disabled", true);
                 //console.log(problemCountLimit);
@@ -871,18 +871,18 @@
 
 
 
-            $("#getExcel").click(function() {
-                if (loadCountRecordValue == 0) {
-                    alert("No Cases found");
-                } else {
-                    window.open('api/excelAllProblems.php?adminID=' + adminUserID);
-                }
-            });
+$("#getExcel").click(function() {
+    if (loadCountRecordValue == 0) {
+        alert("No Cases found");
+    } else {
+        window.open('api/excelAllProblems.php?adminID=' + adminUserID);
+    }
+});
 
 
 
 
-            $("#searchadvancebutton").click(function() {
+$("#searchadvancebutton").click(function() {
                 //console.log("searchadvancebutton click");
                 var startDate = $('#startDate').val();
                 var endDateChange = $('#endDateValue').val();
@@ -908,29 +908,29 @@
             });
 
 
-            $("#btnPrintAllProblems").click(function() {
-                var startDate = $('#startDate').val();
-                var endDateChange = $('#endDateValue').val();
-                if (loadCountRecordValue == 0) {
-                    alert("No Cases found");
-                    return false;
-                } else {
-                    if (startDate == "Select Start Date" && endDateChange == "Select End Date") {
-                        alert("Select the Start Date & End Date");
-                        return false;
-                    } else {
-                        var getStartDate = startDate.split(".");
-                        addStartDate = getStartDate[2] + "-" + getStartDate[1] + "-" + getStartDate[0];
-                        var getEndDate = endDateChange.split(".");
-                        addEndDate = getEndDate[2] + "-" + getEndDate[1] + "-" + getEndDate[0];
-                        window.open('tcpdf/examples/allProblems.php?agencyID=' + adminUserID + '&startDate=' + addStartDate + '&endDate=' + addEndDate);
-                    }
+$("#btnPrintAllProblems").click(function() {
+    var startDate = $('#startDate').val();
+    var endDateChange = $('#endDateValue').val();
+    if (loadCountRecordValue == 0) {
+        alert("No Cases found");
+        return false;
+    } else {
+        if (startDate == "Select Start Date" && endDateChange == "Select End Date") {
+            alert("Select the Start Date & End Date");
+            return false;
+        } else {
+            var getStartDate = startDate.split(".");
+            addStartDate = getStartDate[2] + "-" + getStartDate[1] + "-" + getStartDate[0];
+            var getEndDate = endDateChange.split(".");
+            addEndDate = getEndDate[2] + "-" + getEndDate[1] + "-" + getEndDate[0];
+            window.open('tcpdf/examples/allProblems.php?agencyID=' + adminUserID + '&startDate=' + addStartDate + '&endDate=' + addEndDate);
+        }
 
-                }
+    }
 
-            });
+});
 
-            $.get(domainAddress + "GetAllState", function(result) {
+$.get(domainAddress + "GetAllState", function(result) {
                 //console.log(result);
                 $("#state").html('');
                 $("#state").html("<option value='0'>Select County</option>");
@@ -943,7 +943,7 @@
                 }
             });
 
-            $.get(domainAddress + "GetAllCity", function(result) {
+$.get(domainAddress + "GetAllCity", function(result) {
                 //console.log(result);
                 $("#city").html('');
                 $("#city").html("<option value='0'>Select City</option>");
@@ -956,150 +956,150 @@
                 }
             });
 
-            $(".logOut").click(function() {
-                logOutClearCatch();
-            });
+$(".logOut").click(function() {
+    logOutClearCatch();
+});
 
-            $(".user_action_icon").click(function(){
-                createCaseReset();
-            });
-            
-            $(".reset").click(function() {
-                createCaseReset();
-            });
+$(".user_action_icon").click(function(){
+    createCaseReset();
+});
 
-            function createCaseReset(){
-                $("#imgRequestImage").attr('src','assets/img/noImage.gif');
-                $("#caseNotes").val('');
-                $("#caseSpecialisation").val(0);
-                $("#select2-caseSpecialisation-container").html('Select the Speciality');
-                $("#caseContractor").val(0);
-                $("#select2-caseContractor-container").html('Select the Speciality to view Contractor');
-                $("#caseProperty").val(0);
-                $("#select2-caseProperty-container").html('Select the Property');
-                $("#inputWhenDate").val('');
-                $("#inputWhenTime").val('');
-                $("#inputWhenTime").hide();
-                $("#inputWhenDate").show();
-                $("#inputWhenToRespond").val('');
-                $("#inputWhenToRespond").hide();
+$(".reset").click(function() {
+    createCaseReset();
+});
+
+function createCaseReset(){
+    $("#imgRequestImage").attr('src','assets/img/noImage.gif');
+    $("#caseNotes").val('');
+    $("#caseSpecialisation").val(0);
+    $("#select2-caseSpecialisation-container").html('Select the Speciality');
+    $("#caseContractor").val(0);
+    $("#select2-caseContractor-container").html('Select the Speciality to view Contractor');
+    $("#caseProperty").val(0);
+    $("#select2-caseProperty-container").html('Select the Property');
+    $("#inputWhenDate").val('');
+    $("#inputWhenTime").val('');
+    $("#inputWhenTime").hide();
+    $("#inputWhenDate").show();
+    $("#inputWhenToRespond").val('');
+    $("#inputWhenToRespond").hide();
+}
+
+function isValidEmailAddress(emailAddress) {
+    var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
+    return pattern.test(emailAddress);
+};
+
+
+$("#caseSpecialisation").on('change', function() {
+    var inputCaseSpecialisation = $("#caseSpecialisation").val();
+    if (inputCaseSpecialisation == 0) {
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Select the Specialisation");
+        $("#select2-caseSpecialisation-container").css("border", "1px solid red");
+        $("#addCase").attr("disabled", true);
+    } else {
+        $(".help-block").hide();
+        $(".help-block").text("");
+        $("#select2-caseSpecialisation-container").css("border", "1px solid transparent");
+        $("#addCase").attr("disabled", false);
+
+        $.get(domainAddress + "GetAllContractorDetails/" + inputCaseSpecialisation, {}, function (result) {
+            console.log(result);
+            $("#caseContractor").html('');
+
+            if (result.record_count == 0) {
+                $("#caseContractor").html("<option value='0'>Select the Contractor</option>");
+                $("#caseContractor").html("<option value='0'>No Contractor Found</option>");
             }
-
-            function isValidEmailAddress(emailAddress) {
-                var pattern = new RegExp(/^(("[\w-+\s]+")|([\w-+]+(?:\.[\w-+]+)*)|("[\w-+\s]+")([\w-+]+(?:\.[\w-+]+)*))(@((?:[\w-+]+\.)*\w[\w-+]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@\[?((25[0-5]\.|2[0-4][\d]\.|1[\d]{2}\.|[\d]{1,2}\.))((25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\.){2}(25[0-5]|2[0-4][\d]|1[\d]{2}|[\d]{1,2})\]?$)/i);
-                return pattern.test(emailAddress);
-            };
- 
-
-            $("#caseSpecialisation").on('change', function() {
-                var inputCaseSpecialisation = $("#caseSpecialisation").val();
-                if (inputCaseSpecialisation == 0) {
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Select the Specialisation");
-                    $("#select2-caseSpecialisation-container").css("border", "1px solid red");
-                    $("#addCase").attr("disabled", true);
-                } else {
-                    $(".help-block").hide();
-                    $(".help-block").text("");
-                    $("#select2-caseSpecialisation-container").css("border", "1px solid transparent");
-                    $("#addCase").attr("disabled", false);
-
-                    $.get(domainAddress + "GetAllContractorDetails/" + inputCaseSpecialisation, {}, function (result) {
-                    console.log(result);
-                    $("#caseContractor").html('');
-
-                    if (result.record_count == 0) {
-                        $("#caseContractor").html("<option value='0'>Select the Contractor</option>");
-                        $("#caseContractor").html("<option value='0'>No Contractor Found</option>");
-                    }
-                    else {
-                        $("#caseContractor").html("<option value='0'>Select the Contractor</option>");
-                        for (var Contractor in result.records) {
-                            $("#caseContractor").append("<option value='" + result.records[Contractor].ContractorID + "'>" + result.records[Contractor].ContractorName + "</option>");
-                        }
-                        $("#caseContractor").select2();
-                    }
+            else {
+                $("#caseContractor").html("<option value='0'>Select the Contractor</option>");
+                for (var Contractor in result.records) {
+                    $("#caseContractor").append("<option value='" + result.records[Contractor].ContractorID + "'>" + result.records[Contractor].ContractorName + "</option>");
+                }
+                $("#caseContractor").select2();
+            }
 
 
                 }); // GetAllEventList
 
 
-                }
-            });
+    }
+});
 
 
-            $("#caseNotes").keyup(function() {
-                var inputCaseNotes = $("#caseNotes").val();
-                if (inputCaseNotes == "") {
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Enter the Notes");
-                    $("#addCase").attr("disabled", true);
-                } else {
-                    $(".help-block").hide();
-                    $(".help-block").text("");
-                    $("#caseNotes").css("border-color", "rgba(0,0,0,.12)");
-                    $("#addCase").attr("disabled", false);
-                }
-            });
+$("#caseNotes").keyup(function() {
+    var inputCaseNotes = $("#caseNotes").val();
+    if (inputCaseNotes == "") {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Enter the Notes");
+        $("#addCase").attr("disabled", true);
+    } else {
+        $(".help-block").hide();
+        $(".help-block").text("");
+        $("#caseNotes").css("border-color", "rgba(0,0,0,.12)");
+        $("#addCase").attr("disabled", false);
+    }
+});
 
 
 
 
-            $("#caseProperty").on('change', function() {
-                var inputCaseProperty = $("#caseProperty").val();
-                if (inputCaseProperty == 0) {
-                    $(".help-block").tooltip("show");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Select the Property");
-                    $("#addCase").attr("disabled", true);
-                } else {
-                    $(".help-block").hide();
-                    $(".help-block").text("");
-                    $("#addCase").attr("disabled", false);
-                }
-            });
-
-    
-            $("#caseContractor").on('change', function () {
-                var inputcaseContractor = $("#caseContractor").val();
-                if (inputcaseContractor == 0) {
-                    $(".help-block").tooltip("show");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Select the Contractor Name");
-                    $("#addCase").attr("disabled", true);
-                } else {
-                    $(".help-block").hide();
-                    $(".help-block").text("");
-                    $("#addCase").attr("disabled", false);
-                }
-            });
+$("#caseProperty").on('change', function() {
+    var inputCaseProperty = $("#caseProperty").val();
+    if (inputCaseProperty == 0) {
+        $(".help-block").tooltip("show");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Select the Property");
+        $("#addCase").attr("disabled", true);
+    } else {
+        $(".help-block").hide();
+        $(".help-block").text("");
+        $("#addCase").attr("disabled", false);
+    }
+});
 
 
-            
+$("#caseContractor").on('change', function () {
+    var inputcaseContractor = $("#caseContractor").val();
+    if (inputcaseContractor == 0) {
+        $(".help-block").tooltip("show");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Select the Contractor Name");
+        $("#addCase").attr("disabled", true);
+    } else {
+        $(".help-block").hide();
+        $(".help-block").text("");
+        $("#addCase").attr("disabled", false);
+    }
+});
 
-    
-            $("#requestImageUrl1").off('click').on('change', function () {
-                $("#getLoadingModalContent").addClass('md-show');
-                console.log("image 1 upload click");
-                var progressbox = $('#progressbox1');
-                var progressbar = $('#progressbar1');
-                var statustxt = $('#statustxt1');
 
-                $("#preview1").html('');
 
-                $("#FileURLUploadRequestImage1").ajaxForm({
-                    target: '#preview1',
-                    beforeSubmit: function () {
-                        console.log('v');
 
-                    },
-                    uploadProgress: function (event, position, total, percentComplete) {
-                        console.log("on  progress");
+
+$("#requestImageUrl1").off('click').on('change', function () {
+    $("#getLoadingModalContent").addClass('md-show');
+    console.log("image 1 upload click");
+    var progressbox = $('#progressbox1');
+    var progressbar = $('#progressbar1');
+    var statustxt = $('#statustxt1');
+
+    $("#preview1").html('');
+
+    $("#FileURLUploadRequestImage1").ajaxForm({
+        target: '#preview1',
+        beforeSubmit: function () {
+            console.log('v');
+
+        },
+        uploadProgress: function (event, position, total, percentComplete) {
+            console.log("on  progress");
                         progressbar.width(percentComplete + '%') //update progressbar percent complete
                         console.log(percentComplete);
                         statustxt.html(percentComplete + '%'); //update status text
@@ -1155,147 +1155,147 @@
 
                     }
                 }).submit();
-            });
+});
 
 
 
-            $("#addCase").click(function() {
-                adminUserID = localStorage.getItem("MyRequest_AdminID");
-                var inputCaseSpecialisation = $("#caseSpecialisation").val();
-                var inputCaseNotes = $("#caseNotes").val();
-                var inputCaseProperty = $("#caseProperty :selected").attr('ref');
-                var inputcaseContractor = $("#caseContractor").val();
-                var getUploadedImgPath = imageUrl1;
-                var inputWhenDate = $("#inputWhenDate").val();
-                var inputWhenToRespond = $("#inputWhenToRespond").val();
+$("#addCase").click(function() {
+    adminUserID = localStorage.getItem("MyRequest_AdminID");
+    var inputCaseSpecialisation = $("#caseSpecialisation").val();
+    var inputCaseNotes = $("#caseNotes").val();
+    var inputCaseProperty = $("#caseProperty :selected").attr('ref');
+    var inputcaseContractor = $("#caseContractor").val();
+    var getUploadedImgPath = imageUrl1;
+    var inputWhenDate = $("#inputWhenDate").val();
+    var inputWhenToRespond = $("#inputWhenToRespond").val();
 
-                if (getUploadedImgPath == "") {
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Select the Image");
-                    $("#imgRequestImage").css("border", "1px solid red");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
-     
-                if (inputCaseNotes == "") {
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#caseNotes").css("border-color", "red");
-                    $(".help-block").text("* Enter the Request Description");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if (getUploadedImgPath == "") {
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Select the Image");
+        $("#imgRequestImage").css("border", "1px solid red");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
+    
+    if (inputCaseNotes == "") {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#caseNotes").css("border-color", "red");
+        $(".help-block").text("* Enter the Request Description");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                if (inputCaseSpecialisation == 0) {
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $(".help-block").text("* Select the Specialiy");
-                    $("#select2-caseSpecialisation-container").css("border", "1px solid red");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
-     
-                
-                if (inputcaseContractor == 0) {
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#caseContractor").css("border-color", "red");
-                    $(".help-block").text("* Select the Contractor");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if (inputCaseSpecialisation == 0) {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $(".help-block").text("* Select the Specialiy");
+        $("#select2-caseSpecialisation-container").css("border", "1px solid red");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
+    
+    
+    if (inputcaseContractor == 0) {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#caseContractor").css("border-color", "red");
+        $(".help-block").text("* Select the Contractor");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                if (inputCaseProperty == 0) {
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#caseProperty").css("border-color", "red");
-                    $(".help-block").text("* Select the Property");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if (inputCaseProperty == 0) {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#caseProperty").css("border-color", "red");
+        $(".help-block").text("* Select the Property");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                if(inputWhenDate==""){
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#inputWhenToRespond").css("border-color", "red");
-                    $("#inputWhenDate").css("border-color", "red");
-                    $(".help-block").text("* Select the Date");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if(inputWhenDate==""){
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#inputWhenToRespond").css("border-color", "red");
+        $("#inputWhenDate").css("border-color", "red");
+        $(".help-block").text("* Select the Date");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                if(inputWhenTime==""){
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#inputWhenToRespond").css("border-color", "red");
-                    $("#inputWhenDate").css("border-color", "red");
-                    $("#inputWhenTime").css("border-color", "red");
-                    $(".help-block").text("* Select the Time");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if(inputWhenTime==""){
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#inputWhenToRespond").css("border-color", "red");
+        $("#inputWhenDate").css("border-color", "red");
+        $("#inputWhenTime").css("border-color", "red");
+        $(".help-block").text("* Select the Time");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                if(inputWhenToRespond==""){
-                    $(".help-block").css("border-color", "red");
-                    $(".help-block").css('color', 'red');
-                    $(".help-block").show();
-                    $("#inputWhenToRespond").css("border-color", "red");
-                    $("#inputWhenDate").css("border-color", "red");
-                    $("#inputWhenTime").css("border-color", "red");
-                    $(".help-block").text("* What to Respond ?");
-                    $(".addCase").attr("disabled", true);
-                    return false;
-                }
+    if(inputWhenToRespond==""){
+        $(".help-block").css("border-color", "red");
+        $(".help-block").css('color', 'red');
+        $(".help-block").show();
+        $("#inputWhenToRespond").css("border-color", "red");
+        $("#inputWhenDate").css("border-color", "red");
+        $("#inputWhenTime").css("border-color", "red");
+        $(".help-block").text("* What to Respond ?");
+        $(".addCase").attr("disabled", true);
+        return false;
+    }
 
-                else {
-                    var dataForm = '{"SpecialityID":"' + inputCaseSpecialisation + '","Notes":"' + inputCaseNotes + '","PropertyAddress":"' + inputCaseProperty + '","ContractorID":"' + inputcaseContractor + '","problemImage":"' + getUploadedImgPath + '","AdminID":"' + adminUserID + '","WhenToRespond":"'+inputWhenToRespond+'"}';
-                    console.log(dataForm);
-
-
-                    var sendURL = domainAddress + 'CreateCaseComplaint';
-                    console.log(sendURL);
+    else {
+        var dataForm = '{"SpecialityID":"' + inputCaseSpecialisation + '","Notes":"' + inputCaseNotes + '","PropertyAddress":"' + inputCaseProperty + '","ContractorID":"' + inputcaseContractor + '","problemImage":"' + getUploadedImgPath + '","AdminID":"' + adminUserID + '","WhenToRespond":"'+inputWhenToRespond+'"}';
+        console.log(dataForm);
 
 
-                    $.ajax({
-                        type: "POST",
-                        url: sendURL,
-                        data: dataForm,
-                        success: function(dataCheck) {
-                            console.log(dataCheck);
-                            if(dataCheck.status=="success"){
-                                 problemCountLimit = 0;
-                                $(".ListAllProblem").html("");
-                                loadProblems(getValue);
-                                createCaseReset();
+        var sendURL = domainAddress + 'CreateCaseComplaint';
+        console.log(sendURL);
 
-                                $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
-                                  ContractorID: inputcaseContractor,
-                                  AdminID: adminUserID,
-                                  MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
-                                  MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
-                                  RequestID:dataCheck.RequestID
-                                }, function(e) {
-                                  console.log(e);
+
+        $.ajax({
+            type: "POST",
+            url: sendURL,
+            data: dataForm,
+            success: function(dataCheck) {
+                console.log(dataCheck);
+                if(dataCheck.status=="success"){
+                   problemCountLimit = 0;
+                   $(".ListAllProblem").html("");
+                   loadProblems(getValue);
+                   createCaseReset();
+
+                   $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
+                      ContractorID: inputcaseContractor,
+                      AdminID: adminUserID,
+                      MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
+                      MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
+                      RequestID:dataCheck.RequestID
+                  }, function(e) {
+                      console.log(e);
                                 }); // push/messageSendByAdminForNewCase.php
-     
-                                $(".uk-modal").removeClass("uk-open").addClass("uk-close");
-                                UIkit.modal.alert(dataCheck.message_text);
-                            }
-                            else{
-                                UIkit.modal.alert(dataCheck.message_text);
-                            }
+                   
+                   $(".uk-modal").removeClass("uk-open").addClass("uk-close");
+                   UIkit.modal.alert(dataCheck.message_text);
+               }
+               else{
+                UIkit.modal.alert(dataCheck.message_text);
+            }
 
-                        }
-                    });
+        }
+    });
 
-                }
+    }
 
 
             }); // #addCase
