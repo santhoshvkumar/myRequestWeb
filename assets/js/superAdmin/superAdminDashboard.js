@@ -104,7 +104,7 @@
       $("#inputTitle").select2();
       $("#inputState").select2()
           .on("change", function(e) {
-              console.log("change val=" + $("#inputState").val());
+              // console.log("change val=" + $("#inputState").val());
               var stateID = $("#inputState").val();
               console.log(stateID)
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
@@ -141,7 +141,7 @@
               });
               } else if(countryID == "+91"){
                 
-                $.get("CityState/getIndianState.php?countryID=" + countryID, function(result) {
+                $.get("CityState/getState.php?countryID=" + countryID, function(result) {
                   $("#inputState").html('');
                   $("#inputState").html("<option value='0'>Choose State</option>");
                   var getResult = JSON.parse(result);
@@ -156,7 +156,7 @@
               }
               else if(countryID == "+1"){
                 
-                $.get("CityState/getUSState.php?countryID=" + countryID, function(result) {
+                $.get("CityState/getState.php?countryID=" + countryID, function(result) {
                   $("#inputState").html('');
                   $("#inputState").html("<option value='0'>Choose State</option>");
                   var getResult = JSON.parse(result);
@@ -172,7 +172,7 @@
 
               else if(countryID == "Canada"){
                 
-                $.get("CityState/getCanadaState.php?countryID=" + countryID, function(result) {
+                $.get("CityState/getState.php?countryID=" + countryID, function(result) {
                   $("#inputState").html('');
                   $("#inputState").html("<option value='0'>Choose State</option>");
                   var getResult = JSON.parse(result);
