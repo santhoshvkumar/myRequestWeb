@@ -219,8 +219,8 @@
    else
        window.location.href = 'ListProperty.html';
 });
-
-
+ 
+ 
  $("#menuContractor").click(function(e) {
    var isFilled = localStorage.getItem("MyRequest_profileFill");
    if (isFilled == "true")
@@ -355,7 +355,7 @@
 
 
        var diffDate = 30 - getDiffDate;
-
+       
        if (adminType == "SuperAdmin") {
 
 
