@@ -199,8 +199,8 @@
                         $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
                     }
                     else{
-                     $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
-                     for (var Speciality in result.records) {
+                       $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
+                       for (var Speciality in result.records) {
                         $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
                     }
                     $("#caseContractor").html("");
@@ -213,7 +213,7 @@
 
 
 
-    $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
+ $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
                     //console.log(result);
                     $("#caseProperty").html('');
                     if(result.record_count==0){
@@ -235,31 +235,31 @@
 
 
 
-    $('#startDate').on('change.bfhdatepicker', function(e) {
+ $('#startDate').on('change.bfhdatepicker', function(e) {
                     //console.log(this.value);
                 });
 
 
-    $('#endDateValue').on('change.bfhdatepicker', function(e) {
+ $('#endDateValue').on('change.bfhdatepicker', function(e) {
                     //console.log(this.value);
                 });
 
 
-    $("#startDate").mouseover(function() {
-        $("#startDate").css("cursor", "pointer");
-    });
+ $("#startDate").mouseover(function() {
+    $("#startDate").css("cursor", "pointer");
+});
 
-    $("#endDateValue").mouseover(function() {
-        $("#endDateValue").css("cursor", "pointer");
-    });
+ $("#endDateValue").mouseover(function() {
+    $("#endDateValue").css("cursor", "pointer");
+});
 
-    $('#startDate').val("Select Start Date");
-    $("#endDateValue").val("Select End Date");
-    $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName );
+ $('#startDate').val("Select Start Date");
+ $("#endDateValue").val("Select End Date");
+ $(".getLettingAgencyBusinessName").text("Repair Requests - " + businessName );
 
 
 
-    $("#getAssignStatusType").select2();
+ $("#getAssignStatusType").select2();
 
             }); // ready
 
@@ -604,12 +604,12 @@ function loadProblems(getValue) {
                             
                         }); 
                             
-                    });          */
+});          */
 
-                    $(".isArchive").off('click').on('click', function(event) {
-                        getProblemID = this.id.replace('isArchive-', '');
+ $(".isArchive").off('click').on('click', function(event) {
+    getProblemID = this.id.replace('isArchive-', '');
 
-                        UIkit.modal.confirm('Do you want to close the case?', function(e) {
+    UIkit.modal.confirm('Do you want to close the case?', function(e) {
                                         // console.log(e);
                                         isArchiveStatus = 1;
                                         var dataForm = '{"IsArchive":"' + isArchiveStatus + '"}';
@@ -629,15 +629,15 @@ function loadProblems(getValue) {
                                             }
                                         });
                                     });
-                    });
+});
 
 
 
 
-                    $(".getContractor").off('click').on('click', function(event) {
+ $(".getContractor").off('click').on('click', function(event) {
 
-                        var getProblemId = this.id.replace('contractor-', '');
-                        var getContractorID = $("#" + this.id).attr("name");
+    var getProblemId = this.id.replace('contractor-', '');
+    var getContractorID = $("#" + this.id).attr("name");
                                     //console.log(getContractorID);
 
                                     $.get(domainAddress + "GetContractor/" + getContractorID, {}, function(result) {
@@ -812,13 +812,13 @@ function loadProblems(getValue) {
                                                     });
 
 
-                                                }
+}
                                             }); // $.get(domainAddress+"getContractorWork/"+getContractorID
 
- /* modal show*/
-}
+                                            /* modal show*/
+                                        }
 
-});
+                                    });
 
 
 
@@ -908,7 +908,7 @@ $("#searchadvancebutton").click(function() {
             });
 
 
-$("#btnPrintAllProblems").click(function() {
+ $("#btnPrintAllProblems").click(function() {
     var startDate = $('#startDate').val();
     var endDateChange = $('#endDateValue').val();
     if (loadCountRecordValue == 0) {
@@ -930,7 +930,7 @@ $("#btnPrintAllProblems").click(function() {
 
 });
 
-$.get(domainAddress + "GetAllState", function(result) {
+ $.get(domainAddress + "GetAllState", function(result) {
                 //console.log(result);
                 $("#state").html('');
                 $("#state").html("<option value='0'>Select County</option>");
@@ -943,7 +943,7 @@ $.get(domainAddress + "GetAllState", function(result) {
                 }
             });
 
-$.get(domainAddress + "GetAllCity", function(result) {
+ $.get(domainAddress + "GetAllCity", function(result) {
                 //console.log(result);
                 $("#city").html('');
                 $("#city").html("<option value='0'>Select City</option>");
@@ -956,19 +956,19 @@ $.get(domainAddress + "GetAllCity", function(result) {
                 }
             });
 
-$(".logOut").click(function() {
+ $(".logOut").click(function() {
     logOutClearCatch();
 });
 
-$(".user_action_icon").click(function(){
+ $(".user_action_icon").click(function(){
     createCaseReset();
 });
 
-$(".reset").click(function() {
+ $(".reset").click(function() {
     createCaseReset();
 });
 
-function createCaseReset(){
+ function createCaseReset(){
     $("#imgRequestImage").attr('src','assets/img/noImage.gif');
     $("#caseNotes").val('');
     $("#caseSpecialisation").val(0);
@@ -1029,7 +1029,7 @@ $("#caseSpecialisation").on('change', function() {
 });
 
 
-$("#caseNotes").keyup(function() {
+ $("#caseNotes").keyup(function() {
     var inputCaseNotes = $("#caseNotes").val();
     if (inputCaseNotes == "") {
         $(".help-block").css("border-color", "red");
@@ -1048,7 +1048,7 @@ $("#caseNotes").keyup(function() {
 
 
 
-$("#caseProperty").on('change', function() {
+ $("#caseProperty").on('change', function() {
     var inputCaseProperty = $("#caseProperty").val();
     if (inputCaseProperty == 0) {
         $(".help-block").tooltip("show");
@@ -1064,7 +1064,7 @@ $("#caseProperty").on('change', function() {
 });
 
 
-$("#caseContractor").on('change', function () {
+ $("#caseContractor").on('change', function () {
     var inputcaseContractor = $("#caseContractor").val();
     if (inputcaseContractor == 0) {
         $(".help-block").tooltip("show");
@@ -1083,7 +1083,7 @@ $("#caseContractor").on('change', function () {
 
 
 
-$("#requestImageUrl1").off('click').on('change', function () {
+ $("#requestImageUrl1").off('click').on('change', function () {
     $("#getLoadingModalContent").addClass('md-show');
     console.log("image 1 upload click");
     var progressbox = $('#progressbox1');
@@ -1160,7 +1160,7 @@ $("#requestImageUrl1").off('click').on('change', function () {
 
 
 
-$("#addCase").click(function() {
+ $("#addCase").click(function() {
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     var inputCaseSpecialisation = $("#caseSpecialisation").val();
     var inputCaseNotes = $("#caseNotes").val();
@@ -1271,32 +1271,32 @@ $("#addCase").click(function() {
             success: function(dataCheck) {
                 console.log(dataCheck);
                 if(dataCheck.status=="success"){
-                 problemCountLimit = 0;
-                 $(".ListAllProblem").html("");
-                 loadProblems(getValue);
-                 createCaseReset();
+                   problemCountLimit = 0;
+                   $(".ListAllProblem").html("");
+                   loadProblems(getValue);
+                   createCaseReset();
 
-                 $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
-                  ContractorID: inputcaseContractor,
-                  AdminID: adminUserID,
-                  MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
-                  MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
-                  RequestID:dataCheck.RequestID
-              }, function(e) {
-                  console.log(e);
+                   $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
+                      ContractorID: inputcaseContractor,
+                      AdminID: adminUserID,
+                      MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
+                      MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
+                      RequestID:dataCheck.RequestID
+                  }, function(e) {
+                      console.log(e);
                                 }); // push/messageSendByAdminForNewCase.php
 
-                 $(".uk-modal").removeClass("uk-open").addClass("uk-close");
-                 UIkit.modal.alert(dataCheck.message_text);
-             }
-             else{
+                   $(".uk-modal").removeClass("uk-open").addClass("uk-close");
+                   UIkit.modal.alert(dataCheck.message_text);
+               }
+               else{
                 UIkit.modal.alert(dataCheck.message_text);
             }
 
         }
     });
 
-    }
+}
 
 
             }); // #addCase

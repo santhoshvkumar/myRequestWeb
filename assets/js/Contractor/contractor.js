@@ -1299,7 +1299,7 @@
   if (emergencyNotAvailable == true) {
     isEmergencyAvailable = 0;
   }
-
+  
   var liabilityInsurance = $('.liabilityInsurance > div').hasClass('checked');
   var liabilityNotInsurance = $('.liabilityNotInsurance > div').hasClass('checked');
   if (liabilityInsurance == true) {
