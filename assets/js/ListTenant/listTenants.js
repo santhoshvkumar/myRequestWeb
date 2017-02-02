@@ -1,43 +1,43 @@
 var getPhoneCode = "";
 $(function() {
-     getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-     
-     $(".landlord-prefix").text(getPhoneCode);
+   getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+   
+   $(".landlord-prefix").text(getPhoneCode);
 
 
-    $('#full_screen_toggle').on('click', function(e) {
-        e.preventDefault();
-        screenfull.toggle();
-        $window.resize();
-    })
-    var $switcher = $('#style_switcher'),
-        $switcher_toggle = $('#style_switcher_toggle'),
-        $theme_switcher = $('#theme_switcher'),
-        $mini_sidebar_toggle = $('#style_sidebar_mini');
+   $('#full_screen_toggle').on('click', function(e) {
+    e.preventDefault();
+    screenfull.toggle();
+    $window.resize();
+})
+   var $switcher = $('#style_switcher'),
+   $switcher_toggle = $('#style_switcher_toggle'),
+   $theme_switcher = $('#theme_switcher'),
+   $mini_sidebar_toggle = $('#style_sidebar_mini');
 
-    $switcher_toggle.click(function(e) {
-        e.preventDefault();
-        $switcher.toggleClass('switcher_active');
-    });
+   $switcher_toggle.click(function(e) {
+    e.preventDefault();
+    $switcher.toggleClass('switcher_active');
+});
 
-    $theme_switcher.children('li').click(function(e) {
-        e.preventDefault();
-        var $this = $(this),
-            this_theme = $this.attr('data-app-theme');
+   $theme_switcher.children('li').click(function(e) {
+    e.preventDefault();
+    var $this = $(this),
+    this_theme = $this.attr('data-app-theme');
 
-        $theme_switcher.children('li').removeClass('active_theme');
-        $(this).addClass('active_theme');
-        $('body')
-            .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
-            .addClass(this_theme);
+    $theme_switcher.children('li').removeClass('active_theme');
+    $(this).addClass('active_theme');
+    $('body')
+    .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
+    .addClass(this_theme);
 
-        if (this_theme == '') {
-            localStorage.removeItem('altair_theme');
-        } else {
-            localStorage.setItem("altair_theme", this_theme);
-        }
+    if (this_theme == '') {
+        localStorage.removeItem('altair_theme');
+    } else {
+        localStorage.setItem("altair_theme", this_theme);
+    }
 
-    });
+});
 
     // change input's state to checked if mini sidebar is active
     if ((localStorage.getItem("altair_sidebar_mini") !== null && localStorage.getItem("altair_sidebar_mini") == '1') || $('body').hasClass('sidebar_mini')) {
@@ -47,27 +47,27 @@ $(function() {
     // toggle mini sidebar
 
     $mini_sidebar_toggle
-        .on('ifChecked', function(event) {
-            $switcher.removeClass('switcher_active');
-            localStorage.setItem("altair_sidebar_mini", '1');
-            location.reload(true);
-        })
-        .on('ifUnchecked', function(event) {
-            $switcher.removeClass('switcher_active');
-            localStorage.removeItem('altair_sidebar_mini');
-            location.reload(true);
-        });
+    .on('ifChecked', function(event) {
+        $switcher.removeClass('switcher_active');
+        localStorage.setItem("altair_sidebar_mini", '1');
+        location.reload(true);
+    })
+    .on('ifUnchecked', function(event) {
+        $switcher.removeClass('switcher_active');
+        localStorage.removeItem('altair_sidebar_mini');
+        location.reload(true);
+    });
 
     // hide style switcher
     $document.on('click keyup', function(e) {
         if ($switcher.hasClass('switcher_active')) {
             if (
                 (!$(e.target).closest($switcher).length) || (e.keyCode == 27)
-            ) {
+                ) {
                 $switcher.removeClass('switcher_active');
-            }
         }
-    });
+    }
+});
 
     if (localStorage.getItem("altair_theme") !== null) {
         $theme_switcher.children('li[data-app-theme=' + localStorage.getItem("altair_theme") + ']').click();
@@ -128,8 +128,8 @@ $(document).ready(function() {
         getDateDiff(adminUserID);
         if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
             $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
-         }
-         else{
+        }
+        else{
             $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
             var getLogoImagePath = logo.slice(0,4);
             if(getLogoImagePath=="api/"){
@@ -139,7 +139,7 @@ $(document).ready(function() {
             else{
                 $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
             }
-         }
+        }
     }
 
 
@@ -175,14 +175,14 @@ $(document).ready(function() {
             $("#caseProperty").append("<option value='0'>No Property Found</option>");
         }
         else{
-           for (var Property in result.records) {
-                $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
-            } 
-        }
-        
+         for (var Property in result.records) {
+            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
+        } 
+    }
+    
 
 
-        $("#caseProperty").select2();
+    $("#caseProperty").select2();
 
 
     }); // GetAllPropertyList
@@ -193,27 +193,27 @@ $(document).ready(function() {
 
 }); // ready
 
- $("#inputMobileNumber").on('blur', function(e) {
-        var getMobileNumber = $("#" + this.id).val();
-       console.log("this is blur event");
-        $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-            console.log(result);
-            if (result.record_count == 0) {} else {
-                for (var getUserDetails in result.records) {
-                    $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);
-                    $("#getName").val(result.records[getUserDetails].Name);
-                    $("#getLastName").val(result.records[getUserDetails].LastName);
-                    $("#inputTitle").val(result.records[getUserDetails].Title);
-                    $("#select2-inputTitle-container").html(result.records[getUserDetails].Title);
-                    $("#inputEmailID").val(result.records[getUserDetails].EmailID);
-                   $(".md-input-wrapper").addClass("md-input-filled");
+$("#inputMobileNumber").on('blur', function(e) {
+    var getMobileNumber = $("#" + this.id).val();
+    console.log("this is blur event");
+    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
+        console.log(result);
+        if (result.record_count == 0) {} else {
+            for (var getUserDetails in result.records) {
+                $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);
+                $("#getName").val(result.records[getUserDetails].Name);
+                $("#getLastName").val(result.records[getUserDetails].LastName);
+                $("#inputTitle").val(result.records[getUserDetails].Title);
+                $("#select2-inputTitle-container").html(result.records[getUserDetails].Title);
+                $("#inputEmailID").val(result.records[getUserDetails].EmailID);
+                $(".md-input-wrapper").addClass("md-input-filled");
 
-                }
             }
+        }
 
 
-        });
     });
+});
 
 $(".btnSearch").click(function() {
     getValue = $("#inputSearch").val();
@@ -653,15 +653,15 @@ function getTenantsList(getValue) {
         url: sendURL,
         data: dataForm,
         success: function(result) {
-                console.log(result);
+            console.log(result);
 
-                if (result.record_count == 0 && result.All_Records_Count == 0) {
-                    $(".allTenantList").html('');
-                    $(".allTenantList").append("<tr id='rowID-0'><td id='name-0'>No Records Found</td> <td id='phoneNumber-0'>  </td><td id='emailID-0'> </td>  <td> </td> <td> </td></tr> ");
-                    $("#getLoadingModalContent").removeClass('md-show');
-                } else {
-                    loadUserTenantsList(result);
-                }
+            if (result.record_count == 0 && result.All_Records_Count == 0) {
+                $(".allTenantList").html('');
+                $(".allTenantList").append("<tr id='rowID-0'><td id='name-0'>No Records Found</td> <td id='phoneNumber-0'>  </td><td id='emailID-0'> </td>  <td> </td> <td> </td></tr> ");
+                $("#getLoadingModalContent").removeClass('md-show');
+            } else {
+                loadUserTenantsList(result);
+            }
             } // ajax success
     }); // ajax POSTS
 }
@@ -779,23 +779,23 @@ function loadUserTenantsList(result) {
         }); // editDepartment
 
 
-        $(".deleteTenant").on('click', function(e) {
-            var deleteTenantID = this.id.replace('deleteTenantID-', '');
+$(".deleteTenant").on('click', function(e) {
+    var deleteTenantID = this.id.replace('deleteTenantID-', '');
 
-            UIkit.modal.confirm('Are you sure?', function() {
-                $("#getLoadingModalContent").addClass('md-show');
-                $.post(domainAddress + 'DeleteUserTenant/' + deleteTenantID + "/" + adminUserID, function(e) {
-                    console.log(e);
-                    $("#getLoadingModalContent").removeClass('md-show');
-                    $("#rowID-" + deleteTenantID).remove();
-                    getTenantsList(getValue);
-                    UIkit.modal.alert('Tenant Deleted Successfully');
-                });
-            });
+    UIkit.modal.confirm('Are you sure?', function() {
+        $("#getLoadingModalContent").addClass('md-show');
+        $.post(domainAddress + 'DeleteUserTenant/' + deleteTenantID + "/" + adminUserID, function(e) {
+            console.log(e);
+            $("#getLoadingModalContent").removeClass('md-show');
+            $("#rowID-" + deleteTenantID).remove();
+            getTenantsList(getValue);
+            UIkit.modal.alert('Tenant Deleted Successfully');
+        });
+    });
 
         }); // deleteTenant
 
-    }
+}
 
 } // loadUserTenantsList
 
@@ -1062,7 +1062,7 @@ $(".btnSubmitTenant").click(function() {
     var startDate = $("#inputStartDate").val();
     var getFormatStartDate = startDate.split(".");
     var finalStartDate = getFormatStartDate[2] + "-" + getFormatStartDate[1] + "-" + getFormatStartDate[0];
-   
+    
     var endDate = $("#inputEndDate").val();
     var getFormatEndDate = endDate.split(".");
     var finalEndDate = getFormatEndDate[2] + "-" + getFormatEndDate[1] + "-" + getFormatEndDate[0];
@@ -1137,22 +1137,22 @@ $(".btnSubmitTenant").click(function() {
             return false;
         }
         if (startDate == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Enter the Start Date");
-        $("#inputStartDate").css("border-color", "red");
-        $(".btnSubmitTenant").attr("disabled", true);
-        return false;
-    }
+            $(".help-block").css("border-color", "red");
+            $(".help-block").show();
+            $(".help-block").text("* Enter the Start Date");
+            $("#inputStartDate").css("border-color", "red");
+            $(".btnSubmitTenant").attr("disabled", true);
+            return false;
+        }
 
-    if (endDate == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Enter the End Date");
-        $("#inputEndDate").css("border-color", "red");
-        $(".btnSubmitTenant").attr("disabled", true);
-        return false;
-    } 
+        if (endDate == "") {
+            $(".help-block").css("border-color", "red");
+            $(".help-block").show();
+            $(".help-block").text("* Enter the End Date");
+            $("#inputEndDate").css("border-color", "red");
+            $(".btnSubmitTenant").attr("disabled", true);
+            return false;
+        } 
         else {
             var propertyAddress = $("#caseProperty :selected").attr("ref");
             dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+propertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";

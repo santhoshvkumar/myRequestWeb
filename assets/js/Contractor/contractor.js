@@ -221,10 +221,10 @@
                       UIkit.modal.alert('Speciality Created Successfully');
                     });
 
-}
-});
+      }
+    });
 
-}
+  }
 });
 
  $(window).load(function () {
@@ -308,19 +308,19 @@
 
 
   $("#inputState").select2().on("change", function(e) {
-   
-              var stateID = $("#inputState").val();
-              $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                $("#inputCity").html('');
-                $("#inputCity").html("<option value='0'>Choose City</option>");
-                var getResult = JSON.parse(result);
-                for (inputCity in getResult.records) {
-                  $("#inputCity").append("<option value='" + getResult.records[inputCity].CityName + "'>" + getResult.records[inputCity].CityName + "</option>");
 
-                }
-                $("#inputCity").select2();
-              });
-            });
+    var stateID = $("#inputState").val();
+    $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
+      $("#inputCity").html('');
+      $("#inputCity").html("<option value='0'>Choose City</option>");
+      var getResult = JSON.parse(result);
+      for (inputCity in getResult.records) {
+        $("#inputCity").append("<option value='" + getResult.records[inputCity].CityName + "'>" + getResult.records[inputCity].CityName + "</option>");
+
+      }
+      $("#inputCity").select2();
+    });
+  });
 
 
 
@@ -1288,7 +1288,7 @@
   }
   if (getIndependant == true) {
     isAgency = 0;
-  }
+  }  
   
   var emergencyAvailable = $('.emergencyAvailable > div').hasClass('checked');
   var emergencyNotAvailable = $('.emergencyNotAvailable > div').hasClass('checked');
@@ -1623,73 +1623,73 @@
               $(".editContractorStatus").hide();
             }
           });
-} else {
-  var sendURL = domainAddress + 'updateContractor/' + contractorID;
-  console.log(sendURL);
-  $.ajax({
-    type: "POST",
-    url: sendURL,
-    data: dataForm,
-    success: function(dataCheck) {
-      console.log(dataCheck);
-      UIkit.modal.alert('Contractor Updated Successfully');
-      $("#getLoadingModalContent").removeClass('md-show');
-      getContractorsList(getValue);
-      $("#select2-inputTitle-container").html("Select Title");
-      $("#inputFirstName").val('');
-      $("#inputLastName").val('');
-      $("#inputContractorEmailID").val('');
-      $("#inputAddressLine1").val('');
-      $("#inputAddressLine2").val('');
-      $("#inputLocality").val('');
-      $("#inputState").val(0);
-      $("#inputCity").val(0);
-      $("#select2-inputCity-container").html("Select City");
-      $("#select2-inputState-container").html("Select County");
-      $("#inputZip").val('');
-      $("#inputCountry").val('UK');
-      $("#inputPhoneNo1").val('');
-      $("#inputAlternateNo").val('');
-      $("#inputStartTime").val('');
-      $("#inputEndTime").val('');
-      $("#inputAverageCharges").val('');
-      $("#inputVisitCharges").val('');
-      $("#inputHourlyRate").val('');
-      $("#inputSpeciality").val(0);
-      $("#select2-inputSpeciality-container").html("Select Speciality");
-      $('#ownSmartPhoneYes').iCheck('uncheck');
-      $('#ownSmartPhoneNo').iCheck('uncheck');
-      $('#emergencyYes').iCheck('uncheck');
-      $('#emergencyNo').iCheck('uncheck');
-      $('#agencyCheck').iCheck('uncheck');
-      $('#independentCheck').iCheck('uncheck');
-      $('#liabilityYes').iCheck('uncheck');
-      $('#liabilityNo').iCheck('uncheck');
-      $("#inputTradeCertificateNo").val('');
-      $("#inputValidTill").val('');
-      $("#inputContractValidTill").val('');
-      $("#imgTradeCertificate").attr("src", "assets/img/noImage.gif");
-      $("#imgContractor").attr("src", "assets/img/sign-in.jpg");
-      $("#imgContract").attr("src", "assets/img/noImage.gif");
-      $("#progressbox1").hide();
-      $("#progressbox2").hide();
-      $("#progressbox3").hide();
-      $("#hiddenContractorID").val(0);
-      $(".contractorContent").hide();
-      $("#user_edit_form").css("border", "");
-      isSmartPhone = "";
-      isAgency = "";
-      isAppInstalled = "";
-      isEmergencyAvailable = "";
-      isLiabilityInsurance = "";
-      imageUrl1 = "";
-      imageUrl2 = "";
-      imageUrl3 = "";
-      $(".md-input-wrapper").removeClass("md-input-filled");
-      $("#getBorderColor").css("border", "");
-      $(".editContractorStatus").hide();
-    }
-  });
+        } else {
+          var sendURL = domainAddress + 'updateContractor/' + contractorID;
+          console.log(sendURL);
+          $.ajax({
+            type: "POST",
+            url: sendURL,
+            data: dataForm,
+            success: function(dataCheck) {
+              console.log(dataCheck);
+              UIkit.modal.alert('Contractor Updated Successfully');
+              $("#getLoadingModalContent").removeClass('md-show');
+              getContractorsList(getValue);
+              $("#select2-inputTitle-container").html("Select Title");
+              $("#inputFirstName").val('');
+              $("#inputLastName").val('');
+              $("#inputContractorEmailID").val('');
+              $("#inputAddressLine1").val('');
+              $("#inputAddressLine2").val('');
+              $("#inputLocality").val('');
+              $("#inputState").val(0);
+              $("#inputCity").val(0);
+              $("#select2-inputCity-container").html("Select City");
+              $("#select2-inputState-container").html("Select County");
+              $("#inputZip").val('');
+              $("#inputCountry").val('UK');
+              $("#inputPhoneNo1").val('');
+              $("#inputAlternateNo").val('');
+              $("#inputStartTime").val('');
+              $("#inputEndTime").val('');
+              $("#inputAverageCharges").val('');
+              $("#inputVisitCharges").val('');
+              $("#inputHourlyRate").val('');
+              $("#inputSpeciality").val(0);
+              $("#select2-inputSpeciality-container").html("Select Speciality");
+              $('#ownSmartPhoneYes').iCheck('uncheck');
+              $('#ownSmartPhoneNo').iCheck('uncheck');
+              $('#emergencyYes').iCheck('uncheck');
+              $('#emergencyNo').iCheck('uncheck');
+              $('#agencyCheck').iCheck('uncheck');
+              $('#independentCheck').iCheck('uncheck');
+              $('#liabilityYes').iCheck('uncheck');
+              $('#liabilityNo').iCheck('uncheck');
+              $("#inputTradeCertificateNo").val('');
+              $("#inputValidTill").val('');
+              $("#inputContractValidTill").val('');
+              $("#imgTradeCertificate").attr("src", "assets/img/noImage.gif");
+              $("#imgContractor").attr("src", "assets/img/sign-in.jpg");
+              $("#imgContract").attr("src", "assets/img/noImage.gif");
+              $("#progressbox1").hide();
+              $("#progressbox2").hide();
+              $("#progressbox3").hide();
+              $("#hiddenContractorID").val(0);
+              $(".contractorContent").hide();
+              $("#user_edit_form").css("border", "");
+              isSmartPhone = "";
+              isAgency = "";
+              isAppInstalled = "";
+              isEmergencyAvailable = "";
+              isLiabilityInsurance = "";
+              imageUrl1 = "";
+              imageUrl2 = "";
+              imageUrl3 = "";
+              $(".md-input-wrapper").removeClass("md-input-filled");
+              $("#getBorderColor").css("border", "");
+              $(".editContractorStatus").hide();
+            }
+          });
           } // sec if contractorID
         }
   }); // #createContractor
@@ -1943,235 +1943,235 @@ function loadContractorsList(resultAllContractor) {
           });
 
 
- $(".reject").on('click', function() {
-  var getContractID = this.id.replace('reject-', '');
-  var emaiID = $("#hiddenEmailID-" + getContractID).val();
-  var password = $("#hiddenPassword-" + getContractID).val();
-  var phoneNumber = $("#PhoneNo-" + getContractID).text();
+          $(".reject").on('click', function() {
+            var getContractID = this.id.replace('reject-', '');
+            var emaiID = $("#hiddenEmailID-" + getContractID).val();
+            var password = $("#hiddenPassword-" + getContractID).val();
+            var phoneNumber = $("#PhoneNo-" + getContractID).text();
 
-  UIkit.modal.confirm('Are you sure want to Reject?', function() {
-    $("#getLoadingModalContent").addClass('md-show');
-    var isApproveStatus = 0;
-    var dataForm = '{"IsApprove":"' + isApproveStatus + '"}';
-    var sendURL = domainAddress + 'UpdateContractIsApprove/' + getContractID;
-    console.log(sendURL);
-    $.ajax({
-      type: "POST",
-      url: sendURL,
-      data: dataForm,
-      success: function(dataCheck) {
-        console.log(dataCheck);
-        getContractorsList();
-        $("#getLoadingModalContent").removeClass('md-show');
-        UIkit.modal.alert('Contractor Rejected Successfully');
+            UIkit.modal.confirm('Are you sure want to Reject?', function() {
+              $("#getLoadingModalContent").addClass('md-show');
+              var isApproveStatus = 0;
+              var dataForm = '{"IsApprove":"' + isApproveStatus + '"}';
+              var sendURL = domainAddress + 'UpdateContractIsApprove/' + getContractID;
+              console.log(sendURL);
+              $.ajax({
+                type: "POST",
+                url: sendURL,
+                data: dataForm,
+                success: function(dataCheck) {
+                  console.log(dataCheck);
+                  getContractorsList();
+                  $("#getLoadingModalContent").removeClass('md-show');
+                  UIkit.modal.alert('Contractor Rejected Successfully');
 
-      }
-    });
+                }
+              });
 
-  });
+            });
 
-});
-
-
-
- var isFourExistNo = 0;
- var isFourExistAtNo = 0;
- var isOneExistNo = 0;
- var isOneExistAtNo = 0;
- $(".editContractor").on('click', function(e) {
-  $(".md-input-wrapper").addClass("md-input-filled");
-  $(".contractorContent").show();
-  $(".editContractorStatus").show();
-  editContractorID = this.id.replace('editContractorID-', '');
-  $("#hiddenContractorID").val(editContractorID);
-  $("#getLoadingModalContent").addClass('md-show');
-  $.get(domainAddress + "GetContractor/" + editContractorID, {}, function(result) {
-    console.log(result);
-    $("#getLoadingModalContent").removeClass('md-show');
-    for (var contractor in result.records) {
-      if (result.records[contractor].Title == null || result.records[contractor].Title == "") {
-        $("#select2-inputTitle-container").html("Select Title");
-      } else {
-        $("#select2-inputTitle-container").html(result.records[contractor].Title);
-        $("#inputTitle").val(result.records[contractor].Title);
-      }
-
-      $("#inputFirstName").val(result.records[contractor].ContractorName);
-      $("#inputLastName").val(result.records[contractor].LastName);
-      $("#inputContractorEmailID").val(result.records[contractor].emailID);
-      $("#inputAddressLine1").val(result.records[contractor].addressLine1);
-      $("#inputAddressLine2").val(result.records[contractor].addressLine2);
-      $("#inputSpeciality").val(result.records[contractor].specialityID);
-      $("#select2-inputSpeciality-container").html(result.records[contractor].SpecialityName);
-      $("#inputLocality").val(result.records[contractor].locality);
-      $("#inputState").val(result.records[contractor].State);
-      $("#select2-inputState-container").html(result.records[contractor].State);
-      $("#inputCity").html('');
-      $("#inputCity").select2();
-      $("#inputCity").append("<option value='0'>Select City</option><option value='" + result.records[contractor].City + "'>" + result.records[contractor].City + "</option>");
-      $("#inputCity").val(result.records[contractor].City);
-
-      $("#select2-inputCity-container").html(result.records[contractor].City);
+          });
 
 
-      $("#inputZip").val(result.records[contractor].Zip);
-      
-      isFourExistNo = result.records[contractor].phoneNo1.slice(0, 3);
-      isOneExistNo = result.records[contractor].phoneNo1.slice(0, 2);
-      if (isFourExistNo == "+44" || isFourExistNo == "+91") {
-        $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(3));
-      } else {
-        $("#inputPhoneNo1").val(result.records[contractor].phoneNo1);
-      }
 
-      if (isOneExistNo == "+1") {
-        $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(2));
-      }
+          var isFourExistNo = 0;
+          var isFourExistAtNo = 0;
+          var isOneExistNo = 0;
+          var isOneExistAtNo = 0;
+          $(".editContractor").on('click', function(e) {
+            $(".md-input-wrapper").addClass("md-input-filled");
+            $(".contractorContent").show();
+            $(".editContractorStatus").show();
+            editContractorID = this.id.replace('editContractorID-', '');
+            $("#hiddenContractorID").val(editContractorID);
+            $("#getLoadingModalContent").addClass('md-show');
+            $.get(domainAddress + "GetContractor/" + editContractorID, {}, function(result) {
+              console.log(result);
+              $("#getLoadingModalContent").removeClass('md-show');
+              for (var contractor in result.records) {
+                if (result.records[contractor].Title == null || result.records[contractor].Title == "") {
+                  $("#select2-inputTitle-container").html("Select Title");
+                } else {
+                  $("#select2-inputTitle-container").html(result.records[contractor].Title);
+                  $("#inputTitle").val(result.records[contractor].Title);
+                }
 
-      if (result.records[contractor].alternateNo != null) {
-        
-        isFourExistAtNo = result.records[contractor].alternateNo.slice(0, 3);
-        isOneExistAtNo = result.records[contractor].alternateNo.slice(0, 2);
-        if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91") {
-          $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(3));
-        } else {
-          $("#inputAlternateNo").val(result.records[contractor].alternateNo);
-        }
-        if (isOneExistAtNo == "+1") {
-          $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(2));
-        }
-      }
+                $("#inputFirstName").val(result.records[contractor].ContractorName);
+                $("#inputLastName").val(result.records[contractor].LastName);
+                $("#inputContractorEmailID").val(result.records[contractor].emailID);
+                $("#inputAddressLine1").val(result.records[contractor].addressLine1);
+                $("#inputAddressLine2").val(result.records[contractor].addressLine2);
+                $("#inputSpeciality").val(result.records[contractor].specialityID);
+                $("#select2-inputSpeciality-container").html(result.records[contractor].SpecialityName);
+                $("#inputLocality").val(result.records[contractor].locality);
+                $("#inputState").val(result.records[contractor].State);
+                $("#select2-inputState-container").html(result.records[contractor].State);
+                $("#inputCity").html('');
+                $("#inputCity").select2();
+                $("#inputCity").append("<option value='0'>Select City</option><option value='" + result.records[contractor].City + "'>" + result.records[contractor].City + "</option>");
+                $("#inputCity").val(result.records[contractor].City);
 
-
-      $("#inputHasSmartPhone").val(result.records[contractor].isSmartPhone);
-      $("#inputVisitCharges").val(result.records[contractor].visitCharges);
-      $("#inputAverageCharges").val(result.records[contractor].averageCharges);
-      $("#inputHourlyRate").val(result.records[contractor].hourlyRate);
-      $("#inputStartTime").val(result.records[contractor].StartTime);
-      $("#inputEndTime").val(result.records[contractor].EndTime);
-      $("#inputTradeCertificateNo").val(result.records[contractor].tradeCertificateNo);
-      $("#imgContractor").val(result.records[contractor].imageurl1);
-      $("#imgContract").val(result.records[contractor].imageurl2);
-      $("#imgTradeCertificate").val(result.records[contractor].imageUrl3);
-
-      $(".mno-prefix").show();
-      $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
-
-      $(".ano-prefix").show();
-      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
-
-      isSmartPhone = result.records[contractor].isSmartPhone;
-
-      if (result.records[contractor].specialityID == null) {
-        $("#inputSpeciality").val(0);
-      }
-      if (result.records[contractor].State == null) {
-        $("#inputState").val(0);
-
-      }
-      if (result.records[contractor].City == null) {
-        $("#inputCity").val(0);
-      }
+                $("#select2-inputCity-container").html(result.records[contractor].City);
 
 
-      if (isSmartPhone == 1) {
-        $('#ownSmartPhoneYes').iCheck('check');
-      } else {
-        $('#ownSmartPhoneNo').iCheck('check');
-      }
-      
-      isAgency = result.records[contractor].isAgency;
-      if (isAgency == 1) {
-        $('#agencyCheck').iCheck('check');
-      } else {
-        $('#independentCheck').iCheck('check');
-      }
+                $("#inputZip").val(result.records[contractor].Zip);
 
-      isEmergencyAvailable = result.records[contractor].isEmergencyAvailability;
-      if (isEmergencyAvailable == 1) {
-        $('#emergencyYes').iCheck('check');
-      } else {
-        $('#emergencyNo').iCheck('check');
-      }
-      isLiabilityInsurance = result.records[contractor].isLiabilityInsurance;
-      if (isLiabilityInsurance == 1) {
-        $('#liabilityYes').iCheck('check');                    
-      } else {
-        $('#liabilityNo').iCheck('check');
-      }
+                isFourExistNo = result.records[contractor].phoneNo1.slice(0, 3);
+                isOneExistNo = result.records[contractor].phoneNo1.slice(0, 2);
+                if (isFourExistNo == "+44" || isFourExistNo == "+91") {
+                  $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(3));
+                } else {
+                  $("#inputPhoneNo1").val(result.records[contractor].phoneNo1);
+                }
 
-      isAppInstalled = result.records[contractor].isAppInstalled;
-      if (isAppInstalled == 1) {
-        $("#user_edit_form").css("border", "2px solid greenyellow");
-      } else {
-        $("#user_edit_form").css("border", "2px solid red");
-      }
+                if (isOneExistNo == "+1") {
+                  $("#inputPhoneNo1").val(result.records[contractor].phoneNo1.slice(2));
+                }
 
-      
-      if (result.records[contractor].ContractValidTill != "" && result.records[contractor].ContractValidTill != null) {
-        var selectDate = result.records[contractor].ContractValidTill.split("-");
-        var contractValidTill = selectDate[2] + "." + selectDate[1] + "." + selectDate[0];
-        $("#inputContractValidTill").val(contractValidTill);
+                if (result.records[contractor].alternateNo != null) {
+
+                  isFourExistAtNo = result.records[contractor].alternateNo.slice(0, 3);
+                  isOneExistAtNo = result.records[contractor].alternateNo.slice(0, 2);
+                  if (isFourExistAtNo == "+44" || isFourExistAtNo == "+91") {
+                    $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(3));
+                  } else {
+                    $("#inputAlternateNo").val(result.records[contractor].alternateNo);
+                  }
+                  if (isOneExistAtNo == "+1") {
+                    $("#inputAlternateNo").val(result.records[contractor].alternateNo.slice(2));
+                  }
+                }
 
 
-      }
-      if (result.records[contractor].image1 == "" || result.records[contractor].image1 == null) {
-        $("#imgContractor").attr("src", "assets/img/sign-in.jpg");
-        imageUrl1 = "";
-      } else {
-        imageUrl1 = result.records[contractor].image1;
-        $("#imgContractor").attr("src", domainAddress + imageUrl1);
-        $("#imgContractor").css("height", "80px").css("width", "100px");
-      }
+                $("#inputHasSmartPhone").val(result.records[contractor].isSmartPhone);
+                $("#inputVisitCharges").val(result.records[contractor].visitCharges);
+                $("#inputAverageCharges").val(result.records[contractor].averageCharges);
+                $("#inputHourlyRate").val(result.records[contractor].hourlyRate);
+                $("#inputStartTime").val(result.records[contractor].StartTime);
+                $("#inputEndTime").val(result.records[contractor].EndTime);
+                $("#inputTradeCertificateNo").val(result.records[contractor].tradeCertificateNo);
+                $("#imgContractor").val(result.records[contractor].imageurl1);
+                $("#imgContract").val(result.records[contractor].imageurl2);
+                $("#imgTradeCertificate").val(result.records[contractor].imageUrl3);
 
-      if (result.records[contractor].image2 == "" || result.records[contractor].image2 == null) {
-        $("#imgContract").attr("src", "assets/img/noImage.gif");
-        imageUrl2 = "";
-      } else {
-        var getContractImagePath = result.records[contractor].image2.slice(0,4);
-        if(getContractImagePath=="api/"){
-          getContractImagePath = result.records[contractor].image2.slice(4);
-          imageUrl2 = getContractImagePath;
-          $("#imgContract").attr('src', domainAddress + imageUrl2);
-          
-        }
-        else{
-          imageUrl2 = result.records[contractor].image2;
-          $("#imgContract").attr('src', domainAddress + imageUrl2);
-        }
-        
-        $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
-      }
+                $(".mno-prefix").show();
+                $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
 
-      if (result.records[contractor].tradeCertificateImage == "" || result.records[contractor].tradeCertificateImage == null) {
-        $("#imgTradeCertificate").attr("src", "assets/img/noImage.gif");
-        imageUrl3 = "";
-      } else {
-        var getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(0,4);
-        if(getTradeImagePath=="api/"){
-          getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(4);
-          imageUrl3 = getTradeImagePath;
-          $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
-        }
-        else{
-          imageUrl3 = result.records[contractor].tradeCertificateImage;
-          $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
-        }
+                $(".ano-prefix").show();
+                $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
 
-        $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");
-      }
+                isSmartPhone = result.records[contractor].isSmartPhone;
 
-    }
-    var contractorName = result.records[contractor].ContractorName;
-    var lastName = result.records[contractor].LastName;
-    if (lastName == null || lastName == "") {
-      lastName = "";
-    }
+                if (result.records[contractor].specialityID == null) {
+                  $("#inputSpeciality").val(0);
+                }
+                if (result.records[contractor].State == null) {
+                  $("#inputState").val(0);
 
-    $(".name").text(contractorName + " " + lastName);
+                }
+                if (result.records[contractor].City == null) {
+                  $("#inputCity").val(0);
+                }
 
-    var emailID = result.records[contractor].emailID;
-    $(".emailID").text(emailID);
+
+                if (isSmartPhone == 1) {
+                  $('#ownSmartPhoneYes').iCheck('check');
+                } else {
+                  $('#ownSmartPhoneNo').iCheck('check');
+                }
+
+                isAgency = result.records[contractor].isAgency;
+                if (isAgency == 1) {
+                  $('#agencyCheck').iCheck('check');
+                } else {
+                  $('#independentCheck').iCheck('check');
+                }
+
+                isEmergencyAvailable = result.records[contractor].isEmergencyAvailability;
+                if (isEmergencyAvailable == 1) {
+                  $('#emergencyYes').iCheck('check');
+                } else {
+                  $('#emergencyNo').iCheck('check');
+                }
+                isLiabilityInsurance = result.records[contractor].isLiabilityInsurance;
+                if (isLiabilityInsurance == 1) {
+                  $('#liabilityYes').iCheck('check');                    
+                } else {
+                  $('#liabilityNo').iCheck('check');
+                }
+
+                isAppInstalled = result.records[contractor].isAppInstalled;
+                if (isAppInstalled == 1) {
+                  $("#user_edit_form").css("border", "2px solid greenyellow");
+                } else {
+                  $("#user_edit_form").css("border", "2px solid red");
+                }
+
+
+                if (result.records[contractor].ContractValidTill != "" && result.records[contractor].ContractValidTill != null) {
+                  var selectDate = result.records[contractor].ContractValidTill.split("-");
+                  var contractValidTill = selectDate[2] + "." + selectDate[1] + "." + selectDate[0];
+                  $("#inputContractValidTill").val(contractValidTill);
+
+
+                }
+                if (result.records[contractor].image1 == "" || result.records[contractor].image1 == null) {
+                  $("#imgContractor").attr("src", "assets/img/sign-in.jpg");
+                  imageUrl1 = "";
+                } else {
+                  imageUrl1 = result.records[contractor].image1;
+                  $("#imgContractor").attr("src", domainAddress + imageUrl1);
+                  $("#imgContractor").css("height", "80px").css("width", "100px");
+                }
+
+                if (result.records[contractor].image2 == "" || result.records[contractor].image2 == null) {
+                  $("#imgContract").attr("src", "assets/img/noImage.gif");
+                  imageUrl2 = "";
+                } else {
+                  var getContractImagePath = result.records[contractor].image2.slice(0,4);
+                  if(getContractImagePath=="api/"){
+                    getContractImagePath = result.records[contractor].image2.slice(4);
+                    imageUrl2 = getContractImagePath;
+                    $("#imgContract").attr('src', domainAddress + imageUrl2);
+
+                  }
+                  else{
+                    imageUrl2 = result.records[contractor].image2;
+                    $("#imgContract").attr('src', domainAddress + imageUrl2);
+                  }
+
+                  $("#imgContract").css("height", "80px").css("width", "100px").css("border", "");
+                }
+
+                if (result.records[contractor].tradeCertificateImage == "" || result.records[contractor].tradeCertificateImage == null) {
+                  $("#imgTradeCertificate").attr("src", "assets/img/noImage.gif");
+                  imageUrl3 = "";
+                } else {
+                  var getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(0,4);
+                  if(getTradeImagePath=="api/"){
+                    getTradeImagePath = result.records[contractor].tradeCertificateImage.slice(4);
+                    imageUrl3 = getTradeImagePath;
+                    $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
+                  }
+                  else{
+                    imageUrl3 = result.records[contractor].tradeCertificateImage;
+                    $("#imgTradeCertificate").attr('src', domainAddress + imageUrl3);
+                  }
+
+                  $("#imgTradeCertificate").css("height", "80px").css("width", "100px").css("border", "");
+                }
+
+              }
+              var contractorName = result.records[contractor].ContractorName;
+              var lastName = result.records[contractor].LastName;
+              if (lastName == null || lastName == "") {
+                lastName = "";
+              }
+
+              $(".name").text(contractorName + " " + lastName);
+
+              var emailID = result.records[contractor].emailID;
+              $(".emailID").text(emailID);
 
               }); //GetContractor
 
