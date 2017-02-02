@@ -104,8 +104,8 @@
     $("#getLoadingModalContent").addClass('md-show');
     $("#inputTitle").select2();
     $("#inputState").select2().on("change", function(e) {
-      
-      
+
+
       var stateID = $("#inputState").val();
       console.log(stateID)
       $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
@@ -122,8 +122,8 @@
     });
 
     $("#inputCountry").select2().on("change", function(e) {
-     
-      
+
+
       var countryID = $("#inputCountry").val();
 
       console.log(countryID)
@@ -157,7 +157,7 @@
         });
       }
       else if(countryID == "+1"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
@@ -187,12 +187,12 @@
 
         });
       }
-      
+
     });
 
 
 
-    
+
     $("#inputCountry").select2()
     .on("change", function(e){
       setCountryCode = $("#inputCountry").val();
@@ -218,7 +218,7 @@
         $(".emerElectno-prefix").text('+1');
                 // console.log($(".cphno-prefix").text('+1'))
               } 
-              
+
             });
 
     getAllAdminList(getValue);
@@ -737,7 +737,7 @@ $(".btnSubmitAdmin").click(function() {
   else{
     inputAvail = 0;
   }
-  
+
   var inputUtility = $("#getUtility").val();
   if(inputUtility==undefined){
     inputUtility=0;
@@ -921,7 +921,7 @@ $(".btnSubmitAdmin").click(function() {
             $("#inputUrlRent").val('');
             $("#getVoid").val('');
             $("#getAvail").val('');
-            
+
             $("#inputPhoneNumber").val('');
             $("#inputEmergencyNumber").val('');
             $(".cphno-prefix").hide();
@@ -968,7 +968,7 @@ $(".btnSubmitAdmin").click(function() {
             $("#getVoid").val('');
             $("#getAvail").val('');
             $("#inputUrlRent").val('');
-            
+
             $("#inputPhoneNumber").val('');
             $("#inputEmergencyNumber").val('');
             $(".cphno-prefix").hide();
@@ -1096,7 +1096,7 @@ $(".btnSubmitAdmin").click(function() {
                   } 
                   $(".allAdminList").append("<tr>   <td id='adminName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td style='color:" + dueColor + "' id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
 
-                  
+
                   if (result.records[adminInfo].IsApproved == 1) {
                     $("#approve-" + result.records[adminInfo].Admin_ID).css('color', 'green');
                     $("#reject-" + result.records[adminInfo].Admin_ID).css('color', '');
