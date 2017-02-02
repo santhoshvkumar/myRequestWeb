@@ -307,8 +307,7 @@
   getContractorsList(getValue);
 
 
-  $("#inputState").select2()
-  .on("change", function(e) {
+  $("#inputState").select2().on("change", function(e) {
               //console.log("change val=" + $("#inputState").val());
               var stateID = $("#inputState").val();
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
