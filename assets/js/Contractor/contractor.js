@@ -307,20 +307,110 @@
   getContractorsList(getValue);
 
 
-  $("#inputState").select2().on("change", function(e) {
+  // $("#inputState").select2().on("change", function(e) {
 
-    var stateID = $("#inputState").val();
-    $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-      $("#inputCity").html('');
-      $("#inputCity").html("<option value='0'>Choose City</option>");
-      var getResult = JSON.parse(result);
-      for (inputCity in getResult.records) {
-        $("#inputCity").append("<option value='" + getResult.records[inputCity].CityName + "'>" + getResult.records[inputCity].CityName + "</option>");
+  //   var stateID = $("#inputState").val();
+  //   $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
+  //     $("#inputCity").html('');
+  //     $("#inputCity").html("<option value='0'>Choose City</option>");
+  //     var getResult = JSON.parse(result);
+  //     for (inputCity in getResult.records) {
+  //       $("#inputCity").append("<option value='" + getResult.records[inputCity].CityName + "'>" + getResult.records[inputCity].CityName + "</option>");
 
-      }
-      $("#inputCity").select2();
+  //     }
+  //     $("#inputCity").select2();
+  //   });
+  // });
+ $("#inputState").select2().on("change", function(e) {
+   var stateID = $("#inputState").val();
+      console.log(stateID)
+      $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
+        $("#inputCity").html('');
+        $("#inputCity").html("<option value='0'>Choose City</option>");
+        var getResult = JSON.parse(result);
+        for (inputCity in getResult.records) {
+          $("#inputCity").append("<option value='" + getResult.records[inputCity].CityName + "'>" + getResult.records[inputCity].CityName + "</option>");
+
+        }
+        $("#inputCity").select2();
+
+      });
     });
-  });
+
+     
+
+
+      var countryID = $("#inputCountry").val();
+
+      
+
+      if(countryID == "India"){
+        $("#stateLabel").text('County');
+          countryID = '+91';
+          console.log(countryID)
+        $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+          $("#inputState").html('');
+          $("#inputState").html("<option value='0'>Choose State</option>");
+          var getResult = JSON.parse(result);
+          console.log(getResult);
+          for (inputState in getResult.records) {
+            $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+
+          }
+          $("#inputState").select2();
+
+        });
+      } else if(countryID == "Canada"){
+        $("#stateLabel").text('County');
+          countryID = 'Canada';
+          console.log(countryID)
+        $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+          $("#inputState").html('');
+          $("#inputState").html("<option value='0'>Choose State</option>");
+          var getResult = JSON.parse(result);
+          console.log(getResult);
+          for (inputState in getResult.records) {
+            $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+
+          }
+          $("#inputState").select2();
+
+        });
+      } else if(countryID == "UK"){
+        $("#stateLabel").text('County');
+          countryID = '+44';
+          console.log(countryID)
+        $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+          $("#inputState").html('');
+          $("#inputState").html("<option value='0'>Choose State</option>");
+          var getResult = JSON.parse(result);
+          console.log(getResult);
+          for (inputState in getResult.records) {
+            $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+
+          }
+          $("#inputState").select2();
+
+        });
+      } else if(countryID == "US"){
+        $("#stateLabel").text('County');
+          countryID = '+1';
+          console.log(countryID)
+        $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+          $("#inputState").html('');
+          $("#inputState").html("<option value='0'>Choose State</option>");
+          var getResult = JSON.parse(result);
+          console.log(getResult);
+          for (inputState in getResult.records) {
+            $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+
+          }
+          $("#inputState").select2();
+
+        });
+      }
+
+      
 
 
 
