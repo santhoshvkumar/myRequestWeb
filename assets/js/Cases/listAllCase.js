@@ -199,8 +199,8 @@
                         $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
                     }
                     else{
-                       $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
-                       for (var Speciality in result.records) {
+                     $("#caseSpecialisation").html("<option value='0'>Select Speciality</option>");
+                     for (var Speciality in result.records) {
                         $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
                     }
                     $("#caseContractor").html("");
@@ -1271,25 +1271,25 @@ $("#caseSpecialisation").on('change', function() {
             success: function(dataCheck) {
                 console.log(dataCheck);
                 if(dataCheck.status=="success"){
-                   problemCountLimit = 0;
-                   $(".ListAllProblem").html("");
-                   loadProblems(getValue);
-                   createCaseReset();
+                 problemCountLimit = 0;
+                 $(".ListAllProblem").html("");
+                 loadProblems(getValue);
+                 createCaseReset();
 
-                   $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
-                      ContractorID: inputcaseContractor,
-                      AdminID: adminUserID,
-                      MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
-                      MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
-                      RequestID:dataCheck.RequestID
-                  }, function(e) {
-                      console.log(e);
+                 $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
+                  ContractorID: inputcaseContractor,
+                  AdminID: adminUserID,
+                  MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
+                  MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
+                  RequestID:dataCheck.RequestID
+              }, function(e) {
+                  console.log(e);
                                 }); // push/messageSendByAdminForNewCase.php
 
-                   $(".uk-modal").removeClass("uk-open").addClass("uk-close");
-                   UIkit.modal.alert(dataCheck.message_text);
-               }
-               else{
+                 $(".uk-modal").removeClass("uk-open").addClass("uk-close");
+                 UIkit.modal.alert(dataCheck.message_text);
+             }
+             else{
                 UIkit.modal.alert(dataCheck.message_text);
             }
 
