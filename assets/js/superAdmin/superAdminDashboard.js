@@ -1212,7 +1212,7 @@ $(".btnSubmitAdmin").click(function() {
 
                 $.get(domainAddress + "getAdminDetails/" + editAdminID, {}, function(result) {
                   console.log(result);
-                  debugger;
+                 
                   var isFourExistNo = 0;
                   var isEmerFourExistNo = 0;
                   for (var getAdmin in result.records) {
@@ -1247,43 +1247,50 @@ $(".btnSubmitAdmin").click(function() {
                     $("#inputUrlRent").val(result.records[getAdmin].UrlForRent);
 
                     isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
-                      //console.log(isFourExistNo+" === "+result.records[getAdmin].PhoneNumber.slice(3));
-                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1") {
+                    var isFourExistNoNew = result.records[getAdmin].PhoneNumber.slice(0, 2);
+                     
+                      if (isFourExistNo === "+44" || isFourExistNo === "+91") {
                         $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
                         $(".cphno-prefix").show();
                         $(".cphno-prefix").text(isFourExistNo);
                         $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
-                      } else {
-                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
-                        $(".cphno-prefix").hide();
-                        $("#inputPhoneNumber").removeAttr("style");
+                      } else{
+                        
+                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(2));
+                        $(".cphno-prefix").show();
+                        $(".cphno-prefix").text(isFourExistNoNew);
+                        $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
                       }
 
                       isEmerFourExistNo = result.records[getAdmin].EmergencyNumber.slice(0, 3);
-                      //console.log(isEmerFourExistNo+" === "+result.records[getAdmin].EmergencyNumber.slice(3));
+                      var isEmerFourExistNoNew = result.records[getAdmin].EmergencyNumber.slice(0, 2);
+                      
                       if (isEmerFourExistNo === "+44" || isEmerFourExistNo === "+91" || isEmerFourExistNo === "+1") {
                         $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(3));
                          $(".emerno-prefix").text(isEmerFourExistNo);
                         $(".emerno-prefix").show();
                         $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
                       } else {
-                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber);
-                        $(".emerno-prefix").hide();
-                        $("#inputEmergencyNumber").removeAttr("style");
+                         $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(2));
+                         $(".emerno-prefix").text(isEmerFourExistNoNew);
+                        $(".emerno-prefix").show();
+                        $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
                       }
 
 
                       isEmerElecFourExistNo = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 3);
-                      //console.log(isEmerElecFourExistNo+" === "+result.records[getAdmin].EmergencyElectricityNumber.slice(3));
+                     var isEmerElecFourExistNoNew = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 2);
+                      
                       if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
                         $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
                          $(".emerElectno-prefix").text(isEmerElecFourExistNo);
                         $(".emerElectno-prefix").show();
                         $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
                       } else {
-                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
-                        $(".emerElectno-prefix").hide();
-                        $("#inputEmergencyElectricityNumber").removeAttr("style");
+                         $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(2));
+                         $(".emerElectno-prefix").text(isEmerElecFourExistNoNew);
+                        $(".emerElectno-prefix").show();
+                        $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
                       }
 
                       if (result.records[getAdmin].Logo == "" || result.records[getAdmin].Logo == null) {
