@@ -1211,7 +1211,8 @@ $(".btnSubmitAdmin").click(function() {
                 $("#hiddenAdminID").val(editAdminID);
 
                 $.get(domainAddress + "getAdminDetails/" + editAdminID, {}, function(result) {
-                  //console.log(result);
+                  console.log(result);
+                  debugger;
                   var isFourExistNo = 0;
                   var isEmerFourExistNo = 0;
                   for (var getAdmin in result.records) {
@@ -1235,21 +1236,22 @@ $(".btnSubmitAdmin").click(function() {
                       $("#select2-inputTitle-container").html(result.records[getAdmin].AdminTitle);
                     }
 
-                    if (result.records[getAdmin].City == null || result.records[getAdmin].City == "null" || result.records[getAdmin].City == "") {
-                      $("#select2-inputCity-container").html("Select City");
-                    } else {
-                      $("#select2-inputCity-container").html(result.records[getAdmin].City);
-                    }
+                     $("#inputCity").append("<option value='" + result.records[getAdmin].City + "'>" + result.records[getAdmin].City + "</option>");
 
+                     
+                      $("#inputCity").select2();
+
+                    
                     $("#select2-inputCountry-container").html(result.records[getAdmin].Country);
                     $("#inputEmailID").val(result.records[getAdmin].BusinessEmail);
                     $("#inputUrlRent").val(result.records[getAdmin].UrlForRent);
 
                     isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
                       //console.log(isFourExistNo+" === "+result.records[getAdmin].PhoneNumber.slice(3));
-                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1" || isFourExistNo === "Canada") {
+                      if (isFourExistNo === "+44" || isFourExistNo === "+91" || isFourExistNo === "+1") {
                         $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
                         $(".cphno-prefix").show();
+                        $(".cphno-prefix").text(isFourExistNo);
                         $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
                       } else {
                         $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
@@ -1261,6 +1263,7 @@ $(".btnSubmitAdmin").click(function() {
                       //console.log(isEmerFourExistNo+" === "+result.records[getAdmin].EmergencyNumber.slice(3));
                       if (isEmerFourExistNo === "+44" || isEmerFourExistNo === "+91" || isEmerFourExistNo === "+1") {
                         $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(3));
+                         $(".emerno-prefix").text(isEmerFourExistNo);
                         $(".emerno-prefix").show();
                         $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
                       } else {
@@ -1274,6 +1277,7 @@ $(".btnSubmitAdmin").click(function() {
                       //console.log(isEmerElecFourExistNo+" === "+result.records[getAdmin].EmergencyElectricityNumber.slice(3));
                       if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
                         $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
+                         $(".emerElectno-prefix").text(isEmerElecFourExistNo);
                         $(".emerElectno-prefix").show();
                         $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
                       } else {
