@@ -937,7 +937,7 @@ getExistPrivacypolicy();
              } else {
                $("#inputPhoneNumber").val(result.records[getUserInfo].PhoneNumber.slice(3));
              }
-             
+
              if (result.records[getUserInfo].EmergencyNumber == null) {
                $("#inputEmergencyNumber").val();
              } else {
@@ -1208,139 +1208,139 @@ $("#getAddprivacy").click(function() {
    }
 
    if (inputPhoneNumber == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Phone Number");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Phone Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  }
 
-   if (inputEmergencyNumber == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Emergency Number");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+  if (inputEmergencyNumber == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Emergency Number");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
-   if (inputUrlRent == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Url");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
-
-
-   if (inputEmergencyElectricityNumber == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Emergency Electricity Number");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+ if (inputUrlRent == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Url");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
 
-   if (inputEmail == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Email");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
-
-   if (inputPassword == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Password");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
-
-   if (inputBusinessName == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Business Name");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+ if (inputEmergencyElectricityNumber == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Emergency Electricity Number");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
 
-   if (inputCity == "") {
+ if (inputEmail == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Email");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the City");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+ if (inputPassword == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Password");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
-   if (inputState == "") {
-
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the State");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
-
-
-   if (inputLocality == "") {
-
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Local");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+ if (inputBusinessName == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Business Name");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
 
-   if (inputCountry == "") {
+ if (inputCity == "") {
 
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Enter the Country");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   }
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the City");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
-   if (imageUrl1 == "") {
-     $(".help-block").css('color', 'red');
-     $(".help-block").show();
-     $(".help-block").text("* Select the Logo Image");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   } else {
+ if (inputState == "") {
 
-     var state = $("#select2-inputState-container").html();
-     var city = $("#select2-inputCity-container").html();
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the State");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
 
-     var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '"}';
-     var sendURL = domainAddress + 'updateAdminDetails/' + adminUserID;
-     console.log(dataForm);
-     console.log(sendURL);
-     $.ajax({
-       type: "POST",
-       url: sendURL,
-       data: dataForm,
-       success: function(dataCheck) {
-         console.log(dataCheck);
-         if (dataCheck.Success == 1) {
-           localStorage.setItem("MyRequest_Logo", imageUrl1);
-           getUserProfile(adminUserID, true);
-           imageUrl1 = "";
-           $("#progressbox1").hide();
-           UIkit.modal.alert("Profile Updated Successfully");
-           window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
-         } else {
-           $("#progressbox1").hide();
-           UIkit.modal.alert(dataCheck.message_text);
-           return false;
-         }
 
+ if (inputLocality == "") {
+
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Local");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
+
+
+ if (inputCountry == "") {
+
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Enter the Country");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ }
+
+ if (imageUrl1 == "") {
+   $(".help-block").css('color', 'red');
+   $(".help-block").show();
+   $(".help-block").text("* Select the Logo Image");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ } else {
+
+   var state = $("#select2-inputState-container").html();
+   var city = $("#select2-inputCity-container").html();
+
+   var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '"}';
+   var sendURL = domainAddress + 'updateAdminDetails/' + adminUserID;
+   console.log(dataForm);
+   console.log(sendURL);
+   $.ajax({
+     type: "POST",
+     url: sendURL,
+     data: dataForm,
+     success: function(dataCheck) {
+       console.log(dataCheck);
+       if (dataCheck.Success == 1) {
+         localStorage.setItem("MyRequest_Logo", imageUrl1);
+         getUserProfile(adminUserID, true);
+         imageUrl1 = "";
+         $("#progressbox1").hide();
+         UIkit.modal.alert("Profile Updated Successfully");
+         window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
+       } else {
+         $("#progressbox1").hide();
+         UIkit.modal.alert(dataCheck.message_text);
+         return false;
        }
-     });
-   }
+
+     }
+   });
+ }
  }); // #btnUpdateProfile 
 
  $("#inputBillingTitle").on('change', function() {
@@ -1545,7 +1545,7 @@ $("#getAddprivacy").click(function() {
    $.ajax({
      type: "POST",
      url: sendURL,
-     data: dataForm,
+     data: dataForm,  
      success: function(dataCheck) {
        console.log(dataCheck);
        if (dataCheck.status == "success") {
