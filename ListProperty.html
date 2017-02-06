@@ -20,13 +20,13 @@
     <link rel="stylesheet" type="text/css" href="assets/css/loaders.css" />
     <link rel="stylesheet" href="assets/css/modalEffects.css">
     <style>
-        #sidebar_main .menu_section>ul>li.current_listProperty>a .menu_title {
-            color: #4285F4;
-        }
+    #sidebar_main .menu_section>ul>li.current_listProperty>a .menu_title {
+        color: #4285F4;
+    }
 
-        .current_listProperty > a > span.menu_icon > i.fa {
-            color: #4285F4;
-        }
+    .current_listProperty > a > span.menu_icon > i.fa {
+        color: #4285F4;
+    }
     </style>
 
 </head>
@@ -138,218 +138,71 @@
                 <div class="uk-width-1-1">
                     <button type="submit" class="md-btn md-btn-primary getProperty" style="font-style: 13px;"><i class="fa fa-plus-circle"></i> Add Property</button>
                 </div>
-                </br>
-                </br>
+            </br>
+        </br>
 
-                <!--  <h3 class="heading_b uk-margin-bottom getProperty" style="cursor: pointer;margin-left:530px;">+ List Property</h3>  -->
+        <!--  <h3 class="heading_b uk-margin-bottom getProperty" style="cursor: pointer;margin-left:530px;">+ List Property</h3>  -->
 
-                <div class="md-card">
-                    <div class="md-card-content large-padding propertyContent" style="display:block;">
-                        <div id="form_validation" class="uk-form-stacked">
+        <div class="md-card">
+            <div class="md-card-content large-padding propertyContent" style="display:block;">
+                <div id="form_validation" class="uk-form-stacked">
 
-                            <div class="uk-grid" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3">
-                                    <div class="parsley-row">
-                                        <label><b>Property Details</b></label>
-                                    </div>
-                                </div>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <label><b>Property Details</b></label>
                             </div>
-                            <div class="uk-grid" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3" style="margin-top: 10px;">
-                                    <div class="md-card">
+                        </div>
+                    </div>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-3" style="margin-top: 10px;">
+                            <div class="md-card">
 
-                                        <div class="md-card-content large-padding" style="height:414px;">
-                                            <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
-                                            <div class="parsley-row">
-                                                <label for="address">Address<span class="req">*</span></label>
-                                                <input type="text" id="inputAddress" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
-                                            </div>
+                                <div class="md-card-content large-padding" style="height:414px;">
+                                    <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
+                                    <div class="parsley-row">
+                                        <label for="address">Address<span class="req">*</span></label>
+                                        <input type="text" id="inputAddress" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
+                                    </div>
 
-                                            <div class="parsley-row" style="margin-top:65px;">
-                                                <label for="hasCounty" style="margin-top:-30px;"><b>County</b><span class="req">*</span></label>
-                                                <select id="inputState" name="state" required class="md-input">
-                                        <option value="0">Select County</option>
-                                        <!-- <option value='53'>Aberdeen City</option>
-                                        <option value='54'>Aberdeenshire</option>
-                                        <option value='55'>Angus</option>
-                                        <option value='56'>Argyll and Bute</option>
-                                        <option value='57'>Bath Avon</option>
-                                        <option value='58'>Bedfordshire</option>
-                                        <option value='59'>Belfast</option>
-                                        <option value='60'>Berkshire</option>
-                                        <option value='61'>Blaenau Gwent</option>
-                                        <option value='62'>Bournemouth</option>
-                                        <option value='63'>Bradford</option>
-                                        <option value='64'>Bridgend</option>
-                                        <option value='65'>Brighton and Hove</option>
-                                        <option value='66'>Bristol</option>
-                                        <option value='67'>Bristol Avon</option>
-                                        <option value='68'>Buckinghamshire</option>
-                                        <option value='69'>Caerphilly</option>
-                                        <option value='70'>Cambridgeshire</option>
-                                        <option value='71'>Cardiff</option>
-                                        <option value='72'>Carmarthenshire</option>
-                                        <option value='73'>Ceredigion</option>
-                                        <option value='74'>Channel Islands</option>
-                                        <option value='75'>Cheshire</option>
-                                        <option value='76'>City of Edinburgh</option>
-                                        <option value='77'>Clackmannanshire</option>
-                                        <option value='78'>Conwy</option>
-                                        <option value='79'>Cornwall</option>
-                                        <option value='80'>County Armagh</option>
-                                        <option value='81'>County Down</option>
-                                        <option value='82'>County Durham</option>
-                                        <option value='83'>County Fermanagh</option>
-                                        <option value='84'>County Londonderry</option>
-                                        <option value='85'>County Tyrone</option>
-                                        <option value='86'>Cumbria</option>
-                                        <option value='87'>Darlington</option>
-                                        <option value='88'>Denbighshire</option>
-                                        <option value='89'>Derby</option>
-                                        <option value='90'>Derbyshire</option>
-                                        <option value='91'>Devon</option>
-                                        <option value='92'>Dorset</option>
-                                        <option value='93'>Dumfries and Galloway</option>
-                                        <option value='94'>Dundee City</option>
-                                        <option value='95'>E Riding of Yorkshire</option>
-                                        <option value='96'>East Ayrshire</option>
-                                        <option value='97'>East Dunbartonshire</option>
-                                        <option value='98'>East Lothian</option>
-                                        <option value='99'>East Renfrewshire</option>
-                                        <option value='100'>East Sussex</option>
-                                        <option value='101'>Essex</option>
-                                        <option value='102'>Falkirk</option>
-                                        <option value='103'>Fife</option>
-                                        <option value='104'>Flintshire</option>
-                                        <option value='105'>Glasgow City</option>
-                                        <option value='106'>Gloucestershire</option>
-                                        <option value='107'>Greater London</option>
-                                        <option value='108'>Greater Manchester</option>
-                                        <option value='109'>Gwynedd</option>
-                                        <option value='110'>Hampshire</option>
-                                        <option value='111'>Hartlepool</option>
-                                        <option value='112'>Hereford and Worcester</option>
-                                        <option value='113'>Hertfordshire</option>
-                                        <option value='114'>Highland</option>
-                                        <option value='115'>Inverclyde</option>
-                                        <option value='116'>Isle of Anglesey</option>
-                                        <option value='117'>Isle of Man</option>
-                                        <option value='118'>Isle of Wight</option>
-                                        <option value='119'>Isles of Scilly</option>
-                                        <option value='120'>Kent</option>
-                                        <option value='121'>Kingston upon Hull</option>
-                                        <option value='122'>Lancashire</option>
-                                        <option value='123'>Leicester</option>
-                                        <option value='124'>Leicestershire</option>
-                                        <option value='125'>Lincolnshire</option>
-                                        <option value='126'>London</option>
-                                        <option value='127'>Luton</option>
-                                        <option value='128'>Merseyside</option>
-                                        <option value='129'>Merthyr Tydfil</option>
-                                        <option value='130'>Middlesbrough</option>
-                                        <option value='131'>Midlothian</option>
-                                        <option value='132'>Milton Keynes</option>
-                                        <option value='133'>Monmouthshire</option>
-                                        <option value='134'>Moray</option>
-                                        <option value='135'>Neath Port Talbot</option>
-                                        <option value='136'>Newport</option>
-                                        <option value='137'>Norfolk</option>
-                                        <option value='138'>North Ayrshire</option>
-                                        <option value='139'>North Eart Lincolnshire</option>
-                                        <option value='140'>North Lanarkshire</option>
-                                        <option value='141'>North Lincolnshire</option>
-                                        <option value='142'>North Somerset</option>
-                                        <option value='143'>North Yorkshire</option>
-                                        <option value='144'>Northamptonshire</option>
-                                        <option value='145'>Northumberland</option>
-                                        <option value='146'>Nottinghamshire</option>
-                                        <option value='147'>Orkney Islands</option>
-                                        <option value='148'>Oxfordshire</option>
-                                        <option value='149'>Pembrokeshire</option>
-                                        <option value='150'>Perth and Kinross</option>
-                                        <option value='151'>Poole</option>
-                                        <option value='152'>Portsmouth</option>
-                                        <option value='153'>Powys</option>
-                                        <option value='154'>Redcar and Cleveland</option>
-                                        <option value='155'>Renfrewshire</option>
-                                        <option value='156'>Rhondda Cynon Taff</option>
-                                        <option value='157'>Rutland</option>
-                                        <option value='158'>Scottish Borders</option>
-                                        <option value='159'>Shetland Islands</option>
-                                        <option value='160'>Shropshire</option>
-                                        <option value='161'>Somerset</option>
-                                        <option value='162'>South Ayrshire</option>
-                                        <option value='163'>South Gloucestershire</option>
-                                        <option value='164'>South Lanarkshire</option>
-                                        <option value='165'>South Yorkshire</option>
-                                        <option value='166'>Southampton</option>
-                                        <option value='167'>Staffordshire</option>
-                                        <option value='168'>Stirling</option>
-                                        <option value='169'>Stockton-on-Tees</option>
-                                        <option value='170'>Stoke-on-Trent</option>
-                                        <option value='171'>Suffolk</option>
-                                        <option value='172'>Surrey</option>
-                                        <option value='173'>Swansea</option>
-                                        <option value='174'>Swindon</option>
-                                        <option value='175'>Torfaen</option>
-                                        <option value='176'>Tyne and Wear</option>
-                                        <option value='177'>Vale of Glamorgan</option>
-                                        <option value='178'>Warwickshire</option>
-                                        <option value='179'>West Dunbart</option>
-                                        <option value='180'>West Lothian</option>
-                                        <option value='181'>West Midlands</option>
-                                        <option value='182'>West Sussex</option>
-                                        <option value='183'>West Yorkshire</option>
-                                        <option value='184'>Western Isles</option>
-                                        <option value='185'>Wiltshire</option>
-                                        <option value='186'>Wolverhampton</option>
-                                        <option value='187'>Wrexham</option>
-                                        <option value='188'>York</option> -->
-                                    </select>
+                                    <div class="parsley-row" style="margin-top:65px;">
+                                        <label for="hasCounty" style="margin-top:-30px;"><b>County</b><span class="req">*</span></label>
+                                        <select id="inputState" name="state" required class="md-input">
+                                            <option value="0">Select County</option>
 
-                                            </div>
+                                        </select>
 
-                                            <div class="parsley-row" style="margin-top:50px;">
-                                                <label for="hasCity" style="margin-top:-20px;"><b>City</b><span class="req">*</span></label>
-                                                <select id="inputCity" name="city" required class="md-input" style="width:100%;margin-top: 17px;">
-                                        <option value="0">Select County to enable City</option>
-                                    </select>
-                                            </div>
+                                    </div>
 
+                                    <div class="parsley-row" style="margin-top:50px;">
+                                        <label for="hasCity" style="margin-top:-20px;"><b>City</b><span class="req">*</span></label>
+                                        <select id="inputCity" name="city" required class="md-input" style="width:100%;margin-top: 17px;">
+                                            <option value="0">Select County to enable City</option>
+                                        </select>
+                                    </div>
+
+                                    <div class="parsley-row" style="margin-top:15px;">
+                                        <div class="parsley-row">
+                                            <label for="zip">Post Code<span class="req">*</span></label>
+                                            <input type="text" id="inpuZip" name="zip" required class="md-input" />
+                                        </div>
+                                    </div>
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-2">
                                             <div class="parsley-row" style="margin-top:15px;">
-                                                <div class="parsley-row">
-                                                    <label for="zip">Post Code<span class="req">*</span></label>
-                                                    <input type="text" id="inpuZip" name="zip" required class="md-input" />
+
+                                                <label for="isVoid" class="isVoid">Part Of Void<span class="req">*</span></label>
+                                                <p>
+                                                    <span class="icheck-inline agency">
+                                                        <input type="radio" name="voidPart" id="voidPartYes" data-md-icheck />
+                                                        <label for="voidPartYes" class="inline-label">Yes</label>
+                                                    </span>
+                                                    <span class="icheck-inline landlord">
+                                                        <input type="radio" name="voidPart" id="voidPartNo" data-md-icheck />
+                                                        <label for="voidPartNo" class="inline-label">No</label>
+                                                    </span></p>
                                                 </div>
                                             </div>
-                                            <div class="uk-grid" data-uk-grid-margin>
-                                                <div class="uk-width-medium-1-2">
-                                                    <div class="parsley-row" style="margin-top:15px;">
-
-                                                        <label for="isVoid" class="isVoid">Part Of Void<span class="req">*</span></label>
-                                                        <p>
-                                                            <span class="icheck-inline agency">
-                                        <input type="radio" name="voidPart" id="voidPartYes" data-md-icheck />
-                                        <label for="voidPartYes" class="inline-label">Yes</label>
-                                    </span>
-                                                            <span class="icheck-inline landlord">
-                                        <input type="radio" name="voidPart" id="voidPartNo" data-md-icheck />
-                                        <label for="voidPartNo" class="inline-label">No</label>
-                                    </span></p>
-                                                    </div>
-                                                </div>
-
-                                                <!--   <div class="uk-width-medium-1-2">
-                                                    <div class="parsley-row" style="margin-top:15px;">
-                                                        <ul class="uk-navbar-nav user_actions">
-
-                                                            <li><a href="#" class="user_action_icon " data-uk-modal="{target:'#modal_header_footer'}" style="color:#000;"><i class="fa fa-map-marker"  style="color:#000;"></i> </a></li>
-
-
-                                                        </ul>
-
-                                                    </div>
-                                                </div>  -->
 
                                             </div>
 
@@ -369,564 +222,383 @@
                                                 <label for="propertyManaged" class="propertyMan">Property Managed<span class="req">*</span></label>
                                                 <p>
                                                     <span class="icheck-inline propManageFull">
-                                        <input type="radio" name="propManaged" id="propertyManageFull" data-md-icheck  value="Full" /> 
-                                        <label for="propertyManageFull" class="inline-label" style="font-size: 13px;">Full</label>
-                                    </span>
+                                                        <input type="radio" name="propManaged" id="propertyManageFull" data-md-icheck  value="Full" /> 
+                                                        <label for="propertyManageFull" class="inline-label" style="font-size: 13px;">Full</label>
+                                                    </span>
                                                     <span class="icheck-inline propManageSemi">
-                                        <input type="radio" name="propManaged" id="propertyManageSemi" data-md-icheck value="semi" />
-                                        <label for="propertyManageSemi" class="inline-label" style="font-size: 13px;">Part</label>
-                                    </span>
+                                                        <input type="radio" name="propManaged" id="propertyManageSemi" data-md-icheck value="semi" />
+                                                        <label for="propertyManageSemi" class="inline-label" style="font-size: 13px;">Part</label>
+                                                    </span>
                                                     <span class="icheck-inline propManageLet">
-                                        <input type="radio" name="propManaged" id="propertyManageLet" data-md-icheck value="semi" />
-                                        <label for="propertyManageLet" class="inline-label" style="font-size: 13px;">Let Only</label>
-                                    </span></p>
+                                                        <input type="radio" name="propManaged" id="propertyManageLet" data-md-icheck value="semi" />
+                                                        <label for="propertyManageLet" class="inline-label" style="font-size: 13px;">Let Only</label>
+                                                    </span></p>
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top:43px;">
+                                                    <label for="property" style="margin-top:-25px;"><b>Property Type*</b><span class="req"></span></label>
+                                                    <select id="inputProperty" name="propertyType" required class="md-input" style="margin-top:-25px; width:100%;">
+                                                        <option value="0">Select Property Type</option>
+                                                        <option value="1">Apt</option>
+                                                        <option value="2">Detached</option>
+                                                        <option value="3">Semi Detached</option>
+                                                        <option value="4">Mid Terraced</option>
+                                                        <option value="5">End Terraced</option>
+                                                        <option value="5">Annex</option>
+                                                        <option value="5">Other</option>
+                                                        <option value="5">Town House</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top:60px;">
+                                                    <label for="property" style="margin-top:-25px;"><b>Number Of Bedrooms*</b><span class="req"></span></label>
+                                                    <select id="inputBedrooms" name="city" required class="md-input" style="margin-top:-25px; width:100%;">
+                                                        <option value="0">Select Bedrooms</option>
+                                                        <option value="1">None</option>
+                                                        <option value="1">1</option>
+                                                        <option value="2">2</option>
+                                                        <option value="3">3</option>
+                                                        <option value="4">4</option>
+                                                        <option value="5">5 or More</option>
+                                                    </select>
+                                                </div>
+
+
+                                                <div class="parsley-row" style="margin-top:60px;">
+                                                    <label for="propertyStatus" style="margin-top:-25px;"><b>Property Status*</b><span class="req"></span></label>
+                                                    <select id="inputPropertyStatus" name="propertyStatus" required class="md-input" style="margin-top:-25px; width:100%;">
+                                                        <option value="0">Select Property Status</option>
+                                                        <option value="1">MoveIn</option>
+                                                        <option value="2">MoveOut</option>
+                                                        <option value="3">Void-Currently Empty</option>
+                                                        <option value="4">New Instruction</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top:15px;">
+                                                    <label for="homeInsurance" class="homeIns">Landlord Building Insurance<span class="req">*</span></label>
+                                                    <p>
+                                                        <span class="icheck-inline homeInsurNo">
+                                                            <input type="radio" name="landlordIns" id="landBuildInsurNo" data-md-icheck />
+                                                            <label for="landBuildInsurNo" class="inline-label">No</label>
+                                                        </span>
+                                                        <span class="icheck-inline homeInsurYes">
+                                                            <input type="radio" name="landlordIns" id="landBuildInsurYes" data-md-icheck />
+                                                            <label for="landBuildInsurYes" class="inline-label">Yes</label>
+                                                        </span></p>
+                                                    </div>
+                                                </div>
                                             </div>
-
-                                            <div class="parsley-row" style="margin-top:43px;">
-                                                <label for="property" style="margin-top:-25px;"><b>Property Type*</b><span class="req"></span></label>
-                                                <select id="inputProperty" name="propertyType" required class="md-input" style="margin-top:-25px; width:100%;">
-                                        <option value="0">Select Property Type</option>
-                                        <option value="1">Apt</option>
-                                        <option value="2">Detached</option>
-                                        <option value="3">Semi Detached</option>
-                                        <option value="4">Mid Terraced</option>
-                                        <option value="5">End Terraced</option>
-                                        <option value="5">Annex</option>
-                                        <option value="5">Other</option>
-                                        <option value="5">Town House</option>
-                                    </select>
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top:60px;">
-                                                <label for="property" style="margin-top:-25px;"><b>Number Of Bedrooms*</b><span class="req"></span></label>
-                                                <select id="inputBedrooms" name="city" required class="md-input" style="margin-top:-25px; width:100%;">
-                                        <option value="0">Select Bedrooms</option>
-                                         <option value="1">None</option>
-                                        <option value="1">1</option>
-                                        <option value="2">2</option>
-                                        <option value="3">3</option>
-                                        <option value="4">4</option>
-                                        <option value="5">5 or More</option>
-                                    </select>
-                                            </div>
-
-
-                                            <div class="parsley-row" style="margin-top:60px;">
-                                                <label for="propertyStatus" style="margin-top:-25px;"><b>Property Status*</b><span class="req"></span></label>
-                                                <select id="inputPropertyStatus" name="propertyStatus" required class="md-input" style="margin-top:-25px; width:100%;">
-                                        <option value="0">Select Property Status</option>
-                                        <option value="1">MoveIn</option>
-                                        <option value="2">MoveOut</option>
-                                        <option value="3">Void-Currently Empty</option>
-                                        <option value="4">New Instruction</option>
-                                    </select>
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top:15px;">
-                                                <label for="homeInsurance" class="homeIns">Landlord Building Insurance<span class="req">*</span></label>
-                                                <p>
-                                                    <span class="icheck-inline homeInsurNo">
-                                        <input type="radio" name="landlordIns" id="landBuildInsurNo" data-md-icheck />
-                                        <label for="landBuildInsurNo" class="inline-label">No</label>
-                                    </span>
-                                                    <span class="icheck-inline homeInsurYes">
-                                        <input type="radio" name="landlordIns" id="landBuildInsurYes" data-md-icheck />
-                                        <label for="landBuildInsurYes" class="inline-label">Yes</label>
-                                    </span></p>
-                                            </div>
-
 
                                         </div>
-                                    </div>
 
+                                        <div class="uk-width-medium-1-3" style="margin-top: 10px;">
+                                            <div class="md-card">
+                                                <div class="md-card-content large-padding" style="height:414px;">
 
-
-                                </div>
-
-                                <div class="uk-width-medium-1-3" style="margin-top: 10px;">
-                                    <div class="md-card">
-
-                                        <div class="md-card-content large-padding" style="height:414px;">
-
-                                            <div class="parsley-row">
-                                                <label for="propertyManaged">Is property HMO?<span class="req"></span></label>
-                                                <p>
-                                                    <span class="icheck-inline propSingle">
-                                        <input id="singleHmo"  type="radio"  name="hmoSelect" id="radio_demo_inline_11" data-md-icheck  value="single" />
-                                        <label for="radio_demo_inline_11" class="inline-label" style="font-size: 13px;">No</label>
-                                    </span>
-                                                    <span class="icheck-inline propMultiple">
-                                        <input  id="multipleHmo" type="radio" name="hmoSelect" id="radio_demo_inline_12" data-md-icheck value="multiple" />
-                                        <label for="radio_demo_inline_12" class="inline-label" style="font-size: 13px;">Yes</label>
-                                    </span></p>
-                                            </div>
-
-                                            <div class="parsley-row hmoLicenseNumber" style="margin-top: 20px;">
-                                                <label for="hmoLicenseNumber">HMO License Number</label>
-                                                <input type="text" id="inputHmoLicenseNumber" name="hmoLicenseNumber" required class="md-input" />
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 30px;">
-                                                <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
-                                                <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
-                                            </div>
-
-
-                                            <div class="parsley-row uploadHMO" style="margin-top: 30px;">
-                                                <form id="FileURLUploadImage4" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
-                                                    <div class="">
-                                                        <img id="imgHmoUploadPic" style="z-index:-99;height: 100px; width: 120px; margin: 10px 10px 10px -10px;" src="assets/img/noImage.gif" class="">
-                                                    </div>
-
-                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
-
-                                                        <div class="input-group-btn" style="margin: -90px 0px 70px 125px;font-size: 11px;">
-                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new" >Upload HMO <input type="file" id="hmoUploadPic" name="photoimg" style="height: 50px;margin-top: -20px;"></span>
-
+                                                    <div class="parsley-row">
+                                                        <label for="propertyManaged">Is property HMO?<span class="req"></span></label>
+                                                        <p>
+                                                            <span class="icheck-inline propSingle">
+                                                                <input id="singleHmo"  type="radio"  name="hmoSelect" id="radio_demo_inline_11" data-md-icheck  value="single" />
+                                                                <label for="radio_demo_inline_11" class="inline-label" style="font-size: 13px;">No</label>
                                                             </span>
+                                                            <span class="icheck-inline propMultiple">
+                                                                <input  id="multipleHmo" type="radio" name="hmoSelect" id="radio_demo_inline_12" data-md-icheck value="multiple" />
+                                                                <label for="radio_demo_inline_12" class="inline-label" style="font-size: 13px;">Yes</label>
+                                                            </span></p>
                                                         </div>
-                                                        <div id="preview4" style="display:none"></div>
+
+                                                        <div class="parsley-row hmoLicenseNumber" style="margin-top: 20px;">
+                                                            <label for="hmoLicenseNumber">HMO License Number</label>
+                                                            <input type="text" id="inputHmoLicenseNumber" name="hmoLicenseNumber" required class="md-input" />
+                                                        </div>
+
+                                                        <div class="parsley-row" style="margin-top: 30px;">
+                                                            <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
+                                                            <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
+                                                        </div>
 
 
-                                                        <div class='progressbox getProgressBox' id='progressbox4'>
-                                                            <div class="progressbar" id="progressbar4" style="display:none">
-                                                                <span id="statustxt4" class="getStatusText"></span>
+                                                        <div class="parsley-row uploadHMO" style="margin-top: 30px;">
+                                                            <form id="FileURLUploadImage4" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                                <div class="">
+                                                                    <img id="imgHmoUploadPic" style="z-index:-99;height: 100px; width: 120px; margin: 10px 10px 10px -10px;" src="assets/img/noImage.gif" class="">
+                                                                </div>
+
+                                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                                    <div class="input-group-btn" style="margin: -90px 0px 70px 125px;font-size: 11px;">
+                                                                        <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new" >Upload HMO <input type="file" id="hmoUploadPic" name="photoimg" style="height: 50px;margin-top: -20px;"></span>
+
+                                                                    </span>
+                                                                </div>
+                                                                <div id="preview4" style="display:none"></div>
+
+
+                                                                <div class='progressbox getProgressBox' id='progressbox4'>
+                                                                    <div class="progressbar" id="progressbar4" style="display:none">
+                                                                        <span id="statustxt4" class="getStatusText"></span>
+                                                                    </div>
+                                                                </div>
+
                                                             </div>
-                                                        </div>
-
+                                                        </form>
                                                     </div>
-                                                </form>
-
+                                                </div>
                                             </div>
-
-
-
-
                                         </div>
                                     </div>
+                                    <hr/>
 
-
-
-                                </div>
-                            </div>
-
-
-
-
-
-                            <hr/>
-
-                            <div class="uk-grid" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3">
-                                    <div class="parsley-row getLandlordInfo" id="getLandlordInfo" style="cursor:pointer;">
-                                        <label><b class="landLordTitle">+ Landlord Details</b></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="uk-grid landlordInfo" style="display:none;" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-2" style="margin-top: 10px;">
-                                    <div class="md-card">
-
-                                        <div class="md-card-content large-padding">
-
-                                            <div class="parsley-row">
-                                                <label>Landlord Title*</label><br />
-                                                <select id="inputLandlordTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
-                                 <option value="">Select Title</option>
-                                 <option value="Mr.">Mr.</option>
-                                 <option value="Mrs.">Mrs.</option>
-                                 <option value="Ms.">Ms.</option>
-                                 <option value="Miss.">Miss.</option>
-                                 </select>
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label for="getName">Landlord First Name<span class="req">*</span></label>
-                                                <input type="text" id="getName" name="getName" required class="md-input" />
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label for="getLastName">Landlord Last Name<span class="req">*</span></label>
-                                                <input type="text" id="getLastName" name="getLastName" required class="md-input" />
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label for="emailID">Landlord Email<span class="req">*</span></label>
-                                                <input type="text" id="inputEmailID" name="emailID" required class="md-input" />
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label for="mobileNumber">Landlord Phone<span class="req">*</span></label>
-                                                <input type="text" id="inputMobileNumber" name="mobileNumber" required class="md-input" maxlength="10" />
-                                                <span class="mno-prefix landlord-prefix"> </span>
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-
-                                <div class="uk-width-medium-1-2" style="margin-top: 10px;">
-                                    <div class="md-card">
-
-                                        <div class="md-card-content large-padding" style="height:293px;">
-                                            <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
-                                            <div class="parsley-row">
-                                                <label for="address">Address<span class="req">*</span></label>
-                                                <input type="text" id="inputAddress1" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top:45px;">
-                                                <label for="hasCounty" style="margin-top:-30px;"><b>County*<span class="req"></span></b></label>
-                                                <select id="inputState1" name="state" required class="md-input" style="width: 100%;">
-                                        <option value="0">Select County</option>
-                                        <!-- <option value='53'>Aberdeen City</option>
-                                        <option value='54'>Aberdeenshire</option>
-                                        <option value='55'>Angus</option>
-                                        <option value='56'>Argyll and Bute</option>
-                                        <option value='57'>Bath Avon</option>
-                                        <option value='58'>Bedfordshire</option>
-                                        <option value='59'>Belfast</option>
-                                        <option value='60'>Berkshire</option>
-                                        <option value='61'>Blaenau Gwent</option>
-                                        <option value='62'>Bournemouth</option>
-                                        <option value='63'>Bradford</option>
-                                        <option value='64'>Bridgend</option>
-                                        <option value='65'>Brighton and Hove</option>
-                                        <option value='66'>Bristol</option>
-                                        <option value='67'>Bristol Avon</option>
-                                        <option value='68'>Buckinghamshire</option>
-                                        <option value='69'>Caerphilly</option>
-                                        <option value='70'>Cambridgeshire</option>
-                                        <option value='71'>Cardiff</option>
-                                        <option value='72'>Carmarthenshire</option>
-                                        <option value='73'>Ceredigion</option>
-                                        <option value='74'>Channel Islands</option>
-                                        <option value='75'>Cheshire</option>
-                                        <option value='76'>City of Edinburgh</option>
-                                        <option value='77'>Clackmannanshire</option>
-                                        <option value='78'>Conwy</option>
-                                        <option value='79'>Cornwall</option>
-                                        <option value='80'>County Armagh</option>
-                                        <option value='81'>County Down</option>
-                                        <option value='82'>County Durham</option>
-                                        <option value='83'>County Fermanagh</option>
-                                        <option value='84'>County Londonderry</option>
-                                        <option value='85'>County Tyrone</option>
-                                        <option value='86'>Cumbria</option>
-                                        <option value='87'>Darlington</option>
-                                        <option value='88'>Denbighshire</option>
-                                        <option value='89'>Derby</option>
-                                        <option value='90'>Derbyshire</option>
-                                        <option value='91'>Devon</option>
-                                        <option value='92'>Dorset</option>
-                                        <option value='93'>Dumfries and Galloway</option>
-                                        <option value='94'>Dundee City</option>
-                                        <option value='95'>E Riding of Yorkshire</option>
-                                        <option value='96'>East Ayrshire</option>
-                                        <option value='97'>East Dunbartonshire</option>
-                                        <option value='98'>East Lothian</option>
-                                        <option value='99'>East Renfrewshire</option>
-                                        <option value='100'>East Sussex</option>
-                                        <option value='101'>Essex</option>
-                                        <option value='102'>Falkirk</option>
-                                        <option value='103'>Fife</option>
-                                        <option value='104'>Flintshire</option>
-                                        <option value='105'>Glasgow City</option>
-                                        <option value='106'>Gloucestershire</option>
-                                        <option value='107'>Greater London</option>
-                                        <option value='108'>Greater Manchester</option>
-                                        <option value='109'>Gwynedd</option>
-                                        <option value='110'>Hampshire</option>
-                                        <option value='111'>Hartlepool</option>
-                                        <option value='112'>Hereford and Worcester</option>
-                                        <option value='113'>Hertfordshire</option>
-                                        <option value='114'>Highland</option>
-                                        <option value='115'>Inverclyde</option>
-                                        <option value='116'>Isle of Anglesey</option>
-                                        <option value='117'>Isle of Man</option>
-                                        <option value='118'>Isle of Wight</option>
-                                        <option value='119'>Isles of Scilly</option>
-                                        <option value='120'>Kent</option>
-                                        <option value='121'>Kingston upon Hull</option>
-                                        <option value='122'>Lancashire</option>
-                                        <option value='123'>Leicester</option>
-                                        <option value='124'>Leicestershire</option>
-                                        <option value='125'>Lincolnshire</option>
-                                        <option value='126'>London</option>
-                                        <option value='127'>Luton</option>
-                                        <option value='128'>Merseyside</option>
-                                        <option value='129'>Merthyr Tydfil</option>
-                                        <option value='130'>Middlesbrough</option>
-                                        <option value='131'>Midlothian</option>
-                                        <option value='132'>Milton Keynes</option>
-                                        <option value='133'>Monmouthshire</option>
-                                        <option value='134'>Moray</option>
-                                        <option value='135'>Neath Port Talbot</option>
-                                        <option value='136'>Newport</option>
-                                        <option value='137'>Norfolk</option>
-                                        <option value='138'>North Ayrshire</option>
-                                        <option value='139'>North Eart Lincolnshire</option>
-                                        <option value='140'>North Lanarkshire</option>
-                                        <option value='141'>North Lincolnshire</option>
-                                        <option value='142'>North Somerset</option>
-                                        <option value='143'>North Yorkshire</option>
-                                        <option value='144'>Northamptonshire</option>
-                                        <option value='145'>Northumberland</option>
-                                        <option value='146'>Nottinghamshire</option>
-                                        <option value='147'>Orkney Islands</option>
-                                        <option value='148'>Oxfordshire</option>
-                                        <option value='149'>Pembrokeshire</option>
-                                        <option value='150'>Perth and Kinross</option>
-                                        <option value='151'>Poole</option>
-                                        <option value='152'>Portsmouth</option>
-                                        <option value='153'>Powys</option>
-                                        <option value='154'>Redcar and Cleveland</option>
-                                        <option value='155'>Renfrewshire</option>
-                                        <option value='156'>Rhondda Cynon Taff</option>
-                                        <option value='157'>Rutland</option>
-                                        <option value='158'>Scottish Borders</option>
-                                        <option value='159'>Shetland Islands</option>
-                                        <option value='160'>Shropshire</option>
-                                        <option value='161'>Somerset</option>
-                                        <option value='162'>South Ayrshire</option>
-                                        <option value='163'>South Gloucestershire</option>
-                                        <option value='164'>South Lanarkshire</option>
-                                        <option value='165'>South Yorkshire</option>
-                                        <option value='166'>Southampton</option>
-                                        <option value='167'>Staffordshire</option>
-                                        <option value='168'>Stirling</option>
-                                        <option value='169'>Stockton-on-Tees</option>
-                                        <option value='170'>Stoke-on-Trent</option>
-                                        <option value='171'>Suffolk</option>
-                                        <option value='172'>Surrey</option>
-                                        <option value='173'>Swansea</option>
-                                        <option value='174'>Swindon</option>
-                                        <option value='175'>Torfaen</option>
-                                        <option value='176'>Tyne and Wear</option>
-                                        <option value='177'>Vale of Glamorgan</option>
-                                        <option value='178'>Warwickshire</option>
-                                        <option value='179'>West Dunbart</option>
-                                        <option value='180'>West Lothian</option>
-                                        <option value='181'>West Midlands</option>
-                                        <option value='182'>West Sussex</option>
-                                        <option value='183'>West Yorkshire</option>
-                                        <option value='184'>Western Isles</option>
-                                        <option value='185'>Wiltshire</option>
-                                        <option value='186'>Wolverhampton</option>
-                                        <option value='187'>Wrexham</option>
-                                        <option value='188'>York</option> -->
-                                    </select>
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top:32px;">
-                                                <label for="hasCounty" style="margin-top:-20px;"><b>City*<span class="req"></span></b></label>
-                                                <select id="inputCity1" name="city" required class="md-input" style="width:100%;">
-                                        <option value="0">Select County to enable City</option>
-                                    </select>
-                                            </div>
-
-
-
-
-
-                                            <div class="parsley-row" style="margin-top:15px;">
-                                                <label for="zip">Post Code<span class="req">*</span></label>
-                                                <input type="text" id="inpuZip1" name="zip" required class="md-input" />
-                                            </div>
-
-
-                                        </div>
-                                    </div>
-
-
-
-                                </div>
-
-
-                            </div>
-                            <hr/>
-
-
-                            <div class="uk-grid" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3">
-                                    <div class="parsley-row">
-                                        <label><b class="getUtilityInfo" style="cursor:pointer;">+ Utility Management Details</b></label>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3">
-                                    <h3>Gas <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
-                                </div>
-
-                                <div class="uk-width-medium-1-3">
-                                    <h3>Electricity <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
-                                </div>
-
-                                <div class="uk-width-medium-1-3">
-                                    <h3>Water & Council <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
-                                </div>
-                            </div>
-
-
-                            <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
-                                <div class="uk-width-medium-1-3">
-                                    <div class="md-card">
-
-                                        <div class="md-card-content large-padding" style="height:250px;">
-                                            <div class="parsley-row">
-                                                <label>Fuel Type*</label><br />
-                                                <select id="inputFuel" name="inputFuel" style="width:100%;margin-top: 10px;" required class="md-input">
-
-                                            <option value="1">Dual</option>
-                                            <option value="2">Single</option>
-                                            <option value="3">Don't Know</option>
-                                        </select>
-                                            </div>
-
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label>Gas Supplier*</label><br />
-                                                <select id="inputSupplierGas" name="inputSupplierGas" style="width:100%;margin-top: 10px;" required class="md-input">
-                                            <option value="0">Select Supplier Gas</option>
-                                            <option value="1">British Gas</option>
-                                            <option value="1">Contract Natural Gas</option>
-                                            <option value="2">Co-operative Energy</option>
-                                            <option value="1">E-On</option>
-                                            <option value="2">E(Gas & Electric)</option>
-                                            <option value="1">E+</option>
-                                            <option value="2">EBICO</option>
-                                            <option value="1">Economy Energy</option>
-                                            <option value="2">Ecotricity</option>
-                                            <option value="1">EDF</option>
-                                            <option value="2">Extra Energy</option>
-                                            <option value="1">First Utility</option>
-                                            <option value="2">Flow Utility</option>
-                                            <option value="1">GB Energy</option>
-                                            <option value="2">Good Energy</option>
-                                            <option value="1">Green Star</option>
-                                            <option value="2">I Supply</option>
-                                            <option value="1">LOCO2</option>
-                                            <option value="2">Flow Energy</option>
-                                            <option value="1">M & S</option>
-                                            <option value="2">N Power</option>
-                                            <option value="1">Opus</option>
-                                            <option value="2">Other/Not Know</option>
-                                            <option value="1">OVO</option>
-                                            <option value="2">Poineer</option>
-                                            
-                                            <option value="1">Power NI</option>
-                                            <option value="2">Sainsbury's</option>
-                                            <option value="1">Scottish & Southern</option>
-                                            <option value="2">Scottish Hydro</option>
-                                            <option value="1">Scottish Hydro</option>
-                                            <option value="2">Southern Electric</option>
-                                            <option value="1">Spark Energy</option>
-                                            <option value="2">SWALEC</option>
-                                            <option value="1">Thamesway</option>
-                                            <option value="2">Utilita</option>
-                                            <option value="2">Utility Warehouse</option>
-                                            <option value="2">Woodland Trust</option>
-                                    </select>
-                                            </div>
-                                            <div class="parsley-row" style="margin-top:15px;">
-                                                <label for="gas" class="ele1">Gas Meter Reading<span class="req">*</span></label>
-                                                <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row getLandlordInfo" id="getLandlordInfo" style="cursor:pointer;">
+                                                <label><b class="landLordTitle">+ Landlord Details</b></label>
                                             </div>
                                         </div>
                                     </div>
 
-                                </div>
+                                    <div class="uk-grid landlordInfo" style="display:none;" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-2" style="margin-top: 10px;">
+                                            <div class="md-card">
+                                                <div class="md-card-content large-padding">
+                                                    <div class="parsley-row">
+                                                        <label>Landlord Title*</label><br />
+                                                        <select id="inputLandlordTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
+                                                           <option value="">Select Title</option>
+                                                           <option value="Mr.">Mr.</option>
+                                                           <option value="Mrs.">Mrs.</option>
+                                                           <option value="Ms.">Ms.</option>
+                                                           <option value="Miss.">Miss.</option>
+                                                       </select>
+                                                   </div>
 
-                                <div class="uk-width-medium-1-3">
-                                    <div class="md-card">
+                                                   <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label for="getName">Landlord First Name<span class="req">*</span></label>
+                                                    <input type="text" id="getName" name="getName" required class="md-input" />
+                                                </div>
 
-                                        <div class="md-card-content large-padding" style="height:250px;">
-                                            <div class="parsley-row" style="margin-top: 15px;">
-                                                <label>Supplier Electric*</label><br />
-                                                <select id="inputSupplierElectric" name="inputSupplierElectric" style="width:100%;margin-top: 10px;" required class="md-input">
-                                        <option value="0">Select Supplier Electric</option>
-                                        <option value="1">British Gas</option>
-                                        <option value="2">Co-operative Energy</option>
-                                        <option value="1">E-On</option>
-                                        <option value="2">E(Gas & Electric)</option>
-                                        <option value="1">E+</option>
-                                        <option value="2">EBICO</option>
-                                        <option value="1">Economy Energy</option>
-                                        <option value="2">Ecotricity</option>
-                                        <option value="1">EDF</option>
-                                        <option value="2">Extra Energy</option>
-                                        <option value="1">First Utility</option>
-                                        <option value="2">Flow Utility</option>
-                                        <option value="1">GB Energy</option>
-                                        <option value="2">Good Energy</option>
-                                        <option value="1">Green Star</option>
-                                        <option value="2">I Supply</option>
-                                        <option value="1">LOCO2</option>
-                                        <option value="2">Flow Energy</option>
-                                        <option value="1">M & S</option>
-                                        <option value="2">N Power</option>
-                                        <option value="1">Opus</option>
-                                        <option value="2">Other/Not Know</option>
-                                        <option value="1">OVO</option>
-                                        <option value="2">Poineer</option>
-                                         
-                                        <option value="1">Power NI</option>
-                                        <option value="2">Sainsbury's</option>
-                                        <option value="1">Scottish & Southern</option>
-                                        <option value="2">Scottish Hydro</option>
-                                        <option value="1">Scottish Hydro</option>
-                                        <option value="2">Southern Electric</option>
-                                        <option value="1">Spark Energy</option>
-                                        <option value="2">SWALEC</option>
-                                        <option value="1">Thamesway</option>
-                                        <option value="2">Utilita</option>
-                                        <option value="2">Utility Warehouse</option>
-                                        <option value="2">Woodland Trust</option>
-                                 </select>
+                                                <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label for="getLastName">Landlord Last Name<span class="req">*</span></label>
+                                                    <input type="text" id="getLastName" name="getLastName" required class="md-input" />
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label for="emailID">Landlord Email<span class="req">*</span></label>
+                                                    <input type="text" id="inputEmailID" name="emailID" required class="md-input" />
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label for="mobileNumber">Landlord Phone<span class="req">*</span></label>
+                                                    <input type="text" id="inputMobileNumber" name="mobileNumber" required class="md-input" maxlength="10" />
+                                                    <span class="mno-prefix landlord-prefix"> </span>
+                                                </div>
                                             </div>
+                                        </div>
+                                    </div>
+                                    <div class="uk-width-medium-1-2" style="margin-top: 10px;">
+                                        <div class="md-card">
 
+                                            <div class="md-card-content large-padding" style="height:293px;">
+                                                <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
+                                                <div class="parsley-row">
+                                                    <label for="address">Address<span class="req">*</span></label>
+                                                    <input type="text" id="inputAddress1" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
+                                                </div>
 
-                                            <div class="parsley-row" style="margin-top:15px;">
-                                                <span class="icheck-inline economy7">
-                                        <label for="zip" class="economy7">Economy 7*</label>
-                                       <input type="checkbox" name="economy7" data-switchery data-switchery-color="#ffb300" id="inputEconomy7" >
-                                       <input type="hidden" id="hiddenIsEconomy7" value="0"/>
-                                    </span>
-                                            </div>
-                                            <div class="parsley-row" style="margin-top:15px;">
-                                                <label for="zip">Electricity Meter Reading 1<span class="req">*</span></label>
-                                                <input type="text" id="inputRead1" name="read1" required class="md-input" />
-                                            </div>
+                                                <div class="parsley-row" style="margin-top:45px;">
+                                                    <label for="hasCounty" style="margin-top:-30px;"><b>County*<span class="req"></span></b></label>
+                                                    <select id="inputState1" name="state" required class="md-input" style="width: 100%;">
+                                                        <option value="0">Select County</option>
+                                                    </select>
+                                                </div>
 
-                                            <div class="parsley-row electMeter" style="margin-top:15px;">
-                                                <label for="zip">Electricity Meter Reading 2<span class="req">*</span></label>
-                                                <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                                <div class="parsley-row" style="margin-top:32px;">
+                                                    <label for="hasCounty" style="margin-top:-20px;"><b>City*<span class="req"></span></b></label>
+                                                    <select id="inputCity1" name="city" required class="md-input" style="width:100%;">
+                                                        <option value="0">Select County to enable City</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top:15px;">
+                                                    <label for="zip">Post Code<span class="req">*</span></label>
+                                                    <input type="text" id="inpuZip1" name="zip" required class="md-input" />
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
+                                <hr/>
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="parsley-row">
+                                            <label><b class="getUtilityInfo" style="cursor:pointer;">+ Utility Management Details</b></label>
+                                        </div>
+                                    </div>
+                                </div>
 
-                                <div class="uk-width-medium-1-3">
-                                    <div class="md-card">
+                                <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-3">
+                                        <h3>Gas <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                    </div>
 
-                                        <div class="md-card-content large-padding" style="height:250px;">
-                                            <div class="parsley-row" style="margin-top:-7px;">
-                                                <label>Council Authority*</label><br />
-                                                <select id="inputTaxAuthority" name="city" required class="md-input" style="width:100%;">
-                                       <option value="0">Select Council</option>
-                                   </select>
+                                    <div class="uk-width-medium-1-3">
+                                        <h3>Electricity <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                    </div>
+
+                                    <div class="uk-width-medium-1-3">
+                                        <h3>Water & Council <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                    </div>
+                                </div>
+
+                                <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="md-card">
+                                            <div class="md-card-content large-padding" style="height:250px;">
+                                                <div class="parsley-row">
+                                                    <label>Fuel Type*</label><br />
+                                                    <select id="inputFuel" name="inputFuel" style="width:100%;margin-top: 10px;" required class="md-input">
+                                                        <option value="1">Dual</option>
+                                                        <option value="2">Single</option>
+                                                        <option value="3">Don't Know</option>
+                                                    </select>
+                                                </div>
+
+                                                <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label>Gas Supplier*</label><br />
+                                                    <select id="inputSupplierGas" name="inputSupplierGas" style="width:100%;margin-top: 10px;" required class="md-input">
+                                                        <option value="0">Select Supplier Gas</option>
+                                                        <option value="1">British Gas</option>
+                                                        <option value="1">Contract Natural Gas</option>
+                                                        <option value="2">Co-operative Energy</option>
+                                                        <option value="1">E-On</option>
+                                                        <option value="2">E(Gas & Electric)</option>
+                                                        <option value="1">E+</option>
+                                                        <option value="2">EBICO</option>
+                                                        <option value="1">Economy Energy</option>
+                                                        <option value="2">Ecotricity</option>
+                                                        <option value="1">EDF</option>
+                                                        <option value="2">Extra Energy</option>
+                                                        <option value="1">First Utility</option>
+                                                        <option value="2">Flow Utility</option>
+                                                        <option value="1">GB Energy</option>
+                                                        <option value="2">Good Energy</option>
+                                                        <option value="1">Green Star</option>
+                                                        <option value="2">I Supply</option>
+                                                        <option value="1">LOCO2</option>
+                                                        <option value="2">Flow Energy</option>
+                                                        <option value="1">M & S</option>
+                                                        <option value="2">N Power</option>
+                                                        <option value="1">Opus</option>
+                                                        <option value="2">Other/Not Know</option>
+                                                        <option value="1">OVO</option>
+                                                        <option value="2">Poineer</option>
+
+                                                        <option value="1">Power NI</option>
+                                                        <option value="2">Sainsbury's</option>
+                                                        <option value="1">Scottish & Southern</option>
+                                                        <option value="2">Scottish Hydro</option>
+                                                        <option value="1">Scottish Hydro</option>
+                                                        <option value="2">Southern Electric</option>
+                                                        <option value="1">Spark Energy</option>
+                                                        <option value="2">SWALEC</option>
+                                                        <option value="1">Thamesway</option>
+                                                        <option value="2">Utilita</option>
+                                                        <option value="2">Utility Warehouse</option>
+                                                        <option value="2">Woodland Trust</option>
+                                                    </select>
+                                                </div>
+                                                <div class="parsley-row" style="margin-top:15px;">
+                                                    <label for="gas" class="ele1">Gas Meter Reading<span class="req">*</span></label>
+                                                    <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                                </div>
                                             </div>
-                                            <div class="parsley-row" style="margin-top:15px;">
+                                        </div>
+
+                                    </div>
+
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="md-card">
+                                            <div class="md-card-content large-padding" style="height:250px;">
+                                                <div class="parsley-row" style="margin-top: 15px;">
+                                                    <label>Supplier Electric*</label><br />
+                                                    <select id="inputSupplierElectric" name="inputSupplierElectric" style="width:100%;margin-top: 10px;" required class="md-input">
+                                                        <option value="0">Select Supplier Electric</option>
+                                                        <option value="1">British Gas</option>
+                                                        <option value="2">Co-operative Energy</option>
+                                                        <option value="1">E-On</option>
+                                                        <option value="2">E(Gas & Electric)</option>
+                                                        <option value="1">E+</option>
+                                                        <option value="2">EBICO</option>
+                                                        <option value="1">Economy Energy</option>
+                                                        <option value="2">Ecotricity</option>
+                                                        <option value="1">EDF</option>
+                                                        <option value="2">Extra Energy</option>
+                                                        <option value="1">First Utility</option>
+                                                        <option value="2">Flow Utility</option>
+                                                        <option value="1">GB Energy</option>
+                                                        <option value="2">Good Energy</option>
+                                                        <option value="1">Green Star</option>
+                                                        <option value="2">I Supply</option>
+                                                        <option value="1">LOCO2</option>
+                                                        <option value="2">Flow Energy</option>
+                                                        <option value="1">M & S</option>
+                                                        <option value="2">N Power</option>
+                                                        <option value="1">Opus</option>
+                                                        <option value="2">Other/Not Know</option>
+                                                        <option value="1">OVO</option>
+                                                        <option value="2">Poineer</option>
+
+                                                        <option value="1">Power NI</option>
+                                                        <option value="2">Sainsbury's</option>
+                                                        <option value="1">Scottish & Southern</option>
+                                                        <option value="2">Scottish Hydro</option>
+                                                        <option value="1">Scottish Hydro</option>
+                                                        <option value="2">Southern Electric</option>
+                                                        <option value="1">Spark Energy</option>
+                                                        <option value="2">SWALEC</option>
+                                                        <option value="1">Thamesway</option>
+                                                        <option value="2">Utilita</option>
+                                                        <option value="2">Utility Warehouse</option>
+                                                        <option value="2">Woodland Trust</option>
+                                                    </select>
+                                                </div>
+                                                <div class="parsley-row" style="margin-top:15px;">
+                                                    <span class="icheck-inline economy7">
+                                                        <label for="zip" class="economy7">Economy 7*</label>
+                                                        <input type="checkbox" name="economy7" data-switchery data-switchery-color="#ffb300" id="inputEconomy7" >
+                                                        <input type="hidden" id="hiddenIsEconomy7" value="0"/>
+                                                    </span>
+                                                </div>
+                                                <div class="parsley-row" style="margin-top:15px;">
+                                                    <label for="zip">Electricity Meter Reading 1<span class="req">*</span></label>
+                                                    <input type="text" id="inputRead1" name="read1" required class="md-input" />
+                                                </div>
+
+                                                <div class="parsley-row electMeter" style="margin-top:15px;">
+                                                    <label for="zip">Electricity Meter Reading 2<span class="req">*</span></label>
+                                                    <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="md-card">
+
+                                            <div class="md-card-content large-padding" style="height:250px;">
+                                                <div class="parsley-row" style="margin-top:-7px;">
+                                                    <label>Council Authority*</label><br />
+                                                    <select id="inputTaxAuthority" name="city" required class="md-input" style="width:100%;">
+                                                     <option value="0">Select Council</option>
+                                                 </select>
+                                             </div>
+                                             <div class="parsley-row" style="margin-top:15px;">
                                                 <span class="icheck-inline waterMeter">
-                                        <label for="zip">Water<span class="req">*</span></label>
-                                                <input type="checkbox" data-switchery data-switchery-color="#ffb300" id="inputWaterMeter">
-                                                <input type="hidden" id="hiddenIsWaterMeter" value="0" />
+                                                    <label for="zip">Water<span class="req">*</span></label>
+                                                    <input type="checkbox" data-switchery data-switchery-color="#ffb300" id="inputWaterMeter">
+                                                    <input type="hidden" id="hiddenIsWaterMeter" value="0" />
                                                 </span>
                                             </div>
 
@@ -938,44 +610,44 @@
                                             <div class="parsley-row waterMet" style="margin-top:25px;">
                                                 <label class="waterAuthority">Water Authority*</label><br />
                                                 <select id="inputWaterAuthority" name="water" required class="md-input" style="margin-top:-25px; width:100%;">
-                                        <option value="0">Select Water Authority</option>
-                                        <option value="1">Affinity Water</option>
-                                        <option value="2">Albion Water</option>
-                                        <option value="3">DAnglian Water</option>
-                                        <option value="4">Bournemouth Water</option>
-                                        <option value="5">Bristol Water</option>
-                                        <option value="6">Cambridge Water Company</option>
-                                        <option value="7">Cholderton and District Water Company</option>
-                                        <option value="8">Dee Valley Water</option>
-                                        <option value="9">Dŵr Cymru Welsh Water</option>
-                                        <option value="10">Essex and Suffolk Water</option>
-                                        <option value="11">Hartlepool Water</option>
-                                        <option value="12">Isle of Man Water Authority</option>
-                                        <option value="13">Northern Ireland Water</option>
-                                        <option value="14">Northumbrian Water</option>
-                                        <option value="15">Portsmouth Water</option>
-                                        <option value="16">Scottish Water</option>
-                                        <option value="17">Severn Trent Water</option>
-                                        <option value="18">South East Water</option>
-                                        <option value="19">South Staffordshire Water</option>
-                                        <option value="20">Southern Water</option>
-                                        <option value="21">South West Water</option>
-                                        <option value="22">Sutton and East Surrey Water</option>
-                                        <option value="23">Thames Water</option>
-                                        <option value="24">United Utilities</option>
-                                        <option value="26">Wessex Water</option>
-                                        <option value="27">Yorkshire Water</option>
-                                        <option value="28">Youlgrave Waterworks</option><option value="29">Anglian Water</option>
-                                        <option value="30">Dŵr Cymru Welsh Water</option>
-                                        <option value="31">Isle of Man Water and Sewerage Authority</option>
-                                        <option value="32">Northumbrian Water</option>
-                                        <option value="33">Southern Water</option>
-                                        <option value="34">South West Water</option>
-                                        <option value="35">Thames Water</option>
-                                        <option value="36">United Utilities</option>
-                                        <option value="37">Wessex Water</option>
-                                        <option value="38">Yorkshire Water</option>
-                                    </select>
+                                                    <option value="0">Select Water Authority</option>
+                                                    <option value="1">Affinity Water</option>
+                                                    <option value="2">Albion Water</option>
+                                                    <option value="3">DAnglian Water</option>
+                                                    <option value="4">Bournemouth Water</option>
+                                                    <option value="5">Bristol Water</option>
+                                                    <option value="6">Cambridge Water Company</option>
+                                                    <option value="7">Cholderton and District Water Company</option>
+                                                    <option value="8">Dee Valley Water</option>
+                                                    <option value="9">Dŵr Cymru Welsh Water</option>
+                                                    <option value="10">Essex and Suffolk Water</option>
+                                                    <option value="11">Hartlepool Water</option>
+                                                    <option value="12">Isle of Man Water Authority</option>
+                                                    <option value="13">Northern Ireland Water</option>
+                                                    <option value="14">Northumbrian Water</option>
+                                                    <option value="15">Portsmouth Water</option>
+                                                    <option value="16">Scottish Water</option>
+                                                    <option value="17">Severn Trent Water</option>
+                                                    <option value="18">South East Water</option>
+                                                    <option value="19">South Staffordshire Water</option>
+                                                    <option value="20">Southern Water</option>
+                                                    <option value="21">South West Water</option>
+                                                    <option value="22">Sutton and East Surrey Water</option>
+                                                    <option value="23">Thames Water</option>
+                                                    <option value="24">United Utilities</option>
+                                                    <option value="26">Wessex Water</option>
+                                                    <option value="27">Yorkshire Water</option>
+                                                    <option value="28">Youlgrave Waterworks</option><option value="29">Anglian Water</option>
+                                                    <option value="30">Dŵr Cymru Welsh Water</option>
+                                                    <option value="31">Isle of Man Water and Sewerage Authority</option>
+                                                    <option value="32">Northumbrian Water</option>
+                                                    <option value="33">Southern Water</option>
+                                                    <option value="34">South West Water</option>
+                                                    <option value="35">Thames Water</option>
+                                                    <option value="36">United Utilities</option>
+                                                    <option value="37">Wessex Water</option>
+                                                    <option value="38">Yorkshire Water</option>
+                                                </select>
                                             </div>
 
                                         </div>
@@ -1424,10 +1096,10 @@
                         <div class="uk-width-medium-1-1">
                             <div class="parsley-row">
                                 <span class="icheck-inline isLandLordInsurance">
-                            <label for="radio_demo_inline_1" class="inline-label">Do you want to take a Landlord Insurance ?</label>
-                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getLandlordInsurance" />
-                            <input type="hidden" id="hiddenIsLandlordInsurance" value="0"/>
-                        </span>
+                                    <label for="radio_demo_inline_1" class="inline-label">Do you want to take a Landlord Insurance ?</label>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getLandlordInsurance" />
+                                    <input type="hidden" id="hiddenIsLandlordInsurance" value="0"/>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1438,10 +1110,10 @@
                         <div class="uk-width-medium-1-1">
                             <div class="parsley-row">
                                 <span class="icheck-inline isRentProtectionInsurance">
-                            <label for="radio_demo_inline_2" class="inline-label">Do you want to take legal expenses & rent protection insurance?</label>
-                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getRentProtectionInsurance" />
-                            <input type="hidden" id="hiddenIsRentProtectionInsurance" value="0"/>
-                        </span>
+                                    <label for="radio_demo_inline_2" class="inline-label">Do you want to take legal expenses & rent protection insurance?</label>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getRentProtectionInsurance" />
+                                    <input type="hidden" id="hiddenIsRentProtectionInsurance" value="0"/>
+                                </span>
                             </div>
                         </div>
                     </div>
@@ -1499,29 +1171,29 @@
                         <div class="uk-width-medium-1-1">
                             <div class="parsley-row">
                                 <span class="icheck-inline isElectricity">
-                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getElect" />
-                        <!--    <input type="checkBox" name="radio_demo_inline1" id="getElect" data-md-icheck /> -->
-                            <label for="radio_demo_inline_1" class="inline-label">Electricity</label>
-                            <input type="hidden" id="hiddenIsElectricity" value="0"/>
-                        </span>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getElect" />
+                                    <!--    <input type="checkBox" name="radio_demo_inline1" id="getElect" data-md-icheck /> -->
+                                    <label for="radio_demo_inline_1" class="inline-label">Electricity</label>
+                                    <input type="hidden" id="hiddenIsElectricity" value="0"/>
+                                </span>
                                 <span class="icheck-inline isGas">
-                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getGas" />
-                      <!--  <input type="checkBox" name="radio_demo_inline2" id="getGas" data-md-icheck />-->
-                            <label for="radio_demo_inline_2" class="inline-label">Gas</label>
-                            <input type="hidden" id="hiddenIsGas" value="0"/>
-                        </span>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getGas" />
+                                    <!--  <input type="checkBox" name="radio_demo_inline2" id="getGas" data-md-icheck />-->
+                                    <label for="radio_demo_inline_2" class="inline-label">Gas</label>
+                                    <input type="hidden" id="hiddenIsGas" value="0"/>
+                                </span>
                                 <span class="icheck-inline isWater">
-                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getWater" />
-                           <!--     <input type="checkBox" name="radio_demo_inline3" id="getWater" data-md-icheck /> -->
-                                <label for="radio_demo_inline_1" class="inline-label">Water</label>
-                                <input type="hidden" id="hiddenIsWater" value="0"/>
-                            </span>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getWater" />
+                                    <!--     <input type="checkBox" name="radio_demo_inline3" id="getWater" data-md-icheck /> -->
+                                    <label for="radio_demo_inline_1" class="inline-label">Water</label>
+                                    <input type="hidden" id="hiddenIsWater" value="0"/>
+                                </span>
                                 <span class="icheck-inline isCouncil">
-                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getCouncil" />
-                            <!--    <input type="checkBox" name="radio_demo_inline4" id="getCouncil" data-md-icheck /> -->
-                                <label for="radio_demo_inline_2" class="inline-label">Council</label>
-                                <input type="hidden" id="hiddenIsCouncil" value="0"/>
-                            </span>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getCouncil" />
+                                    <!--    <input type="checkBox" name="radio_demo_inline4" id="getCouncil" data-md-icheck /> -->
+                                    <label for="radio_demo_inline_2" class="inline-label">Council</label>
+                                    <input type="hidden" id="hiddenIsCouncil" value="0"/>
+                                </span>
                             </div>
 
                         </div>
@@ -1531,11 +1203,11 @@
                         <div class="uk-width-medium-1-1">
                             <div class="parsley-row">
                                 <span class="icheck-inline isAvailTenantInsurance">
-                            
-                            <label for="radio_demo_inline_2" class="inline-label">Do you want to avail tenant insurance?</label>
-                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvailTenantInsurance" />
-                            <input type="hidden" id="hiddenIsTenantInsurance" value="0"/>
-                        </span>
+
+                                    <label for="radio_demo_inline_2" class="inline-label">Do you want to avail tenant insurance?</label>
+                                    <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvailTenantInsurance" />
+                                    <input type="hidden" id="hiddenIsTenantInsurance" value="0"/>
+                                </span>
 
 
                             </div>
@@ -1555,23 +1227,23 @@
 
         <!-- google web fonts -->
         <script>
-            WebFontConfig = {
-                google: {
-                    families: [
-                        'Source+Code+Pro:400,700:latin',
-                        'Roboto:400,300,500,700,400italic:latin'
-                    ]
-                }
-            };
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
+        WebFontConfig = {
+            google: {
+                families: [
+                'Source+Code+Pro:400,700:latin',
+                'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
         </script>
 
         <!-- common functions -->
@@ -1586,41 +1258,41 @@
         <script>
             // load parsley config (altair_admin_common.js)
             altair_forms.parsley_validation_config();
-        </script>
-        <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+            </script>
+            <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
 
-        <!--  forms validation functions -->
-        <script src="assets/js/pages/forms_validation.min.js"></script>
-        <script src="assets/js/const.js"></script>
-        <script src="assets/js/appUrl.js"></script>
-        <script src="assets/js/validationCheck.js" type="text/javascript"></script>
-        <script src="assets/js/jquery.form.js" type="text/javascript"></script>
-        <script src="assets/js/select2.min.js"></script>
-        <script src="assets/js/moment.min.js"></script>
-        <script src="assets/js/Property/ValidationProperty.js"></script>
-        <script src="assets/js/checkDateDiff.js"></script>
-        <script src="assets/js/logOutClearCatch.js"></script>
-        <script src="assets/js/Property/property.js"></script>
-        <script src="assets/js/Property/getPropertyInfo.js"></script>
-        <script src="assets/js/Property/getAddRemoveTenant.js"></script>
-        <script src="assets/js/Property/addUpdatePropertyValidation.js"></script>
-        <script src="assets/js/Property/changesRadioProperty.js"></script>
-        <script src="assets/js/Property/getListAndLoadProperty.js"></script>
-        <script src="assets/js/Property/Pagination.js"></script>
-        <script src="assets/js/Property/clearAllValues.js"></script>
-        <script src="assets/js/Property/ImageUpload.js"></script>
-        <script src="assets/js/Property/common.js"></script>
-        <script src="assets/js/Property/moveOut.js"></script>
-        <script src="assets/js/Property/buttonSubmitProptyUtil.js"></script>
-        <script src="assets/js/Property/getValueOfTenant.js"></script>
-        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
-        <script src="assets/js/screenfull.js"></script>
-        <script type="text/javascript" src="assets/js/loaders.js"></script>
-        <script type="text/javascript" src="assets/js/modalEffects.js"></script>
-        <script type="text/javascript" src="assets/js/modalEffectsClassie.js"></script>
-        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0djw7GLfE_LXXBcQhx8iry3XV5g-10RU"></script>
-        <!-- <script type="text/javascript" src="assets/js/jquery.googlemap.js"></script> -->
-        <script>
+            <!--  forms validation functions -->
+            <script src="assets/js/pages/forms_validation.min.js"></script>
+            <script src="assets/js/const.js"></script>
+            <script src="assets/js/appUrl.js"></script>
+            <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+            <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+            <script src="assets/js/select2.min.js"></script>
+            <script src="assets/js/moment.min.js"></script>
+            <script src="assets/js/Property/ValidationProperty.js"></script>
+            <script src="assets/js/checkDateDiff.js"></script>
+            <script src="assets/js/logOutClearCatch.js"></script>
+            <script src="assets/js/Property/property.js"></script>
+            <script src="assets/js/Property/getPropertyInfo.js"></script>
+            <script src="assets/js/Property/getAddRemoveTenant.js"></script>
+            <script src="assets/js/Property/addUpdatePropertyValidation.js"></script>
+            <script src="assets/js/Property/changesRadioProperty.js"></script>
+            <script src="assets/js/Property/getListAndLoadProperty.js"></script>
+            <script src="assets/js/Property/Pagination.js"></script>
+            <script src="assets/js/Property/clearAllValues.js"></script>
+            <script src="assets/js/Property/ImageUpload.js"></script>
+            <script src="assets/js/Property/common.js"></script>
+            <script src="assets/js/Property/moveOut.js"></script>
+            <script src="assets/js/Property/buttonSubmitProptyUtil.js"></script>
+            <script src="assets/js/Property/getValueOfTenant.js"></script>
+            <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+            <script src="assets/js/screenfull.js"></script>
+            <script type="text/javascript" src="assets/js/loaders.js"></script>
+            <script type="text/javascript" src="assets/js/modalEffects.js"></script>
+            <script type="text/javascript" src="assets/js/modalEffectsClassie.js"></script>
+            <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0djw7GLfE_LXXBcQhx8iry3XV5g-10RU"></script>
+            <!-- <script type="text/javascript" src="assets/js/jquery.googlemap.js"></script> -->
+            <script>
             $(function() {
                 // enable hires images
                 altair_helpers.retina_images();
@@ -1632,10 +1304,10 @@
             });
             changesRadioProperty();
             ImageUpload();
-        </script>
- 
-    </div>
-    <div class="md-overlay"></div>
-</body>
+            </script>
 
-</html>
+        </div>
+        <div class="md-overlay"></div>
+    </body>
+
+    </html>
