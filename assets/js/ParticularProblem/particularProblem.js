@@ -91,6 +91,17 @@
   $('.clockpickerStartTime').clockpicker();
   $('.clockpickerEndTime').clockpicker();
   $(document).ready(function() {
+<<<<<<< HEAD
+      console.log("ready call");
+      var currentdate = new Date();
+      datetime = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
+      adminUserID = localStorage.getItem("MyRequest_AdminID");
+      adminUserName = localStorage.getItem("MyRequest_UserName");
+      var adminType = localStorage.getItem("MyRequest_AdminType");
+      var businessName = localStorage.getItem("MyRequest_BusinessName");
+      logo = localStorage.getItem("MyRequest_Logo");
+      var isFilled = localStorage.getItem("MyRequest_profileFill");
+=======
     console.log("ready call");
     var currentdate = new Date();
     datetime = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
@@ -101,6 +112,7 @@
     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
     logo = localStorage.getItem("MyRequest_Logo");
     var isFilled = localStorage.getItem("MyRequest_profileFill");
+>>>>>>> remotes/origin/master
 
 
 
@@ -222,8 +234,7 @@
       }); // GetAllContractorUserList
   /********************** End - To Get Contractor List *******************/
 
-
-  $(".getLettingAgencyBusinessName").text("Particular Problem - " + businessName + " - " + lettingAgencyCode);
+      $(".getLettingAgencyBusinessName").text("Particular Problem - " + businessName );
   }); // ready
   
 

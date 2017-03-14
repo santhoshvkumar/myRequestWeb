@@ -27,15 +27,16 @@
 </head>
 
 <body class="login_page">
+     <div class="uk-margin-medium-top" style="float: right">
+            <img id="selectedCountry" src="assets/img/Country/gb.png" width="100" height="100">
+     </div>
     <div class="uk-margin-medium-top" style="margin-left:auto;margin-right:auto;width:150px;margin-bottom:auto;">
 
         <img src="assets/img/logo.png">
         <!-- <a class="md-btn md-btn-primary md-btn-block md-btn-large" id="btnLogin">Sign In</aa> -->
     </div>
 
-    <div class="login_page_wrapper" style="border-radius: 500px;margin-top:19px;background: rgba(0,0,0,0.61);
-border: 1px solid rgba(150,150,150,0.38);
-border-radius: 16px;width:400px">
+    <div class="login_page_wrapper transparentBG loginContent">
 
         <div id="login_card" style=" margin-top: 10px; width:330px; margin:auto;">
 
@@ -187,6 +188,22 @@ border-radius: 16px;width:400px">
     </div>
 
 
+    <div  class="uk-modal transparentBG" id="modal_ShowMaps">
+        <div  class="uk-modal-dialog uk-modal-dialog-large transparentBG">
+            <div class="md-card-content" >
+               <form>
+                    <div style="text-align:center">
+                        <h2 style="font-family: Avenir-Heavy; color: #FED235;line-height: 22px;"> Select Your Country </h2>
+                        <hr>
+                    </div>
+               </form>
+            </div>
+                <div id="worldmap"></div>
+            
+        </div>
+    </div>
+
+
 
     <!-- common functions -->
     <script src="assets/js/common.min.js"></script>
@@ -199,6 +216,7 @@ border-radius: 16px;width:400px">
 
     <script src="assets/js/appUrl.js"></script>
     <script src="assets/js/validationCheck.js"></script>
+    <script src="assets/js/jquery.twism.js"></script>
 
     <script src="https://cdn.onesignal.com/sdks/OneSignalSDK.js" async></script>
 
@@ -254,10 +272,29 @@ border-radius: 16px;width:400px">
         })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
         ga('create', 'UA-65191727-1', 'auto');
         ga('send', 'pageview');
-
+        var modalMap;
 
         $(document).ready(function() {
+            localStorage.clear();
+             $('#worldmap').twism("create", 
+                {
+                    map: "world",
+                    border: "red",
+                    disableCountries: ['ar','au'],
+                    individualCountrySettings: [{
+                    
+                    }]
+                }, function() {
+                    //callback function after map loads
+                    $('#worldmap').twism("setCountry");
+            });
             var subscribe = localStorage.getItem("isSubscribe");
+            modalMap = UIkit.modal("#modal_ShowMaps", {
+                bgclose: false,
+                keyboard: true,
+                center: false
+            });
+            modalMap.show();
             //console.log(subscribe); 
             /*if (subscribe == "" || subscribe == null || subscribe == "null") {
                 $("#btnSubscribe").show();
@@ -265,6 +302,9 @@ border-radius: 16px;width:400px">
                 $("#btnSubscribe").hide();
             }*/
         });
+         $("#selectedCountry").click(function() {
+             modalMap.show();
+         });
 
         $("#btnForgetPassword").click(function() {
 
@@ -356,7 +396,48 @@ border-radius: 16px;width:400px">
             });
         });*/
 
+        function selectedCountry(state){
+           var countryCode, gmt, phoneCode;
+           console.log(state);
+            if (state === "in" || state === "us" || state === "gb" || state === "ca") {
+                $("#selectedCountry").prop("src","assets/img/Country/"+state+".png")
+                switch(state){
+                    case "in":
+                        countryCode="India";
+                        gmt ="GMT+5:30";
+                        phoneCode="+91";
+                        break;
+                    case "gb":
+                        countryCode="UK";
+                        gmt ="GMT+0:00";
+                        phoneCode="+44";
+                        break;
+                    case "ca":
+                        countryCode="Canada";
+                        gmt ="GMT-5:00";
+                        phoneCode="+1";
+                        break;
+                    case "us":
+                        countryCode="US";
+                        gmt ="GMT-5:00";
+                        phoneCode="+1";
+                        break;
+                }
 
+               UIkit.modal.confirm("Your Selected Country is : "+countryCode, function(){
+                    // will be executed on confirm.
+                    localStorage.setItem("MyRequest_countryCode",countryCode);
+                    localStorage.setItem("MyRequest_PhoneCode",phoneCode);
+                    localStorage.setItem("MyRequest_GMT",gmt);
+                    modalMap.hide();
+                },[]);
+
+              
+            }
+            else {
+              UIkit.modal.alert("Please Contact Our Sales team");
+            }
+        }
         function callLogin() {
             console.log("Enter Login");
             var emailID = $("#login_email").val();
@@ -385,7 +466,7 @@ border-radius: 16px;width:400px">
                 OneSignal.push(["getUserId", function(userTokenId) {
                     debugger;
                     console.log("OneSignal User ID:", userTokenId);
-                    validationCheckForLogin(emailID, password, userTokenId);
+                     (emailID, password, userTokenId);
                  }]);
               
             }

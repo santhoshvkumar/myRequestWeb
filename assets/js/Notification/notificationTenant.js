@@ -90,7 +90,6 @@
       var adminType = localStorage.getItem("MyRequest_AdminType");
 
       var businessName = localStorage.getItem("MyRequest_BusinessName");
-      var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
       var logo = localStorage.getItem("MyRequest_Logo");
       localStorage.setItem("MyRequest_RepairStatus", "");
       $("#inputDropValue").select2();
@@ -133,7 +132,7 @@
       }
 
 
-      $(".getLettingAgencyBusinessName").text("Notification - " + businessName + " - " + lettingAgencyCode);
+      $(".getLettingAgencyBusinessName").text("Notification - " + businessName );
       getAllNewsLetter();
       maxProp++;
       $("#enterPageNO").val(maxProp);

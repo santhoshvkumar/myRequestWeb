@@ -297,7 +297,7 @@
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-medium-1-1">
                                     <div class="parsley-row">
-                                        <form id="FileURLUploadRequestImage1" method="post" enctype="multipart/form-data" action="https://api.myrequest.co.uk/uploadAgentProblemImage.php" class="form-horizontal">
+                                        <form id="FileURLUploadRequestImage1" method="post" enctype="multipart/form-data" class="form-horizontal">
                                             <div class="">
                                                 <img id="imgRequestImage" style="width: 100%;border: 1px solid rgba(0, 0, 0, 0.12);" src="assets/img/noImage.gif" class="">
                                             </div>
@@ -329,7 +329,7 @@
                                 </div>
                             </div>
 
- 
+                            
 
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-medium-1-1">
@@ -343,8 +343,8 @@
                                     </div>
                                 </div>
                             </div>
-                           
- 
+                            
+                            
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-medium-1-1">
                                     <div class="parsley-row">
@@ -359,7 +359,7 @@
                             </div>
 
 
- 
+                            
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-medium-1-1">
                                     <div class="parsley-row">
@@ -372,236 +372,236 @@
                                     </div>
                                 </div>
                             </div>
-                          
+                            
                             <div class="uk-grid" data-uk-grid-margin>  
                                 <div class="uk-width-medium-1-1">
-                                        <div class="parsley-row">
-                                            <label>When to Respond<span class="req">*</span></label>
-                                            <div class="md-input-wrapper md-input-filled">
-                                                <input class="md-input" type="text" id="inputWhenDate" data-uk-datepicker="{format:'DD.MM.YYYY}" placeholder="Date & Time" /> 
-                                                
-                                                <input class="md-input" type="text" id="inputWhenTime" data-uk-timepicker placeholder="Select When to respond time" style="display: none;"/>
-
-                                                <input class="md-input" type="text" id="inputWhenToRespond" style="display: none;"/>
-
-                                            </div>
+                                    <div class="parsley-row">
+                                        <label>When to Respond<span class="req">*</span></label>
+                                        <div class="md-input-wrapper md-input-filled">
+                                            <input class="md-input" type="text" id="inputWhenDate" data-uk-datepicker="{format:'DD.MM.YYYY}" placeholder="Date & Time" /> 
                                             
+                                            <input class="md-input" type="text" id="inputWhenTime" data-uk-timepicker placeholder="Select When to respond time" style="display: none;"/>
+
+                                            <input class="md-input" type="text" id="inputWhenToRespond" style="display: none;"/>
+
                                         </div>
-                                </div>
-                            </div>
-                    </p>
-                    
-                    <div class="uk-modal-footer uk-text-right">
-                         <span class="help-block"></span>
-                        <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
-                        <button type="button" class="md-btn md-btn-flat btnSubmit" id="addCase">Submit</button>
-                    </div>
-                </div>
-                </div>
-
-
-
-                <div class="uk-modal" id="modalContractorModal">
-                    <div class="uk-modal-dialog">
-                        <div class="uk-modal-header">
-                            <h3 class="uk-modal-title">myRequest - Contractor Information</h3>
-                        </div>
-
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-2">
-                                <div class="parsley-row">
-                                    <img id="contractorImage" alt="contractorImage" />
-                                </div>
-                            </div>
-                            <div class="uk-width-medium-1-2">
-                                <div class="parsley-row">
-                                    <div class="uk-grid" data-uk-grid-margin>
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-user"></i> <span id="contractorName" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-phone"></i> <span id="contractorPhone" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-envelope"></i> <span id="contractorEmail" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-location-arrow"></i> <span id="contractorCity" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-map-marker"></i> <span id="contractorState" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-globe"></i> <span id="contractorZip" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
-                                        <div class="uk-width-medium-1-1">
-                                            <div class="parsley-row">
-                                                <i class="fa fa-calendar"></i> <span id="contractorValidTill" style="margin: 15px;"></span>
-                                            </div>
-                                        </div>
+                                        
                                     </div>
                                 </div>
                             </div>
-                        </div>
-
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-1">
-                                <div id="calendar">
-
-                                </div>
-                            </div>
-                        </div>
-
-
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sAwaitingInfo"></div>
-                                        <div class="statistics" style="display:inline-block;">Awaiting Info <span class="awaitingInfoCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sAwaitingApproval"></div>
-                                        <div class="statistics" style="display:inline-block;">Awaiting Approval <span class="awaitingApprovalCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sApproved"></div>
-                                        <div class="statistics" style="display:inline-block;">Approved <span class="approvedCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                        </div>
-
-
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sAssigned"></div>
-                                        <div class="statistics" style="display:inline-block;">Assigned <span class="assignedCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sCheckIn"></div>
-                                        <div class="statistics" style="display:inline-block;">CheckIn <span class="checkInCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sStarted"></div>
-                                        <div class="statistics" style="display:inline-block;">Started <span class="startedCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div class="uk-grid" data-uk-grid-margin>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sCompleted"></div>
-                                        <div class="statistics" style="display:inline-block;">Completed <span class="completedCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="uk-width-medium-1-3">
-                                <div class="parsley-row">
-                                    <div style="text-align:left;">
-                                        <div class="sClosed"></div>
-                                        <div class="statistics" style="display:inline-block;">Closed <span class="closedCount">(0)</span></div>
-                                    </div>
-                                </div>
-                            </div>
-                        </div>
-
+                        </p>
+                        
                         <div class="uk-modal-footer uk-text-right">
-                            <button type="button" class="md-btn md-btn-flat uk-modal-close reset">OK</button>
+                           <span class="help-block"></span>
+                           <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                           <button type="button" class="md-btn md-btn-flat btnSubmit" id="addCase">Submit</button>
+                       </div>
+                   </div>
+               </div>
+
+
+
+               <div class="uk-modal" id="modalContractorModal">
+                <div class="uk-modal-dialog">
+                    <div class="uk-modal-header">
+                        <h3 class="uk-modal-title">myRequest - Contractor Information</h3>
+                    </div>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <img id="contractorImage" alt="contractorImage" />
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-2">
+                            <div class="parsley-row">
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-user"></i> <span id="contractorName" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-phone"></i> <span id="contractorPhone" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-envelope"></i> <span id="contractorEmail" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-location-arrow"></i> <span id="contractorCity" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-map-marker"></i> <span id="contractorState" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-globe"></i> <span id="contractorZip" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="uk-grid" data-uk-grid-margin style="margin-top: 15px;">
+                                    <div class="uk-width-medium-1-1">
+                                        <div class="parsley-row">
+                                            <i class="fa fa-calendar"></i> <span id="contractorValidTill" style="margin: 15px;"></span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div id="calendar">
+
+                            </div>
+                        </div>
+                    </div>
+
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sAwaitingInfo"></div>
+                                    <div class="statistics" style="display:inline-block;">Awaiting Info <span class="awaitingInfoCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sAwaitingApproval"></div>
+                                    <div class="statistics" style="display:inline-block;">Awaiting Approval <span class="awaitingApprovalCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sApproved"></div>
+                                    <div class="statistics" style="display:inline-block;">Approved <span class="approvedCount">(0)</span></div>
+                                </div>
+                            </div>
                         </div>
 
                     </div>
 
 
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sAssigned"></div>
+                                    <div class="statistics" style="display:inline-block;">Assigned <span class="assignedCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sCheckIn"></div>
+                                    <div class="statistics" style="display:inline-block;">CheckIn <span class="checkInCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sStarted"></div>
+                                    <div class="statistics" style="display:inline-block;">Started <span class="startedCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sCompleted"></div>
+                                    <div class="statistics" style="display:inline-block;">Completed <span class="completedCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="uk-width-medium-1-3">
+                            <div class="parsley-row">
+                                <div style="text-align:left;">
+                                    <div class="sClosed"></div>
+                                    <div class="statistics" style="display:inline-block;">Closed <span class="closedCount">(0)</span></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-modal-footer uk-text-right">
+                        <button type="button" class="md-btn md-btn-flat uk-modal-close reset">OK</button>
+                    </div>
 
                 </div>
+
+
+
             </div>
         </div>
+    </div>
 
 
-        <!-- google web fonts -->
-        <script>
-            WebFontConfig = {
-                google: {
-                    families: [
-                        'Source+Code+Pro:400,700:latin',
-                        'Roboto:400,300,500,700,400italic:latin'
-                    ]
-                }
-            };
-            (function() {
-                var wf = document.createElement('script');
-                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
-                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
-                wf.type = 'text/javascript';
-                wf.async = 'true';
-                var s = document.getElementsByTagName('script')[0];
-                s.parentNode.insertBefore(wf, s);
-            })();
-        </script>
+    <!-- google web fonts -->
+    <script>
+        WebFontConfig = {
+            google: {
+                families: [
+                'Source+Code+Pro:400,700:latin',
+                'Roboto:400,300,500,700,400italic:latin'
+                ]
+            }
+        };
+        (function() {
+            var wf = document.createElement('script');
+            wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+            '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+            wf.type = 'text/javascript';
+            wf.async = 'true';
+            var s = document.getElementsByTagName('script')[0];
+            s.parentNode.insertBefore(wf, s);
+        })();
+    </script>
 
-        <!-- common functions -->
-        <script src="assets/js/common.min.js"></script>
-        <!-- uikit functions -->
-        <script src="assets/js/uikit_custom.min.js"></script>
-        <!-- altair common functions/helpers -->
-        <script src="assets/js/altair_admin_common.min.js"></script>
-        <script src="assets/js/w3data.js"></script>
-        <script src="assets/js/const.js"></script>
-        <script src="assets/js/select2.min.js"></script>
+    <!-- common functions -->
+    <script src="assets/js/common.min.js"></script>
+    <!-- uikit functions -->
+    <script src="assets/js/uikit_custom.min.js"></script>
+    <!-- altair common functions/helpers -->
+    <script src="assets/js/altair_admin_common.min.js"></script>
+    <script src="assets/js/w3data.js"></script>
+    <script src="assets/js/const.js"></script>
+    <script src="assets/js/select2.min.js"></script>
 
-        <!-- page specific plugins -->
-        <!-- parsley (validation) -->
-        <script>
+    <!-- page specific plugins -->
+    <!-- parsley (validation) -->
+    <script>
             // load parsley config (altair_admin_common.js)
             altair_forms.parsley_validation_config();
         </script>

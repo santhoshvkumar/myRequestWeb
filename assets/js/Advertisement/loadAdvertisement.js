@@ -17,7 +17,6 @@ function loadAdvertisement() {
         var adminUserName = localStorage.getItem("MyRequest_UserName");
         adminType = localStorage.getItem("MyRequest_AdminType");
         var businessName = localStorage.getItem("MyRequest_BusinessName");
-        var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
         var logo = localStorage.getItem("MyRequest_Logo");
         localStorage.setItem("MyRequest_RepairStatus", "");
 
@@ -57,7 +56,7 @@ function loadAdvertisement() {
         }
 
 
-        $(".getLettingAgencyBusinessName").text("Advertisement - " + businessName + " - " + lettingAgencyCode);
+        $(".getLettingAgencyBusinessName").text("Advertisement - " + businessName);
         getAdvertisementList(getValue);
 
 
