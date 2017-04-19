@@ -299,7 +299,6 @@ function utilityLogSubmit() {
                 $(".btnSubmitMedia").attr("disabled", true);
                 return false;
             }
-
             if (inputNotes == "") {
                 $(".errorMediaInfo").show();
                 $(".errorMediaInfo").text('* Enter the Notes');
@@ -316,7 +315,7 @@ function utilityLogSubmit() {
             var dataForm = '{"UtilityID":"' + hiddenUtilityID + '","PropertyID":"' + hiddenPropertyID + '","UserRegID":"' + hiddenUserRegID + '","Notes":"' + inputNotes + '","ActionTaken":"' + actionTaken + '","UtilityType":"' + getSelectedType + '"}';
             console.log(dataForm);
             $("#getLoadingModalContent").addClass('md-show');
-            var sendURL = domainAddress + 'CreateUtilityLog';
+            var sendURL = domainAddress + 'CreateUtilityAgentLog';
             console.log(sendURL);
 
             $.ajax({

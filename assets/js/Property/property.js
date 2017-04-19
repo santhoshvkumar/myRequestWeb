@@ -401,19 +401,20 @@ var getPropLat, getPropLong, isEdit=false;
                               map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
                               map.setZoom(10);
                            }, 100)
-                         // $(".propertyLocationGoogleMap").googleMap({
-                         //     zoom: 10, // Initial zoom level (optional)
-                         //     type: "ROADMAP" // Map type (optional)
-                         // });
-                         // $(".propertyLocationGoogleMap").addMarker({
-                         //     address: wholeAddress, // Postal address
-                         //     zoom: 10,
-                         //     draggable: true,
-                         //     success: function(e) {
-                         //         getLatitude = e.lat;
-                         //         getLongitude = e.lon;
-                         //     }
-                         // });
+                           debugger;
+                            $(".propertyLocationGoogleMap").googleMap({
+                                zoom: 10, // Initial zoom level (optional)
+                                type: "ROADMAP" // Map type (optional)
+                            });
+                            $(".propertyLocationGoogleMap").addMarker({
+                                address: wholeAddress, // Postal address
+                                zoom: 10,
+                                draggable: true,
+                                success: function(e) {
+                                    getLatitude = e.lat;
+                                    getLongitude = e.lon;
+                                }
+                            });
                          modalUtilityList.show(); 
                     }
                 });
