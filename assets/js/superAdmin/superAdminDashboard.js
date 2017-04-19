@@ -750,6 +750,8 @@ $(".btnSubmitAdmin").click(function() {
   var getIndependant = $('.independent > div').hasClass('checked');
   if (getAgency == true) {
     isAgency = 1;
+  } else {
+    isAgency = 0;
   }
   if (getIndependant == true) {
     isAgency = 0;
@@ -897,7 +899,7 @@ $(".btnSubmitAdmin").click(function() {
     return false;
   } else {
     debugger;
-    var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + getAgency + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
+    var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + inputAvail + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
     console.log(dataForm);
     if (hiddenAdminID == 0) {
       var sendURL = domainAddress + 'CreateAdmin';

@@ -462,11 +462,11 @@
                 return false;
             } else {
                 var userTokenId = "";
-                //validationCheckForLogin(emailID, password, userTokenId);
+                validationCheckForLogin(emailID, password, userTokenId);
                 OneSignal.push(["getUserId", function(userTokenId) {
                     debugger;
                     console.log("OneSignal User ID:", userTokenId);
-                    validationCheckForLogin(emailID, password, userTokenId);
+                    //validationCheckForLogin(emailID, password, userTokenId);
                  }]);
               
             }
