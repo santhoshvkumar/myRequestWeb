@@ -117,40 +117,80 @@ var buttonSubmitProptyUtil = function() {
     }
 
 
-
+    var finalValidFromDate = "";
     var validFrom = $("#validFrom").val();
-    var getFormatValidFromDate = validFrom.split(".");
-    var finalValidFromDate = getFormatValidFromDate[2] + "-" + getFormatValidFromDate[1] + "-" + getFormatValidFromDate[0];
+    if(validFrom == ""){
+        finalValidFromDate = "";
+    } else {
+        var getFormatValidFromDate = validFrom.split(".");
+        finalValidFromDate = getFormatValidFromDate[2] + "-" + getFormatValidFromDate[1] + "-" + getFormatValidFromDate[0];
+    }
+    
+    
+    var finalValidToDate = "";
     var validTo = $("#validTo").val();
-    var getFormatValidToDate = validTo.split(".");
-    var finalValidToDate = getFormatValidToDate[2] + "-" + getFormatValidToDate[1] + "-" + getFormatValidToDate[0];
+    if(validTo == ""){
+        finalValidToDate = "";
+    } else {
+        var getFormatValidToDate = validTo.split(".");
+        finalValidToDate = getFormatValidToDate[2] + "-" + getFormatValidToDate[1] + "-" + getFormatValidToDate[0];
+    } 
 
-
+    var finalElecFromDate = "";
     var electricityValidFrom = $("#electricityValidFrom").val();
-    var getFormatElecValidFromDate = electricityValidFrom.split(".");
-    var finalElecFromDate = getFormatElecValidFromDate[2] + "-" + getFormatElecValidFromDate[1] + "-" + getFormatElecValidFromDate[0];
+    if(electricityValidFrom == ""){
+        finalElecFromDate = "";
+    } else{
+        var getFormatElecValidFromDate = electricityValidFrom.split(".");
+        finalElecFromDate = getFormatElecValidFromDate[2] + "-" + getFormatElecValidFromDate[1] + "-" + getFormatElecValidFromDate[0];
+    }
+    
+    var finalElecToDate = "";
     var electricityValidTo = $("#electricityValidTo").val();
-    var getFormatElecValidToDate = electricityValidTo.split(".");
-    var finalElecToDate = getFormatElecValidToDate[2] + "-" + getFormatElecValidToDate[1] + "-" + getFormatElecValidToDate[0];
+    if(electricityValidTo){
+        finalElecToDate = "";
+    } else{
+        var getFormatElecValidToDate = electricityValidTo.split(".");
+        finalElecToDate = getFormatElecValidToDate[2] + "-" + getFormatElecValidToDate[1] + "-" + getFormatElecValidToDate[0];
+    }
+    
 
-
+    var finalGasFromDate = "";
     var gasValidFrom = $("#gasValidFrom").val();
-    var getFormatGasValidFromDate = gasValidFrom.split(".");
-    var finalGasFromDate = getFormatGasValidFromDate[2] + "-" + getFormatGasValidFromDate[1] + "-" + getFormatGasValidFromDate[0];
+    if(gasValidFrom == ""){
+        finalGasFromDate = "";
+    } else{
+        var getFormatGasValidFromDate = gasValidFrom.split(".");
+        finalGasFromDate = getFormatGasValidFromDate[2] + "-" + getFormatGasValidFromDate[1] + "-" + getFormatGasValidFromDate[0];
+    }
+    
+    var finalGasToDate = "";
     var gasValidTo = $("#gasValidTo").val();
-    var getFormatGasValidToDate = gasValidTo.split(".");
-    var finalGasToDate = getFormatGasValidToDate[2] + "-" + getFormatGasValidToDate[1] + "-" + getFormatGasValidToDate[0];
-
+    if(gasValidTo == ""){
+        finalGasToDate = "";
+    } else{
+        var getFormatGasValidToDate = gasValidTo.split(".");
+        finalGasToDate = getFormatGasValidToDate[2] + "-" + getFormatGasValidToDate[1] + "-" + getFormatGasValidToDate[0];
+    }
+    
+    var finalLegFromDate = "";
     var legValidFrom = $("#legValidFrom").val();
-    var getFormatLegValidFromDate = legValidFrom.split(".");
-    var finalLegFromDate = getFormatLegValidFromDate[2] + "-" + getFormatLegValidFromDate[1] + "-" + getFormatLegValidFromDate[0];
+    if(legValidFrom == ""){
+        finalLegFromDate = "";
+    } else{
+        var getFormatLegValidFromDate = legValidFrom.split(".");
+        finalLegFromDate = getFormatLegValidFromDate[2] + "-" + getFormatLegValidFromDate[1] + "-" + getFormatLegValidFromDate[0];
+    }
+    
+    var finalLegToDate = "";
     var legValidTo = $("#legValidTo").val();
-    var getFormatLegValidToDate = legValidTo.split(".");
-    var finalLegToDate = getFormatLegValidToDate[2] + "-" + getFormatLegValidToDate[1] + "-" + getFormatLegValidToDate[0];
-
-
-
-
+    if(legValidTo == ""){
+        finalLegToDate = "";
+    } else {
+        var getFormatLegValidToDate = legValidTo.split(".");
+        finalLegToDate = getFormatLegValidToDate[2] + "-" + getFormatLegValidToDate[1] + "-" + getFormatLegValidToDate[0];
+    }
+     
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     var inputUserRegID = "";
     var inputName = "";
@@ -162,10 +202,7 @@ var buttonSubmitProptyUtil = function() {
     var radioYes = "";
     var radioNo = "";
     var getIsAppInstalled = "";
-
     var hmoInputTenent = $("#inputHMONoOfTenent").val();
-
-    console.log("Click Process Count : " + finalTenantCount);
     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
 
     for (var getCount = 1; getCount <= finalTenantCount; getCount++) {
@@ -178,8 +215,7 @@ var buttonSubmitProptyUtil = function() {
         inputStartDate = $("#inputStartDate-" + getCount).val();
         inputEndDate = $("#inputEndDate-" + getCount).val();
         isLeadTenant = $("#isLeadTenant-" + getCount).prop("checked");
-
-
+ 
         var selectStartDate = inputStartDate.split(".");
         var finalTStartDate = selectStartDate[2] + "-" + selectStartDate[1] + "-" + selectStartDate[0];
 
