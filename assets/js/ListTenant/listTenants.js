@@ -711,6 +711,9 @@ function loadUserTenantsList(result) {
             var editTenantID = this.id.replace('editTenantID-', '');
             $("#hiddenTenantID").val(editTenantID);
             $("#getLoadingModalContent").addClass('md-show');
+            $(".getTenantsdate").hide();
+            $("#inputStartDate").val('');
+            $("#inputEndDate").val('');
             $.get(domainAddress + "GetUserTenant/" + editTenantID, {}, function(resultGetTenant) {
                 console.log(resultGetTenant);
                 for (var getTenant in resultGetTenant.records) {
