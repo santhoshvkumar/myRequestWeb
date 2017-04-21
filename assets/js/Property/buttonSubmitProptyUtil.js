@@ -147,7 +147,7 @@ var buttonSubmitProptyUtil = function() {
     
     var finalElecToDate = "";
     var electricityValidTo = $("#electricityValidTo").val();
-    if(electricityValidTo){
+    if(electricityValidTo == ""){
         finalElecToDate = "";
     } else{
         var getFormatElecValidToDate = electricityValidTo.split(".");

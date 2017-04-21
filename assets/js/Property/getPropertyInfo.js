@@ -226,77 +226,81 @@ function getPropertyInfo(editPropertyID){
                       $("#inputMobile-1").css("padding", "10px 25px 12px 32px");
 
                       $("#inputHmoLicenseNumber").val(resultGetProperty.records[property].HmoLicenseNumb);
+                      
                       var getEneryPerformanceValidFrom = resultGetProperty.records[property].EpcValidFrom;
-                      var formatEneryPerformanceValidFrom = getEneryPerformanceValidFrom.split("-");
-                      var getFinalEneryPerformanceValidFrom = formatEneryPerformanceValidFrom[2] + "." + formatEneryPerformanceValidFrom[1] + "." + formatEneryPerformanceValidFrom[0];
-                      if (getFinalEneryPerformanceValidFrom == "00.00.0000") {
-                          $("#validFrom").val('');
+                     
+                      if(getEneryPerformanceValidFrom == null){
+                        $("#validFrom").val('');
                       } else {
-                          $("#validFrom").val(getFinalEneryPerformanceValidFrom);
+                        var formatEneryPerformanceValidFrom = getEneryPerformanceValidFrom.split("-");
+                        var getFinalEneryPerformanceValidFrom = formatEneryPerformanceValidFrom[2] + "." + formatEneryPerformanceValidFrom[1] + "." + formatEneryPerformanceValidFrom[0];
+                        $("#validFrom").val(getFinalEneryPerformanceValidFrom);
                       }
+                      
 
                       var getEneryPerformanceValidTo = resultGetProperty.records[property].EpcValidTill;
-                      var formatEneryPerformanceValidTo = getEneryPerformanceValidTo.split("-");
-                      var getFinalEneryPerformanceValidTo = formatEneryPerformanceValidTo[2] + "." + formatEneryPerformanceValidTo[1] + "." + formatEneryPerformanceValidTo[0];
-                      if (getFinalEneryPerformanceValidTo == "00.00.0000") {
-                          $("#validTo").val('');
+                      if(getEneryPerformanceValidTo == null){
+                        $("#validTo").val('');
                       } else {
-                          $("#validTo").val(getFinalEneryPerformanceValidTo);
+                        var formatEneryPerformanceValidTo = getEneryPerformanceValidTo.split("-");
+                        var getFinalEneryPerformanceValidTo = formatEneryPerformanceValidTo[2] + "." + formatEneryPerformanceValidTo[1] + "." + formatEneryPerformanceValidTo[0];
+                        $("#validTo").val(getFinalEneryPerformanceValidTo);
                       }
+                     
 
                       var getElectricityCertificateValidFrom = resultGetProperty.records[property].ElectricCertValidFrom;
-                      var formatElectricityCertificateValidFrom = getElectricityCertificateValidFrom.split("-");
-                      var getFinalElectricityCertificateValidFrom = formatElectricityCertificateValidFrom[2] + "." + formatElectricityCertificateValidFrom[1] + "." + formatElectricityCertificateValidFrom[0];
-
-                      if (getFinalElectricityCertificateValidFrom == "00.00.0000") {
-                          $("#electricityValidFrom").val('');
+                      if(getElectricityCertificateValidFrom == null){
+                        $("#electricityValidFrom").val('');
                       } else {
-                          $("#electricityValidFrom").val(getFinalElectricityCertificateValidFrom);
+                        var formatElectricityCertificateValidFrom = getElectricityCertificateValidFrom.split("-");
+                        var getFinalElectricityCertificateValidFrom = formatElectricityCertificateValidFrom[2] + "." + formatElectricityCertificateValidFrom[1] + "." + formatElectricityCertificateValidFrom[0];
+                        $("#electricityValidFrom").val(getFinalElectricityCertificateValidFrom);
                       }
+
                       var getElectricityCertificateValidTo = resultGetProperty.records[property].ElectricCertValidTill;
-                      var formatElectricityCertificateValidTo = getElectricityCertificateValidTo.split("-");
-                      var getFinalElectricityCertificateValidTo = formatElectricityCertificateValidTo[2] + "." + formatElectricityCertificateValidTo[1] + "." + formatElectricityCertificateValidTo[0];
-
-                      if (getFinalElectricityCertificateValidTo == "00.00.0000") {
-                          $("#electricityValidTo").val('');
+                      if(getElectricityCertificateValidTo == null){
+                        $("#electricityValidTo").val('');
                       } else {
-                          $("#electricityValidTo").val(getFinalElectricityCertificateValidTo);
+                        var formatElectricityCertificateValidTo = getElectricityCertificateValidTo.split("-");
+                        var getFinalElectricityCertificateValidTo = formatElectricityCertificateValidTo[2] + "." + formatElectricityCertificateValidTo[1] + "." + formatElectricityCertificateValidTo[0];
+                        $("#electricityValidTo").val(getFinalElectricityCertificateValidTo);
                       }
+                      
+
                       var getGasCertificateValidFrom = resultGetProperty.records[property].GasCertValidFrom;
-                      var formatGasCertificateValidFrom = getGasCertificateValidFrom.split("-");
-                      var getFinalGasCertificateValidFrom = formatGasCertificateValidFrom[2] + "." + formatGasCertificateValidFrom[1] + "." + formatGasCertificateValidFrom[0];
-
-                      if (getFinalGasCertificateValidFrom == "00.00.0000") {
-                          $("#gasValidFrom").val('');
+                      if(getGasCertificateValidFrom == null){
+                        $("#gasValidFrom").val('');
                       } else {
-                          $("#gasValidFrom").val(getFinalGasCertificateValidFrom);
+                        var formatGasCertificateValidFrom = getGasCertificateValidFrom.split("-");
+                        var getFinalGasCertificateValidFrom = formatGasCertificateValidFrom[2] + "." + formatGasCertificateValidFrom[1] + "." + formatGasCertificateValidFrom[0];
+                        $("#gasValidFrom").val(getFinalGasCertificateValidFrom);
                       }
+                      
                       var getGasCertificateValidTo = resultGetProperty.records[property].GasCertValidTill;
-                      var formatGasCertificateValidTo = getGasCertificateValidTo.split("-");
-                      var getFinalGasCertificateValidTo = formatGasCertificateValidTo[2] + "." + formatGasCertificateValidTo[1] + "." + formatGasCertificateValidTo[0];
-
-                      if (getFinalGasCertificateValidTo == "00.00.0000") {
-                          $("#gasValidTo").val('');
+                      if(getGasCertificateValidTo == null){
+                        $("#gasValidTo").val('');
                       } else {
-                          $("#gasValidTo").val(getFinalGasCertificateValidTo);
+                        var formatGasCertificateValidTo = getGasCertificateValidTo.split("-");
+                        var getFinalGasCertificateValidTo = formatGasCertificateValidTo[2] + "." + formatGasCertificateValidTo[1] + "." + formatGasCertificateValidTo[0];
+                        $("#gasValidTo").val(getFinalGasCertificateValidTo);
                       }
+
                       var getLegCertificateValidFrom = resultGetProperty.records[property].LegCertValidFrom;
-                      var formatLegCertificateValidFrom = getLegCertificateValidFrom.split("-");
-                      var getFinalLegCertificateValidFrom = formatLegCertificateValidFrom[2] + "." + formatLegCertificateValidFrom[1] + "." + formatLegCertificateValidFrom[0];
-
-                      if (getFinalLegCertificateValidFrom == "00.00.0000") {
-                          $("#legValidFrom").val('');
-                      } else {
-                          $("#legValidFrom").val(getFinalLegCertificateValidFrom);
+                      if(getLegCertificateValidFrom == null){
+                        $("#legValidFrom").val('');
+                      } else{
+                        var formatLegCertificateValidFrom = getLegCertificateValidFrom.split("-");
+                        var getFinalLegCertificateValidFrom = formatLegCertificateValidFrom[2] + "." + formatLegCertificateValidFrom[1] + "." + formatLegCertificateValidFrom[0];
+                        $("#legValidFrom").val(getFinalLegCertificateValidFrom);
                       }
-                      var getLegCertificateValidTo = resultGetProperty.records[property].LegCertValidTill;
-                      var formatLegCertificateValidTo = getLegCertificateValidTo.split("-");
-                      var getFinalLegCertificateValidTo = formatLegCertificateValidTo[2] + "." + formatLegCertificateValidTo[1] + "." + formatLegCertificateValidTo[0];
 
-                      if (getFinalLegCertificateValidTo == "00.00.0000") {
-                          $("#legValidTo").val('');
+                      var getLegCertificateValidTo = resultGetProperty.records[property].LegCertValidTill;
+                      if(getLegCertificateValidTo == null){
+                         $("#legValidTo").val('');
                       } else {
-                          $("#legValidTo").val(getFinalLegCertificateValidTo);
+                        var formatLegCertificateValidTo = getLegCertificateValidTo.split("-");
+                        var getFinalLegCertificateValidTo = formatLegCertificateValidTo[2] + "." + formatLegCertificateValidTo[1] + "." + formatLegCertificateValidTo[0];
+                        $("#legValidTo").val(getFinalLegCertificateValidTo);
                       }
 
 
