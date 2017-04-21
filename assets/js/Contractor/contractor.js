@@ -164,7 +164,7 @@
  var adminUserID = 0;
  var isSmartPhone = "";
  var isAgency = "";
- var isAppInstalled = "";
+ var isAppInstalled = 0;
  var isEmergencyAvailable = "";
  var isLiabilityInsurance = "";
  var imageUrl1 = "";
@@ -909,7 +909,7 @@
   $("#hiddenContractorID").val(0);
   isSmartPhone = "";
   isAgency = "";
-  isAppInstalled = "";
+  isAppInstalled = 0;
   isEmergencyAvailable = "";
   isLiabilityInsurance = "";
   imageUrl1 = "";
@@ -1702,7 +1702,7 @@
               $("#user_edit_form").css("border", "");
               isSmartPhone = "";
               isAgency = "";
-              isAppInstalled = "";
+              isAppInstalled = 0;
               isEmergencyAvailable = "";
               isLiabilityInsurance = "";
               imageUrl1 = "";
@@ -1769,7 +1769,7 @@
               $("#user_edit_form").css("border", "");
               isSmartPhone = "";
               isAgency = "";
-              isAppInstalled = "";
+              isAppInstalled = 0;
               isEmergencyAvailable = "";
               isLiabilityInsurance = "";
               imageUrl1 = "";
