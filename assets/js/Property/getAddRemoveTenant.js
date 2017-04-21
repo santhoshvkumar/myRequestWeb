@@ -731,7 +731,7 @@ function getAddRemove(count) {
         $(".btnSubmitProperty").attr("disabled", false);
         $(".utilityIcon").hide();
         $(".utilityIconLabel").hide();
-
+        $("#hiddenIsNewTenantUpdate-"+count).val(1);
     });
 
 } // getAddRemove();
