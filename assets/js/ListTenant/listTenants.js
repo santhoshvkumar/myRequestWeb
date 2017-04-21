@@ -176,7 +176,7 @@ $(document).ready(function() {
         }
         else{
          for (var Property in result.records) {
-            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "' propID='"+result.records[Property].PropertyRegister+"' propAdminID='"+adminUserID+"'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
+            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "' propID='"+result.records[Property].PropertyRegister+"'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
         } 
     }
     
@@ -411,7 +411,6 @@ $(".btnSubmitTenantInsurance").click(function() {
 $("#caseProperty").on('change', function() {
     console.log(this.value);
     propertyId = this.value;
-    dataAddPropertyForm = new Array();
     if (this.value == 0 || this.value == null) {
         $(".errorInfo").show();
         $(".errorInfo").text("* Select the Property");
@@ -421,15 +420,16 @@ $("#caseProperty").on('change', function() {
     } else {
         var element = $(this).find('option:selected');
         var getAddress = element.attr("ref");
-        var getAdminID = element.attr("propAdminID");
+        dataAddPropertyFormArr = new Array();
         $('#hiddenPropertyAddress').val(getAddress);
         $(".errorInfo").hide();
         $(".errorInfo").text("");
         $("#select2-caseProperty-container").css("border", "");
         $(".btnSubmitTenant").attr("disabled", false);
         $(".btnSubmitTenantProperty").attr("disabled", false);
-        dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + getAdminID + "'}";
+        dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "'}";
         dataAddPropertyFormArr.push(dataAddPropertyForm);
+        console.log(dataAddPropertyFormArr);
     }
 });
 
@@ -1160,6 +1160,7 @@ $(".btnSubmitTenant").click(function() {
         else {
             var propertyAddress = $("#caseProperty :selected").attr("ref");
             dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+propertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
+            console.log(dataAddPropertyForm);
             dataAddPropertyFormArr.push(dataAddPropertyForm);
             gotoDB();
         }
