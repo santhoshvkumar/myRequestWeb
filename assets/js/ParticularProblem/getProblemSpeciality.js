@@ -45,7 +45,7 @@ function getProblemSpeciality(specialityID){
                                           data: dataStartWorkLogForm,
                                           success: function(dataCheck) {
                                               console.log(dataCheck);
-                                              $.post(domainAddress + "/push/messageSendByAdminForWorkStatus.php", {
+                                              $.post(domainAddress + "push/messageSendByAdminForWorkStatus.php", {
                                                   ContractorID:contractorValue,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,

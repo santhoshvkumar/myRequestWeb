@@ -50,7 +50,7 @@ $(".btnStartWork").click(function() {
                           data: dataStartWorkLogForm,
                           success: function(response) {
                               console.log(response);
-                              $.post(domainAddress + "/push/messageSendByAdminForWorkStatus.php", {
+                              $.post(domainAddress + "push/messageSendByAdminForWorkStatus.php", {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
@@ -139,7 +139,7 @@ $(".btnEndWork").click(function() {
                           data: dataStartWorkLogForm,
                           success: function(response) {
                               console.log(response);
-                              $.post(domainAddress + "/push/messageSendByAdminForWorkStatus.php", {
+                              $.post(domainAddress + "push/messageSendByAdminForWorkStatus.php", {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
