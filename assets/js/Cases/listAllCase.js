@@ -147,7 +147,7 @@
         window.location.href = "index.html";
     } else {
         $(".getUserName").text(adminUserName);
-        $("#imgRequestImage").attr("action",domainAddress+"ajaximage.php");
+        $("#FileURLUploadRequestImage1").attr("action",domainAddress+"ajaxrequestimage.php");
 
     }
 
