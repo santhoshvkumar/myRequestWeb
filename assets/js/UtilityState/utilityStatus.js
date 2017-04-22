@@ -396,7 +396,7 @@
                     else{
                         utilityType = "Move-out";
                     }   
-                    $(".adminUtilityList").append("<tr id='rowID-" + result.records[utility].UtilityID + "'><td id='getUtilityType-" + result.records[utility].UtilityID + "'>" + utilityType + "</td>   <td id='address-" + result.records[utility].UtilityID + "'>" + result.records[utility].Address + "</td>  <td id='name-" + result.records[utility].UtilityID + "'>" + result.records[utility].Name + "</td> <td id='getDate-" + result.records[utility].UtilityID + "'>" + moment(result.records[utility].Date).format('Do MMM YYYY,  h:mm a') + "</td> <td id='status-" + result.records[utility].UtilityID + "'>" + result.records[utility].Status + "</td> <td><a class='editUtility' id='editUtilityID-" + result.records[utility].PropertyID + "' > <i class='fa fa fa-pencil pencil fa-1x'></i> </a> <input type='hidden' id='hidddenGetUtilityID-"+result.records[utility].PropertyID+"' value='"+result.records[utility].UtilityID+"' /></td>  </tr> ");
+                    $(".adminUtilityList").append("<tr id='rowID-" + result.records[utility].UtilityID + "'><td id='getUtilityType-" + result.records[utility].UtilityID + "'>" + utilityType + "</td>   <td id='address-" + result.records[utility].UtilityID + "'>" + result.records[utility].Address + "</td>  <td id='name-" + result.records[utility].UtilityID + "'>" + result.records[utility].Name + "</td> <td id='getDate-" + result.records[utility].UtilityID + "'>" + moment(result.records[utility].Date).format('Do MMM YYYY,  h:mm a') + "</td> <td id='status-" + result.records[utility].UtilityID + "'>" + result.records[utility].Status + "</td> <td><a class='editUtility' id='editUtilityID-" + result.records[utility].PropertyID + "' > <i class='fa fa fa-pencil pencil fa-1x'></i> </a> <input type='hidden' id='hidddenGetUtilityID-"+result.records[utility].PropertyID+"' value='"+result.records[utility].UtilityID+"' /> <input type='hidden' id='hidddenGetUserID-"+result.records[utility].PropertyID+"' value='"+result.records[utility].UserID+"' /> </td>  </tr> ");
 
 
                 }
@@ -410,7 +410,9 @@
                   $("#getLoadingModalContent").addClass('md-show');
                     var editUtilityPropertyID = this.id.replace('editUtilityID-', '');
                     var editHiddenUtilityID = $("#hidddenGetUtilityID-"+editUtilityPropertyID).val();
+                    var editHiddenUserID = $("#hidddenGetUserID-"+editUtilityPropertyID).val();
                     $("#hiddenUtilityID").val(editHiddenUtilityID);
+                    $("#hiddenUserRegID").val(editHiddenUserID);
                     $.get(domainAddress + "GetUserUtilityID/" + editUtilityPropertyID, {}, function(result) {
                         console.log(result);
                         //debugger;
@@ -421,7 +423,6 @@
                             $("#inputAddress").text(result.records[getUtility].Address);
                             $("#inputCity").text(result.records[getUtility].PropCity+", "+result.records[getUtility].PropState+", "+result.records[getUtility].PropAddress+" - "+result.records[getUtility].PropPostalCode);
                             $("#hiddenPropertyID").val(result.records[getUtility].PropertyID);
-                            $("#hiddenUserRegID").val(result.records[getUtility].UserID);
                             $("#tenancyStartDate").text(moment(result.records[getUtility].TenancyStart).format('Do MMM YYYY'));
                             $("#tenancyEndDate").text(moment(result.records[getUtility].TenancyEnd).format('Do MMM YYYY'));
                             $("#gasFuelType").text(result.records[getUtility].FuelType);

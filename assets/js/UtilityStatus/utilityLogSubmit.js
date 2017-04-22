@@ -193,7 +193,7 @@ function utilityLogSubmit() {
     $(".btnSubmitGas").click(function() {
         var hiddenUtilityID = $("#hiddenUtilityID").val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
-        var hiddenUserRegID = localStorage.getItem("UtilityUserID");
+        var hiddenUserRegID = $("#hiddenUserRegID").val();
         var getSelectedType = $(this).attr("value");
 
         var successCondition = false;
