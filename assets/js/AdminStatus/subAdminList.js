@@ -189,6 +189,7 @@ $(".btnSubmitAdmin").click(function() {
                    console.log(result);
                    var isFourExistNo = 0;
                    var isEmerFourExistNo = 0;
+                   var getCountry = localStorage.getItem('MyRequest_countryCode');
                    for (var getAdmin in result.records) {
                        $("#inputSubTitle").val(result.records[getAdmin].Title);
                        $("#select2-inputSubTitle-container").html(result.records[getAdmin].Title);
@@ -197,16 +198,31 @@ $(".btnSubmitAdmin").click(function() {
 
                        $("#emailID").val(result.records[getAdmin].EmailID);
                        $("#hiddenPassword").val(result.records[getAdmin].Password);
-                       isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
-                       if (isFourExistNo == "+44") {
-                           $("#phoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
-                           $(".subAdminPhno-prefix").show();
-                           $("#phoneNumber").css("padding", "10px 10px 12px 31px");
+                       
+                       if(getCountry == "India" || getCountry == "UK"){
+                         isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
+                         if (isFourExistNo == "+44" || isFourExistNo == "+91") {
+                             $("#phoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
+                             $(".subAdminPhno-prefix").show();
+                             $("#phoneNumber").css("padding", "10px 10px 12px 31px");
+                         } else {
+                             $("#phoneNumber").val(result.records[getAdmin].PhoneNumber);
+                             $(".subAdminPhno-prefix").hide();
+                             $("#phoneNumber").removeAttr("style");
+                         }
                        } else {
-                           $("#phoneNumber").val(result.records[getAdmin].PhoneNumber);
-                           $(".subAdminPhno-prefix").hide();
-                           $("#phoneNumber").removeAttr("style");
+                         isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 2);
+                         if (isFourExistNo == "+1" || isFourExistNo == "+1") {
+                             $("#phoneNumber").val(result.records[getAdmin].PhoneNumber.slice(2));
+                             $(".subAdminPhno-prefix").show();
+                             $("#phoneNumber").css("padding", "10px 10px 12px 31px");
+                         } else {
+                             $("#phoneNumber").val(result.records[getAdmin].PhoneNumber);
+                             $(".subAdminPhno-prefix").hide();
+                             $("#phoneNumber").removeAttr("style");
+                         }
                        }
+                       
 
                        if (result.records[getAdmin].Logo == "" || result.records[getAdmin].Logo == null) {
                            $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
