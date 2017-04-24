@@ -21,13 +21,24 @@ function getAddTenant(count) {
     $("#inputTitle-" + count).select2();
 
 
-
     $(".closeCard").off('click').on('click', function(event) {
         //console.log("close card");
         var getCountValue = this.id.replace("closeCard-", "");
-        //console.log(getCountValue);
         UIkit.modal.confirm('Are you sure to remove ?', function() {
             $("#getIsAppInstallCheck-" + getCountValue).remove();
+
+            var localTenantData = localStorage.getItem('MyRequestTenantsData');
+            if (localTenantData != null) {
+                var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+                newArr = [];
+                $.each(getLocalTenantData, function(index, value) {
+                    if (value.Count != getCountValue) {
+                        newArr.push(getLocalTenantData[index]);
+                    }
+                });
+                localStorage.setItem('MyRequestTenantsData', JSON.stringify(newArr));
+                getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            }
             count--;
             if(count==1){
                 $("#inputHMONoOfTenent").val(count);
@@ -187,7 +198,9 @@ function getAddTenant(count) {
                 UIkit.modal.alert("Tenancy End should not be less then Tenancy Start");
             }
             else{
-               $("#getErrorMsg-" + getCountValue).hide();
+                $(".isShowServices").show();
+                $(".availServiceTitle").text('Do you want to avail these services?');
+                $("#getErrorMsg-" + getCountValue).hide();
                 $("#getErrorMsg-" + getCountValue).text("");
                 $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
                 $(".getTenantsInfo").css("color","#444");
@@ -197,47 +210,55 @@ function getAddTenant(count) {
                 var userRegID = $("#hiddenUserRegID-" + getCountValue).val();
                 var newPropertyTenant = $("#hiddenNewPropertyTenant-" + getCountValue).val();
                 $(".btnSubmitTenantInsurance").attr("value", getCountValue);
-                if (userRegID == 0 || newPropertyTenant == "false") {
-
-                    var modal = UIkit.modal("#modalTenantInsurance");
+                
+                var modal = UIkit.modal("#modalTenantInsurance");
                     modal.show();
 
-                    if (getCountValue == 1 || hiddenIsGas == "true") {
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
 
-                    }
+                var localTenantData = localStorage.getItem('MyRequestTenantsData');
+                if (localTenantData != null) {
+                    var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+                    $(".isElectricity").show();
+                    $(".isGas").show();
+                    $(".isWater").show();
+                    $(".isCouncil").show();
+                    var isHide=0;
+                    for (getData in getLocalTenantData) {
+                        if(getLocalTenantData[getData].Count != getCountValue){
+                            if(getLocalTenantData[getData].IsElectricity == 1){
+                                $(".isElectricity").hide();
+                                isHide++;
+                            }
 
-                    if (getCountValue == 1 || hiddenIsWater == "true") {
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+                            if(getLocalTenantData[getData].IsGas == 1){
+                                $(".isGas").hide();
+                                isHide++;
+                            }
 
-                    }
+                            if(getLocalTenantData[getData].IsWater == 1){
+                                $(".isWater").hide();
+                                isHide++;
+                            }
 
+                            if(getLocalTenantData[getData].IsCouncil == 1){
+                                $(".isCouncil").hide();
+                                isHide++;
+                            }
+                        } 
+                        
 
+                        console.log(isHide);
 
-                    if (getCountValue == 1 || hiddenIsElectricity == "true") {
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+                        if(isHide % 2){
+                            $(".isShowServices").hide();
+                            $(".availServiceTitle").text('Do you want to avail service?');
+                        } 
+                    } // getLocalTenantData
+                } //localTenantData
 
-                    }
- 
-                 
-                } else {   if (getCountValue == 1 || hiddenIsCouncil == "true") {
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-
-                    }
-                    var modal = UIkit.modal("#modalTenantInsurance");
-                    modal.show();
-                } 
-            }
-        }
-    });
+            } // else checkEndDateValue
+        } // else inputStartDate check
+    }); // $(".inputEndDate")
 
 
     $(".inputMobile").keyup(function() {
@@ -291,10 +312,10 @@ function getAddTenant(count) {
 
     function existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID){
         $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID, function(result) {
-               console.log(result);
+               //console.log(result);
                 if (result.record_count == 0) { 
                     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-                       console.log(result);
+                       //console.log(result);
                         if (result.record_count == 0) {
 
                         } else {
@@ -346,7 +367,7 @@ function getAddTenant(count) {
         $("#getIsAppInstallCheck-" + getCountValue).css("border", "1px solid  #FFFFFF");
         if (hiddenPropertyID == 0) {
             UIkit.modal.confirm('Property is not added for this tenant. Are you sure ?', function() {
-                console.log("add this tenant");
+                //console.log("add this tenant");
 
             });
         } else {
@@ -452,7 +473,7 @@ function getAddTenant(count) {
         $(".utilityIcon").hide();
         $(".utilityIconLabel").hide();
         var getDate = new Date();
-        console.log(moment(getDate).format('YYYY-MM-DD HH:mm:ss'));
+        //console.log(moment(getDate).format('YYYY-MM-DD HH:mm:ss'));
         var currentdate = moment(getDate).format('YYYY-MM-DD HH:mm:ss');
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
          

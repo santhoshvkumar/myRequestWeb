@@ -6,6 +6,7 @@ function getPropertyInfo(editPropertyID){
               finalTenantCount = 0;
               $("#hiddenPropertyID").val(editPropertyID);
               isEdit=true;
+              getAddTenantArr = new Array();
               $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
                   //console.log(resultGetProperty);
                   for (var property in resultGetProperty.records) {
@@ -367,6 +368,27 @@ function getPropertyInfo(editPropertyID){
                           count++;
                           $(".newAdd").remove();
                           getAddTenant(count);
+                          var newItem = {
+                              'Count': parseInt(count),
+                              'UserRegID': resultGetProperty.records[property].UserReg[addProperty].UserID,
+                              'TitleName':resultGetProperty.records[property].UserReg[addProperty].TitleName,
+                              'Name': resultGetProperty.records[property].UserReg[addProperty].Name,
+                              'LastName':resultGetProperty.records[property].UserReg[addProperty].LastName,
+                              'Email': resultGetProperty.records[property].UserReg[addProperty].EmailID,
+                              'Mobile': resultGetProperty.records[property].UserReg[addProperty].PhoneNumber,
+                              'LettingAgencyCode': undefined,
+                              'TenancyStart':resultGetProperty.records[property].UserReg[addProperty].TenancyStart,
+                              'TenancyEnd':resultGetProperty.records[property].UserReg[addProperty].TenancyEnd,
+                              'IsElectricity': $('#hiddenIsElectricity-'+count).val(),
+                              'IsGas': $('#hiddenIsGas-'+count).val(),
+                              'IsWater': $('#hiddenIsWater-'+count).val(),
+                              'IsCouncil': $('#hiddenIsCouncil-'+count).val(),
+                              'IsAvailTenantInsurance': $('#hiddenAvailTenantInsurance-'+count).val(),
+                              'IsNewTenantUtility': $('#hiddenIsNewTenantUpdate-'+count).val(),
+                              'IsLeadTenant': resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant
+                          };
+                          getAddTenantArr.push(newItem);
+                          
                           if(count!=1)
                           $("#closeCard-"+count).show();
                           $("#hiddenNewPropertyTenant-" + count).val(true);
@@ -449,14 +471,14 @@ function getPropertyInfo(editPropertyID){
                           $("#hiddenTenancyEnd-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].TenancyEnd);
                           $("#hiddenWaterMeterRead-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].WaterMeterRead);
 
-                          if (utilityCount == 1 || $("#hiddenIsGas-" + utilityCount).val() == "true") {
+                          if ($("#hiddenIsGas-" + utilityCount).val() == 1) {
                               $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
                               $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
                               $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
 
                           }
 
-                          if (utilityCount == 1 || $("#hiddenIsWater-" + utilityCount).val() == "true") {
+                          if ($("#hiddenIsWater-" + utilityCount).val() == 1) {
                               $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
                               $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
                               $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
@@ -465,7 +487,7 @@ function getPropertyInfo(editPropertyID){
 
 
                           
-                          if (utilityCount == 1 || $("#hiddenIsElectricity-" + utilityCount).val() == "true") {
+                          if ($("#hiddenIsElectricity-" + utilityCount).val() == 1) {
                               $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
                               $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
                               $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council.png");
@@ -474,29 +496,43 @@ function getPropertyInfo(editPropertyID){
 
 
 
-                          if (utilityCount == 1 || $("#hiddenIsCouncil-" + utilityCount).val() == "true") {
+                          if ($("#hiddenIsCouncil-" + utilityCount).val() == 1) {
                               $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water.png");
                               $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas.png");
                               $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity.png");
 
                           }
+
                           $("#hiddenIsGas-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsGas);
                           $("#hiddenIsElectricity-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsElectricity);
                           $("#hiddenIsWater-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsWater);
                           $("#hiddenIsCouncil-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsCouncil);
                           $("#hiddenAvailTenantInsurance-" + utilityCount).val(resultGetProperty.records[property].Utility[getUtility].IsTenantInsurance);
- 
-                          if (resultGetProperty.records[property].Utility[getUtility].IsGas=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in") {
-                              $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas_select.png");
+
+                          for(getLocalTenantData in getAddTenantArr){
+                            if(utilityCount == getAddTenantArr[getLocalTenantData].Count){
+                              getAddTenantArr[getLocalTenantData].IsElectricity = resultGetProperty.records[property].Utility[getUtility].IsElectricity;
+                              getAddTenantArr[getLocalTenantData].IsGas = resultGetProperty.records[property].Utility[getUtility].IsGas;
+                              getAddTenantArr[getLocalTenantData].IsWater = resultGetProperty.records[property].Utility[getUtility].IsWater;
+                              getAddTenantArr[getLocalTenantData].IsCouncil = resultGetProperty.records[property].Utility[getUtility].IsCouncil;
+                              getAddTenantArr[getLocalTenantData].IsAvailTenantInsurance = resultGetProperty.records[property].Utility[getUtility].IsTenantInsurance;
+
+                              if (resultGetProperty.records[property].Utility[getUtility].IsGas=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in") {
+                                  $("#isGasImg-" + utilityCount).attr("src", "assets/img/PropertyImg/gas_select.png");
+                              }
+                              if (resultGetProperty.records[property].Utility[getUtility].IsElectricity=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                                  $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity_select.png");
+                              if (resultGetProperty.records[property].Utility[getUtility].IsWater=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                                  $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water_select.png");
+                              if (resultGetProperty.records[property].Utility[getUtility].IsCouncil=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
+                                  $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council_select.png");
+                            }
                           }
-                          if (resultGetProperty.records[property].Utility[getUtility].IsElectricity=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
-                              $("#isElectricityImg-" + utilityCount).attr("src", "assets/img/PropertyImg/electricity_select.png");
-                          if (resultGetProperty.records[property].Utility[getUtility].IsWater=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
-                              $("#isWaterImg-" + utilityCount).attr("src", "assets/img/PropertyImg/water_select.png");
-                          if (resultGetProperty.records[property].Utility[getUtility].IsCouncil=="1" && resultGetProperty.records[property].Utility[getUtility].UtilityRegType=="move-in")
-                              $("#isCouncilImg-" + utilityCount).attr("src", "assets/img/PropertyImg/council_select.png");
-                      }
+
+                          
+                      } 
                       getAddRemove(count);
+                      localStorage.setItem('MyRequestTenantsData', JSON.stringify(getAddTenantArr));
                   }
 
                   $(".propertyContent").show();
@@ -569,8 +605,7 @@ function getPropertyInfo(editPropertyID){
                                   isCouncil = '<i class="fa fa-times"></i>';
                                   cCouncil = "Red";
                               }
-                              debugger;
-
+                               
                               $(".propertyUtility").append("<tr> <td>" + result.records[propertyUtility].UtilityRegType + "</td> <td>" + result.records[propertyUtility].Name + "</td> <td>" + result.records[propertyUtility].EmailID + "</td> <td>" + result.records[propertyUtility].MobileNumber + "</td> <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td>  <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + utilityStatusCheck + "</td> </tr>");
                           }
                       }
