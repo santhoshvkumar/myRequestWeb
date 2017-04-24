@@ -13,19 +13,16 @@
      var  getcountryCode = localStorage.getItem("MyRequest_countryCode");
       console.log(dataForm);  
       console.log(sendURL);
-      console.log(getcountryCode);
-      console.log(getcountryCode)
+      
       if(getcountryCode == "India"){
         $("#stateLabel").text('County');
           countryID = '+91';
-          console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState1").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
           $("#inputState1").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
-          console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
             $("#inputState1").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");

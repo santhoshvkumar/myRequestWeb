@@ -215,13 +215,24 @@ var buttonSubmitProptyUtil = function() {
         inputStartDate = $("#inputStartDate-" + getCount).val();
         inputEndDate = $("#inputEndDate-" + getCount).val();
         isLeadTenant = $("#isLeadTenant-" + getCount).prop("checked");
- 
-        var selectStartDate = inputStartDate.split(".");
-        var finalTStartDate = selectStartDate[2] + "-" + selectStartDate[1] + "-" + selectStartDate[0];
+        
+        var finalTStartDate = "";
+        var finalTEndDate = "";
 
-        var selectEndDate = inputEndDate.split(".");
-        var finalTEndDate = selectEndDate[2] + "-" + selectEndDate[1] + "-" + selectEndDate[0];
-
+        if(inputStartDate == ""){
+            finalTStartDate = "";
+        } else {
+            var selectStartDate = inputStartDate.split(".");
+            finalTStartDate = selectStartDate[2] + "-" + selectStartDate[1] + "-" + selectStartDate[0];
+        }
+        
+        if(inputEndDate == ""){
+            finalTEndDate = "";
+        } else{
+            var selectEndDate = inputEndDate.split(".");
+            finalTEndDate = selectEndDate[2] + "-" + selectEndDate[1] + "-" + selectEndDate[0];
+        }
+    
 
         if (isLeadTenant == true) {
             isLeadTenant = 1;
