@@ -330,7 +330,7 @@ $(".btnSearch").click(function () {
         getAddPollingArr = new Array();
         var isPollingSet = 0;
         var pollingID = $("#hiddenPollingID").val();
-        var pollingTitle = $("#inputPollingTitle").val().replace(/["']/g, "`");
+        var pollingTitle = $("#inputPollingTitle").val().replace(/'/g, "′");
         var inputDropValue = $("#inputDropValue").val();
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
         userID = localStorage.getItem("ReportUserID");
@@ -346,7 +346,7 @@ $(".btnSearch").click(function () {
 
 
         for (var getCount = 1; getCount <= optionCount; getCount++) {
-            getPollingList = $("#inputPollingOption" + getCount).val().replace(/["']/g, "`");
+            getPollingList = $("#inputPollingOption" + getCount).val().replace(/'/g, "′");
 
             if(getPollingList==""){
                 isPollingSet = 0;

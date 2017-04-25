@@ -343,7 +343,7 @@ function utilityLogSubmit() {
                     $("#select2-inputMediaInfo-container").html("Action");
                     $("#inputMediaNotes").val('');
                     getUtilityList();
-                    getUtilityLogs(hiddenUtilityID);
+                    getListPropertyUtilityLogs(hiddenPropertyID);
                     UIkit.modal.alert('Utility Log Created Successfully');
                     $("#getLoadingModalContent").removeClass('md-show');
                 }
@@ -378,3 +378,27 @@ function getUtilityLogs(editUtilityID) {
 
     });
 } //getUtilityLogs
+
+
+
+function getListPropertyUtilityLogs(editPropertyID){
+     var getUtilityType = "";
+     $(".timeline").html('');
+     $.get(domainAddress + "GetUserUtilityID/" + editPropertyID, {}, function(result) {
+       for (var getUtility in result.records) {
+        if (result.records[getUtility].Utility == undefined) {
+            $(".timeline").append('<div class="timeline_item" id="notesID-0"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date">  <span>  </span>  </div>  <div class="timeline_content">No Logs found<div class="timeline_content_addon">  <blockquote> No Logs found </blockquote>  </div>  </div>    </div>');
+        } else {
+             for (var utilityLog in result.records[getUtility].Utility) {
+                  if(result.records[getUtility].Utility[utilityLog].UtilityType==null || result.records[getUtility].Utility[utilityLog].UtilityType=="null"){
+                      getUtilityType = "";
+                  }
+                  else{
+                      getUtilityType = ' For '+ result.records[getUtility].Utility[utilityLog].UtilityType;
+                  }
+                  $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[getUtility].Utility[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[getUtility].Utility[utilityLog].RequirementStatus + getUtilityType+' <div class="timeline_content_addon">  <blockquote>  ' + result.records[getUtility].Utility[utilityLog].Content + '</blockquote>  </div>  </div>    </div>');
+              }
+          }
+        }  
+     });
+   }

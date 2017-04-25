@@ -396,9 +396,9 @@
 
  $(".btnSubmitSpeciality").click(function() {
      var specialityID = $("#hiddenSpecialityID").val();
-     var specialityName = $("#inputSpecialityName").val().replace(/["']/g, "`");
+     var specialityName = $("#inputSpecialityName").val().replace(/'/g, "′");
      var adminUserID = localStorage.getItem("MyRequest_AdminID");
-     var specialityDescription = $("#inputSpecialityDescription").val().replace(/["']/g, "`");
+     var specialityDescription = $("#inputSpecialityDescription").val().replace(/'/g, "′");
      userID = localStorage.getItem("ReportUserID");
 
 

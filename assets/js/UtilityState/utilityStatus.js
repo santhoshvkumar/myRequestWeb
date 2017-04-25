@@ -670,7 +670,7 @@
                     $(".utilityInfo").show();
                         
                     $(".md-input-wrapper").addClass("md-input-filled");
-                    getUtilityLogs(editHiddenUtilityID);
+                    getListPropertyUtilityLogs(editUtilityPropertyID);
                 }); // editUtility   
 
                     $(".deleteUtility").on('click', function(e) {
