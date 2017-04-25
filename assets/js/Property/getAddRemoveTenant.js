@@ -8,7 +8,7 @@ function getAddTenant(count) {
     var isExistUserCheck = "";
     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
     finalTenantCount = count;
-    $(".getTenantList").append('<div class="uk-width-medium-1-3" style="margin-top: 10px;"> <div class="md-card" id="getIsAppInstallCheck-' + count + '"> <div class="md-card-content large-padding"> <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span><div class="parsley-row"> <label for="inputMobile">' + getMobile + '<span class="req">*</span></label> <input type="text" id="inputMobile-' + count + '" name="inputMobile" required class="md-input inputMobile" maxlength="10"/> <span class="propermno-prefix" id="promno-prefix-'+count+'">'+localStorage.getItem("MyRequest_PhoneCode-prefix")+'</span> </div><p></p> <div class="parsley-row"  id="inputTitleContent-' + count + '"> <label for="inputTitle">' + getTitle + '</label>  <select id="inputTitle-' + count + '" name="inputTitle" required class="md-input"><option value="0">Select Title</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Ms.">Ms.</option><option value="Miss.">Miss.</option> </select></div> <p></p> <div class="parsley-row"> <label for="inputName">' + getFirstName + '<span class="req">*</span></label> <input type="text" id="inputName-' + count + '" name="inputName" required class="md-input inputName" />  </div> <p></p><div class="parsley-row"> <label for="inputLastName">' + getLastName + '<span class="req">*</span></label> <input type="text" id="inputLastName-' + count + '" name="inputLastName" required class="md-input inputLastName" /> </div><p></p> <div class="parsley-row"  id="inputEmailContent-' + count + '"> <label for=  "inputEmail">' + getEmail + '<span class="req">*</span></label> <input type="text" id="inputEmail-' + count + '"  name="inputEmail" required class="md-input inputEmail" /></div>  <p></p> <div class="uk-grid">  <div class="uk-width-medium-1-2"> <div class="parsley-row"> <label for="inputStartDate">Tenancy Start<span class="req">*</span></label> <input type="text" id="inputStartDate-' + count + '" name="inputStartDate" required class="md-input inputStartDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div>  <br/>  <div class="uk-width-medium-1-2">  <div class="parsley-row"> <label for="inputEndDate">Tenancy End<span class="req">*</span></label> <input type="text" id="inputEndDate-' + count + '" name="inputEndDate" required class="md-input inputEndDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div> </div> <p></p> <div class="parsley-row"> <div class="uk-grid">  <div class="uk-width-medium-1-3"> <div class="tenantLead">  <span class="icheck-inline" style="margin-top:20px;">  <input type="checkbox" data-switchery data-switchery-color="#ffb300"  id="isLeadTenant-' + count + '" /> <label for="user_edit_active" class="inline-label" style="font-size:13px; padding-left:0px;">Lead Tenant</label> </span>  </div> </div>       <div class="uk-width-medium-2-3">        <div class="uk-grid" style="margin-top:20px;">        <div class="uk-width-medium-1-4">    <img  id="isElectricityImg-' + count + '" src="assets/img/PropertyImg/electricity.png" style="width:70%; height:100%">    </div>  <div class="uk-width-medium-1-4">    <img   id="isGasImg-' + count + '" src="assets/img/PropertyImg/gas.png" style="width:70%; height:100%">    </div>   <div class="uk-width-medium-1-4">    <img  id="isWaterImg-' + count + '" src="assets/img/PropertyImg/water.png" style="width:70%; height:100%"> </div><div class="uk-width-medium-1-4">  <img id="isCouncilImg-' + count + '" src="assets/img/PropertyImg/council.png" style="width:70%; height:100%"></div></div>       </div><div class="uk-grid"> <div class="uk-width-1-1">  <button type="submit" class="md-btn md-btn-primary btnAddUserTenant" id="btnAddUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">+ Tenant</button> <button type="submit" class="md-btn md-btn-danger btnRemoveUserTenant" id="btnRemoveUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">- Tenant</button>  <span id="getErrorMsg-' + count + '" style="color:red;"></span> </div>  </div> </div> </div></div> <input type="hidden" id="hiddenUserRegID-' + count + '" value="0" /> <input type="hidden" id="hiddenAddPropertyID-' + count + '" value="0" />   <input type="hidden" id="hiddenIsElectricity-' + count + '" value="0" /> <input type="hidden" id="hiddenIsGas-' + count + '" value="0" /> <input type="hidden" id="hiddenIsWater-' + count + '" value="0" /> <input type="hidden" id="hiddenIsCouncil-' + count + '" value="0" /> <input type="hidden" id="hiddenAvailTenantInsurance-' + count + '" value="0" /> <input type="hidden" id="hiddenAddress-' + count + '" value="0" />  <input type="hidden" id="hiddenElectricSupplier1-' + count + '" value="0" /> <input type="hidden" id="hiddenElectricSupplier2-' + count + '" value="0" /> <input type="hidden" id="hiddenFuelType-' + count + '" value="0" /> <input type="hidden" id="hiddenGasMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierElectric-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierGas-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyStart-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyEnd-' + count + '" value="0" /> <input type="hidden" id="hiddenWaterMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenIsNewTenantUpdate-' + count + '" value="0" /> <input type="hidden" id="hiddenNewPropertyTenant-' + count + '" value="false" /> ');
+    $(".getTenantList").append('<div class="uk-width-medium-1-3" style="margin-top: 10px;"> <div class="md-card" id="getIsAppInstallCheck-' + count + '"> <div class="md-card-content large-padding"> <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span><div class="parsley-row"> <label for="inputMobile">' + getMobile + '<span class="req">*</span></label> <input type="text" id="inputMobile-' + count + '" name="inputMobile" required class="md-input inputMobile" maxlength="10"/> <span class="propermno-prefix" id="promno-prefix-'+count+'">'+localStorage.getItem("MyRequest_PhoneCode-prefix")+'</span> </div><p></p> <div class="parsley-row"  id="inputTitleContent-' + count + '"> <label for="inputTitle">' + getTitle + '</label>  <select id="inputTitle-' + count + '" name="inputTitle" required class="md-input"><option value="0">Select Title</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Ms.">Ms.</option><option value="Miss.">Miss.</option> </select></div> <p></p> <div class="parsley-row"> <label for="inputName">' + getFirstName + '<span class="req">*</span></label> <input type="text" id="inputName-' + count + '" name="inputName" required class="md-input inputName" />  </div> <p></p><div class="parsley-row"> <label for="inputLastName">' + getLastName + '<span class="req">*</span></label> <input type="text" id="inputLastName-' + count + '" name="inputLastName" required class="md-input inputLastName" /> </div><p></p> <div class="parsley-row"  id="inputEmailContent-' + count + '"> <label for=  "inputEmail">' + getEmail + '<span class="req">*</span></label> <input type="text" id="inputEmail-' + count + '"  name="inputEmail" required class="md-input inputEmail" /></div>  <p></p> <div class="uk-grid">  <div class="uk-width-medium-1-2"> <div class="parsley-row"> <label for="inputStartDate">Tenancy Start<span class="req">*</span></label> <input type="text" id="inputStartDate-' + count + '" name="inputStartDate" required class="md-input inputStartDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div>  <br/>  <div class="uk-width-medium-1-2">  <div class="parsley-row"> <label for="inputEndDate">Tenancy End<span class="req">*</span></label> <input type="text" id="inputEndDate-' + count + '" name="inputEndDate" required class="md-input inputEndDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div> </div> <p></p> <div class="parsley-row"> <div class="uk-grid">  <div class="uk-width-medium-1-3"> <div class="tenantLead">  <span class="icheck-inline" style="margin-top:20px;">  <input type="checkbox" data-switchery data-switchery-color="#ffb300" class="isLeadTenant"  id="isLeadTenant-' + count + '" /> <label for="user_edit_active" class="inline-label" style="font-size:13px; padding-left:0px;">Lead Tenant</label> </span>  </div> </div>       <div class="uk-width-medium-2-3">        <div class="uk-grid" style="margin-top:20px;">        <div class="uk-width-medium-1-4">    <img  id="isElectricityImg-' + count + '" src="assets/img/PropertyImg/electricity.png" style="width:70%; height:100%">    </div>  <div class="uk-width-medium-1-4">    <img   id="isGasImg-' + count + '" src="assets/img/PropertyImg/gas.png" style="width:70%; height:100%">    </div>   <div class="uk-width-medium-1-4">    <img  id="isWaterImg-' + count + '" src="assets/img/PropertyImg/water.png" style="width:70%; height:100%"> </div><div class="uk-width-medium-1-4">  <img id="isCouncilImg-' + count + '" src="assets/img/PropertyImg/council.png" style="width:70%; height:100%"></div></div>       </div><div class="uk-grid"> <div class="uk-width-1-1">  <button type="submit" class="md-btn md-btn-primary btnAddUserTenant" id="btnAddUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">+ Tenant</button> <button type="submit" class="md-btn md-btn-danger btnRemoveUserTenant" id="btnRemoveUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">- Tenant</button>  <span id="getErrorMsg-' + count + '" style="color:red;"></span> </div>  </div> </div> </div></div> <input type="hidden" id="hiddenUserRegID-' + count + '" value="0" /> <input type="hidden" id="hiddenAddPropertyID-' + count + '" value="0" />   <input type="hidden" id="hiddenIsElectricity-' + count + '" value="0" /> <input type="hidden" id="hiddenIsGas-' + count + '" value="0" /> <input type="hidden" id="hiddenIsWater-' + count + '" value="0" /> <input type="hidden" id="hiddenIsCouncil-' + count + '" value="0" /> <input type="hidden" id="hiddenAvailTenantInsurance-' + count + '" value="0" /> <input type="hidden" id="hiddenAddress-' + count + '" value="0" />  <input type="hidden" id="hiddenElectricSupplier1-' + count + '" value="0" /> <input type="hidden" id="hiddenElectricSupplier2-' + count + '" value="0" /> <input type="hidden" id="hiddenFuelType-' + count + '" value="0" /> <input type="hidden" id="hiddenGasMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierElectric-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierGas-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyStart-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyEnd-' + count + '" value="0" /> <input type="hidden" id="hiddenWaterMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenIsNewTenantUpdate-' + count + '" value="0" /> <input type="hidden" id="hiddenNewPropertyTenant-' + count + '" value="false" /> ');
 
 
     $("#inputMobile-" + count).keypress(function(e) {
@@ -21,13 +21,45 @@ function getAddTenant(count) {
     $("#inputTitle-" + count).select2();
 
 
+    $(".isLeadTenant").off('click').on('click', function(event) {
+        var getCountValue = this.id.replace("isLeadTenant-", "");
+        var localTenantData = localStorage.getItem('MyRequestTenantsData');
+        if (localTenantData != null) {
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            var userID = $("#hiddenUserRegID-"+getCountValue).val();
+            for (getData in getLocalTenantData) {
+                if($("#isLeadTenant-"+getCountValue).prop('checked')){
+                    if(getLocalTenantData[getData].UserRegID==userID){
+                        getLocalTenantData[getData].IsLeadTenant = "1"; 
+                    }
+                } else{
+                    if(getLocalTenantData[getData].UserRegID==userID){
+                        getLocalTenantData[getData].IsLeadTenant = "0"; 
+                    }
+                }
+            }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
+        }
+    });
 
     $(".closeCard").off('click').on('click', function(event) {
         //console.log("close card");
         var getCountValue = this.id.replace("closeCard-", "");
-        //console.log(getCountValue);
         UIkit.modal.confirm('Are you sure to remove ?', function() {
             $("#getIsAppInstallCheck-" + getCountValue).remove();
+
+            var localTenantData = localStorage.getItem('MyRequestTenantsData');
+            if (localTenantData != null) {
+                var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+                newArr = [];
+                $.each(getLocalTenantData, function(index, value) {
+                    if (value.Count != getCountValue) {
+                        newArr.push(getLocalTenantData[index]);
+                    }
+                });
+                localStorage.setItem('MyRequestTenantsData', JSON.stringify(newArr));
+                getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            }
             count--;
             if(count==1){
                 $("#inputHMONoOfTenent").val(count);
@@ -187,7 +219,9 @@ function getAddTenant(count) {
                 UIkit.modal.alert("Tenancy End should not be less then Tenancy Start");
             }
             else{
-               $("#getErrorMsg-" + getCountValue).hide();
+                $(".isShowServices").show();
+                $(".availServiceTitle").text('Do you want to avail these services?');
+                $("#getErrorMsg-" + getCountValue).hide();
                 $("#getErrorMsg-" + getCountValue).text("");
                 $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
                 $(".getTenantsInfo").css("color","#444");
@@ -197,47 +231,55 @@ function getAddTenant(count) {
                 var userRegID = $("#hiddenUserRegID-" + getCountValue).val();
                 var newPropertyTenant = $("#hiddenNewPropertyTenant-" + getCountValue).val();
                 $(".btnSubmitTenantInsurance").attr("value", getCountValue);
-                if (userRegID == 0 || newPropertyTenant == "false") {
-
-                    var modal = UIkit.modal("#modalTenantInsurance");
+                
+                var modal = UIkit.modal("#modalTenantInsurance");
                     modal.show();
 
-                    if (getCountValue == 1 || hiddenIsGas == "true") {
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
 
-                    }
+                var localTenantData = localStorage.getItem('MyRequestTenantsData');
+                if (localTenantData != null) {
+                    var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+                    $(".isElectricity").show();
+                    $(".isGas").show();
+                    $(".isWater").show();
+                    $(".isCouncil").show();
+                    var isHide=0;
+                    for (getData in getLocalTenantData) {
+                        if(getLocalTenantData[getData].Count != getCountValue){
+                            if(getLocalTenantData[getData].IsElectricity == 1){
+                                $(".isElectricity").hide();
+                                isHide++;
+                            }
 
-                    if (getCountValue == 1 || hiddenIsWater == "true") {
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+                            if(getLocalTenantData[getData].IsGas == 1){
+                                $(".isGas").hide();
+                                isHide++;
+                            }
 
-                    }
+                            if(getLocalTenantData[getData].IsWater == 1){
+                                $(".isWater").hide();
+                                isHide++;
+                            }
 
+                            if(getLocalTenantData[getData].IsCouncil == 1){
+                                $(".isCouncil").hide();
+                                isHide++;
+                            }
+                        } 
+                        
 
+                        console.log(isHide);
 
-                    if (getCountValue == 1 || hiddenIsElectricity == "true") {
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isCouncilImg-" + getCountValue).attr("src", "assets/img/PropertyImg/council.png");
+                        if(isHide % 2){
+                            $(".isShowServices").hide();
+                            $(".availServiceTitle").text('Do you want to avail service?');
+                        } 
+                    } // getLocalTenantData
+                } //localTenantData
 
-                    }
- 
-                 
-                } else {   if (getCountValue == 1 || hiddenIsCouncil == "true") {
-                        $("#isWaterImg-" + getCountValue).attr("src", "assets/img/PropertyImg/water.png");
-                        $("#isGasImg-" + getCountValue).attr("src", "assets/img/PropertyImg/gas.png");
-                        $("#isElectricityImg-" + getCountValue).attr("src", "assets/img/PropertyImg/electricity.png");
-
-                    }
-                    var modal = UIkit.modal("#modalTenantInsurance");
-                    modal.show();
-                } 
-            }
-        }
-    });
+            } // else checkEndDateValue
+        } // else inputStartDate check
+    }); // $(".inputEndDate")
 
 
     $(".inputMobile").keyup(function() {
@@ -291,10 +333,10 @@ function getAddTenant(count) {
 
     function existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID){
         $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID, function(result) {
-               console.log(result);
+               //console.log(result);
                 if (result.record_count == 0) { 
                     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-                       console.log(result);
+                       //console.log(result);
                         if (result.record_count == 0) {
 
                         } else {
@@ -346,7 +388,7 @@ function getAddTenant(count) {
         $("#getIsAppInstallCheck-" + getCountValue).css("border", "1px solid  #FFFFFF");
         if (hiddenPropertyID == 0) {
             UIkit.modal.confirm('Property is not added for this tenant. Are you sure ?', function() {
-                console.log("add this tenant");
+                //console.log("add this tenant");
 
             });
         } else {
@@ -452,7 +494,7 @@ function getAddTenant(count) {
         $(".utilityIcon").hide();
         $(".utilityIconLabel").hide();
         var getDate = new Date();
-        console.log(moment(getDate).format('YYYY-MM-DD HH:mm:ss'));
+        //console.log(moment(getDate).format('YYYY-MM-DD HH:mm:ss'));
         var currentdate = moment(getDate).format('YYYY-MM-DD HH:mm:ss');
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
          

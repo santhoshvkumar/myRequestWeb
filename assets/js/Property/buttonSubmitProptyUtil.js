@@ -5,9 +5,7 @@ var buttonSubmitProptyUtil = function() {
     var isLeadTenant = $("#hiddenIsLeadTenant").val();
     getAddTenantArr = new Array();
     var hiddenPropertyID = $("#hiddenPropertyID").val();
-
     var landlordTitle = $("#inputLandlordTitle").val();
-    console.log(landlordTitle);
     var name = $("#getName").val().replace(/["']/g, "`");
     var lastName = $("#getLastName").val().replace(/["']/g, "`");
     var emailID = $("#inputEmailID").val();
@@ -74,8 +72,7 @@ var buttonSubmitProptyUtil = function() {
     var zip = $("#inpuZip").val().replace(/["']/g, "`");
     var country = $("#inputCountry").val();
     getApiAddress = address + ", " + location + "," + state + "," + city + " - " + zip + ", " + country;
-    console.log(getApiAddress);
-
+    
     $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + getApiAddress + "'&key=AIzaSyBtzg2WqpDihcMDNnD0OAGTfYWZBxonJUU", {}, function(result) {
         console.log(result);
         for (getLatLong in result.results) {
@@ -205,61 +202,45 @@ var buttonSubmitProptyUtil = function() {
     var hmoInputTenent = $("#inputHMONoOfTenent").val();
     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
 
-    for (var getCount = 1; getCount <= finalTenantCount; getCount++) {
-        inputUserRegID = $("#hiddenUserRegID-" + getCount).val();
-        inputName = $("#inputName-" + getCount).val();
-        inputLastName = $("#inputLastName-" + getCount).val();
-        inputTitle = $("#inputTitle-" + getCount).val();
-        inputEmail = $("#inputEmail-" + getCount).val();
-        inputMobile = getPhoneCode+$("#inputMobile-" + getCount).val();
-        inputStartDate = $("#inputStartDate-" + getCount).val();
-        inputEndDate = $("#inputEndDate-" + getCount).val();
-        isLeadTenant = $("#isLeadTenant-" + getCount).prop("checked");
-        
-        var finalTStartDate = "";
-        var finalTEndDate = "";
 
-        if(inputStartDate == ""){
-            finalTStartDate = "";
-        } else {
-            var selectStartDate = inputStartDate.split(".");
-            finalTStartDate = selectStartDate[2] + "-" + selectStartDate[1] + "-" + selectStartDate[0];
-        }
-        
-        if(inputEndDate == ""){
-            finalTEndDate = "";
-        } else{
-            var selectEndDate = inputEndDate.split(".");
-            finalTEndDate = selectEndDate[2] + "-" + selectEndDate[1] + "-" + selectEndDate[0];
-        }
-    
 
-        if (isLeadTenant == true) {
-            isLeadTenant = 1;
-        } else {
-            isLeadTenant = 0;
-        }
-        var propertyCreated = "";
-        var propertyUpdated = "";
-        var inputGas = $("#hiddenIsGas-" + getCount).val();
-        var inputElectricity = $("#hiddenIsElectricity-" + getCount).val();
-        var inputWater = $("#hiddenIsWater-" + getCount).val();
-        var inputCouncil = $("#hiddenIsCouncil-" + getCount).val();
-        var status = "Awaiting Info";
-        //debugger;
-        if (inputGas == 0 && inputElectricity == 0 && inputWater == 0 && inputCouncil == 0)
-            status = "Not Applicable";
-        else if (inputGas == 1 && inputElectricity == 1 && inputWater == 1 && inputCouncil == 1)
-            status = "Updated";
-        var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-" + getCount).val();
-        var hiddenIsNewTenantUpdate = $("#hiddenIsNewTenantUpdate-" + getCount).val();
-        if(inputName!="" && inputLastName!="" && inputTitle!="" && inputEmail!="" && inputMobile!="" && inputStartDate!="" && inputEndDate!=""){
+    var localTenantData = localStorage.getItem('MyRequestTenantsData');
+    if (localTenantData != null) {
+        var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+        $(".isElectricity").show();
+        $(".isGas").show();
+        $(".isWater").show();
+        $(".isCouncil").show();
+        var isHide=0;
+        for (getData in getLocalTenantData) {
+            var inputUserRegID = getLocalTenantData[getData].UserRegID;
+            var inputName = getLocalTenantData[getData].Name;
+            var inputLastName = getLocalTenantData[getData].LastName;
+            var inputTitle = getLocalTenantData[getData].TitleName;
+            var inputEmail = getLocalTenantData[getData].Email;
+            var inputMobile = getLocalTenantData[getData].Mobile;
+            var inputStartDate = getLocalTenantData[getData].TenancyStart;
+            var inputEndDate = getLocalTenantData[getData].TenancyEnd;
+            var isLeadTenant = getLocalTenantData[getData].IsLeadTenant;
+            var finalTStartDate = getLocalTenantData[getData].TenancyStart;
+            var finalTEndDate = getLocalTenantData[getData].TenancyEnd;
+            var inputGas = getLocalTenantData[getData].IsGas;
+            var inputElectricity = getLocalTenantData[getData].IsElectricity;
+            var inputWater = getLocalTenantData[getData].IsWater;
+            var inputCouncil = getLocalTenantData[getData].IsCouncil;
+            var status = "Awaiting Info";
+            if (inputGas == 0 && inputElectricity == 0 && inputWater == 0 && inputCouncil == 0)
+                status = "Not Applicable";
+            else if (inputGas == 1 && inputElectricity == 1 && inputWater == 1 && inputCouncil == 1)
+                status = "Updated";
+            var hiddenAvailTenantInsurance = getLocalTenantData[getData].IsAvailTenantInsurance;
+            var hiddenIsNewTenantUpdate = getLocalTenantData[getData].IsNewTenantUtility;
+
             var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','LastName':'" + inputLastName + "','TitleName':'" + inputTitle + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','TenancyStart':'" + finalTStartDate + "','TenancyEnd':'" + finalTEndDate + "','IsLeadTenant':'" + isLeadTenant + "','IsGas':'" + inputGas + "','IsElectricity':'" + inputElectricity + "','IsWater':'" + inputWater + "','IsCouncil':'" + inputCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "', 'Status':'" + status + "'}";
-
             getAddTenantArr.push(newTenantsDataForm);
-        }
-    } // for count
-
+        } // getLocalTenantData
+    } //localTenantData
+  
     console.log(getAddTenantArr);
 
     var dataForm = '{"Title":"' + landlordTitle + '","PropOwnerName":"' + name + '","PropOwnerLastName":"' + lastName + '","PropOwnerEmail":"' + emailID + '","PropOwnerPhone":"' + mobileNumber + '","Occupancy":"Single","IsAppInstalled":"' + isAppInstalled + '","PropAddress":"' + address + '","PropLocation":"' + location + '","PropState":"' + state + '","PropCity":"' + city + '","PropPostalCode":"' + zip + '","PropCountry":"UK","HMOLicenseNumb":"' + hmoLicenseNumber + '","HMOUploadPic":"' + imageUrl4 + '","PropManaged":"' + getPropertyManaged + '","HomeInsurance":"' + homeInsurance + '","EPCValidFrom":"' + finalValidFromDate + '","EPCValidTill":"' + finalValidToDate + '","EPCCertificate":"' + imageUrl1 + '","ElectricCertValidFrom":"' + finalElecFromDate + '","ElectricCertValidTill":"' + finalElecToDate + '","ElectricCetificate":"' + imageUrl2 + '","GasCertValidFrom":"' + finalGasFromDate + '","GasCertValidTill":"' + finalGasFromDate + '","GasCertificate":"' + imageUrl3 + '","LegCertValidFrom":"' + finalLegFromDate + '","LegCertValidTill":"' + finalLegToDate + '","LegCertificate":"' + imageUrl5 + '","Latitude":"' + getLatitude + '","Longitude":"' + getLongitude + '","AdminID":"' + adminUserID + '","NoOfTenants":"' + hmoInputTenent + '","HmoOccupancy":"' + hmoOccupancy + '","PropertyType":"' + property + '","Bedrooms":"' + bedrooms + '","FuelType":"' + feul + '","SupplierElectric":"' + supplierElectric + '","SupplierGas":"' + supplierGas + '","ElectricSupplier1":"' + read1 + '","ElectricSupplier2":"' + read2 + '","Economy7":"' + economy7 + '","WaterMeter":"' + waterMeter + '","GasMeterRead":"' + gas + '","WaterMeterRead":"' + water + '","WaterAuthority":"' + waterAuthority + '","TaxAuthority":"' + taxAuthority + '","IsLandlordInsurance":"' + hiddenIsLandlordInsurance + '","IsRentProtectionInsurance":"' + hiddenIsRentProtectionInsurance + '","TenantsArr":"' + getAddTenantArr + '","LandlordCity":"' + landlordCity + '","LandlordState":"' + landlordState + '","LandlordAddress":"' + landlordAddress + '","LandlordPostCode":"' + landlordPostCode + '","IsVoid":"' + isVoid + '","PropertyStatus":"' + propertyStatus + '"}';
@@ -365,6 +346,7 @@ var buttonSubmitProptyUtil = function() {
                 $("#hiddenIsLandlordInsurance").val(0);
                 $("#hiddenIsRentProtectionInsurance").val(0);
                 $("#getLoadingModalContent").removeClass('md-show');
+                localStorage.removeItem('MyRequestTenantsData');
                 UIkit.modal.alert('Property Added Successfully');
                 
             }
@@ -469,8 +451,8 @@ var buttonSubmitProptyUtil = function() {
                 $("#hiddenPropertyID").val(0);
                 $(".btnSubmitProperty").text("Add Property & Update Utility");
                 $("#getLoadingModalContent").removeClass('md-show');
+                localStorage.removeItem('MyRequestTenantsData');
                 UIkit.modal.alert('Property Updated Successfully');
-                
             }
         });
     } // sec if

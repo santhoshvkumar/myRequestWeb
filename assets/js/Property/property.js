@@ -121,6 +121,7 @@ var getPropLat, getPropLong, isEdit=false;
  $(document).ready(function() {
      $("#inputCountry").val("UK");
      var country = $("#inputCountry").val();
+     localStorage.removeItem('MyRequestTenantsData');
      adminUserID = localStorage.getItem("MyRequest_AdminID");
      var adminUserName = localStorage.getItem("MyRequest_UserName");
      var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -373,19 +374,19 @@ var getPropLat, getPropLong, isEdit=false;
          var Latitude = "";
          var Longitude = "";
          if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
-            console.log("No Address Details Fetched");
+            //console.log("No Address Details Fetched");
          }
          else{
-           var geocoder = new google.maps.Geocoder();
+         var geocoder = new google.maps.Geocoder();
             if (geocoder) {
                 geocoder.geocode({
                     'address': wholeAddress
                 }, function (results, status) {
                     debugger;
                     if (status == google.maps.GeocoderStatus.OK) {
-                        console.log(results[0]);
-                        console.log(results[0].geometry.location.lat());
-                        console.log(results[0].geometry.location.lng());
+                        //console.log(results[0]);
+                        //console.log(results[0].geometry.location.lat());
+                        //console.log(results[0].geometry.location.lng());
 
                          var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
                          //$(".propertyLocationGoogleMap").html("");
