@@ -91,7 +91,7 @@ var getPropLat, getPropLong, isEdit=false;
          $theme_switcher.children('li[data-app-theme=' + localStorage.getItem("altair_theme") + ']').click();
      }
  });
-
+ var map = ''; 
  var count = 1;
  var finalTenantCount = 0;
  var adminUserID = 0;
@@ -362,27 +362,26 @@ var getPropLat, getPropLong, isEdit=false;
      var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
      modalUtilityList.hide(); 
  });
- 
+ var mapCount = 0;
  $("#inpuZip").on('blur', function(e) {
          var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
          var getCounty = $("#select2-inputState-container").html();
          var getCity = $("#select2-inputCity-container").html();
          var postalCode = $("#inpuZip").val();
-         var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + ", United Kingdom";
+         var getCountryName = localStorage.getItem("MyRequest_countryCode");
+         var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + " ," + getCountryName;
          var Latitude = "";
          var Longitude = "";
-         
          if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
             console.log("No Address Details Fetched");
          }
          else{
-           console.log(wholeAddress);
-           
            var geocoder = new google.maps.Geocoder();
             if (geocoder) {
                 geocoder.geocode({
                     'address': wholeAddress
                 }, function (results, status) {
+                    debugger;
                     if (status == google.maps.GeocoderStatus.OK) {
                         console.log(results[0]);
                         console.log(results[0].geometry.location.lat());
@@ -393,7 +392,7 @@ var getPropLat, getPropLong, isEdit=false;
                           var myCenter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                           var mapCanvas = document.getElementById("propertyLocationGoogleMap");
                           var mapOptions = {center: myCenter, zoom: 10};
-                          var map = new google.maps.Map(mapCanvas, mapOptions);
+                           map = new google.maps.Map(mapCanvas, mapOptions);
                           var marker = new google.maps.Marker({position:myCenter});
                           marker.setMap(map);
                           setTimeout(function() {
@@ -401,11 +400,13 @@ var getPropLat, getPropLong, isEdit=false;
                               map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
                               map.setZoom(10);
                            }, 100)
-                           debugger;
-                            $(".propertyLocationGoogleMap").googleMap({
-                                zoom: 10, // Initial zoom level (optional)
-                                type: "ROADMAP" // Map type (optional)
-                            });
+                           if( mapCount === 0){
+                                $(".propertyLocationGoogleMap").googleMap({
+                                    zoom: 10, // Initial zoom level (optional)
+                                    type: "ROADMAP" // Map type (optional)
+                                });
+                                mapCount = 1;
+                           }
                             $(".propertyLocationGoogleMap").addMarker({
                                 address: wholeAddress, // Postal address
                                 zoom: 10,
@@ -424,6 +425,10 @@ var getPropLat, getPropLong, isEdit=false;
          }
  }); // inputAddress
  
+ $("#googleMap").on('hide.uk.modal', function () { 
+     map = ''; 
+     google.maps.event.clearListeners(window, 'resize'); 
+ }); 
 
 
  $(".btnSubmitProperty").click(function() {
