@@ -1,5 +1,5 @@
 $("#btnGetExcel").click(function() {
-  window.location.href = "api/excelParticularProblems.php?problemID=" + getProblemID + "&adminID=" + adminUserID;
+  window.location.href = domainAddress+"excelParticularProblems.php?problemID=" + getProblemID + "&adminID=" + adminUserID;
 });
 
 $("#btnPrintPartProblems").click(function() {

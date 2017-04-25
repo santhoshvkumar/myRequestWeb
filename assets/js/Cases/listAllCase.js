@@ -875,7 +875,7 @@ $("#getExcel").click(function() {
     if (loadCountRecordValue == 0) {
         alert("No Cases found");
     } else {
-        window.open('api/excelAllProblems.php?adminID=' + adminUserID);
+        window.open(domainAddress+'excelAllProblems.php?adminID=' + adminUserID);
     }
 });
 
