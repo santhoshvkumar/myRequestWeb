@@ -118,7 +118,7 @@ else{
 
 
 // create some HTML content
-$html = '<div style="text-align: center;"> <img src="images/myRequestLogo.png" style="width:140px;height:100px;" /> </div> <p>'.$tbl_header . $tbl . $tbl_footer.'</p> <p style="text-align: center;">* 50 *</p>';
+$html = '<div style="text-align: center;"> <img src="images/myrequestlogo.png" style="width:140px;height:100px;" /> </div> <p>'.$tbl_header . $tbl . $tbl_footer.'</p> <p style="text-align: center;">* 50 *</p>';
 
 // output the HTML content
 $pdf->writeHTML($html, true, 0, true, 0);
