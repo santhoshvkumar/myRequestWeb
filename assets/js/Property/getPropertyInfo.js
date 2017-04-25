@@ -8,7 +8,6 @@ function getPropertyInfo(editPropertyID){
               isEdit=true;
               getAddTenantArr = new Array();
               $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
-                  //console.log(resultGetProperty);
                   for (var property in resultGetProperty.records) {
                       isAppInstalled = resultGetProperty.records[property].IsAppInstalled;
                       if (isAppInstalled == 1) {
@@ -545,7 +544,6 @@ function getPropertyInfo(editPropertyID){
 
 
                   $.get(domainAddress + "GetUserUtilityListByProperty/" + editPropertyID, {}, function(result) {
-                      //console.log(result);
                       $(".getPropertyUtility").show();
                       if (result.record_count == 0) {
                           $(".propertyUtility").html('');

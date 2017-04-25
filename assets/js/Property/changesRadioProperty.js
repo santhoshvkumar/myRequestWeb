@@ -120,9 +120,6 @@ function changesRadioProperty() {
 
 
     $('#inputFuel').on('change', function() {
-
-        console.log(this.value);
-
         if (this.value == '1') {
             $("#inputGas").show();
             $(".ele1").show();

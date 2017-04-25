@@ -1,42 +1,43 @@
 var moveOut = function() {
     getAddTenantArr = new Array();
     var hiddenPropertyID = $("#hiddenPropertyID").val();
-    var hiddenIsElectricity = "";
-    var hiddenIsGas = "";
-    var hiddenIsWater = "";
-    var hiddenIsCouncil = "";
-    var hiddenAvailTenantInsurance = "";
-    
     var inputAddress = $("#inputAddress").val();
-    var inputName = "";
-    var inputEmail = "";
-    var inputMobile = "";
-    var radioYes = "";
-    var radioNo = "";
-    var getIsAppInstalled = "";
-    var hmoInputTenent = $("#inputHMONoOfTenent").val();
-    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-
-    console.log("Click Process Count : " + finalTenantCount);
     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
-    for (var getCount = 1; getCount <= finalTenantCount; getCount++) {
-        inputUserRegID = $("#hiddenUserRegID-" + getCount).val();
-        inputName = $("#inputName-" + getCount).val();
-        inputEmail = $("#inputEmail-" + getCount).val();
-        inputMobile = getPhoneCode+$("#inputMobile-" + getCount).val();
-        hiddenIsElectricity = $("#hiddenIsElectricity-" + getCount).val();
-        hiddenIsGas = $("#hiddenIsGas-" + getCount).val();
-        hiddenIsWater = $("#hiddenIsWater-" + getCount).val();
-        hiddenIsCouncil = $("#hiddenIsCouncil-" + getCount).val();
-        hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-" + getCount).val();
-        var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','IsElectricity':'" + hiddenIsElectricity + "','IsGas':'" + hiddenIsGas + "','IsWater':'" + hiddenIsWater + "','IsCouncil':'" + hiddenIsCouncil + "','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
+    
+    var localTenantData = localStorage.getItem('MyRequestTenantsData');
 
-        getAddTenantArr.push(newTenantsDataForm);
+    if (localTenantData != null) {
+        var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+        for (getData in getLocalTenantData) {
+            var inputUserRegID = getLocalTenantData[getData].UserRegID;
+            var inputName = getLocalTenantData[getData].Name;
+            var inputLastName = getLocalTenantData[getData].LastName;
+            var inputTitle = getLocalTenantData[getData].TitleName;
+            var inputEmail = getLocalTenantData[getData].Email;
+            var inputMobile = getLocalTenantData[getData].Mobile;
+            var inputStartDate = getLocalTenantData[getData].TenancyStart;
+            var inputEndDate = getLocalTenantData[getData].TenancyEnd;
+            var isLeadTenant = getLocalTenantData[getData].IsLeadTenant;
+            var finalTStartDate = getLocalTenantData[getData].TenancyStart;
+            var finalTEndDate = getLocalTenantData[getData].TenancyEnd;
+            var inputGas = getLocalTenantData[getData].IsGas;
+            var inputElectricity = getLocalTenantData[getData].IsElectricity;
+            var inputWater = getLocalTenantData[getData].IsWater;
+            var inputCouncil = getLocalTenantData[getData].IsCouncil;
+            var status = "Awaiting Info";
+            if (inputGas == 0 && inputElectricity == 0 && inputWater == 0 && inputCouncil == 0)
+                status = "Not Applicable";
+            else if (inputGas == 1 && inputElectricity == 1 && inputWater == 1 && inputCouncil == 1)
+                status = "Updated";
+            var hiddenAvailTenantInsurance = getLocalTenantData[getData].IsAvailTenantInsurance;
+            var hiddenIsNewTenantUpdate = getLocalTenantData[getData].IsNewTenantUtility;
 
-    } // for count
+            var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','LastName':'" + inputLastName + "','TitleName':'" + inputTitle + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','TenancyStart':'" + finalTStartDate + "','TenancyEnd':'" + finalTEndDate + "','IsLeadTenant':'" + isLeadTenant + "','IsGas':'" + inputGas + "','IsElectricity':'" + inputElectricity + "','IsWater':'" + inputWater + "','IsCouncil':'" + inputCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "', 'Status':'" + status + "'}";
+            getAddTenantArr.push(newTenantsDataForm);
+        } // getLocalTenantData
+    } //localTenantData
  
     UIkit.modal.confirm('Are you sure to move-out ?', function() {
-        console.log(getAddTenantArr);
         var dataForm = '{"TenantsArr":"' + getAddTenantArr + '","PropAddress":"' + inputAddress + '","AdminID":"' + adminUserID + '"}';
         var sendURL = domainAddress + 'SendPropertyUtilityMoveOut/' + hiddenPropertyID;
         console.log(dataForm);
@@ -115,7 +116,6 @@ var moveOut = function() {
                 $(".getTenantList").html('');
                 count = 0;
                 finalTenantCount = 0;
-                //getAddTenant(count);
                 getAddRemove(count);
                 $("#hiddenIsElectricity").val(0);
                 $("#hiddenIsGas").val(0);

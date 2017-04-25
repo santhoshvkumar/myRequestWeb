@@ -74,10 +74,7 @@ var buttonSubmitProptyUtil = function() {
     getApiAddress = address + ", " + location + "," + state + "," + city + " - " + zip + ", " + country;
     
     $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + getApiAddress + "'&key=AIzaSyBtzg2WqpDihcMDNnD0OAGTfYWZBxonJUU", {}, function(result) {
-        console.log(result);
         for (getLatLong in result.results) {
-            console.log("Latitude : " + result.results[getLatLong].geometry.location.lat);
-            console.log("Longitude : " + result.results[getLatLong].geometry.location.lng);
             getLatitude = result.results[getLatLong].geometry.location.lat;
             getLongitude = result.results[getLatLong].geometry.location.lng;
         }
@@ -241,8 +238,6 @@ var buttonSubmitProptyUtil = function() {
         } // getLocalTenantData
     } //localTenantData
   
-    console.log(getAddTenantArr);
-
     var dataForm = '{"Title":"' + landlordTitle + '","PropOwnerName":"' + name + '","PropOwnerLastName":"' + lastName + '","PropOwnerEmail":"' + emailID + '","PropOwnerPhone":"' + mobileNumber + '","Occupancy":"Single","IsAppInstalled":"' + isAppInstalled + '","PropAddress":"' + address + '","PropLocation":"' + location + '","PropState":"' + state + '","PropCity":"' + city + '","PropPostalCode":"' + zip + '","PropCountry":"UK","HMOLicenseNumb":"' + hmoLicenseNumber + '","HMOUploadPic":"' + imageUrl4 + '","PropManaged":"' + getPropertyManaged + '","HomeInsurance":"' + homeInsurance + '","EPCValidFrom":"' + finalValidFromDate + '","EPCValidTill":"' + finalValidToDate + '","EPCCertificate":"' + imageUrl1 + '","ElectricCertValidFrom":"' + finalElecFromDate + '","ElectricCertValidTill":"' + finalElecToDate + '","ElectricCetificate":"' + imageUrl2 + '","GasCertValidFrom":"' + finalGasFromDate + '","GasCertValidTill":"' + finalGasFromDate + '","GasCertificate":"' + imageUrl3 + '","LegCertValidFrom":"' + finalLegFromDate + '","LegCertValidTill":"' + finalLegToDate + '","LegCertificate":"' + imageUrl5 + '","Latitude":"' + getLatitude + '","Longitude":"' + getLongitude + '","AdminID":"' + adminUserID + '","NoOfTenants":"' + hmoInputTenent + '","HmoOccupancy":"' + hmoOccupancy + '","PropertyType":"' + property + '","Bedrooms":"' + bedrooms + '","FuelType":"' + feul + '","SupplierElectric":"' + supplierElectric + '","SupplierGas":"' + supplierGas + '","ElectricSupplier1":"' + read1 + '","ElectricSupplier2":"' + read2 + '","Economy7":"' + economy7 + '","WaterMeter":"' + waterMeter + '","GasMeterRead":"' + gas + '","WaterMeterRead":"' + water + '","WaterAuthority":"' + waterAuthority + '","TaxAuthority":"' + taxAuthority + '","IsLandlordInsurance":"' + hiddenIsLandlordInsurance + '","IsRentProtectionInsurance":"' + hiddenIsRentProtectionInsurance + '","TenantsArr":"' + getAddTenantArr + '","LandlordCity":"' + landlordCity + '","LandlordState":"' + landlordState + '","LandlordAddress":"' + landlordAddress + '","LandlordPostCode":"' + landlordPostCode + '","IsVoid":"' + isVoid + '","PropertyStatus":"' + propertyStatus + '"}';
     console.log(dataForm);
     $("#getLoadingModalContent").addClass('md-show');

@@ -562,15 +562,9 @@
 
   $("#inputWaterAuthority").keyup(function() {
       var getWaterAuthority = $("#inputWaterAuthority").val();
-
-      //console.log(price);
       if (getWaterAuthority != "") {
-          //var getSewerageAuthority = $("#inputSewerageAuthority").val();
           var getTaxAuthority = $("#inputTaxAuthority").val();
-          //console.log(amount);
-          //$("#inputSewerageAuthority").val(getSewerageAuthority);
           $("#select2-inputTaxAuthority-container").val(getTaxAuthority);
-
       }
   });
 

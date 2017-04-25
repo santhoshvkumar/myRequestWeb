@@ -43,7 +43,6 @@ function getAddTenant(count) {
     });
 
     $(".closeCard").off('click').on('click', function(event) {
-        //console.log("close card");
         var getCountValue = this.id.replace("closeCard-", "");
         UIkit.modal.confirm('Are you sure to remove ?', function() {
             $("#getIsAppInstallCheck-" + getCountValue).remove();
@@ -80,14 +79,10 @@ function getAddTenant(count) {
     });
 
     $(".inputMobile").focus(function() {
-        //console.log("focus calledd");
         var getCountValue = this.id.replace("inputMobile-", "");
         var getMobileNumber = $("#inputMobile-" + getCountValue).val();
-        //console.log(getCountValue+" || "+getMobileNumber);;
         // if (getMobileNumber == "") {} else {
         //     $.get(domainAddress + "SearchUserIsAppInstalled/" + getMobileNumber, function(result) {
-        //         //console.log(result);
-
         //         if (result.record_count == 0) {
         //             fetchIsAppInstalled = 0;
         //              $("#getIsAppInstallCheck-" + getCountValue).css("border", "1px solid red");
@@ -110,10 +105,8 @@ function getAddTenant(count) {
 
 
     $(".inputEmail").focus(function() {
-        // console.log("email blur called");
         var getCountValue = this.id.replace("inputEmail-", "");
         var getEmail = $("#inputEmail-" + getCountValue).val();
-        //console.log(getEmail);
         if (getEmail == "") {
             $("#getErrorMsg-" + getCountValue).css('color', 'red');
             $("#getErrorMsg-" + getCountValue).show();
@@ -136,7 +129,6 @@ function getAddTenant(count) {
     $(".inputEmail").keyup(function() {
         var getCountValue = this.id.replace("inputEmail-", "");
         var getEmail = $("#inputEmail-" + getCountValue).val();
-        //console.log(getEmail);
         if (getEmail == "") {
             $("#getErrorMsg-" + getCountValue).css('color', 'red');
             $("#getErrorMsg-" + getCountValue).show();
@@ -162,10 +154,8 @@ function getAddTenant(count) {
  
 
     $(".inputName").keyup(function() {
-        // console.log("email blur called");
         var getCountValue = this.id.replace("inputName-", "");
         var inputName = $("#inputName-" + getCountValue).val();
-        //console.log(inputName);
         if (inputName == "") {
             $("#getErrorMsg-" + getCountValue).css('color', 'red');
             $("#getErrorMsg-" + getCountValue).show();
@@ -187,17 +177,14 @@ function getAddTenant(count) {
     
 
     $(".inputEndDate").on('change', function() {
-        //console.log("inputEndDate blur called");
         var getCountValue = this.id.replace("inputEndDate-", "");
         var inputStartDate = $("#inputStartDate-" + getCountValue).val();
         var inputEndDate = $("#inputEndDate-" + getCountValue).val();
         var getBtnCount = $(".btnSubmitTenantInsurance").attr("value");
-        //console.log("Click Process Count : " + getBtnCount);
         var hiddenIsElectricity = $("#hiddenIsElectricity-" + getBtnCount).val();
         var hiddenIsGas = $("#hiddenIsGas-" + getBtnCount).val();
         var hiddenIsWater = $("#hiddenIsWater-" + getBtnCount).val();
         var hiddenIsCouncil = $("#hiddenIsCouncil-" + getBtnCount).val();
-        //console.log(inputStartDate);
         if (inputStartDate == "") {
             $("#getErrorMsg-" + getCountValue).css('color', 'red');
             $("#getErrorMsg-" + getCountValue).show();
@@ -266,9 +253,6 @@ function getAddTenant(count) {
                                 isHide++;
                             }
                         } 
-                        
-
-                        console.log(isHide);
 
                         if(isHide % 2){
                             $(".isShowServices").hide();
@@ -283,10 +267,8 @@ function getAddTenant(count) {
 
 
     $(".inputMobile").keyup(function() {
-        // console.log("email blur called");
         var getCountValue = this.id.replace("inputMobile-", "");
         var getMobileNumber = $("#inputMobile-" + getCountValue).val();
-        //console.log(getMobileNumber);;
         if (getMobileNumber == "") {
             $("#promno-prefix-"+getCountValue).hide();
             $("#inputMobile-" + getCountValue).removeAttr('style');
@@ -333,12 +315,10 @@ function getAddTenant(count) {
 
     function existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID){
         $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID, function(result) {
-               //console.log(result);
                 if (result.record_count == 0) { 
                     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-                       //console.log(result);
                         if (result.record_count == 0) {
-
+                            // no tenants found
                         } else {
                             for (var getUserDetails in result.records) {
                                 $("#promno-prefix-"+getCountValue).show();
@@ -388,8 +368,6 @@ function getAddTenant(count) {
         $("#getIsAppInstallCheck-" + getCountValue).css("border", "1px solid  #FFFFFF");
         if (hiddenPropertyID == 0) {
             UIkit.modal.confirm('Property is not added for this tenant. Are you sure ?', function() {
-                //console.log("add this tenant");
-
             });
         } else {
             if (inputMobile == "+44" || inputMobile == "+91" || inputMobile == "+1") {
@@ -439,7 +417,6 @@ function getAddTenant(count) {
                 var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-"+getCountValue).val();
 
                 var dataAddPropertyForm = "{'Property_RegisterID':'" + hiddenPropertyID + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+inputPropertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
-                //console.log(dataAddPropertyForm);
                 var dataForm = '{"Title":"' + inputTitle + '","Name":"' + inputName + '","LastName":"' + inputLastName + '","MobileNumber":"' + inputMobile + '","Email":"' + inputEmail + '","UserImage":"","IsAppInstalled":"' + appInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + isLeadTenant + '","StartDate":"'+finalStartDate+'","EndDate":"'+finalEndDate+'","AddProperty":"' + dataAddPropertyForm + '"}';
                 console.log(dataForm);
                 var sendURL = domainAddress + 'CreateUserTenant';
@@ -494,7 +471,6 @@ function getAddTenant(count) {
         $(".utilityIcon").hide();
         $(".utilityIconLabel").hide();
         var getDate = new Date();
-        //console.log(moment(getDate).format('YYYY-MM-DD HH:mm:ss'));
         var currentdate = moment(getDate).format('YYYY-MM-DD HH:mm:ss');
         var adminUserID = localStorage.getItem("MyRequest_AdminID");
          
@@ -530,7 +506,6 @@ function getReloadUserTenants(editPropertyID){
     $(".getTenantList").html('');
     
     $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
-        //console.log(resultGetProperty);
         count = 0;
         for (var property in resultGetProperty.records) {
 
@@ -668,7 +643,6 @@ function getReloadUserTenants(editPropertyID){
 
 
     $.get(domainAddress + "GetUserUtilityListByProperty/" + editPropertyID, {}, function(result) {
-          //console.log(result);
           $(".getPropertyUtility").show();
           if (result.record_count == 0) {
               $(".propertyUtility").html('');
@@ -748,9 +722,7 @@ function getAddRemove(count) {
 
 
     $(".btnAdd").on('click', function() {
-        //console.log("click add tenant : " + count);
         count++;
-        //console.log(count);
         $(".newAdd").remove();
         getAddTenant(count);
         getAddRemove(count);

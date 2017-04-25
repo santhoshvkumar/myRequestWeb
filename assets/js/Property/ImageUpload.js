@@ -1,8 +1,6 @@
 function ImageUpload() {
     $("#energyPerformanceCertificate").off('click').on('change', function() {
         $("#getLoadingModalContent").addClass('md-show');
-        /*            console.log("image 1 upload click");
-         */
         var progressbox = $('#progressbox1');
         var progressbar = $('#progressbar1');
         var statustxt = $('#statustxt1');
@@ -12,15 +10,10 @@ function ImageUpload() {
         $("#FileURLUploadImage1").ajaxForm({
             target: '#preview1',
             beforeSubmit: function() {
-                /*                    console.log('v');
-                 */
+               
             },
             uploadProgress: function(event, position, total, percentComplete) {
-                /*                    console.log("on  progress");
-                 */
                 progressbar.width(percentComplete + '%') //update progressbar percent complete
-                    /*                    console.log(percentComplete);
-                     */
                 statustxt.html(percentComplete + '%'); //update status text
                 $('#progressbar1').css("width", percentComplete + "%");
                 $('#progressbox1').css("margin", "0px");
@@ -28,8 +21,6 @@ function ImageUpload() {
                 $('#progressbar1').show();
 
                 if (percentComplete > 50) {
-                    /*                         console.log("if : "+percentComplete);
-                     */
                     statustxt.css('color', '#fff');
                     statustxt.html(percentComplete + '%'); //change status text to white after 50%
                     $('#progressbar1').css("width", percentComplete + "%");
@@ -62,13 +53,9 @@ function ImageUpload() {
                     $('#progressbox1').css("margin", "0px");
                     $('#progressbox1').show();
                     $('#progressbar1').show();
-                    /*                         console.log('z ' + result);
-                     */
                     var getUrl = "url(" + result + ")";
 
                     imageUrl1 = result;
-                    /*                    console.log(imageUrl1);
-                     */
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
 
@@ -82,9 +69,7 @@ function ImageUpload() {
 
             },
             error: function() {
-                /*                    console.log('d');   
-                 */
-
+            
             }
         }).submit();
     });
@@ -94,8 +79,6 @@ function ImageUpload() {
 
     $("#electricityCertificate").off('click').on('change', function() {
         $("#getLoadingModalContent").addClass('md-show');
-        /*            console.log("image 2 upload click");
-         */
         var progressbox = $('#progressbox2');
         var progressbar = $('#progressbar2');
         var statustxt = $('#statustxt2');
@@ -105,15 +88,10 @@ function ImageUpload() {
         $("#FileURLUploadImage2").ajaxForm({
             target: '#preview2',
             beforeSubmit: function() {
-                // console.log('v');
-
+               
             },
             uploadProgress: function(event, position, total, percentComplete) {
-                /*                    console.log("on  progress");
-                 */
                 progressbar.width(percentComplete + '%') //update progressbar percent complete
-                    /*                    console.log(percentComplete);
-                     */
                 statustxt.html(percentComplete + '%'); //update status text
                 $('#progressbar2').css("width", percentComplete + "%");
                 $('#progressbox2').css("margin", "0px");
@@ -121,8 +99,6 @@ function ImageUpload() {
                 $('#progressbar2').show();
 
                 if (percentComplete > 50) {
-                    /*                         console.log("if : "+percentComplete);
-                     */
                     statustxt.css('color', '#fff');
                     statustxt.html(percentComplete + '%'); //change status text to white after 50%
                     $('#progressbar2').css("width", percentComplete + "%");
@@ -156,8 +132,6 @@ function ImageUpload() {
                     $('#progressbox2').show();
                     $('#progressbar2').show();
                     var getUrl = "url(" + result + ")";
-                    /*                    console.log('z ' + getUrl);
-                     */
                     imageUrl2 = result;
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
@@ -172,9 +146,7 @@ function ImageUpload() {
 
             },
             error: function() {
-                /*                    console.log('d');
-                 */
-
+              
             }
         }).submit();
     });
@@ -184,8 +156,6 @@ function ImageUpload() {
 
     $("#gasCertificate").off('click').on('change', function() {
         $("#getLoadingModalContent").addClass('md-show');
-        /*            console.log("image 3 upload click");
-         */
         var progressbox = $('#progressbox3');
         var progressbar = $('#progressbar3');
         var statustxt = $('#statustxt3');
@@ -195,15 +165,10 @@ function ImageUpload() {
         $("#FileURLUploadImage3").ajaxForm({
             target: '#preview3',
             beforeSubmit: function() {
-                /*                    console.log('v');
-                 */
+               
             },
             uploadProgress: function(event, position, total, percentComplete) {
-                /*                    console.log("on  progress");
-                 */
                 progressbar.width(percentComplete + '%') //update progressbar percent complete
-                    /*                    console.log(percentComplete);
-                     */
                 statustxt.html(percentComplete + '%'); //update status text
                 $('#progressbar3').css("width", percentComplete + "%");
                 $('#progressbox3').css("margin", "0px");
@@ -211,8 +176,6 @@ function ImageUpload() {
                 $('#progressbar3').show();
 
                 if (percentComplete > 50) {
-                    /*                         console.log("if : "+percentComplete);
-                     */
                     statustxt.css('color', '#fff');
                     statustxt.html(percentComplete + '%'); //change status text to white after 50%
                     $('#progressbar3').css("width", percentComplete + "%");
@@ -246,8 +209,6 @@ function ImageUpload() {
                     $('#progressbox3').show();
                     $('#progressbar3').show();
                     var getUrl = "url(" + result + ")";
-                    /*                    console.log('z ' + getUrl);
-                     */
                     imageUrl3 = result;
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
@@ -262,9 +223,7 @@ function ImageUpload() {
 
             },
             error: function() {
-                /*                    console.log('d');
-                 */
-
+                
             }
         }).submit();
     });
@@ -272,8 +231,6 @@ function ImageUpload() {
 
     $("#legCertificate").off('click').on('change', function() {
         $("#getLoadingModalContent").addClass('md-show');
-        /*            console.log("image 5 upload click");
-         */
         var progressbox = $('#progressbox5');
         var progressbar = $('#progressbar5');
         var statustxt = $('#statustxt5');
@@ -283,15 +240,10 @@ function ImageUpload() {
         $("#FileURLUploadImage5").ajaxForm({
             target: '#preview5',
             beforeSubmit: function() {
-                /*                    console.log('v');
-                 */
+               
             },
             uploadProgress: function(event, position, total, percentComplete) {
-                /*                    console.log("on  progress");
-                 */
                 progressbar.width(percentComplete + '%') //update progressbar percent complete
-                    /*                    console.log(percentComplete);
-                     */
                 statustxt.html(percentComplete + '%'); //update status text
                 $('#progressbar5').css("width", percentComplete + "%");
                 $('#progressbox5').css("margin", "0px");
@@ -299,8 +251,6 @@ function ImageUpload() {
                 $('#progressbar5').show();
 
                 if (percentComplete > 50) {
-                    /*                         console.log("if : "+percentComplete);
-                     */
                     statustxt.css('color', '#fff');
                     statustxt.html(percentComplete + '%'); //change status text to white after 50%
                     $('#progressbar5').css("width", percentComplete + "%");
@@ -334,8 +284,6 @@ function ImageUpload() {
                     $('#progressbox5').show();
                     $('#progressbar5').show();
                     var getUrl = "url(" + result + ")";
-                    /*                    console.log('z ' + getUrl);
-                     */
                     imageUrl5 = result;
                     $(".errorInfo").hide();
                     $(".errorInfo").text("");
@@ -350,9 +298,7 @@ function ImageUpload() {
 
             },
             error: function() {
-                /*                    console.log('d');
-                 */
-
+                
             }
         }).submit();
     });
@@ -362,8 +308,6 @@ function ImageUpload() {
 
     $("#hmoUploadPic").off('click').on('change', function() {
         $("#getLoadingModalContent").addClass('md-show');
-        /*            console.log("image 4 upload click");
-         */
         var progressbox = $('#progressbox4');
         var progressbar = $('#progressbar4');
         var statustxt = $('#statustxt4');
@@ -373,15 +317,10 @@ function ImageUpload() {
         $("#FileURLUploadImage4").ajaxForm({
             target: '#preview4',
             beforeSubmit: function() {
-                /*                    console.log('v');
-                 */
+                
             },
             uploadProgress: function(event, position, total, percentComplete) {
-                /*                    console.log("on  progress");
-                 */
                 progressbar.width(percentComplete + '%') //update progressbar percent complete
-                    /*                    console.log(percentComplete);
-                     */
                 statustxt.html(percentComplete + '%'); //update status text
                 $('#progressbar4').css("width", percentComplete + "%");
                 $('#progressbox4').css("margin", "-25px 0px 20px -10px");
@@ -389,8 +328,6 @@ function ImageUpload() {
                 $('#progressbar4').show();
 
                 if (percentComplete > 50) {
-                    /*                         console.log("if : "+percentComplete);
-                     */
                     statustxt.css('color', '#fff');
                     statustxt.html(percentComplete + '%'); //change status text to white after 50%
                     $('#progressbar4').css("width", percentComplete + "%");
@@ -424,8 +361,7 @@ function ImageUpload() {
                     $('#progressbox4').show();
                     $('#progressbar4').show();
                     var getUrl = "url(" + result + ")";
-                    /*                    console.log('z ' + getUrl);
-                     */
+                    
                     imageUrl4 = result;
                     $(".errorInfo").hide();
 
@@ -445,9 +381,7 @@ function ImageUpload() {
 
             },
             error: function() {
-                /*                    console.log('d');
-                 */
-
+            
             }
         }).submit();
 

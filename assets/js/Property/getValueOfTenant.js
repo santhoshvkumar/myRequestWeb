@@ -43,9 +43,7 @@ var getValueOfTenant = function() {
         $("#hiddenAvailTenantInsurance-" + getBtnCount).val(0);
     }
 
-    //console.log("Click Process Count : " + getBtnCount);
     var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
-
     var inputUserRegID = $("#hiddenUserRegID-" + getBtnCount).val();
     var inputTitle = $("#inputTitle-" + getBtnCount).val();
     var inputName = $("#inputName-" + getBtnCount).val();
@@ -201,8 +199,5 @@ function addOrUpdateTenantTemp( getAddTenantArr, getBtnCount, inputUserRegID, in
         };
         getAddTenantArr.push(newItem);
     }
-
-    //console.log(getAddTenantArr);
     localStorage.setItem('MyRequestTenantsData', JSON.stringify(getAddTenantArr));
-
 }

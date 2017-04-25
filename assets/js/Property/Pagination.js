@@ -18,7 +18,6 @@
       getPropertyList(getValue);
   });
   $("#previousPage").click(function() {
-      //console.log("inital count : "+userPropertyCountLimit);
       if (userPropertyCountLimit == 0) {
           userPropertyCountLimit = 0;
           $("#previousPage").attr("disabled", "disabled");
@@ -26,7 +25,6 @@
           userPropertyCountLimit -= 9;
           $("#previousPage").removeAttr("disabled");
       }
-      //console.log("prev count : "+userPropertyCountLimit);
       if (userPropertyCountLimit == 0) {
           $("#previousPage").attr("disabled", "disabled");
       }
@@ -42,12 +40,9 @@
 
 
   $("#nextPage").click(function() {
-      //console.log("next inital count : "+userPropertyCountLimit);
       $("#previousPage").removeAttr("disabled");
       userPropertyCountLimit += 9;
-      //console.log("next count : "+userPropertyCountLimit);
-
-
+      
       if (maxProp == lastPage) {
           $("#nextPage").attr("disabled", true);
       } else {
@@ -65,31 +60,24 @@
 
 
   $("#enterPageNO").on("change", function(e) {
-      console.log("THis is called" + $("#enterPageNO").val());
       if ($("#enterPageNO").val() < lastPage) {
           maxProp++;
           $("#enterPageNO").val(maxProp);
       }
 
-
-      console.log("next inital count : " + userPropertyCountLimit + " page # : " + maxProp);
       userPropertyCountLimit = 9 * ($("#enterPageNO").val() - 1);
-      //console.log("next count : " + userPropertyCountLimit);
       $("#getLoadingModalContent").addClass('md-show');
       getPropertyList(getValue);
   });
 
 
   $("#enterPageNO").keyup(function() {
-      console.log("THis is called " + $("#enterPageNO").val());
       if ($("#enterPageNO").val() < lastPage) {
           maxProp++;
           $("#enterPageNO").val(maxProp);
       }
 
-      console.log("next inital count : " + userPropertyCountLimit + " page # : " + maxProp);
       userPropertyCountLimit = 9 * ($("#enterPageNO").val() - 1);
-      console.log("change count : " + userPropertyCountLimit);
       $("#getLoadingModalContent").addClass('md-show');
       getPropertyList(getValue);
   });

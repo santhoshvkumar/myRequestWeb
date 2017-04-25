@@ -36,14 +36,12 @@
         $("#stateLabel").text('County');
         
           countryID = 'Canada';
-          console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState1").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
           $("#inputState1").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
-          console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
             $("#inputState1").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
@@ -56,14 +54,12 @@
       } else if(getcountryCode == "UK"){
         $("#stateLabel").text('County');
           countryID = '+44';
-          console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState1").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
           $("#inputState1").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
-          console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
             $("#inputState1").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
@@ -76,14 +72,12 @@
       } else if(getcountryCode == "US"){
         $("#stateLabel").text('County');
           countryID = '+1';
-          console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState1").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
           $("#inputState1").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
-          console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
             $("#inputState1").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
@@ -99,8 +93,6 @@
           url: sendURL,
           data: dataForm,
           success: function(result) {
-                  console.log(result);
-
                   if (result.record_count == 0 && result.All_Records_Count == 0) {
                       $(".listAllAdminProperty").html('');
                       $(".listAllAdminProperty").append("<tr id='rowID-0'><td style='text-align:center; vertical-align: middle;' id='propOwnerName-0'>No Records Found</td><td style='text-align:center;vertical-align: middle;' id='propAddress-0'></td> <td style='text-align:center;vertical-align: middle;' id='propOwnerPhone-0'> </td><td style='text-align:center;vertical-align: middle;' id='propOwnerEmail-0'></td>  <td></td> <td></td> </tr>");
@@ -125,21 +117,17 @@
           $("#enterPageNO").attr("disabled", false);
           $(".listAllAdminProperty").html('');
           if (result.record_count == result.All_Records_Count) {
-              console.log("equal to 9");
               $(".pageCount").show();
               $("#nextPage").attr("disabled", "disabled");
           } else if (result.record_count < 9 && result.record_count != 0) {
-              console.log("less than 9");
               $(".pageCount").show();
               $("#nextPage").attr("disabled", "disabled");
           } else if (result.record_count >= 9) {
-              console.log("great than 9");
               $("#nextPage").removeAttr("disabled");
               $(".pageCount").show();
           }
           totalRecordCount = result.All_Records_Count;
           lastPage = parseInt(result.All_Records_Count / 9) + 1;
-          console.log(lastPage);
           for (Property in result.records) {
               if (result.records[Property].PropOwnerName == "" || result.records[Property].PropOwnerName == null) {
                   result.records[Property].PropOwnerName = "";
@@ -177,18 +165,13 @@
 
           $(".deleteProperty").on('click', function(e) {
               var deletePropertyID = this.id.replace('deletePropertyID-', '');
-
               UIkit.modal.confirm('Are you sure?', function() {
                   $.post(domainAddress + 'DeletePropertyRegister/' + deletePropertyID, function(e) {
-                      console.log(e);
                       $("#rowID-" + deletePropertyID).remove();
                       getPropertyList(getValue);
                       UIkit.modal.alert('Property Deleted Successfully');
                   });
               });
-
           }); // deleteProperty
-
       }
-
   }

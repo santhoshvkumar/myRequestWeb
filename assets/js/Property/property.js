@@ -177,7 +177,6 @@ var getPropLat, getPropLong, isEdit=false;
      $(".hmoLicenseNumber").hide();
 
      $.get(domainAddress + "GetSpecialityList", function(result) {
-         //console.log(resulyt);
          $("#inputSpeciality").html('');
          $("#inputSpeciality").html("<option value='0'>Select Speciality</option>");
          if (result.record_count == 0) {
@@ -310,15 +309,9 @@ var getPropLat, getPropLong, isEdit=false;
          }
          $("#inputCity").select2();
      });
-
-     /* $("#inputCity").on('change',function(){
-        getCityCouncilList(this.value);
-      }); */
-
  } // getStateCityList() 
 
  function getLandlordStateCityList() {
-     // console.log("call city list load");
      var stateID = $("#inputState1").val();
      $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
          $("#inputCity1").html('');
@@ -382,14 +375,8 @@ var getPropLat, getPropLong, isEdit=false;
                 geocoder.geocode({
                     'address': wholeAddress
                 }, function (results, status) {
-                    debugger;
                     if (status == google.maps.GeocoderStatus.OK) {
-                        //console.log(results[0]);
-                        //console.log(results[0].geometry.location.lat());
-                        //console.log(results[0].geometry.location.lng());
-
                          var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
-                         //$(".propertyLocationGoogleMap").html("");
                           var myCenter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                           var mapCanvas = document.getElementById("propertyLocationGoogleMap");
                           var mapOptions = {center: myCenter, zoom: 10};
