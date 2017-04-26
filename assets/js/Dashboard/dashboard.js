@@ -1106,7 +1106,7 @@
             $.get(domainAddress+getUtilityStatusUrl,{},function(resultTenantUtility){
                 $(".tenantUtility").html('');
                 if(resultTenantUtility.record_count==0){
-                    $(".tenantUtility").append("<tr id='rowID-0'><td id='propName--0'>No records found</td> <td id='propAddress-0'></td> <td id='tenancyEndDate-0'></td> <td id='action-0'></td> </tr> ");
+                    $(".tenantUtility").append("<tr><td id='propName--0'>No records found</td> <td id='propAddress-0'></td> <td id='tenancyEndDate-0'></td> <td id='action-0'></td> </tr>");
                 }
                 else{
                     for(tenant in resultTenantUtility.records){
