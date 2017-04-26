@@ -378,24 +378,6 @@
             callLogin();
         });
 
-       /* $("#btnSubscribe").click(function() {
-            localStorage.setItem("isSubscribe", 1);
-            $("#btnSubscribe").hide();
-
-            OneSignal.push(function() {
-                debugger;
-                OneSignal.push(["registerForPushNotifications"]);
-                event.preventDefault();
-
-                function registerForPush(event) {
-                    //   debugger;
-
-                    console.log("Registerdd for Push Success");
-                }
-
-            });
-        });*/
-
         function selectedCountry(state){
            var countryCode, gmt, phoneCode;
            console.log(state);
@@ -464,7 +446,6 @@
                 var userTokenId = "";
                 validationCheckForLogin(emailID, password, userTokenId);
                 OneSignal.push(["getUserId", function(userTokenId) {
-                    debugger;
                     console.log("OneSignal User ID:", userTokenId);
                     //validationCheckForLogin(emailID, password, userTokenId);
                  }]);

@@ -414,8 +414,6 @@
                     $("#hiddenUtilityID").val(editHiddenUtilityID);
                     $("#hiddenUserRegID").val(editHiddenUserID);
                     $.get(domainAddress + "GetUserUtilityID/" + editUtilityPropertyID, {}, function(result) {
-                        console.log(result);
-                        //debugger;
                         $(".getUserUtilityListContact").show('slow');
                         for (var getUtility in result.records) {
                             $("#getName").val(result.records[getUtility].Name);

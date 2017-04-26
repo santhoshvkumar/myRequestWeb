@@ -188,7 +188,6 @@
 
  $(".menuDashBoard").click(function(e) {
    var isFilled = localStorage.getItem("MyRequest_profileFill");
-     //debugger;
      if (isFilled == "true")
        UIkit.notify("Please Make Sure that all values filled");
      else
@@ -430,10 +429,8 @@ $("#inputBillingTitle").select2();
 
 $("#inputCounty").select2()
 .on("change", function(e) {
-             //console.log("change val=" + $("#inputCounty").val());
              var stateID = $("#inputCounty").val();
              $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                 //debugger;
                  $("#inputBillingCity").html('');
                  $("#inputBillingCity").html("<option value='0'>Choose City</option>");
                  var getResult = JSON.parse(result);
@@ -447,10 +444,8 @@ $("#inputCounty").select2()
 
 $("#inputState").select2()
 .on("change", function(e) {
-             //console.log("change val=" + $("#inputState").val());
              var stateID = $("#inputState").val();
              $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                 //debugger;
                  $("#inputCity").html('');
                  $("#inputCity").html("<option value='0'>Choose City</option>");
                  var getResult = JSON.parse(result);

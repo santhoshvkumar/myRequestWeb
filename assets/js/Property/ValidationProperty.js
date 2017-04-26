@@ -1031,13 +1031,8 @@ $('input[name="economy7"]:checkbox').on('ifChecked', function(event) {
   });
 
   $('input[name="hmoSelect"]:radio').on('ifChecked', function(event) {
-     // debugger;
       $(".propSingle").css("border-color", "red");
       $(".propMultiple").css("border-color", "red");
-      // if("propMultiple"){
-      //   $(".hmoLicenseNumber").hide();
-      // }
-
       $(".errorInfo").hide();
       $(".errorInfo").text("");
       $(".btnSubmitProperty").attr("disabled", false);

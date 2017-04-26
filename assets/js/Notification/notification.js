@@ -877,7 +877,7 @@ function loadUtilityList(result) {
                     $("#waterAuthority").text(result.records[getUtility].WaterAuthority);
                     $("#getBroadBandProvider").text(result.records[getUtility].BroadbandProvider);
                     $("#getMediaProvider").text(result.records[getUtility].MediaProvider);
-                    //debugger;
+                    
                     if (result.records[getUtility].PropGasStatus == "" || result.records[getUtility].PropGasStatus == null) {
                         $("#select2-inputGasInfo-container").html("Action Taken");
                     } else {

@@ -43,6 +43,7 @@ function getAddTenant(count) {
     });
 
     $(".closeCard").off('click').on('click', function(event) {
+        console.log('call close');
         var getCountValue = this.id.replace("closeCard-", "");
         UIkit.modal.confirm('Are you sure to remove ?', function() {
             $("#getIsAppInstallCheck-" + getCountValue).remove();
@@ -724,8 +725,10 @@ function getAddRemove(count) {
     $(".btnAdd").on('click', function() {
         count++;
         $(".newAdd").remove();
-        getAddTenant(count);
-        getAddRemove(count);
+        if(count>2){
+            getAddTenant(count);
+            getAddRemove(count);
+        }
         $("#inputHMONoOfTenent").val(count);
         $("#singleHmo").iCheck('uncheck');
         $("#multipleHmo").iCheck('check');
@@ -738,8 +741,6 @@ function getAddRemove(count) {
             $("#btnAddUserTenant-" + count).show();
         }
         $("#closeCard-" + count).show();
-        $("#getIsAppInstallCheck-" + count).css("height", "625px");
-
         $(".help-block").hide();
         $(".help-block").text("");
         $(".btnSubmitProperty").attr("disabled", false);

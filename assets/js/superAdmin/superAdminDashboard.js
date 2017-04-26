@@ -713,7 +713,6 @@ $("#inputEmergencyElectricityNumber").keyup(function() {
 
 
 $(".btnSubmitAdmin").click(function() {
-  debugger;
   var inputAvail = 0;
   var hiddenAdminID = $("#hiddenAdminID").val();
   var inputTitle = $("#select2-inputTitle-container").html();
@@ -898,7 +897,6 @@ $(".btnSubmitAdmin").click(function() {
     $("#getLoadingModalContent").removeClass('md-show');
     return false;
   } else {
-    debugger;
     var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + inputAvail + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
     console.log(dataForm);
     if (hiddenAdminID == 0) {
@@ -1082,8 +1080,6 @@ $(".btnSubmitAdmin").click(function() {
           } else {
             for (var adminInfo in result.records) {
               var dueColor;
-
-                  //debugger;
                   if (result.records[adminInfo].DateDiff < -5) {
                     dueColor = "green";
                   } else if (result.records[adminInfo].DateDiff < 0) {

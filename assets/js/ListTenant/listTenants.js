@@ -495,7 +495,6 @@ $("#userImageUrl").off('click').on('change', function() {
                 $('#progressbox1').show();
                 $('#progressbar1').show();
                 console.log('z ' + result);
-                // debugger;
                 imageUrl1 = result;
                 console.log(imageUrl1);
                 $(".help-block").hide();

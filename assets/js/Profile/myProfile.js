@@ -149,7 +149,6 @@
 
   $(".menuDashBoard").click(function(e) {
       var isFilled = localStorage.getItem("MyRequest_profileFill");
-      //debugger;
       if (isFilled == "true")
           UIkit.modal.alert("Please enter all the fields");
       else
@@ -268,7 +267,6 @@
       console.log("ready call");
 
       var isFilled = localStorage.getItem("MyRequest_profileFill");
-      //debugger;
       if (isFilled == "true")
           UIkit.modal.alert("Please enter all the fields");
       adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -360,7 +358,6 @@
               console.log("change val=" + $("#inputState").val());
               var stateID = $("#inputState").val();
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                  //debugger;
                   $("#inputCity").html('');
                   $("#inputCity").html("<option value='0'>Choose City</option>");
                   var getResult = JSON.parse(result);
@@ -694,7 +691,6 @@
           if (result.record_count == 0) {
 
           } else {
-              //debugger;
               if (result.records[0].AdminFirstName != "" && result.records[0].AdminLastName != "" && result.records[0].BusinessName != "" && result.records[0].Locality != "" && result.records[0].City != "" && result.records[0].State != "" && result.records[0].PhoneNumber != "" && result.records[0].EmergencyNumber != "" && result.records[0].EmergencyElectricityNumber != "" && result.records[0].UrlForRent != "" && result.records[0].BusinessEmail != "") {
                   var isFilled = localStorage.setItem("MyRequest_profileFill", "false");
               } else {

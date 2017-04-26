@@ -54,8 +54,6 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               alert( "Please Check the UserName or Password" );
               return false;
             } else {
-
-              debugger;
               localStorage.setItem( "MyRequest_AdminID", adminUserID );
               localStorage.setItem( "MyRequest_UserName", userName );
               localStorage.setItem( "MyRequest_AdminType", adminType );
@@ -70,8 +68,6 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
               if ( adminType !== "SuperAdmin" ) {
                  $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {
-                    console.log( result );
-                    //debugger;
                     if ( result.records[ 0 ].AdminFirstName === "" || result.records[ 0 ].Logo === "" || result.records[ 0 ].AdminLastName === "" || result.records[ 0 ].BusinessName === "" ||
                           result.records[ 0 ].Locality === "" || result.records[ 0 ].City === "" || result.records[ 0 ].State === "" || result.records[ 0 ].PhoneNumber === "" ||
                           result.records[ 0 ].EmergencyNumber === "" || result.records[ 0 ].EmergencyElectricityNumber === "" || result.records[ 0 ].UrlForRent === "" || result.records[ 0 ].BusinessEmail === "" ) {
@@ -85,7 +81,6 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
 
 
                } else {
-                //debugger;
                   localStorage.setItem( "MyRequest_profileFill", "" );
                   window.location.href = "Dashboard.html";
                 }  // Else for Admin Type

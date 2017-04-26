@@ -88,11 +88,8 @@
 
       $("#inputState").select2()
       .on("change", function(e) {
-              /*                console.log("change val=" + $("#inputState").val());
-              */
               var stateID = $("#inputState").val();
               $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                  //debugger;
                   $("#inputCity").html('');
                   $("#inputCity").html("<option value='0'>Choose City</option>");
                   var getResult = JSON.parse(result);
@@ -490,18 +487,14 @@
 
 
   function getAllSubAdminList(adminUserID) {
-      /*        console.log("getAllSubAdminList called");
-      */
       adminUserID = localStorage.getItem("MyRequest_AdminID");
       $.get(domainAddress + "GetAllSubAdminValues/" + adminUserID, {}, function(result) {
-          //console.log(result);
           $(".allSubAdminList").html('');
           if (result.record_count == 0) {
             $(".allSubAdminList").append("<tr> <td id='autoGenerate-0'>No records Found</td> <td id='adminName-0'> </td> <td id='businessName-0'> </td> <td id='emailID-0'> </td> <td id='isApproved-0'> </td> <td class='editAdmin' id='editAdmin-0'> </td> <td class='deleteAdmin' id='deleteAdmin-0'> </td> </tr>");
           } else {
             for (var subAdminInfo in result.records) {
               var dueColor;
-                  //debugger;
                   if (result.records[subAdminInfo].DateDiff < -5) {
                     dueColor = "green";
                   } else if (result.records[subAdminInfo].DateDiff < 0) {

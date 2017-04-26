@@ -123,7 +123,6 @@
 
  $(".menuDashBoard").click(function(e) {
      var isFilled = localStorage.getItem("MyRequest_profileFill");
-     //debugger;
      if (isFilled == "true")
          UIkit.notify("Please Make Sure that all values filled");
      else
@@ -239,10 +238,7 @@
 
 
  $(document).ready(function() {
-     /*        console.log("ready call");
-      */
      var isFilled = localStorage.getItem("MyRequest_profileFill");
-     //debugger;
      if (isFilled == "true")
          UIkit.notify("Please Make Sure that all values filled");
      adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -313,11 +309,8 @@
 
      $("#inputState").select2()
          .on("change", function(e) {
-             /*                console.log("change val=" + $("#inputState").val());
-              */
              var stateID = $("#inputState").val();
              $.get("CityState/getCity.php?stateID=" + stateID, function(result) {
-                 //debugger;
                  $("#inputCity").html('');
                  $("#inputCity").html("<option value='0'>Choose City</option>");
                  var getResult = JSON.parse(result);
@@ -536,12 +529,9 @@
 
  function getSubAdminProfile(adminUserID, IsUpdate) {
      $.get(domainAddress + "getSubAdminDetails/" + adminUserID, function(result) {
-         /*        console.log(result);
-          */
          if (result.record_count == 0) {
 
          } else {
-             //debugger;
              if (result.records[0].AdminFirstName != "" && result.records[0].AdminLastName != "" && result.records[0].BusinessName != "" && result.records[0].Locality != "" && result.records[0].City != "" && result.records[0].State != "" && result.records[0].PhoneNumber != "" && result.records[0].EmergencyNumber != "" && result.records[0].EmergencyElectricityNumber != "" && result.records[0].UrlForRent != "" && result.records[0].BusinessEmail != "") {
                  var isFilled = localStorage.setItem("MyRequest_profileFill", "false");
              } else {
@@ -588,18 +578,7 @@
          }
      });
  }
-
- /*        
- $("#getAvail").click(function() {
-     console.log("click");
-
-      var getAppYes = $('.avail > div').hasClass('checked');
-            if(getAppYes==true){
-             isUtility=1;
-     }
-
-
- }); */
+ 
 
  $(".logOut").click(function() {
      localStorage.setItem("MyRequest_AdminID", "");
@@ -683,17 +662,13 @@
          var city = $("#select2-inputCity-container").html();
          var dataForm = '{"Admin_ID":"' + adminID + '","FirstName":"' + firstName + '","LastName":"' + lastName + '","Locality":"' + getLocality + '","PhoneNumber":"' + phoneNumber + '","EmailID":"' + emailID + '","Password":"' + password + '","Logo":"' + filePath + '"}';
          var sendURL = domainAddress + 'updateSubAdminDetails/' + adminUserID;
-         /*        console.log(dataForm);      
-          */
-         /*        console.log(sendURL); 
-          */
+         
          $.ajax({
              type: "POST",
              url: sendURL,
              data: dataForm,
              success: function(dataCheck) {
-                 /*                    console.log(dataCheck);
-                  */
+                 
                  if (dataCheck.Success == 1) {
                      localStorage.setItem("MyRequest_Logo", imageUrl1);
                      getSubAdminProfile(adminUserID, true);

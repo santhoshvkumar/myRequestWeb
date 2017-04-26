@@ -194,8 +194,6 @@ var getPropLat, getPropLong, isEdit=false;
      $("#enterPageNO").val(maxProp);
      getPropertyList(getValue);
      $(".getTenantList").html('');
-     getAddTenant(count);
-     getAddRemove(count);
      $("#getIsAppInstallCheck-" + count).css("height", "610px");
 
      $("#inputState").select2()
