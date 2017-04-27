@@ -866,42 +866,51 @@ function getUserTenantUtilityList(hiddenTenantID){
             var cWater = "";
             var cCouncil = "";
             for (var propertyUtility in result.records) {
+                console.log(dataAddPropertyFormArr.length);
                 if (result.records[propertyUtility].IsElectricity == 1) {
-                    dataAddPropertyFormArr[0].IsElectricity = "1";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsElectricity = "1";
                     isElectricity = '<i class="fa fa-check"></i>';
                     cElectricity = "Green";
                 } else {
-                    dataAddPropertyFormArr[0].IsElectricity = "0";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsElectricity = "0";
                     isElectricity = '<i class="fa fa-times"></i>';
                     cElectricity = "Red";
                 }
 
                 if (result.records[propertyUtility].IsGas == 1) {
-                    dataAddPropertyFormArr[0].IsGas = "1";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsGas = "1";
                     isGas = '<i class="fa fa-check"></i>';
                     cGas = "Green";
                 } else {
-                    dataAddPropertyFormArr[0].IsGas = "0";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsGas = "0";
                     isGas = '<i class="fa fa-times"></i>';
                     cGas = "Red";
                 }
 
                 if (result.records[propertyUtility].IsWater == 1) {
-                    dataAddPropertyFormArr[0].IsWater = "1";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsWater = "1";
                     isWater = '<i class="fa fa-check"></i>';
                     cWater = "Green";
                 } else {
-                    dataAddPropertyFormArr[0].IsWater = "0";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsWater = "0";
                     isWater = '<i class="fa fa-times"></i>';
                     cWater = "Red";
                 }
 
                 if (result.records[propertyUtility].IsCouncil == 1) {
-                    dataAddPropertyFormArr[0].IsCouncil = "1";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsCouncil = "1";
                     isCouncil = '<i class="fa fa-check"></i>';
                     cCouncil = "Green";
                 } else {
-                    dataAddPropertyFormArr[0].IsCouncil = "0";
+                    if(dataAddPropertyFormArr.length != 0)
+                        dataAddPropertyFormArr[0].IsCouncil = "0";
                     isCouncil = '<i class="fa fa-times"></i>';
                     cCouncil = "Red";
                 }
