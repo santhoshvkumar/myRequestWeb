@@ -842,8 +842,8 @@ function getTenantPropertyList(hiddenTenantID) {
                 });
 
             });
-            getUserTenantUtilityList(hiddenTenantID);
         }
+        getUserTenantUtilityList(hiddenTenantID);
     });
 }
 
