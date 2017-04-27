@@ -87,11 +87,12 @@ var dataAddPropertyForm = "";
 var dataAddPropertyFormArr = new Array();
 var agencyCode = localStorage.getItem('MyRequest_LettingAgencyCode');
 var getValue = "";
-var hiddenIsElectricity = "";
-var hiddenIsGas = "";
-var hiddenIsWater = "";
-var hiddenIsCouncil = "";
-var hiddenAvailTenantInsurance = "";
+var propertyAddress = "";
+var hiddenIsElectricity = "0";
+var hiddenIsGas = "0";
+var hiddenIsWater = "0";
+var hiddenIsCouncil = "0";
+var hiddenAvailTenantInsurance = "0";
 
 $(window).load(function() {
     $("#getLoadingModalContent").removeClass('md-show');
@@ -195,9 +196,8 @@ $(document).ready(function() {
 
 $("#inputMobileNumber").on('blur', function(e) {
     var getMobileNumber = $("#" + this.id).val();
-    console.log("this is blur event");
     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-        console.log(result);
+        //console.log(result);
         if (result.record_count == 0) {} else {
             for (var getUserDetails in result.records) {
                 $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);
@@ -255,7 +255,6 @@ $("#addTenant").click(function() {
 
 
 $(".btnSubmitTenantProperty").click(function() {
-    console.log("click");
     var hiddenTenantID = $("#hiddenTenantID").val();
     propertyId = $("#caseProperty").val();
     var title = $("#inputTitle").val();
@@ -340,8 +339,6 @@ $(".btnSubmitTenantProperty").click(function() {
 
 
 $(".btnSubmitTenantInsurance").click(function() {
-    
-    console.log("btnSubmitTenantInsurance click");
     var hiddenTenantID = $("#hiddenTenantID").val();
     propertyId = $("#caseProperty").val();
     var title = $("#inputTitle").val();
@@ -409,14 +406,12 @@ $(".btnSubmitTenantInsurance").click(function() {
 });
 
 $("#caseProperty").on('change', function() {
-    console.log(this.value);
     propertyId = this.value;
     if (this.value == 0 || this.value == null) {
         $(".errorInfo").show();
         $(".errorInfo").text("* Select the Property");
         $("#select2-caseProperty-container").css("border", "1px solid red");
         $(".btnSubmitTenant").attr("disabled", true);
-        $(".btnSubmitTenantProperty").attr("disabled", true);
     } else {
         var element = $(this).find('option:selected');
         var getAddress = element.attr("ref");
@@ -426,10 +421,18 @@ $("#caseProperty").on('change', function() {
         $(".errorInfo").text("");
         $("#select2-caseProperty-container").css("border", "");
         $(".btnSubmitTenant").attr("disabled", false);
-        $(".btnSubmitTenantProperty").attr("disabled", false);
-        dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "'}";
-        dataAddPropertyFormArr.push(dataAddPropertyForm);
-        console.log(dataAddPropertyFormArr);
+
+        var data = {
+            'Property_RegisterID':propertyId,
+            'AdminID':adminUserID,
+            'PropertyAddress':getAddress,
+            'IsElectricity':hiddenIsElectricity,
+            'IsGas':hiddenIsGas,
+            'IsWater':hiddenIsWater,
+            'IsCouncil':hiddenIsCouncil,
+            'IsAvailTenantInsurance':hiddenAvailTenantInsurance
+        }
+        dataAddPropertyFormArr.push(data);
     }
 });
 
@@ -716,13 +719,13 @@ function loadUserTenantsList(result) {
             $.get(domainAddress + "GetUserTenant/" + editTenantID, {}, function(resultGetTenant) {
                 console.log(resultGetTenant);
                 for (var getTenant in resultGetTenant.records) {
+                    $(".getTenantsdate").show();
                     $("#inputTitle").val(resultGetTenant.records[getTenant].Title);
                     $("#select2-inputTitle-container").html(resultGetTenant.records[getTenant].Title);
                     $("#getName").val(resultGetTenant.records[getTenant].Name);
                     $("#getLastName").val(resultGetTenant.records[getTenant].LastName);
                     isFourExistNo = resultGetTenant.records[getTenant].PhoneNumber.slice(0, 3);
                     isOneExistNo = resultGetTenant.records[getTenant].PhoneNumber.slice(0, 2);
-                    console.log(isFourExistNo);
                     if (isFourExistNo == "+44" || isFourExistNo == "+91") {
                         $("#inputMobileNumber").val(resultGetTenant.records[getTenant].PhoneNumber.slice(3));
                     } else {
@@ -734,7 +737,9 @@ function loadUserTenantsList(result) {
                     } 
 
                     $("#inputEmailID").val(resultGetTenant.records[getTenant].EmailID);
-                    $("#caseProperty").val(resultGetTenant.records[getTenant].PropertyRegister);
+                    console.log(resultGetTenant.records[getTenant].Property[0].PropertyID);
+                    $("#caseProperty").val(resultGetTenant.records[getTenant].Property[0].PropertyID);
+                    $("#select2-caseProperty-container").text(resultGetTenant.records[getTenant].PropertyInfo);
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
                     $(".tenantcno-prefix").show();
                     $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
@@ -750,15 +755,23 @@ function loadUserTenantsList(result) {
                         imageUrl1 = "";
                     } else {
                         imageUrl1 = resultGetTenant.records[getTenant].UserImage;
-                        console.log(imageUrl1);
                         $("#imgContract").attr('src', domainAddress + imageUrl1);
                         $("#imgContract").css("height", "120px").css("width", "152px");
                     }
+
+                    var getStartDate = resultGetTenant.records[getTenant].TenancyStart.split("-");
+                    var finalStartDate = getStartDate[2] + "." + getStartDate[1] + "." + getStartDate[0];
+                     
+                    var getEndDate = resultGetTenant.records[getTenant].TenancyEnd.split("-");
+                    var finalEndDate = getEndDate[2] + "." + getEndDate[1] + "." + getEndDate[0];
+                    console.log(finalStartDate);
+                    console.log(finalEndDate);
+                    $("#inputStartDate").val(finalStartDate);
+                    $("#inputEndDate").val(finalEndDate);
                 }
 
                 var hiddenTenantID = $("#hiddenTenantID").val();
                 getTenantPropertyList(hiddenTenantID);
-                getUserTenantUtilityList(hiddenTenantID)
                 var isLeadTenant = resultGetTenant.records[getTenant].IsLeadTenant;
                 $("#hiddenIsLeadTenant").val(resultGetTenant.records[getTenant].IsLeadTenant);
                 if (isLeadTenant == 1) {
@@ -770,9 +783,7 @@ function loadUserTenantsList(result) {
                     $('.leadTenant > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
                     $("#getTenant").prop("checked", false);
                 }
-
-                
-
+ 
                 $(".tenantContent").show();
                 $(".showProperty").show();
                 $("#getLoadingModalContent").removeClass('md-show');
@@ -819,10 +830,17 @@ function getTenantPropertyList(hiddenTenantID) {
             for (property in resultProperty.records) {
                 $(".allTenantPropertyList").append("<tr id='getPropertyRowID-" + resultProperty.records[property].PropAddPropertyID + "'><td id='propName-" + resultProperty.records[property].PropAddPropertyID + "'>" + resultProperty.records[property].PropOwnerName + "</td> <td id='propEmail-" + resultProperty.records[property].PropAddPropertyID + "'> <a href='mailto:" + resultProperty.records[property].PropOwnerEmail + "' target='_top'>" + resultProperty.records[property].PropOwnerEmail + "</a>  </td> <td id='propMobile-" + resultProperty.records[property].PropAddPropertyID + "'> <a href='tel:" + resultProperty.records[property].PropOwnerMobile + "'>" + resultProperty.records[property].PropOwnerMobile + "</a></td>  <td id='propAddress-" + resultProperty.records[property].PropAddPropertyID + "'>" + resultProperty.records[property].PropAddress + "," + resultProperty.records[property].PropCity + "," + resultProperty.records[property].PropPostalCode + "</td> <td> <button class='md-btn md-btn-danger btnDeleteProperty' id='btnDeleteProperty-" + resultProperty.records[property].PropAddPropertyID + "' ref='" + resultProperty.records[property].PropRegisterID + "'><i class='material-icons' style='color: white;'>delete</i></button></td> </tr> ");
 
-                dataAddPropertyForm = "{'Property_RegisterID':'" + resultProperty.records[property].PropRegisterID + "','AdminID':'" + resultProperty.records[property].PropAdminID + "'}";
-                dataAddPropertyFormArr.push(dataAddPropertyForm);
-                console.log(dataAddPropertyFormArr);
-
+                var data = {
+                    'Property_RegisterID':resultProperty.records[property].PropRegisterID,
+                    'AdminID':resultProperty.records[property].PropAdminID,
+                    'PropertyAddress':resultProperty.records[property].PropAddress,
+                    'IsElectricity':hiddenIsElectricity,
+                    'IsGas':hiddenIsGas,
+                    'IsWater':hiddenIsWater,
+                    'IsCouncil':hiddenIsCouncil,
+                    'IsAvailTenantInsurance':hiddenAvailTenantInsurance
+                }
+                dataAddPropertyFormArr.push(data);
             }
 
 
@@ -830,11 +848,8 @@ function getTenantPropertyList(hiddenTenantID) {
             $(".btnDeleteProperty").on('click', function() {
                 var getAddPropertyID = this.id.replace('btnDeleteProperty-', '');
                 var getPropertyRegID = $("#" + this.id).attr("ref");
-                console.log("DeletePropertyID : " + getAddPropertyID + " || PropertyID : " + getPropertyRegID);
-
-
+                
                 UIkit.modal.confirm('Do you want to remove the property?', function() {
-                    console.log("remove this property ID : " + getPropertyRegID + " DeletePropertyID : " + getAddPropertyID);
                     $("#getLoadingModalContent").addClass('md-show');
 
                     $.post(domainAddress + 'DeleteAddProperty/' + getAddPropertyID, function(e) {
@@ -848,6 +863,7 @@ function getTenantPropertyList(hiddenTenantID) {
                 });
 
             });
+            getUserTenantUtilityList(hiddenTenantID);
         }
     });
 }
@@ -873,40 +889,46 @@ function getUserTenantUtilityList(hiddenTenantID){
             var cCouncil = "";
             for (var propertyUtility in result.records) {
                 if (result.records[propertyUtility].IsElectricity == 1) {
+                    dataAddPropertyFormArr[0].IsElectricity = "1";
                     isElectricity = '<i class="fa fa-check"></i>';
                     cElectricity = "Green";
                 } else {
+                    dataAddPropertyFormArr[0].IsElectricity = "0";
                     isElectricity = '<i class="fa fa-times"></i>';
                     cElectricity = "Red";
                 }
 
                 if (result.records[propertyUtility].IsGas == 1) {
+                    dataAddPropertyFormArr[0].IsGas = "1";
                     isGas = '<i class="fa fa-check"></i>';
                     cGas = "Green";
                 } else {
+                    dataAddPropertyFormArr[0].IsGas = "0";
                     isGas = '<i class="fa fa-times"></i>';
                     cGas = "Red";
                 }
 
                 if (result.records[propertyUtility].IsWater == 1) {
+                    dataAddPropertyFormArr[0].IsWater = "1";
                     isWater = '<i class="fa fa-check"></i>';
                     cWater = "Green";
                 } else {
+                    dataAddPropertyFormArr[0].IsWater = "0";
                     isWater = '<i class="fa fa-times"></i>';
                     cWater = "Red";
                 }
 
                 if (result.records[propertyUtility].IsCouncil == 1) {
+                    dataAddPropertyFormArr[0].IsCouncil = "1";
                     isCouncil = '<i class="fa fa-check"></i>';
                     cCouncil = "Green";
                 } else {
+                    dataAddPropertyFormArr[0].IsCouncil = "0";
                     isCouncil = '<i class="fa fa-times"></i>';
                     cCouncil = "Red";
                 }
 
                 $(".propertyUtility").append("<tr> <td>" + result.records[propertyUtility].UtilityRegType + "</td>  <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td> <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + result.records[propertyUtility].Status + "</td> </tr>");
-
-
             }
         }
 
@@ -1003,24 +1025,6 @@ $("#inputMobileNumber").keyup(function() {
     }
 });
 
-
-$("#caseProperty").on('change', function() {
-    var caseProperty = $("#caseProperty").val();
-    if (caseProperty == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Select Atleast one Property");
-        $("#select2-caseProperty-container").css("border", "1px solid red");
-        $(".btnSubmitTenant").attr("disabled", true);
-        return false;
-    } else {
-        $(".help-block").hide();
-        $(".help-block").text("");
-        $("#select2-caseProperty-container").css("border", "1px solid transparent");
-        $(".btnSubmitTenant").attr("disabled", false);
-        return false;
-    }
-});
 $("#inputStartDate").on('change', function() {
     var inputStartDate = $("#inputStartDate").val();
     if (inputStartDate == "") {
@@ -1066,18 +1070,10 @@ $(".btnSubmitTenant").click(function() {
     var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
     var startDate = $("#inputStartDate").val();
-    var getFormatStartDate = startDate.split(".");
-    var finalStartDate = getFormatStartDate[2] + "-" + getFormatStartDate[1] + "-" + getFormatStartDate[0];
-    
     var endDate = $("#inputEndDate").val();
-    var getFormatEndDate = endDate.split(".");
-    var finalEndDate = getFormatEndDate[2] + "-" + getFormatEndDate[1] + "-" + getFormatEndDate[0];
-
     var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
-    console.log("App Installed : " + isAppInstalled);
-
-
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
+    propertyId = $("#caseProperty").val();
 
     if (title == "Select Title") {
         $(".help-block").css("border-color", "red");
@@ -1088,7 +1084,7 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (name == "") {
+    else if (name == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the First Name");
@@ -1097,7 +1093,7 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (lastName == "") {
+    else if (lastName == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the Last Name");
@@ -1106,7 +1102,7 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (emailID == "") {
+    else if (emailID == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the Email ID");
@@ -1115,7 +1111,7 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (!isValidEmailAddress(emailID)) {
+    else if (!isValidEmailAddress(emailID)) {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Please Enter the Proper Email ID.");
@@ -1124,7 +1120,7 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (mobileNumber == "+44" || mobileNumber == "+91" || mobileNumber == "+1") {
+    else if (mobileNumber == "+44" || mobileNumber == "+91" || mobileNumber == "+1") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the Mobile Number");
@@ -1133,46 +1129,52 @@ $(".btnSubmitTenant").click(function() {
         return false;
     }
 
-    if (dataAddPropertyForm == "") {
-        if (propertyId == "" || propertyId == 0) {
-            $(".help-block").css("border-color", "red");
-            $(".help-block").show();
-            $(".help-block").text("* Select Atleast one Property");
-            $("#select2-caseProperty-container").css("border", "1px solid red");
-            $(".btnSubmitTenant").attr("disabled", true);
-            return false;
-        }
-        if (startDate == "") {
-            $(".help-block").css("border-color", "red");
-            $(".help-block").show();
-            $(".help-block").text("* Enter the Start Date");
-            $("#inputStartDate").css("border-color", "red");
-            $(".btnSubmitTenant").attr("disabled", true);
-            return false;
-        }
-
-        if (endDate == "") {
-            $(".help-block").css("border-color", "red");
-            $(".help-block").show();
-            $(".help-block").text("* Enter the End Date");
-            $("#inputEndDate").css("border-color", "red");
-            $(".btnSubmitTenant").attr("disabled", true);
-            return false;
-        } 
-        else {
-            var propertyAddress = $("#caseProperty :selected").attr("ref");
-            dataAddPropertyForm = "{'Property_RegisterID':'" + propertyId + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+propertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
-            console.log(dataAddPropertyForm);
-            dataAddPropertyFormArr.push(dataAddPropertyForm);
-            gotoDB();
-        }
-    } else {
-        gotoDB();
+    else if (propertyId == "" || propertyId == 0) {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Select Atleast one Property");
+        $("#select2-caseProperty-container").css("border", "1px solid red");
+        $(".btnSubmitTenant").attr("disabled", true);
+        return false;
     }
 
+    else if (startDate == "") {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Enter the Start Date");
+        $("#inputStartDate").css("border-color", "red");
+        $(".btnSubmitTenant").attr("disabled", true);
+        return false;
+    }
 
-    function gotoDB() {
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + dataAddPropertyFormArr + '"}';
+    else if (endDate == "") {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Enter the End Date");
+        $("#inputEndDate").css("border-color", "red");
+        $(".btnSubmitTenant").attr("disabled", true);
+        return false;
+    } 
+    
+    else {
+        dataAddPropertyForm = "{'Property_RegisterID':'" + dataAddPropertyFormArr[0].Property_RegisterID + "','AdminID':'" + dataAddPropertyFormArr[0].AdminID + "','PropertyAddress':'"+dataAddPropertyFormArr[0].PropertyAddress+"','IsElectricity':'"+dataAddPropertyFormArr[0].IsElectricity+"','IsGas':'"+dataAddPropertyFormArr[0].IsGas+"','IsWater':'"+dataAddPropertyFormArr[0].IsWater+"','IsCouncil':'"+dataAddPropertyFormArr[0].IsCouncil+"','IsAvailTenantInsurance':'"+dataAddPropertyFormArr[0].IsAvailTenantInsurance+"'}";
+        console.log(dataAddPropertyForm);
+        var finalDataAddProperty = new Array();
+        finalDataAddProperty.push(dataAddPropertyForm);
+        gotoDB(startDate,endDate,finalDataAddProperty);
+    }
+    
+
+
+    function gotoDB(startDate,endDate,finalDataAddProperty) {
+
+        var getFormatStartDate = startDate.split(".");
+        var finalStartDate = getFormatStartDate[2] + "-" + getFormatStartDate[1] + "-" + getFormatStartDate[0];
+        
+        
+        var getFormatEndDate = endDate.split(".");
+        var finalEndDate = getFormatEndDate[2] + "-" + getFormatEndDate[1] + "-" + getFormatEndDate[0];
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + finalDataAddProperty + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
@@ -1188,9 +1190,33 @@ $(".btnSubmitTenant").click(function() {
                         UIkit.modal.alert(dataCheck.message_text);
                         return false;
                     } else {
-                        $("#hiddenTenantID").val(dataCheck.TenantID);
-                        var modal = UIkit.modal("#modalTenantInsurance");
-                        modal.show();
+                        getTenantsList(getValue);
+                        //$("#hiddenTenantID").val(dataCheck.TenantID);
+                        $("#inputTitle").val(0);
+                        $("#select2-inputTitle-container").html("Select Title");
+                        $("#getName").val('');
+                        $("#getLastName").val('');
+                        $("#inputMobileNumber").val('');
+                        $("#inputEmailID").val('');
+                        $("#caseProperty").val(0);
+                        $("#hiddenIsLeadTenant").val(0);
+                        $('.leadTenant > span').css('box-shadow', 'rgba(0, 0, 0, 0.258824) 0px 0px 0px 0px inset').css('border-color', 'rgba(0, 0, 0, 0.258824)').css('transition', 'border 0.4s, box-shadow 0.4s').css('background-color', 'rgba(0, 0, 0, 0.258824)');
+                        $('.leadTenant > span > small').css('left', '0px').css('transition', 'background-color 0.4s, left 0.2s').css('background-color', 'rgb(250, 250, 250)');
+                        $("#getLeadTenant").prop("checked", false);
+                        $("#imgContract").attr("src", "assets/img/sign-in.jpg");
+                        $("#select2-caseProperty-container").html("Select Property");
+                        $(".showProperty").hide();
+                        isAppInstalled = 0;
+                        dataAddPropertyForm = "";
+                        dataAddPropertyFormArr = new Array();
+                        $("#hiddenTenantID").val(0);
+                        $(".btnSubmitTenant").text("Add Tenant");
+                        $("#getLoadingModalContent").removeClass('md-show');
+                        $(".md-input-wrapper").removeClass("md-input-filled");
+                        $(".tenantContent").hide();
+                        UIkit.modal.alert('Tenant Added Successfully');
+                        // var modal = UIkit.modal("#modalTenantInsurance");
+                        // modal.show();
                     }
                 }
             });
@@ -1210,8 +1236,8 @@ $(".btnSubmitTenant").click(function() {
                         return false;
                     } else {
                         getTenantsList(getValue);
-                        var modal = UIkit.modal("#modalTenantInsurance");
-                        modal.hide();
+                        // var modal = UIkit.modal("#modalTenantInsurance");
+                        // modal.hide();
                         $("#inputTitle").val(0);
                         $("#select2-inputTitle-container").html("Select Title");
                         $("#getName").val('');
