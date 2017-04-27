@@ -54,6 +54,7 @@ $(".btnStartWork").click(function() {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
+                                  Title:'Work Start',
                                   Message:pushMessageWorkStart.format(requestID,getStartTime),
                                   ForBoth:1,
                                   CaseID:getProblemID
@@ -143,6 +144,7 @@ $(".btnEndWork").click(function() {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
+                                  Title:'Work Complete',
                                   Message:pushMessageWorkEnd.format(requestID,getEndTime),
                                   ForBoth:1,
                                   CaseID:getProblemID

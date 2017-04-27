@@ -49,6 +49,7 @@ function getProblemSpeciality(specialityID){
                                                   ContractorID:contractorValue,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,
+                                                  Title:'Speciality Changed'
                                                   Message:pushMessageSpecialityUpdate.format(getSpecialityName,requestID),
                                                   ForBoth:1,
                                                   CaseID:getSaveProblemID

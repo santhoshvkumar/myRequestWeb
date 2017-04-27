@@ -586,6 +586,7 @@ function getDbReportProblem(getProblemID) {
                                   ContractorID:contractorID,
                                   TenantID:userRegisterID,
                                   AdminID:adminUserID,
+                                  Title:'Message From Letting Agent',
                                   ToContractor:pushMessageAdminNotes.format(requestID,notesVal),
                                   ToTenant:pushMessageAdminNotes.format(requestID,notesVal),
                                   ForBoth:1,

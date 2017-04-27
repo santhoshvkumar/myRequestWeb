@@ -1279,6 +1279,7 @@ $("#caseSpecialisation").on('change', function() {
                  $.post(domainAddress + "/push/messageSendByAdminForNewCase.php", {
                   ContractorID: inputcaseContractor,
                   AdminID: adminUserID,
+                  Title:'New Request registered',
                   MessageForContractor: "A new request has been registered by the Letting Agency "+businessName,
                   MessageForSubAdmin:"A new request has been registered by the Letting Agency "+businessName,
                   RequestID:dataCheck.RequestID

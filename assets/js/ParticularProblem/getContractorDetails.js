@@ -70,6 +70,7 @@ function getContractorDetails(contractorID){
                                                   ContractorID:contractorValue,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,
+                                                  Title:'Contractor Assigned',
                                                   Message:pushMessageContractorAssigned.format(getContractorName,requestID),
                                                   ForBoth:1,
                                                   CaseID:getProblemID
