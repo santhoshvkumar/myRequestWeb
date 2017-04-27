@@ -99,7 +99,6 @@ $(window).load(function() {
 });
 
 $(document).ready(function() {
-    console.log("ready call");
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     var adminUserName = localStorage.getItem("MyRequest_UserName");
     var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -148,7 +147,6 @@ $(document).ready(function() {
     $("#previousPage").attr("disabled", true);
 
     $.get(domainAddress + "GetSpecialityList", function(result) {
-        //console.log(result);
         $("#inputSpeciality").html('');
         $("#inputSpeciality").html("<option value='0'>Select Speciality</option>");
         if (result.record_count == 0) {
@@ -169,7 +167,6 @@ $(document).ready(function() {
 
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
-        //console.log(result);
         $("#caseProperty").html('');
         $("#caseProperty").append("<option value='0'>Select Property</option>");
         if(result.record_count==0){
@@ -197,7 +194,6 @@ $(document).ready(function() {
 $("#inputMobileNumber").on('blur', function(e) {
     var getMobileNumber = $("#" + this.id).val();
     $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
-        //console.log(result);
         if (result.record_count == 0) {} else {
             for (var getUserDetails in result.records) {
                 $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);
@@ -548,7 +544,6 @@ $(".logOut").click(function() {
 
 $("#leftArrow").click(function() {
     userTenantCountLimit = 0;
-    //console.log("next count : "+userTenantCountLimit);
     maxProp = 1;
     $("#enterPageNO").val(1);
     $("#getLoadingModalContent").addClass('md-show');
@@ -561,7 +556,6 @@ $("#leftArrow").click(function() {
 $("#rightArrow").click(function() {
     $("#previousPage").removeAttr("disabled");
     userTenantCountLimit = (9 * lastPage) - 9;
-    //console.log("next count : "+userTenantCountLimit);
     maxProp = lastPage;
     $("#enterPageNO").val(lastPage);
     $("#getLoadingModalContent").addClass('md-show');
@@ -569,7 +563,6 @@ $("#rightArrow").click(function() {
 });
 
 $("#previousPage").click(function() {
-    //console.log("inital count : "+userTenantCountLimit);
     $("#nextPage").attr("disabled", false);
     if (userTenantCountLimit == 0) {
         userTenantCountLimit = 0;
@@ -578,7 +571,6 @@ $("#previousPage").click(function() {
         userTenantCountLimit -= 9;
         $("#previousPage").removeAttr("disabled");
     }
-    //console.log("prev count : "+userTenantCountLimit);
     if (userTenantCountLimit == 0) {
         $("#previousPage").attr("disabled", "disabled");
     }
@@ -594,11 +586,9 @@ $("#previousPage").click(function() {
 
 
 $("#nextPage").click(function() {
-    //console.log("next inital count : "+userTenantCountLimit);
     $("#previousPage").removeAttr("disabled");
     userTenantCountLimit += 9;
-    //console.log("next count : "+userTenantCountLimit);
-
+    
     if (maxProp == lastPage) {
         $("#nextPage").attr("disabled", true);
     } else {
@@ -615,13 +605,11 @@ $("#nextPage").click(function() {
 
 
 $("#enterPageNO").on("change", function(e) {
-    console.log("THis is called" + $("#enterPageNO").val());
     if ($("#enterPageNO").val() < lastPage) {
         maxProp++;
         $("#enterPageNO").val(maxProp);
     }
 
-    console.log("next inital count : " + userTenantCountLimit + " page # : " + maxProp);
     userTenantCountLimit = 9 * ($("#enterPageNO").val() - 1);
     $("#getLoadingModalContent").addClass('md-show');
     getTenantsList(getValue);
@@ -630,13 +618,11 @@ $("#enterPageNO").on("change", function(e) {
 
 
 $("#enterPageNO").keyup(function() {
-    console.log("THis is called " + $("#enterPageNO").val());
     if ($("#enterPageNO").val() < lastPage) {
         maxProp++;
         $("#enterPageNO").val(maxProp);
     }
 
-    console.log("next inital count : " + userTenantCountLimit + " page # : " + maxProp);
     userTenantCountLimit = 9 * ($("#enterPageNO").val() - 1);
     $("#getLoadingModalContent").addClass('md-show');
     getTenantsList(getValue);
@@ -686,21 +672,17 @@ function loadUserTenantsList(result) {
 
 
         if (result.record_count == result.All_Records_Count) {
-            console.log("equal to 9");
             $(".pageCount").show();
             $("#nextPage").attr("disabled", "disabled");
         } else if (result.record_count < 9 && result.record_count != 0) {
-            console.log("less than 9");
             $(".pageCount").show();
             $("#nextPage").attr("disabled", "disabled");
         } else if (result.record_count >= 9) {
-            console.log("great than 9");
             $("#nextPage").removeAttr("disabled");
             $(".pageCount").show();
         }
 
         lastPage = parseInt(result.All_Records_Count / 9) + 1;
-        console.log(lastPage);
         for (Client in result.records) {
             $(".allTenantList").append("<tr id='rowID-" + result.records[Client].UserRegID + "'><td id='name-" + result.records[Client].UserRegID + "'>" + result.records[Client].Name + " " + result.records[Client].LastName + "</td> <td id='phoneNumber-" + result.records[Client].UserRegID + "'> <a href='tel:" + result.records[Client].PhoneNumber + "'>" + result.records[Client].PhoneNumber + "</a></td><td id='emailID-" + result.records[Client].UserRegID + "'><a href='mailto:" + result.records[Client].EmailID + "' target='_top'>" + result.records[Client].EmailID + "</a> </td>  <td><a class='editTenant' id='editTenantID-" + result.records[Client].UserRegID + "' > <i class='fa fa-pencil pencil fa-1x'></i> </a></td><td><a class='deleteTenant' id='deleteTenantID-" + result.records[Client].UserRegID + "'> <i class='fa fa-trash trash fa-1x'></i> </a></td></tr> ");
         }
@@ -717,7 +699,6 @@ function loadUserTenantsList(result) {
             $("#inputStartDate").val('');
             $("#inputEndDate").val('');
             $.get(domainAddress + "GetUserTenant/" + editTenantID, {}, function(resultGetTenant) {
-                console.log(resultGetTenant);
                 for (var getTenant in resultGetTenant.records) {
                     $(".getTenantsdate").show();
                     $("#inputTitle").val(resultGetTenant.records[getTenant].Title);
@@ -737,7 +718,6 @@ function loadUserTenantsList(result) {
                     } 
 
                     $("#inputEmailID").val(resultGetTenant.records[getTenant].EmailID);
-                    console.log(resultGetTenant.records[getTenant].Property[0].PropertyID);
                     $("#caseProperty").val(resultGetTenant.records[getTenant].Property[0].PropertyID);
                     $("#select2-caseProperty-container").text(resultGetTenant.records[getTenant].PropertyInfo);
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
@@ -764,8 +744,6 @@ function loadUserTenantsList(result) {
                      
                     var getEndDate = resultGetTenant.records[getTenant].TenancyEnd.split("-");
                     var finalEndDate = getEndDate[2] + "." + getEndDate[1] + "." + getEndDate[0];
-                    console.log(finalStartDate);
-                    console.log(finalEndDate);
                     $("#inputStartDate").val(finalStartDate);
                     $("#inputEndDate").val(finalEndDate);
                 }
@@ -802,7 +780,6 @@ $(".deleteTenant").on('click', function(e) {
     UIkit.modal.confirm('Are you sure?', function() {
         $("#getLoadingModalContent").addClass('md-show');
         $.post(domainAddress + 'DeleteUserTenant/' + deleteTenantID + "/" + adminUserID, function(e) {
-            console.log(e);
             $("#getLoadingModalContent").removeClass('md-show');
             $("#rowID-" + deleteTenantID).remove();
             getTenantsList(getValue);
@@ -820,7 +797,6 @@ $(".deleteTenant").on('click', function(e) {
 
 function getTenantPropertyList(hiddenTenantID) {
     $.get(domainAddress + "GetUserTenantPropertyList/" + hiddenTenantID, {}, function(resultProperty) {
-        console.log(resultProperty);
         $(".allTenantPropertyList").html('');
         dataAddPropertyForm = "";
         dataAddPropertyFormArr = new Array();
@@ -853,7 +829,6 @@ function getTenantPropertyList(hiddenTenantID) {
                     $("#getLoadingModalContent").addClass('md-show');
 
                     $.post(domainAddress + 'DeleteAddProperty/' + getAddPropertyID, function(e) {
-                        console.log(e);
                         $("#getLoadingModalContent").removeClass('md-show');
                         getTenantPropertyList(hiddenTenantID);
                         getUserTenantUtilityList(hiddenTenantID)
@@ -871,7 +846,6 @@ function getTenantPropertyList(hiddenTenantID) {
 
 function getUserTenantUtilityList(hiddenTenantID){
     $.get(domainAddress + "GetUserUtilityInfo/" + hiddenTenantID, {}, function(result) {
-        //console.log(result);
         $(".getPropertyUtility").show();
         if (result.record_count == 0) {
             $(".propertyUtility").html('');
@@ -1158,7 +1132,6 @@ $(".btnSubmitTenant").click(function() {
     
     else {
         dataAddPropertyForm = "{'Property_RegisterID':'" + dataAddPropertyFormArr[0].Property_RegisterID + "','AdminID':'" + dataAddPropertyFormArr[0].AdminID + "','PropertyAddress':'"+dataAddPropertyFormArr[0].PropertyAddress+"','IsElectricity':'"+dataAddPropertyFormArr[0].IsElectricity+"','IsGas':'"+dataAddPropertyFormArr[0].IsGas+"','IsWater':'"+dataAddPropertyFormArr[0].IsWater+"','IsCouncil':'"+dataAddPropertyFormArr[0].IsCouncil+"','IsAvailTenantInsurance':'"+dataAddPropertyFormArr[0].IsAvailTenantInsurance+"'}";
-        console.log(dataAddPropertyForm);
         var finalDataAddProperty = new Array();
         finalDataAddProperty.push(dataAddPropertyForm);
         gotoDB(startDate,endDate,finalDataAddProperty);
