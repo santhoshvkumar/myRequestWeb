@@ -166,10 +166,9 @@
                                     </div>
 
                                     <div class="parsley-row" style="margin-top:65px;">
-                                        <label for="hasCounty" style="margin-top:-30px;"><b>County</b><span class="req">*</span></label>
+                                        <label for="hasCounty" style="margin-top:-30px;"><b class="stateLabel"></b></label>
                                         <select id="inputState" name="state" required class="md-input">
-                                            <option value="0">Select County</option>
-
+                                            
                                         </select>
 
                                     </div>
@@ -177,7 +176,7 @@
                                     <div class="parsley-row" style="margin-top:50px;">
                                         <label for="hasCity" style="margin-top:-20px;"><b>City</b><span class="req">*</span></label>
                                         <select id="inputCity" name="city" required class="md-input" style="width:100%;margin-top: 17px;">
-                                            <option value="0">Select County to enable City</option>
+                                            <option value="0" class="selectCountyForCity"></option>
                                         </select>
                                     </div>
 
@@ -408,16 +407,16 @@
                                                 </div>
 
                                                 <div class="parsley-row" style="margin-top:45px;">
-                                                    <label for="hasCounty" style="margin-top:-30px;"><b>County*<span class="req"></span></b></label>
+                                                    <label for="hasCounty" style="margin-top:-30px;" class="stateLabel"></label>
                                                     <select id="inputState1" name="state" required class="md-input" style="width: 100%;">
-                                                        <option value="0">Select County</option>
+                                                         
                                                     </select>
                                                 </div>
 
                                                 <div class="parsley-row" style="margin-top:32px;">
-                                                    <label for="hasCounty" style="margin-top:-20px;"><b>City*<span class="req"></span></b></label>
+                                                    <label for="hasCounty" style="margin-top:-20px;">City<span class="req">*</span></label>
                                                     <select id="inputCity1" name="city" required class="md-input" style="width:100%;">
-                                                        <option value="0">Select County to enable City</option>
+                                                        <option value="0" class="selectCountyForCity"></option>
                                                     </select>
                                                 </div>
 

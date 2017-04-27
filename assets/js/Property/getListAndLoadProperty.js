@@ -15,7 +15,8 @@
       console.log(sendURL);
       
       if(getcountryCode == "India"){
-        $("#stateLabel").text('County');
+        $(".stateLabel").html("State<span class='req'>*</span>");
+        $(".selectCountyForCity").text('Select State to enable City');
           countryID = '+91';
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
@@ -33,8 +34,8 @@
 
         });
       } else if(getcountryCode == "Canada"){
-        $("#stateLabel").text('County');
-        
+        $(".stateLabel").html("State<span class='req'>*</span>");
+        $(".selectCountyForCity").text('Select State to enable City');
           countryID = 'Canada';
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
@@ -52,13 +53,14 @@
 
         });
       } else if(getcountryCode == "UK"){
-        $("#stateLabel").text('County');
+        $(".stateLabel").html("County<span class='req'>*</span>");
+        $(".selectCountyForCity").text('Select County to enable City');
           countryID = '+44';
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState1").html('');
-          $("#inputState").html("<option value='0'>Choose State</option>");
-          $("#inputState1").html("<option value='0'>Choose State</option>");
+          $("#inputState").html("<option value='0'>Choose County</option>");
+          $("#inputState1").html("<option value='0'>Choose County</option>");
           var getResult = JSON.parse(result);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
@@ -70,7 +72,8 @@
 
         });
       } else if(getcountryCode == "US"){
-        $("#stateLabel").text('County');
+        $(".stateLabel").html("State<span class='req'>*</span>");
+        $(".selectCountyForCity").text('Select State to enable City');
           countryID = '+1';
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
