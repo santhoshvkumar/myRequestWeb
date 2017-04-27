@@ -718,8 +718,12 @@ function loadUserTenantsList(result) {
                     } 
 
                     $("#inputEmailID").val(resultGetTenant.records[getTenant].EmailID);
-                    $("#caseProperty").val(resultGetTenant.records[getTenant].Property[0].PropertyID);
-                    $("#select2-caseProperty-container").text(resultGetTenant.records[getTenant].PropertyInfo);
+
+                    if(resultGetTenant.records[getTenant].Property != undefined){
+                        $("#caseProperty").val(resultGetTenant.records[getTenant].Property[0].PropertyID);
+                        $("#select2-caseProperty-container").text(resultGetTenant.records[getTenant].PropertyInfo);
+                    }
+                    
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
                     $(".tenantcno-prefix").show();
                     $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
