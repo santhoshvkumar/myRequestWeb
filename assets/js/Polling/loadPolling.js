@@ -460,6 +460,9 @@ $(".btnSearch").click(function () {
 
 
             for (var getPolling in getResultPolling.records) {
+                if(getResultPolling.records[getPolling].PollingFor == "For Both"){
+                    getResultPolling.records[getPolling].PollingFor = "For Both Contractor & Tenant";
+                }
                 $(".allPollingList").append("<tr class='odd gradeX' id='rowID-" + getResultPolling.records[getPolling].PollingID + "'><td id='titleName-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].PollingTitle + "</td> <td id='pollingfor-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].PollingFor + "</td> <td id='noOfAnswered-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].TotalNosAnswered + "</td> <td class='editPolling' id='editPolling-" + getResultPolling.records[getPolling].PollingID + "' style='cursor:pointer;'><i class='fa fa fa-eye eye fa-1x' ></i></td><td class='deletePolling' id='deletePollingID-" + getResultPolling.records[getPolling].PollingID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i> </td></tr>");
             }   
                   $("#getLoadingModalContent").removeClass('md-show'); 
@@ -496,8 +499,12 @@ $(".btnSearch").click(function () {
                 for (var getPolling in getResultPolling.records) {
                     if (getPollingID == getResultPolling.records[getPolling].PollingID) {
                     	getNotificationContentID = getResultPolling.records[getPolling].NotificationContentID;
-                        $("#select2-inputDropValue-container").html(getResultPolling.records[getPolling].PollingFor);
                         $("#inputDropValue").val(getResultPolling.records[getPolling].PollingFor);
+                        if(getResultPolling.records[getPolling].PollingFor == "For Both"){
+                            getResultPolling.records[getPolling].PollingFor = "For Both Contractor & Tenant";
+                        }
+                        $("#select2-inputDropValue-container").html(getResultPolling.records[getPolling].PollingFor);
+                        
                         $("#inputPollingTitle").val(getResultPolling.records[getPolling].PollingTitle);
                         $("#inputPollingTitle").attr("disabled",true)
                         for (var i = 3; i <= optionCount; i++) {
