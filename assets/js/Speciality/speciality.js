@@ -426,18 +426,28 @@
                  var sendURL = domainAddress + 'CreateSpeciality';
                  console.log(sendURL);
 
-
-                 $.get(domainAddress + "push/newSplPush.php?adminID=" + adminUserID + "&StatusMessage=" + newSpecialityAddedMsg.format(specialityDescription), {}, function(result) {
-                     console.log(result);
-                 });
+                 var messageDataForm = '{"StatusMessage":"' + newSpecialityAddedMsg.format(specialityDescription) + '","adminID":"' + adminUserID + '"}';
+                 console.log(messageDataForm);
+                 var messageSendURL = domainAddress + "push/messageSendByAdminForAllTenant.php";
+                 console.log(messageSendURL);
 
                  $.ajax({
                      type: "POST",
                      url: sendURL,
                      data: dataForm,
                      success: function(dataCheck) {
-
                          console.log(dataCheck);
+
+                         /******** For Push Notification message to All Tenants *******/
+                         $.ajax({
+                             type: "POST",
+                             url: messageSendURL,
+                             data: messageDataForm,
+                             success: function(messageDataCheck) {
+
+                             }
+                         });
+                         /******** For Push Notification message to All Tenants *******/
                          getSpecialityList(getValue);
                          $("#getLoadingModalContent").removeClass('md-show');
                          $("#inputSpecialityName").val('');
