@@ -425,29 +425,19 @@
              if (specialityID == 0) {
                  var sendURL = domainAddress + 'CreateSpeciality';
                  console.log(sendURL);
-
-                 var messageDataForm = '{"StatusMessage":"' + newSpecialityAddedMsg.format(specialityDescription) + '","adminID":"' + adminUserID + '","Title":"New Speciality"}';
-                 console.log(messageDataForm);
-                 var messageSendURL = domainAddress + "push/messageSendByAdminForAllTenant.php";
-                 console.log(messageSendURL);
-
+ 
                  $.ajax({
                      type: "POST",
                      url: sendURL,
                      data: dataForm,
                      success: function(dataCheck) {
-                         console.log(dataCheck);
-
-                         /******** For Push Notification message to All Tenants *******/
-                         $.ajax({
-                             type: "POST",
-                             url: messageSendURL,
-                             data: messageDataForm,
-                             success: function(messageDataCheck) {
-
-                             }
+                        /*  For Push Notification to All Tenant */
+                        var message = newSpecialityAddedMsg.format(specialityDescription;
+                         $.post(domainAddress + "push/messageSendByAdminForAllTenant.php", {StatusMessage:, adminID:adminUserID, Title:'New Speciality'}, function(result) {
+                             console.log(result);
                          });
-                         /******** For Push Notification message to All Tenants *******/
+                         /*  For Push Notification to All Tenant */
+                         console.log(dataCheck);
                          getSpecialityList(getValue);
                          $("#getLoadingModalContent").removeClass('md-show');
                          $("#inputSpecialityName").val('');
