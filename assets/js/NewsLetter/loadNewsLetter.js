@@ -139,7 +139,7 @@ function loadNewsLetter() {
         $(".md-input-wrapper").removeClass("md-input-filled");
         $("#inputNewsLetterName").val('');
         $("#hiddenNewsLetterID").val(0);
-        $("#inputDropValue").val("For Both Contractor & Tenant");
+        $("#inputDropValue").val("For Both");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitNewsLetter").text("Add Newsletter");
         tinyMCE.activeEditor.setContent("");
