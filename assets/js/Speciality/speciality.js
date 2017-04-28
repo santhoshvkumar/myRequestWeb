@@ -433,7 +433,7 @@
                      success: function(dataCheck) {
                         /*  For Push Notification to All Tenant */
                         var message = newSpecialityAddedMsg.format(specialityDescription);
-                         $.post(domainAddress + "push/messageSendByAdminForAllTenant.php", {StatusMessage:, adminID:adminUserID, Title:'New Speciality'}, function(result) {
+                         $.post(domainAddress + "push/messageSendByAdminForAllTenant.php", {StatusMessage:message, adminID:adminUserID, Title:'New Speciality'}, function(result) {
                              console.log(result);
                          });
                          /*  For Push Notification to All Tenant */
