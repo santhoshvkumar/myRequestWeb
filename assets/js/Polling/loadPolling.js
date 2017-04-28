@@ -288,7 +288,7 @@ function loadPolling(){
         $("#inputPollingTitle").attr("disabled", false);
         $("#inputPollingOption1").attr("disabled", false);
         $("#inputPollingOption2").attr("disabled", false);
-        $("#inputDropValue").val("For Both Contractor & Tenant");
+        $("#inputDropValue").val("For Both");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitPolling").show();
         $(".btnAddOption").show();
@@ -379,11 +379,14 @@ $(".btnSearch").click(function () {
                 url: sendURL,
                 data: dataForm,
                 success: function(dataCheck) {
-                    $.get(domainAddress + "push/newSplPush.php?adminID=" + adminUserID + "&StatusMessage=Polling : " + pollingTitle, {}, function(result) {
-                        console.log(result);
-                    });
+                    /*  For Push Notification to All Tenant & Contractor */
+                     $.post(domainAddress + "push/msgSendByAdminForAllTenantCont.php", {StatusMessage:"Polling : " + pollingTitle, adminID:adminUserID, Title:'Polling'}, function(result) {
+                         console.log(result);
+                     });
+                     /*  For Push Notification to All Tenant & Contractor */
+
                     $(".newsLetterContent").hide();
-                    $("#inputDropValue").val("For Both Contractor & Tenant");
+                    $("#inputDropValue").val("For Both");
                     $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
                     $("#inputPollingTitle").val('');
                     $("#inputPollingOption1").val('');
