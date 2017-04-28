@@ -50,36 +50,13 @@ function getProblemSpeciality(specialityID){
                                                   ContractorID:contractorValue,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,
-                                                  Title:'Speciality Changed'
+                                                  Title:'Speciality Changed',
                                                   Message:message,
                                                   ForBoth:1,
                                                   CaseID:getSaveProblemID
                                               }, function(e) {
                                                   console.log(e);
                                               });
-                                              // $.get(domainAddress + "/push/AdminToTenant.php", {
-                                              //     getUserTenantID: userRegisterID,
-                                              //     AdminID: adminUserID,
-                                              //     Message: getSpecialityName + " has been updated by Admin, for Request # ",
-                                              //     CaseID: getSaveProblemID
-                                              // }, function(e) {
-                                              //     console.log(e);
-                                              // });
-                                              // $.get(domainAddress + "/push/AdminToContractor.php", {
-                                              //     getContractorID: contractorValue,
-                                              //     AdminID: adminUserID,
-                                              //     Message: getSpecialityName + " has been updated by Admin, for Request # ",
-                                              //     CaseID: getSaveProblemID
-                                              // }, function(e) {
-                                              //     console.log(e);
-                                              // });
-                                              // $.get(domainAddress + "/push/AdminToSubAdmin.php", {
-                                              //     AdminID: adminUserID,
-                                              //     Message: getSpecialityName + " has been updated by Admin, for Request # ",
-                                              //     CaseID: getSaveProblemID
-                                              // }, function(e) {
-                                              //     console.log(e);
-                                              // });
                                               
                                               getDbReportProblem(getSaveProblemID);
                                               $(".specialityText").show();
