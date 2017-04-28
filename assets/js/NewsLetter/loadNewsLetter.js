@@ -338,9 +338,12 @@ function loadNewsLetter() {
                     success: function(dataCheck) {
                         console.log(dataCheck);
 
-                        $.get(domainAddress + "push/newSplPush.php?adminID=" + adminUserID + "&StatusMessage=Newsletter : " + newsLetterName+"&newsLetterFor="+newsLetterFor, {}, function(result) {
-                            console.log(result);
-                        });
+                        /*  For Push Notification to All Tenant & Contractor */
+                         $.post(domainAddress + "push/msgSendByAdminForAllTenantCont.php", {StatusMessage:newsLetterName, adminID:adminUserID, Title:'Newsletter'}, function(result) {
+                             console.log(result);
+                         });
+                         /*  For Push Notification to All Tenant & Contractor */
+
                         newsLetterCountLimit = 0;
                         getAllNewsLetter(getValue);
                         $("#inputDropValue").val("For Both Contractor & Tenant");
