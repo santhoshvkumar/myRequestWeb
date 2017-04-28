@@ -45,12 +45,13 @@ function getProblemSpeciality(specialityID){
                                           data: dataStartWorkLogForm,
                                           success: function(dataCheck) {
                                               console.log(dataCheck);
+                                              var message = pushMessageSpecialityUpdate.format(getSpecialityName,requestID);
                                               $.post(domainAddress + "push/messageSendByAdminForWorkStatus.php", {
                                                   ContractorID:contractorValue,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,
                                                   Title:'Speciality Changed'
-                                                  Message:pushMessageSpecialityUpdate.format(getSpecialityName,requestID),
+                                                  Message:message,
                                                   ForBoth:1,
                                                   CaseID:getSaveProblemID
                                               }, function(e) {
