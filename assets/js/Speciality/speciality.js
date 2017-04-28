@@ -426,7 +426,7 @@
                  var sendURL = domainAddress + 'CreateSpeciality';
                  console.log(sendURL);
 
-                 var messageDataForm = '{"StatusMessage":"' + newSpecialityAddedMsg.format(specialityDescription) + '","adminID":"' + adminUserID + '"}';
+                 var messageDataForm = '{"StatusMessage":"' + newSpecialityAddedMsg.format(specialityDescription) + '","adminID":"' + adminUserID + '","Title":"New Speciality"}';
                  console.log(messageDataForm);
                  var messageSendURL = domainAddress + "push/messageSendByAdminForAllTenant.php";
                  console.log(messageSendURL);
