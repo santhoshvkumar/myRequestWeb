@@ -71,14 +71,14 @@ function getContractorsApplied(getProblemID) {
                                       getDbReportProblem(getProblemID);
                                       getContractorsApplied(getProblemID);
                                       /* Push Notification for both Tenant & Contractor - Start */
-                                      $.post(domainAddress + "/push/messageSendByAdminForNotes.php", {
+                                      $.post(domainAddress + "push/messageSendByAdminForNotes.php", {
                                         ContractorID:contractorID,
                                         TenantID: userRegisterID,
                                         AdminID: adminUserID,
-                                        ToContractor: pushMessageTenantAdminApproved.format(getContractorName,requestID),
+                                        ToContractor: pushMessageTenantAdminApproved.format(requestID),
                                         ToTenant: pushMessageContractorAdminApproved.format(getContractorName,requestID),
                                         CaseID: getProblemID,
-                                        ForBoth:"1",
+                                        ForBoth:1,
                                         Title:pushMessageAdminApprovedTitle
                                     }, function(e) {
                                         console.log(e);
