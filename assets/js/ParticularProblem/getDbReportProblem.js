@@ -363,7 +363,7 @@ function getDbReportProblem(getProblemID) {
 
 
               $(".whenDuration").text(getMoment);
-              $(".getWhen").text(createDate + " ( raised " + getMoment + " )");
+              $(".getWhen").text(createDate); // + " ( raised " + getMoment + " )" is not needed
 
               $(".getWhenNeeded").text("( Available on "+moment(whenToRespond).format('DD/MM/2016,  h:mm A')+" )");
               $(".getAddress").text(getAddress);
