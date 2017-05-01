@@ -70,40 +70,22 @@ function getContractorsApplied(getProblemID) {
                                       console.log(dataCheck);
                                       getDbReportProblem(getProblemID);
                                       getContractorsApplied(getProblemID);
-                                      // var dataWorkLogForm = '{"Status":"Assigned","Content":"Contractor '+getContractorName+' has been assigned ","ProblemID":"' + getProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
-                                      // console.log(dataWorkLogForm);
-                                      // var sendWorkLogURL = domainAddress + 'CreateProblemWorkLog';
-                                      // console.log(sendWorkLogURL);
-                                      // $.ajax({
-                                      //     type: "POST",
-                                      //     url: sendWorkLogURL,
-                                      //     data: dataWorkLogForm,
-                                      //     success: function(dataCheck) {
-                                      //         console.log(dataCheck);
-                                      //         getDbReportProblem(getProblemID);
-                                      //         getContractorsApplied(getProblemID);
-                                      //     }
-                                      // });
-
-                                       
+                                      /* Push Notification for both Tenant & Contractor - Start */
+                                      $.post(domainAddress + "/push/messageSendByAdminForNotes.php", {
+                                        ContractorID:contractorID,
+                                        TenantID: userRegisterID,
+                                        AdminID: adminUserID,
+                                        ToContractor: pushMessageTenantAdminApproved.format(getContractorName,requestID),
+                                        ToTenant: pushMessageContractorAdminApproved.format(getContractorName,requestID),
+                                        CaseID: getProblemID,
+                                        ForBoth:"1",
+                                        Title:pushMessageAdminApprovedTitle
+                                    }, function(e) {
+                                        console.log(e);
+                                    }); // /push/AdminToTenant.php
+                                    /* Push Notification for both Tenant & Contractor - End */
                                   }
-                              });
-                              $.get(domainAddress + "/push/AdminToContractor.php", {
-                                  getContractorID: contractorID,
-                                  AdminID: adminUserID,
-                                  Message: pushMessageTenantAdminApproved.format(requestID),
-                                  CaseID: getProblemID
-                              }, function(e) {
-                                  console.log(e);
-                              }); // /push/AdminToContractor.php
-                              $.get(domainAddress + "/push/AdminToTenant.php", {
-                                  getUserTenantID: userRegisterID,
-                                  AdminID: adminUserID,
-                                  Message: pushMessageContractorAdminApproved.format(getContractorName,requestID),
-                                  CaseID: getProblemID
-                              }, function(e) {
-                                  console.log(e);
-                              }); // /push/AdminToTenant.php
+                              }); // CreateProblemWorkLog
                           } // success
                   }); // ajax 
                 }); // approveContractor

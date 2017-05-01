@@ -1,5 +1,6 @@
 var pushMessageTenantAdminApproved = "Approved by Admin for Request # {0}";
 var pushMessageContractorAdminApproved = "Contractor {0} has been assigned for Request # {1}";
+var pushMessageAdminApprovedTitle = "Approved by Admin";
 
 var pushMessageAdminNotes = "Message added by admin for Request # {0} : {1}";
 
