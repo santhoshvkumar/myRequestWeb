@@ -91,8 +91,6 @@
   $('.clockpickerStartTime').clockpicker();
   $('.clockpickerEndTime').clockpicker();
   $(document).ready(function() {
-
-      console.log("ready call");
       var currentdate = new Date();
       datetime = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
       adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -101,7 +99,6 @@
       var businessName = localStorage.getItem("MyRequest_BusinessName");
       logo = localStorage.getItem("MyRequest_Logo");
       var isFilled = localStorage.getItem("MyRequest_profileFill");
-      console.log("ready call");
       var currentdate = new Date();
       datetime = currentdate.getFullYear() + "-" + (currentdate.getMonth() + 1) + "-" + currentdate.getDate() + " " + currentdate.getHours() + ":" + currentdate.getMinutes() + ":" + currentdate.getSeconds();
       adminUserID = localStorage.getItem("MyRequest_AdminID");
@@ -144,7 +141,6 @@
       $("#getLoadingModalContent").addClass('md-show');
       /********************  To Get Speciality List ****************/
       $.get(domainAddress + "GetAllSpecialityList/" + adminUserID, {}, function(resultSpecialityList) {
-          //console.log(resultSpecialityList);
           $("#specialityValue").html('');
           $("#specialityValue").html("<option value='0'>Select Speciality</option>");
           if (resultSpecialityList.record_count == 0) {
@@ -218,7 +214,6 @@
                       }
                   }
                   $(".contractorEdit").on('click', function() {
-                      //console.log("contractor toggle click");
                       $(".contractorHide").toggle('slow');
                       $(".changeContractor").toggle('slow');
                   });
