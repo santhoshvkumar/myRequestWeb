@@ -6,24 +6,32 @@
                     $("#dashTotalIcon").addClass("fa fa-gbp");
                     $("#repairChargeIcon").removeClass();
                     $("#repairChargeIcon").addClass("fa fa-gbp");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-gbp");
                     break;
                 case "US":
-                      $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").removeClass();
                     $("#dashTotalIcon").addClass("fa fa-usd");
                     $("#repairChargeIcon").removeClass();
                     $("#repairChargeIcon").addClass("fa fa-usd");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-usd");
                     break;
                 case "India":
                     $("#dashTotalIcon").removeClass();
                     $("#dashTotalIcon").addClass("fa fa-inr");
                     $("#repairChargeIcon").removeClass();
                     $("#repairChargeIcon").addClass("fa fa-inr");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-inr");
                     break;
                 case "Canada":
-                      $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").removeClass();
                     $("#dashTotalIcon").addClass("fa fa-usd");
                     $("#repairChargeIcon").removeClass();
                     $("#repairChargeIcon").addClass("fa fa-usd");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-usd");
                     break;
             }
 
