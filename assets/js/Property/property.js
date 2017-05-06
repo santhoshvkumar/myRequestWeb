@@ -364,6 +364,7 @@ var getPropLat, getPropLong, isEdit=false;
          var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + " ," + getCountryName;
          var Latitude = "";
          var Longitude = "";
+         console.log(wholeAddress);
          if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
             //console.log("No Address Details Fetched");
          }
@@ -374,6 +375,7 @@ var getPropLat, getPropLong, isEdit=false;
                     'address': wholeAddress
                 }, function (results, status) {
                     if (status == google.maps.GeocoderStatus.OK) {
+                        console.log(results[0].geometry.location.lat()+" || "+results[0].geometry.location.lng());
                          var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
                           var myCenter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
                           var mapCanvas = document.getElementById("propertyLocationGoogleMap");
