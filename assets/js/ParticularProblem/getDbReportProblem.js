@@ -508,7 +508,7 @@ function getDbReportProblem(getProblemID) {
               //     }
               // });
 
-              //console.log("Lat_Lon : " + Latitude + " || " + Longitude)
+              console.log("Lat_Lon : " + Latitude + " || " + Longitude)
 
 
               if (Latitude != "" && Longitude != "" && Latitude != null && Longitude != null) {

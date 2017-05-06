@@ -63,7 +63,6 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               localStorage.setItem( "MyRequest_myDiffDate", diffDate );
               localStorage.setItem( "MyRequest_Logo", logo );
               localStorage.setItem( "MyRequest_countryCode", countryCode );
-              debugger;
               localStorage.setItem( "MyRequest_GMT", gmt );
               localStorage.setItem( "MyRequest_PhoneCode-prefix", phoneCode );
               localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
