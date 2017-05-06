@@ -232,30 +232,34 @@ function getAddTenant(count) {
                     $(".isWater").show();
                     $(".isCouncil").show();
                     var isHide=0;
+                    var isElectricity=0;
+                    var isGas=0;
+                    var isWater=0;
+                    var isCouncil=0;
                     for (getData in getLocalTenantData) {
                         if(getLocalTenantData[getData].Count != getCountValue){
                             if(getLocalTenantData[getData].IsElectricity == 1){
                                 $(".isElectricity").hide();
-                                isHide++;
+                                isElectricity=1;
                             }
 
                             if(getLocalTenantData[getData].IsGas == 1){
                                 $(".isGas").hide();
-                                isHide++;
+                                isGas=1;
                             }
 
                             if(getLocalTenantData[getData].IsWater == 1){
                                 $(".isWater").hide();
-                                isHide++;
+                                isWater=1;
                             }
 
                             if(getLocalTenantData[getData].IsCouncil == 1){
                                 $(".isCouncil").hide();
-                                isHide++;
+                                isCouncil=1;
                             }
                         } 
 
-                        if(isHide % 2){
+                        if(isElectricity==1 && isGas==1 && isWater==1 && isCouncil==1){
                             $(".isShowServices").hide();
                             $(".availServiceTitle").text('Do you want to avail service?');
                         } 
