@@ -13,12 +13,14 @@
      var  getcountryCode = localStorage.getItem("MyRequest_countryCode");
       console.log(dataForm);  
       console.log(sendURL);
-      
+      debugger;
       if(getcountryCode == "India"){
         $(".stateLabel").html("State<span class='req'>*</span>");
         $(".selectCountyForCity").text('Select State to enable City');
           countryID = '+91';
+          debugger;
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
+          console.log(result);
           $("#inputState").html('');
           $("#inputState1").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
