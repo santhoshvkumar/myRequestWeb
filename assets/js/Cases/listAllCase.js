@@ -638,194 +638,191 @@ function loadProblems(getValue) {
 
     var getProblemId = this.id.replace('contractor-', '');
     var getContractorID = $("#" + this.id).attr("name");
-                                    //console.log(getContractorID);
+    //console.log(getContractorID);
+    if(getContractorID != null){
+        $.get(domainAddress + "GetContractor/" + getContractorID, {}, function(result) {
+        console.log(result);
+        if (result.record_count == 0) {
+            /* modal hide*/
+            $("#contractorName").text("");
+            $("#contractorPhone").text("");
+            $("#contractorEmail").text("");
+            $("#contractorCity").text("");
+            $("#contractorState").text("");
+            $("#contractorZip").text("");
+            $("#contractorValidTill").text("");
+        } else {
+            for (var contractor in result.records) {
+                var getPhoneNumber = result.records[contractor].phoneNo1;
 
-                                    $.get(domainAddress + "GetContractor/" + getContractorID, {}, function(result) {
-                                        console.log(result);
-                                        if (result.record_count == 0) {
-                                            /* modal hide*/
-                                            $("#contractorName").text("");
-                                            $("#contractorPhone").text("");
-                                            $("#contractorEmail").text("");
-                                            $("#contractorCity").text("");
-                                            $("#contractorState").text("");
-                                            $("#contractorZip").text("");
-                                            $("#contractorValidTill").text("");
-                                        } else {
-                                            for (var contractor in result.records) {
-                                                var getPhoneNumber = result.records[contractor].phoneNo1;
+                $("#contractorName").text(result.records[contractor].ContractorName);
 
-                                                $("#contractorName").text(result.records[contractor].ContractorName);
+                if (contractorPhone == undefined || contractorPhone == null) {
+                    $("#contractorPhone").text("No Phone Number Found");
+                } else {
+                    var getPhoneNumber = result.records[contractor].phoneNo1;
+                    $("#contractorPhone").text(getPhoneNumber);
+                }
 
-                                                if (contractorPhone == undefined || contractorPhone == null) {
-                                                    $("#contractorPhone").text("No Phone Number Found");
-                                                } else {
-                                                    var getPhoneNumber = result.records[contractor].phoneNo1;
-                                                    $("#contractorPhone").text(getPhoneNumber);
-                                                }
+                var getEmail = result.records[contractor].emailID;
+                if (contractorEmail == undefined || contractorEmail == null) {
+                    $("#contractorEmail").html("<a target='_top'>No Email Found</a>");
+                } else {
+                    var getEmail = result.records[contractor].emailID;
+                    $("#contractorEmail").html("<a href='mailto:" + getEmail + "' target='_top'>" + getEmail + "</a>");
+                }
+                var getContractorUserPhoto = result.records[contractor].image1;
 
-                                                var getEmail = result.records[contractor].emailID;
-                                                if (contractorEmail == undefined || contractorEmail == null) {
-                                                    $("#contractorEmail").html("<a target='_top'>No Email Found</a>");
-                                                } else {
-                                                    var getEmail = result.records[contractor].emailID;
-                                                    $("#contractorEmail").html("<a href='mailto:" + getEmail + "' target='_top'>" + getEmail + "</a>");
-                                                }
-                                                var getContractorUserPhoto = result.records[contractor].image1;
-
-                                                if (getContractorUserPhoto == null || getContractorUserPhoto == "null") {
-                                                    $("#contractorImage").attr("src", "assets/img/sign-in.jpg");
-                                                } else {
-                                                    //console.log(domainAddress+getContractorUserPhoto);
-                                                    $("#contractorImage").attr("src", domainAddress + getContractorUserPhoto);
-                                                }
-
-
-                                                var contractorValidTill = result.records[contractor].ContractValidTill;
-                                                if (contractorValidTill == undefined || contractorValidTill == null) {
-                                                    $("#contractorValidTill").text("No Valid Till Found");
-
-                                                } else {
-                                                    var getContractorDate = contractorValidTill.split("-");
-                                                    var getCYear = getContractorDate[0];
-                                                    var getCMonth = getContractorDate[1];
-                                                    var getCDate = getContractorDate[2];
-                                                    $("#contractorValidTill").text(getCDate + "/" + getCMonth + "/" + getCYear+" [Validity Period]");
-                                                }
+                if (getContractorUserPhoto == null || getContractorUserPhoto == "null") {
+                    $("#contractorImage").attr("src", "assets/img/sign-in.jpg");
+                } else {
+                    //console.log(domainAddress+getContractorUserPhoto);
+                    $("#contractorImage").attr("src", domainAddress + getContractorUserPhoto);
+                }
 
 
-                                                if (result.records[contractor].City == null && result.records[contractor].State == null && result.records[contractor].Zip == null && result.records[contractor].ContractValidTill == null) {
-                                                    console.log("no contractor address details found");
-                                                    $("#contractorCity").text("No City Found");
-                                                    $("#contractorState").text("No County Found");
-                                                    $("#contractorZip").text("No Postal Code Found");
-                                                } else {
-                                                    $("#contractorCity").text(result.records[contractor].City);
-                                                    $("#contractorState").text(result.records[contractor].State);
-                                                    $("#contractorZip").text(result.records[contractor].Zip);
-                                                }
+                var contractorValidTill = result.records[contractor].ContractValidTill;
+                if (contractorValidTill == undefined || contractorValidTill == null) {
+                    $("#contractorValidTill").text("No Valid Till Found");
 
-                                                $("#getUserContractorName").text(result.records[contractor].ContractorName + "'s Calendar");
-
-                                                for (var caseCount in result.records[contractor].CaseStatus) {
-
-                                                    if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Awaiting Info") {
-                                                        $(".awaitingInfoCount").html("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Assigned") {
-                                                        $(".assignedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Awaiting Approval") {
-                                                        $(".awaitingApprovalCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Approved") {
-                                                        $(".approvedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Completed") {
-                                                        $(".completedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Closed") {
-                                                        $(".closedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "CheckIn") {
-                                                        $(".checkInCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Started") {
-                                                        $(".startedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
-                                                    }
-
-                                                }
-                                            }
+                } else {
+                    var getContractorDate = contractorValidTill.split("-");
+                    var getCYear = getContractorDate[0];
+                    var getCMonth = getContractorDate[1];
+                    var getCDate = getContractorDate[2];
+                    $("#contractorValidTill").text(getCDate + "/" + getCMonth + "/" + getCYear+" [Validity Period]");
+                }
 
 
+                if (result.records[contractor].City == null && result.records[contractor].State == null && result.records[contractor].Zip == null && result.records[contractor].ContractValidTill == null) {
+                    console.log("no contractor address details found");
+                    $("#contractorCity").text("No City Found");
+                    $("#contractorState").text("No County Found");
+                    $("#contractorZip").text("No Postal Code Found");
+                } else {
+                    $("#contractorCity").text(result.records[contractor].City);
+                    $("#contractorState").text(result.records[contractor].State);
+                    $("#contractorZip").text(result.records[contractor].Zip);
+                }
 
+                $("#getUserContractorName").text(result.records[contractor].ContractorName + "'s Calendar");
 
-                                            $.get(domainAddress + "GetWorkListForContractor/" + getContractorID, {}, function(resultProblemList) {
-                                                //console.log(resultProblemList);
-                                                $('#calendar').html("");
-                                                if (resultProblemList.record_count == 0) {
-                                                    //console.log("No Problem Found");
-                                                    $('#calendar').fullCalendar({
-                                                        defaultDate: '2015-02-12',
-                                                        editable: true,
-                                                        disableDragging: true,
-                                                        eventLimit: true, // allow "more" link when too many events
-                                                        events: getBlockDates
-                                                    });
-                                                } else {
+                for (var caseCount in result.records[contractor].CaseStatus) {
 
+                    if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Awaiting Info") {
+                        $(".awaitingInfoCount").html("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Assigned") {
+                        $(".assignedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Awaiting Approval") {
+                        $(".awaitingApprovalCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Approved") {
+                        $(".approvedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Completed") {
+                        $(".completedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Closed") {
+                        $(".closedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "CheckIn") {
+                        $(".checkInCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    } else if (result.records[contractor].CaseStatus[caseCount].ProblemStatus == "Started") {
+                        $(".startedCount").text("(" + result.records[contractor].CaseStatus[caseCount].CountTotal + ")");
+                    }
 
-                                                    getBlockDates = new Array();
-                                                    for (Problem in resultProblemList.ProblemCONTRACTORRecord) {
-                                                        getProblemID = resultProblemList.ProblemCONTRACTORRecord[Problem].ProblemID;
-                                                        getRequestID = resultProblemList.ProblemCONTRACTORRecord[Problem].RequestID;
-                                                        getProblemNotes = resultProblemList.ProblemCONTRACTORRecord[Problem].Notes;
-                                                        getStartDate = resultProblemList.ProblemCONTRACTORRecord[Problem].StartDate;
-                                                        getEndDate = resultProblemList.ProblemCONTRACTORRecord[Problem].EndDate;
-                                                        getProblemStatus = resultProblemList.ProblemCONTRACTORRecord[Problem].ProblemStatus;
-                                                        if (getStartDate != null) {
-                                                            if (getProblemStatus == "Awaiting Info") {
-                                                                getColor = 'lightblue';
-                                                            } else if (getProblemStatus == "Awaiting Approval") {
-                                                                getColor = '#0097a7';
-                                                            } else if (getProblemStatus == "Approved") {
-                                                                getColor = 'blue';
-                                                            } else if (getProblemStatus == "Assigned") {
-                                                                getColor = 'lightgrey';
-                                                            } else if (getProblemStatus == "CheckIn") {
-                                                                getColor = 'orange';
-                                                            } else if (getProblemStatus == "Started") {
-                                                                getColor = 'brown';
-                                                            } else if (getProblemStatus == "Completed") {
-                                                                getColor = 'green';
-                                                            } else if (getProblemStatus == "Closed") {
-                                                                getColor = 'purple';
-                                                            }
-
-                                                            if (getContractorName != null) {
-                                                                getTitle = "Request # " + getRequestID;
-                                                            } else {
-                                                                getTitle = "Request # " + getRequestID + " CTOR Yet to Assign";
-                                                            }
-
-                                                            newItem = {
-                                                                'title': getTitle,
-                                                                'start': getStartDate,
-                                                                'end': getEndDate,
-                                                                'backgroundColor': getColor,
-                                                                'problemID':getProblemID
-                                                            };
-                                                            getBlockDates.push(newItem);
-
-                                                        }
-
-                                                    } // for loop
-
-
-                                                    $('#calendar').fullCalendar({
-                                                        defaultDate: '2015-02-12',
-                                                        editable: true,
-                                                        disableDragging: true,
-                                                        eventLimit: true, // allow "more" link when too many events
-                                                        events: getBlockDates,
-
-                                                        eventClick: function(calEvent, jsEvent, view) {
-                                                            //console.log('Event: ' + calEvent.title);
-                                                            var getCaseInfo = calEvent.title.split(' ');
-                                                            var getCaseID = calEvent.problemID;
-                                                            //console.log(getCaseID);
-                                                            window.location.href = "particularProblem.php?ProblemID=" + getCaseID;
-                                                        }
-                                                    });
-
-
-}
-                                            }); // $.get(domainAddress+"getContractorWork/"+getContractorID
-
-                                            /* modal show*/
-                                        }
-
-                                    });
+                }
+            }
 
 
 
- var modal = UIkit.modal("#modalContractorModal");
 
- modal.show();
-                                }); // .getContractor
+            $.get(domainAddress + "GetWorkListForContractor/" + getContractorID, {}, function(resultProblemList) {
+                //console.log(resultProblemList);
+                $('#calendar').html("");
+                if (resultProblemList.record_count == 0) {
+                    //console.log("No Problem Found");
+                    $('#calendar').fullCalendar({
+                        defaultDate: '2015-02-12',
+                        editable: true,
+                        disableDragging: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        events: getBlockDates
+                    });
+                } else {
+
+
+                    getBlockDates = new Array();
+                    for (Problem in resultProblemList.ProblemCONTRACTORRecord) {
+                        getProblemID = resultProblemList.ProblemCONTRACTORRecord[Problem].ProblemID;
+                        getRequestID = resultProblemList.ProblemCONTRACTORRecord[Problem].RequestID;
+                        getProblemNotes = resultProblemList.ProblemCONTRACTORRecord[Problem].Notes;
+                        getStartDate = resultProblemList.ProblemCONTRACTORRecord[Problem].StartDate;
+                        getEndDate = resultProblemList.ProblemCONTRACTORRecord[Problem].EndDate;
+                        getProblemStatus = resultProblemList.ProblemCONTRACTORRecord[Problem].ProblemStatus;
+                        if (getStartDate != null) {
+                            if (getProblemStatus == "Awaiting Info") {
+                                getColor = 'lightblue';
+                            } else if (getProblemStatus == "Awaiting Approval") {
+                                getColor = '#0097a7';
+                            } else if (getProblemStatus == "Approved") {
+                                getColor = 'blue';
+                            } else if (getProblemStatus == "Assigned") {
+                                getColor = 'lightgrey';
+                            } else if (getProblemStatus == "CheckIn") {
+                                getColor = 'orange';
+                            } else if (getProblemStatus == "Started") {
+                                getColor = 'brown';
+                            } else if (getProblemStatus == "Completed") {
+                                getColor = 'green';
+                            } else if (getProblemStatus == "Closed") {
+                                getColor = 'purple';
+                            }
+
+                            if (getContractorName != null) {
+                                getTitle = "Request # " + getRequestID;
+                            } else {
+                                getTitle = "Request # " + getRequestID + " CTOR Yet to Assign";
+                            }
+
+                            newItem = {
+                                'title': getTitle,
+                                'start': getStartDate,
+                                'end': getEndDate,
+                                'backgroundColor': getColor,
+                                'problemID':getProblemID
+                            };
+                            getBlockDates.push(newItem);
+
+                        }
+
+                    } // for loop
+
+
+                    $('#calendar').fullCalendar({
+                        defaultDate: '2015-02-12',
+                        editable: true,
+                        disableDragging: true,
+                        eventLimit: true, // allow "more" link when too many events
+                        events: getBlockDates,
+
+                        eventClick: function(calEvent, jsEvent, view) {
+                            //console.log('Event: ' + calEvent.title);
+                            var getCaseInfo = calEvent.title.split(' ');
+                            var getCaseID = calEvent.problemID;
+                            //console.log(getCaseID);
+                                window.location.href = "particularProblem.php?ProblemID=" + getCaseID;
+                            }
+                        });
+
+
+                    }
+                }); // $.get(domainAddress+"getContractorWork/"+getContractorID
+                /* modal show*/
+            }
+
+        });
+        var modal = UIkit.modal("#modalContractorModal");
+
+        modal.show();
+    }  
+  }); // .getContractor
 
  $(".problemDelete").on('click', function(e) {
     getProblemID = this.id.replace('problemDeleteID-', '');
