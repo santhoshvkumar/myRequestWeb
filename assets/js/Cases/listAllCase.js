@@ -496,10 +496,10 @@ function loadProblems(getValue) {
                                     }
 
                                     if (contractorName == null || contractorName == "") {
-                                        $("#contractor-" + problemID).html("<span class='reportNoCountTdSpan' id='contractorCount-" + ContractorID + "'>!</span>");
+                                        $("#contractor-" + problemID).html("<span class='reportNoCountTdSpan' id='contractorCount-" + ContractorID + "'>!</span> <span> Unassigned</span>");
                                     } else if (contractorName != null) {
                                         if (contractorName == "null null") {
-                                            $("#contractor-" + problemID).html("<span class='reportNoCountTdSpan' id='contractorCount-" + ContractorID + "'>!</span>");
+                                            $("#contractor-" + problemID).html("<span class='reportNoCountTdSpan' id='contractorCount-" + ContractorID + "'>!</span> <span> Unassigned</span>");
                                         } else {
                                             $("#contractor-" + problemID).append("<span class='reportCountTdSpan' id='contractorCount-" + ContractorID + "'>" + contractorCount + "</span> " + contractorName);
                                             $("#contractor-" + problemID).css("cursor", "pointer");
