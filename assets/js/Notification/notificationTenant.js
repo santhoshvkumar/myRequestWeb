@@ -554,7 +554,7 @@
                   } // result.record_count
 
                   $("#getLoadingModalContent").removeClass('md-show');
-
+                  $(".md-input-wrapper").addClass("md-input-filled");
               }); // domainAddress+getUrl+getContentID
 
           }); // editNotificationContent
