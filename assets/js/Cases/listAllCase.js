@@ -639,7 +639,7 @@ function loadProblems(getValue) {
     var getProblemId = this.id.replace('contractor-', '');
     var getContractorID = $("#" + this.id).attr("name");
     //console.log(getContractorID);
-    if(getContractorID != null){
+    if(getContractorID != "null"){
         $.get(domainAddress + "GetContractor/" + getContractorID, {}, function(result) {
         console.log(result);
         if (result.record_count == 0) {
