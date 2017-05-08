@@ -225,7 +225,7 @@
                         for (var Property in result.records) {
                             if(result.records[Property].PropertyRegister != undefined && result.records[Property].PropOwnerName != undefined && result.records[Property].PropAddress != undefined &&result.records[Property].PropCity != undefined && result.records[Property].PropState != undefined && result.records[Property].PropCountry != undefined && result.records[Property].PropPostalCode != undefined)
                             {
-                                $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
+                                $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"' refLat='"+result.records[Property].PropertyLatitude+"' refLng='"+result.records[Property].PropertyLongitude+"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
                             }
                         }
                     }
@@ -1162,6 +1162,8 @@ $("#caseSpecialisation").on('change', function() {
     var inputCaseSpecialisation = $("#caseSpecialisation").val();
     var inputCaseNotes = $("#caseNotes").val();
     var inputCaseProperty = $("#caseProperty :selected").attr('ref');
+    var inputCasePropertyLat = $("#caseProperty :selected").attr('refLat');
+    var inputCasePropertyLng = $("#caseProperty :selected").attr('refLng');
     var inputcaseContractor = $("#caseContractor").val();
     var getUploadedImgPath = imageUrl1;
     var inputWhenDate = $("#inputWhenDate").val();
@@ -1253,7 +1255,7 @@ $("#caseSpecialisation").on('change', function() {
     }
 
     else {
-        var dataForm = '{"SpecialityID":"' + inputCaseSpecialisation + '","Notes":"' + inputCaseNotes + '","PropertyAddress":"' + inputCaseProperty + '","ContractorID":"' + inputcaseContractor + '","problemImage":"' + getUploadedImgPath + '","AdminID":"' + adminUserID + '","WhenToRespond":"'+inputWhenToRespond+'"}';
+        var dataForm = '{"SpecialityID":"' + inputCaseSpecialisation + '","Notes":"' + inputCaseNotes + '","PropertyAddress":"' + inputCaseProperty + '","ContractorID":"' + inputcaseContractor + '","problemImage":"' + getUploadedImgPath + '","AdminID":"' + adminUserID + '","WhenToRespond":"'+inputWhenToRespond+'","Latitude":"'+inputCasePropertyLat+'","Longitude":"'+inputCasePropertyLng+'"}';
         console.log(dataForm);
 
 
