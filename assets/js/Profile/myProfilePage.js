@@ -460,68 +460,80 @@ $("#inputState").select2()
 var getcountryCode = localStorage.getItem("MyRequest_countryCode");
       console.log(getcountryCode)
       if(getcountryCode == "India"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
+        $(".stateLabel").text('State');
           countryID = '+91';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
+          $("#inputCounty").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputCounty").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+            $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
 
           }
           $("#inputState").select2();
+          $("#inputCounty").select2();
 
         });
       } else if(getcountryCode == "Canada"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
+        $(".stateLabel").text('State');
           countryID = 'Canada';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputCounty").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
-
+            $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
           }
           $("#inputState").select2();
+          $("#inputCounty").select2();
 
         });
       } else if(getcountryCode == "UK"){
         $("#stateLabel").text('County');
+        $(".stateLabel").text('County');
           countryID = '+44';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
-          $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputState").html("<option value='0'>Choose County</option>");
+          $("#inputCounty").html("<option value='0'>Choose County</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
-
+            $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
           }
           $("#inputState").select2();
-
+          $("#inputCounty").select2();
         });
       } else if(getcountryCode == "US"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
+        $(".stateLabel").text('State');
           countryID = '+1';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputCounty").html("<option value='0'>Choose State</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
             $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
-
+            $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
           }
           $("#inputState").select2();
-
+          $("#inputCounty").select2();
         });
       }
 getUserProfile(adminUserID, false);
