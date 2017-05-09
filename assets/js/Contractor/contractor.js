@@ -1402,9 +1402,15 @@
       // var inputValidTill = $("#inputValidTill").val();
       var contractValidTill = $("#inputContractValidTill").val();
       adminUserID = localStorage.getItem("MyRequest_AdminID");
+      var finalContractValidDate = '';
+      if(contractValidTill==''){
+        finalContractValidDate = '';
+      } else {
+        var selectDate = contractValidTill.split(".");
+        finalContractValidDate = selectDate[2] + "-" + selectDate[1] + "-" + selectDate[0];
+      }
+      
 
-      var selectDate = contractValidTill.split(".");
-      var finalContractValidDate = selectDate[2] + "-" + selectDate[1] + "-" + selectDate[0];
 
       if (title == "Select Title") {
         $(".help-block").css("border-color", "red");
