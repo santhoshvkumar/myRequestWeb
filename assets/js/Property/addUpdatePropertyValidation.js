@@ -327,58 +327,58 @@ function addUpdatePropertyValidation() {
         return false;
     }
 
-    if (fuel == "Select Fuel Type") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Fuel Type");
-        $("#select2-inputFuel-container").css("border", "1px solid red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (fuel == "Select Fuel Type") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Fuel Type");
+    //     $("#select2-inputFuel-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
      
 
-    if (supplierGas == "Select Supplier Gas") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Supplier Gas");
-        $("#select2-inputSupplierGas-container").css("border", "1px solid red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (supplierGas == "Select Supplier Gas") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Supplier Gas");
+    //     $("#select2-inputSupplierGas-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
-    if (fuel == "Duel" && gas == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Gas Meter Reading");
-        $("#inputGas").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (fuel == "Duel" && gas == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Gas Meter Reading");
+    //     $("#inputGas").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
-    if (supplierElectric == "Select Supplier Electric") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Supplier Electric");
-        $("#select2-inputSupplierElectric-container").css("border", "1px solid red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (supplierElectric == "Select Supplier Electric") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Supplier Electric");
+    //     $("#select2-inputSupplierElectric-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
 
-    if (read1 == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Electricity Meter Reading 1");
-        $("#inputRead1").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (read1 == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 1");
+    //     $("#inputRead1").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
-    if (economy7 == "1" && read2 == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Electricity Meter Reading 2");
-        $("#inputRead2").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (economy7 == "1" && read2 == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 2");
+    //     $("#inputRead2").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
     if (taxAuthority == "Select Council") {
         $(".errorInfo").show();

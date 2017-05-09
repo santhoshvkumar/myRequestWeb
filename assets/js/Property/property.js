@@ -135,6 +135,7 @@ var getPropLat, getPropLong, isEdit=false;
          window.location.href = "index.html";
      } else {
          $(".getUserName").text(adminUserName);
+         $("#utilityAgreeLettingAgentName").text(adminUserName);
          $("#FileURLUploadImage4").attr("action",domainAddress+"ajaximage.php");
          $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
          $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
@@ -233,6 +234,17 @@ var getPropLat, getPropLong, isEdit=false;
      $("#inputTaxAuthority").select2();
      $(".utilityImage").hide();
      $(".utilityLabel").hide();
+
+    $(".getTenantList").html('');
+    getAddTenant(1);
+    //getAddTenant(2);
+    $("#closeCard-1").hide();
+    //$("#closeCard-2").show();
+    $("#hiddenIsNewTenantUpdate-1").val(1);
+    getAddRemove(2);
+    $("#getIsAppInstallCheck-1").css("height", "610px");
+    //$("#getIsAppInstallCheck-2").css("height", "610px");
+
  }); // ready
 
 

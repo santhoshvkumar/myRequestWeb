@@ -221,8 +221,25 @@ function getAddTenant(count) {
                 $(".btnSubmitTenantInsurance").attr("value", getCountValue);
                 
                 var modal = UIkit.modal("#modalTenantInsurance");
-                    modal.show();
+                modal.show();
 
+                var specialElect = document.querySelector('#getElect')
+                specialElect.checked = true;
+                var specialGas = document.querySelector('#getGas')
+                specialGas.checked = true;
+                var specialWater = document.querySelector('#getWater')
+                specialWater.checked = true;
+                var specialCouncil = document.querySelector('#getCouncil')
+                specialCouncil.checked = true;
+                var availTenantInsurance = document.querySelector('#getAvailTenantInsurance')
+                availTenantInsurance.checked = true;
+                var event = document.createEvent('HTMLEvents');
+                event.initEvent('change', true, true);
+                specialElect.dispatchEvent(event);
+                specialGas.dispatchEvent(event);
+                specialWater.dispatchEvent(event);
+                specialCouncil.dispatchEvent(event);
+                availTenantInsurance.dispatchEvent(event);
 
                 var localTenantData = localStorage.getItem('MyRequestTenantsData');
                 if (localTenantData != null) {
@@ -241,21 +258,25 @@ function getAddTenant(count) {
                             if(getLocalTenantData[getData].IsElectricity == 1){
                                 $(".isElectricity").hide();
                                 isElectricity=1;
+                                $("#getElect").prop("checked",false);
                             }
 
                             if(getLocalTenantData[getData].IsGas == 1){
                                 $(".isGas").hide();
                                 isGas=1;
+                                $("#getGas").prop("checked",false);
                             }
 
                             if(getLocalTenantData[getData].IsWater == 1){
                                 $(".isWater").hide();
                                 isWater=1;
+                                $("#getWater").prop("checked",false);
                             }
 
                             if(getLocalTenantData[getData].IsCouncil == 1){
                                 $(".isCouncil").hide();
                                 isCouncil=1;
+                                $("#getCouncil").prop("checked",false);
                             }
                         } 
 
@@ -751,6 +772,89 @@ function getAddRemove(count) {
         $(".utilityIcon").hide();
         $(".utilityIconLabel").hide();
         $("#hiddenIsNewTenantUpdate-"+count).val(1);
-    });
+
+
+        var localTenantData = localStorage.getItem('MyRequestTenantsData');
+        if (localTenantData != null) {
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            var getLocalCount = 0;
+            for (getData in getLocalTenantData) {
+                getLocalCount++;
+                var selectStartDate = getLocalTenantData[getData].TenancyStart.split("-");
+                var tenancyStart = selectStartDate[2] + "." + selectStartDate[1] + "." + selectStartDate[0];
+
+                var selectEndDate = getLocalTenantData[getData].TenancyEnd.split("-");
+                var tenancyEnd = selectEndDate[2] + "." + selectEndDate[1] + "." + selectEndDate[0];
+
+
+                var isFourExistNo = getLocalTenantData[getData].Mobile.slice(0, 3);
+                var isOneExistNo = getLocalTenantData[getData].Mobile.slice(0, 2);
+                if (isFourExistNo == "+44" || isFourExistNo == "+91") {
+                  $("#inputMobile-" + getLocalCount).val(getLocalTenantData[getData].Mobile.slice(3));
+                } else {
+                  $("#inputMobile-" + getLocalCount).val(getLocalTenantData[getData].Mobile);
+                }
+                if (isOneExistNo == "+1") {
+                  $("#inputMobile-" + getLocalCount).val(getLocalTenantData[getData].Mobile.slice(2));
+                }
+
+                $("#inputMobile-" + getLocalCount).css("padding", "10px 25px 12px 33px");
+                $(".promno-prefix").show();
+
+                $("#inputName-"+getLocalCount).val(getLocalTenantData[getData].Name);
+                $("#inputLastName-"+getLocalCount).val(getLocalTenantData[getData].LastName);
+                $("#inputEmail-"+getLocalCount).val(getLocalTenantData[getData].Email);
+                $("#inputStartDate-"+getLocalCount).val(tenancyStart);
+                $("#inputEndDate-"+getLocalCount).val(tenancyEnd);
+                $("#select2-inputTitle-" + getLocalCount + "-container").html(getLocalTenantData[getData].TitleName);
+
+                if (getLocalTenantData[getData].IsLeadTenant == 1) {
+                    $("#isLeadTenant-" + getLocalCount).prop("checked", true);
+                } else {
+                    $("#isLeadTenant-" + getLocalCount).prop("checked", false);
+                }
+
+                $("#hiddenIsGas-" + getLocalCount).val(getLocalTenantData[getData].IsGas);
+                $("#hiddenIsElectricity-" + getLocalCount).val(getLocalTenantData[getData].IsElectricity);
+                $("#hiddenIsWater-" + getLocalCount).val(getLocalTenantData[getData].IsWater);
+                $("#hiddenIsCouncil-" + getLocalCount).val(getLocalTenantData[getData].IsCouncil);
+                $("#hiddenAvailTenantInsurance-" + getLocalCount).val(getLocalTenantData[getData].IsAvailTenantInsurance);
+                 
+
+                if ($("#hiddenIsGas-" + getLocalCount).val() == "1") {
+                  $("#isGasImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/gas_select.png");
+                } else {
+                  $("#isGasImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/gas.png");
+                }
+
+                  if ($("#hiddenIsWater-" + getLocalCount).val() == "1") {
+                      $("#isWaterImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/water_select.png");
+                  } else {
+                      $("#isWaterImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/water.png");
+                  }
+
+
+                  
+                  if ($("#hiddenIsElectricity-" + getLocalCount).val() == "1") {
+                      $("#isElectricityImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/electricity_select.png");
+                  } else {
+                      $("#isElectricityImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/electricity.png");
+                  }
+
+
+
+                  if ($("#hiddenIsCouncil-" + getLocalCount).val() == "1") {
+                     $("#isCouncilImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/council_select.png");
+                  } else {
+                      $("#isCouncilImg-" + getLocalCount).attr("src", "assets/img/PropertyImg/council.png");
+                  }
+
+
+
+            } // getLocalTenantData
+            $(".md-input-wrapper").addClass("md-input-filled");
+        } //localTenantData
+
+    }); // btnAdd
 
 } // getAddRemove();

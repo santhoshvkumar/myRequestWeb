@@ -53,15 +53,15 @@
             }
             else{
                 if (count == 1) {
-                    $("#singleHmo").iCheck('check');
-                    $("#multipleHmo").iCheck('uncheck');
+                    //$("#singleHmo").iCheck('check');
+                    //$("#multipleHmo").iCheck('uncheck');
                     
-                    $("#imgHmoUploadPic").css("border","");
+                    //$("#imgHmoUploadPic").css("border","");
                     $(".hmoInputTenent").hide();
                     $(".hmoLicenseNumber").hide();
                 } else {
-                    $("#singleHmo").iCheck('uncheck');
-                    $("#multipleHmo").iCheck('check');
+                    //$("#singleHmo").iCheck('uncheck');
+                    //$("#multipleHmo").iCheck('check');
                     
                     $(".hmoInputTenent").show('slow');
                     $(".hmoLicenseNumber").show('slow');
@@ -83,14 +83,14 @@
          $("#inputHMONoOfTenent").on('change',function(){
             count = $("#inputHMONoOfTenent").val();
             if (count == 1) {
-                $("#singleHmo").iCheck('check');
-                $("#multipleHmo").iCheck('uncheck');
-                $("#imgHmoUploadPic").css("border","");
+                //$("#singleHmo").iCheck('check');
+                //$("#multipleHmo").iCheck('uncheck');
+                //$("#imgHmoUploadPic").css("border","");
                 $(".hmoInputTenent").hide();
                 $(".hmoLicenseNumber").hide();
             } else {
-                $("#singleHmo").iCheck('uncheck');
-                $("#multipleHmo").iCheck('check');
+                //$("#singleHmo").iCheck('uncheck');
+                //$("#multipleHmo").iCheck('check');
                 $(".hmoInputTenent").show('slow');
                 $(".hmoLicenseNumber").show('slow');
             }

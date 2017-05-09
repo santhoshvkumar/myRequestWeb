@@ -78,30 +78,12 @@ function changesRadioProperty() {
         if (this.value == "multiple") {
             $(".hmoInputTenent").show('slow');
             $(".hmoLicenseNumber").show('slow');
-            $("#inputHMONoOfTenent").val(2);
-            if(isEdit==false){
-                $(".getTenantList").html('');
-                getAddTenant(1);
-                getAddTenant(2);
-                $("#closeCard-1").hide();
-                $("#closeCard-2").show();
-                getAddRemove(2);
-                $("#getIsAppInstallCheck-1").css("height", "610px");
-                $("#getIsAppInstallCheck-2").css("height", "610px");
-            }
-
+            //$("#inputHMONoOfTenent").val(2);
         } else {
             $("#imgHmoUploadPic").css("border","");
             $(".hmoInputTenent").hide();
             $(".hmoLicenseNumber").hide();
-            $("#inputHMONoOfTenent").val(1);
-            if(isEdit==false){
-                $(".getTenantList").html('');
-                getAddTenant(1);
-                $("#closeCard-1").hide();
-                getAddRemove(1);
-                $("#getIsAppInstallCheck-1").css("height", "610px");
-            }
+            //$("#inputHMONoOfTenent").val(2);
         }
         isEdit=false;
     });

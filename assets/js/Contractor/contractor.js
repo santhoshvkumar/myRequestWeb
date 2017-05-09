@@ -1155,26 +1155,26 @@
 });
 
 
- $("#inputAlternateNo").keyup(function() {
-  var inputAlternateNo = $("#inputAlternateNo").val();
-  if (inputAlternateNo == "") {
-    $(".ano-prefix").hide();
-    $("#inputAlternateNo").removeAttr('style');
-    $("#inputAlternateNo").css("border-color", "red");
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Alternate Number");
-    $(".btnSubmitContractor").attr("disabled", true);
-    return false;
-  } else {
-    $(".ano-prefix").show();
-    $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
-    $(".help-block").hide();
-    $(".help-block").text("");
-    $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
-    $(".btnSubmitContractor").attr("disabled", false);
-    return false;
-  }
-});
+//  $("#inputAlternateNo").keyup(function() {
+//   var inputAlternateNo = $("#inputAlternateNo").val();
+//   if (inputAlternateNo == "") {
+//     $(".ano-prefix").hide();
+//     $("#inputAlternateNo").removeAttr('style');
+//     $("#inputAlternateNo").css("border-color", "red");
+//     $(".help-block").show();
+//     $(".help-block").text("* Enter the Alternate Number");
+//     $(".btnSubmitContractor").attr("disabled", true);
+//     return false;
+//   } else {
+//     $(".ano-prefix").show();
+//     $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+//     $(".help-block").hide();
+//     $(".help-block").text("");
+//     $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
+//     $(".btnSubmitContractor").attr("disabled", false);
+//     return false;
+//   }
+// });
 
 
 
@@ -1251,39 +1251,39 @@
 });
 
 
- $("#inputContractValidTill").keyup(function() {
-  var inputContractValidTill = $("#inputContractValidTill").val();
-  if (inputContractValidTill == "") {
-    $("#inputContractValidTill").css("border-color", "red");
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Contract Valid Till");
-    $(".btnSubmitContractor").attr("disabled", true);
-    return false;
-  } else {
-    $(".help-block").hide();
-    $(".help-block").text("");
-    $("#inputContractValidTill").css("border-color", "rgba(0,0,0,.12)");
-    $(".btnSubmitContractor").attr("disabled", false);
-    return false;
-  }
-});
+//  $("#inputContractValidTill").keyup(function() {
+//   var inputContractValidTill = $("#inputContractValidTill").val();
+//   if (inputContractValidTill == "") {
+//     $("#inputContractValidTill").css("border-color", "red");
+//     $(".help-block").show();
+//     $(".help-block").text("* Enter the Contract Valid Till");
+//     $(".btnSubmitContractor").attr("disabled", true);
+//     return false;
+//   } else {
+//     $(".help-block").hide();
+//     $(".help-block").text("");
+//     $("#inputContractValidTill").css("border-color", "rgba(0,0,0,.12)");
+//     $(".btnSubmitContractor").attr("disabled", false);
+//     return false;
+//   }
+// });
 
- $("#inputTradeCertificateNo").keyup(function() {
-  var inputTradeCertificateNo = $("#inputTradeCertificateNo").val();
-  if (inputTradeCertificateNo == "") {
-    $("#inputTradeCertificateNo").css("border-color", "red");
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Trade Certificate Number");
-    $(".btnSubmitContractor").attr("disabled", true);
-    return false;
-  } else {
-    $(".help-block").hide();
-    $(".help-block").text("");
-    $("#inputTradeCertificateNo").css("border-color", "rgba(0,0,0,.12)");
-    $(".btnSubmitContractor").attr("disabled", false);
-    return false;
-  }
-});
+//  $("#inputTradeCertificateNo").keyup(function() {
+//   var inputTradeCertificateNo = $("#inputTradeCertificateNo").val();
+//   if (inputTradeCertificateNo == "") {
+//     $("#inputTradeCertificateNo").css("border-color", "red");
+//     $(".help-block").show();
+//     $(".help-block").text("* Enter the Trade Certificate Number");
+//     $(".btnSubmitContractor").attr("disabled", true);
+//     return false;
+//   } else {
+//     $(".help-block").hide();
+//     $(".help-block").text("");
+//     $("#inputTradeCertificateNo").css("border-color", "rgba(0,0,0,.12)");
+//     $(".btnSubmitContractor").attr("disabled", false);
+//     return false;
+//   }
+// });
 
 
  $("#inputTitle").on('change', function() {
@@ -1462,14 +1462,14 @@
         return false;
       }
 
-      if (alternateNo == "+44" || alternateNo == "+91" || alternateNo == "+1") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Enter the Alternate Number");
-        $("#inputAlternateNo").css("border-color", "red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
-      }
+      // if (alternateNo == "+44" || alternateNo == "+91" || alternateNo == "+1") {
+      //   $(".help-block").css("border-color", "red");
+      //   $(".help-block").show();
+      //   $(".help-block").text("* Enter the Alternate Number");
+      //   $("#inputAlternateNo").css("border-color", "red");
+      //   $(".btnSubmitContractor").attr("disabled", true);
+      //   return false;
+      // }
 
 
       if (addressLine1 == "") {
@@ -1606,42 +1606,44 @@
         return false;
       }
 
-      if (contractValidTill == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Enter the Contract Valid Till");
-        $("#inputContractValidTill").css("border-color", "red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
-      }
+      // if (contractValidTill == "") {
+      //   $(".help-block").css("border-color", "red");
+      //   $(".help-block").show();
+      //   $(".help-block").text("* Enter the Contract Valid Till");
+      //   $("#inputContractValidTill").css("border-color", "red");
+      //   $(".btnSubmitContractor").attr("disabled", true);
+      //   return false;
+      // }
 
 
-      if (imageUrl2 == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Upload the Contract Image");
-        $("#imgContract").css("border", "1px solid red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
-      }
+      // if (imageUrl2 == "") {
+      //   $(".help-block").css("border-color", "red");
+      //   $(".help-block").show();
+      //   $(".help-block").text("* Upload the Contract Image");
+      //   $("#imgContract").css("border", "1px solid red");
+      //   $(".btnSubmitContractor").attr("disabled", true);
+      //   return false;
+      // }
 
-      if (inputTradeCertificateNo == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Enter the Trade Certificate No");
-        $("#inputTradeCertificateNo").css("border-color", "red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
-      }
+      // if (inputTradeCertificateNo == "") {
+      //   $(".help-block").css("border-color", "red");
+      //   $(".help-block").show();
+      //   $(".help-block").text("* Enter the Trade Certificate No");
+      //   $("#inputTradeCertificateNo").css("border-color", "red");
+      //   $(".btnSubmitContractor").attr("disabled", true);
+      //   return false;
+      // }
 
-      if (imageUrl3 == "") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Upload Trade Certificate");
-        $("#imgTradeCertificate").css("border", "1px solid red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
-      } else {
+      // if (imageUrl3 == "") {
+      //   $(".help-block").css("border-color", "red");
+      //   $(".help-block").show();
+      //   $(".help-block").text("* Upload Trade Certificate");
+      //   $("#imgTradeCertificate").css("border", "1px solid red");
+      //   $(".btnSubmitContractor").attr("disabled", true);
+      //   return false;
+      // } 
+      
+      else {
         $("#getLoadingModalContent").addClass('md-show');
         var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","EmailID":"' + email + '","AddressLine1":"' + addressLine1 + '","AddressLine2":"' + addressLin2 + '","Locality":"' + locality + '","State":"' + state + '","City":"' + city + '","Zip":"' + zip + '","Country":"' + country + '","PhoneNo1":"' + phoneNo1 + '","AlternateNo":"' + alternateNo + '","StartTime":"' + startTime + '","EndTime":"' + endTime + '","AverageCharge":"' + averageCharge + '","VisitCharge":"' + visitCharge + '","HourlyRate":"' + hourlyRate + '","SpecialityID":"' + specialityID + '", "IsSmartPhone":"' + isSmartPhone + '","IsAgency":"' + isAgency + '","IsAppInstalled":"' + isAppInstalled + '","IsEmergencyAvailable":"' + isEmergencyAvailable + '","TradeCertificateNo":"' + inputTradeCertificateNo + '","ContractValidTill":"' + finalContractValidDate + '","IsLiabilityInsurance":"' + isLiabilityInsurance + '","Image1":"' + imageUrl1 + '","Image2":"' + imageUrl2 + '","TradeCertificateImage":"' + imageUrl3 + '","AdminID":"' + adminUserID + '","Os":"IOS","LettingAgencyCode":"0"}';
         console.log(dataForm);
