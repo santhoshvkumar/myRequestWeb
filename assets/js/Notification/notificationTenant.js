@@ -93,7 +93,7 @@
       var logo = localStorage.getItem("MyRequest_Logo");
       localStorage.setItem("MyRequest_RepairStatus", "");
       $("#inputDropValue").select2();
-      $("#inputDropValue").val("For Both Contractor & Tenant");
+      $("#inputDropValue").val("TenantAndContractor");
       $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
 
       var isFilled = localStorage.getItem("MyRequest_profileFill");

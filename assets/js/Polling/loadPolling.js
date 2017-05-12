@@ -288,7 +288,7 @@ function loadPolling(){
         $("#inputPollingTitle").attr("disabled", false);
         $("#inputPollingOption1").attr("disabled", false);
         $("#inputPollingOption2").attr("disabled", false);
-        $("#inputDropValue").val("For Both");
+        $("#inputDropValue").val("TenantAndContractor");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitPolling").show();
         $(".btnAddOption").show();
@@ -386,7 +386,7 @@ $(".btnSearch").click(function () {
                      /*  For Push Notification to All Tenant & Contractor */
 
                     $(".newsLetterContent").hide();
-                    $("#inputDropValue").val("For Both");
+                    $("#inputDropValue").val("TenantAndContractor");
                     $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
                     $("#inputPollingTitle").val('');
                     $("#inputPollingOption1").val('');
@@ -460,7 +460,7 @@ $(".btnSearch").click(function () {
 
 
             for (var getPolling in getResultPolling.records) {
-                if(getResultPolling.records[getPolling].PollingFor == "For Both"){
+                if(getResultPolling.records[getPolling].PollingFor == "TenantAndContractor"){
                     getResultPolling.records[getPolling].PollingFor = "For Both Contractor & Tenant";
                 }
                 $(".allPollingList").append("<tr class='odd gradeX' id='rowID-" + getResultPolling.records[getPolling].PollingID + "'><td id='titleName-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].PollingTitle + "</td> <td id='pollingfor-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].PollingFor + "</td> <td id='noOfAnswered-" + getResultPolling.records[getPolling].PollingID + "'>" + getResultPolling.records[getPolling].TotalNosAnswered + "</td> <td class='editPolling' id='editPolling-" + getResultPolling.records[getPolling].PollingID + "' style='cursor:pointer;'><i class='fa fa fa-eye eye fa-1x' ></i></td><td class='deletePolling' id='deletePollingID-" + getResultPolling.records[getPolling].PollingID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i> </td></tr>");
@@ -500,7 +500,7 @@ $(".btnSearch").click(function () {
                     if (getPollingID == getResultPolling.records[getPolling].PollingID) {
                     	getNotificationContentID = getResultPolling.records[getPolling].NotificationContentID;
                         $("#inputDropValue").val(getResultPolling.records[getPolling].PollingFor);
-                        if(getResultPolling.records[getPolling].PollingFor == "For Both"){
+                        if(getResultPolling.records[getPolling].PollingFor == "TenantAndContractor"){
                             getResultPolling.records[getPolling].PollingFor = "For Both Contractor & Tenant";
                         }
                         $("#select2-inputDropValue-container").html(getResultPolling.records[getPolling].PollingFor);

@@ -139,7 +139,7 @@ function loadNewsLetter() {
         $(".md-input-wrapper").removeClass("md-input-filled");
         $("#inputNewsLetterName").val('');
         $("#hiddenNewsLetterID").val(0);
-        $("#inputDropValue").val("For Both");
+        $("#inputDropValue").val("TenantAndContractor");
         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
         $(".btnSubmitNewsLetter").text("Add Newsletter");
         tinyMCE.activeEditor.setContent("");
@@ -346,7 +346,7 @@ function loadNewsLetter() {
 
                         newsLetterCountLimit = 0;
                         getAllNewsLetter(getValue);
-                        $("#inputDropValue").val("For Both Contractor & Tenant");
+                        $("#inputDropValue").val("TenantAndContractor");
                         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
                         $("#inputNewsLetterName").val('');
                         $("#inputNewsLetterDescription").val('');
@@ -366,7 +366,7 @@ function loadNewsLetter() {
                         console.log(dataCheck);
                         newsLetterCountLimit = 0;
                         getAllNewsLetter(getValue);
-                        $("#inputDropValue").val("For Both Contractor & Tenant");
+                        $("#inputDropValue").val("TenantAndContractor");
                         $("#select2-inputDropValue-container").html("For Both Contractor & Tenant");
                         $("#inputNewsLetterName").val('');
                         $("#inputNewsLetterDescription").val('');
