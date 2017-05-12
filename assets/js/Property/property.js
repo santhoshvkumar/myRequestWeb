@@ -368,6 +368,7 @@ var getPropLat, getPropLong, isEdit=false;
  });
  var mapCount = 0;
  $("#inpuZip").on('blur', function(e) {
+     console.log("Blur Function Called");
          var getAddress = $("#inputAddress").val().replace(/["']/g, "`");
          var getCounty = $("#select2-inputState-container").html();
          var getCity = $("#select2-inputCity-container").html();
@@ -378,7 +379,7 @@ var getPropLat, getPropLong, isEdit=false;
          var Longitude = "";
          console.log(wholeAddress);
          if(getAddress=="" && getCounty=="Select County" && getCity==undefined && postalCode==""){
-            //console.log("No Address Details Fetched");
+            console.log("No Address Details Fetched");
          }
          else{
          var geocoder = new google.maps.Geocoder();
@@ -386,38 +387,45 @@ var getPropLat, getPropLong, isEdit=false;
                 geocoder.geocode({
                     'address': wholeAddress
                 }, function (results, status) {
-                    if (status == google.maps.GeocoderStatus.OK) {
-                        console.log(results[0].geometry.location.lat()+" || "+results[0].geometry.location.lng());
-                         var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
-                          var myCenter = new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng());
-                          var mapCanvas = document.getElementById("propertyLocationGoogleMap");
-                          var mapOptions = {center: myCenter, zoom: 10};
-                           map = new google.maps.Map(mapCanvas, mapOptions);
-                          var marker = new google.maps.Marker({position:myCenter});
-                          marker.setMap(map);
-                          setTimeout(function() {
-                              google.maps.event.trigger(map,'resize');
-                              map.setCenter(new google.maps.LatLng(results[0].geometry.location.lat(), results[0].geometry.location.lng()));
-                              map.setZoom(10);
-                           }, 100)
-                           if( mapCount === 0){
-                                $(".propertyLocationGoogleMap").googleMap({
-                                    zoom: 10, // Initial zoom level (optional)
-                                    type: "ROADMAP" // Map type (optional)
-                                });
-                                mapCount = 1;
-                           }
-                            $(".propertyLocationGoogleMap").addMarker({
-                                address: wholeAddress, // Postal address
-                                zoom: 10,
-                                draggable: true,
-                                success: function(e) {
-                                    getLatitude = e.lat;
-                                    getLongitude = e.lon;
-                                }
-                            });
-                         modalUtilityList.show(); 
+                    debugger;
+                    if(results.length == 0){
+                        Latitude = 51.528308;
+                        Longitude = -0.3817961;
+                    } else {
+                        Latitude = results[0].geometry.location.lat();
+                        Longitude = results[0].geometry.location.lng();
                     }
+                    console.log(Latitude+" || "+ Longitude);
+                        var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
+                        var myCenter = new google.maps.LatLng(Latitude, Longitude);
+                        var mapCanvas = document.getElementById("propertyLocationGoogleMap");
+                        var mapOptions = {center: myCenter, zoom: 10};
+                        map = new google.maps.Map(mapCanvas, mapOptions);
+                        var marker = new google.maps.Marker({position:myCenter});
+                        marker.setMap(map);
+                        setTimeout(function() {
+                            google.maps.event.trigger(map,'resize');
+                            map.setCenter(new google.maps.LatLng(Latitude, Longitude));
+                            map.setZoom(10);
+                        }, 100)
+                        if( mapCount === 0){
+                            $(".propertyLocationGoogleMap").googleMap({
+                                zoom: 10, // Initial zoom level (optional)
+                                type: "ROADMAP" // Map type (optional)
+                            });
+                            mapCount = 1;
+                        }
+                        $(".propertyLocationGoogleMap").addMarker({
+                            coords: [Latitude, Longitude], // Postal address
+                            zoom: 10,
+                            draggable: true,
+                            success: function(e) {
+                                getLatitude = e.lat;
+                                getLongitude = e.lon;
+                            }
+                        });
+                        modalUtilityList.show(); 
+                    
                 });
             }
 

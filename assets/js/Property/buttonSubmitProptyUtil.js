@@ -73,12 +73,12 @@ var buttonSubmitProptyUtil = function() {
     var country = $("#inputCountry").val();
     getApiAddress = address + ", " + location + "," + state + "," + city + " - " + zip + ", " + country;
     
-    $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + getApiAddress + "'&key=AIzaSyBtzg2WqpDihcMDNnD0OAGTfYWZBxonJUU", {}, function(result) {
-        for (getLatLong in result.results) {
-            getLatitude = result.results[getLatLong].geometry.location.lat;
-            getLongitude = result.results[getLatLong].geometry.location.lng;
-        }
-    });
+    // $.get("https://maps.googleapis.com/maps/api/geocode/json?address=" + getApiAddress + "'&key=AIzaSyBtzg2WqpDihcMDNnD0OAGTfYWZBxonJUU", {}, function(result) {
+    //     for (getLatLong in result.results) {
+    //         getLatitude = result.results[getLatLong].geometry.location.lat;
+    //         getLongitude = result.results[getLatLong].geometry.location.lng;
+    //     }
+    // });
 
     var landlordState = $("#select2-inputState1-container").html();
     var landlordCity = $("#select2-inputCity1-container").html();
