@@ -58,13 +58,13 @@
                     
                     //$("#imgHmoUploadPic").css("border","");
                     $(".hmoInputTenent").hide();
-                    $(".hmoLicenseNumber").hide();
+                    //$(".hmoLicenseNumber").hide();
                 } else {
                     //$("#singleHmo").iCheck('uncheck');
                     //$("#multipleHmo").iCheck('check');
                     
                     $(".hmoInputTenent").show('slow');
-                    $(".hmoLicenseNumber").show('slow');
+                    //$(".hmoLicenseNumber").show('slow');
                 }
 
                 $(".getTenantList").html('');
@@ -168,12 +168,12 @@
                 //$("#multipleHmo").iCheck('uncheck');
                 //$("#imgHmoUploadPic").css("border","");
                 $(".hmoInputTenent").hide();
-                $(".hmoLicenseNumber").hide();
+                //$(".hmoLicenseNumber").hide();
             } else {
                 //$("#singleHmo").iCheck('uncheck');
                 //$("#multipleHmo").iCheck('check');
                 $(".hmoInputTenent").show('slow');
-                $(".hmoLicenseNumber").show('slow');
+                //$(".hmoLicenseNumber").show('slow');
             }
 
             $(".getTenantList").html('');
