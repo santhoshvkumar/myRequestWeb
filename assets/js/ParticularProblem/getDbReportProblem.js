@@ -465,7 +465,7 @@ function getDbReportProblem(getProblemID) {
                       } else {
                           getImgValue = domainAddress + getUserImage;
                       }
-                      $(".NotesContent").append("<li id='notesID-" + workLogID + "'  > <div class='uk-grid gridBox' data-uk-grid-margin>  <div class='uk-width-medium-1-2'>  <div class='parsley-row'> <h5 class='userHeadText'>" + assignedByText + "</h5> </div>   <div class='parsley-row overflowContent'>  " + getStatusTxt + "  </div> </div>  <div class='uk-width-medium-1-3 dateTimePad'>  <div class='parsley-row lblDateTime'>" + moment(resultProblem.ProblemRecord[Problem].ProblemNotes[NotesDetails].CreatedDate).format('Do MMM YYYY,  h:mm a') + " </div> </div>  <div class='uk-width-medium-1-10'> <div class='parsley-row'>  <img class='avatar img-responsive gridUserAvatar' alt='' src='" + getImgValue + "' /> </div> </div> </div>        </li>");
+                      $(".NotesContent").append("<li id='notesID-" + workLogID + "'  > <div class='uk-grid gridBox' data-uk-grid-margin>  <div class='uk-width-medium-1-2'>  <div class='parsley-row'> <h5 class='userHeadText'>" + assignedByText + "</h5> </div>   <div class='parsley-row overflowContent' style='white-space: normal !important;'>  " + getStatusTxt + "  </div> </div>  <div class='uk-width-medium-1-3 dateTimePad'>  <div class='parsley-row lblDateTime'>" + moment(resultProblem.ProblemRecord[Problem].ProblemNotes[NotesDetails].CreatedDate).format('Do MMM YYYY,  h:mm a') + " </div> </div>  <div class='uk-width-medium-1-10'> <div class='parsley-row'>  <img class='avatar img-responsive gridUserAvatar' alt='' src='" + getImgValue + "' /> </div> </div> </div>        </li>");
                   }
               }
 
