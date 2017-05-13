@@ -337,9 +337,17 @@ function loadNewsLetter() {
                     data: dataForm,
                     success: function(dataCheck) {
                         console.log(dataCheck);
-
+                         var callForPush;
+                        if(inputDropValue === "TenantAndContractor") {
+                            callForPush=  domainAddress + "push/msgSendByAdminForAllTenantCont.php"
+                        } else if( inputDropValue === "For Contractor") {
+                            callForPush=  domainAddress + "push/messageSendByAdminForAllContractor.php"
+                        } else if( inputDropValue === "For Tenant") {
+                            callForPush=  domainAddress + "push/messageSendByAdminForAllTenant.php"
+                        }
+                        debugger;
                         /*  For Push Notification to All Tenant & Contractor */
-                         $.post(domainAddress + "push/msgSendByAdminForAllTenantCont.php", {StatusMessage:newsLetterName, adminID:adminUserID, Title:'Newsletter'}, function(result) {
+                         $.post(callForPush, {StatusMessage:newsLetterName, adminID:adminUserID, Title:'Newsletter'}, function(result) {
                              console.log(result);
                          });
                          /*  For Push Notification to All Tenant & Contractor */

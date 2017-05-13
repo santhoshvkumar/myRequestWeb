@@ -373,14 +373,23 @@ $(".btnSearch").click(function () {
 
         if(pollingTitle != "" && getAddPollingArr!="") {
             var dataForm = '{"PollingTitle":"' + pollingTitle + '","IsUtilityPolling":"0","PollingFor":"' +inputDropValue+ '","AdminID":"' + adminUserID + '","PollingOptionArr":"' + getAddPollingArr + '"}';
-                    var sendURL = domainAddress + 'CreatePolling';
-                    $.ajax({
-                type: "POST",
+            var sendURL = domainAddress + 'CreatePolling';
+            $.ajax({
+                type:  "POST",
                 url: sendURL,
                 data: dataForm,
                 success: function(dataCheck) {
                     /*  For Push Notification to All Tenant & Contractor */
-                     $.post(domainAddress + "push/msgSendByAdminForAllTenantCont.php", {StatusMessage:"Polling : " + pollingTitle, adminID:adminUserID, Title:'Polling'}, function(result) {
+                    var callForPush;
+                    if(inputDropValue === "TenantAndContractor") {
+                        callForPush=  domainAddress + "push/msgSendByAdminForAllTenantCont.php"
+                    } else if( inputDropValue === "For Contractor") {
+                        callForPush=  domainAddress + "push/messageSendByAdminForAllContractor.php"
+                    } else if( inputDropValue === "For Tenant") {
+                        callForPush=  domainAddress + "push/messageSendByAdminForAllTenant.php"
+                    }
+                    debugger;
+                     $.post( callForPush, {StatusMessage:"Polling : " + pollingTitle, adminID:adminUserID, Title:'Polling'}, function(result) {
                          console.log(result);
                      });
                      /*  For Push Notification to All Tenant & Contractor */
