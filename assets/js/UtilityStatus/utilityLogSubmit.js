@@ -345,7 +345,10 @@ function utilityLogSubmit() {
                     getUtilityList();
                     getListPropertyUtilityLogs(hiddenPropertyID);
                     UIkit.modal.alert('Utility Log Created Successfully');
+                    
+                    //window.location = '';
                     $("#getLoadingModalContent").removeClass('md-show');
+                    //setTimeout( function ( ) { alert( "moo" ); }, 10000 );
                 }
             });
         }
@@ -385,20 +388,125 @@ function getListPropertyUtilityLogs(editPropertyID){
      var getUtilityType = "";
      $(".timeline").html('');
      $.get(domainAddress + "GetUserUtilityID/" + editPropertyID, {}, function(result) {
+
+            // Getting Gas content and status
+            var gascontent = '';
+            var gasrequirementstatus = '';
+            var gascount = 0;
+            
+            // Getting Electricity content and status
+            var electricitycontent = '';
+            var electricityrequirementstatus = '';
+            var electricitycount = 0;
+
+            // Getting Council content and status
+            var councilcontent = '';
+            var councilrequirementstatus = '';
+            var councilcount = 0;
+
+            // Getting Water content and status
+            var watercontent = '';
+            var waterrequirementstatus = '';
+            var watercount = 0;
+
+            // Getting Broadband content and status
+            var broadbandcontent = '';
+            var broadbandrequirementstatus = '';
+            var broadbandcount = 0;
+
+            // Getting Media content and status
+            var mediacontent = '';
+            var mediarequirementstatus = '';
+            var mediacount = 0;
+
        for (var getUtility in result.records) {
+         
+           
         if (result.records[getUtility].Utility == undefined) {
             $(".timeline").append('<div class="timeline_item" id="notesID-0"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date">  <span>  </span>  </div>  <div class="timeline_content">No Logs found<div class="timeline_content_addon">  <blockquote> No Logs found </blockquote>  </div>  </div>    </div>');
         } else {
              for (var utilityLog in result.records[getUtility].Utility) {
+
+                 var allutilityTypes = result.records[getUtility].Utility[utilityLog].UtilityType;
+                 var allcontent = result.records[getUtility].Utility[utilityLog].Content;
+                 var allrequirementStatus = result.records[getUtility].Utility[utilityLog].RequirementStatus;
+                 
+                 if((allutilityTypes == 'Gas') && (gascount == 0)) {
+                     gascontent = allcontent;
+                     gasrequirementstatus = allrequirementStatus;
+                     gascount++;
+                 }
+                 if((allutilityTypes == 'Electricity') && (electricitycount == 0)) {
+                     electricitycontent = allcontent;
+                     electricityrequirementstatus = allrequirementStatus;
+                     electricitycount++;
+                 }
+                 if((allutilityTypes == 'Council') && (councilcount == 0)){
+                     councilcontent = allcontent;
+                     councilrequirementstatus = allrequirementStatus;
+                     councilcount++;
+                 }
+                 if((allutilityTypes == 'Water') && (councilcount == 0)){
+                     watercontent = allcontent;
+                     waterrequirementstatus = allrequirementStatus;
+                     watercount++;
+                 }
+                 if((allutilityTypes == 'Broadband') && (councilcount == 0)){
+                     broadbandcontent = allcontent;
+                     broadbandrequirementstatus = allrequirementStatus;
+                     broadbandcount++;
+                 }
+                 if((allutilityTypes == 'Media') && (councilcount == 0)){
+                     mediacontent = allcontent;
+                     mediarequirementstatus = allrequirementStatus;
+                     mediacount++;
+                 }
                   if(result.records[getUtility].Utility[utilityLog].UtilityType==null || result.records[getUtility].Utility[utilityLog].UtilityType=="null"){
                       getUtilityType = "";
+                      //alert(getUtilityType);
                   }
                   else{
                       getUtilityType = ' For '+ result.records[getUtility].Utility[utilityLog].UtilityType;
+                      //getUtilityType1 = result.records[getUtility].Utility[utilityLog].UtilityType;
                   }
-                  $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[getUtility].Utility[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[getUtility].Utility[utilityLog].RequirementStatus + getUtilityType+' <div class="timeline_content_addon">  <blockquote>  ' + result.records[getUtility].Utility[utilityLog].Content + '</blockquote>  </div>  </div>    </div>');
-              }
+                  $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[getUtility].Utility[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[getUtility].Utility[utilityLog].RequirementStatus + getUtilityType+' <div class="timeline_content_addon">  <blockquote>  ' + result.records[getUtility].Utility[utilityLog].Content + '</blockquote>  </div>  </div>    </div>'); 
+            }
           }
-        }  
+            //Gas Details
+
+            $("#select2-inputGasInfo-container").attr('title', gasrequirementstatus);
+            $("#select2-inputGasInfo-container").html(gasrequirementstatus);
+            $("#inputGasNotes").val(gascontent);
+
+            //Electricity Details
+
+            $("#select2-inputElectricityInfo-container").attr('title', electricityrequirementstatus);
+            $("#select2-inputElectricityInfo-container").html(electricityrequirementstatus);
+            $("#inputElectricityNotes").val(electricitycontent);
+
+            //Council Details
+            
+            $("#select2-inputCouncilInfo-container").attr('title', councilrequirementstatus);
+            $("#select2-inputCouncilInfo-container").html(councilrequirementstatus);
+            $("#inputCouncilNotes").val(councilcontent);
+
+            //Water & Sewerage Details
+            
+            $("#select2-inputWaterActionInfo-container").attr('title', waterrequirementstatus);
+            $("#select2-inputWaterActionInfo-container").html(waterrequirementstatus);
+            $("#inputWaterNotes").val(watercontent);
+
+            //Broadband Details
+            
+            $("#select2-inputBroadbandInfo-container").attr('title', broadbandrequirementstatus);
+            $("#select2-inputBroadbandInfo-container").html(broadbandrequirementstatus);
+            $("#inputBroadbandNotes").val(broadbandcontent);
+
+            //Media Details
+            
+            $("#select2-inputMediaInfo-container").attr('title', mediarequirementstatus);
+            $("#select2-inputMediaInfo-container").html(mediarequirementstatus);
+            $("#inputMediaNotes").val(mediacontent);
+        } 
      });
    }
