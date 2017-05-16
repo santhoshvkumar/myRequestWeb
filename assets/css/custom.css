@@ -2304,7 +2304,16 @@ form#FileURLUploadImage1 {
 #fixedCaseModal{
     margin-top:-20px;
 }
-
+#requestimagepopup{
+    color:#5cb85c; 
+    font-weight:bold;
+}
+#requestimagepopup:hover{
+    color:#5cb85c;
+    text-decoration: underline;
+    font-weight:bold;
+    cursor:pointer;
+}
 .workLogTop{
     margin-top: 75px;
 }
