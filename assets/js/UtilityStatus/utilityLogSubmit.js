@@ -430,6 +430,8 @@ function getListPropertyUtilityLogs(editPropertyID){
                  var allutilityTypes = result.records[getUtility].Utility[utilityLog].UtilityType;
                  var allcontent = result.records[getUtility].Utility[utilityLog].Content;
                  var allrequirementStatus = result.records[getUtility].Utility[utilityLog].RequirementStatus;
+                 var BroadBandProviderstatus = result.records[getUtility].BroadbandProvider;
+                 var MediaProviderstatus = result.records[getUtility].MediaProvider;
                  
                  if((allutilityTypes == 'Gas') && (gascount == 0)) {
                      gascontent = allcontent;
@@ -446,17 +448,17 @@ function getListPropertyUtilityLogs(editPropertyID){
                      councilrequirementstatus = allrequirementStatus;
                      councilcount++;
                  }
-                 if((allutilityTypes == 'Water') && (councilcount == 0)){
+                 if((allutilityTypes == 'Water') && (watercount == 0)){
                      watercontent = allcontent;
                      waterrequirementstatus = allrequirementStatus;
                      watercount++;
                  }
-                 if((allutilityTypes == 'Broadband') && (councilcount == 0)){
+                 if((allutilityTypes == 'BroadBand') && (broadbandcount == 0)){
                      broadbandcontent = allcontent;
                      broadbandrequirementstatus = allrequirementStatus;
                      broadbandcount++;
                  }
-                 if((allutilityTypes == 'Media') && (councilcount == 0)){
+                 if((allutilityTypes == 'Media') && (mediacount == 0)){
                      mediacontent = allcontent;
                      mediarequirementstatus = allrequirementStatus;
                      mediacount++;
@@ -472,41 +474,59 @@ function getListPropertyUtilityLogs(editPropertyID){
                   $(".timeline").append('<div class="timeline_item" id="notesID-"' + result.records[getUtility].Utility[utilityLog].UtilityLogID + '"> <div class="timeline_icon timeline_icon_primary"><i class="material-icons">&#xE0B9;</i></div>  <div class="timeline_date"> ' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('Do') + ' <span>' + moment(result.records[getUtility].Utility[utilityLog].CreateDateTime).format('MMM') + '</span>  </div>  <div class="timeline_content"> ' + result.records[getUtility].Utility[utilityLog].RequirementStatus + getUtilityType+' <div class="timeline_content_addon">  <blockquote>  ' + result.records[getUtility].Utility[utilityLog].Content + '</blockquote>  </div>  </div>    </div>'); 
             }
           }
-            //Gas Details
+            // Displaying Broadband Details
+
+            if((BroadBandProviderstatus == null) || (BroadBandProviderstatus == "null")){
+            $("#getBroadBandProvider").html("You are not selected a Broadband Provider !");
+            }
+            else{
+            $("#getBroadBandProvider").html('Your Broadband Provider "'+BroadBandProviderstatus+'"');
+            }
+            
+            // Displaying Broadband Details
+
+            if((MediaProviderstatus == null) || (MediaProviderstatus == "null")){
+            $("#getMediaProvider").html("You are not selected a Media Provider !");
+            }
+            else{
+            $("#getMediaProvider").html('Your Media Provider "' +MediaProviderstatus+'"');
+            }
+        
+            // Displaying Gas Details
 
             $("#select2-inputGasInfo-container").attr('title', gasrequirementstatus);
-            $("#select2-inputGasInfo-container").html(gasrequirementstatus);
+            $("#select2-inputGasInfo-contain`er").html(gasrequirementstatus);
             $("#inputGasNotes").val(gascontent);
 
-            //Electricity Details
+            // Displaying Electricity Details
 
             $("#select2-inputElectricityInfo-container").attr('title', electricityrequirementstatus);
             $("#select2-inputElectricityInfo-container").html(electricityrequirementstatus);
             $("#inputElectricityNotes").val(electricitycontent);
 
-            //Council Details
+            // Displaying Council Details
             
             $("#select2-inputCouncilInfo-container").attr('title', councilrequirementstatus);
             $("#select2-inputCouncilInfo-container").html(councilrequirementstatus);
             $("#inputCouncilNotes").val(councilcontent);
 
-            //Water & Sewerage Details
+            // Displaying Water & Sewerage Details
             
             $("#select2-inputWaterActionInfo-container").attr('title', waterrequirementstatus);
             $("#select2-inputWaterActionInfo-container").html(waterrequirementstatus);
             $("#inputWaterNotes").val(watercontent);
 
-            //Broadband Details
+            // //Displaying Broadband Details
             
-            $("#select2-inputBroadbandInfo-container").attr('title', broadbandrequirementstatus);
-            $("#select2-inputBroadbandInfo-container").html(broadbandrequirementstatus);
-            $("#inputBroadbandNotes").val(broadbandcontent);
+            // $("#select2-inputBroadbandInfo-container").attr('title', broadbandrequirementstatus);
+            // $("#select2-inputBroadbandInfo-container").html(broadbandrequirementstatus);
+            // $("#inputBroadbandNotes").val(broadbandcontent);
 
-            //Media Details
+            // //Media Details
             
-            $("#select2-inputMediaInfo-container").attr('title', mediarequirementstatus);
-            $("#select2-inputMediaInfo-container").html(mediarequirementstatus);
-            $("#inputMediaNotes").val(mediacontent);
+            // $("#select2-inputMediaInfo-container").attr('title', mediarequirementstatus);
+            // $("#select2-inputMediaInfo-container").html(mediarequirementstatus);
+            // $("#inputMediaNotes").val(mediacontent);
         } 
      });
    }
