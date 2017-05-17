@@ -1025,7 +1025,7 @@ getExistPrivacypolicy();
              }
 
              if (result.records[getUserInfo].UrlForRent == "") {
-               $("#inputUrlRent").val("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/464910/How_to_Rent_October_2015_FINAL.pdf");
+               $("#inputUrlRent").val("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/496709/How_to_Rent_Jan_16.pdf");
              } else
              $("#inputUrlRent").val(result.records[getUserInfo].UrlForRent);
              $("#inputEmail").val(result.records[getUserInfo].BusinessEmail);
