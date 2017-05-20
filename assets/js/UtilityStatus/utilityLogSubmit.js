@@ -495,7 +495,7 @@ function getListPropertyUtilityLogs(editPropertyID){
             // Displaying Gas Details
 
             $("#select2-inputGasInfo-container").attr('title', gasrequirementstatus);
-            $("#select2-inputGasInfo-contain`er").html(gasrequirementstatus);
+            $("#select2-inputGasInfo-container").html(gasrequirementstatus);
             $("#inputGasNotes").val(gascontent);
 
             // Displaying Electricity Details
