@@ -477,7 +477,7 @@ function getListPropertyUtilityLogs(editPropertyID){
             // Displaying Broadband Details
 
             if((BroadBandProviderstatus == null) || (BroadBandProviderstatus == "null")){
-            $("#getBroadBandProvider").html("You are not selected a Broadband Provider !");
+            $("#getBroadBandProvider").html("Tenant has not availed any Broadband !");
             }
             else{
             $("#getBroadBandProvider").html('Your Broadband Provider "'+BroadBandProviderstatus+'"');
@@ -486,7 +486,7 @@ function getListPropertyUtilityLogs(editPropertyID){
             // Displaying Broadband Details
 
             if((MediaProviderstatus == null) || (MediaProviderstatus == "null")){
-            $("#getMediaProvider").html("You are not selected a Media Provider !");
+            $("#getMediaProvider").html("Tenant has not availed any Media !");
             }
             else{
             $("#getMediaProvider").html('Your Media Provider "' +MediaProviderstatus+'"');
