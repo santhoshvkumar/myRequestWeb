@@ -2172,6 +2172,10 @@ form#FileURLUploadImage1 {
   margin: 3px;
   margin-left: 20px;
 }
+.owl-item {
+    margin-left: 20px;
+}
+
 .md-bg-yellow{
     background-color: #fcdb34;
 }
