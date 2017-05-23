@@ -2168,8 +2168,9 @@ form#FileURLUploadImage1 {
     border-radius: 50%;
 }
 
-#owl-demo .item{
+#owl-item .item{
   margin: 3px;
+  margin-left: 20px;
 }
 .md-bg-yellow{
     background-color: #fcdb34;
