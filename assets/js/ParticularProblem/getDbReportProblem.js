@@ -37,7 +37,7 @@ function getDbReportProblem(getProblemID) {
               var getFixedAmount = resultProblem.ProblemRecord[Problem].FixedAmount;
               getSpecialityID = resultProblem.ProblemRecord[Problem].SpecialityID;
               var getAddress = resultProblem.ProblemRecord[Problem].GetAddress;
-              
+              console.log(JSON.stringify(resultProblem.ProblemRecord));
               if(getSpecialityID!=""){
                 getProblemSpeciality(getSpecialityID);
               }
@@ -400,7 +400,7 @@ function getDbReportProblem(getProblemID) {
                   } else if (status == "Approved") {
                       getStatusTxt = content;
                   } else if (status == "Completed") {
-                      getStatusTxt = content + "<span class='fixedCaseModal'><a> Click here to view the fixed image</a></span>";
+                      getStatusTxt = content + "<span class='fixedCaseModal'><a id='clickimageview'> Click here to view the fixed image</a>&nbsp;<i class='fa fa-external-link' style='color:green; font-size:14px;' aria-hidden='true'></i></span>";
                   } else if (status == "Accepted") {
                       getStatusTxt = content;
                   } else if (status == "Rating") {

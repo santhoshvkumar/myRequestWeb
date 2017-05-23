@@ -817,7 +817,7 @@
                   }
 
                   if (result.records[getUserInfo].UrlForRent == "") {
-                      $("#inputUrlRent").val("https://www.gov.uk/government/uploads/system/uploads/attachment_data/file/496709/How_to_Rent_Jan_16.pdf");
+                      $("#inputUrlRent").val("https://www.gov.uk/government/publications/how-to-rent/how-to-rent-the-checklist-for-renting-in-england");
                   } else
                       $("#inputUrlRent").val(result.records[getUserInfo].UrlForRent);
                   $("#inputEmail").val(result.records[getUserInfo].BusinessEmail);
