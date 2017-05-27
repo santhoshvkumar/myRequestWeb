@@ -737,7 +737,7 @@
             window.location.href = "ListAllCase.html";
         });
         $(".getOpenRequest").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "!Completed");
+            localStorage.setItem("MyRequest_RepairStatus", "");
             window.location.href = "ListAllCase.html";
         });
         $("#getCountRepairs").click(function() {
