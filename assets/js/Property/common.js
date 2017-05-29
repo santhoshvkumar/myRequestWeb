@@ -28,6 +28,16 @@
              }
          }); // .getPropMandatoryInfo
 
+         $(".getTenantsInfo").on('click', function() {
+             if ($(".getTenantList").is(":hidden")) {
+                 $(".getTenantList").show("slow");
+                 $(".getTenantsInfo").text('- Occupant');
+             } else {
+                 $(".getTenantList").hide("slow");
+                 $(".getTenantsInfo").text('+ Occupant');
+             }
+         }); // .getTenantInfo
+
          $(".getPropertyInfo").click(function() {
              $(".propertyInfo").toggle();
          });
