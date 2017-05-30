@@ -583,11 +583,11 @@ var getNotificationContentIDforUpdate = 0;
                                 UIkit.modal.alert('Polling Updated Successfully');
                                 $('.pollingContent').hide();
                                 $("#getLoadingModalContent").removeClass('md-show');
-                               // getAllNewsLetter(getValue);
+                                getAllNewsLetter(getValue);
                             }
                         });
                     }); //*** Update Polling End ***//
-                    
+
             }); // editNotificationContent
             
         } // table load result.record_count
