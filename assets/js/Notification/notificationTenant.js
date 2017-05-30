@@ -1,5 +1,5 @@
   $(function() {
-
+var getNotificationContentIDforUpdate = 0;
       $('#full_screen_toggle').on('click', function(e) {
           e.preventDefault();
           screenfull.toggle();
@@ -421,6 +421,7 @@
                   $("#news-" + result.records[getNewsLetter].NotificationContentID).hide()
 
               } else {
+                  
                   $("#polling-" + result.records[getNewsLetter].NotificationContentID).hide()
                   $("#news-" + result.records[getNewsLetter].NotificationContentID).show()
 
@@ -434,6 +435,8 @@
               var getNotificationID = this.id.replace("editNotificationContent-", "");
               var getIsPolling = $("#editNotificationContent-" + getNotificationID).attr('refIsPolling');
               var getContentID = $("#newsLetterFor-" + getNotificationID).attr('refId');
+              getNotificationContentIDforUpdate = getNotificationID;
+              //alert(getContentID);
               //console.log("NotificationID : "+getNotificationID+" || IsPolling : "+getIsPolling+" || ContentID : "+getContentID);
               var getUrl = "";
               if (getIsPolling == 1) {
@@ -474,6 +477,7 @@
                                       $("#inputPollingOption" + i).remove();
                                   }
                                   optionCount = 1;
+                                  $(".addNewOptions").html('');
                                   for (var getPollingOption in result.records[getPolling].Polling) {
                                       //console.log(result.records[getPolling].Polling);
                                     //   if (optionCount <= 2) {
@@ -482,10 +486,9 @@
                                     //   } else {
                                     //       $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">  <label for="inputPollingOption' + optionCount + '">Polling Options ' + optionCount + '<span class="req">*</span></label>     <input type="radio" id="inputPollingOption' + optionCount + '" name="pollingOption" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionName + '" /> '+ result.records[getPolling].Polling[getPollingOption].PollingOptionName +'      <span class="md-input-bar"></span>    </div> </div> </div> </div>')
                                     //   }
-                                    $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">   <input type="radio" id="inputPollingOption' + optionCount + '" name="pollingOption" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionName + '" /> '+ result.records[getPolling].Polling[getPollingOption].PollingOptionName +'      <span class="md-input-bar"></span>    </div> </div> </div> </div>')
+                                    $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">   <input type="radio" id="inputPollingOption' + optionCount + '" name="pollingOption" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionID + '" /> '+ result.records[getPolling].Polling[getPollingOption].PollingOptionName +'      <span class="md-input-bar"></span>    </div> </div> </div> </div>')
                                     $("#inputPollingOption" + optionCount).attr("disabled", false);
                                       optionCount++;
-
 
                                       pollingOptionCount = {
                                           value: result.records[getPolling].Polling[getPollingOption].PollingAns,
@@ -562,8 +565,31 @@
                   $(".md-input-wrapper").addClass("md-input-filled");
               }); // domainAddress+getUrl+getContentID
 
-          }); // editNotificationContent
+                //*** Update Polling Start ***//
+                $(".btnUpdatePolling").click(function() {
+                    var pollingOptionID = $("input[name=pollingOption]:checked").val();
+                    var dataForm = '{"NotificationContentID":"' + getNotificationContentIDforUpdate + '", "AdminID":"' + adminUserID + '", "PollingOptoionID":"' + pollingOptionID + '","UserID":"' + adminUserID + '"}';
+                    console.log(dataForm);
 
-      } // table load result.record_count
+                    var sendURL = domainAddress + 'CreateAcknowledgement';
+                    console.log(sendURL);
+                    
+                        $.ajax({
+                            type: "POST",
+                            url: sendURL,
+                            data: dataForm,
+                            success: function(dataCheck) {
+                                console.log(dataCheck);
+                                UIkit.modal.alert('Polling Updated Successfully');
+                                $('.pollingContent').hide();
+                                $("#getLoadingModalContent").removeClass('md-show');
+                               // getAllNewsLetter(getValue);
+                            }
+                        });
+                    }); //*** Update Polling End ***//
+                    
+            }); // editNotificationContent
+            
+        } // table load result.record_count
 
   } // loadNewsLetterList(result)
