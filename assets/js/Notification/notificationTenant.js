@@ -476,13 +476,14 @@
                                   optionCount = 1;
                                   for (var getPollingOption in result.records[getPolling].Polling) {
                                       //console.log(result.records[getPolling].Polling);
-                                      if (optionCount <= 2) {
-                                          $("#inputPollingOption" + optionCount).val(result.records[getPolling].Polling[getPollingOption].PollingOptionName);
+                                    //   if (optionCount <= 2) {
+                                    //       $("#inputPollingOption" + optionCount).val(result.records[getPolling].Polling[getPollingOption].PollingOptionName);
 
-                                      } else {
-                                          $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">  <label for="inputPollingOption' + optionCount + '">Polling Options ' + optionCount + '<span class="req">*</span></label>     <input type="text" id="inputPollingOption' + optionCount + '" name="pollingOption" class="md-input" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionName + '" />       <span class="md-input-bar"></span>    </div> </div> </div> </div>')
-                                      }
-                                      $("#inputPollingOption" + optionCount).attr("disabled", true);
+                                    //   } else {
+                                    //       $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">  <label for="inputPollingOption' + optionCount + '">Polling Options ' + optionCount + '<span class="req">*</span></label>     <input type="radio" id="inputPollingOption' + optionCount + '" name="pollingOption" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionName + '" /> '+ result.records[getPolling].Polling[getPollingOption].PollingOptionName +'      <span class="md-input-bar"></span>    </div> </div> </div> </div>')
+                                    //   }
+                                    $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">   <input type="radio" id="inputPollingOption' + optionCount + '" name="pollingOption" value="' + result.records[getPolling].Polling[getPollingOption].PollingOptionName + '" /> '+ result.records[getPolling].Polling[getPollingOption].PollingOptionName +'      <span class="md-input-bar"></span>    </div> </div> </div> </div>')
+                                    $("#inputPollingOption" + optionCount).attr("disabled", false);
                                       optionCount++;
 
 
@@ -521,8 +522,8 @@
                               $("#select2-inputDropValue-container").html(result.records[getNewsLetter].NewsLetterFor);
                               $("#inputDropValue").val(result.records[getNewsLetter].NewsLetterFor);
                               
-                              var testing = decodeURIComponent(result.records[getNewsLetter].TitleDescription);
-                              $("#inputNewsLetterDescriptions").html(testing);
+                              var getnewsletterdescription = decodeURIComponent(result.records[getNewsLetter].TitleDescription);
+                              $("#inputNewsLetterDescriptions").html(getnewsletterdescription);
 
                             //  var a =  tinyMCE.activeEditor.setContent(decodeURIComponent(result.records[getNewsLetter].TitleDescription), {
                             //       format: 'raw'
