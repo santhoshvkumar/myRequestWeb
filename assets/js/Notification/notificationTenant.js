@@ -444,7 +444,8 @@
 
               var pollingOptionCount = "";
               var pieChartData = new Array();
-
+              
+              $("#hidedropdowninedit").hide();
               $(".md-input-wrapper").addClass("md-input-filled");
 
               $(".btnSubmitPolling").hide();
@@ -519,11 +520,14 @@
 
                               $("#select2-inputDropValue-container").html(result.records[getNewsLetter].NewsLetterFor);
                               $("#inputDropValue").val(result.records[getNewsLetter].NewsLetterFor);
+                              
+                              var testing = decodeURIComponent(result.records[getNewsLetter].TitleDescription);
+                              $("#inputNewsLetterDescriptions").html(testing);
 
-                              tinyMCE.activeEditor.setContent(decodeURIComponent(result.records[getNewsLetter].TitleDescription), {
-                                  format: 'raw'
-                              });
-
+                            //  var a =  tinyMCE.activeEditor.setContent(decodeURIComponent(result.records[getNewsLetter].TitleDescription), {
+                            //       format: 'raw'
+                            //   });
+                              
                               $(".btnSubmitNewsLetter").text("Update NewsLetter");
                           }
 
