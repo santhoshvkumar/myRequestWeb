@@ -393,31 +393,24 @@
       } else {
           $("#enterPageNO").attr("disabled", false);
           $(".allNewsLetterList").html('');
-        //   if (result.record_count == result.All_Records_Count) {
-        //       console.log("equal to 9");
-        //       $("#nextPage").attr("disabled", "disabled");
-        //   } else if (result.record_count < 9 && result.record_count != 0) {
-        //       console.log("less than 9");
-        //       $("#nextPage").attr("disabled", "disabled");
-        //   } else if (result.record_count >= 9) {
-        //       console.log("great than 9");
-        //       $("#nextLastPage").removeAttr("disabled");
-        //   }
-        //   lastPage = parseInt(result.All_Records_Count / 9) + 1;
-        //   console.log(lastPage);
+          if (result.record_count == result.All_Records_Count) {
+              console.log("equal to 9");
+              $("#nextPage").attr("disabled", "disabled");
+          } else if (result.record_count < 9 && result.record_count != 0) {
+              console.log("less than 9");
+              $("#nextPage").attr("disabled", "disabled");
+          } else if (result.record_count >= 9) {
+              console.log("great than 9");
+              $("#nextLastPage").removeAttr("disabled");
+          }
+          lastPage = parseInt(result.All_Records_Count / 9) + 1;
+          console.log(lastPage);
           for (getNewsLetter in result.records) {
-              if(result.records[getNewsLetter].GetNewsLetterID != 0){
-              $(".allNewsLetterList").append("<tr class='odd gradeX' id='rowID-" + result.records[getNewsLetter].GetNewsLetterID + "'><td id='iconChange-" + result.records[getNewsLetter].GetNewsLetterID + "'><i class='fa fa-newspaper-o fa-2x' style='cursor:pointer;' id='polling-" + result.records[getNewsLetter].GetNewsLetterID + "'></i></td><td id='newsLetterFor-" + result.records[getNewsLetter].GetNewsLetterID + "'>"  + result.records[getNewsLetter].GeyNewsLetterTitle +   "</td> <td class='editNotificationContent' id='editNotificationContent-" + result.records[getNewsLetter].GetNewsLetterID + "' refIsPolling='" + result.records[getNewsLetter].GetNewsLetterID + "' style='cursor:pointer;'><i class='fa fa fa-eye eye fa-1x'></i></td></tr>");
+
+              $(".allNewsLetterList").append("<tr class='odd gradeX' id='rowID-" + result.records[getNewsLetter].NotificationContentID + "'><td id='iconChange-" + result.records[getNewsLetter].NotificationContentID + "'><i class='fa fa-newspaper-o fa-2x' style='cursor:pointer;' id='polling-" + result.records[getNewsLetter].NotificationContentID + "'></i> <i class='fa fa-pencil-square fa-2x'  id='news-" + result.records[getNewsLetter].NotificationContentID + "'></i></td><td id='newsLetterFor-" + result.records[getNewsLetter].NotificationContentID + "'> </td> <td class='editNotificationContent' id='editNotificationContent-" + result.records[getNewsLetter].NotificationContentID + "' refIsPolling='" + result.records[getNewsLetter].IsPolling + "' style='cursor:pointer;'><i class='fa fa fa-eye eye fa-1x'></i></td></tr>");
               getIsPolling = result.records[getNewsLetter].IsPolling
-              }
-              if(result.records[getNewsLetter].GetPollingID !=0){
-                 $(".allNewsLetterList").append("<tr class='odd gradeX' id='rowID-" + result.records[getNewsLetter].GetPollingID + "'><td id='iconChange-" + result.records[getNewsLetter].GetPollingID + "'> <i class='fa fa-pencil-square fa-2x'  id='news-" + result.records[getNewsLetter].GetPollingID + "'></i></td><td id='newsLetterFor-" + result.records[getNewsLetter].GetPollingID + "'>"  + result.records[getNewsLetter].GetPollingTitle +   "</td> <td class='editNotificationContent' id='editNotificationContent-" + result.records[getNewsLetter].GetPollingID + "' refIsPolling='" + result.records[getNewsLetter].GetPollingID + "' style='cursor:pointer;'><i class='fa fa fa-eye eye fa-1x'></i></td></tr>");
-                 getIsPolling = result.records[getNewsLetter].IsPolling
-            }
-            if(result.records[getNewsLetter].GetPollingID == "undefined"){
-                $("#rowID-undefined").hide();
-            }
-            
+
+
               for (getContentHead in result.records[getNewsLetter].Content) {
                   $("#newsLetterFor-" + result.records[getNewsLetter].NotificationContentID).text(result.records[getNewsLetter].Content[getContentHead].Title);
                   $("#newsLetterFor-" + result.records[getNewsLetter].NotificationContentID).attr('refId', result.records[getNewsLetter].Content[getContentHead].ID);
