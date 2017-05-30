@@ -588,6 +588,29 @@ var getNotificationContentIDforUpdate = 0;
                         });
                     }); //*** Update Polling End ***//
 
+                    //*** Update Newsletter Start ***//
+                    $(".btnUpdateNewsletter").click(function() {
+                        var pollingOptionID = 0;
+                        var dataForm = '{"NotificationContentID":"' + getNotificationContentIDforUpdate + '", "PollingOptoionID":"' + pollingOptionID + '", "AdminID":"' + adminUserID + '", "UserID":"' + adminUserID + '"}';
+                        console.log(dataForm);
+
+                        var sendURL = domainAddress + 'CreateAcknowledgement';
+                        console.log(sendURL);
+                        
+                            $.ajax({
+                                type: "POST",
+                                url: sendURL,
+                                data: dataForm,
+                                success: function(dataCheck) {
+                                    console.log(dataCheck);
+                                    UIkit.modal.alert('NewsLetter Updated Successfully');
+                                    $('.newsLetterContent').hide();
+                                    $("#getLoadingModalContent").removeClass('md-show');
+                                    getAllNewsLetter(getValue);
+                                }
+                            });
+                        }); //*** Update Newsletter End ***//
+
             }); // editNotificationContent
             
         } // table load result.record_count
