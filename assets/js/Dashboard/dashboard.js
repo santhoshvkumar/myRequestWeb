@@ -327,12 +327,20 @@
                         $("#dashOpen1").text(result.records[getDashBoardValues].NoOpen);
                         $("#dashAmount").text(result.records[getDashBoardValues].TotalAmount);
                         $(".dashComplaints").text(result.records[getDashBoardValues].TotalComplaints);
-                        $("#dashPproperties").text(result.records[getDashBoardValues].TotalProperty);
+                        //$("#dashPproperties").text(result.records[getDashBoardValues].TotalProperty);
                         $("#dashTenants").text(result.records[getDashBoardValues].TotalTenants);
-                        $(".dashTenants").text(result.records[getDashBoardValues].TotalTenants);
+                        $(".dashTenants").text(result.records[getDashBoardValues].TotalProperty);
+                        var Daysleft = result.records[getDashBoardValues].DateDiff;
+                        if (Daysleft<0){
+                            $(".dashTotalDaysLeft").text(Daysleft+ " Days Behind");
+                        }
+                        else {
+                            $(".dashTotalDaysLeft").text(Daysleft+ " Days To Go");
+                        }
+                        
 
-                        if (result.records[getDashBoardValues].TotalTenants != null)
-                            getTotalAmount = parseFloat(result.records[getDashBoardValues].TotalTenants) * parseFloat(0.5);
+                        if (result.records[getDashBoardValues].TotalProperty != null)
+                            getTotalAmount = parseFloat(result.records[getDashBoardValues].TotalProperty) * parseFloat(0.75);
                         else
                             getTotalAmount = 0;
                         $(".dashTotalAmount").text(getTotalAmount);
@@ -355,7 +363,6 @@
                        
                     }else{
                         $("#dashPproperties").text(result.record_count);
-                    
                         $(".noOfAppInstalled").text(result.records[0].TenantCountInstalledApp);
                         $(".noOfTenants").text(result.records[0].TenantCount);
                         var totalCount = parseInt(result.records[0].TenantCountInstalledApp) / parseInt(result.records[0].TenantCount);
