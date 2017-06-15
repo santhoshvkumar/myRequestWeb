@@ -372,7 +372,8 @@ $(".btnSearch").click(function () {
          
 
         if(pollingTitle != "" && getAddPollingArr!="") {
-            var dataForm = '{"PollingTitle":"' + pollingTitle + '","IsUtilityPolling":"0","PollingFor":"' +inputDropValue+ '","AdminID":"' + adminUserID + '","PollingOptionArr":"' + getAddPollingArr + '"}';
+            var AdminCountry = localStorage.getItem("MyRequest_Country");
+            var dataForm = '{"PollingTitle":"' + pollingTitle + '","IsUtilityPolling":"0","PollingFor":"' +inputDropValue+ '","AdminID":"' + adminUserID + '","PollingOptionArr":"' + getAddPollingArr + '","Getcountry":"' + AdminCountry + '"}';
             var sendURL = domainAddress + 'CreatePolling';
             $.ajax({
                 type:  "POST",
@@ -414,12 +415,13 @@ $(".btnSearch").click(function () {
 
     function getallPolling(getValue) {
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
+    var AdminCountry = localStorage.getItem("MyRequest_Country");
      if(getValue=="" || getValue==undefined){
-          dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","AdminID":"'+adminUserID+'"}';
+          dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
           sendURL = domainAddress+"PollingListByCount";
     }
     else{
-         dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","SearchValue":"'+getValue+'","AdminID":"'+adminUserID+'"}';
+         dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","SearchValue":"'+getValue+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
          sendURL = domainAddress+"SearchPollingList";
     }
         console.log(dataForm);
