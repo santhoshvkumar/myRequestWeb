@@ -320,7 +320,8 @@ function loadNewsLetter() {
             $(".errorInfo").hide();
             $(".errorInfo").text("");
             $(".newsLetterDescriptionLbl").css("color", "");
-            var dataForm = '{"TitleName":"' + newsLetterName + '","TitleDescription":"' + newsLetterDescription + '","AdminID":"' + adminUserID + '","NewsLetterFor":"' + inputDropValue + '","IsUtilityNewsLetter":"0"}';
+            var AdminCountry = localStorage.getItem("MyRequest_Country");
+            var dataForm = '{"TitleName":"' + newsLetterName + '","TitleDescription":"' + newsLetterDescription + '","AdminID":"' + adminUserID + '","NewsLetterFor":"' + inputDropValue + '","IsUtilityNewsLetter":"0","Getcountry":"' +AdminCountry+ '"}';
             console.log(dataForm);
             if(inputDropValue=="For Tenant"){
                 newsLetterFor="Tenant";
@@ -406,7 +407,7 @@ function loadNewsLetter() {
             dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
             sendURL = domainAddress + "NewsLetterListByCount";
         } else {
-            dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
+            dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
             sendURL = domainAddress + "SearchNewsletterList";
         }
 
