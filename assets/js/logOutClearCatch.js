@@ -12,4 +12,5 @@ var logOutClearCatch = function() {
 	localStorage.removeItem( "MyRequestUserRegisterID" );
 	localStorage.removeItem( "MyRequest_ContractorName" );
 	localStorage.removeItem( "MyRequest_RepairStatus" );
+	localStorage.removeItem( "MyRequest_Country" );
 };

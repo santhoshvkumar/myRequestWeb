@@ -66,6 +66,7 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
               localStorage.setItem( "MyRequest_GMT", gmt );
               localStorage.setItem( "MyRequest_PhoneCode-prefix", phoneCode );
               localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
+              localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
               if ( adminType !== "SuperAdmin" ) {
                  $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {
                     if ( result.records[ 0 ].AdminFirstName === "" || result.records[ 0 ].Logo === "" || result.records[ 0 ].AdminLastName === "" || result.records[ 0 ].BusinessName === "" ||

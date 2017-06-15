@@ -401,8 +401,9 @@ function loadNewsLetter() {
 
     function getAllNewsLetter(getValue) {
         adminUserID = localStorage.getItem("MyRequest_AdminID");
+        var AdminCountry = localStorage.getItem("MyRequest_Country");
         if (getValue == "" || getValue == undefined) {
-            dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","AdminID":"' + adminUserID + '"}';
+            dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
             sendURL = domainAddress + "NewsLetterListByCount";
         } else {
             dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
