@@ -1155,26 +1155,26 @@
 });
 
 
-//  $("#inputAlternateNo").keyup(function() {
-//   var inputAlternateNo = $("#inputAlternateNo").val();
-//   if (inputAlternateNo == "") {
-//     $(".ano-prefix").hide();
-//     $("#inputAlternateNo").removeAttr('style');
-//     $("#inputAlternateNo").css("border-color", "red");
-//     $(".help-block").show();
-//     $(".help-block").text("* Enter the Alternate Number");
-//     $(".btnSubmitContractor").attr("disabled", true);
-//     return false;
-//   } else {
-//     $(".ano-prefix").show();
-//     $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
-//     $(".help-block").hide();
-//     $(".help-block").text("");
-//     $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
-//     $(".btnSubmitContractor").attr("disabled", false);
-//     return false;
-//   }
-// });
+ $("#inputAlternateNo").keyup(function() {
+  var inputAlternateNo = $("#inputAlternateNo").val();
+  if (inputAlternateNo == "") {
+    $(".ano-prefix").hide();
+    $("#inputAlternateNo").removeAttr('style');
+    $("#inputAlternateNo").css("border-color", "red");
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Alternate Number");
+    $(".btnSubmitContractor").attr("disabled", true);
+    return false;
+  } else {
+    $(".ano-prefix").show();
+    $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+    $(".help-block").hide();
+    $(".help-block").text("");
+    $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
+    $(".btnSubmitContractor").attr("disabled", false);
+    return false;
+  }
+});
 
 
 
