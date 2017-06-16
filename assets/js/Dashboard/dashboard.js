@@ -331,7 +331,10 @@
                         $("#dashTenants").text(result.records[getDashBoardValues].TotalTenants);
                         $(".dashTenants").text(result.records[getDashBoardValues].TotalProperty);
                         var Daysleft = result.records[getDashBoardValues].DateDiff;
-                        if (Daysleft<0){
+                        if(Daysleft == 0){
+                             $(".dashTotalDaysLeft").text(Daysleft);
+                        }
+                        else if (Daysleft<0){
                             $(".dashTotalDaysLeft").text(Daysleft+ " Days Behind");
                         }
                         else {
@@ -1224,6 +1227,81 @@
                     }); // .moveOut
                 }
             });
+
+            // Contractor Status Starts Here
+            var getUtilityStatusUrl = "";
+            if(adminUserID==0){
+                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin";
+            }
+            else{
+                getUtilityStatusUrl = "GetContractorUtilityStatus/"+adminUserID;
+            }
+
+            $.get(domainAddress+getUtilityStatusUrl,{},function(resultContractorUtility){
+                console.log(domainAddress+getUtilityStatusUrl);
+                $(".contractorUtility").html('');
+                if(resultContractorUtility.record_count==0){
+                    $(".contractorUtility").append("<tr><td id='ContractorName--0'>No records found</td> <td id='ContractorSpeciality-0'></td> <td id='ContractorEndDate-0'></td> <td id='action-0'></td> </tr>");
+                }
+                else{
+                    for(contractor in resultContractorUtility.records){
+                        // $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).html("");
+                        $(".contractorUtility").append("<tr id='getContractorRowID-" + resultContractorUtility.records[contractor].contractorID + "'><td id='ContractorName-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>" + resultContractorUtility.records[contractor].ContractorName + "</td> <td id='ContractorSpeciality-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+resultContractorUtility.records[contractor].SpecialityName+"</td><td id='ContractorEndDate-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+moment(resultContractorUtility.records[contractor].ContractValidTill).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultContractorUtility.records[contractor].ContractorID+"'></i> </td> </tr> ");
+
+                        // for(getUtility in resultTenantUtility.records[tenant].Utility){
+                        //     $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).append("<input type='hidden' id='hiddenIsElectricity-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].ElectricityStatus+"' />  <input type='hidden' id='hiddenIsGas-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].GasStatus+"' /> <input type='hidden' id='hiddenIsWater-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].WaterStatus+"' /> <input type='hidden' id='hiddenIsCouncil-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].CouncilStatus+"' /> <input type='hidden' id='hiddenAvailTenantInsurance-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].IsTenantInsurance+"' />");
+                        // }
+                    }
+
+                    // $(".reneval").on('click',function(){
+                    //     var tenantID = this.id.replace('reneval-','');
+                    //     var tenantName = $("#propName-"+tenantID).text();
+                    //     var tenantPropertyAddress = $("#propAddress-"+tenantID).text();
+                    //     var tenantNewStartDate = $("#hiddenTenantEndDate-"+tenantID).val();
+                    //     var finalNewStartDate = tenantNewStartDate;
+                    //     var tenantNewStartDate = moment(tenantNewStartDate).format('DD.MM.YYYY');
+
+                    //     UIkit.modal.confirm('Do you want to renew the tenancy ?', function() {
+                    //         console.log("yes renew tenant");
+                    //         var modal = UIkit.modal("#getTenancyRenew");
+                    //         modal.show();
+                            
+                    //         $(".md-input-wrapper").addClass("md-input-filled");
+                    //         $("#inputTenantName").val(tenantName);
+                    //         $("#inputTenantAddress").val(tenantPropertyAddress);
+                    //         $("#inputNewStartDate").val(tenantNewStartDate);
+                            
+                    //         $("#btnTenancyRenewal").click(function(){
+                    //             var tenantEndDate = $("#inputNewEndDate").val();
+                    //             var getDate = tenantEndDate.split('.');
+                    //             var finalEndStartDate = getDate[2]+"-"+getDate[1]+"-"+getDate[0];
+                    //             var dataForm = '{"TenantID":"' + tenantID + '","AdminID":"'+adminUserID+'","StartDate":"'+finalNewStartDate+'","EndDate":"'+finalEndStartDate+'"}';
+                    //             console.log(dataForm);
+                    //             var sendURL = domainAddress + 'updateTenantDue';
+
+                    //             $.ajax({
+                    //                   type: "POST",
+                    //                   url: sendURL,
+                    //                   data: dataForm,
+                    //                   success: function(dataCheck) {
+                    //                       console.log(dataCheck);
+                    //                       if(dataCheck.status=="success"){
+                    //                         getTenantUtilityStatus(adminUserID);
+                    //                         UIkit.modal.alert('Renewal date updated Successfully');
+                    //                       }
+                    //                       else{
+                    //                         UIkit.modal.alert(dataCheck.message_text);
+                    //                       }
+                                          
+                    //                   }
+                    //             });
+                    //         });
+
+                    //     }); // confirm prompt
+                    // });
+                }
+            });
+            //Contractor Status Ends Here
         }
 
         $(".logOut").click(function() {
