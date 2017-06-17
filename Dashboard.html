@@ -993,7 +993,7 @@
 
 
 
-
+                <!--Tenancy Renewal Modal Starts Here-->
                 <div class="uk-modal" id="getTenancyRenew">
                     <div class="uk-modal-dialog">
                         <div class="uk-modal-header">
@@ -1021,7 +1021,7 @@
                                     <br/>
                                     <div class="parsley-row">
                                         <label for="inputNewEndDate">End Date<span class="req">*</span></label>
-                                        <input type="text" id="inputNewEndDate" required class="md-input" data-uk-datepicker="{format:"YYYY.MM.DD"}"/>
+                                        <input type="text" id="inputNewEndDate" required class="md-input" readonly/>
                                     </div>
                                     <br/>
                                 </div>
@@ -1030,11 +1030,56 @@
                             <br/>
                             
                             <div class="uk-modal-footer uk-text-right">
-                                <button type="button" class="md-btn md-btn-flat uk-modal-close" id="btnTenancyRenewal">OK</button>
+                                <button type="button" class="md-btn md-btn-flat uk-modal-close" id="btnTenancyRenewal">Update Tenancy</button>
                             </div>
                        </p> 
                     </div>
                 </div>
+                <!--Tenancy Renewal Modal Ends Here-->
+
+                <!--Contractor Renewal Modal Starts Here-->
+                <div class="uk-modal" id="getContractRenewal">
+                    <div class="uk-modal-dialog">
+                        <div class="uk-modal-header">
+                            <h3 class="uk-modal-title" style="text-align: center;">Contract Renewal</h3>
+                        </div>
+                        <p>
+                            <div class="uk-grid" data-uk-grid-margin>
+                                 
+                                <div class="uk-width-medium-1-1">
+                                    <div class="parsley-row">
+                                        <label for="inputContractorName">Name<span class="req">*</span></label>
+                                        <input type="text" id="inputContractorName" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputContractorSpeciality">Speciality<span class="req">*</span></label>
+                                        <input type="text" id="inputContractorSpeciality" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputContractorNewStartDate" style="color:red;">Current Validity Date<span class="req">*</span></label>
+                                        <input type="text" id="inputContractorNewStartDate" required class="md-input" readonly/>
+                                    </div>
+
+                                    <br/>
+                                    <div class="parsley-row">
+                                        <label for="inputContractorNewEndDate" style="color:green;">New Validity Date<span class="req">*</span></label>
+                                        <input type="text" id="inputContractorNewEndDate" required class="md-input" readonly/>
+                                    </div>
+                                    <br/>
+                                </div>
+  
+                            </div>
+                            <br/>
+                            
+                            <div class="uk-modal-footer uk-text-right">
+                                <button type="button" class="md-btn md-btn-flat uk-modal-close" id="btnContractRenewal">Update Contract</button>
+                            </div>
+                       </p> 
+                    </div>
+                </div>
+                <!--Contractor Renewal Modal Ends Here-->
 
             </div>  <!-- page inner container -->
             </div> <!-- page content -->
