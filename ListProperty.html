@@ -508,9 +508,19 @@
                                                         <option value="2">Woodland Trust</option>
                                                     </select>
                                                 </div>
-                                                <div class="parsley-row" style="margin-top:15px;">
-                                                    <label for="gas" class="ele1">Gas Meter Reading</label>
-                                                    <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                                <div class="uk-grid">
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row" style="margin-top:15px;">
+                                                            <label for="gas" class="ele1">Gas Meter Reading</label>
+                                                            <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row" style="margin-top:15px;">
+                                                            <label for="gas" class="ele1">Gas Serial Number</label>
+                                                            <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
                                         </div>
@@ -570,16 +580,38 @@
                                                         <input type="hidden" id="hiddenIsEconomy7" value="0"/>
                                                     </span>
                                                 </div>
-                                                <div class="parsley-row" style="margin-top:15px;">
-                                                    <label for="zip">Electricity Meter Reading 1</label>
-                                                    <input type="text" id="inputRead1" name="read1" required class="md-input" />
+                                                <div class="uk-grid">
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row" style="margin-top:15px;">
+                                                            <label for="zip">Electricity Meter Reading 1</label>
+                                                            <input type="text" id="inputRead1" name="read1" required class="md-input" />
+                                                        </div>
+                                                    </div>
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row" style="margin-top:15px;">
+                                                            <label for="zip">Electricity Serial No 1</label>
+                                                            <input type="text" id="inputRead1" name="read1" required class="md-input" />
+                                                        </div>
+                                                    </div>
                                                 </div>
+                                                
+                                                <div class="uk-grid">
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row electMeter" style="margin-top:15px;">
+                                                            <label for="zip">Electricity Meter Reading 2</label>
+                                                            <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                                        </div>
+                                                    </div>
 
-                                                <div class="parsley-row electMeter" style="margin-top:15px;">
-                                                    <label for="zip">Electricity Meter Reading 2</label>
-                                                    <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                                    <div class="uk-width-medium-1-2">
+                                                        <div class="parsley-row electMeter" style="margin-top:15px;">
+                                                            <label for="zip">Electricity Serial No 2</label>
+                                                            <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
+                                            <br /><br />
                                         </div>
                                     </div>
 
@@ -588,27 +620,37 @@
 
                                             <div class="md-card-content large-padding" style="height:250px;">
                                                 <div class="parsley-row" style="margin-top:-7px;">
-                                                    <label>Council Authority*</label><br />
-                                                    <select id="inputTaxAuthority" name="city" required class="md-input" style="width:100%;">
+                                                    <label>Council Authority</label><br />
+                                                    <select id="inputTaxAuthority" name="city" class="md-input" style="width:100%;">
                                                      <option value="0">Select Council</option>
                                                  </select>
                                              </div>
                                              <div class="parsley-row" style="margin-top:15px;">
                                                 <span class="icheck-inline waterMeter">
-                                                    <label for="zip">Water<span class="req">*</span></label>
+                                                    <label for="zip">Water</label>
                                                     <input type="checkbox" data-switchery data-switchery-color="#ffb300" id="inputWaterMeter">
                                                     <input type="hidden" id="hiddenIsWaterMeter" value="0" />
                                                 </span>
                                             </div>
 
-                                            <div class="parsley-row waterMet" style="margin-top:15px;">
-                                                <label for="zip" >Water Meter Reading<span class="req">*</span></label>
-                                                <input type="text" id="inputWater" name="waterMeterReading" required class="md-input" />
+                                            <div class="uk-grid">
+                                                <div class="uk-width-medium-1-2">
+                                                    <div class="parsley-row waterMet" style="margin-top:15px;">
+                                                        <label for="zip" >Water Meter Reading</label>
+                                                        <input type="text" id="inputWater" name="waterMeterReading" class="md-input" />
+                                                    </div>
+                                                </div>
+                                                <div class="uk-width-medium-1-2">
+                                                    <div class="parsley-row waterMet" style="margin-top:15px;">
+                                                        <label for="zip" >Water Serial Number</label>
+                                                        <input type="text" id="inputWater" name="waterMeterReading" class="md-input" />
+                                                    </div>
+                                                </div>
                                             </div>
 
                                             <div class="parsley-row waterMet" style="margin-top:25px;">
-                                                <label class="waterAuthority">Water Authority*</label><br />
-                                                <select id="inputWaterAuthority" name="water" required class="md-input" style="margin-top:-25px; width:100%;">
+                                                <label class="waterAuthority">Water Authority</label><br />
+                                                <select id="inputWaterAuthority" name="water" class="md-input" style="margin-top:-25px; width:100%;">
                                                     <option value="0">Select Water Authority</option>
                                                     <option value="1">Affinity Water</option>
                                                     <option value="2">Albion Water</option>

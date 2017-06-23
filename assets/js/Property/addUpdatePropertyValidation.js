@@ -380,37 +380,37 @@ function addUpdatePropertyValidation() {
     //     return false;
     // }
 
-    if (taxAuthority == "Select Council") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Council Authority");
-        $("#select2-inputTaxAuthority-container").css("border", "1px solid red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if (taxAuthority == "Select Council") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Council Authority");
+    //     $("#select2-inputTaxAuthority-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
 
-    if ( waterMeter== "1" && water == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter Water Meter Reading");
-        $("#inputWater").css("border-color", "red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
+    // if ( waterMeter== "1" && water == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter Water Meter Reading");
+    //     $("#inputWater").css("border-color", "red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
     
-    if (waterMeter== "1" && waterAuthority == "Select Water Authority") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Water Authority");
-        $("#select2-inputWaterAuthority-container").css("border", "1px solid red");
-        $(".utilityInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    } 
+    // if (waterMeter== "1" && waterAuthority == "Select Water Authority") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Water Authority");
+    //     $("#select2-inputWaterAuthority-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // } 
 
-    else {
+    // else {
 
            callUtilityAgreeCheckModal();
-    }
+    // }
 }
 
 
