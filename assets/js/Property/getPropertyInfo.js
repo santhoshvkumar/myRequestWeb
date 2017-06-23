@@ -155,6 +155,12 @@ function getPropertyInfo(editPropertyID){
                       $("#inputRead2").val(resultGetProperty.records[property].ElectricSupplier2);
                       $("#inputGas").val(resultGetProperty.records[property].GasMeterRead);
                       $("#inputWater").val(resultGetProperty.records[property].WaterMeterRead);
+
+                      $("#inputSerial1").val(resultGetProperty.records[property].ElectricSerial1);
+                      $("#inputSerial2").val(resultGetProperty.records[property].ElectricSerial2);
+                      $("#inputGasSerialNo").val(resultGetProperty.records[property].WaterSerialNo);
+                      $("#inputWaterSerialNo").val(resultGetProperty.records[property].GasSerialNo);
+                      
                       // $("#inputWaterAuthority").val(resultGetProperty.records[property].WaterAuthority);
                       $("#inputWaterAuthority").select2();
                       $("#select2-inputWaterAuthority-container").html(resultGetProperty.records[property].WaterAuthority);
