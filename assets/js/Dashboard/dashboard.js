@@ -272,7 +272,7 @@
 
 
                 $.get(domainAddress + "GetUtilityStatusCountForSuperAdmin", {}, function(result) {
-                    //console.log(result);
+                    console.log(result.countMoveIn+ "++++" + result.countMoveOut);
                         $(".countUpMoveIn").html(result.countMoveIn);
                         $(".countUpMoveOut").text(result.countMoveOut);
                       
@@ -355,6 +355,8 @@
 
                 $.get(domainAddress + "GetAllUtilityStatusCountAdmin1/" + adminUserID, {}, function(result) {
                     //console.log(result);
+                    console.log(result.countMoveIn+ "+" + result.countMoveOut);
+                    console.log(domainAddress + "GetAllUtilityStatusCountAdmin1/" + adminUserID);
                         $(".countUpMoveIn").html(result.countMoveIn);
                         $(".countUpMoveOut").text(result.countMoveOut);
                       
