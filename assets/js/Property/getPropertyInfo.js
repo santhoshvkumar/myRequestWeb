@@ -8,6 +8,7 @@ function getPropertyInfo(editPropertyID){
               isEdit=true;
               getAddTenantArr = new Array();
               $.get(domainAddress + "GetPropertyRegister/" + editPropertyID, {}, function(resultGetProperty) {
+                  console.log(domainAddress + "GetPropertyRegister/" + editPropertyID);
                   for (var property in resultGetProperty.records) {
                       isAppInstalled = resultGetProperty.records[property].IsAppInstalled;
                       if (isAppInstalled == 1) {
@@ -368,6 +369,25 @@ function getPropertyInfo(editPropertyID){
                       } else {
                           $(".btnSubmitPropertyMoveOut").show();
                       }
+
+                    //****** Tenant History Starts ******//
+                    for (var moveOutTenant in resultGetProperty.records[property].UserRegMoveOutCount) {
+                        var Moveoutcount = resultGetProperty.records[property].UserRegMoveOutCount[moveOutTenant].Moveoutcount;
+                            if (Moveoutcount== 0) 
+                            {
+                                $(".getMoveoutTenantDetails").html('');
+                                $(".getMoveoutTenantDetails").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> </tr>");
+                            } 
+                            else 
+                            {
+                                for (var outProperty in resultGetProperty.records[property].UserRegOut) 
+                                {
+                                    $(".getMoveoutTenantDetails").html('');
+                                    $(".getMoveoutTenantDetails").append("<tr id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                }
+                            }
+                    }
+                    //****** Tenant History Ends ******//
 
                       for (var addProperty in resultGetProperty.records[property].UserReg) {
                           count++;
