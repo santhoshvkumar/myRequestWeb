@@ -448,6 +448,10 @@ $(".btnSubmitAddNotes").click(function() {
                 $("#inputRead1").val('');
                 $("#inputRead2").val('');
                 $("#inputGas").val('');
+                $("#inputGasSerialNo").val('');
+                $("#inputWaterSerialNo").val('');
+                $("#inputSerial1").val('');
+                $("#inputSerial2").val('');
                 $("#inputWater").val('');
                 $("#inputNotes").val('');
                 $("#select2-inputInfo-container").html("Select Requirement");
@@ -601,6 +605,10 @@ $(".btnSubmitUtility").click(function() {
                     $("#inputRead2").val('');
                     $("#inputGas").val('');
                     $("#inputWater").val('');
+                    $("#inputGasSerialNo").val('');
+                    $("#inputWaterSerialNo").val('');
+                    $("#inputSerial1").val('');
+                    $("#inputSerial2").val('');
                     UIkit.modal.alert('Utility Created Successfully');
                 }
             });
@@ -636,6 +644,10 @@ $(".btnSubmitUtility").click(function() {
                     $("#inputRead2").val('');
                     $("#inputGas").val('');
                     $("#inputWater").val('');
+                    $("#inputGasSerialNo").val('');
+                    $("#inputWaterSerialNo").val('');
+                    $("#inputSerial1").val('');
+                    $("#inputSerial2").val('');
                     $(".btnSubmitUtility").text("Add Utility");
                     UIkit.modal.alert('Utility Updated Successfully');
                 }
