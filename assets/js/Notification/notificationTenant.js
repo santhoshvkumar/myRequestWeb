@@ -1,5 +1,6 @@
-  $(function() {
+$(function() {
 var getNotificationContentIDforUpdate = 0;
+
       $('#full_screen_toggle').on('click', function(e) {
           e.preventDefault();
           screenfull.toggle();
@@ -88,7 +89,7 @@ var getNotificationContentIDforUpdate = 0;
       adminUserID = localStorage.getItem("MyRequest_AdminID");
       var adminUserName = localStorage.getItem("MyRequest_UserName");
       var adminType = localStorage.getItem("MyRequest_AdminType");
-
+      
       var businessName = localStorage.getItem("MyRequest_BusinessName");
       var logo = localStorage.getItem("MyRequest_Logo");
       localStorage.setItem("MyRequest_RepairStatus", "");
@@ -345,13 +346,14 @@ var getNotificationContentIDforUpdate = 0;
 
 
   function getAllNewsLetter(getValue) {
-
+    var AdminCountry = localStorage.getItem("MyRequest_countryCode");
+// alert(AdminCountry);
       if (getValue == "" || getValue == undefined) {
-          dataForm = '{"Limit":"' + parseInt(pollingLimitCount) + '","AdminID":"' + adminUserID + '"}';
+          dataForm = '{"Limit":"' + parseInt(pollingLimitCount) + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
           sendURL = domainAddress + "notificationContent";
       } else {
 
-          dataForm = '{"Limit":"' + parseInt(pollingLimitCount) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
+          dataForm = '{"Limit":"' + parseInt(pollingLimitCount) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
           sendURL = domainAddress + "SearchNotificationTenantList";
       }
 
