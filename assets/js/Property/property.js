@@ -241,7 +241,7 @@ var getPropLat, getPropLong, isEdit=false;
     $("#closeCard-1").hide();
     //$("#closeCard-2").show();
     $("#hiddenIsNewTenantUpdate-1").val(1);
-    getAddRemove(2);
+    getAddRemove(1);
     $("#getIsAppInstallCheck-1").css("height", "610px");
     //$("#getIsAppInstallCheck-2").css("height", "610px");
 

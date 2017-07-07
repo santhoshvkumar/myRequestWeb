@@ -750,7 +750,7 @@ function getAddRemove(count) {
     $(".btnAdd").on('click', function() {
         count++;
         $(".newAdd").remove();
-        if(count>2){
+        if(count>1){
             getAddTenant(count);
             getAddRemove(count);
         }
