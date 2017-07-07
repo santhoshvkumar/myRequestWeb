@@ -746,7 +746,7 @@ function getAddRemove(count) {
         $(".editPropertyHeight").css("height", "585px");
     }
 
-
+ 
     $(".btnAdd").on('click', function() {
         count++;
         $(".newAdd").remove();
