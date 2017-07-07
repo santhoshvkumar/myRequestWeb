@@ -1,5 +1,6 @@
 function loadPolling(){
 	var optionCount = 2;
+    var AdminCountry = localStorage.getItem("MyRequest_countryCode");
     $(".btnAddOption").on("click", function(e) {
         optionCount++;
 
@@ -372,9 +373,10 @@ $(".btnSearch").click(function () {
          
 
         if(pollingTitle != "" && getAddPollingArr!="") {
-            var AdminCountry = localStorage.getItem("MyRequest_Country");
             var dataForm = '{"PollingTitle":"' + pollingTitle + '","IsUtilityPolling":"0","PollingFor":"' +inputDropValue+ '","AdminID":"' + adminUserID + '","PollingOptionArr":"' + getAddPollingArr + '","Getcountry":"' + AdminCountry + '"}';
             var sendURL = domainAddress + 'CreatePolling';
+            console.log(dataForm);
+            console.log(sendURL);
             $.ajax({
                 type:  "POST",
                 url: sendURL,
@@ -389,7 +391,7 @@ $(".btnSearch").click(function () {
                     } else if( inputDropValue === "For Tenant") {
                         callForPush=  domainAddress + "push/messageSendByAdminForAllTenant.php"
                     }
-                    debugger;
+                    // debugger;
                      $.post( callForPush, {StatusMessage:"Polling : " + pollingTitle, adminID:adminUserID, Title:'Polling'}, function(result) {
                          console.log(result);
                      });
@@ -415,7 +417,6 @@ $(".btnSearch").click(function () {
 
     function getallPolling(getValue) {
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
-    var AdminCountry = localStorage.getItem("MyRequest_Country");
      if(getValue=="" || getValue==undefined){
           dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
           sendURL = domainAddress+"PollingListByCount";

@@ -4,6 +4,7 @@ function loadNewsLetter() {
     var lastPage = 0;
     var maxProp = 0;
     var getValue = "";
+    var AdminCountry = localStorage.getItem("MyRequest_countryCode");
     $(window).load(function() {
         $("#getLoadingModalContent").removeClass('md-show');
     });
@@ -320,7 +321,7 @@ function loadNewsLetter() {
             $(".errorInfo").hide();
             $(".errorInfo").text("");
             $(".newsLetterDescriptionLbl").css("color", "");
-            var AdminCountry = localStorage.getItem("MyRequest_Country");
+
             var dataForm = '{"TitleName":"' + newsLetterName + '","TitleDescription":"' + newsLetterDescription + '","AdminID":"' + adminUserID + '","NewsLetterFor":"' + inputDropValue + '","IsUtilityNewsLetter":"0","Getcountry":"' +AdminCountry+ '"}';
             console.log(dataForm);
             if(inputDropValue=="For Tenant"){
@@ -346,7 +347,7 @@ function loadNewsLetter() {
                         } else if( inputDropValue === "For Tenant") {
                             callForPush=  domainAddress + "push/messageSendByAdminForAllTenant.php"
                         }
-                        debugger;
+                        // debugger;
                         /*  For Push Notification to All Tenant & Contractor */
                          $.post(callForPush, {StatusMessage:newsLetterName, adminID:adminUserID, Title:'Newsletter'}, function(result) {
                              console.log(result);
@@ -402,7 +403,6 @@ function loadNewsLetter() {
 
     function getAllNewsLetter(getValue) {
         adminUserID = localStorage.getItem("MyRequest_AdminID");
-        var AdminCountry = localStorage.getItem("MyRequest_Country");
         if (getValue == "" || getValue == undefined) {
             dataForm = '{"Limit":"' + parseInt(newsLetterCountLimit) + '","AdminID":"' + adminUserID + '","Getcountry":"' + AdminCountry + '"}';
             sendURL = domainAddress + "NewsLetterListByCount";
