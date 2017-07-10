@@ -104,14 +104,17 @@ function changesRadioProperty() {
     $('#inputFuel').on('change', function() {
         if (this.value == '1') {
             $("#inputGas").show();
+            $("#inputGasSerialNo").show();
             $(".ele1").show();
         }
         if (this.value == '2') {
             $("#inputGas").hide();
+            $("#inputGasSerialNo").hide();
             $(".ele1").hide();
         }
         if (this.value == '3') {
             $("#inputGas").hide();
+            $("#inputGasSerialNo").hide();
             $(".ele1").hide();
         }
     });
