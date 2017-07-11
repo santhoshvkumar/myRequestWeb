@@ -89,6 +89,18 @@ function getPropertyInfo(editPropertyID){
                           $("#voidPartYes").iCheck('uncheck');
                           $("#voidPartNo").iCheck('check');
                       }
+
+                      var LLAddress = resultGetProperty.records[property].IsLLAddress;
+                      if(LLAddress == "1"){
+                          alert("One===>"+LLAddress);
+                        $("#isLLAddressYes").iCheck('check');
+                        $("#isLLAddressNo").iCheck('uncheck');
+                      } else {
+                          alert("Zero===>"+LLAddress);
+                        $("#isLLAddressYes").iCheck('uncheck');
+                        $("#isLLAddressNo").iCheck('check');
+                      }
+
                       $("#inputLandlordTitle").val(resultGetProperty.records[property].Title);
                       $("#select2-inputLandlordTitle-container").html(resultGetProperty.records[property].Title);
                       $("#getName").val(resultGetProperty.records[property].PropOwnerName);
@@ -152,14 +164,23 @@ function getPropertyInfo(editPropertyID){
                       $("#select2-inputFuel-container").html(resultGetProperty.records[property].FuelType);
                       $("#select2-inputSupplierElectric-container").html(resultGetProperty.records[property].SupplierElectric);
                       $("#select2-inputSupplierGas-container").html(resultGetProperty.records[property].SupplierGas);
+
+                      $("#hiddenselect").val(resultGetProperty.records[property].SupplierGas);
+
                       $("#inputRead1").val(resultGetProperty.records[property].ElectricSupplier1);
                       $("#inputRead2").val(resultGetProperty.records[property].ElectricSupplier2);
                       $("#inputGas").val(resultGetProperty.records[property].GasMeterRead);
+
+                      $("#hiddeninputGas").val(resultGetProperty.records[property].GasMeterRead);
+
                       $("#inputWater").val(resultGetProperty.records[property].WaterMeterRead);
 
                       $("#inputSerial1").val(resultGetProperty.records[property].ElectricSerial1);
                       $("#inputSerial2").val(resultGetProperty.records[property].ElectricSerial2);
                       $("#inputGasSerialNo").val(resultGetProperty.records[property].WaterSerialNo);
+
+                      $("#hiddeninputGasSerialNo").val(resultGetProperty.records[property].WaterSerialNo);
+
                       $("#inputWaterSerialNo").val(resultGetProperty.records[property].GasSerialNo);
                       
                       // $("#inputWaterAuthority").val(resultGetProperty.records[property].WaterAuthority);

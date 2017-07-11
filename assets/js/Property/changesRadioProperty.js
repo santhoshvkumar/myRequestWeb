@@ -108,13 +108,17 @@ function changesRadioProperty() {
             $(".ele1").show();
         }
         if (this.value == '2') {
-            $("#inputGas").hide();
-            $("#inputGasSerialNo").hide();
+            // $("#inputGas").hide();
+            $("#inputGas").prop("disabled", true);
+            // $("#inputGasSerialNo").hide();
+            $("#inputGasSerialNo").prop("disabled", true);
             $(".ele1").hide();
         }
         if (this.value == '3') {
-            $("#inputGas").hide();
-            $("#inputGasSerialNo").hide();
+            // $("#inputGas").hide();
+            $("#inputGas").prop("disabled", true);
+            // $("#inputGasSerialNo").hide();
+            $("#inputGasSerialNo").prop("disabled", true);
             $(".ele1").hide();
         }
     });
