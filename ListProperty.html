@@ -189,21 +189,20 @@
                                     <div class="uk-grid" data-uk-grid-margin>
                                         <div class="uk-width-medium-1-2">
                                             <div class="parsley-row" style="margin-top:15px;">
-
                                                 <label for="isVoid" class="isVoid">Part Of Void<span class="req">*</span></label>
                                                 <p>
                                                     <span class="icheck-inline agency">
-                                                        <input type="radio" name="voidPart" id="voidPartYes" data-md-icheck />
+                                                        <input type="radio" name="voidPart" id="voidPartYes" data-md-icheck   value="single" />
                                                         <label for="voidPartYes" class="inline-label">Yes</label>
                                                     </span>
                                                     <span class="icheck-inline landlord">
-                                                        <input type="radio" name="voidPart" id="voidPartNo" data-md-icheck />
+                                                        <input type="radio" name="voidPart" id="voidPartNo" data-md-icheck  value="multiple" />
                                                         <label for="voidPartNo" class="inline-label">No</label>
-                                                    </span></p>
-                                                </div>
+                                                    </span>
+                                                </p>
                                             </div>
-
-                                            </div>
+                                        </div>
+                                    </div>
 
                                         </div>
                                     </div>
@@ -424,6 +423,19 @@
                                                     <label for="zip">Post Code<span class="req">*</span></label>
                                                     <input type="text" id="inpuZip1" name="zip" required class="md-input" />
                                                 </div>
+                                                
+                                                <div class="parsley-row isLLAddress" style="margin-top:15px;">
+                                                    <label for="isVoid" class="LLAddress">Void Bills to LL Address<span class="req">*</span></label>
+                                                        <span class="icheck-inline yes">
+                                                            <input type="radio" name="LLAddress" id="isLLAddressYes" data-md-icheck   value="single" />
+                                                            <label for="isLLAddressYes" class="inline-label">Yes</label>
+                                                        </span>
+                                                        <span class="icheck-inline no">
+                                                            <input type="radio" name="LLAddress" id="isLLAddressNo" data-md-icheck  value="multiple" />
+                                                            <label for="isLLAddressNo" class="inline-label">No</label>
+                                                        </span>
+                                                </div>
+
                                             </div>
                                         </div>
                                     </div>
@@ -514,12 +526,15 @@
                                                         <div class="parsley-row" style="margin-top:15px;">
                                                             <label for="gas" class="ele1">Meter Reading</label>
                                                             <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                                            <input type="hidden" id="hiddeninputGas" name="gasMeterRead" class="md-input" />
+                                                            <input type="hidden" id="hiddenselect">
                                                         </div>
                                                     </div>
                                                     <div class="uk-width-medium-1-2">
                                                         <div class="parsley-row" style="margin-top:15px;">
                                                             <label for="gas" class="ele1">Serial Number</label>
                                                             <input type="text" id="inputGasSerialNo" name="gasMeterRead" required class="md-input" />
+                                                            <input type="hidden" id="hiddeninputGasSerialNo" name="gasMeterRead" class="md-input" />
                                                         </div>
                                                     </div>
                                                 </div>

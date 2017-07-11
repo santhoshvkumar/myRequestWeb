@@ -88,6 +88,14 @@ function changesRadioProperty() {
         isEdit=false;
     });
 
+    $('input[name="voidPart"]:radio').on('ifChecked', function(event) {
+        if (this.value == "single") {
+            $(".isLLAddress").hide('slow');
+        } else {
+            $(".isLLAddress").show('slow');
+        }
+        isEdit=false;
+    });
 
      $("#inputEconomy7").on('change', function() {
         if (this.checked) {
@@ -103,23 +111,50 @@ function changesRadioProperty() {
 
     $('#inputFuel').on('change', function() {
         if (this.value == '1') {
-            $("#inputGas").show();
-            $("#inputGasSerialNo").show();
+            $("#inputGas").prop("disabled", false);
+            $("#inputGasSerialNo").prop("disabled", false);
+            $("#inputSupplierGas").prop("disabled", false);
+
+            var hiddeninputGas = $("#hiddeninputGas").val();
+            $("#inputGas").val(hiddeninputGas);
+
+            var hiddeninputGasSerialNo = $("#hiddeninputGasSerialNo").val();
+            $("#inputGasSerialNo").val(hiddeninputGasSerialNo);
+
+            var hiddenselect = $("#hiddenselect").val();
+            if(hiddenselect == ""){
+                $("#select2-inputSupplierGas-container").html('<option value="0">Select Gas Supplier</option>');    
+            } else {
+                $("#select2-inputSupplierGas-container").html(hiddenselect);
+            }
+
             $(".ele1").show();
         }
         if (this.value == '2') {
-            // $("#inputGas").hide();
+
+            $("#inputGas").val('');
             $("#inputGas").prop("disabled", true);
-            // $("#inputGasSerialNo").hide();
+
+            $("#inputGasSerialNo").val('');
             $("#inputGasSerialNo").prop("disabled", true);
-            $(".ele1").hide();
+            
+            $("#select2-inputSupplierGas-container").html('<option value="0">Select Gas Supplier</option>');
+            $("#inputSupplierGas").prop("disabled", true);
+
+            // $(".ele1").hide();
         }
         if (this.value == '3') {
-            // $("#inputGas").hide();
+
+            $("#inputGas").val('');
             $("#inputGas").prop("disabled", true);
-            // $("#inputGasSerialNo").hide();
+
+            $("#inputGasSerialNo").val('');
             $("#inputGasSerialNo").prop("disabled", true);
-            $(".ele1").hide();
+
+            $("#select2-inputSupplierGas-container").html('<option value="0">Select Gas Supplier</option>');
+            $("#inputSupplierGas").prop("disabled", true);
+
+            // $(".ele1").hide();
         }
     });
 }

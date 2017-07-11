@@ -92,11 +92,11 @@ function getPropertyInfo(editPropertyID){
 
                       var LLAddress = resultGetProperty.records[property].IsLLAddress;
                       if(LLAddress == "1"){
-                          alert("One===>"+LLAddress);
+                        //   alert("One===>"+LLAddress);
                         $("#isLLAddressYes").iCheck('check');
                         $("#isLLAddressNo").iCheck('uncheck');
                       } else {
-                          alert("Zero===>"+LLAddress);
+                        //   alert("Zero===>"+LLAddress);
                         $("#isLLAddressYes").iCheck('uncheck');
                         $("#isLLAddressNo").iCheck('check');
                       }
