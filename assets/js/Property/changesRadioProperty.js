@@ -90,9 +90,11 @@ function changesRadioProperty() {
 
     $('input[name="voidPart"]:radio').on('ifChecked', function(event) {
         if (this.value == "single") {
-            $(".isLLAddress").hide('slow');
-        } else {
             $(".isLLAddress").show('slow');
+            $("#voidbill").hide('slow');
+        } else {
+            $(".isLLAddress").hide('slow');
+            $("#voidbill").show('slow');
         }
         isEdit=false;
     });
