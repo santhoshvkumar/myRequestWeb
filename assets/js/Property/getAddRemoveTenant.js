@@ -596,6 +596,25 @@ function getReloadUserTenants(editPropertyID){
                   }
             }
 
+            //****** Tenant History Starts ******//
+                    for (var moveOutTenant in resultGetProperty.records[property].UserRegMoveOutCount) {
+                        var Moveoutcount = resultGetProperty.records[property].UserRegMoveOutCount[moveOutTenant].Moveoutcount;
+                            if (Moveoutcount== 0) 
+                            {
+                                $(".getMoveoutTenantDetails").html('');
+                                $(".getMoveoutTenantDetails").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> </tr>");
+                            } 
+                            else 
+                            {
+                                for (var outProperty in resultGetProperty.records[property].UserRegOut) 
+                                {
+                                    $(".getMoveoutTenantDetails").html('');
+                                    $(".getMoveoutTenantDetails").append("<tr id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                }
+                            }
+                    }
+                    //****** Tenant History Ends ******//
+
 
             var utilityCount = 0;
             for (var getUtility in resultGetProperty.records[property].Utility) {
