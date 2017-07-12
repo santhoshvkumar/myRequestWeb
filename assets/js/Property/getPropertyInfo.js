@@ -401,14 +401,21 @@ function getPropertyInfo(editPropertyID){
                             } 
                             else 
                             {
+                                $(".getMoveoutTenantDetails").html('');
                                 for (var outProperty in resultGetProperty.records[property].UserRegOut) 
                                 {
-                                    $(".getMoveoutTenantDetails").html('');
-                                    $(".getMoveoutTenantDetails").append("<tr id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                 }
                             }
                     }
                     //****** Tenant History Ends ******//
+                    
+                    for (var moveInTenant in resultGetProperty.records[property].UserRegMoveInCount) {
+                        var Moveincount = resultGetProperty.records[property].UserRegMoveInCount[moveInTenant].Moveincount;
+                        if(Moveincount == 0){
+                            getAddTenant(count);
+                        }
+                    }
 
                       for (var addProperty in resultGetProperty.records[property].UserReg) {
                           count++;

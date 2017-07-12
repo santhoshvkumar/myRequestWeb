@@ -605,11 +605,11 @@ function getReloadUserTenants(editPropertyID){
                                 $(".getMoveoutTenantDetails").append("<tr> <td>No records found</td> <td></td> <td></td> <td></td> <td></td> </tr>");
                             } 
                             else 
-                            {
+                            {   
+                                $(".getMoveoutTenantDetails").html('');
                                 for (var outProperty in resultGetProperty.records[property].UserRegOut) 
                                 {
-                                    $(".getMoveoutTenantDetails").html('');
-                                    $(".getMoveoutTenantDetails").append("<tr id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td id="+resultGetProperty.records[property].UserRegOut[outProperty].UserID+">"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                 }
                             }
                     }
@@ -769,7 +769,7 @@ function getAddRemove(count) {
     $(".btnAdd").on('click', function() {
         count++;
         $(".newAdd").remove();
-        if(count>1){
+        if(count>0){
             getAddTenant(count);
             getAddRemove(count);
         }
