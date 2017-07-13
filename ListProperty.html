@@ -360,7 +360,7 @@
                                     <div class="uk-grid landlordInfo" style="display:none;" data-uk-grid-margin>
                                         <div class="uk-width-medium-1-2" style="margin-top: 10px;">
                                             <div class="md-card">
-                                                <div class="md-card-content large-padding">
+                                                <div class="md-card-content large-padding" style="height:325px">
                                                     <div class="parsley-row">
                                                         <label>Landlord Title*</label><br />
                                                         <select id="inputLandlordTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
@@ -398,7 +398,7 @@
                                     <div class="uk-width-medium-1-2" style="margin-top: 10px;">
                                         <div class="md-card">
 
-                                            <div class="md-card-content large-padding" style="height:293px;">
+                                            <div class="md-card-content large-padding" style="height:325px;">
                                                 <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
                                                 <div class="parsley-row">
                                                     <label for="address">Address<span class="req">*</span></label>
@@ -422,13 +422,7 @@
                                                 <div class="parsley-row" style="margin-top:15px;">
                                                     <label for="zip">Post Code<span class="req">*</span></label>
                                                     <input type="text" id="inpuZip1" name="zip" required class="md-input" />
-                                                </div>
-
-                                                <div  id="voidbill" class="parsley-row" style="margin-top:15px;">
-                                                    <strong>Bills will be sent to the Agent</strong>
-                                                </div>
-                                                
-                                                
+                                                </div>                                                
 
                                                 <div class="parsley-row isLLAddress" style="margin-top:15px;">
                                                     <label for="isVoid" class="LLAddress">Void Bills to LL Address<span class="req">*</span></label>
@@ -441,7 +435,11 @@
                                                             <label for="isLLAddressNo" class="inline-label">No</label>
                                                         </span>
                                                 </div>
-
+                                                    
+                                                <div  id="voidbill" class="parsley-row">
+                                                    <strong>Bills will be sent to the Agent</strong>
+                                                </div>
+                                                <br><br><br>          
                                             </div>
                                         </div>
                                     </div>

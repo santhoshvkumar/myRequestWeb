@@ -89,11 +89,22 @@ function changesRadioProperty() {
     });
 
     $('input[name="voidPart"]:radio').on('ifChecked', function(event) {
-        if (this.value == "single") {
+        if (this.value == "multiple") {
             $(".isLLAddress").show('slow');
+            $(".isLLAddress").hide('slow');
             $("#voidbill").hide('slow');
         } else {
             $(".isLLAddress").hide('slow');
+            $(".isLLAddress").show('slow');
+            $("#voidbill").hide('slow');
+        }
+        isEdit=false;
+    });
+
+    $('input[name="LLAddress"]:radio').on('ifChecked', function(event) {
+        if (this.value == "single") {
+            $("#voidbill").hide('slow');
+        } else {
             $("#voidbill").show('slow');
         }
         isEdit=false;
