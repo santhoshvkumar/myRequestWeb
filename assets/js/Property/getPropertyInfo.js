@@ -405,13 +405,22 @@ function getPropertyInfo(editPropertyID){
                                 for (var outProperty in resultGetProperty.records[property].UserRegOut) 
                                 {
                                     $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                    var MoveOutUserID = resultGetProperty.records[property].UserRegOut[outProperty].UserID;
+                                    var MoveOutStatus = resultGetProperty.records[property].UserRegOut[outProperty].TenantStatus;
+                                    var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;
+                                    // alert("MoveOutStatus ID from Get Property Page===>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID);
+                                    // alert("MoveOutStatus from Get Property Page===>"+MoveOutStatus);                                    
                                 }
+                                $("#hiddenmoveoutproperty").val(MoveOutStatus);
+                                $("#hiddenmoveoutpropertyID").val(AddPropertyID);
+                                $("#hiddenmoveoutuserid").val(MoveOutUserID);
                             }
                     }
                     //****** Tenant History Ends ******//
                     
                     for (var moveInTenant in resultGetProperty.records[property].UserRegMoveInCount) {
                         var Moveincount = resultGetProperty.records[property].UserRegMoveInCount[moveInTenant].Moveincount;
+                        $("#hiddenmoveincount").val(Moveincount);
                         if(Moveincount == 0){
                             getAddTenant(count);
                         }
@@ -441,6 +450,11 @@ function getPropertyInfo(editPropertyID){
                               'IsLeadTenant': resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant
                           };
                           getAddTenantArr.push(newItem);
+                          
+                          var MoveInStatus = resultGetProperty.records[property].UserReg[addProperty].TenantStatus;
+                        //   alert("MoveInStatus from Get Property Page===>"+MoveInStatus);
+                          $("#hiddenmoveinproperty").val(MoveInStatus);
+
                           
                           if(count!=1)
                           $("#closeCard-"+count).show();
