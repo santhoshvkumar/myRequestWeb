@@ -405,7 +405,98 @@ function addUpdatePropertyValidation() {
     //     $(".utilityInfo").show();
     //     $(".btnSubmitProperty").attr("disabled", true);
     //     return false;
-    // } 
+    // }
+
+    //  var inputMobilezero = $("#inputMobile-0").val();
+    //  var inputTitlezero = $("#inputTitle-0").val();
+    //  var inputNamezero = $("#inputName-0").val();
+    //  var inputLastNamezero = $("#inputLastName-0").val();
+    //  var inputEmailzero = $("#inputEmail-0").val();
+    //  var inputStartDatezero = $("#inputStartDate-0").val();
+    //  var inputEndDatezero = $("#inputEndDate-0").val();
+
+    // if (inputMobilezero == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Please Entert the Tenants Mobile number");
+    //     $("#inputMobile-0").css("border-color", "red");
+    //     // $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+    
+    var getCountValue = $("#inputHMONoOfTenent").val();
+
+    var inputMobile = $("#inputMobile-" + getCountValue).val();
+
+    if (inputMobile == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter Tenant's Mobile Number");
+        $("#inputMobile-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputTitle = $("#select2-inputTitle-"+getCountValue+"-container").html();
+
+    if (inputTitle == "Select Title") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select Title");
+        $("#select2-inputTitle-"+getCountValue+"-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputName = $("#inputName-" + getCountValue).val();
+
+    if (inputName == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter Tenant's First Name");
+        $("#inputName-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputLastName =  $("#inputLastName-" + getCountValue).val();
+
+    if (inputLastName == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter Tenant's Last Name");
+        $("#inputLastName-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputEmail =  $("#inputEmail-" + getCountValue).val();
+
+    if (inputEmail == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter Tenants EmailID");
+        $("#inputEmail-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputStartDate =  $("#inputStartDate-" + getCountValue).val();
+
+    if (inputStartDate == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select Start Date");
+        $("#inputStartDate-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    var inputEndDate =  $("#inputEndDate-" + getCountValue).val();
+
+    if (inputEndDate == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select End Date");
+        $("#inputEndDate-"+getCountValue).css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    }
+
+    
 
     // else {
 

@@ -782,9 +782,10 @@ function getAddRemove(count) {
     } else {
         $(".editPropertyHeight").css("height", "585px");
     }
-
- 
+     
     $(".btnAdd").on('click', function() {
+        var AddTenantCount = "1";
+        $("#hiddenAddTenantCount").val(AddTenantCount);
         count++;
         $(".newAdd").remove();
         if(count>0){
