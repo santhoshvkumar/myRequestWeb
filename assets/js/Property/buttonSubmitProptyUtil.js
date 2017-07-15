@@ -222,6 +222,7 @@ var buttonSubmitProptyUtil = function() {
         $(".isCouncil").show();
         var isHide=0;
         for (getData in getLocalTenantData) {
+            var inputAddPropertyID = getLocalTenantData[getData].AddPropertyID;
             var inputUserRegID = getLocalTenantData[getData].UserRegID;
             var inputName = getLocalTenantData[getData].Name;
             var inputLastName = getLocalTenantData[getData].LastName;
@@ -244,37 +245,31 @@ var buttonSubmitProptyUtil = function() {
                 status = "Updated";
             var hiddenAvailTenantInsurance = getLocalTenantData[getData].IsAvailTenantInsurance;
             var hiddenIsNewTenantUpdate = getLocalTenantData[getData].IsNewTenantUtility;
-            
-            var newTenantsDataForm = "{'UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','LastName':'" + inputLastName + "','TitleName':'" + inputTitle + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','TenancyStart':'" + finalTStartDate + "','TenancyEnd':'" + finalTEndDate + "','IsLeadTenant':'" + isLeadTenant + "','IsGas':'" + inputGas + "','IsElectricity':'" + inputElectricity + "','IsWater':'" + inputWater + "','IsCouncil':'" + inputCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "', 'Status':'" + status + "','PropertyStatus':'" + propertyStatus + "'}";
+            var newTenantsDataForm = "{'AddPropertyID':'" + inputAddPropertyID + "','UserRegID':'" + inputUserRegID + "','Name':'" + inputName + "','LastName':'" + inputLastName + "','TitleName':'" + inputTitle + "','Email':'" + inputEmail + "','Mobile':'" + inputMobile + "','LettingAgencyCode':'" + lettingAgencyCode + "','TenancyStart':'" + finalTStartDate + "','TenancyEnd':'" + finalTEndDate + "','IsLeadTenant':'" + isLeadTenant + "','IsGas':'" + inputGas + "','IsElectricity':'" + inputElectricity + "','IsWater':'" + inputWater + "','IsCouncil':'" + inputCouncil + "','IsAvailTenantInsurance':'" + hiddenAvailTenantInsurance + "','IsNewTenantUtility':'" + hiddenIsNewTenantUpdate + "', 'Status':'" + status + "','PropertyStatus':'" + propertyStatus + "'}";
             getAddTenantArr.push(newTenantsDataForm);
         } // getLocalTenantData
     } //localTenantData
     var lettingAgentName = localStorage.getItem('MyRequest_UserName');
 
     var hiddenmoveoutproperty = $("#hiddenmoveoutproperty").val();
-    // var hiddenmoveinproperty = $("#hiddenmoveinproperty").val();
     var dataForm ="";
     var TenantMoveInStatus = "";
     var MoveIncount = "";
     if(hiddenmoveoutproperty == "move-out"){
-        // alert("hidden move out property===>"+hiddenmoveoutproperty);
         var TenantMoveOutStatus = hiddenmoveoutproperty;
         var MoveOutUserID = $("#hiddenmoveoutuserid").val();
-        // alert("Hidden UserID===>"+MoveOutUserID);
         var addPropertyID = $("#hiddenmoveoutpropertyID").val();
         TenantMoveInStatus = $("#hiddenmoveinproperty").val();
-        // alert("hidden move in property for moveout tenant===>"+TenantMoveInStatus);
         MoveIncount = $("#hiddenmoveincount").val();
         dataForm = '{"Title":"' + landlordTitle + '","PropOwnerName":"' + name + '","PropOwnerLastName":"' + lastName + '","PropOwnerEmail":"' + emailID + '","PropOwnerPhone":"' + mobileNumber + '","Occupancy":"Single","IsAppInstalled":"' + isAppInstalled + '","PropAddress":"' + address + '","PropLocation":"' + location + '","PropState":"' + state + '","PropCity":"' + city + '","PropPostalCode":"' + zip + '","PropCountry":"UK","HMOLicenseNumb":"' + hmoLicenseNumber + '","HMOUploadPic":"' + imageUrl4 + '","PropManaged":"' + getPropertyManaged + '","HomeInsurance":"' + homeInsurance + '","EPCValidFrom":"' + finalValidFromDate + '","EPCValidTill":"' + finalValidToDate + '","EPCCertificate":"' + imageUrl1 + '","ElectricCertValidFrom":"' + finalElecFromDate + '","ElectricCertValidTill":"' + finalElecToDate + '","ElectricCetificate":"' + imageUrl2 + '","GasCertValidFrom":"' + finalGasFromDate + '","GasCertValidTill":"' + finalGasFromDate + '","GasCertificate":"' + imageUrl3 + '","LegCertValidFrom":"' + finalLegFromDate + '","LegCertValidTill":"' + finalLegToDate + '","LegCertificate":"' + imageUrl5 + '","Latitude":"' + getLatitude + '","Longitude":"' + getLongitude + '","AdminID":"' + adminUserID + '","NoOfTenants":"' + hmoInputTenent + '","HmoOccupancy":"' + hmoOccupancy + '","PropertyType":"' + property + '","Bedrooms":"' + bedrooms + '","FuelType":"' + feul + '","SupplierElectric":"' + supplierElectric + '","SupplierGas":"' + supplierGas + '","ElectricSupplier1":"' + read1 + '","ElectricSupplier2":"' + read2 + '","ElectricSerial1":"' + serial1 + '","ElectricSerial2":"' + serial2 + '","Economy7":"' + economy7 + '","WaterMeter":"' + waterMeter + '","GasMeterRead":"' + gas + '", "GasSerialNo":"'+ gasSerialNo +'" ,"WaterMeterRead":"' + water + '","WaterSerialNo":"' + waterSerialNo + '","WaterAuthority":"' + waterAuthority + '","TaxAuthority":"' + taxAuthority + '","IsLandlordInsurance":"' + hiddenIsLandlordInsurance + '","IsRentProtectionInsurance":"' + hiddenIsRentProtectionInsurance + '","TenantsArr":"' + getAddTenantArr + '","LandlordCity":"' + landlordCity + '","LandlordState":"' + landlordState + '","LandlordAddress":"' + landlordAddress + '","LandlordPostCode":"' + landlordPostCode + '","IsVoid":"' + isVoid + '","PropertyStatus":"' + propertyStatus + '","LettingAgentName":"'+lettingAgentName+'","IsLLAddress":"'+isLLAddress+'","TenantStatus":"'+TenantMoveOutStatus+'","UserID":"'+MoveOutUserID+'","AddPropertyID":"'+addPropertyID+'","TenantMoveInStatus":"'+TenantMoveInStatus+'","MoveIncount":"'+MoveIncount+'"}';
         console.log("Move Out DataForm===>"+dataForm);
     } else {
         MoveIncount = $("#hiddenmoveincount").val();
         TenantMoveInStatus = $("#hiddenmoveinproperty").val();
-        // alert("hidden move in property for movein tenant===>"+TenantMoveInStatus);
         dataForm = '{"Title":"' + landlordTitle + '","PropOwnerName":"' + name + '","PropOwnerLastName":"' + lastName + '","PropOwnerEmail":"' + emailID + '","PropOwnerPhone":"' + mobileNumber + '","Occupancy":"Single","IsAppInstalled":"' + isAppInstalled + '","PropAddress":"' + address + '","PropLocation":"' + location + '","PropState":"' + state + '","PropCity":"' + city + '","PropPostalCode":"' + zip + '","PropCountry":"UK","HMOLicenseNumb":"' + hmoLicenseNumber + '","HMOUploadPic":"' + imageUrl4 + '","PropManaged":"' + getPropertyManaged + '","HomeInsurance":"' + homeInsurance + '","EPCValidFrom":"' + finalValidFromDate + '","EPCValidTill":"' + finalValidToDate + '","EPCCertificate":"' + imageUrl1 + '","ElectricCertValidFrom":"' + finalElecFromDate + '","ElectricCertValidTill":"' + finalElecToDate + '","ElectricCetificate":"' + imageUrl2 + '","GasCertValidFrom":"' + finalGasFromDate + '","GasCertValidTill":"' + finalGasFromDate + '","GasCertificate":"' + imageUrl3 + '","LegCertValidFrom":"' + finalLegFromDate + '","LegCertValidTill":"' + finalLegToDate + '","LegCertificate":"' + imageUrl5 + '","Latitude":"' + getLatitude + '","Longitude":"' + getLongitude + '","AdminID":"' + adminUserID + '","NoOfTenants":"' + hmoInputTenent + '","HmoOccupancy":"' + hmoOccupancy + '","PropertyType":"' + property + '","Bedrooms":"' + bedrooms + '","FuelType":"' + feul + '","SupplierElectric":"' + supplierElectric + '","SupplierGas":"' + supplierGas + '","ElectricSupplier1":"' + read1 + '","ElectricSupplier2":"' + read2 + '","ElectricSerial1":"' + serial1 + '","ElectricSerial2":"' + serial2 + '","Economy7":"' + economy7 + '","WaterMeter":"' + waterMeter + '","GasMeterRead":"' + gas + '", "GasSerialNo":"'+ gasSerialNo +'" ,"WaterMeterRead":"' + water + '","WaterSerialNo":"' + waterSerialNo + '","WaterAuthority":"' + waterAuthority + '","TaxAuthority":"' + taxAuthority + '","IsLandlordInsurance":"' + hiddenIsLandlordInsurance + '","IsRentProtectionInsurance":"' + hiddenIsRentProtectionInsurance + '","TenantsArr":"' + getAddTenantArr + '","LandlordCity":"' + landlordCity + '","LandlordState":"' + landlordState + '","LandlordAddress":"' + landlordAddress + '","LandlordPostCode":"' + landlordPostCode + '","IsVoid":"' + isVoid + '","PropertyStatus":"' + propertyStatus + '","LettingAgentName":"'+lettingAgentName+'","IsLLAddress":"'+isLLAddress+'","TenantMoveInStatus":"'+TenantMoveInStatus+'","MoveIncount":"'+MoveIncount+'"}';   
+        console.log("Move In DataForm===>"+dataForm);
     }    
-    console.log("Move In DataForm===>"+dataForm);
-    // console.log(dataForm);
+    
     $("#getLoadingModalContent").addClass('md-show');
     if (hiddenPropertyID == 0) {
         var sendURL = domainAddress + 'CreatePropertyRegister';

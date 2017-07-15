@@ -407,9 +407,7 @@ function getPropertyInfo(editPropertyID){
                                     $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                     var MoveOutUserID = resultGetProperty.records[property].UserRegOut[outProperty].UserID;
                                     var MoveOutStatus = resultGetProperty.records[property].UserRegOut[outProperty].TenantStatus;
-                                    var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;
-                                    // alert("MoveOutStatus ID from Get Property Page===>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID);
-                                    // alert("MoveOutStatus from Get Property Page===>"+MoveOutStatus);                                    
+                                    var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;                             
                                 }
                                 $("#hiddenmoveoutproperty").val(MoveOutStatus);
                                 $("#hiddenmoveoutpropertyID").val(AddPropertyID);
@@ -432,6 +430,7 @@ function getPropertyInfo(editPropertyID){
                           getAddTenant(count);
                           var newItem = {
                               'Count': parseInt(count),
+                              'AddPropertyID': resultGetProperty.records[property].UserReg[addProperty].AddPropertyID,
                               'UserRegID': resultGetProperty.records[property].UserReg[addProperty].UserID,
                               'TitleName':resultGetProperty.records[property].UserReg[addProperty].TitleName,
                               'Name': resultGetProperty.records[property].UserReg[addProperty].Name,

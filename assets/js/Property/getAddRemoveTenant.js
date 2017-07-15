@@ -382,7 +382,13 @@ function getAddTenant(count) {
         var inputName = $("#inputName-" + getCountValue).val();
         var inputTitle = $("#inputTitle-" + getCountValue).val();
         var inputLastName = $("#inputLastName-" + getCountValue).val();
-        var isLeadTenant = $("#isLeadTenant-" + getCountValue).val();
+        var isLeadTenantval = $("#isLeadTenant-" + getCountValue).val();
+        var isLeadTenant = "";
+        if(isLeadTenantval == "on"){
+            isLeadTenant = 1;
+        } else {
+            isLeadTenant = 0;
+        }
         var inputEmail = $("#inputEmail-" + getCountValue).val();
         var inputMobile = getPhoneCode+ $("#inputMobile-" + getCountValue).val();
         var inputStartDate = $("#inputStartDate-"+getCountValue).val();
@@ -590,7 +596,6 @@ function getReloadUserTenants(editPropertyID){
                   }
                   var MoveInStatus = resultGetProperty.records[property].UserReg[addProperty].TenantStatus;
                   $("#hiddenmoveinproperty").val(MoveInStatus);
-                //   alert("Move In from add remove===>"+MoveInStatus);
 
                   if (resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant == 1) {
                       $("#isLeadTenant-" + count).prop("checked", true);
@@ -604,11 +609,6 @@ function getReloadUserTenants(editPropertyID){
                 $("#hiddenmoveincount").val(Moveincountval);
             }
 
-            // for (var moveOutTenant in resultGetProperty.records[property].UserRegMoveInCount) {
-            //     var Moveincount = resultGetProperty.records[property].UserRegMoveInCount[moveOutTenant].Moveincount;
-            //     $("#hiddenmoveincount").val(Moveincount);
-            //     alert("Count from add remove page==>"+Moveincount);
-            // }
             //****** Tenant History Starts ******//
                     for (var moveOutTenant in resultGetProperty.records[property].UserRegMoveOutCount) {
                         var Moveoutcount = resultGetProperty.records[property].UserRegMoveOutCount[moveOutTenant].Moveoutcount;
@@ -624,9 +624,7 @@ function getReloadUserTenants(editPropertyID){
                                 {
                                     $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                     var MoveOutUserID = resultGetProperty.records[property].UserRegOut[outProperty].UserID;
-                                    // alert("Move out ID from add remove===>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID);
                                     var MoveOutStatus = resultGetProperty.records[property].UserRegOut[outProperty].TenantStatus;
-                                    // alert("Move out from add remove===>"+MoveOutStatus);
                                     var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;
                                 }
                                 $("#hiddenmoveoutuserid").val(MoveOutUserID);
