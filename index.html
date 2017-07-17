@@ -444,12 +444,12 @@
                 return false;
             } else {
                 var userTokenId = "";
-                //validationCheckForLogin(emailID, password, userTokenId);
-                OneSignal.push(["getUserId", function(userTokenId) {
+                validationCheckForLogin(emailID, password, userTokenId);
+                // OneSignal.push(["getUserId", function(userTokenId) {
                      
-                    console.log("OneSignal User ID:", userTokenId);
-                    validationCheckForLogin(emailID, password, userTokenId);
-                 }]);
+                //     console.log("OneSignal User ID:", userTokenId);
+                //     validationCheckForLogin(emailID, password, userTokenId);
+                //  }]);
               
             }
         } // callLogin()

@@ -471,7 +471,68 @@ var getPropLat, getPropLong, isEdit=false;
  }); // btnSubmitIsAgree
 
  $(".btnSubmitPropertyMoveOut").click(function() {
-     moveOut();
+     var ids = $('.tenantList').map(function() {
+        return $(this).attr("tenantID");
+     }).get();
+     UIkit.modal.confirm('Are you sure to remove and move-out Tenant ?', function() {
+        for(var i=0; i<ids.length; i++) {
+            //console.log("id is => "+ids[i]);
+            var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+
+            var getCountValue = ids[i];//this.id.replace("btnRemoveUserTenant-", "");
+            var hiddenAddPropertyID = $("#hiddenAddPropertyID-" + getCountValue).val();
+            var hiddenPropertyID = $("#hiddenPropertyID").val();
+            var hiddenUserRegID = $("#hiddenUserRegID-" + getCountValue).val();
+            var inputMobile = getPhoneCode+$("#inputMobile-" + getCountValue).val();
+            var inputEmail = $("#inputEmail-" + getCountValue).val();
+            var inputName = $("#inputName-" + getCountValue).val();
+            var hiddenAddress = $("#hiddenAddress-" + getCountValue).val();
+            var hiddenElectricSupplier1 = $("#hiddenElectricSupplier1-" + getCountValue).val();
+            var hiddenElectricSupplier2 = $("#hiddenElectricSupplier2-" + getCountValue).val();
+            var hiddenFuelType = $("#hiddenFuelType-" + getCountValue).val();
+            var hiddenGasMeterRead = $("#hiddenGasMeterRead-" + getCountValue).val();
+            var hiddenSupplierElectric = $("#hiddenSupplierElectric-" + getCountValue).val();
+            var hiddenSupplierGas = $("#hiddenSupplierGas-" + getCountValue).val();
+            var hiddenTenancyStart = $("#hiddenTenancyStart-" + getCountValue).val();
+            var hiddenTenancyEnd = $("#hiddenTenancyEnd-" + getCountValue).val();
+            var hiddenWaterMeterRead = $("#hiddenWaterMeterRead-" + getCountValue).val();
+            var hiddenIsGas = $("#hiddenIsGas-" + getCountValue).val();
+            var hiddenIsElectricity = $("#hiddenIsElectricity-" + getCountValue).val();
+            var hiddenIsWater = $("#hiddenIsWater-" + getCountValue).val();
+            var hiddenIsCouncil = $("#hiddenIsCouncil-" + getCountValue).val();
+            var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-" + getCountValue).val();
+            $(".utilityIcon").hide();
+            $(".utilityIconLabel").hide();
+            var getDate = new Date();
+            var currentdate = moment(getDate).format('YYYY-MM-DD HH:mm:ss');
+            var adminUserID = localStorage.getItem("MyRequest_AdminID");
+            
+            
+                var dataForm = '{"AddPropertyID":"' + hiddenAddPropertyID + '","PropertyID":"' + hiddenPropertyID + '","UserID":"' + hiddenUserRegID + '","MobileNumber":"' + inputMobile + '","EmailID":"' + inputEmail + '","Name":"' + inputName + '","Address":"' + hiddenAddress + '","ElectricSupplier1":"' + hiddenElectricSupplier1 + '","ElectricSupplier2":"' + hiddenElectricSupplier2 + '","FuelType":"' + hiddenFuelType + '","GasMeterRead":"' + hiddenGasMeterRead + '","SupplierElectric":"' + hiddenSupplierElectric + '","SupplierGas":"' + hiddenSupplierGas + '","TenancyStart":"' + hiddenTenancyStart + '","TenancyEnd":"' + hiddenTenancyEnd + '","WaterMeterRead":"' + hiddenWaterMeterRead + '","IsGas":"0","IsElectricity":"0","IsWater":"0","IsCouncil":"0","IsAvailTenantInsurance":"' + hiddenAvailTenantInsurance + '","UtilityRegType":"move-out","Status":"Updated","Date":"' + currentdate + '","AdminID":"' + adminUserID + '"}';
+                console.log(dataForm);
+
+                var sendURL = domainAddress + 'CreateUserUtilityMoveOut';
+                console.log(sendURL);
+                $("#getLoadingModalContent").addClass('md-show');
+                $.ajax({
+                    type: "POST",
+                    url: sendURL,
+                    data: dataForm,
+                    success: function(dataCheck) {
+                        console.log(dataCheck);
+                        $("#getLoadingModalContent").removeClass('md-show');
+                        
+                        $("#getIsAppInstallCheck-" + getCountValue).remove();
+                        var editPropertyID = $("#hiddenPropertyID").val();
+                       
+                    }
+                });               
+        }
+        UIkit.modal.alert('All Tenants Move-Out Successfully from this property');
+            var editPropertyID = $("#hiddenPropertyID").val();
+            getReloadUserTenants(editPropertyID);
+     });
+     //moveOut();
  });
 
 
