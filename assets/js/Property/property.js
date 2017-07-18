@@ -4,6 +4,8 @@ var getPropLat, getPropLong, isEdit=false;
      
      $(".landlord-prefix").text(getPhoneCode);
 
+     $(".electricMPAN-prefix").text("S");
+
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
          screenfull.toggle();
@@ -273,6 +275,27 @@ var getPropLat, getPropLong, isEdit=false;
             this.value = '';
         }
     });
+
+    $('#inputGasSerialNo').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+
+    $('#inputGasMPRN').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    
     $('#inputRead1').keypress(function(event) {
         if (event.which < 46 || event.which >= 58 || event.which == 47) {
             event.preventDefault();
@@ -291,6 +314,53 @@ var getPropLat, getPropLong, isEdit=false;
             this.value = '';
         }
     });
+
+    $('#inputSerial1').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    $('#inputSerial2').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+
+    $(".electricMPAN-prefix").hide();
+
+    $("#inputElectricMPAN").keyup(function() {
+        var inputElectricMPAN = $("#inputElectricMPAN").val();
+        if (inputElectricMPAN == "") {
+            $(".electricMPAN-prefix").hide();
+            $("#inputElectricMPAN").removeAttr('style');
+            $("#inputElectricMPAN").css("border-color", "red");
+            return false;
+        } else {
+            $(".electricMPAN-prefix").show();
+            $("#inputElectricMPAN").css("padding", "10px 25px 12px 20px");
+            $("#inputElectricMPAN").css("border-color", "rgba(0,0,0,.12)");
+            return false;
+        }
+    });
+    
+    $('#inputElectricMPAN').keypress(function(event) {
+        if (event.which < 46 || event.which >= 58 || event.which == 47) {
+            event.preventDefault();
+        }
+
+        if (event.which == 46 && $(this).val().indexOf('.') != -1) {
+            this.value = '';
+        }
+    });
+    
     $('#inputWater').keypress(function(event) {
         if (event.which < 46 || event.which >= 58 || event.which == 47) {
             event.preventDefault();
