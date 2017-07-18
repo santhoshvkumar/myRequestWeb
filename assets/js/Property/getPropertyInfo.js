@@ -105,6 +105,23 @@ function getPropertyInfo(editPropertyID){
                       $("#select2-inputLandlordTitle-container").html(resultGetProperty.records[property].Title);
                       $("#getName").val(resultGetProperty.records[property].PropOwnerName);
                       $("#getLastName").val(resultGetProperty.records[property].PropOwnerLastName);
+                      
+                        var ElectricMPAN = resultGetProperty.records[property].ElectricMPAN;
+
+                        if(ElectricMPAN == null){
+                            $("#inputElectricMPAN").val("-");
+                        } else {
+                            $("#inputElectricMPAN").val(resultGetProperty.records[property].ElectricMPAN);
+                        }
+                    
+                        var GasMPRN = resultGetProperty.records[property].GasMPRN;
+                        
+                        if(GasMPRN == null){
+                            $("#inputGasMPRN").val("-");
+                        } else {
+                            $("#inputGasMPRN").val(resultGetProperty.records[property].GasMPRN);
+                        }
+                      
 
                       if(resultGetProperty.records[property].PropOwnerPhone == null){
                         $("#inputMobileNumber").val('');
