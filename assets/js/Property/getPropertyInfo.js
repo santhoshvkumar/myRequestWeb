@@ -111,14 +111,17 @@ function getPropertyInfo(editPropertyID){
                         if(ElectricMPAN == null){
                             $("#inputElectricMPAN").val("-");
                         } else {
-                            $("#inputElectricMPAN").val(resultGetProperty.records[property].ElectricMPAN);
+                            var ElectricMPAN = (resultGetProperty.records[property].ElectricMPAN).replace("S" ,"");
+                            $("#inputElectricMPAN").val(ElectricMPAN);
                         }
                     
                         var GasMPRN = resultGetProperty.records[property].GasMPRN;
                         
                         if(GasMPRN == null){
                             $("#inputGasMPRN").val("-");
+                            $(".electricMPAN-prefix").hide();
                         } else {
+                            $(".electricMPAN-prefix").show();
                             $("#inputGasMPRN").val(resultGetProperty.records[property].GasMPRN);
                         }
                       

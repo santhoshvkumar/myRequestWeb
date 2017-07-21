@@ -4,8 +4,6 @@ var getPropLat, getPropLong, isEdit=false;
      
      $(".landlord-prefix").text(getPhoneCode);
 
-     $(".electricMPAN-prefix").text("S");
-
      $('#full_screen_toggle').on('click', function(e) {
          e.preventDefault();
          screenfull.toggle();

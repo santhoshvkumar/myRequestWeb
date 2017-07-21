@@ -10,7 +10,17 @@ var buttonSubmitProptyUtil = function() {
     var lastName = $("#getLastName").val().replace(/["']/g, "`");
     var emailID = $("#inputEmailID").val();
     var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
-    var elecMPAN = "S"+$("#inputElectricMPAN").val();
+
+    var electricityMPAN = $("#inputElectricMPAN").val();
+    var getelectricMPAN = $(".electricMPAN-prefix").html();
+    var elecMPAN = "";
+
+    if(electricityMPAN != ""){
+        elecMPAN = getelectricMPAN+electricityMPAN;
+    } else {
+        elecMPAN = "";
+    }
+
     var gasMPRN = $("#inputGasMPRN").val();
 
     var getAppYes = $('.appYes > div').hasClass('checked');
