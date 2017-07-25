@@ -174,7 +174,6 @@
  var maxProp = 0;
  var getValue = "";
 
-
  $("#addSpl").on("click", function() {
   var specialityName = $("#SpecialityName").val();
   var specialityDescription = $("#specialityDescription").val();
@@ -233,6 +232,14 @@
 
  $(document).ready(function() {
   console.log("ready call");
+
+  if(getPhoneCode == '+44'){
+      $(".postcodebasedcountry").html("Post Code<span class='req'>*</span>");
+    }
+    else {
+      $(".postcodebasedcountry").html("Zip Code<span class='req'>*</span>");
+  }
+
   adminUserID = localStorage.getItem("MyRequest_AdminID");
   var adminUserName = localStorage.getItem("MyRequest_UserName");
   var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -1118,7 +1125,12 @@
   if (inputZip == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
-    $(".help-block").text("* Enter the Zip");
+    if(getPhoneCode == '+44'){
+      $(".help-block").text("* Enter the Post Code");
+    } else {
+      $(".help-block").text("* Enter the Zip Code");
+    }
+    // $(".help-block").text("* Enter the Zip");
     $(".btnSubmitContractor").attr("disabled", true);
     return false;
   } else {
@@ -1510,7 +1522,11 @@
       if (zip == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
-        $(".help-block").text("* Enter the Zip");
+        if(getPhoneCode == '+44'){
+          $(".help-block").text("* Enter the Post Code");
+        } else {
+          $(".help-block").text("* Enter the Zip Code");
+        }
         $("#inputZip").css("border-color", "red");
         $(".btnSubmitContractor").attr("disabled", true);
         return false;

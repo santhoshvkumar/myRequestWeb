@@ -1,7 +1,8 @@
 var getPropLat, getPropLong, isEdit=false;
  $(function() {
      var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-     
+     var getcountryCode = localStorage.getItem("MyRequest_countryCode");
+
      $(".landlord-prefix").text(getPhoneCode);
 
      $('#full_screen_toggle').on('click', function(e) {
@@ -129,7 +130,9 @@ var getPropLat, getPropLong, isEdit=false;
      var businessName = localStorage.getItem("MyRequest_BusinessName");
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
-    
+        
+        var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+     
      localStorage.setItem("MyRequest_RepairStatus", "");
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
@@ -142,6 +145,15 @@ var getPropLat, getPropLong, isEdit=false;
          $("#FileURLUploadImage3").attr("action",domainAddress+"ajaximage.php");
          $("#FileURLUploadImage5").attr("action",domainAddress+"ajaximage.php");
      }
+
+    if(getPhoneCode == '+44'){
+        $(".postcodebasedcountry").html("Post Code<span class='req'>*</span>");
+        $(".postcodebasedcountryth").html("Post Code");
+        }
+        else {
+        $(".postcodebasedcountry").html("Zip Code<span class='req'>*</span>");
+        $(".postcodebasedcountryth").html("Zip Code");
+    }
 
      if (adminType == "SuperAdmin") {
 
@@ -434,7 +446,7 @@ var getPropLat, getPropLong, isEdit=false;
      var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
      modalUtilityList.hide(); 
  });
- $(".errorinfo").hide();
+ $(".errorinfoforcode").hide();
  var mapCount = 0;
  $("#inpuZip").on('blur', function(e) {
      console.log("Blur Function Called");
@@ -448,17 +460,21 @@ var getPropLat, getPropLong, isEdit=false;
          var Longitude = "";
          console.log(wholeAddress);
         if(postalCode == ""){
-            $(".errorinfo").show();
-            $(".errorinfo").css({"color":"red", "font-size":"12px"});
-            $(".errorinfo").text("* Please Enter the Postal Code");
+            $(".errorinfoforcode").show();
+            $(".errorinfoforcode").css({"color":"red", "font-size":"12px"});
+            if(getPhoneCode == "+44"){
+                $(".errorinfoforcode").text("* Enter the Post Code");
+            } else {
+                $(".errorinfoforcode").text("* Enter the Zip Code");
+            }
          } 
         else {
-            $(".errorinfo").hide();
+            $(".errorinfoforcode").hide();
             if(getAddress=="" && getCounty=="Choose County" && getCity==undefined && postalCode==""){
                 console.log("No Address Details Fetched");
             }
             else {
-            $(".errorinfo").hide();
+            $(".errorinfoforcode").hide();
             var geocoder = new google.maps.Geocoder();
                 if (geocoder) {
                     geocoder.geocode({

@@ -1,3 +1,4 @@
+  var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
   $("#inputState").on('change', function() {
       var inputState = $("#inputState").val();
       if (inputState == 0) {
@@ -54,7 +55,11 @@
       if (inpuZip == "") {
           $(".errorInfo").css("border-color", "red");
           $(".errorInfo").show();
-          $(".errorInfo").text("* Enter the Post Code");
+          if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Zip Code");
+          }
           $(".btnSubmitProperty").attr("disabled", true);
           return false;
       } else {
@@ -335,7 +340,11 @@
       if (inpuZip1 == "") {
           $(".errorInfo").css("border-color", "red");
           $(".errorInfo").show();
-          $(".errorInfo").text("* Enter the Landlord Post Code");
+          if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Landlord Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Landlord Zip Code");
+          }
           $(".btnSubmitProperty").attr("disabled", true);
           return false;
       } else {

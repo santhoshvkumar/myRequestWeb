@@ -1,4 +1,5 @@
 function addUpdatePropertyValidation() {
+    var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
    getAddTenantArr = new Array();
     var hiddenPropertyID = $("#hiddenPropertyID").val();
     var landlordTitle = $("#select2-inputLandlordTitle-container").html();
@@ -169,7 +170,11 @@ function addUpdatePropertyValidation() {
 
     if (zip == "") {
         $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Post Code");
+        if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Zip Code");
+          }
         $("#inpuZip").css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
@@ -321,7 +326,12 @@ function addUpdatePropertyValidation() {
 
     if (landlordZip == "") {
         $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Landlord Post Code");
+        if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Landlord Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Landlord Zip Code");
+          }
+        // $(".errorInfo").text("* Enter the Landlord Post Code");
         $("#inpuZip1").css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;

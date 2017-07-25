@@ -182,9 +182,9 @@
 
                                     <div class="parsley-row" style="margin-top:15px;">
                                         <div class="parsley-row">
-                                            <label for="zip">Post Code<span class="req">*</span></label>
+                                            <label for="zip" class="postcodebasedcountry"></label>
                                             <input type="text" id="inpuZip" name="zip" required class="md-input" />
-                                            <span class="errorinfo"></span>
+                                            <span class="errorinfoforcode"></span>
                                         </div>
                                     </div>
                                     <div class="uk-grid" data-uk-grid-margin>
@@ -421,7 +421,7 @@
                                                 </div>
 
                                                 <div class="parsley-row" style="margin-top:15px;">
-                                                    <label for="zip">Post Code<span class="req">*</span></label>
+                                                    <label for="zip" class="postcodebasedcountry"></label>
                                                     <input type="text" id="inpuZip1" name="zip" required class="md-input" />
                                                 </div>                                                
 
@@ -1111,7 +1111,7 @@
                                 <thead>
                                     <tr style="height: 50px">
                                         <th style="text-align: center;">Property Address</th>
-                                        <th style="text-align: center;">Post Code</th>
+                                        <th style="text-align: center;"  class="postcodebasedcountryth"></th>
                                         <th style="text-align: center;">Landlord EmailID</th>
                                         <th>View</th>
                                         <th>Delete</th>
