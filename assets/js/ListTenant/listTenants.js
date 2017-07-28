@@ -162,7 +162,7 @@ $(document).ready(function() {
 
     $("#enterPageNO").val(maxProp);
     getTenantsList(getValue);
-    $(".getLettingAgencyBusinessName").text("Add Tenant - " + businessName );
+    $(".getLettingAgencyBusinessName").text("My Tenants - " + businessName );
 
 
     adminUserID = localStorage.getItem("MyRequest_AdminID");

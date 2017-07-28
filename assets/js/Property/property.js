@@ -221,7 +221,7 @@ var getPropLat, getPropLong, isEdit=false;
 
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
      $("#getLoadingModalContent").addClass('md-show');
-     $(".getLettingAgencyBusinessName").text("Add Property - " + businessName);
+     $(".getLettingAgencyBusinessName").text("My Property - " + businessName);
      $("#inputWaterAuthority").select2();
      $("#inputLandlordTitle").select2();
      $("#inputProperty").select2();

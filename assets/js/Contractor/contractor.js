@@ -310,7 +310,7 @@
   maxProp++;
   $("#enterPageNO").val(maxProp);
 
-  $(".getLettingAgencyBusinessName").text("Contractor - " + businessName);
+  $(".getLettingAgencyBusinessName").text("My Contractors - " + businessName);
   getContractorsList(getValue);
 
 

@@ -129,7 +129,7 @@
                     <li title="ListProperty">
                         <a href="ListProperty.html">
                             <span class="menu_icon"><i class="fa fa-building fa-2x"></i></span>
-                            <span class="menu_title">Add Property</span>
+                            <span class="menu_title">My Property</span>
                         </a>
                     </li>
                     <li title="Speciality">
@@ -142,13 +142,13 @@
                     <li title="Contractor">
                         <a href="Contractor.html">
                             <span class="menu_icon"><i class="fa fa-user fa-2x"></i></span>
-                            <span class="menu_title">Add Contractor</span>
+                            <span class="menu_title">My Contractors</span>
                         </a>
                     </li>
                     <li title="ListTenant">
                         <a href="ListTenants.html">
                             <span class="menu_icon"><i class="fa fa-group fa-2x"></i></span>
-                            <span class="menu_title">Add Tenants</span>
+                            <span class="menu_title">My Tenants</span>
                         </a>
                     </li>
                     <li title="ListAllCase" class="current_section">
