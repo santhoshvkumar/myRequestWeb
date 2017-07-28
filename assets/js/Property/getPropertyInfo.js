@@ -470,7 +470,7 @@ $(document).ready(function() {
                                 $(".getMoveoutTenantDetails").html('');
                                 for (var outProperty in resultGetProperty.records[property].UserRegOut) 
                                 {
-                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td style='font-weight:bold;'>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                     var MoveOutUserID = resultGetProperty.records[property].UserRegOut[outProperty].UserID;
                                     var MoveOutStatus = resultGetProperty.records[property].UserRegOut[outProperty].TenantStatus;
                                     var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;                             
@@ -736,8 +736,16 @@ $(document).ready(function() {
                                   isCouncil = '<i class="fa fa-times"></i>';
                                   cCouncil = "Red";
                               }
+                                var UtilityRegType = "";
+                                if(result.records[propertyUtility].UtilityRegType == "move-in"){
+                                    UtilityRegType = "MoveIn";
+                                    $(".propertyUtility").prepend("<tr> <td style='font-weight:bold; color: green;'>" + UtilityRegType + "</td> <td>" + result.records[propertyUtility].Name + "</td> <td>" + result.records[propertyUtility].EmailID + "</td> <td>" + result.records[propertyUtility].MobileNumber + "</td> <td style='font-weight:bold;'>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td>  <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + utilityStatusCheck + "</td> </tr>");
+                                } else {
+                                    UtilityRegType = "MoveOut";
+                                    $(".propertyUtility").prepend("<tr> <td style='font-weight:bold; color: red;'>" + UtilityRegType + "</td> <td>" + result.records[propertyUtility].Name + "</td> <td>" + result.records[propertyUtility].EmailID + "</td> <td>" + result.records[propertyUtility].MobileNumber + "</td> <td style='font-weight:bold;'>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td>  <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + utilityStatusCheck + "</td> </tr>");
+                                }
                                
-                              $(".propertyUtility").prepend("<tr> <td>" + result.records[propertyUtility].UtilityRegType + "</td> <td>" + result.records[propertyUtility].Name + "</td> <td>" + result.records[propertyUtility].EmailID + "</td> <td>" + result.records[propertyUtility].MobileNumber + "</td> <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td>  <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + utilityStatusCheck + "</td> </tr>");
+                              
                           }
                       }
                   }); // GetUserUtilityListByProperty/

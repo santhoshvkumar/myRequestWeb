@@ -2,6 +2,14 @@
     padding: 10px;
 }
 
+thead {
+    background-color: #fed235;
+}
+th{
+    /* font-weight: bold; */
+    font-size: 15px !important;
+}
+
 .epc_chart_text{
     margin-top: 15px;
 }

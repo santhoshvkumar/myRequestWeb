@@ -622,7 +622,7 @@ function getReloadUserTenants(editPropertyID){
                                 $(".getMoveoutTenantDetails").html('');
                                 for (var outProperty in resultGetProperty.records[property].UserRegOut) 
                                 {
-                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
+                                    $(".getMoveoutTenantDetails").append("<tr> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].UserID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].FullName+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].EmailID+"</td> <td>"+resultGetProperty.records[property].UserRegOut[outProperty].PhoneNumber+"</td> <td style='font-weight:bold;'>"+resultGetProperty.records[property].UserRegOut[outProperty].TenantMoveOutDate+"</td> </tr>");
                                     var MoveOutUserID = resultGetProperty.records[property].UserRegOut[outProperty].UserID;
                                     var MoveOutStatus = resultGetProperty.records[property].UserRegOut[outProperty].TenantStatus;
                                     var AddPropertyID = resultGetProperty.records[property].UserRegOut[outProperty].AddPropertyID;
