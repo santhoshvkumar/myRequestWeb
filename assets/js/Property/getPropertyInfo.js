@@ -1,4 +1,50 @@
 function getPropertyInfo(editPropertyID){
+
+$(document).ready(function() {
+    $(".getTenantsInfo").text("- Current Occupant");
+        var Occupantplusminus = $(".getTenantsInfo").text();
+        if(Occupantplusminus == "- Current Occupant"){
+            $(".getTenantList").show();
+    }
+
+    $(".PropertyDetailsinfo").text("- Property Details");
+        var PropertyDetailsinfo = $(".PropertyDetailsinfo").text();
+        if(PropertyDetailsinfo == "- Property Details"){
+            $(".PropertyDetails").show();
+    }
+
+    $(".getUtilityInfo").text("- Utility Management Details");
+        var getUtilityinfo = $(".getUtilityInfo").text();
+        if(getUtilityinfo == "- Utility Management Details"){
+            $(".utilityInfo").show();
+    }
+
+    $(".getPropMandatoryInfo").text("- Property Mandatory Details");
+        var getPropertyinfo = $(".getPropMandatoryInfo").text();
+        if(getPropertyinfo == "- Property Mandatory Details"){
+            $(".propMandatoryContent").show();
+    }
+
+    $(".landLordTitle").text("- Landlord Details");
+        var getlandlordInfo = $(".landLordTitle").text();
+        if(getlandlordInfo == "- Landlord Details"){
+            $(".landlordInfo").show();
+        }
+
+    $(".getUtilityHistory").text("- Utility History");
+        var getUtilityHistory = $(".getUtilityHistory").text();
+        if(getUtilityHistory == "- Utility History"){
+            $(".divUtilityHistory").show();
+        }
+    
+    $(".divtenantHistory").show();
+    $(".tenantHistory").text("- Tenant History");
+        var getTenantHistory = $(".tenantHistory").text();
+        if(getTenantHistory == "- Tenant History"){
+            $(".gettenantHistory").show();
+        }
+});
+
               $(".getTenantList").html('');
               count = 0;
               $(".utilityIcon").show();

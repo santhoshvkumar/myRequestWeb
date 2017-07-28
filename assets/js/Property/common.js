@@ -31,12 +31,42 @@
          $(".getTenantsInfo").on('click', function() {
              if ($(".getTenantList").is(":hidden")) {
                  $(".getTenantList").show("slow");
-                 $(".getTenantsInfo").text('- Occupant');
+                 $(".getTenantsInfo").text('- Current Occupant');
              } else {
                  $(".getTenantList").hide("slow");
-                 $(".getTenantsInfo").text('+ Occupant');
+                 $(".getTenantsInfo").text('+ Current Occupant');
              }
          }); // .getTenantInfo
+
+         $(".PropertyDetailsinfo").on('click', function() {
+             if ($(".PropertyDetails").is(":hidden")) {
+                 $(".PropertyDetails").show("slow");
+                 $(".PropertyDetailsinfo").text('- Property Details');
+             } else {
+                 $(".PropertyDetails").hide("slow");
+                 $(".PropertyDetailsinfo").text('+ Property Details');
+             }
+         }); // .PropertyDetailsinfo
+
+         $(".getUtilityHistory").on('click', function() {
+             if ($(".getPropertyUtility").is(":hidden")) {
+                 $(".getPropertyUtility").show("slow");
+                 $(".getUtilityHistory").text('- Utility History');
+             } else {
+                 $(".getPropertyUtility").hide("slow");
+                 $(".getUtilityHistory").text('+ Utility History');
+             }
+         }); // .PropertyDetailsinfo
+
+         $(".tenantHistory").on('click', function() {
+             if ($(".gettenantHistory").is(":hidden")) {
+                 $(".gettenantHistory").show("slow");
+                 $(".tenantHistory").text('- Tenant History');
+             } else {
+                 $(".gettenantHistory").hide("slow");
+                 $(".tenantHistory").text('+ Tenant History');
+             }
+         }); // .PropertyDetailsinfo
 
          $(".getPropertyInfo").click(function() {
              $(".propertyInfo").toggle();

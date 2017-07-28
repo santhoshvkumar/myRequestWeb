@@ -132,7 +132,40 @@ var getPropLat, getPropLong, isEdit=false;
      var fuel = $("#select2-inputFuel-container").html("Duel");
         
         var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-     
+
+        $(".getTenantsInfo").text("+ Current Occupant");
+        var Occupantplusminus = $(".getTenantsInfo").text();
+        if(Occupantplusminus == "+ Current Occupant"){
+            $(".getTenantList").hide();
+        }
+
+        $(".PropertyDetailsinfo").text("- Property Details");
+        var PropertyDetailsinfo = $(".PropertyDetailsinfo").text();
+        if(PropertyDetailsinfo == "- Property Details"){
+            $(".PropertyDetails").show();
+        }
+
+        $(".getUtilityInfo").text("+ Utility Management Details");
+        var getUtilityinfo = $(".PropertyDetailsinfo").text();
+        if(getUtilityinfo == "+ Utility Management Details"){
+            $(".utilityInfo").hide();
+        }
+
+        $(".getPropMandatoryInfo").text("+ Property Mandatory Details");
+        var getPropertyinfo = $(".getPropMandatoryInfo").text();
+        if(getPropertyinfo == "+ Property Mandatory Details"){
+            $(".propMandatoryContent").hide();
+        }
+
+        $(".landLordTitle").text("+ Landlord Details");
+        var getlandlordInfo = $(".landLordTitle").text();
+        if(getlandlordInfo == "+ Landlord Details"){
+            $(".landlordInfo").hide();
+        }
+
+        $(".divUtilityHistory").hide();
+        $(".divtenantHistory").hide();
+             
      localStorage.setItem("MyRequest_RepairStatus", "");
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
