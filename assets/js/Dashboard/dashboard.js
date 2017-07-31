@@ -1131,7 +1131,7 @@
                 else{
                     for(tenant in resultTenantUtility.records){
                         $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).html("");
-                        $(".tenantUtility").append("<tr id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x reneval' style='color:green;cursor:pointer;' id='reneval-"+resultTenantUtility.records[tenant].TenantID+"'></i> <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
+                        $(".tenantUtility").append("<tr class='reneval' id='getTenantRowID-" + resultTenantUtility.records[tenant].TenantID + "'><td id='propName-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>" + resultTenantUtility.records[tenant].TenantName + "</td> <td id='propAddress-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+resultTenantUtility.records[tenant].PropAddress+"</td><td id='tenancyEndDate-" + resultTenantUtility.records[tenant].TenantID + "' style='vertical-align: middle;'>"+moment(resultTenantUtility.records[tenant].TenancyEnd).format('Do MMM YYYY') +"</td> <td>  <i class='fa fa fa-sign-out fa-2x moveOut' style='color:red;cursor:pointer;' id='moveOut-"+resultTenantUtility.records[tenant].TenantID+"'></i> <input type='hidden' id='hiddenPropertyID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].PropertyRegister+"' /> <input type='hidden' id='hiddenTenantName-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantName+"' /> <input type='hidden' id='hiddenTenantEmailID-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantEmailID+"' /> <input type='hidden' id='hiddenTenantPhoneNumber-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenantPhoneNumber+"' /> <input type='hidden' id='hiddenTenantEndDate-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].TenancyEnd+"' /> <span id='utilityInfo-"+resultTenantUtility.records[tenant].TenantID+"'></span> </td> </tr> ");
 
                         for(getUtility in resultTenantUtility.records[tenant].Utility){
                             $("#utilityInfo-"+resultTenantUtility.records[tenant].TenantID).append("<input type='hidden' id='hiddenIsElectricity-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].ElectricityStatus+"' />  <input type='hidden' id='hiddenIsGas-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].GasStatus+"' /> <input type='hidden' id='hiddenIsWater-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].WaterStatus+"' /> <input type='hidden' id='hiddenIsCouncil-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].CouncilStatus+"' /> <input type='hidden' id='hiddenAvailTenantInsurance-"+resultTenantUtility.records[tenant].TenantID+"' value='"+resultTenantUtility.records[tenant].Utility[getUtility].IsTenantInsurance+"' />");
@@ -1139,7 +1139,7 @@
                     }
 
                     $(".reneval").on('click',function(){
-                        var tenantID = this.id.replace('reneval-','');
+                        var tenantID = this.id.replace('getTenantRowID-','');
                         var tenantName = $("#propName-"+tenantID).text();
                         var tenantPropertyAddress = $("#propAddress-"+tenantID).text();
                         var tenantNewStartDate = $("#hiddenTenantEndDate-"+tenantID).val();
@@ -1255,11 +1255,12 @@
                 }
                 else{
                     for(contractor in resultContractorUtility.records){
-                        $(".contractorUtility").append("<tr id='getContractorRowID-" + resultContractorUtility.records[contractor].contractorID + "'><td id='ContractorName-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>" + resultContractorUtility.records[contractor].ContractorName + "</td> <td id='ContractorSpeciality-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+resultContractorUtility.records[contractor].SpecialityName+"</td><td id='ContractorEndDate-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+moment(resultContractorUtility.records[contractor].ContractValidTill).format('Do MMM YYYY') +"</td> <td> <i class='fa fa-refresh fa-2x contractorreneval' style='color:green;cursor:pointer;' id='contractorreneval-"+resultContractorUtility.records[contractor].ContractorID+"'></i>  <input type='hidden' id='hiddenContractorEndDate-"+resultContractorUtility.records[contractor].ContractorID+"' value='"+resultContractorUtility.records[contractor].ContractValidTill+"' /></td> </tr> ");
+                        $(".contractorUtility").append("<tr class='contractorreneval' id='getContractorRowID-" + resultContractorUtility.records[contractor].ContractorID + "'><td id='ContractorName-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>" + resultContractorUtility.records[contractor].ContractorName + "</td> <td id='ContractorSpeciality-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+resultContractorUtility.records[contractor].SpecialityName+"</td><td id='ContractorEndDate-" + resultContractorUtility.records[contractor].ContractorID + "' style='vertical-align: middle;'>"+moment(resultContractorUtility.records[contractor].ContractValidTill).format('Do MMM YYYY') +"   <input type='hidden' id='hiddenContractorEndDate-"+resultContractorUtility.records[contractor].ContractorID+"' value='"+resultContractorUtility.records[contractor].ContractValidTill+"' /></td> </tr> ");
+                        // <i class='fa fa-refresh fa-2x contractorreneval' style='color:green;cursor:pointer;' id='contractorreneval-"+resultContractorUtility.records[contractor].ContractorID+"'></i>    
                     }
 
                     $(".contractorreneval").on('click',function(){
-                        var contractorID = this.id.replace('contractorreneval-','');
+                        var contractorID = this.id.replace('getContractorRowID-','');
                         var ContractorName = $("#ContractorName-"+contractorID).text();
                         var ContractorSpeciality = $("#ContractorSpeciality-"+contractorID).text();
                         var contractorNewStartDate = $("#hiddenContractorEndDate-"+contractorID).val();
@@ -1773,6 +1774,16 @@
     });
   }
 
+
+    $(".closeTenantPopup").click(function(){
+        var modal = UIkit.modal("#getTenancyRenew");
+        modal.hide();
+    });
+
+    $(".closeContractorPopup").click(function(){
+        var modal = UIkit.modal("#getContractRenewal");
+        modal.hide();
+    });
 
 
 

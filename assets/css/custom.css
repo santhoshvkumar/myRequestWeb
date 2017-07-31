@@ -2361,7 +2361,7 @@ form#FileURLUploadImage1 {
    height: 20px;
    width: 20px;
    border: 1px solid black;
-   border-radius: 5px;
+   border-radius: 50%;
 }
 
 .expired{
@@ -2369,7 +2369,7 @@ form#FileURLUploadImage1 {
    height: 20px;
    width: 20px;
    border: 1px solid black;
-   border-radius: 5px;
+   border-radius: 50%;
 }
 
 .closeMap{
