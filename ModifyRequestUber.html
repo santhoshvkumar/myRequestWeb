@@ -92,8 +92,7 @@
                                 <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
                                 <div class="uk-dropdown uk-dropdown-small">
                                     <ul class="uk-nav js-uk-prevent">
-                                        <li><a href="MyProfileUtility.html">myProfile</a></li>
-                                        <li class="utilityLogOut"><a href="index.html">Logout</a></li>
+                                        
                                     </ul>
                                 </div>
                             </li>
@@ -112,17 +111,18 @@
         <!-- main header end -->
 
         <!-- main sidebar -->
-        <aside id="sidebar_main">
+        <aside id="sidebar_main" class="accordion_mode">
             <div class="sidebar_main_header">
                 <div class="sidebar_logo">
-                    <a href="DashboardUtility.html" class="sSidebar_hide">
-                        <img src="assets/img/utility.jpg" class="myRequestLogo myRequestTopLogo" />
+                    <a href="Dashboard.html" class="sSidebar_hide">
+                        <img src="assets/img/myRequestLogo.png" class="myRequestAdminLogo" alt="myRequestLogo" />
                     </a>
-                    <a href="DashboardUtility.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
+                    <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
                 </div>
 
             </div>
-            <div w3-include-html="utilityMenu.html"></div>
+            <div id="lettingAgentMenu" w3-include-html="LettingAgentMenu.html"></div>
+            <div id="superAdminMenu" w3-include-html="SuperAdminMenu.html"></div>
         </aside>
         <!-- main sidebar end -->
         <div id="page_content">
