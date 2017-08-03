@@ -478,6 +478,8 @@ function getAddTenant(count) {
     });
 
     $(".btnRemoveUserTenant").off('click').on('click', function(event) {
+        var RemoveTenantCount = "1";
+        $("#hiddenRemoveTenantCount").val(RemoveTenantCount);
         var getCountValue = this.id.replace("btnRemoveUserTenant-", "");
         var hiddenAddPropertyID = $("#hiddenAddPropertyID-" + getCountValue).val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
