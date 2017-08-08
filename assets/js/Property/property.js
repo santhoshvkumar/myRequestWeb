@@ -126,10 +126,12 @@ var getPropLat, getPropLong, isEdit=false;
      adminUserID = localStorage.getItem("MyRequest_AdminID");
      var adminUserName = localStorage.getItem("MyRequest_UserName");
      var adminType = localStorage.getItem("MyRequest_AdminType");
-
+    
      var businessName = localStorage.getItem("MyRequest_BusinessName");
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
+
+     $(".propertyContent").hide();
         
         var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
 
