@@ -131,7 +131,7 @@ var getPropLat, getPropLong, isEdit=false;
      var logo = localStorage.getItem("MyRequest_Logo");
      var fuel = $("#select2-inputFuel-container").html("Duel");
 
-     $(".propertyContent").hide();
+        $(".propertyContent").hide();
         
         var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
 
