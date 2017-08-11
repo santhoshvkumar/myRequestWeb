@@ -405,6 +405,16 @@
                         phoneCode="+1";
                         break;
                 }
+                    
+                if(countryCode == "UK"){
+                    $("body").addClass("bgUKImage");
+                } else if(countryCode == "US"){
+                    $("body").addClass("bgUSImage");            
+                } else if(countryCode == "Canada"){
+                    $("body").addClass("bgCanImage");
+                } else if(countryCode == "India"){
+                    $("body").addClass("bgIndImage");
+                }
 
                UIkit.modal.confirm("Your Selected Country is : "+countryCode, function(){
                     // will be executed on confirm.
@@ -413,7 +423,7 @@
                     localStorage.setItem("MyRequest_GMT",gmt);
                     modalMap.hide();
                 },[]);
-
+                
               
             }
             else {
@@ -444,7 +454,7 @@
                 return false;
             } else {
                 var userTokenId = "";
-                //validationCheckForLogin(emailID, password, userTokenId);
+                // validationCheckForLogin(emailID, password, userTokenId);
                 OneSignal.push(["getUserId", function(userTokenId) {
                      
                     console.log("OneSignal User ID:", userTokenId);
