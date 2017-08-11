@@ -242,8 +242,40 @@ th{
     line-height: 48px;
 }
 
-body {
-    background: url(../img/bg.png) no-repeat center center fixed;
+/* body {
+     background: url(../img/bg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+} */
+
+body.bgUKImage {
+     background: url(../img/bg.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body.bgUSImage {
+     background: url(../img/bg_USA.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body.bgCanImage {
+     background: url(../img/bg_Canada.png) no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
+
+body.bgIndImage {
+     background: url(../img/bg_India.png) no-repeat center center fixed; 
     -webkit-background-size: cover;
     -moz-background-size: cover;
     -o-background-size: cover;

@@ -4,4 +4,16 @@
 
 var domainAddress = "https://api.myrequest.co.uk/";
 
-//var domainAddress = "http://localhost:8888/myrequestapi/";
+// var domainAddress = "http://localhost:8888/myRequestHome/myrequestapi/";
+
+var getCountry = localStorage.getItem("MyRequest_countryCode");
+
+    if(getCountry == "UK"){
+        $("body").addClass("bgUKImage");
+    } else if(getCountry == "US"){
+        $("body").addClass("bgUSImage");
+    } else if(getCountry == "Canada"){
+        $("body").addClass("bgCanImage");
+    } else if(getCountry == "India"){
+        $("body").addClass("bgIndImage");
+    }
