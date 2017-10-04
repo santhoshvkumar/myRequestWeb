@@ -139,9 +139,16 @@
                     <button type="submit" class="md-btn md-btn-primary getProperty" style="font-style: 13px;"><i class="fa fa-plus-circle"></i> Add Property</button>
                 </div>  
                  <div class="uk-width-1-1" style="margin-top: 2%">          
-                <form class="form-horizontal" action="http://localhost:8888/myrequestapi/UploadCSV/functions.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                <form class="form-horizontal" action="http://localhost:8888/myrequestapi/UploadCSV/move-in.php" method="post" name="upload_excel" enctype="multipart/form-data">
                                 <input type="file" class="md-btn md-btn-primary" style="font-style: 13px;" name="file" id="file" class="input-large">                                                    
-                                <button type="submit" id="submit" name="Import" class="md-btn md-btn-primary" data-loading-text="Loading...">Import Property</button>                         
+                                <button type="submit" id="submit" name="Import" class="md-btn md-btn-primary" data-loading-text="Loading...">Import Move in Property</button>                         
+                    </fieldset>
+                </form>
+                </div>
+                <div class="uk-width-1-1" style="margin-top: 2%">          
+                <form class="form-horizontal" action="http://localhost:8888/myrequestapi/UploadCSV/move-out.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                                <input type="file" class="md-btn md-btn-primary" style="font-style: 13px;" name="file" id="file" class="input-large">                                                    
+                                <button type="submit" id="submit" name="Import" class="md-btn md-btn-primary" data-loading-text="Loading...">Import Move out Property</button>                         
                     </fieldset>
                 </form>
                 </div>
