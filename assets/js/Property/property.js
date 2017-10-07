@@ -576,6 +576,14 @@ var getPropLat, getPropLong, isEdit=false;
  }); // btnSubmitUtility
 
 
+$("#ImportCSVButton").click(function() {
+    // var modal = UIkit.modal("#ImportModel");
+    // modal.hide();
+    var importModal = UIkit.modal("#ImportModel");
+    importModal.show();        
+ });
+
+
  $(".btnSubmitIsAgree").click(function() {
      $("#hiddenIsAgree").val(1);
      var isAgreeSet = $("#hiddenIsAgree").val();
