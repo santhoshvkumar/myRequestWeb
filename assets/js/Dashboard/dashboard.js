@@ -364,7 +364,7 @@
 
                 $.get(domainAddress + 'GetTotalTenants/' + adminUserID, {}, function(result) {
                     if(result.record_count == 0){
-                        $("#dashTenants").text(result.record_count);
+                        $("#dashPproperties").text(result.record_count);
                        
                     }else{
                         $("#dashPproperties").text(result.record_count);

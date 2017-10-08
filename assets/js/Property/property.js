@@ -576,12 +576,19 @@ var getPropLat, getPropLong, isEdit=false;
  }); // btnSubmitUtility
 
 
-$("#ImportCSVButton").click(function() {
-    // var modal = UIkit.modal("#ImportModel");
-    // modal.hide();
-    var importModal = UIkit.modal("#ImportModel");
-    importModal.show();        
- });
+    $("#ImportCSVButton").click(function() {
+        var importModal = UIkit.modal("#ImportModel");
+        importModal.show();
+        $("#ImportCSVForm").hide();    
+    });
+
+    $( "#VecoCsv" ).click(function() {
+        $("#ImportCSVForm").show();
+    });
+
+    $( "#CFPCsv" ).click(function() {
+            $("#ImportCSVForm").show();
+    });
 
 
  $(".btnSubmitIsAgree").click(function() {

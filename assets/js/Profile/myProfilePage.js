@@ -3,6 +3,7 @@
  $(function() {
   var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
   var adminType = localStorage.getItem("MyRequest_AdminType");
+  var getinputCountry = localStorage.getItem("MyRequest_countryCode");
 
   if(adminType == "SuperAdmin"){
     $(".phno-prefix").text("+44");
@@ -1009,19 +1010,19 @@ getExistPrivacypolicy();
              if (result.records[getUserInfo].PhoneNumber == null) {
                $("#inputPhoneNumber").val('');
              } else {
-               $("#inputPhoneNumber").val(result.records[getUserInfo].PhoneNumber.slice(3));
+               $("#inputPhoneNumber").val(result.records[getUserInfo].PhoneNumber);
              }
 
              if (result.records[getUserInfo].EmergencyNumber == null) {
                $("#inputEmergencyNumber").val();
              } else {
-               $("#inputEmergencyNumber").val(result.records[getUserInfo].EmergencyNumber.slice(3));
+               $("#inputEmergencyNumber").val(result.records[getUserInfo].EmergencyNumber);
              }
 
              if (result.records[getUserInfo].EmergencyElectricityNumber == "") {
                $("#inputEmergencyElectricityNumber").val('8003764076');
              } else {
-               $("#inputEmergencyElectricityNumber").val(result.records[getUserInfo].EmergencyElectricityNumber.slice(3));
+               $("#inputEmergencyElectricityNumber").val(result.records[getUserInfo].EmergencyElectricityNumber);
              }
 
              if (result.records[getUserInfo].UrlForRent == "") {
@@ -1252,7 +1253,7 @@ $("#getAddprivacy").click(function() {
    var inputLocality = $("#inputLocality").val();
    var inputCity = $("#inputCity").val();
    var inputState = $("#inputState").val();
-   var inputCountry = $("#inputCountry").val();
+   var inputCountry = localStorage.getItem("MyRequest_countryCode");;
 
    var inputVoid = $("#hiddenIsVoid").val();
    var inputAvail = $("#hiddenIsAgree").val();
@@ -1389,7 +1390,7 @@ $("#getAddprivacy").click(function() {
    var state = $("#select2-inputState-container").html();
    var city = $("#select2-inputCity-container").html();
 
-   var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '"}';
+   var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '", "PhoneCode": "' +getPhoneCode+ '"}';
    var sendURL = domainAddress + 'updateAdminDetails/' + adminUserID;
    console.log(dataForm);
    console.log(sendURL);

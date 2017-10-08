@@ -77,20 +77,27 @@
     <div class="uk-modal" id="ImportModel">
             <div class="uk-modal-dialog">
                 <div class="uk-modal-header">
-                    <h3 class="uk-modal-title">Import CSV</h3>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-3-4">
+                            <h3 class="uk-modal-title">Import Property CSV</h3>
+                        </div>
+                        <div class="uk-width-small-1-4">
+                            <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset" style="float: right;"><i class="fa fa-times" aria-hidden="true"></i></button>
+                        </div>
+                    </div>
                 </div>
                 <div class="uk-grid" data-uk-grid-margin>
                     <div class="uk-width-1-2">
                         <button type="submit" class="md-btn md-btn-primary" id="VecoCsv" style="font-style: 13px;border: 1px solid;"> Import Veco CSV</button>
                     </div>
                     <div class="uk-width-1-2">
-                        <button type="submit" class="md-btn md-btn-primary" id="CFPCsv" style="font-style: 13px;border: 1px solid;">Import CFP CSV</button>
+                        <button type="submit" class="md-btn md-btn-primary" id="CFPCsv" style="font-style: 13px;border: 1px solid; float: right;">Import CFP CSV</button>
                     </div>
                 </div>
                 <div class="uk-grid" data-uk-grid-margin style="display: none" id="ImportCSVForm">
                         <div class="uk-width-medium-1-1" style="margin-top: 10px;">  
                           <b> Import Move In  </b>
-                        <form class="form-horizontal" action="https://api.myrequest.co.uk/UploadCSV/move-in.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="http://localhost:8888/myrequestapi/UploadCSV/move-in.php" method="post" name="upload_excel" enctype="multipart/form-data">
                                         <input type="file" class="md-btn md-btn-primary" style="font-style: 13px;" name="file" id="file" class="input-small">
                                         <input type="hidden" name="adminID" value="adminID" id="adminID">                                                    
                                         <button type="submit" id="submit" name="Import" class="md-btn md-btn-primary getProperty" data-loading-text="Loading...">Import Move in Property</button>                         
@@ -99,7 +106,7 @@
                   </div>
                   <div class="uk-width-medium-1-1" style="margin-top: 10px;">  
                       <b> Import Move Out  </b>     
-                        <form class="form-horizontal" action="https://api.myrequest.co.uk/UploadCSV/move-out.php" method="post" name="upload_excel" enctype="multipart/form-data">
+                        <form class="form-horizontal" action="http://localhost:8888/myrequestapi/UploadCSV/move-out.php" method="post" name="upload_excel" enctype="multipart/form-data">
                                         <input type="file" class="md-btn md-btn-primary" style="font-style: 13px;" name="file" id="file" class="input-small">  
                                         <input type="hidden" name="adminID" value="adminID" id="adminID">                                                      
                                         <button type="submit" id="submit" name="Import" class="md-btn md-btn-primary getProperty" data-loading-text="Loading...">Import Move out Property</button>                         
@@ -108,7 +115,7 @@
                  </div>
                 </div>
                 <div class="uk-modal-footer uk-text-right">
-                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Close</button>
+                    
                     <!--<button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>-->
                     <input type="hidden" id="hiddenIsAgree" value="0" />
                 </div>
@@ -180,11 +187,11 @@
         <div id="page_content">
             <div id="page_content_inner">
                  <div class="uk-grid" data-uk-grid-margin>
-                <div class="uk-width-1-2">
+                <div class="uk-width-3-4">
                     <button type="submit" class="md-btn md-btn-primary getProperty" style="font-style: 13px;"><i class="fa fa-plus-circle"></i> Add Property</button>
                 </div>
-                <div class="uk-width-1-2">
-                    <button type="submit" class="md-btn md-btn-primary" id="ImportCSVButton" style="font-style: 13px;border: 1px solid;"><i class="fa fa-plus-circle"></i> Import CSV </button>
+                <div class="uk-width-small-1-4">
+                    <button type="submit" class="md-btn md-btn-primary" id="ImportCSVButton" style="font-style: 13px;border: 1px solid; float: right;"><i class="fa fa-plus-circle"></i> Import CSV </button>
                 </div>  
                  </div>
             </br>
@@ -1510,12 +1517,7 @@
                 }
                 w3IncludeHTML();
             });
-            $( "#VecoCsv" ).click(function() {
-                 $("#ImportCSVForm").show();
-            });
-            $( "#CFPCsv" ).click(function() {
-                 $("#ImportCSVForm").show();
-            });
+            
             changesRadioProperty();
             ImageUpload();
             </script>
