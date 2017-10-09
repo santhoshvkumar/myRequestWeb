@@ -133,12 +133,13 @@
             var businessName = localStorage.getItem("MyRequest_BusinessName");
            
             var logo = localStorage.getItem("MyRequest_Logo");
-            if (adminType == "SuperAdmin") {
+            if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
                 $(".myRequestAdminLogo").addClass("requestAdminLogo");
                 $(".requestAdminLogo").removeClass("myRequestAdminLogo");
                 $(".createCaseButton").hide();
                 $("#lettingAgentMenu").hide();
                 $("#superAdminMenu").show();
+                $(".getTenantWorkList").hide();
             }
             else{
                 $(".myRequestAdminLogo").removeClass("requestAdminLogo");
@@ -166,24 +167,45 @@
             } else {
                 $(".getUserName").text(adminUserName);
             }   
-            if (adminType == "SuperAdmin") {
+            if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
+                // alert(adminType);
+                var Getcountry = '';
+                if (adminType == "SuperAdmin"){
+                    Getcountry = "All";
+                } 
+
+                if(adminType == "UKSuperAdmin"){
+                    Getcountry = "UK";
+                }
+
+                if(adminType == "USSuperAdmin"){
+                    Getcountry = "US";
+                }
                 $(".forAdmin").hide();
                 $(".forSuperAdmin").show();
                 $("#pieChartLoc").show();
                 $(".getLettingAgencyBusinessName").text("Dashboard");
-                $.get(domainAddress + "GetDashboardDetailsForSuperAdmin", {}, function(result) {
+                
+                $.get(domainAddress + "GetDashboardDetailsForSuperAdmin/"+Getcountry, {}, function(result) {
                     for (var getDashBoardValuesForSuperadmin in result.records) {
                         $("#dashComplaints").text(result.records[getDashBoardValuesForSuperadmin].TotalComplaints);
                         $("#dashOpen1").text(result.records[getDashBoardValuesForSuperadmin].NoOpen);
                         $("#dashClose").text(result.records[getDashBoardValuesForSuperadmin].NoCompleted);
                          
-                        if(result.records[getDashBoardValuesForSuperadmin].TotalAmount.length > 7){
+                        if(result.records[getDashBoardValuesForSuperadmin].TotalAmount == null){
                             $("#dashAmount").css("font-size","20px");
+                            $("#dashAmount").text(0);
                         }
                         else{
-                            $("#dashAmount").css("font-size","24px");
+                            if (result.records[getDashBoardValuesForSuperadmin].TotalAmount.length > 7){
+                                $("#dashAmount").css("font-size","24px");
+                                $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount);
+                            } else {
+                                $("#dashAmount").css("font-size","20px");
+                                $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount);
+                            }
                         }
-                        $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount);
+                        
 
                         getTotalAmount = result.records[getDashBoardValuesForSuperadmin].TotalAmount;
                         $(".dashTotalAmount").text(getTotalAmount);
@@ -192,8 +214,8 @@
                     }
                 });
 
-
-                 $.get(domainAddress + 'GetTotalTenantsForSuperAdmin', {}, function(result) {
+                
+                 $.get(domainAddress + 'GetTotalTenantsForSuperAdmin/'+Getcountry, {}, function(result) {
                     if(result.record_count == 0){
                         $("#dashTenants").text(result.record_count);
                     }else{
@@ -209,7 +231,7 @@
                 });
 
 
-                 $.get(domainAddress + 'GetTotalTenantContractorsForSuperAdmin', {}, function(result) {
+                 $.get(domainAddress + 'GetTotalTenantContractorsForSuperAdmin/'+Getcountry, {}, function(result) {
                     //console.log(result);
                     if (result.record_count == 0) {
                        
@@ -227,9 +249,7 @@
                     }   
                 });
 
-                $.get(domainAddress + "GetAllProblemWorkStatusCount", {}, function(result) {
-                    //console.log(result);
-
+                $.get(domainAddress + "GetAllProblemWorkStatusCount/"+Getcountry, {}, function(result) {
                     for (var problemStatusCount in result.records) {
                         if (result.records[problemStatusCount].ProblemStatus == "Awaiting Info") {
                             getColor = "lightblue";
@@ -271,7 +291,7 @@
                 }); // GetAllProblemWorkStatusCount
 
 
-                $.get(domainAddress + "GetUtilityStatusCountForSuperAdmin", {}, function(result) {
+                $.get(domainAddress + "GetUtilityStatusCountForSuperAdmin/"+Getcountry, {}, function(result) {
                     console.log(result.countMoveIn+ "++++" + result.countMoveOut);
                         $(".countUpMoveIn").html(result.countMoveIn);
                         $(".countUpMoveOut").text(result.countMoveOut);
@@ -279,16 +299,15 @@
                  });//GetAllUtilityStatusCountAdmin
 
 
-                $.get(domainAddress + "GetAllApprovalListRequestForSuperAdmin", {}, function(result) {
-                    //console.log(result);
+                $.get(domainAddress + "GetAllApprovalListRequestForSuperAdmin/"+Getcountry, {}, function(result) {
                     $(".noOfApprovalRequired").text(result.record_count);
                 });
 
-                getLastTwoDaysMessages(0);
+                getLastTwoDaysMessages(0, Getcountry);
 
-                getPropertyExpiryInfo(0);
+                getPropertyExpiryInfo(0, Getcountry);
 
-                getTenantUtilityStatus(0);
+                getTenantUtilityStatus(0, Getcountry);
 
             } else {
                 getDateDiff(adminUserID);
@@ -698,6 +717,25 @@
 
 
 
+        var adminOneType = localStorage.getItem("MyRequest_AdminType");
+
+        if(adminOneType == "Admin"){
+            $("#getClosedRepairs").css("cursor","pointer");
+            $("#getOutStandingAmountRepairs").css("cursor","pointer");
+            $(".getOpenRequest").css("cursor","auto");
+            $("#getCountRepairs").css("cursor","pointer");
+            $("#getAwaitingApprovalCases").css("cursor","pointer");
+            $("#getTenants").css("cursor","pointer");
+            $("#getOutStandingPropery").css("cursor","pointer");
+        } else {
+            $("#getClosedRepairs").css("cursor","auto");
+            $("#getOutStandingAmountRepairs").css("cursor","auto");
+            $(".getOpenRequest").css("cursor","auto");
+            $("#getCountRepairs").css("cursor","auto");
+            $("#getAwaitingApprovalCases").css("cursor","auto");
+            $("#getTenants").css("cursor","auto");
+            $("#getOutStandingPropery").css("cursor","auto");
+        }  
 
         $("#inputWhenDate").on('change', function() {
             inputWhenDate = $("#inputWhenDate").val();
@@ -741,32 +779,66 @@
         });
         
         $("#getClosedRepairs").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "Completed");
-            window.location.href = "ListAllCase.html";
+            if(adminOneType == "Admin"){
+                localStorage.setItem("MyRequest_RepairStatus", "Completed");
+                window.location.href = "ListAllCase.html";
+            } else {
+                $("#getClosedRepairs").off("click");
+            }  
         });
+
         $("#getOutStandingAmountRepairs").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "Completed");
-            window.location.href = "ListAllCase.html";
+            if(adminOneType == "Admin"){
+                localStorage.setItem("MyRequest_RepairStatus", "Completed");
+                window.location.href = "ListAllCase.html";
+            } else {
+                $("#getOutStandingAmountRepairs").off("click");
+            }            
         });
+
         $(".getOpenRequest").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "");
-            window.location.href = "ListAllCase.html";
+            if(adminOneType == "Admin"){
+                localStorage.setItem("MyRequest_RepairStatus", "");
+                window.location.href = "ListAllCase.html";
+            } else {
+                $(".getOpenRequest").off("click");
+            }
         });
+
         $("#getCountRepairs").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "");
-            window.location.href = "ListAllCase.html";
+            if(adminOneType == "Admin"){
+                localStorage.setItem("MyRequest_RepairStatus", "");
+                window.location.href = "ListAllCase.html";
+            } else {
+                $("#getCountRepairs").off("click");
+            }
         });
+        
         $("#getAwaitingApprovalCases").click(function() {
-            localStorage.setItem("MyRequest_RepairStatus", "Awaiting Approval");
-            window.location.href = "ListAllCase.html";
+            if(adminOneType == "Admin"){
+                localStorage.setItem("MyRequest_RepairStatus", "Awaiting Approval");
+                window.location.href = "ListProperty.html";  
+            } else {
+                $("#getAwaitingApprovalCases").off("click");
+            }  
         });
                 
         $("#getTenants").click(function() {
-            window.location.href = "ListTenants.html";
+            if(adminOneType == "Admin"){
+                window.location.href = "ListTenants.html";
+            } else {
+                $("#getTenants").off("click");
+            }
         });
+
         $("#getOutStandingPropery").click(function() {
-            window.location.href = "ListProperty.html";
+            if(adminOneType == "Admin"){
+                window.location.href = "ListProperty.html";    
+            } else {
+                $("#getOutStandingPropery").off("click");
+            }           
         });
+        
         $(".btnSubmitPayment").click(function() {
             if (getTotalAmount == 0) {} else {
                 UIkit.modal.alert('Payment done Successfully');
@@ -1114,10 +1186,10 @@
         } // getCaseCalendar
         
 
-        function getTenantUtilityStatus(adminUserID){
+        function getTenantUtilityStatus(adminUserID, Getcountry){
             var getUtilityStatusUrl = "";
             if(adminUserID==0){
-                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin";
+                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin/"+Getcountry;
             }
             else{
                 getUtilityStatusUrl = "GetTenantUtilityStatus/"+adminUserID;
@@ -1241,7 +1313,7 @@
             // Contractor Status Starts Here
             var getUtilityStatusUrl = "";
             if(adminUserID==0){
-                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin";
+                getUtilityStatusUrl = "GetTenantUtilityStatusForSuperAdmin/"+Getcountry;
             }
             else{
                 getUtilityStatusUrl = "GetContractorUtilityStatus/"+adminUserID;
@@ -1676,10 +1748,10 @@
   });
 
 
-  function getPropertyExpiryInfo(adminUserID){
+  function getPropertyExpiryInfo(adminUserID, Getcountry){
     var getUrl = "";
     if(adminUserID==0){
-        getUrl = "GetPropertyExpiryInfoForSuperAdmin";
+        getUrl = "GetPropertyExpiryInfoForSuperAdmin/"+Getcountry;
     }
     else{
         getUrl = "GetPropertyExpiryInfo/"+adminUserID;
@@ -1787,11 +1859,11 @@
 
 
 
-  function getLastTwoDaysMessages(adminUserID){
+  function getLastTwoDaysMessages(adminUserID, Getcountry){
     
     var getMessageUrl = "";
     if(adminUserID==0){
-        getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView";
+        getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView/"+Getcountry;
     }
     else{
         getMessageUrl = 'GetLastTwoDaysMessage/' + adminUserID;

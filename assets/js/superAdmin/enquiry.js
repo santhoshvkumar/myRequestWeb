@@ -140,8 +140,22 @@ $(function() {
      } // getContractorsList
     */
 
+    var superAdminType = localStorage.getItem("MyRequest_AdminType");
+    var Getcountry = '';
+    if (superAdminType == "SuperAdmin"){
+        Getcountry = "All";
+    } 
+
+    if(superAdminType == "UKSuperAdmin"){
+        Getcountry = "UK";
+    }
+
+    if(superAdminType == "USSuperAdmin"){
+        Getcountry = "US";
+    }
+
     function getAllNewAdminList(){
-        $.get(domainAddress+"GetAllNewAdminDetails",{},function(result){
+        $.get(domainAddress+"GetAllNewAdminDetails/"+Getcountry,{},function(result){
             console.log(result);
             $(".allNewAdminList").html('');
             if(result.record_count==0){

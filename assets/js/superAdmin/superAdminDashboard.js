@@ -1004,14 +1004,26 @@ $(".btnSubmitAdmin").click(function() {
     return Array(+(zero > 0 && zero)).join("0") + num;
   }
 
+var superAdminType = localStorage.getItem("MyRequest_AdminType");
+var Getcountry = '';
+if (superAdminType == "SuperAdmin"){
+    Getcountry = "All";
+} 
 
+if(superAdminType == "UKSuperAdmin"){
+    Getcountry = "UK";
+}
+
+if(superAdminType == "USSuperAdmin"){
+    Getcountry = "US";
+}
   function getAllAdminList(getValue) {
 
     if (getValue == "" || getValue == undefined) {
-      dataForm = '{"Limit":"' + parseInt(adminCountLimit) + '"}';
+      dataForm = '{"Limit":"' + parseInt(adminCountLimit) + '","GetCountry":"' + Getcountry + '"}';
       sendURL = domainAddress + "AdminListByCount";
     } else {
-      dataForm = '{"Limit":"' + parseInt(adminCountLimit) + '","SearchValue":"' + getValue + '"}';
+      dataForm = '{"Limit":"' + parseInt(adminCountLimit) + '","GetCountry":"' + Getcountry + '","SearchValue":"' + getValue + '"}';
       sendURL = domainAddress + "SearchAdminList";
     }
     console.log(dataForm);
