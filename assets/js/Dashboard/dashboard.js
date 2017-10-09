@@ -303,7 +303,7 @@
                     $(".noOfApprovalRequired").text(result.record_count);
                 });
 
-                getLastTwoDaysMessages(0, Getcountry);
+                getLastTwoDaysMessages(0);
 
                 getPropertyExpiryInfo(0, Getcountry);
 
@@ -1859,11 +1859,11 @@
 
 
 
-  function getLastTwoDaysMessages(adminUserID, Getcountry){
+  function getLastTwoDaysMessages(adminUserID){
     
     var getMessageUrl = "";
     if(adminUserID==0){
-        getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView/"+Getcountry;
+        getMessageUrl = "GetLastTwoDaysMessageForSuperAdminView";
     }
     else{
         getMessageUrl = 'GetLastTwoDaysMessage/' + adminUserID;
