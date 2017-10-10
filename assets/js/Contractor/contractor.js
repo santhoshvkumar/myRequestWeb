@@ -352,7 +352,7 @@
       
 
       if(countryID == "India"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
           countryID = '+91';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
@@ -368,7 +368,7 @@
 
         });
       } else if(countryID == "Canada"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
           countryID = 'Canada';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
@@ -389,7 +389,7 @@
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
-          $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputState").html("<option value='0'>Choose County</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
@@ -400,7 +400,7 @@
 
         });
       } else if(countryID == "US"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
           countryID = '+1';
           console.log(countryID)
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
@@ -867,6 +867,13 @@
 
 
  $(".getContractor").click(function() {
+  var getcountryCode = $("#inputCountry").val();
+  
+  if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+    $("#select2-inputState-container").html("Select State");
+  } else {
+    $("#select2-inputState-container").html("Select County");
+  }
   $(".editContractorStatus").toggle();
   $(".contractorContent").show();
   $("#inputTitle").val('');
@@ -879,7 +886,6 @@
   $("#inputState").val(0);
   $("#inputCity").val(0);
   $("#select2-inputTitle-container").html("Select Title");
-  $("#select2-inputState-container").html("Select County");
   $("#select2-inputCity-container").html("Select City");
   $("#inputZip").val('');
   $("#inputCountry").val(getcountryCode);
@@ -1059,13 +1065,24 @@
 
  $("#inputState").on('change', function() {
   var inputState = $("#inputState").val();
+  var inputCountryVal = $("#inputCountry").val();
+  
   if (inputState == 0) {
-    $(".help-block").css("border-color", "red");
-    $(".help-block").show();
-    $(".help-block").text("* Select the County");
-    $("#select2-inputState-container").css("border", "1px solid red");
-    $(".btnSubmitContractor").attr("disabled", true);
-    return false;
+    if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Select the State");
+        $("#select2-inputState-container").css("border", "1px solid red");
+        $(".btnSubmitContractor").attr("disabled", true);
+        return false;
+      } else {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Select the County");
+        $("#select2-inputState-container").css("border", "1px solid red");
+        $(".btnSubmitContractor").attr("disabled", true);
+        return false;
+      }
   } else {
     $(".help-block").hide();
     $(".help-block").text("");
@@ -1366,7 +1383,8 @@
   var locality = $("#inputLocality").val();
   var state = $("#select2-inputState-container").html();
   var city = $("#select2-inputCity-container").html();
-  var zip = $("#inputZip").val();var country = $("#inputCountry").val();
+  var zip = $("#inputZip").val();
+  var country = $("#inputCountry").val();
   var phoneNo1 = getPhoneCode+$("#inputPhoneNo1").val();
   var alternateNo = getPhoneCode+$("#inputAlternateNo").val();
   var startTime = $("#inputStartTime").val();
@@ -1500,14 +1518,25 @@
       }
 
 
-
-      if (state == "Select County") {
-        $(".help-block").css("border-color", "red");
-        $(".help-block").show();
-        $(".help-block").text("* Select the County");
-        $("#select2-inputState-container").css("border", "1px solid red");
-        $(".btnSubmitContractor").attr("disabled", true);
-        return false;
+      
+      if (state == "Select County" || state == "Select State") {
+        // alert(country);
+        if(country == "US" || country == "India" || country == "Canada"){
+          alert(country);
+          $(".help-block").css("border-color", "red");
+          $(".help-block").show();
+          $(".help-block").text("* Select the State");
+          $("#select2-inputState-container").css("border", "1px solid red");
+          $(".btnSubmitContractor").attr("disabled", true);
+          return false;
+        } else {
+          $(".help-block").css("border-color", "red");
+          $(".help-block").show();
+          $(".help-block").text("* Select the County");
+          $("#select2-inputState-container").css("border", "1px solid red");
+          $(".btnSubmitContractor").attr("disabled", true);
+          return false;
+        }
       }
 
       if (city == "Choose City" || city == undefined) {

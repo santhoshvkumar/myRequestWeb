@@ -459,6 +459,12 @@ $("#inputState").select2()
                });
            });
 var getcountryCode = localStorage.getItem("MyRequest_countryCode");
+
+if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+    $("#select2-inputState-container").html("Select State");
+} else {
+    $("#select2-inputState-container").html("Select County");
+}
       console.log(getcountryCode)
       if(getcountryCode == "India"){
         $("#stateLabel").text('State');
@@ -759,19 +765,27 @@ getExistPrivacypolicy();
 
 
 
- $("#inputState").on('change', function() {
-   var inputState = $("#inputState").val();
-   if (inputState == 0) {
-     $(".help-block").show();
-     $(".help-block").text("* Select the County");
-     $(".btnUpdate").attr("disabled", true);
-     return false;
-   } else {
-     $(".help-block").hide();
-     $(".help-block").text("");
-     $(".btnUpdate").attr("disabled", false);
-   }
- });
+$("#inputState").on('change', function() {
+  var getcountryCode = localStorage.getItem("MyRequest_countryCode");
+  var inputState = $("#inputState").val();
+    if (inputState == 0) {
+      if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+        $(".help-block").show();
+        $(".help-block").text("* Select the State");
+        $(".btnUpdate").attr("disabled", true);
+        return false;
+      } else {
+        $(".help-block").show();
+        $(".help-block").text("* Select the County");
+        $(".btnUpdate").attr("disabled", true);
+        return false;
+      }
+    } else {
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $(".btnUpdate").attr("disabled", false);
+    }
+});
 
 
 

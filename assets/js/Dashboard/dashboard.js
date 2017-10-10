@@ -1280,7 +1280,7 @@
                         var hiddenIsCouncil = $("#hiddenIsCouncil-"+tenantID).val();
                         var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-"+tenantID).val();
 
-                        UIkit.modal.confirm('Are you sure to move-out tenant?', function() {
+                        UIkit.modal.confirm('Are you sure to MOVE-OUT tenant?', function() {
                             console.log("yes move-out tenant");
 
                             // Need to check this LettingAgencyCode not sure why it's been USED
