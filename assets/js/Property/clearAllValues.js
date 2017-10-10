@@ -1,3 +1,4 @@
+var  getcountryCode = localStorage.getItem("MyRequest_countryCode");
 var clearAllValues = function() {
     $("#getName").val('');
     $("#inputMobileNumber").val('');
@@ -9,7 +10,11 @@ var clearAllValues = function() {
     $("#inputState").val(0);
     $("#inputCity").val(0);
     $("#select2-inputCity-container").html("Select City");
-    $("#select2-inputState-container").html("Select County");
+    if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+        $("#select2-inputState-container").html("Select State");
+    } else {
+        $("#select2-inputState-container").html("Select County");
+    }
     $("#inpuZip").val('');
     $("#inpuCountry").val('');
     $(".bno-prefix").hide();
@@ -94,7 +99,11 @@ var clearAllValues = function() {
     $("#inpuZip1").val('');
     $("#select2-inputLandlordTitle-container").html("Select Title");
     $("#inputLandlordTitle").val('');
-    $("#select2-inputState1-container").html("Select County");
+    if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+        $("#select2-inputState1-container").html("Select State");
+    } else {
+        $("#select2-inputState1-container").html("Select County");
+    }
     $("#inputState1").val(0);
     $("#select2-inputCity1-container").html("Choose City");
     $("#inputCity1").val(0);
