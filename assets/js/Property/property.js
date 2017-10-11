@@ -3,6 +3,11 @@ var getPropLat, getPropLong, isEdit=false;
      var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
      var getcountryCode = localStorage.getItem("MyRequest_countryCode");
 
+     var adminUserID = localStorage.getItem("MyRequest_AdminID");
+     $("#moveinadminID").val(adminUserID);
+     $("#moveoutadminID").val(adminUserID);
+     
+
      $(".landlord-prefix").text(getPhoneCode);
 
      $('#full_screen_toggle').on('click', function(e) {
