@@ -177,7 +177,16 @@ var getPropLat, getPropLong, isEdit=false;
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
      } else {
-         $(".getUserName").text(adminUserName);
+         $.get(domainAddress + "getAdminDetails/" + adminUserID, function(result) {
+            if (result.record_count == 0) {
+
+            } else {
+                for (var getUserInfo in result.records) {
+                    $(".getUserName").text(result.records[getUserInfo].AdminFirstName+" "+result.records[getUserInfo].AdminLastName);
+                }
+            }
+        });
+        //  $(".getUserName").text(adminUserName);
          $("#utilityAgreeLettingAgentName").text(adminUserName);
          $("#FileURLUploadImage4").attr("action",domainAddress+"ajaximage.php");
          $("#FileURLUploadImage1").attr("action",domainAddress+"ajaximage.php");
@@ -589,10 +598,14 @@ var getPropLat, getPropLong, isEdit=false;
 
     $( "#VecoCsv" ).click(function() {
         $("#ImportCSVForm").show();
+        $("#importText").text("Import Veco Property Move In");
+        $("#importText1").text("Import Veco Property Move Out");
     });
 
     $( "#CFPCsv" ).click(function() {
-            $("#ImportCSVForm").show();
+        $("#ImportCSVForm").show();
+        $("#importText").text("Import CFP Property Move In");
+        $("#importText1").text("Import CFP Property Move Out");
     });
 
 

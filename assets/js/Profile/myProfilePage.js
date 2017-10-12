@@ -1002,6 +1002,7 @@ $("#inputState").on('change', function() {
 
              $("#inputFirstName").val(result.records[getUserInfo].AdminFirstName);
              $("#inputLastName").val(result.records[getUserInfo].AdminLastName);
+             $(".getUserName").text(result.records[getUserInfo].AdminFirstName+" "+result.records[getUserInfo].AdminLastName);
              $("#inputBusinessName").text(result.records[getUserInfo].BusinessName);
              inputBusinessName = result.records[getUserInfo].BusinessName;
              $("#inputLocality").val(result.records[getUserInfo].Locality);
@@ -1131,7 +1132,8 @@ $("#inputState").on('change', function() {
        $(".md-input-wrapper").addClass("md-input-filled");
 
        if (IsUpdate) {
-         window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
+        //  window.location.href = 'http://localhost:8888/Navaneeth/myRequestHome/myrequestagent/Dashboard.html';
+        window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
        }
      });
 }
@@ -1420,7 +1422,8 @@ $("#getAddprivacy").click(function() {
          imageUrl1 = "";
          $("#progressbox1").hide();
          UIkit.modal.alert("Profile Updated Successfully");
-         window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
+        //  window.location.href = 'http://localhost:8888/Navaneeth/myRequestHome/myrequestagent/Dashboard.html';
+        window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
        } else {
          $("#progressbox1").hide();
          UIkit.modal.alert(dataCheck.message_text);

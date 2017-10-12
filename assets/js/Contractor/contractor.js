@@ -259,7 +259,16 @@
   if (adminUserID == "" || adminUserID == null) {
     window.location.href = "index.html";
   } else {
-    $(".getUserName").text(adminUserName);
+    $.get(domainAddress + "getAdminDetails/" + adminUserID, function(result) {
+        if (result.record_count == 0) {
+
+        } else {
+            for (var getUserInfo in result.records) {
+                $(".getUserName").text(result.records[getUserInfo].AdminFirstName+" "+result.records[getUserInfo].AdminLastName);
+            }
+        }
+    });
+    // $(".getUserName").text(adminUserName);
     $("#FileURLUploadImage1").attr("action",domainAddress+"uploadUserImage.php");
     $("#FileURLUploadImage2").attr("action",domainAddress+"ajaximage.php");
     $("#FileURLUploadImage3").attr("action",domainAddress+"ajaximage.php");

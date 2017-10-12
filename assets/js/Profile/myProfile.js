@@ -790,7 +790,12 @@
                   $("#inputState").val(result.records[getUserInfo].State);
                   $("#select2-inputState-container").html(result.records[getUserInfo].State);
                   if (result.records[getUserInfo].State == null || result.records[getUserInfo].State == "null" || result.records[getUserInfo].State == "") {
-                      $("#select2-inputState-container").html("Select County");
+                      if(result.records[getUserInfo].Country == "US"){
+                        $("#select2-inputState-container").html("Select State");
+                      } else {
+                          $("#select2-inputState-container").html("Select County");
+                      }
+                      
                   } else {
                       $("#select2-inputState-container").html(result.records[getUserInfo].State);
                   }

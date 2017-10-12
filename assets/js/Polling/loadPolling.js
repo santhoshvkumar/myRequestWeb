@@ -141,7 +141,16 @@ function loadPolling(){
         if (adminUserID == "" || adminUserID == null) {
             window.location.href = "index.html";
         } else {
-            $(".getUserName").text(adminUserName);
+            $.get(domainAddress + "getAdminDetails/" + adminUserID, function(result) {
+                if (result.record_count == 0) {
+
+                } else {
+                    for (var getUserInfo in result.records) {
+                        $(".getUserName").text(result.records[getUserInfo].AdminFirstName+" "+result.records[getUserInfo].AdminLastName);
+                    }
+                }
+            });
+            // $(".getUserName").text(adminUserName);
         }
 
         if (adminType == "SuperAdmin") {
