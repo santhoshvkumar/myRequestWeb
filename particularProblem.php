@@ -326,7 +326,7 @@
                                         <br/>
                                         <div class="uk-grid" data-uk-grid-margin>
                                             <div class="uk-width-medium-1-6">
-                                               <b> <i class="fa fa-gbp fa-2x"></i> </b>
+                                               <b class="dollarpounds"></b>
                                             </div> 
                                             <div class="uk-width-medium-1-2">
                                                 <div class="estimatedCost caseInfo"></div>
@@ -335,7 +335,7 @@
                                         <br/>
                                         <div class="uk-grid" data-uk-grid-margin>
                                             <div class="uk-width-medium-1-6">
-                                               <b> <i class="fa fa-gbp fa-2x"></i> </b>
+                                               <b class="dollarpounds"></b>
                                             </div> 
                                            <div class="uk-width-medium-1-2">
                                                 <div class="caseInfo" id="btnFixedAmount"> </div>
