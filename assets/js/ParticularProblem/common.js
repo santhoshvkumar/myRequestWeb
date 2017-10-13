@@ -28,7 +28,7 @@ $(".btnStartWork").click(function() {
       alert("Select Start Time");
       return false;
   } else {
-      UIkit.modal.confirm("Are you sure want to Start Work ?", function() {
+      UIkit.modal.confirm("Do you want to Start Work ?", function() {
        
               var dataStartWorkForm = '{"StartDate":"' + sendStartDate + '","StartTime":"' + getStartTime + '"}';
               console.log(dataStartWorkForm);
@@ -118,7 +118,7 @@ $(".btnEndWork").click(function() {
       alert("Select End Time");
       return false;
   } else {
-      UIkit.modal.confirm("Are you sure want to End Work ?", function(result) {
+      UIkit.modal.confirm("Do you want to End the Work ?", function(result) {
 
               var dataEndWorkForm = '{"EndDate":"' + sendEndDate + '","EndTime":"' + getEndTime + '"}';
               console.log(dataEndWorkForm);
