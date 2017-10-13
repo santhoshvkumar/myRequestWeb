@@ -5,6 +5,15 @@ function getDbReportProblem(getProblemID) {
           $(".userNotes").html('');
           $(".noteHide").html('');
           $(".NotesContent").html('');
+
+            var getcountryCode = localStorage.getItem("MyRequest_countryCode");
+
+            if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+                $(".dollarpounds").html("<i class='fa fa-usd fa-2x'></i>");
+            } else {
+                $(".dollarpounds").html("<i class='fa fa-gbp fa-2x'></i>");
+            }
+
           for (Problem in resultProblem.ProblemRecord) {
               $("#getRequestID").text("Request # "+resultProblem.ProblemRecord[Problem].RequestID);
               requestID = resultProblem.ProblemRecord[Problem].RequestID;
