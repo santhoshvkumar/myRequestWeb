@@ -360,7 +360,8 @@ function getAddTenant(count) {
                         }
                     });
                 } else {
-                    UIkit.modal.alert(result.message_text+" for Mobile Number: +44"+getMobileNumber);
+                    // UIkit.modal.alert(result.message_text+" for Mobile Number: +44"+getMobileNumber);
+                    UIkit.modal.alert("Tenant with same Mobile number exists :+44"+getMobileNumber);
                     $("#promno-prefix-"+getCountValue).hide();
                     $("#inputMobile-" + getCountValue).removeAttr('style');
                     $("#inputMobile-"+getCountValue).val('');
@@ -382,13 +383,22 @@ function getAddTenant(count) {
         var inputName = $("#inputName-" + getCountValue).val();
         var inputTitle = $("#inputTitle-" + getCountValue).val();
         var inputLastName = $("#inputLastName-" + getCountValue).val();
-        var isLeadTenantval = $("#isLeadTenant-" + getCountValue).val();
+        var isLeadTenantval = $("#isLeadTenant-" + getCountValue).val();    
+        // alert(isLeadTenantval);
         var isLeadTenant = "";
-        if(isLeadTenantval == "on"){
+        if($("#isLeadTenant-" + getCountValue).is(":checked")){
+            // alert(1);
             isLeadTenant = 1;
         } else {
+            // alert(0);
             isLeadTenant = 0;
         }
+        
+        // if(isLeadTenantval == "on"){
+        //     isLeadTenant = 1;
+        // } else {
+        //     isLeadTenant = 0;
+        // }
         var inputEmail = $("#inputEmail-" + getCountValue).val();
         var inputMobile = getPhoneCode+ $("#inputMobile-" + getCountValue).val();
         var inputStartDate = $("#inputStartDate-"+getCountValue).val();
@@ -479,8 +489,11 @@ function getAddTenant(count) {
 
     $(".btnRemoveUserTenant").off('click').on('click', function(event) {
         var RemoveTenantCount = "1";
+        
         $("#hiddenRemoveTenantCount").val(RemoveTenantCount);
         var getCountValue = this.id.replace("btnRemoveUserTenant-", "");
+        var hiddenTenantCount = $("#inputHMONoOfTenent").val();
+        var tenantCounts = parseInt(hiddenTenantCount) - parseInt(1);
         var hiddenAddPropertyID = $("#hiddenAddPropertyID-" + getCountValue).val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
         var hiddenUserRegID = $("#hiddenUserRegID-" + getCountValue).val();
@@ -526,6 +539,7 @@ function getAddTenant(count) {
                     $("#getIsAppInstallCheck-" + getCountValue).remove();
                     var editPropertyID = $("#hiddenPropertyID").val();
                     getReloadUserTenants(editPropertyID);
+                    $("#inputHMONoOfTenent").val(tenantCounts);
                 }
             });
         });
