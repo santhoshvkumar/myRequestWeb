@@ -1,6 +1,7 @@
 var getPhoneCode = "";
 $(function() {
    getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+   var getcountryCode = localStorage.getItem("MyRequest_countryCode");
    
    $(".landlord-prefix").text(getPhoneCode);
 
@@ -202,7 +203,7 @@ $(document).ready(function() {
 
 $("#inputMobileNumber").on('blur', function(e) {
     var getMobileNumber = $("#" + this.id).val();
-    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
+    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode, function(result) {
         if (result.record_count == 0) {} else {
             for (var getUserDetails in result.records) {
                 $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);

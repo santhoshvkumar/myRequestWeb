@@ -7,8 +7,9 @@ function getAddTenant(count) {
     var getTitle = "Title";
     var isExistUserCheck = "";
     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
+    var getcountryCode = localStorage.getItem("MyRequest_countryCode");
     finalTenantCount = count;
-    $(".getTenantList").append('<div class="uk-width-medium-1-3 tenantList"  tenantID = "'+count+'" style="margin-top: 10px;"> <div class="md-card" id="getIsAppInstallCheck-' + count + '"> <div class="md-card-content large-padding"> <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span><div class="parsley-row"> <label for="inputMobile">' + getMobile + '<span class="req">*</span></label> <input type="text" id="inputMobile-' + count + '" name="inputMobile" required class="md-input inputMobile" maxlength="10"/> <span class="propermno-prefix" id="promno-prefix-'+count+'">'+localStorage.getItem("MyRequest_PhoneCode-prefix")+'</span> </div><p></p> <div class="parsley-row"  id="inputTitleContent-' + count + '"> <label for="inputTitle">' + getTitle + '</label>  <select id="inputTitle-' + count + '" name="inputTitle" required class="md-input"><option value="0">Select Title</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Ms.">Ms.</option><option value="Miss.">Miss.</option> </select></div> <p></p> <div class="parsley-row"> <label for="inputName">' + getFirstName + '<span class="req">*</span></label> <input type="text" id="inputName-' + count + '" name="inputName" required class="md-input inputName" />  </div> <p></p><div class="parsley-row"> <label for="inputLastName">' + getLastName + '<span class="req">*</span></label> <input type="text" id="inputLastName-' + count + '" name="inputLastName" required class="md-input inputLastName" /> </div><p></p> <div class="parsley-row"  id="inputEmailContent-' + count + '"> <label for=  "inputEmail">' + getEmail + '<span class="req">*</span></label> <input type="text" id="inputEmail-' + count + '"  name="inputEmail" required class="md-input inputEmail" /></div>  <p></p> <div class="uk-grid">  <div class="uk-width-medium-1-2"> <div class="parsley-row"> <label for="inputStartDate">Tenancy Start<span class="req">*</span></label> <input type="text" id="inputStartDate-' + count + '" name="inputStartDate" required class="md-input inputStartDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div>  <br/>  <div class="uk-width-medium-1-2">  <div class="parsley-row"> <label for="inputEndDate">Tenancy End<span class="req">*</span></label> <input type="text" id="inputEndDate-' + count + '" name="inputEndDate" required class="md-input inputEndDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div> </div> <p></p> <div class="parsley-row"> <div class="uk-grid">  <div class="uk-width-medium-1-3"> <div class="tenantLead">  <span class="icheck-inline" style="margin-top:20px;">  <input type="checkbox" data-switchery data-switchery-color="#ffb300" class="isLeadTenant"  id="isLeadTenant-' + count + '" /> <label for="user_edit_active" class="inline-label" style="font-size:13px; padding-left:0px;">Lead Tenant</label> </span>  </div> </div>       <div class="uk-width-medium-2-3">        <div class="uk-grid" style="margin-top:20px;">        <div class="uk-width-medium-1-4">    <img  id="isElectricityImg-' + count + '" src="assets/img/PropertyImg/electricity.png" style="width:70%; height:100%">    </div>  <div class="uk-width-medium-1-4">    <img   id="isGasImg-' + count + '" src="assets/img/PropertyImg/gas.png" style="width:70%; height:100%">    </div>   <div class="uk-width-medium-1-4">    <img  id="isWaterImg-' + count + '" src="assets/img/PropertyImg/water.png" style="width:70%; height:100%"> </div><div class="uk-width-medium-1-4">  <img id="isCouncilImg-' + count + '" src="assets/img/PropertyImg/council.png" style="width:70%; height:100%"></div></div>       </div><div class="uk-grid"> <div class="uk-width-1-1">  <button type="submit" class="md-btn md-btn-primary btnAddUserTenant" id="btnAddUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">+ Tenant</button> <button type="submit" class="md-btn md-btn-danger btnRemoveUserTenant" id="btnRemoveUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">- Tenant</button>  <span id="getErrorMsg-' + count + '" style="color:red;"></span> </div>  </div> </div> </div></div> <input type="hidden" id="hiddenUserRegID-' + count + '" value="0" /> <input type="hidden" id="hiddenAddPropertyID-' + count + '" value="0" />   <input type="hidden" id="hiddenIsElectricity-' + count + '" value="0" /> <input type="hidden" id="hiddenIsGas-' + count + '" value="0" /> <input type="hidden" id="hiddenIsWater-' + count + '" value="0" /> <input type="hidden" id="hiddenIsCouncil-' + count + '" value="0" /> <input type="hidden" id="hiddenAvailTenantInsurance-' + count + '" value="0" /> <input type="hidden" id="hiddenAddress-' + count + '" value="0" />  <input type="hidden" id="hiddenElectricSupplier1-' + count + '" value="0" /> <input type="hidden" id="hiddenElectricSupplier2-' + count + '" value="0" /> <input type="hidden" id="hiddenFuelType-' + count + '" value="0" /> <input type="hidden" id="hiddenGasMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierElectric-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierGas-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyStart-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyEnd-' + count + '" value="0" /> <input type="hidden" id="hiddenWaterMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenIsNewTenantUpdate-' + count + '" value="0" /> <input type="hidden" id="hiddenNewPropertyTenant-' + count + '" value="false" /> ');
+    $(".getTenantList").append('<div class="uk-width-medium-1-3 tenantList"  tenantID = "'+count+'" style="margin-top: 10px;"> <div class="md-card" id="getIsAppInstallCheck-' + count + '"> <div class="md-card-content large-padding"> <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span><div class="parsley-row"> <label for="inputMobile">' + getMobile + '<span class="req">*</span></label> <input type="text" id="inputMobile-' + count + '" name="inputMobile" required class="md-input inputMobile" maxlength="10"/> <span class="propermno-prefix" id="promno-prefix-'+count+'">'+localStorage.getItem("MyRequest_PhoneCode-prefix")+'</span> </div><p></p> <div class="parsley-row"  id="inputTitleContent-' + count + '"> <label for="inputTitle">' + getTitle + '</label>  <select id="inputTitle-' + count + '" name="inputTitle" required class="md-input inputTitle"><option value="0">Select Title</option><option value="Mr.">Mr.</option><option value="Mrs.">Mrs.</option><option value="Ms.">Ms.</option><option value="Miss.">Miss.</option> </select></div> <p></p> <div class="parsley-row"> <label for="inputName">' + getFirstName + '<span class="req">*</span></label> <input type="text" id="inputName-' + count + '" name="inputName" required class="md-input inputName" />  </div> <p></p><div class="parsley-row"> <label for="inputLastName">' + getLastName + '<span class="req">*</span></label> <input type="text" id="inputLastName-' + count + '" name="inputLastName" required class="md-input inputLastName" /> </div><p></p> <div class="parsley-row"  id="inputEmailContent-' + count + '"> <label for=  "inputEmail">' + getEmail + '<span class="req">*</span></label> <input type="text" id="inputEmail-' + count + '"  name="inputEmail" required class="md-input inputEmail" /></div>  <p></p> <div class="uk-grid">  <div class="uk-width-medium-1-2"> <div class="parsley-row"> <label for="inputStartDate">Tenancy Start<span class="req">*</span></label> <input type="text" id="inputStartDate-' + count + '" name="inputStartDate" required class="md-input inputStartDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div>  <br/>  <div class="uk-width-medium-1-2">  <div class="parsley-row"> <label for="inputEndDate">Tenancy End<span class="req">*</span></label> <input type="text" id="inputEndDate-' + count + '" name="inputEndDate" required class="md-input inputEndDate" data-uk-datepicker="{format:"DD.MM.YYYY"}" />  </div> </div> </div> <p></p> <div class="parsley-row"> <div class="uk-grid">  <div class="uk-width-medium-1-3"> <div class="tenantLead">  <span class="icheck-inline" style="margin-top:20px;">  <input type="checkbox" data-switchery data-switchery-color="#ffb300" class="isLeadTenant"  id="isLeadTenant-' + count + '" /> <label for="user_edit_active" class="inline-label" style="font-size:13px; padding-left:0px;">Lead Tenant</label> </span>  </div> </div>       <div class="uk-width-medium-2-3">        <div class="uk-grid" style="margin-top:20px;">        <div class="uk-width-medium-1-4">    <img  id="isElectricityImg-' + count + '" src="assets/img/PropertyImg/electricity.png" style="width:70%; height:100%">    </div>  <div class="uk-width-medium-1-4">    <img   id="isGasImg-' + count + '" src="assets/img/PropertyImg/gas.png" style="width:70%; height:100%">    </div>   <div class="uk-width-medium-1-4">    <img  id="isWaterImg-' + count + '" src="assets/img/PropertyImg/water.png" style="width:70%; height:100%"> </div><div class="uk-width-medium-1-4">  <img id="isCouncilImg-' + count + '" src="assets/img/PropertyImg/council.png" style="width:70%; height:100%"></div></div>       </div><div class="uk-grid"> <div class="uk-width-1-1">  <button type="submit" class="md-btn md-btn-primary btnAddUserTenant" id="btnAddUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">+ Tenant</button> <button type="submit" class="md-btn md-btn-danger btnRemoveUserTenant" id="btnRemoveUserTenant-' + count + '" style="float: right;font-size: 12px;margin: -5px 0px 0px 0px;display:none;">- Tenant</button>  <span id="getErrorMsg-' + count + '" style="color:red;"></span> </div>  </div> </div> </div></div> <input type="hidden" id="hiddenUserRegID-' + count + '" value="0" /> <input type="hidden" id="hiddenAddPropertyID-' + count + '" value="0" />   <input type="hidden" id="hiddenIsElectricity-' + count + '" value="0" /> <input type="hidden" id="hiddenIsGas-' + count + '" value="0" /> <input type="hidden" id="hiddenIsWater-' + count + '" value="0" /> <input type="hidden" id="hiddenIsCouncil-' + count + '" value="0" /> <input type="hidden" id="hiddenAvailTenantInsurance-' + count + '" value="0" /> <input type="hidden" id="hiddenAddress-' + count + '" value="0" />  <input type="hidden" id="hiddenElectricSupplier1-' + count + '" value="0" /> <input type="hidden" id="hiddenElectricSupplier2-' + count + '" value="0" /> <input type="hidden" id="hiddenFuelType-' + count + '" value="0" /> <input type="hidden" id="hiddenGasMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierElectric-' + count + '" value="0" /> <input type="hidden" id="hiddenSupplierGas-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyStart-' + count + '" value="0" /> <input type="hidden" id="hiddenTenancyEnd-' + count + '" value="0" /> <input type="hidden" id="hiddenWaterMeterRead-' + count + '" value="0" /> <input type="hidden" id="hiddenIsNewTenantUpdate-' + count + '" value="0" /> <input type="hidden" id="hiddenNewPropertyTenant-' + count + '" value="false" /> ');
 
 
     $("#inputMobile-" + count).keypress(function(e) {
@@ -152,6 +153,32 @@ function getAddTenant(count) {
             $(".errorInfo").text('');
         }
     });
+
+    $(".inputEmail").on('blur', function(e) {
+        var getCountValue = this.id.replace("inputEmail-", "");
+        var getEmail = $("#inputEmail-" + getCountValue).val();
+        if (getEmail == "") {
+            $("#getErrorMsg-" + getCountValue).css('color', 'red');
+            $("#getErrorMsg-" + getCountValue).show();
+            $("#getErrorMsg-" + getCountValue).text("* Enter the Email ID.");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
+            return false;
+        } else if (!isValidEmailAddress(getEmail)) {
+            $("#getErrorMsg-" + getCountValue).css('color', 'red');
+            $("#getErrorMsg-" + getCountValue).show();
+            $("#getErrorMsg-" + getCountValue).text("* Please Enter the Proper Email ID.");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
+            return false;
+        } else {
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            for (getData in getLocalTenantData) {
+                if(getLocalTenantData[getData].Count == getCountValue){
+                        getLocalTenantData[getData].Email = getEmail; 
+                }
+            }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
+        }
+    });
  
 
     $(".inputName").keyup(function() {
@@ -175,7 +202,82 @@ function getAddTenant(count) {
         fetchIsAppInstalled = 0;
         $("#getIsAppInstallCheck-" + getCountValue).css("border", "1px solid  #FFFFFF");
     });
+
+    $(".inputName").on('blur', function(e) {
+        var getCountValue = this.id.replace("inputName-", "");
+        var inputName = $("#inputName-" + getCountValue).val();
+        if (inputName == "") {
+            $("#getErrorMsg-" + getCountValue).css('color', 'red');
+            $("#getErrorMsg-" + getCountValue).show();
+            $("#inputName-" + getCountValue).css("border-color", "red");
+            $("#getErrorMsg-" + getCountValue).text("* Enter the Name.");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
+            return false;
+        } else {
+            $("#getErrorMsg-" + getCountValue).hide();
+            $("#getErrorMsg-" + getCountValue).text("");
+            $("#inputName-" + getCountValue).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            for (getData in getLocalTenantData) {
+                if(getLocalTenantData[getData].Count == getCountValue){
+                        getLocalTenantData[getData].Name = inputName; 
+                }
+            }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
+        }
+    });
+
+    $(".inputLastName").on('blur', function(e) {
+        var getCountValue = this.id.replace("inputLastName-", "");
+        var inputLastName = $("#inputLastName-" + getCountValue).val();
+        if (inputLastName == "") {
+            $("#getErrorMsg-" + getCountValue).css('color', 'red');
+            $("#inputLastName-" + getCountValue).css("border-color", "red");
+            $("#getErrorMsg-" + getCountValue).show();
+            $("#getErrorMsg-" + getCountValue).text("* Enter the Last Name.");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
+            return false;
+         } else {
+            $("#getErrorMsg-" + getCountValue).hide();
+            $("#getErrorMsg-" + getCountValue).text("");
+            $(".errorInfo").hide();
+            $(".errorInfo").text("");
+            $("#inputLastName-" + getCountValue).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            for (getData in getLocalTenantData) {
+                if(getLocalTenantData[getData].Count == getCountValue){
+                        getLocalTenantData[getData].LastName = inputLastName; 
+                }
+            }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
+        }
+    });
     
+    $(".inputTitle").on('change', function() {
+        var getCountValue = this.id.replace("inputTitle-", "");
+        var inputTitle = $("#inputTitle-" + getCountValue).val();
+        if (inputTitle == "Select Title") {
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select Title");
+            $("#select2-inputTitle-"+getCountValue+"-container").css("border", "1px solid red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").text("");
+            $("#select2-inputTitle-"+getCountValue+"-container").css("border", "none");
+            $(".btnSubmitProperty").attr("disabled", false);
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+            for (getData in getLocalTenantData) {
+                if(getLocalTenantData[getData].Count == getCountValue){
+                        getLocalTenantData[getData].TitleName = inputTitle; 
+                }
+            }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
+        }
+    });
 
     $(".inputEndDate").on('change', function() {
         var getCountValue = this.id.replace("inputEndDate-", "");
@@ -324,25 +426,48 @@ function getAddTenant(count) {
     $(".inputMobile").on('blur', function(e) {
         var getMobileNumber = $("#" + this.id).val();
         var getCountValue = this.id.replace("inputMobile-", "");
-        var blurName = $("#inputName-" + getCountValue).val();
-        var blurLastName = $("#inputLastName-" + getCountValue).val();
-        var blurTitle = $("#inputTitle-" + getCountValue).val();
-        var blurEmail = $("#inputEmail-" + getCountValue).val();
-        var blurStartDate = $("#inputStartDate-" + getCountValue).val();
-        var blurEndDate = $("#inputEndDate-" + getCountValue).val();
-        var hiddenPropertyID = $("#hiddenPropertyID").val();
-        if(blurName=="" && blurLastName=="" && blurTitle==0 && blurEmail=="" && blurStartDate=="" && blurEndDate==""){
-            if(getMobileNumber!="" && hiddenPropertyID!=0){
-                existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID);
+        if (getMobileNumber == "") {
+            $("#getErrorMsg-" + getCountValue).show();
+            $("#getErrorMsg-" + getCountValue).css('color', 'red');
+            $("#getErrorMsg-" + getCountValue).text("* Enter Tenant's Mobile Number");
+            $("#inputMobile-" + getCountValue).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $("#getErrorMsg-" + getCountValue).hide();
+            $("#getErrorMsg-" + getCountValue).text("");
+            $("#inputMobile-" + getCountValue).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+            var inputMobile = $("#inputMobile-" + getCountValue).val();
+            var blurName = $("#inputName-" + getCountValue).val();
+            var blurLastName = $("#inputLastName-" + getCountValue).val();
+            var blurTitle = $("#inputTitle-" + getCountValue).val();
+            var blurEmail = $("#inputEmail-" + getCountValue).val();
+            var blurStartDate = $("#inputStartDate-" + getCountValue).val();
+            var blurEndDate = $("#inputEndDate-" + getCountValue).val();
+            var hiddenPropertyID = $("#hiddenPropertyID").val();
+            if(blurName=="" && blurLastName=="" && blurTitle==0 && blurEmail=="" && blurStartDate=="" && blurEndDate==""){
+                if(getMobileNumber!="" && hiddenPropertyID!=0){
+                    existTenantCheck(getMobileNumber,getcountryCode,getCountValue,hiddenPropertyID);
+                }
             }
+            var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
+                for (getData in getLocalTenantData) {
+                    if(getLocalTenantData[getData].Count == getCountValue){
+                            getLocalTenantData[getData].Mobile = inputMobile; 
+                    }
+                }
+            localStorage.setItem('MyRequestTenantsData', JSON.stringify(getLocalTenantData));
         }
     });
 
 
-    function existTenantCheck(getMobileNumber,getCountValue,hiddenPropertyID){
-        $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID, function(result) {
+    function existTenantCheck(getMobileNumber,getcountryCode,getCountValue,hiddenPropertyID){
+        // console.log(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID +"/"+getcountryCode);
+        // console.log(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode);
+        $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID +"/"+getcountryCode, function(result) {
                 if (result.record_count == 0) { 
-                    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber, function(result) {
+                    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode, function(result) {
                         if (result.record_count == 0) {
                             // no tenants found
                         } else {
@@ -361,7 +486,7 @@ function getAddTenant(count) {
                     });
                 } else {
                     // UIkit.modal.alert(result.message_text+" for Mobile Number: +44"+getMobileNumber);
-                    UIkit.modal.alert("Tenant with same Mobile number exists :+44"+getMobileNumber);
+                    UIkit.modal.alert(result.message_text);
                     $("#promno-prefix-"+getCountValue).hide();
                     $("#inputMobile-" + getCountValue).removeAttr('style');
                     $("#inputMobile-"+getCountValue).val('');
@@ -387,18 +512,10 @@ function getAddTenant(count) {
         // alert(isLeadTenantval);
         var isLeadTenant = "";
         if($("#isLeadTenant-" + getCountValue).is(":checked")){
-            // alert(1);
             isLeadTenant = 1;
         } else {
-            // alert(0);
             isLeadTenant = 0;
         }
-        
-        // if(isLeadTenantval == "on"){
-        //     isLeadTenant = 1;
-        // } else {
-        //     isLeadTenant = 0;
-        // }
         var inputEmail = $("#inputEmail-" + getCountValue).val();
         var inputMobile = getPhoneCode+ $("#inputMobile-" + getCountValue).val();
         var inputStartDate = $("#inputStartDate-"+getCountValue).val();
@@ -489,11 +606,8 @@ function getAddTenant(count) {
 
     $(".btnRemoveUserTenant").off('click').on('click', function(event) {
         var RemoveTenantCount = "1";
-        
         $("#hiddenRemoveTenantCount").val(RemoveTenantCount);
         var getCountValue = this.id.replace("btnRemoveUserTenant-", "");
-        var hiddenTenantCount = $("#inputHMONoOfTenent").val();
-        var tenantCounts = parseInt(hiddenTenantCount) - parseInt(1);
         var hiddenAddPropertyID = $("#hiddenAddPropertyID-" + getCountValue).val();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
         var hiddenUserRegID = $("#hiddenUserRegID-" + getCountValue).val();
@@ -539,7 +653,6 @@ function getAddTenant(count) {
                     $("#getIsAppInstallCheck-" + getCountValue).remove();
                     var editPropertyID = $("#hiddenPropertyID").val();
                     getReloadUserTenants(editPropertyID);
-                    $("#inputHMONoOfTenent").val(tenantCounts);
                 }
             });
         });

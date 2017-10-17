@@ -1,4 +1,9 @@
   function getPropertyList(getValue) {
+
+    $('#propertyList').dataTable({
+        "ordering": false
+    });
+
        
       var dataForm = "";
       var sendURL = "";
