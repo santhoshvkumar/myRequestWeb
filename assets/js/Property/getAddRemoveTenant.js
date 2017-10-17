@@ -161,6 +161,9 @@ function getAddTenant(count) {
             $("#getErrorMsg-" + getCountValue).css('color', 'red');
             $("#getErrorMsg-" + getCountValue).show();
             $("#getErrorMsg-" + getCountValue).text("* Enter the Email ID.");
+            $("#inputEmail-" + getCountValue).css("border-color", "red");
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter Tenants EmailID");
             $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
             return false;
         } else if (!isValidEmailAddress(getEmail)) {
@@ -170,6 +173,10 @@ function getAddTenant(count) {
             $("#btnAddUserTenant-" + getCountValue).attr("disabled", true);
             return false;
         } else {
+            $("#inputEmail-" + getCountValue).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".errorInfo").hide();
+            $(".errorInfo").text("");
+            $("#btnAddUserTenant-" + getCountValue).attr("disabled", false);
             var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
             for (getData in getLocalTenantData) {
                 if(getLocalTenantData[getData].Count == getCountValue){
