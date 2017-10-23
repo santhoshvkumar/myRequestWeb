@@ -725,9 +725,9 @@ $(".btnSubmitAdmin").click(function() {
   var getCountry = $("#select2-inputCountry-container").html();
   var getEmail = $("#inputEmailID").val();
   var getUrl = $("#inputUrlRent").val();
-  var getPhoneNumber = setCountryCode + $("#inputPhoneNumber").val();
-  var getEmergencyNumber = setCountryCode + $("#inputEmergencyNumber").val();
-  var getEmergencyElectricityNumber = setCountryCode + $("#inputEmergencyElectricityNumber").val();
+  var getPhoneNumber =  $("#inputPhoneNumber").val();
+  var getEmergencyNumber =  $("#inputEmergencyNumber").val();
+  var getEmergencyElectricityNumber =  $("#inputEmergencyElectricityNumber").val();
   var autoGenerate = $("#inputCountry").val();
   var getAvailIsVoid = $("#getAvail").prop("checked");
   if(getAvailIsVoid==true){
