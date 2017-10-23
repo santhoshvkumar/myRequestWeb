@@ -1104,7 +1104,7 @@ if(superAdminType == "USSuperAdmin"){
                   if (result.records[adminInfo].DateDiff == null || result.records[adminInfo].DateDiff == "") {
                     result.records[adminInfo].DateDiff = "-";
                   } 
-                  $(".allAdminList").append("<tr>   <td id='adminName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td style='color:" + dueColor + "' id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
+                  $(".allAdminList").append("<tr>   <td id='adminName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].AdminFirstName + " " + result.records[adminInfo].AdminLastName + "</td> <td id='businessName-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessName + "</td> <td id='emailID-" + result.records[adminInfo].Admin_ID + "' style='color:" + dueColor + "'>" + result.records[adminInfo].BusinessEmail + "</td>  <td style='color:" + dueColor + "' id='datediff-'>" + result.records[adminInfo].DateDiff + " </td>    <td id='isApprovedCheck-" + result.records[adminInfo].Admin_ID + "'> <i class='fa fa-thumbs-up fa-2x approve' style='cursor:pointer;' id='approve-" + result.records[adminInfo].Admin_ID + "'></i> <i class='fa fa-thumbs-down fa-2x reject' style='cursor:pointer;'  id='reject-" + result.records[adminInfo].Admin_ID + "'></i><input type='hidden' id='hiddenCountry-"+ result.records[adminInfo].Admin_ID +"'value=" + result.records[adminInfo].Country + "> </td> <td id='isAvailedUtilityCheck-"+result.records[adminInfo].Admin_ID+"'> <span id='getAvailedUtility-" + result.records[adminInfo].Admin_ID + "'></span> </td> <td ><a class='editAdmin' id='editAdminID-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-pencil'></i></a></td> <td ><a class='deleteAdmin' id='deleteAdmin-" + result.records[adminInfo].Admin_ID + "' style='cursor:pointer;'><i class='fa fa-trash trash fa-1x'></i></a></td> <td> <a id='collected-" + result.records[adminInfo].Admin_ID + "' class='moneyCollect' ><i class='uk-icon-money'></i>Collected</a> </td> </tr>");
 
 
                   if (result.records[adminInfo].IsApproved == 1) {
@@ -1156,12 +1156,13 @@ if(superAdminType == "USSuperAdmin"){
                 var businessEmailID = $("#emailID-" + getAdminID).text();
                 var lettingAgencyCode = $("#autoGenerate-" + getAdminID).text();
                 var businessName = $("#businessName-" + getAdminID).text();
+                var Country = $("#hiddenCountry-" + getAdminID).val();
                 lettingAgencyCode = businessName.trim().charAt(0).toLowerCase() + businessName.trim().substr(businessName.length - 1).toLowerCase() + zeroPad(getAdminID, 5);
 
                 UIkit.modal.confirm('Are you sure want to Approve?', function(e) {
                   //console.log(e);
                   isApproveStatus = 1;
-                  var dataForm = '{"IsApprove":"' + isApproveStatus + '","BusinessEmailID":"' + businessEmailID + '","LettingAgencyCode":"' + lettingAgencyCode + '","BusinessName":"' + businessName + '"}';
+                  var dataForm = '{"IsApprove":"' + isApproveStatus + '","BusinessEmailID":"' + businessEmailID + '","LettingAgencyCode":"' + lettingAgencyCode + '","BusinessName":"' + businessName + '","Country":"' + Country + '"}';
                   var sendURL = domainAddress + 'UpdateAdminIsApprove/' + getAdminID;
                   console.log(dataForm);
                   console.log(sendURL);
@@ -1192,7 +1193,7 @@ if(superAdminType == "USSuperAdmin"){
 
                 UIkit.modal.confirm('Are you sure want to Reject?', function() {
                   isApproveStatus = 0;
-                  var dataForm = '{"IsApprove":"' + isApproveStatus + '","BusinessEmailID":"' + businessEmailID + '","LettingAgencyCode":"' + lettingAgencyCode + '","BusinessName":"' + businessName + '"}';
+                  var dataForm = '{"IsApprove":"' + isApproveStatus + '","BusinessEmailID":"' + businessEmailID + '","LettingAgencyCode":"' + lettingAgencyCode + '","BusinessName":"' + businessName + '","Country":"' + Country + '"}';
                   var sendURL = domainAddress + 'UpdateAdminIsApprove/' + getAdminID;
                   console.log(dataForm);
                   console.log(sendURL);
