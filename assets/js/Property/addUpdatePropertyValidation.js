@@ -1,6 +1,7 @@
 function addUpdatePropertyValidation() {
+    // debugger;
     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-   getAddTenantArr = new Array();
+//    getAddTenantArr = new Array();
     var hiddenPropertyID = $("#hiddenPropertyID").val();
     var landlordTitle = $("#select2-inputLandlordTitle-container").html();
     var name = $("#getName").val().replace(/["']/g, "`");

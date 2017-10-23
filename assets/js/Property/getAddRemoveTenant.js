@@ -660,6 +660,9 @@ function getAddTenant(count) {
                     $("#getIsAppInstallCheck-" + getCountValue).remove();
                     var editPropertyID = $("#hiddenPropertyID").val();
                     getReloadUserTenants(editPropertyID);
+                    var getNoOfTenantCount = $("#inputHMONoOfTenent").val();
+                    var noOfTenants = getNoOfTenantCount - parseInt(1);
+                    $("#inputHMONoOfTenent").val(noOfTenants);
                 }
             });
         });
