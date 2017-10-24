@@ -1,5 +1,6 @@
 var  getcountryCode = localStorage.getItem("MyRequest_countryCode");
 var clearAllValues = function() {
+    localStorage.removeItem('MyRequestTenantsData');
     $("#getName").val('');
     $("#inputMobileNumber").val('');
     $("#inputEmailID").val('');
