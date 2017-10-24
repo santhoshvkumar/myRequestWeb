@@ -79,6 +79,7 @@ var clearAllValues = function() {
     $(".propMandatoryContent").hide();
     count = 1;
     finalTenantCount = 0;
+    getAddTenantArr = new Array();
     $("#hiddenIsElectricity").val(0);
     $("#hiddenIsGas").val(0);
     $("#hiddenIsWater").val(0);
@@ -120,4 +121,7 @@ var clearAllValues = function() {
     getAddTenant(count);
     getAddRemove(count);
     $("#getIsAppInstallCheck-"+count).css("height", "610px");
+    $(".divUtilityHistory").hide();
+    $(".divtenantHistory").hide();
+    $(".gettenantHistory").hide();
 }

@@ -76,6 +76,7 @@ var clearAllValues = function() {
     $( ".propMandatoryContent" ).hide();
     count = 0;
     finalTenantCount = 0;
+    getAddTenantArr = new Array();
     //getAddTenant(count);
     getAddRemove( count );
     $( "#hiddenIsElectricity" ).val( 0 );
