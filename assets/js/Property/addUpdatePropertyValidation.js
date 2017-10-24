@@ -134,17 +134,271 @@ function addUpdatePropertyValidation() {
     var finalLegToDate = getFormatLegValidToDate[2] + "-" + getFormatLegValidToDate[1] + "-" + getFormatLegValidToDate[0];
    
     var inputUserRegID = "";
-    var inputName = "";
-    var inputEmail = "";
-    var inputMobile = "";
-    var inputStartDate = "";
-    var inputEndDate = "";
     var isLeadTenant = "";
     var radioYes = "";
     var radioNo = "";
     var getIsAppInstalled = "";
     adminUserID = localStorage.getItem("MyRequest_AdminID");
 
+    
+
+    // if (fuel == "Select Fuel Type") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Fuel Type");
+    //     $("#select2-inputFuel-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+     
+
+    // if (supplierGas == "Select Supplier Gas") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Supplier Gas");
+    //     $("#select2-inputSupplierGas-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    // if (fuel == "Duel" && gas == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Gas Meter Reading");
+    //     $("#inputGas").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    // if (supplierElectric == "Select Supplier Electric") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Supplier Electric");
+    //     $("#select2-inputSupplierElectric-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+
+    // if (read1 == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 1");
+    //     $("#inputRead1").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    // if (economy7 == "1" && read2 == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 2");
+    //     $("#inputRead2").css("border-color", "red");
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    // if (taxAuthority == "Select Council") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Council Authority");
+    //     $("#select2-inputTaxAuthority-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    // if ( waterMeter== "1" && water == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Enter Water Meter Reading");
+    //     $("#inputWater").css("border-color", "red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+    
+    // if (waterMeter== "1" && waterAuthority == "Select Water Authority") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Select the Water Authority");
+    //     $("#select2-inputWaterAuthority-container").css("border", "1px solid red");
+    //     $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    //  var inputMobilezero = $("#inputMobile-0").val();
+    //  var inputTitlezero = $("#inputTitle-0").val();
+    //  var inputNamezero = $("#inputName-0").val();
+    //  var inputLastNamezero = $("#inputLastName-0").val();
+    //  var inputEmailzero = $("#inputEmail-0").val();
+    //  var inputStartDatezero = $("#inputStartDate-0").val();
+    //  var inputEndDatezero = $("#inputEndDate-0").val();
+
+    // if (inputMobilezero == "") {
+    //     $(".errorInfo").show();
+    //     $(".errorInfo").text("* Please Entert the Tenants Mobile number");
+    //     $("#inputMobile-0").css("border-color", "red");
+    //     // $(".utilityInfo").show();
+    //     $(".btnSubmitProperty").attr("disabled", true);
+    //     return false;
+    // }
+
+    var mobileID = "";
+    var inputMobile = "";
+    var titleID = "";
+    var inputTitle = "";
+    var nameID = "";
+    var inputName = "";
+    var lastNameID = "";
+    var inputLastName = "";
+    var tenantEmailID = "";
+    var inputEmail = "";
+    var startDateID = "";
+    var inputStartDate = "";
+    var endDateID = "";
+    var inputEndDate = "";
+
+    $('.inputMobile').each(function () {
+        mobileID = this.id;
+        inputMobile = $("#"+mobileID).val();
+        if(inputMobile == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter Tenant's Mobile Number");
+            $("#"+mobileID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+mobileID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    
+
+    $('.inputTitle').each(function () {
+        titleID = this.id;
+        inputTitle = $("#select2-"+titleID+"-container").html();
+        if(inputTitle == "Select Title"){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select Title");
+            $("#select2-"+titleID+"-container").css("border", "1px solid red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#select2-"+titleID+"-container").css("border", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    $('.inputName').each(function () {
+        nameID = this.id;
+        inputName = $("#"+nameID).val();
+        if(inputName == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter Tenant's First Name");
+            $("#"+nameID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+nameID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    $('.inputLastName').each(function () {
+        lastNameID = this.id;
+        inputLastName = $("#"+lastNameID).val();
+        if(inputLastName == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter Tenant's Last Name");
+            $("#"+lastNameID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+lastNameID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    $('.inputEmail').each(function () {
+        tenantEmailID = this.id;
+        inputEmail = $("#"+tenantEmailID).val();
+        if(inputEmail == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter Tenant's EmailID");
+            $("#"+tenantEmailID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+tenantEmailID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    
+    $('.inputStartDate').each(function () {
+        startDateID = this.id;
+        inputStartDate = $("#"+startDateID).val();
+        if(inputStartDate == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select Start Date");
+            $("#"+startDateID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        }
+    });
+
+    $("#"+startDateID).on('change', function() {
+        inputStartDate = $("#"+startDateID).val();
+        if(inputStartDate == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select Start Date");
+            $("#"+startDateID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+startDateID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+
+    
+    $('.inputEndDate').each(function () {
+        endDateID = this.id;
+        inputEndDate = $("#"+endDateID).val();
+        if(inputEndDate == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select End Date");
+            $("#"+endDateID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        }
+    });
+
+    $("#"+endDateID).on('change', function() {
+        inputEndDate = $("#"+endDateID).val();
+        if(inputEndDate == ""){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Select End Date");
+            $("#"+endDateID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        } else {
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");
+            $("#"+endDateID).css("border-color", "rgba(0, 0, 0, 0.12)");
+            $(".btnSubmitProperty").attr("disabled", false);
+        }
+    });
+    
     if (address == "") {
         $(".errorInfo").show();
         $(".errorInfo").text("* Enter the Address");
@@ -272,7 +526,7 @@ function addUpdatePropertyValidation() {
         return false;
     }
 
-
+    // debugger;
      if (emailID == "") {
          $(".errorInfo").show();
          $(".errorInfo").text("* Enter the Landlord EmailID");
@@ -338,181 +592,52 @@ function addUpdatePropertyValidation() {
         return false;
     }
 
-    // if (fuel == "Select Fuel Type") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Fuel Type");
-    //     $("#select2-inputFuel-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-     
-
-    // if (supplierGas == "Select Supplier Gas") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Supplier Gas");
-    //     $("#select2-inputSupplierGas-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if (fuel == "Duel" && gas == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Gas Meter Reading");
-    //     $("#inputGas").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if (supplierElectric == "Select Supplier Electric") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Supplier Electric");
-    //     $("#select2-inputSupplierElectric-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-
-    // if (read1 == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 1");
-    //     $("#inputRead1").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if (economy7 == "1" && read2 == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 2");
-    //     $("#inputRead2").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if (taxAuthority == "Select Council") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Council Authority");
-    //     $("#select2-inputTaxAuthority-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if ( waterMeter== "1" && water == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter Water Meter Reading");
-    //     $("#inputWater").css("border-color", "red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-    
-    // if (waterMeter== "1" && waterAuthority == "Select Water Authority") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Water Authority");
-    //     $("#select2-inputWaterAuthority-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    //  var inputMobilezero = $("#inputMobile-0").val();
-    //  var inputTitlezero = $("#inputTitle-0").val();
-    //  var inputNamezero = $("#inputName-0").val();
-    //  var inputLastNamezero = $("#inputLastName-0").val();
-    //  var inputEmailzero = $("#inputEmail-0").val();
-    //  var inputStartDatezero = $("#inputStartDate-0").val();
-    //  var inputEndDatezero = $("#inputEndDate-0").val();
-
-    // if (inputMobilezero == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Please Entert the Tenants Mobile number");
-    //     $("#inputMobile-0").css("border-color", "red");
-    //     // $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-    
-    var getCountValue = $("#inputHMONoOfTenent").val();
-
-    var inputMobile = $("#inputMobile-" + getCountValue).val();
-
-    if (inputMobile == "") {
+    if(inputMobile == ""){
         $(".errorInfo").show();
         $(".errorInfo").text("* Enter Tenant's Mobile Number");
-        $("#inputMobile-"+getCountValue).css("border-color", "red");
+        $("#"+mobileID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputTitle = $("#select2-inputTitle-"+getCountValue+"-container").html();
-
-    if (inputTitle == "Select Title") {
+    }  if(inputTitle == "Select Title"){
         $(".errorInfo").show();
         $(".errorInfo").text("* Select Title");
-        $("#select2-inputTitle-"+getCountValue+"-container").css("border", "1px solid red");
+        $("#select2-"+titleID+"-container").css("border", "1px solid red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputName = $("#inputName-" + getCountValue).val();
-
-    if (inputName == "") {
+    }  if(inputName == ""){
         $(".errorInfo").show();
         $(".errorInfo").text("* Enter Tenant's First Name");
-        $("#inputName-"+getCountValue).css("border-color", "red");
+        $("#"+nameID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputLastName =  $("#inputLastName-" + getCountValue).val();
-
-    if (inputLastName == "") {
+    }  if(inputLastName == ""){
         $(".errorInfo").show();
         $(".errorInfo").text("* Enter Tenant's Last Name");
-        $("#inputLastName-"+getCountValue).css("border-color", "red");
+        $("#"+lastNameID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputEmail =  $("#inputEmail-" + getCountValue).val();
-
-    if (inputEmail == "") {
+    }  if(inputEmail == ""){
         $(".errorInfo").show();
-        $(".errorInfo").text("* Enter Tenants EmailID");
-        $("#inputEmail-"+getCountValue).css("border-color", "red");
+        $(".errorInfo").text("* Enter Tenant's EmailID");
+        $("#"+tenantEmailID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputStartDate =  $("#inputStartDate-" + getCountValue).val();
-
-    if (inputStartDate == "") {
+    }  if(inputStartDate == ""){
         $(".errorInfo").show();
         $(".errorInfo").text("* Select Start Date");
-        $("#inputStartDate-"+getCountValue).css("border-color", "red");
+        $("#"+startDateID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    var inputEndDate =  $("#inputEndDate-" + getCountValue).val();
-
-    if (inputEndDate == "") {
+    }  if(inputEndDate == ""){
         $(".errorInfo").show();
         $(".errorInfo").text("* Select End Date");
-        $("#inputEndDate-"+getCountValue).css("border-color", "red");
+        $("#"+endDateID).css("border-color", "red");
         $(".btnSubmitProperty").attr("disabled", true);
         return false;
-    }
-
-    
-
+    } 
     // else {
-
-           callUtilityAgreeCheckModal();
-    // }
+        callUtilityAgreeCheckModal();
+    // }    
 }
 
 
