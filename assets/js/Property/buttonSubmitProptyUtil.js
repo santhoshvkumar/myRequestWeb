@@ -39,9 +39,10 @@ var buttonSubmitProptyUtil = function() {
     }
     if (getLandlord == true) {
         isVoid = "Landlord";
+        isLLAddress = "1";
     }
 
-
+    
     var getYes = $('.yes > div').hasClass('checked');
     var getNo = $('.no > div').hasClass('checked');
     if (getYes == true) {
