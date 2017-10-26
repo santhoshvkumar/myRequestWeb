@@ -875,6 +875,7 @@ function getUserTenantUtilityList(hiddenTenantID){
             var cGas = "";
             var cWater = "";
             var cCouncil = "";
+            var UtilityType = "";
             for (var propertyUtility in result.records) {
                 console.log(dataAddPropertyFormArr.length);
                 if (result.records[propertyUtility].IsElectricity == 1) {
@@ -924,8 +925,15 @@ function getUserTenantUtilityList(hiddenTenantID){
                     isCouncil = '<i class="fa fa-times"></i>';
                     cCouncil = "Red";
                 }
+                if(result.records[propertyUtility].UtilityRegType == "move-in"){
+                    UtilityType = "MOVE-IN";
+                }
 
-                $(".propertyUtility").append("<tr> <td>" + result.records[propertyUtility].UtilityRegType + "</td>  <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td> <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + result.records[propertyUtility].Status + "</td> </tr>");
+                if(result.records[propertyUtility].UtilityRegType == "move-out"){
+                    UtilityType = "MOVE-OUT";
+                }
+
+                $(".propertyUtility").append("<tr> <td>" + UtilityType + "</td>  <td>" + moment(result.records[propertyUtility].Date).format('Do MMM YYYY,  h:mm a') + "</td> <td style='color:" + cElectricity + ";'>" + isElectricity + "</td> <td style='color:" + cGas + ";'>" + isGas + "</td> <td style='color:" + cWater + ";'>" + isWater + "</td> <td style='color:" + cCouncil + ";'>" + isCouncil + "</td> <td>" + result.records[propertyUtility].Status + "</td> </tr>");
             }
         }
 
