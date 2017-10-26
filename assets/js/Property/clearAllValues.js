@@ -12,8 +12,12 @@ var clearAllValues = function() {
     $("#inputCity").val(0);
     $("#select2-inputCity-container").html("Select City");
     if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
+        $("#voidPartNo").iCheck('check');
+        $("#voidPartYes").iCheck('uncheck');
         $("#select2-inputState-container").html("Select State");
     } else {
+        $("#voidPartYes").iCheck('check');
+        $("#voidPartNo").iCheck('uncheck');
         $("#select2-inputState-container").html("Select County");
     }
     $("#inpuZip").val('');
@@ -28,8 +32,6 @@ var clearAllValues = function() {
     $("#gasValidTo").val('');
     $("#legValidFrom").val('');
     $("#legValidTo").val('');
-    $("#voidPartYes").iCheck('check');
-    $("#voidPartNo").iCheck('uncheck');
     $('#landBuildInsurYes').iCheck('uncheck');
     $('#landBuildInsurNo').iCheck('check');
     $('#propertyManageFull').iCheck('uncheck');

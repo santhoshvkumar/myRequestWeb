@@ -6,7 +6,6 @@ var getPropLat, getPropLong, isEdit=false;
      var adminUserID = localStorage.getItem("MyRequest_AdminID");
      $("#moveinadminID").val(adminUserID);
      $("#moveoutadminID").val(adminUserID);
-     
 
      $(".landlord-prefix").text(getPhoneCode);
 
@@ -44,8 +43,7 @@ var getPropLat, getPropLong, isEdit=false;
          }
 
      });
-
-
+      
      $("#inputEconomy7").on('change', function() {
          if (this.checked) {
              $("#hiddenIsEconomy7").val(1);
@@ -593,16 +591,20 @@ var getPropLat, getPropLong, isEdit=false;
     $("#ImportCSVButton").click(function() {
         var importModal = UIkit.modal("#ImportModel");
         importModal.show();
+        $("#ImportModel").show(); 
         $("#ImportCSVForm").hide();    
+        $(".listImportDetails").html('');
     });
 
     $( "#VecoCsv" ).click(function() {
+        $("#file").val('');
         $("#ImportCSVForm").show();
         $("#importText").text("Import Veco Property Move In");
         $("#importText1").text("Import Veco Property Move Out");
     });
 
     $( "#CFPCsv" ).click(function() {
+        $("#file").val('');
         $("#ImportCSVForm").show();
         $("#importText").text("Import CFP Property Move In");
         $("#importText1").text("Import CFP Property Move Out");
@@ -708,3 +710,73 @@ var getPropLat, getPropLong, isEdit=false;
      var modalUtilityList = UIkit.modal("#googleMap");
      modalUtilityList.show();
  });
+
+$('#moveinCSV').on("submit", function(e){  
+    e.preventDefault(); //form will not submitted  
+    $.ajax({  
+        // url:"http://localhost:8888/myRequestHome/myrequestapi/UploadCSV/move-in.php",  
+        url:"https://api.myrequest.co.uk/UploadCSV/move-in.php",
+        method:"POST",  
+        data:new FormData(this),  
+        contentType:false,          // The content type used when sending data to the server.  
+        cache:false,                // To unable request pages to be cached  
+        processData:false,          // To send DOMDocument or non processed data file it is set to false  
+        success: function(result){
+            if(result == "SelectFile"){
+                UIkit.modal.alert("Please Select a File");
+            } else if(result == "InvalidFile"){
+                UIkit.modal.alert("Invalid File. Please Upload Only CSV File");
+            } else if (result == "CoulmnsError"){
+                UIkit.modal.alert("CSV Columns Does not Match Please Download Sample CSV File");
+            } else {
+                $("#ImportModel").hide();
+                getPropertyList(getValue);
+                var PropertyResults = JSON.parse(result);
+                var modal = UIkit.modal("#modalImportCSVResult");
+                modal.show();
+                for (Property in PropertyResults.records) {
+                    if(PropertyResults.records[Property].Message == "Inserted"){
+                        $(".listImportDetails").append("<tr><td>" + PropertyResults.records[Property].Address + "</td><td style='color:green; font-weight: bold;'>" + PropertyResults.records[Property].Message + "</td></tr> ");
+                    } else {
+                        $(".listImportDetails").append("<tr><td>" + PropertyResults.records[Property].Address + "</td><td style='color:red; font-weight: bold;'>" + PropertyResults.records[Property].Message + "</td></tr> ");
+                    }
+                }
+            }
+        }  
+    })  
+});
+
+ $('#moveoutCSV').on("submit", function(e){  
+    e.preventDefault(); //form will not submitted  
+    $.ajax({  
+        // url:"http://localhost:8888/myRequestHome/myrequestapi/UploadCSV/move-out.php",  
+        url:"https://api.myrequest.co.uk/UploadCSV/move-out.php",  
+        method:"POST",  
+        data:new FormData(this),  
+        contentType:false,          // The content type used when sending data to the server.  
+        cache:false,                // To unable request pages to be cached  
+        processData:false,          // To send DOMDocument or non processed data file it is set to false  
+        success: function(result){  
+            if(result == "SelectFile"){
+                UIkit.modal.alert("Please Select a Move Out File");
+            } else if(result == "InvalidFile"){
+                UIkit.modal.alert("Invalid File. Please Upload Only CSV File");
+            } else if (result == "CoulmnsError"){
+                UIkit.modal.alert("CSV Columns Does not Match Please Download Sample CSV File");
+            } else {
+                $("#ImportModel").hide();
+                getPropertyList(getValue);
+                var PropertyResults = JSON.parse(result);
+                var modals = UIkit.modal("#modalImportCSVResult");
+                modals.show();
+                for (Property in PropertyResults.records) {
+                    if(PropertyResults.records[Property].Message == "Inserted"){
+                        $(".listImportDetails").append("<tr><td>" + PropertyResults.records[Property].Address + "</td><td style='color:green; font-weight: bold;'>" + PropertyResults.records[Property].Message + "</td></tr> ");
+                    } else {
+                        $(".listImportDetails").append("<tr><td>" + PropertyResults.records[Property].Address + "</td><td style='color:red; font-weight: bold;'>" + PropertyResults.records[Property].Message + "</td></tr> ");
+                    }
+                }
+            }
+        }  
+    })  
+});
