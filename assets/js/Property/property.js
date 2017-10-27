@@ -716,7 +716,6 @@ $('#moveinCSV').on("submit", function(e){
     $.ajax({  
         // url:"http://localhost:8888/myRequestHome/myrequestapi/UploadCSV/move-in.php",  
         url:"https://api.myrequest.co.uk/UploadCSV/move-in.php",
-        headers: { 'Access-Control-Allow-Origin': '*' },
         method:"POST",  
         data:new FormData(this),  
         contentType:false,          // The content type used when sending data to the server.  
@@ -753,7 +752,6 @@ $('#moveinCSV').on("submit", function(e){
         // url:"http://localhost:8888/myRequestHome/myrequestapi/UploadCSV/move-out.php",  
         url:"https://api.myrequest.co.uk/UploadCSV/move-out.php",  
         method:"POST",  
-        headers: { 'Access-Control-Allow-Origin': '*' },
         data:new FormData(this),  
         contentType:false,          // The content type used when sending data to the server.  
         cache:false,                // To unable request pages to be cached  
