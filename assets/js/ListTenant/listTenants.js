@@ -1,7 +1,8 @@
 var getPhoneCode = "";
+var getcountryCode = "";
 $(function() {
    getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-   var getcountryCode = localStorage.getItem("MyRequest_countryCode");
+   getcountryCode = localStorage.getItem("MyRequest_countryCode");
    
    $(".landlord-prefix").text(getPhoneCode);
 
@@ -1178,7 +1179,7 @@ $(".btnSubmitTenant").click(function() {
         
         var getFormatEndDate = endDate.split(".");
         var finalEndDate = getFormatEndDate[2] + "-" + getFormatEndDate[1] + "-" + getFormatEndDate[0];
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '","AddProperty":"' + finalDataAddProperty + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '", "Country":"'+ getcountryCode +'","AddProperty":"' + finalDataAddProperty + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
