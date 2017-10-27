@@ -588,6 +588,10 @@ var getPropLat, getPropLong, isEdit=false;
  }); // btnSubmitUtility
 
 
+    $("#closeCSVModal").click(function() {
+        $("#ImportModel").hide(); 
+    });
+
     $("#ImportCSVButton").click(function() {
         var importModal = UIkit.modal("#ImportModel");
         importModal.show();
