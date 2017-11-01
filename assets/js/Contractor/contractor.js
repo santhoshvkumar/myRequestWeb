@@ -2038,8 +2038,7 @@ function loadContractorsList(resultAllContractor) {
               } else {
                 contractorUserImage = domainAddress + resultAllContractor.records[Contractor].Image1;
               }
-
-              $(".allContractorList").append('<div class="getAllContractor" id="getAllContractor-' + resultAllContractor.records[Contractor].ContractorID + '"><div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav"><li class="editContractor" id="editContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"><a href="#"><i class="material-icons uk-margin-small-right">&#xE150;</i> Edit</a></li><li class="deleteContractor" id="deleteContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="material-icons uk-margin-small-right">&#xE872;</i> Remove</a></li><li class="approve" id="approve-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="fa fa-archive approve" style="color:grey;"></i> Approve / Reject</a></li>   </ul></div></div><div class="uk-text-center"><img class="md-card-head-avatar" style="width: 93px;height: 89px;" src="' + contractorUserImage + '" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate" style="font-weight: bold;font-size: 15px;">' + resultAllContractor.records[Contractor].ContractorName + '</span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].SpecialityName + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">' + contractorValidity + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].phoneNo1 + '</span></div></li></ul></div></div> </div>');
+              $(".allContractorList").append('<div class="getAllContractor" id="getAllContractor-' + resultAllContractor.records[Contractor].ContractorID + '"><div class="md-card md-card-hover"><div class="md-card-head"><div class="md-card-head-menu" data-uk-dropdown="{pos:bottom-right}"><i class="md-icon material-icons">&#xE5D4;</i><div class="uk-dropdown uk-dropdown-small"><ul class="uk-nav"><li class="editContractor" id="editContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"><a href="#"><i class="material-icons uk-margin-small-right">&#xE150;</i> Edit</a></li><li class="deleteContractor" id="deleteContractorID-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="material-icons uk-margin-small-right">&#xE872;</i> Remove</a></li><li class="approve" id="approve-' + resultAllContractor.records[Contractor].ContractorID + '"> <a href="#"><i class="fa fa-archive approve" style="color:grey;"></i> Approve / Reject</a></li>   </ul></div></div><div class="uk-text-center"><img class="md-card-head-avatar" style="width: 93px;height: 89px;" src="' + contractorUserImage + '" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate" style="font-weight: bold;font-size: 15px;">' + resultAllContractor.records[Contractor].ContractorName + '</span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].SpecialityName + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">' + contractorValidity + '</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">' + resultAllContractor.records[Contractor].phoneNo1 + '</span><input type="hidden" id="hiddenEmailID-'+ resultAllContractor.records[Contractor].ContractorID +'" name="contractorEmailID" class="md-input" value='+ resultAllContractor.records[Contractor].emailID +'><input type="hidden" id="hiddenPasswordID-'+ resultAllContractor.records[Contractor].ContractorID +'" name="contractorPassword" class="md-input" value='+ resultAllContractor.records[Contractor].password +'><input type="hidden" id="hiddenPhoneID-'+ resultAllContractor.records[Contractor].ContractorID +'" name="contractorPhone" class="md-input" value='+ resultAllContractor.records[Contractor].phoneNo1 +'><span class="hiddenContractorName" id="hiddenNameID-'+ resultAllContractor.records[Contractor].ContractorID +'" class="md-input">'+ resultAllContractor.records[Contractor].ContractorFullName +'</span></div></li></ul></div></div> </div>');
 
               if (resultAllContractor.records[Contractor].IsApprove == 1) {
                 $("#approve-" + resultAllContractor.records[Contractor].ContractorID).css('color', 'green');
@@ -2049,7 +2048,7 @@ function loadContractorsList(resultAllContractor) {
                 $("#reject-" + resultAllContractor.records[Contractor].ContractorID).css('color', 'red');
               }
           } // main for loop
-          
+          $(".hiddenContractorName").hide();
           $("#getLoadingModalContent").removeClass('md-show');
           
           // $('#contractorList').DataTable({
@@ -2067,15 +2066,16 @@ function loadContractorsList(resultAllContractor) {
 
           $(".approve").on('click', function() {
             var getContractID = this.id.replace('approve-', '');
-            var emaiID = $("#hiddenEmailID-" + getContractID).val();
-            var password = $("#hiddenPassword-" + getContractID).val();
-            var phoneNumber = $("#PhoneNo-" + getContractID).text();
-
+            var EmaiID = $("#hiddenEmailID-" + getContractID).val();
+            var Password = $("#hiddenPasswordID-" + getContractID).val();
+            var PhoneNumber = $("#hiddenPhoneID-" + getContractID).val();
+            var ContractorName = $("#hiddenNameID-" + getContractID).text();
             UIkit.modal.confirm('Are you sure want to Approve?', function(e) {
               $("#getLoadingModalContent").addClass('md-show');
               var isApproveStatus = 1;
-              var dataForm = '{"IsApprove":"' + isApproveStatus + '","Password":"' + password + '","EmailID":"' + emaiID + '","PhoneNumber":"' + phoneNumber + '"}';
+              var dataForm = '{"IsApprove":"' + isApproveStatus + '","Password":"' + Password + '","EmailID":"' + EmaiID + '","PhoneNumber":"' + PhoneNumber + '","ContractorName":"' + ContractorName + '","Country":"' + getcountryCode + '"}';
               var sendURL = domainAddress + 'UpdateContractIsApprove/' + getContractID;
+              console.log(dataForm);
               console.log(sendURL);
               $.ajax({
                 type: "POST",
@@ -2151,6 +2151,7 @@ function loadContractorsList(resultAllContractor) {
                 $("#inputFirstName").val(result.records[contractor].ContractorName);
                 $("#inputLastName").val(result.records[contractor].LastName);
                 $("#inputContractorEmailID").val(result.records[contractor].emailID);
+                $("#hiddenEmailID").val(result.records[contractor].emailID);
                 $("#inputAddressLine1").val(result.records[contractor].addressLine1);
                 $("#inputAddressLine2").val(result.records[contractor].addressLine2);
                 $("#inputSpeciality").val(result.records[contractor].specialityID);

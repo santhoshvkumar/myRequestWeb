@@ -1723,9 +1723,9 @@
 
 
   $(".btnSubmitTenantMail").click(function(){
-    console.log("click tmail");
+    console.log("click Email");
     UIkit.modal.confirm('Are you sure to send mail to Tenants who are yet to install the app?', function() {
-        var dataForm = '{"AdminID":"'+adminUserID+'"}';
+        var dataForm = '{"AdminID":"'+adminUserID+'", "Country":"'+ getCountry +'"}';
         console.log(dataForm);
         var sendURL = domainAddress + 'SendTenantReminderMail';
         console.log(sendURL);
@@ -1734,16 +1734,25 @@
             url: sendURL,
             data: dataForm,
             success: function(dataCheck) {
-                console.log(dataCheck);
+                if(dataCheck.status=="success"){
+                    console.log(dataCheck);
+                    $("#getLoadingModalContent").removeClass('md-show');
+                    UIkit.modal.alert('Remainder Mail Sent To All Tenants');
+                } else {
+                    console.log(dataCheck);
+                    $("#getLoadingModalContent").removeClass('md-show');
+                    UIkit.modal.alert(dataCheck.message_text);
+                }
             }
         });
     });
   });
 
   $(".btnSubmitContractorMail").click(function(){
-    console.log("click cmail");
+    console.log("click Email");
     UIkit.modal.confirm('Are you sure to send mail to Contractors who are yet to install the app?', function() {
-        var dataForm = '{"AdminID":"'+adminUserID+'"}';
+        $("#getLoadingModalContent").addClass('md-show');
+        var dataForm = '{"AdminID":"'+adminUserID+'", "Country":"'+ getCountry +'"}';
         console.log(dataForm);
         var sendURL = domainAddress + 'SendContractorReminderMail';
         console.log(sendURL);
@@ -1752,7 +1761,15 @@
             url: sendURL,
             data: dataForm,
             success: function(dataCheck) {
-                console.log(dataCheck);
+                if(dataCheck.status=="success"){
+                    console.log(dataCheck);
+                    $("#getLoadingModalContent").removeClass('md-show');
+                    UIkit.modal.alert('Remainder Mail Sent To All Contractors');
+                } else {
+                    console.log(dataCheck);
+                    $("#getLoadingModalContent").removeClass('md-show');
+                    UIkit.modal.alert(dataCheck.message_text);
+                }
             }
         });
     });
