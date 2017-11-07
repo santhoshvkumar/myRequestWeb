@@ -512,7 +512,8 @@ $(document).ready(function() {
                               'IsCouncil': $('#hiddenIsCouncil-'+count).val(),
                               'IsAvailTenantInsurance': $('#hiddenAvailTenantInsurance-'+count).val(),
                               'IsNewTenantUtility': $('#hiddenIsNewTenantUpdate-'+count).val(),
-                              'IsLeadTenant': resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant
+                              'IsLeadTenant': resultGetProperty.records[property].UserReg[addProperty].IsLeadTenant,
+                              'IsMailSent': resultGetProperty.records[property].UserReg[addProperty].IsMailSent
                           };
                           getAddTenantArr.push(newItem);
                           
@@ -527,6 +528,7 @@ $(document).ready(function() {
                           $("#btnAddUserTenant-" + count).hide();
                           $("#btnRemoveUserTenant-" + count).show();
                           $("#hiddenUserRegID-" + count).val(resultGetProperty.records[property].UserReg[addProperty].UserID);
+                          $("#hiddenIsMailSent-" + count).val(resultGetProperty.records[property].UserReg[addProperty].IsMailSent);
                           $("#hiddenAddPropertyID-" + count).val(resultGetProperty.records[property].UserReg[addProperty].AddPropertyID);
                           $("#inputName-" + count).val(resultGetProperty.records[property].UserReg[addProperty].Name);
 
