@@ -123,7 +123,7 @@ var buttonSubmitProptyUtil = function() {
     }
     var propManageFull = $(".propManageFull > div").hasClass("checked");
     var propManageSemi = $(".propManageSemi > div").hasClass("checked");
-    var propManageLet = $(".propManageSemi > div").hasClass("checked");
+    var propManageLet = $(".propManageLet > div").hasClass("checked");
     if (propManageFull == true) {
         getPropertyManaged = "Full";
     }
