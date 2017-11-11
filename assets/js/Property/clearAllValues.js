@@ -14,10 +14,15 @@ var clearAllValues = function() {
     if(getcountryCode == "US" || getcountryCode == "India" || getcountryCode == "Canada"){
         $("#voidPartNo").iCheck('check');
         $("#voidPartYes").iCheck('uncheck');
+        $("#isLLAddressYes").iCheck('uncheck');
+        $("#isLLAddressNo").iCheck('check');
+
         $("#select2-inputState-container").html("Select State");
     } else {
         $("#voidPartYes").iCheck('check');
         $("#voidPartNo").iCheck('uncheck');
+        $("#isLLAddressYes").iCheck('check');
+        $("#isLLAddressNo").iCheck('uncheck');
         $("#select2-inputState-container").html("Select County");
     }
     $("#inpuZip").val('');

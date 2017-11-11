@@ -14,7 +14,7 @@ var buttonSubmitProptyUtil = function() {
     var electricityMPAN = $("#inputElectricMPAN").val();
     var getelectricMPAN = $(".electricMPAN-prefix").html();
     var elecMPAN = "";
-    var isLLAddress = 0;
+    var isLLAddress = 0; 
     if(electricityMPAN != ""){
         elecMPAN = getelectricMPAN+electricityMPAN;
     } else {
