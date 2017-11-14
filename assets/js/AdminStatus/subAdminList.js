@@ -1,5 +1,6 @@
  var adminType = localStorage.getItem("MyRequest_AdminType");
  var getPhoneCode = "";
+ var getCountryValue = localStorage.getItem('MyRequest_countryCode');
  if(adminType == "SuperAdmin"){
     getPhoneCode = "+44";
 }
@@ -83,7 +84,7 @@ $(".btnSubmitAdmin").click(function() {
           return false;
       }*/
       else {
-       var dataForm = '{"Admin_ID":"' + adminUserID + '","Title":"' + title + '","FirstName":"' + firstName + '","LastName":"' + lastName + '","PhoneNumber":"' + phoneNumber + '","EmailID":"' + emailID + '","Password":"' + password + '","Logo":"' + filePath + '"}';
+       var dataForm = '{"Admin_ID":"' + adminUserID + '","Title":"' + title + '","FirstName":"' + firstName + '","LastName":"' + lastName + '","PhoneNumber":"' + phoneNumber + '","EmailID":"' + emailID + '","Password":"' + password + '","Logo":"' + filePath + '", "Country":"'+getCountryValue+'"}';
        console.log(dataForm);
        if (hiddenAdminID == 0) {
            var sendURL = domainAddress + 'CreateSubAdmin';
