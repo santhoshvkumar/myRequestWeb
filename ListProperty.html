@@ -302,7 +302,6 @@
                                         <div class="uk-width-medium-1-3" style="margin-top: 10px;">
                                             <div class="md-card">
                                                 <div class="md-card-content large-padding" style="height:414px;">
-
                                                     <div class="parsley-row">
                                                         <label for="propertyManaged">Is property HMO?<span class="req"></span></label>
                                                         <p>
@@ -313,42 +312,53 @@
                                                             <span class="icheck-inline propMultiple">
                                                                 <input  id="multipleHmo" type="radio" name="hmoSelect" id="radio_demo_inline_12" data-md-icheck value="multiple" />
                                                                 <label for="radio_demo_inline_12" class="inline-label" style="font-size: 13px;">Yes</label>
-                                                            </span></p>
-                                                        </div>
+                                                            </span>
+                                                        </p>
+                                                    </div>
 
-                                                        <div class="parsley-row hmoLicenseNumber" style="margin-top: 20px;">
-                                                            <label for="hmoLicenseNumber">HMO License Number</label>
-                                                            <input type="text" id="inputHmoLicenseNumber" name="hmoLicenseNumber" required class="md-input" />
-                                                        </div>
+                                                    <div class="parsley-row hmoLicenseNumber" style="margin-top: 20px;">
+                                                        <label for="hmoLicenseNumber">HMO License Number</label>
+                                                        <input type="text" id="inputHmoLicenseNumber" name="hmoLicenseNumber" required class="md-input" />
+                                                    </div>
 
-                                                        <div class="parsley-row" style="margin-top: 30px;">
-                                                            <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
-                                                            <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
-                                                        </div>
+                                                    <div class="parsley-row">
+                                                        <label for="propertyManaged">Is Tenant Required?<span class="req"></span></label>
+                                                        <p>
+                                                            <span class="icheck-inline tenantSingle">
+                                                                <input  id="tenantNo" type="radio" name="tenantSelect" id="radio_demo_inline_14" data-md-icheck value="0" />
+                                                                <label for="radio_demo_inline_14" class="inline-label" style="font-size: 13px;">No</label>
+                                                            </span>
+                                                            <span class="icheck-inline tenantMultiple">
+                                                                <input id="tenantYes"  type="radio"  name="tenantSelect" id="radio_demo_inline_13" data-md-icheck  value="1" />
+                                                                <label for="radio_demo_inline_13" class="inline-label" style="font-size: 13px;">Yes</label>
+                                                            </span>
+                                                        </p>
+                                                    </div>
 
+                                                    <div class="parsley-row NoOfTenants" style="margin-top: 30px;">
+                                                        <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
+                                                        <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
+                                                    </div>
 
-                                                        <div class="parsley-row uploadHMO" style="margin-top: 30px;">
-                                                            <form id="FileURLUploadImage4" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
-                                                                <div class="">
-                                                                    <img id="imgHmoUploadPic" style="z-index:-99;height: 100px; width: 120px; margin: 10px 10px 10px -10px;" src="assets/img/noImage.gif" class="">
-                                                                </div>
+                                                    <div class="parsley-row uploadHMO" style="margin-top: 30px;">
+                                                        <form id="FileURLUploadImage4" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                            <div class="">
+                                                                <img id="imgHmoUploadPic" style="z-index:-99;height: 100px; width: 120px; margin: 10px 10px 10px -10px;" src="assets/img/noImage.gif" class="">
+                                                            </div>
 
-                                                                <div class="fileupload fileupload-new" data-provides="fileupload">
-
-                                                                    <div class="input-group-btn" style="margin: -90px 0px 70px 125px;font-size: 11px;">
-                                                                        <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new" >Upload HMO <input type="file" id="hmoUploadPic" name="photoimg" style="height: 50px;margin-top: -20px;"></span>
-
+                                                            <div class="fileupload fileupload-new" data-provides="fileupload">
+                                                                <div class="input-group-btn" style="margin: -90px 0px 70px 125px;font-size: 11px;">
+                                                                    <span class="btn btn-default btn-file">
+                                                                        <span class="md-btn md-btn-primary fileupload-new" >Upload HMO <input type="file" id="hmoUploadPic" name="photoimg" style="height: 50px;margin-top: -20px;"></span>
                                                                     </span>
                                                                 </div>
                                                                 <div id="preview4" style="display:none"></div>
-
 
                                                                 <div class='progressbox getProgressBox' id='progressbox4'>
                                                                     <div class="progressbar" id="progressbar4" style="display:none">
                                                                         <span id="statustxt4" class="getStatusText"></span>
                                                                     </div>
                                                                 </div>
-
                                                             </div>
                                                         </form>
                                                     </div>
@@ -358,7 +368,7 @@
                                     </div>
                                     <!-- <hr/> -->
 
-                                    <div class="uk-grid" data-uk-grid-margin style="background-color:#eeeeee; padding:10px; margin-left:0px;">
+                                    <div class="uk-grid tenantsSection" data-uk-grid-margin style="background-color:#eeeeee; padding:10px; margin-left:0px;">
                                         <div class="uk-width-medium-1-3">
                                             <div class="parsley-row">
                                                 <label><b class="getTenantsInfo" style="cursor:pointer; margin-left:-15px; font-size:16px;"></b></label>

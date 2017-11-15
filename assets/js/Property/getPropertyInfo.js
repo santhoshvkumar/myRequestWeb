@@ -136,6 +136,17 @@ $(document).ready(function() {
                           $("#voidPartNo").iCheck('check');
                       }
 
+                      isTenantRequired = resultGetProperty.records[property].IsTenantRequired;
+                      if (isTenantRequired == 1) {
+                          $("#tenantYes").iCheck('check');
+                          $("#tenantNo").iCheck('uncheck');
+                          $(".getTenantList").show('slow');
+                      } else {
+                          $("#tenantYes").iCheck('uncheck');
+                          $("#tenantNo").iCheck('check');
+                          $(".getTenantList").hide();
+                      }
+
                       var LLAddress = resultGetProperty.records[property].IsLLAddress;
                       if(LLAddress == "1"){
                         //   alert("One===>"+LLAddress);

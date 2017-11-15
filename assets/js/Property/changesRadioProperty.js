@@ -88,6 +88,24 @@ function changesRadioProperty() {
         isEdit=false;
     });
 
+
+    $('input[name="tenantSelect"]:radio').on('ifChecked', function(event) {
+        if (this.value == 0) {
+            $(".NoOfTenants").hide();
+            $(".tenantsSection").hide();
+            $(".getTenantList").hide();
+            $(".errorInfo").hide();
+            $(".errorInfo").html("");        
+            $(".btnSubmitProperty").attr("disabled", false);
+        } else {
+            $(".NoOfTenants").show('slow');
+            $(".tenantsSection").show('slow');
+            $(".getTenantsInfo").text('- Current Occupant');
+            $(".getTenantList").show('slow');
+        }
+        isEdit=false;
+    });
+
     $('input[name="voidPart"]:radio').on('ifChecked', function(event) {
         if (this.value == "multiple") {
             $(".isLLAddress").show('slow');

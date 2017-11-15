@@ -43,6 +43,7 @@ var clearAllValues = function() {
     $('#propertyManageSemi').iCheck('uncheck');
     $('#propertyManageLet').iCheck('uncheck');
     $("#singleHmo").iCheck('check');
+    $("#tenantNo").iCheck('check');
     $(".hmoInputTenent").hide();
     $("#imgHmoUploadPic").attr("src", "assets/img/noImage.gif");
     $("#imgEnergyPerformanceCertificate").attr("src", "assets/img/noImage.gif");
