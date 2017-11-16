@@ -24,30 +24,24 @@ function getProblemSpeciality(specialityID){
                       return false;
                   } else {
                       UIkit.modal.confirm("Are you sure to change Speciality ?", function(result) {
-                          if (result == true) {
+                        //   if (result == true) {
                               var dataForm = '{"SpecialityID":"' + specialityVal + '","Content":"' + getSpecialityName + '","AdminUserID":"' + userID + '"}';
-                              console.log(dataForm);
                               var sendURL = domainAddress + 'saveSpecialityForProblem/' + getSaveProblemID;
-                              console.log(sendURL);
                               $.ajax({
                                   type: "POST",
                                   url: sendURL,
                                   data: dataForm,
                                   success: function(dataCheck) {
-                                      console.log(dataCheck);
-                                      var dataStartWorkLogForm = '{"Status":"contractorName","Content":"' + getSpecialityName + '","ProblemID":"' + getSaveProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
-                                      console.log(dataStartWorkLogForm);
+                                      var dataStartWorkLogForm = '{"Status":"specialityName","Content":"' + getSpecialityName + '","ProblemID":"' + getSaveProblemID + '","WorkAssignedBy":"' + adminUserName + '","workCreatedDate":"' + datetime + '","IsNotifiedForBoth":"1"}';
                                       var sendStartWorkLogURL = domainAddress + 'CreateProblemWorkLog';
-                                      console.log(sendStartWorkLogURL);
                                       $.ajax({
                                           type: "POST",
                                           url: sendStartWorkLogURL,
                                           data: dataStartWorkLogForm,
                                           success: function(dataCheck) {
-                                              console.log(dataCheck);
                                               var message = pushMessageSpecialityUpdate.format(getSpecialityName,requestID);
                                               $.post(domainAddress + "push/messageSendByAdminForWorkStatus.php", {
-                                                  ContractorID:contractorValue,
+                                                  ContractorID:contractorID,
                                                   TenantID:userRegisterID,
                                                   AdminID:adminUserID,
                                                   Title:'Speciality Changed',
@@ -65,12 +59,12 @@ function getProblemSpeciality(specialityID){
                                       });
                                   }
                               });
-                          } else {
-                              $(".bootbox").modal("hide");
-                              $(".specialityText").hide();
-                              $(".specialityHide").toggle('slow');
-                              return false;
-                          }
+                        //   } else {
+                        //     //   $(".bootbox").modal("hide");
+                        //       $(".specialityText").hide();
+                        //       $(".specialityHide").toggle('slow');
+                        //       return false;
+                        //   }
                       });
                   }
               }); // saveSpeciality
