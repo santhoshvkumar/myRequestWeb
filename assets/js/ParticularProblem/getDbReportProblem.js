@@ -381,7 +381,7 @@ function getDbReportProblem(getProblemID) {
               $(".whenDuration").text(getMoment);
               $(".getWhen").text(createDate); // + " ( raised " + getMoment + " )" is not needed
 
-              $(".getWhenNeeded").text("( Available on "+moment(whenToRespond).format('DD/MM/2016,  h:mm A')+" )");
+              $(".getWhenNeeded").text("( Available on "+moment(whenToRespond).format('DD/MM/YYYY,  h:mm A')+" )");
               $(".getAddress").text(getAddress);
               $(".problemNotes").html(Notes);
               $(".userNotes").html("<span><i class='fa fa-pencil-square-o userNotesEdits' id='editUserNotes-" + getProblemID + "'></i></span>");
@@ -414,6 +414,8 @@ function getDbReportProblem(getProblemID) {
                   } else if (status == "WorkEndDate") {
                       getStatusTxt = content;
                   } else if (status == "Approved") {
+                      getStatusTxt = content;
+                  } else if (status == "Rejected") {
                       getStatusTxt = content;
                   } else if (status == "Completed") {
                       getStatusTxt = content + "<span class='fixedCaseModal'><a id='clickimageview'> Click here to view the fixed image</a>&nbsp;<i class='fa fa-external-link' style='color:green; font-size:14px;' aria-hidden='true'></i></span>";

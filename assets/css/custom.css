@@ -2236,6 +2236,10 @@ form#FileURLUploadImage1 {
     background-color: #1bb51b;
 }
 
+.md-bg-red{
+    background: #ff0000;
+}
+
 .md-color-black{
     color: #000;
 }

@@ -503,7 +503,7 @@
                                             </div>
                                         </div>
 
-
+                                        <h4 class="contractorRating">Contractor Ratings</h4>
                                         <div class="md-card md-card-hover contractorRating">
                                             <div class="uk-grid" data-uk-grid-margin>
                                                 <div class="uk-width-medium-1-1">
