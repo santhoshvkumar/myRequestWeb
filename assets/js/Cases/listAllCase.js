@@ -133,6 +133,7 @@
     businessName = localStorage.getItem("MyRequest_BusinessName");
     var logo = localStorage.getItem("MyRequest_Logo");
     localProblemStatus = localStorage.getItem("MyRequest_RepairStatus");
+    var getCountry = localStorage.getItem('MyRequest_countryCode');
 
     $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
     $("#getLoadingModalContent").addClass('md-show');
@@ -486,7 +487,11 @@ function loadProblems(getValue) {
                                         if (fixedAmount == null || fixedAmount == "") {
                                             fixedAmount = "--";
                                         } else {
-                                            fixedAmount = "<i class='fa fa-gbp'></i> " + fixedAmount;
+                                            if(getCountry == "US"){
+                                                fixedAmount = "<i class='fa fa-usd'></i> " + fixedAmount;
+                                            } else {
+                                                fixedAmount = "<i class='fa fa-gbp'></i> " + fixedAmount;
+                                            }
                                         }
                                         $("#getFixedAmount-" + problemID).show();
                                         $("#getFixedAmount-" + problemID).append(fixedAmount);

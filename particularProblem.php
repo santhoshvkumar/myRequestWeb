@@ -232,6 +232,40 @@
                             <div class="uk-grid" data-uk-grid-margin>
                                 <div class="uk-width-medium-1-3 borderRight">
                                     <div class="parsley-row">
+                                        <div class="uk-grid" data-uk-grid-margin>
+                                            <div class="uk-width-medium-1-1">
+                                                <div class="md-card md-card-hover widthCardGal">
+                                                    <a class="problemRefImage" data-uk-lightbox="{group:'gallery'}">
+                                                        <img class="problemImage problemImageZoom" id="problemImageZoom" src="assets/img/no_image.jpg">
+                                                    </a>
+                                                    <br /><br />
+                                                    <div class="gallery_grid_image_caption">
+                                                        <span class="gallery_image_title  addFontBlack specialityName"></span> <span class='specialityLists uk-text-muted uk-text-small'></span> <span class=" specialityText addFontBlack">Speciality Saved Successfully.</span>
+                                                        <span class="gallery_image_title  addFontGray whenDuration pull-right"></span>
+                                                    </div>
+                                                    <br />
+                                                </div>
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-grid specialityHide" data-uk-grid-margin>
+                                            <div class="uk-width-medium-1-2" style="margin-left: 15%;">
+                                                <select class='form-control' id='specialityValue' style="margin: 5%;">
+                                                    <option value='0'>Select Speciality</option>
+                                                </select>
+                                            </div>
+                                            <div class="uk-width-medium-1-4 changeSpeciality"></div>
+                                        </div>
+
+                                        <div class="uk-grid" data-uk-grid-margin>
+                                            <div class="uk-width-medium-1-1">
+                                                <div class="statusOfContractor addFontBlack">
+                                                    <span class="statusColor"></span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <!-- <div class="parsley-row">
                                         <div class="md-card md-card-hover widthCardGal">
                                             <div class="gallery_grid_item md-card-content">
                                                 <a class="problemRefImage" data-uk-lightbox="{group:'gallery'}">
@@ -243,11 +277,11 @@
                                                     <div class='specialityHide'>
                                                         <div class='col-md-8'>
                                                             <select class='form-control' id='specialityValue'>
-                                                        <option value='0'>Select Speciality</option>
-                                                    </select>
-                                                        </div>
-                                                        <div class="col-md-4 changeSpeciality">
-                                                        </div>
+                                                            <option value='0'>Select Speciality</option>
+                                                        </select>
+                                                    </div>
+                                                    <div class="col-md-4 changeSpeciality">
+                                                    </div>
                                                     </div>
                                                     <br /><br />
                                                 </div>
@@ -257,7 +291,7 @@
                                         <div class="statusOfContractor addFontBlack">
                                             <span class="statusColor"> </span>
                                         </div>
-                                    </div>
+                                    </div> -->
                                 </div>
 
                                 <div class="uk-width-medium-1-3 borderRight borderMiddle">
@@ -444,6 +478,7 @@
                                             </div>
                                         </div>
 
+                                        <h4 class="contractorListData">Contractor Working Hours & Rate</h4>
                                         <div class="md-card md-card-hover contractorListData">
                                             <div class="uk-grid " data-uk-grid-margin>
                                                 <div class="uk-width-medium-1-1">

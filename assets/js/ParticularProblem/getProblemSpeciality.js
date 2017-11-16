@@ -6,8 +6,8 @@ function getProblemSpeciality(specialityID){
               for (Speciality in resultSpeciality.SpecialityRecord) {
                   specialityName = resultSpeciality.SpecialityRecord[Speciality].SpecialityName;
                   $(".specialityName").text(specialityName);
-                  $(".specialityLists").html("<i class='fa fa-pencil-square-o fa-1x specialityEdit' id='editSpeciality-" + getProblemID + "'></i>");
-                  $(".changeSpeciality").html("<button type='button' class='md-btn md-btn-primary saveSpeciality' id='saveSpeciality-" + getProblemID + "' style='height: 32px;margin-top:-30px;margin-left:16px;'> Speciality</button>");
+                  $(".specialityLists").html("<i class='fa fa-pencil-square-o fa-1x specialityEdit' id='editSpeciality-" + getProblemID + "' style='cursor: pointer;'></i>");
+                  $(".changeSpeciality").html("<button type='button' class='md-btn md-btn-primary saveSpeciality' id='saveSpeciality-" + getProblemID + "'> Speciality</button>");
               }
               $(".specialityEdit").on('click', function() {
                   $(".specialityText").hide();

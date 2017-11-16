@@ -108,9 +108,9 @@
       var lettingAgencyCode = localStorage.getItem("MyRequest_LettingAgencyCode");
       logo = localStorage.getItem("MyRequest_Logo");
       var isFilled = localStorage.getItem("MyRequest_profileFill");
-
-
-
+      var getCountry = localStorage.getItem('MyRequest_countryCode');
+      var costSymbol = '';
+        
       if (isFilled == "true") {
           window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
       }
@@ -240,26 +240,34 @@
 
 
 
-  function getContractorChargeDetails(contractorID) {
-      $.get(domainAddress + "GetContractorChargeDetails/" + contractorID, {}, function(resultContractor) {
-
-          $(".allContractorList").html("");
-          if (resultContractor.record_count == 0) {
-              $(".allContractorList").html("<tr> <td> No Records Found    </td> <td> </td> <td> </td> <td> </td> <td> </td>  </tr>");
-          } else {
-              for (var getContractor in resultContractor.records) {
-                  if (resultContractor.records[getContractor].AverageCharges == null && resultContractor.records[getContractor].VisitCharges == null && resultContractor.records[getContractor].HourlyRate == null && resultContractor.records[getContractor].StartTime == null && resultContractor.records[getContractor].EndTime == null) {
-                      $(".allContractorList").html("<tr> <td> No Records Found </td>  <td> </td>  <td>  </td>  </tr>");
-                  } else {
-                      $(".allContractorList").append("<tr> <td><i class='fa fa-gbp'></i> " + resultContractor.records[getContractor].AverageCharges + "    </td> <td> <i class='fa fa-gbp'></i>  " + resultContractor.records[getContractor].VisitCharges + "  </td>   <td><i class='fa fa-gbp'></i> " + resultContractor.records[getContractor].HourlyRate + "</td>   <td>" + resultContractor.records[getContractor].StartTime + "</td>  <td>" + resultContractor.records[getContractor].EndTime + "</td>  </tr>");
-                  }
-              }
-
-              $("#getLoadingModalContent").removeClass('md-show');
-
-          }
-      });
-  } // getContractorChargeDetails
+function getContractorChargeDetails(contractorID) {
+    if(getCountry == "US"){
+        costSymbol = '<i class="fa fa-usd"></i>';
+    } else {
+        costSymbol = '<i class="fa fa-gbp"></i>';
+    }
+    
+    $.get(domainAddress + "GetContractorChargeDetails/" + contractorID, {}, function(resultContractor) {
+        $(".allContractorList").html("");
+        if (resultContractor.record_count == 0) {
+            $(".allContractorList").html("<tr> <td> No Records Found </td> <td> </td> <td> </td> <td> </td> <td> </td>  </tr>");
+        } else {
+            for(var getContractor in resultContractor.records) {
+                if (resultContractor.records[getContractor].AverageCharges == null && resultContractor.records[getContractor].VisitCharges == null && resultContractor.records[getContractor].HourlyRate == null && resultContractor.records[getContractor].StartTime == null && resultContractor.records[getContractor].EndTime == null) {
+                    $(".allContractorList").html("<tr> <td> No Records Found </td>  <td> </td>  <td>  </td>  </tr>");
+                } else {
+                    if(resultContractor.records[getContractor].EndTime == ""){
+                        resultContractor.records[getContractor].EndTime = "00:00";
+                    } else {
+                        resultContractor.records[getContractor].EndTime= resultContractor.records[getContractor].EndTime;
+                    }
+                    $(".allContractorList").append("<tr><td>"+costSymbol + resultContractor.records[getContractor].AverageCharges +"</td><td>"+costSymbol + resultContractor.records[getContractor].VisitCharges +"</td><td>"+costSymbol + resultContractor.records[getContractor].HourlyRate +"</td><td><i class='fa fa-clock-o'></i>"+resultContractor.records[getContractor].StartTime +"</td><td><i class='fa fa-clock-o'></i>"+ resultContractor.records[getContractor].EndTime +"</td></tr>");
+                }
+            }
+            $("#getLoadingModalContent").removeClass('md-show');
+        }
+    });
+} // getContractorChargeDetails
 
 
 
