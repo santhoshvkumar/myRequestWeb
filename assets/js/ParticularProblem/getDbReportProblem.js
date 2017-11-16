@@ -108,6 +108,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",false);
                   $(".btnAddNotes").attr("disabled",false);
                   $(".contractorRating").hide();
+                  $(".specialityLists").show();
               } else if (problemStatus2 == "Assigned") {
 
                   $(".statusColor").html("");
@@ -131,6 +132,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",false);
                   $(".btnAddNotes").attr("disabled",false);
                   $(".contractorRating").hide();
+                  $(".specialityLists").hide();
               } else if (problemStatus2 == "Awaiting Approval") {
 
                   $(".statusColor").html("");
@@ -155,6 +157,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",false);
                   $(".btnAddNotes").attr("disabled",false);
                   $(".contractorRating").hide();
+                  $(".specialityLists").hide();
               } else if (problemStatus2 == "Approved") {
                   //console.log("problem status Approved");
                   $(".statusColor").html("");
@@ -178,6 +181,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",false);
                   $(".btnAddNotes").attr("disabled",false);
                   $(".contractorRating").hide();
+                  $(".specialityLists").hide();
               } else if (problemStatus2 == "Started") {
                   //console.log("problem status Started");
                   $(".statusColor").html("");
@@ -201,6 +205,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",false);
                   $(".btnAddNotes").attr("disabled",false);
                   $(".contractorRating").hide();
+                  $(".specialityLists").hide();
               } else if (problemStatus2 == "Completed") {
 
                   $(".statusColor").html("");
@@ -223,6 +228,7 @@ function getDbReportProblem(getProblemID) {
                   $("#amountListData").show();
                   $("#noteNewText").attr("disabled",true);
                   $(".btnAddNotes").attr("disabled",true);
+                  $(".specialityLists").hide();
                   if(resultProblem.ProblemRecord[Problem].QualityRating==null){
                     $(".contractorRating").hide();
                   }
@@ -258,6 +264,7 @@ function getDbReportProblem(getProblemID) {
                   $("#noteNewText").attr("disabled",true);
                   $(".btnAddNotes").attr("disabled",true);
                   $(".contractorRating").hide();
+                  $(".specialityLists").hide();
               }
               if (localProblemStatus == "Closed") {
                   $("#btnClosedd-" + resultProblem.ProblemRecord[Problem].ProblemID).hide();
