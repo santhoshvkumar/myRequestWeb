@@ -965,10 +965,10 @@ function getAddRemove(count) {
             getAddRemove(count);
         }
         $("#inputHMONoOfTenent").val(count);
-        $("#singleHmo").iCheck('uncheck');
-        $("#multipleHmo").iCheck('check');
-        $(".hmoInputTenent").show('slow');
-        $(".hmoLicenseNumber").show();
+        // $("#singleHmo").iCheck('uncheck');
+        // $("#multipleHmo").iCheck('check');
+        // $(".hmoInputTenent").show('slow');
+        // $(".hmoLicenseNumber").show();
         var hiddenPropertyID = $("#hiddenPropertyID").val();
         if (hiddenPropertyID == 0) {
             $("#btnAddUserTenant-" + count).hide();

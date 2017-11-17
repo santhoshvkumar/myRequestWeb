@@ -86,36 +86,51 @@
             }, 800);
          });  // SearchSpeciality
 
-         $("#inputHMONoOfTenent").keyup(function(e) {
+        $("#inputHMONoOfTenent").keyup(function(e) {
             count = $("#inputHMONoOfTenent").val();
             if(count==""){
 
-            }
-            else{
+            } else {
                 if (count == 1) {
-                    //$("#singleHmo").iCheck('check');
-                    //$("#multipleHmo").iCheck('uncheck');
-                    
-                    //$("#imgHmoUploadPic").css("border","");
                     $(".hmoInputTenent").hide();
-                    //$(".hmoLicenseNumber").hide();
                 } else {
-                    //$("#singleHmo").iCheck('uncheck');
-                    //$("#multipleHmo").iCheck('check');
-                    
                     $(".hmoInputTenent").show('slow');
-                    //$(".hmoLicenseNumber").show('slow');
                 }
 
                 $(".getTenantList").html('');
-                for(var i=1;i<=count;i++){
-                    getAddTenant(i);
-                    $("#getIsAppInstallCheck-"+i).css("height", "610px");
-                    if(i!=1){
-                        $("#closeCard-" + i).show();
+
+                if(count == 0){
+                    $(".noOfTenanterrorInfo").show();
+                    $(".noOfTenanterrorInfo").text("* Enter atleast 1 Tenant");
+                    $(".errorInfo").show();
+                    $(".errorInfo").text("* Enter atleast 1 Tenant");
+                    $("#inputHMONoOfTenent").css("border-color", "red");
+                    $(".btnSubmitProperty").attr("disabled", true);
+                    return false;
+                } else if(count > 10){
+                    $(".noOfTenanterrorInfo").show();
+                    $(".noOfTenanterrorInfo").text("* Enter Only 10 Tenants");
+                    $(".errorInfo").show();
+                    $(".errorInfo").text("* Enter Only 10 Tenants");
+                    $("#inputHMONoOfTenent").css("border-color", "red");
+                    $(".btnSubmitProperty").attr("disabled", true);
+                } else {
+                    $(".getTenantList").html('');
+                    $(".noOfTenanterrorInfo").hide();
+                    $(".noOfTenanterrorInfo").html("");
+                    $(".errorInfo").hide();
+                    $(".errorInfo").html("");
+                    $("#inputHMONoOfTenent").css("border-color", "#444");
+                    $(".btnSubmitProperty").attr("disabled", false);
+                    for(var i=1;i<=count;i++){
+                        getAddTenant(i);
+                        $("#getIsAppInstallCheck-"+i).css("height", "610px");
+                        if(i!=1){
+                            $("#closeCard-" + i).show();
+                        }
                     }
+                    getAddRemove(count);
                 }
-                getAddRemove(count);
 
                 var localTenantData = localStorage.getItem('MyRequestTenantsData');
                 if (localTenantData != null) {
@@ -204,27 +219,45 @@
          $("#inputHMONoOfTenent").on('change',function(){
             count = $("#inputHMONoOfTenent").val();
             if (count == 1) {
-                //$("#singleHmo").iCheck('check');
-                //$("#multipleHmo").iCheck('uncheck');
-                //$("#imgHmoUploadPic").css("border","");
                 $(".hmoInputTenent").hide();
-                //$(".hmoLicenseNumber").hide();
             } else {
-                //$("#singleHmo").iCheck('uncheck');
-                //$("#multipleHmo").iCheck('check');
                 $(".hmoInputTenent").show('slow');
-                //$(".hmoLicenseNumber").show('slow');
             }
 
             $(".getTenantList").html('');
-            for(var i=1;i<=count;i++){
-                getAddTenant(i);
-                $("#getIsAppInstallCheck-"+i).css("height", "610px");
-                if(i!=1){
-                    $("#closeCard-" + i).show();
+            
+            if(count == 0){
+                $(".noOfTenanterrorInfo").show();
+                $(".noOfTenanterrorInfo").text("* Enter atleast 1 Tenant");
+                $(".errorInfo").show();
+                $(".errorInfo").text("* Enter atleast 1 Tenant");
+                $("#inputHMONoOfTenent").css("border-color", "red");
+                $(".btnSubmitProperty").attr("disabled", true);
+                return false;
+            } else if(count > 10){
+                $(".noOfTenanterrorInfo").show();
+                $(".noOfTenanterrorInfo").text("* Enter Only 10 Tenants");
+                $(".errorInfo").show();
+                $(".errorInfo").text("* Enter Only 10 Tenants");
+                $("#inputHMONoOfTenent").css("border-color", "red");
+                $(".btnSubmitProperty").attr("disabled", true);
+            } else {
+                $(".getTenantList").html('');
+                $(".noOfTenanterrorInfo").hide();
+                $(".noOfTenanterrorInfo").html("");
+                $(".errorInfo").hide();
+                $(".errorInfo").html("");
+                $("#inputHMONoOfTenent").css("border-color", "#444");
+                $(".btnSubmitProperty").attr("disabled", false);
+                for(var i=1;i<=count;i++){
+                    getAddTenant(i);
+                    $("#getIsAppInstallCheck-"+i).css("height", "610px");
+                    if(i!=1){
+                        $("#closeCard-" + i).show();
+                    }
                 }
+                getAddRemove(count);
             }
-            getAddRemove(count);
             var localTenantData = localStorage.getItem('MyRequestTenantsData');
                 if (localTenantData != null) {
                     var getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));

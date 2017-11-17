@@ -1,74 +1,10 @@
 function addUpdatePropertyValidation() {
-    // debugger;
     var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
-//    getAddTenantArr = new Array();
-    var hiddenPropertyID = $("#hiddenPropertyID").val();
-    var landlordTitle = $("#select2-inputLandlordTitle-container").html();
-    var name = $("#getName").val().replace(/["']/g, "`");
-    var lastName = $("#getLastName").val().replace(/["']/g, "`");
-    var emailID = $("#inputEmailID").val();
-    var mobileNumber = $("#inputMobileNumber").val();
-
-    var getAppYes = $('.appYes > div').hasClass('checked');
-    var getAppNo = $('.appNo > div').hasClass('checked');
-   
-    if (getAppYes === true) {
-        isAppInstalled = 1;
-    }
-   
-    if (getAppNo === true) {
-        isAppInstalled = 0;
-    }
-
     var propertyCreated = "";
     var propertyUpdated = "";
-    var getHMOSingle = $('.propSingle > div').hasClass('checked');
-    var getHMOMultiple = $('.propMultiple > div').hasClass('checked');
-    
-    if (getHMOSingle === true) {
-        hmoOccupancy = "No";
-        $(".hmoInputTenent").hide();
-        $(".hmoLicenseNumber").hide();
-    }
+    var hiddenPropertyID = $("#hiddenPropertyID").val();
 
-    if (getHMOMultiple === true) {
-        hmoOccupancy = "Yes";
-        $(".hmoInputTenent").show();
-        $(".hmoLicenseNumber").show();
-
-    }
-
-    var tenantNo = $('.tenantSingle > div').hasClass('checked');
-    var tenantYes = $('.tenantMultiple > div').hasClass('checked');
-
-    if (tenantNo === true) {
-        isTenantRequired = 0;
-        $(".NoOfTenants").hide();
-        $(".tenantsSection").hide();
-        $(".errorInfo").hide();
-        $(".errorInfo").html("");
-        $(".btnSubmitProperty").attr("disabled", false);
-    }
-
-    if (tenantYes === true) {
-        isTenantRequired = 1;
-        $(".NoOfTenants").show('slow');
-        $(".tenantsSection").show('slow');
-    }
-    
-    
-    var getAgency = $('.agency > div').hasClass('checked');
-         var getLandlord = $('.landlord > div').hasClass('checked');
-         if(getAgency===true){
-            isVoid="Yes";
-         }
-         if(getLandlord===true){
-            isVoid="No";
-         }
-
-
-    
-    var address = $("#inputAddress").val();
+    var address = $.trim($("#inputAddress").val());
     var location = $("#inputLocation").val();
     var fuel = $("#select2-inputFuel-container").html();
     var supplierElectric = $("#select2-inputSupplierElectric-container").html();
@@ -86,37 +22,33 @@ function addUpdatePropertyValidation() {
     var bedrooms = $("#select2-inputBedrooms-container").html();
     var propertyStatus = $("#select2-inputPropertyStatus-container").html();
     var city = $("#select2-inputCity-container").html();
-    var zip = $("#inpuZip").val();
+    var zip = $.trim($("#inpuZip").val());
     var country = $("#inputCountry").val();
-   
-    var hmoLicenseNumber = $("#inputHmoLicenseNumber").val();
+    var hmoLicenseNumber = $.trim($("#inputHmoLicenseNumber").val());
+
+    var landlordTitle = $("#select2-inputLandlordTitle-container").html();
+    var name = $.trim($("#getName").val());
+    var lastName = $.trim($("#getLastName").val());
+    var emailID = $("#inputEmailID").val();
+    var mobileNumber = $.trim($("#inputMobileNumber").val());
+    var getAppYes = $('.appYes > div').hasClass('checked');
+    var getAppNo = $('.appNo > div').hasClass('checked');
+    var getHMOSingle = $('.propSingle > div').hasClass('checked');
+    var getHMOMultiple = $('.propMultiple > div').hasClass('checked');
+    var getAgency = $('.agency > div').hasClass('checked');
+    var getLandlord = $('.landlord > div').hasClass('checked');
+    var tenantNo = $('.tenantSingle > div').hasClass('checked');
+    var tenantYes = $('.tenantMultiple > div').hasClass('checked');
     var homeInsurYes = $(".homeInsurYes > div").hasClass("checked");
     var homeInsurNo = $(".homeInsurNo > div").hasClass("checked");
-    if (homeInsurYes == true) {
-        homeInsurance = 1;
-    }
-    if (homeInsurNo == true) {
-        homeInsurance = 0;
-    }
     var propManageFull = $(".propManageFull > div").hasClass("checked");
     var propManageSemi = $(".propManageSemi > div").hasClass("checked");
     var propManageLet = $(".propManageLet > div").hasClass("checked");
-    if (propManageFull == true) {
-        getPropertyManaged = "Full";
-    }
-    if (propManageSemi == true) {
-        getPropertyManaged = "Semi";
-    }
-
-    if (propManageLet == true) {
-        getPropertyManaged = "Let";
-    }
-   
 
     var landlordState = $("#select2-inputState1-container").html();
     var landlordCity = $("#select2-inputCity1-container").html();
-    var landlordZip = $("#inpuZip1").val();
-    var landlordAddress = $("#inputAddress1").val();
+    var landlordZip = $.trim($("#inpuZip1").val());
+    var landlordAddress = $.trim($("#inputAddress1").val());
 
 
     var validFrom = $("#validFrom").val();
@@ -157,105 +89,76 @@ function addUpdatePropertyValidation() {
     var radioNo = "";
     var getIsAppInstalled = "";
     adminUserID = localStorage.getItem("MyRequest_AdminID");
-
+   
+    if (getAppYes === true) {
+        isAppInstalled = 1;
+    }
+   
+    if (getAppNo === true) {
+        isAppInstalled = 0;
+    }
     
+    if (getHMOSingle === true) {
+        hmoOccupancy = "No";
+        $(".hmoInputTenent").hide();
+        $(".hmoLicenseNumber").hide();
+    }
 
-    // if (fuel == "Select Fuel Type") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Fuel Type");
-    //     $("#select2-inputFuel-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-     
+    if (getHMOMultiple === true) {
+        hmoOccupancy = "Yes";
+        $(".hmoInputTenent").show();
+        $(".hmoLicenseNumber").show();
 
-    // if (supplierGas == "Select Supplier Gas") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Supplier Gas");
-    //     $("#select2-inputSupplierGas-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    }
 
-    // if (fuel == "Duel" && gas == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Gas Meter Reading");
-    //     $("#inputGas").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    if (tenantNo === true) {
+        isTenantRequired = 0;
+        $(".NoOfTenants").hide();
+        $(".tenantsSection").hide();
+        $(".errorInfo").hide();
+        $(".errorInfo").html("");
+        $(".btnSubmitProperty").attr("disabled", false);
+    }
 
-    // if (supplierElectric == "Select Supplier Electric") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Supplier Electric");
-    //     $("#select2-inputSupplierElectric-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    if (tenantYes === true) {
+        isTenantRequired = 1;
+        $(".NoOfTenants").show('slow');
+        $(".tenantsSection").show('slow');
+    }
 
+    if(getAgency===true){
+        isVoid="Yes";
+    }
+    if(getLandlord===true){
+        isVoid="No";
+    }
 
-    // if (read1 == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 1");
-    //     $("#inputRead1").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    if (homeInsurYes == true) {
+        homeInsurance = 1;
+    }
+    if (homeInsurNo == true) {
+        homeInsurance = 0;
+    }
 
-    // if (economy7 == "1" && read2 == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter the Electricity Meter Reading 2");
-    //     $("#inputRead2").css("border-color", "red");
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    if (propManageFull == true) {
+        getPropertyManaged = "Full";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    }
+    if (propManageSemi == true) {
+        getPropertyManaged = "Semi";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    }
 
-    // if (taxAuthority == "Select Council") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Council Authority");
-    //     $("#select2-inputTaxAuthority-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    // if ( waterMeter== "1" && water == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Enter Water Meter Reading");
-    //     $("#inputWater").css("border-color", "red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-    
-    // if (waterMeter== "1" && waterAuthority == "Select Water Authority") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Select the Water Authority");
-    //     $("#select2-inputWaterAuthority-container").css("border", "1px solid red");
-    //     $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
-
-    //  var inputMobilezero = $("#inputMobile-0").val();
-    //  var inputTitlezero = $("#inputTitle-0").val();
-    //  var inputNamezero = $("#inputName-0").val();
-    //  var inputLastNamezero = $("#inputLastName-0").val();
-    //  var inputEmailzero = $("#inputEmail-0").val();
-    //  var inputStartDatezero = $("#inputStartDate-0").val();
-    //  var inputEndDatezero = $("#inputEndDate-0").val();
-
-    // if (inputMobilezero == "") {
-    //     $(".errorInfo").show();
-    //     $(".errorInfo").text("* Please Entert the Tenants Mobile number");
-    //     $("#inputMobile-0").css("border-color", "red");
-    //     // $(".utilityInfo").show();
-    //     $(".btnSubmitProperty").attr("disabled", true);
-    //     return false;
-    // }
+    if (propManageLet == true) {
+        getPropertyManaged = "Let";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    }
 
     var mobileID = "";
     var inputMobile = "";
@@ -271,48 +174,8 @@ function addUpdatePropertyValidation() {
     var inputStartDate = "";
     var endDateID = "";
     var inputEndDate = "";
-
+        
     if(isTenantRequired == 1){
-        $('.inputMobile').each(function () {
-            mobileID = this.id;
-            inputMobile = $("#"+mobileID).val();
-            if(inputMobile == ""){
-                $(".errorInfo").show();
-                $(".errorInfo").text("* Enter Tenant's Mobile Number");
-                $("#"+mobileID).css("border-color", "red");
-                $(".btnSubmitProperty").attr("disabled", true);
-                return false;
-            }  else if(inputMobile.length != 10){
-                $(".errorInfo").show();
-                $(".errorInfo").text("* Enter 10 digit Mobile Number.");
-                $("#"+mobileID).css("border-color", "red");
-                $(".btnSubmitProperty").attr("disabled", true);
-                return false;
-            } else {
-                $(".errorInfo").hide();
-                $(".errorInfo").html("");
-                $("#"+mobileID).css("border-color", "rgba(0, 0, 0, 0.12)");
-                $(".btnSubmitProperty").attr("disabled", false);
-            }
-        });        
-
-        $('.inputTitle').each(function () {
-            titleID = this.id;
-            inputTitle = $("#select2-"+titleID+"-container").html();
-            if(inputTitle == "Select Title"){
-                $(".errorInfo").show();
-                $(".errorInfo").text("* Select Title");
-                $("#select2-"+titleID+"-container").css("border", "1px solid red");
-                $(".btnSubmitProperty").attr("disabled", true);
-                return false;
-            } else {
-                $(".errorInfo").hide();
-                $(".errorInfo").html("");
-                $("#select2-"+titleID+"-container").css("border", "rgba(0, 0, 0, 0.12)");
-                $(".btnSubmitProperty").attr("disabled", false);
-            }
-        });
-
         $('.inputName').each(function () {
             nameID = this.id;
             inputName = $("#"+nameID).val();
@@ -419,203 +282,50 @@ function addUpdatePropertyValidation() {
                 $(".btnSubmitProperty").attr("disabled", false);
             }
         });
+
+        $('.inputTitle').each(function () {
+            titleID = this.id;
+            inputTitle = $("#select2-"+titleID+"-container").html();
+            if(inputTitle == "Select Title"){
+                $(".errorInfo").show();
+                $(".errorInfo").text("* Select Title");
+                $("#select2-"+titleID+"-container").css("border", "1px solid red");
+                $(".btnSubmitProperty").attr("disabled", true);
+                return false;
+            } else {
+                $(".errorInfo").hide();
+                $(".errorInfo").html("");
+                $("#select2-"+titleID+"-container").css("border", "rgba(0, 0, 0, 0.12)");
+                $(".btnSubmitProperty").attr("disabled", false);
+            }
+        });
+
+        $('.inputMobile').each(function () {
+            mobileID = this.id;
+            inputMobile = $("#"+mobileID).val();
+            if(inputMobile == ""){
+                $(".errorInfo").show();
+                $(".errorInfo").text("* Enter Tenant's Mobile Number");
+                $("#"+mobileID).css("border-color", "red");
+                $(".btnSubmitProperty").attr("disabled", true);
+                return false;
+            }  else if(inputMobile.length != 10){
+                $(".errorInfo").show();
+                $(".errorInfo").text("* Enter 10 digit Mobile Number.");
+                $("#"+mobileID).css("border-color", "red");
+                $(".btnSubmitProperty").attr("disabled", true);
+                return false;
+            } else {
+                $(".errorInfo").hide();
+                $(".errorInfo").html("");
+                $("#"+mobileID).css("border-color", "rgba(0, 0, 0, 0.12)");
+                $(".btnSubmitProperty").attr("disabled", false);
+            }
+        });
     } else {
         $(".errorInfo").hide();
-        $(".errorInfo").html("");        
-        $(".btnSubmitProperty").attr("disabled", false);
-    }
-    
-    if (address == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Address");
-        $("#inputAddress").css("border-color", "red");
+        $(".errorInfo").html("");
         $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (state == "Select County") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the County");
-        $("#select2-inputState-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (city == "Choose City" || city == undefined) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the City");
-        $("#select2-inputCity-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (zip == "") {
-        $(".errorInfo").show();
-        if(getPhoneCode == +44){
-            $(".errorInfo").text("* Enter the Post Code");
-          } else {
-              $(".errorInfo").text("* Enter the Zip Code");
-          }
-        $("#inpuZip").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (getAgency == "" && getLandlord == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select Is Void");
-        $(".isVoid").css("color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (propManageFull == "" && propManageSemi == "" && propManageLet == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select Property Managed");
-        $(".propertyMan").css("color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (property == "Select Property Type") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Property Type");
-        $("#select2-inputProperty-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (bedrooms == "Select Bedrooms") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select The Number Of Bedrooms");
-        $("#select2-inputBedrooms-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-    
-    if (propertyStatus == "Select Property Status") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select The Property Status");
-        $("#select2-inputPropertyStatus-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
- 
-    if (homeInsurYes == "" && homeInsurNo == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select Landlord Insurance");
-        $(".homeIns").css("color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-   if (hmoLicenseNumber == "" && getHMOMultiple == true) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter The License Number");
-        $("#inputHmoLicenseNumber").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-   if (imageUrl4 == "" && getHMOMultiple == true) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Upload the HMO Image");
-        $("#imgHmoUploadPic").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-    
-   if (landlordTitle == "Select Title") {
-        $(".landlordInfo").show();
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Landlord Title");
-        $("#select2-inputLandlordTitle-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (name == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Landlord First Name");
-        $("#getName").css("border-color", "red");
-        $(".landlordInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-     if (lastName == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Landlord Last Name");
-        $("#getLastName").css("border-color", "red");
-        $(".landlordInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    // debugger;
-     if (emailID == "") {
-         $(".errorInfo").show();
-         $(".errorInfo").text("* Enter the Landlord EmailID");
-         $("#inputEmailID").css("border-color", "red");
-         $(".landlordInfo").show();
-         $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-     }
-
-    if (!isValidEmailAddress(emailID)) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Please Enter the Proper Landlord Email ID.");
-        $("#inputEmailID").css("border-color", "red");
-        $(".landlordInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (mobileNumber == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Landlord Mobile Number");
-        $("#inputMobileNumber").css("border-color", "red");
-        $(".landlordInfo").show();
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (landlordAddress == "") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Enter the Landlord Address");
-        $("#inputAddress1").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-     if (landlordState == "Select County") {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Landlord County");
-        $("#select2-inputState1-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-
-     if (landlordCity == "Choose City" || landlordCity == undefined) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Landlord City");
-        $("#select2-inputCity1-container").css("border", "1px solid red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
-    }
-
-    if (landlordZip == "") {
-        $(".errorInfo").show();
-        if(getPhoneCode == +44){
-            $(".errorInfo").text("* Enter the Landlord Post Code");
-          } else {
-              $(".errorInfo").text("* Enter the Landlord Zip Code");
-          }
-        // $(".errorInfo").text("* Enter the Landlord Post Code");
-        $("#inpuZip1").css("border-color", "red");
-        $(".btnSubmitProperty").attr("disabled", true);
-        return false;
     }
 
     if(isTenantRequired == 1){
@@ -664,14 +374,153 @@ function addUpdatePropertyValidation() {
         } 
     } else {
         $(".errorInfo").hide();
-        $(".errorInfo").html("");        
-        $(".btnSubmitProperty").attr("disabled", false);
+        $(".errorInfo").html("");
+        $(".btnSubmitProperty").attr("disabled", true);
     }
-    // else {
-        callUtilityAgreeCheckModal();
-    // }    
-}
 
+    if (address == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Address");
+        $("#inputAddress").css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (state == "Select County") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the County");
+        $("#select2-inputState-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (city == "Choose City" || city == undefined) {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the City");
+        $("#select2-inputCity-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (zip == "") {
+        $(".errorInfo").show();
+        if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Zip Code");
+          }
+        $("#inpuZip").css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (getAgency == "" && getLandlord == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select Is Void");
+        $(".isVoid").css("color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (propManageFull == "" && propManageSemi == "" && propManageLet == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select Property Managed");
+        $(".propertyMan").css("color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (property == "Select PropertyType") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the Property Type");
+        $("#select2-inputProperty-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (bedrooms == "Select Bedrooms") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select The Number Of Bedrooms");
+        $("#select2-inputBedrooms-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (propertyStatus == "Select Property Status") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select The Property Status");
+        $("#select2-inputPropertyStatus-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (homeInsurYes == "" && homeInsurNo == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select Landlord Insurance");
+        $(".homeIns").css("color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (hmoLicenseNumber == "" && getHMOMultiple == true) {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter The License Number");
+        $("#inputHmoLicenseNumber").css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (imageUrl4 == "" && getHMOMultiple == true) {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Upload the HMO Image");
+        $("#imgHmoUploadPic").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (landlordTitle == "Select Title") {
+        $(".landlordInfo").show();
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the Landlord Title");
+        $("#select2-inputLandlordTitle-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (name == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Landlord First Name");
+        $("#getName").css("border-color", "red");
+        $(".landlordInfo").show();
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (lastName == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Landlord Last Name");
+        $("#getLastName").css("border-color", "red");
+        $(".landlordInfo").show();
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (emailID == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Please Enter the Landlord Email ID");
+        $("#inputEmailID").css("border-color", "red");
+        $(".landlordInfo").show();
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (mobileNumber == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Landlord Mobile Number");
+        $("#inputMobileNumber").css("border-color", "red");
+        $(".landlordInfo").show();
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (landlordAddress == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Landlord Address");
+        $("#inputAddress1").css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (landlordState == "Select County") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the Landlord County");
+        $("#select2-inputState1-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (landlordCity == "Choose City" || landlordCity == undefined) {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Select the Landlord City");
+        $("#select2-inputCity1-container").css("border", "1px solid red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else if (landlordZip == "") {
+        $(".errorInfo").show();
+        if(getPhoneCode == +44){
+            $(".errorInfo").text("* Enter the Landlord Post Code");
+          } else {
+              $(".errorInfo").text("* Enter the Landlord Zip Code");
+          }
+        $("#inpuZip1").css("border-color", "red");
+        $(".btnSubmitProperty").attr("disabled", true);
+        return false;
+    } else {
+        callUtilityAgreeCheckModal();
+    }
+}
 
 function callUtilityAgreeCheckModal(){
     var isAgreeUtility = localStorage.getItem("MyRequest_IsAgreeUtility");

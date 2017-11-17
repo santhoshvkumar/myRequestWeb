@@ -144,13 +144,22 @@ var buttonSubmitProptyUtil = function() {
     var propManageLet = $(".propManageLet > div").hasClass("checked");
     if (propManageFull == true) {
         getPropertyManaged = "Full";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
     }
     if (propManageSemi == true) {
         getPropertyManaged = "Semi";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
     }
 
     if (propManageLet == true) {
         getPropertyManaged = "Let";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
     }
 
 

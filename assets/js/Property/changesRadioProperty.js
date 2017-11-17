@@ -73,6 +73,27 @@ function changesRadioProperty() {
             $("#hiddenIsRentProtectionInsurance").val(0);
         }
     });
+
+    $('#propertyManageFull').on('ifChecked', function(event) {
+        getPropertyManaged = "Full";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    });
+
+    $('#propertyManageSemi').on('ifChecked', function(event) {
+        getPropertyManaged = "Semi";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    });
+
+    $('#propertyManageLet').on('ifChecked', function(event) {
+        getPropertyManaged = "Let";
+        $(".errorInfo").hide();
+        $(".propertyMan").css("color", "#444");
+        $(".btnSubmitProperty").attr("disabled", false);
+    });
         
     $('input[name="hmoSelect"]:radio').on('ifChecked', function(event) {
         if (this.value == "multiple") {
@@ -139,7 +160,10 @@ function changesRadioProperty() {
     });
 
 
-
+// $(".errorInfo").show();
+//         $(".errorInfo").text("* Select Property Managed");
+//         $(".propertyMan").css("color", "red");
+//         $(".btnSubmitProperty").attr("disabled", true);
     $('#inputFuel').on('change', function() {
         if (this.value == '1') {
             $("#inputGas").prop("disabled", false);
