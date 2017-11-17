@@ -337,7 +337,8 @@
 
                                                     <div class="parsley-row NoOfTenants" style="margin-top: 30px;">
                                                         <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
-                                                        <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
+                                                        <input type="text" id="inputHMONoOfTenent" maxlength="2" required class="md-input" value="1" min="1" />
+                                                        <span class="noOfTenanterrorInfo" style="color:red;"></span>
                                                     </div>
 
                                                     <div class="parsley-row uploadHMO" style="margin-top: 30px;">
@@ -424,6 +425,7 @@
                                                     <input type="text" id="inputMobileNumber" name="mobileNumber" required class="md-input" maxlength="10" />
                                                     <span class="mno-prefix landlord-prefix"> </span>
                                                 </div>
+                                                <span class="landlorderrorInfo" style="color:red;"></span>
                                             </div>
                                         </div>
                                     </div>
