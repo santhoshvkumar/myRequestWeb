@@ -257,6 +257,7 @@ function loadAdvertisement() {
             $("#getLoadingModalContent").removeClass('md-show');
 
             $(".editAdvertisement").on('click', function(e) {
+                $(window).scrollTop(0);
                 $("#getLoadingModalContent").addClass('md-show');
                 $(".md-input-wrapper").addClass("md-input-filled");
                 $(".advertisementContent").show();

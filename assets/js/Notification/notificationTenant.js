@@ -442,7 +442,7 @@ var getNotificationContentIDforUpdate = 0;
 
 
           $(".editNotificationContent").on("click", function(e) {
-
+            $(window).scrollTop(0);
               var getNotificationID = this.id.replace("editNotificationContent-", "");
               var getIsPolling = $("#editNotificationContent-" + getNotificationID).attr('refIsPolling');
               var getContentID = $("#newsLetterFor-" + getNotificationID).attr('refId');

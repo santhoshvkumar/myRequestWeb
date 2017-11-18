@@ -416,6 +416,7 @@
                 
               
               $(".editUtility").on('click', function(e) {
+                  $(window).scrollTop(0);
                   $("#getLoadingModalContent").addClass('md-show');
                     var editUtilityPropertyID = this.id.replace('editUtilityID-', '');
                     var editHiddenUtilityID = $("#hidddenGetUtilityID-"+editUtilityPropertyID).val();

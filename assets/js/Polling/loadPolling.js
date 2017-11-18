@@ -505,6 +505,7 @@ $(".btnSearch").click(function () {
 
 
             $(".editPolling").on("click", function(e) {
+                $(window).scrollTop(0);
                 $(".newsLetterContent").show();
                 $("#inputPollingTitle").val('');
                 $("#inputPollingOption1").val('');

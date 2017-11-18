@@ -477,6 +477,7 @@ function loadNewsLetter() {
             $("#getLoadingModalContent").removeClass('md-show');
             
             $(".editNewsLetter").on('click', function(e) {
+                $(window).scrollTop(0);
                 $(".md-input-wrapper").addClass("md-input-filled");
                 $(".newsLetterContent").show();
                 var editNewsLetter = this.id.replace('editNewsLetter-', '');

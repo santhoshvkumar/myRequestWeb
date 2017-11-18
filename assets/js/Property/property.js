@@ -97,6 +97,7 @@ var getPropLat, getPropLong, isEdit=false;
  });
  var map = ''; 
  var count = 1;
+ var NoofTenantscount = 1;
  var finalTenantCount = 0;
  var adminUserID = 0;
  var isAppInstalled = 0;

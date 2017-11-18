@@ -1,6 +1,7 @@
 function getPropertyInfo(editPropertyID){
 
 $(document).ready(function() {
+    $(window).scrollTop(0);
     $(".getTenantsInfo").text("- Current Occupant");
         var Occupantplusminus = $(".getTenantsInfo").text();
         if(Occupantplusminus == "- Current Occupant"){
@@ -503,6 +504,7 @@ $(document).ready(function() {
 
                       for (var addProperty in resultGetProperty.records[property].UserReg) {
                           count++;
+                        //   NoofTenantscount++;
                           $(".newAdd").remove();
                           getAddTenant(count);
                           var newItem = {

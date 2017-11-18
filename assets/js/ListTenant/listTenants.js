@@ -706,6 +706,7 @@ function loadUserTenantsList(result) {
         var isFourExistNo = 0;
         var isOneExistNo = 0;
         $(".editTenant").on('click', function(e) {
+            $(window).scrollTop(0);
             var editTenantID = this.id.replace('editTenantID-', '');
             $("#hiddenTenantID").val(editTenantID);
             $("#getLoadingModalContent").addClass('md-show');

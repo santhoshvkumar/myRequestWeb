@@ -62,6 +62,7 @@ function getAddTenant(count) {
                 getLocalTenantData = JSON.parse(localStorage.getItem('MyRequestTenantsData'));
             }
             count--;
+            $("#inputHMONoOfTenent").val(count);
             if(count==1){
                 $("#inputHMONoOfTenent").val(count);
                 $("#singleHmo").iCheck('check');
