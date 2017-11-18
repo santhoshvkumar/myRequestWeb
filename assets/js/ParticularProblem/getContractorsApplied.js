@@ -39,7 +39,7 @@ function getContractorsApplied(getProblemID) {
                   $('#md-bg-'+resultProblem.records[getInfo].ContractorID).addClass("md-bg-red");
                 }
 
-                if(problemStatus2=="Awaiting Info"){
+                if(problemStatus2=="Awaiting Info" || problemStatus2 == "Awaiting Approval"){
                   $('.contractorApprovedIcon').show();
                 } else {
                   $('.contractorApprovedIcon').hide();
