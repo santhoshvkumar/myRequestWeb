@@ -95,6 +95,7 @@ var hiddenIsGas = "0";
 var hiddenIsWater = "0";
 var hiddenIsCouncil = "0";
 var hiddenAvailTenantInsurance = "0";
+var NoOfTenants = "0";
 
 $(window).load(function() {
     $("#getLoadingModalContent").removeClass('md-show');
@@ -185,11 +186,9 @@ $(document).ready(function() {
         }
         else{
          for (var Property in result.records) {
-            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "' propID='"+result.records[Property].PropertyRegister+"'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
+            $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='" + result.records[Property].PropAddress + "' propID='"+result.records[Property].PropertyRegister+"' name='"+result.records[Property].NoOfTenants+"'>" + result.records[Property].PropOwnerName + " - " + result.records[Property].PropOwnerEmail + " - " + result.records[Property].PropOwnerPhone + " - " + result.records[Property].PropAddress + "</option>");
         } 
     }
-    
-
 
     $("#caseProperty").select2();
 
@@ -265,8 +264,8 @@ $(".btnSubmitTenantProperty").click(function() {
     var hiddenTenantID = $("#hiddenTenantID").val();
     propertyId = $("#caseProperty").val();
     var title = $("#inputTitle").val();
-    var name = $("#getName").val().replace(/["']/g, "`");
-    var lastName = $("#getLastName").val().replace(/["']/g, "`");
+    var name = $.trim($("#getName").val());
+    var lastName = $.trim($("#getLastName").val());
     var mobileNumber = $("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
 
@@ -413,10 +412,13 @@ $(".btnSubmitTenantInsurance").click(function() {
 });
 
 $("#caseProperty").on('change', function() {
+    NoOfTenants = $(this).find('option:selected').attr("name");
+    NoOfTenants = parseInt(NoOfTenants) + parseInt(1);
     propertyId = this.value;
     if (this.value == 0 || this.value == null) {
-        $(".errorInfo").show();
-        $(".errorInfo").text("* Select the Property");
+        $(".help-block").show();
+        $(".help-block").css("border-color", "red");
+        $(".help-block").text("* Select the Property");
         $("#select2-caseProperty-container").css("border", "1px solid red");
         $(".btnSubmitTenant").attr("disabled", true);
     } else {
@@ -424,8 +426,9 @@ $("#caseProperty").on('change', function() {
         var getAddress = element.attr("ref");
         dataAddPropertyFormArr = new Array();
         $('#hiddenPropertyAddress').val(getAddress);
-        $(".errorInfo").hide();
-        $(".errorInfo").text("");
+        $(".help-block").css("border-color", "#444");
+        $(".help-block").hide();
+        $(".help-block").text("");
         $("#select2-caseProperty-container").css("border", "");
         $(".btnSubmitTenant").attr("disabled", false);
 
@@ -737,7 +740,7 @@ function loadUserTenantsList(result) {
                     
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
                     $(".tenantcno-prefix").show();
-                    $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
+                    $("#inputMobileNumber").css("padding", "10px 25px 12px 35px");
                     if (isAppInstalled == 1) {
                         $(".tenantContent").css("border", "1px solid greenyellow");
                     } else {
@@ -942,9 +945,10 @@ function getUserTenantUtilityList(hiddenTenantID){
 } // getUserTenantUtilityList
 
 $("#getName").keyup(function() {
-    var getName = $("#getName").val();
+    var getName = $.trim($("#getName").val());
     if (getName == "") {
         $(".help-block").css("border-color", "red");
+        $("#getName").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the First Name");
         $(".btnSubmitTenant").attr("disabled", true);
@@ -959,9 +963,10 @@ $("#getName").keyup(function() {
 });
 
 $("#getLastName").keyup(function() {
-    var getLastName = $("#getLastName").val();
+    var getLastName = $.trim($("#getLastName").val());
     if (getLastName == "") {
         $(".help-block").css("border-color", "red");
+        $("#getLastName").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the Last Name");
         $(".btnSubmitTenant").attr("disabled", true);
@@ -997,6 +1002,7 @@ $("#inputEmailID").keyup(function() {
     var inputEmailID = $("#inputEmailID").val();
     if (inputEmailID == "") {
         $(".help-block").css("border-color", "red");
+        $("#inputEmailID").css("border-color", "red");
         $(".help-block").show();
         $(".help-block").text("* Enter the Email");
         $(".btnSubmitTenant").attr("disabled", true);
@@ -1033,10 +1039,10 @@ $("#inputMobileNumber").keyup(function() {
 
 $("#inputStartDate").on('change', function() {
     var inputStartDate = $("#inputStartDate").val();
-    if (inputStartDate == "") {
+    if (inputStartDate == "" || inputStartDate == 0) {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
-        $(".help-block").text("* Select Atleast one Property");
+        $(".help-block").text("* Select the Start Date");
         $("#inputStartDate").css("border", "1px solid red");
         $(".btnSubmitTenant").attr("disabled", true);
         return false;
@@ -1053,7 +1059,7 @@ $("#inputEndDate").on('change', function() {
     if (inputEndDate == "") {
         $(".help-block").css("border-color", "red");
         $(".help-block").show();
-        $(".help-block").text("* Select Atleast one Property");
+        $(".help-block").text("* Select the End Date");
         $("#inputEndDate").css("border", "1px solid red");
         $(".btnSubmitTenant").attr("disabled", true);
         return false;
@@ -1071,8 +1077,8 @@ $(".btnSubmitTenant").click(function() {
 
     var tenantID = $("#hiddenTenantID").val();
     var title = $("#select2-inputTitle-container").html();
-    var name = $("#getName").val().replace(/["']/g, "`");
-    var lastName = $("#getLastName").val().replace(/["']/g, "`");
+    var name = $.trim($("#getName").val());
+    var lastName = $.trim($("#getLastName").val());
     var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
     var startDate = $("#inputStartDate").val();
@@ -1080,6 +1086,39 @@ $(".btnSubmitTenant").click(function() {
     var hiddenIsLeadTenant = $("#hiddenIsLeadTenant").val();
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
     propertyId = $("#caseProperty").val();
+
+
+    if(getcountryCode == "UK" || getcountryCode == "India"){
+        if(mobileNumber.length != 13){
+            $(".help-block").css("border-color", "red");
+            $(".help-block").show();
+            $(".help-block").text("* Enter the 10 digit Mobile Number");
+            $("#inputMobileNumber").css("border-color", "red");
+            $(".btnSubmitTenant").attr("disabled", true);
+            return false;
+        }  else {
+            $(".help-block").css("border-color", "#444");
+            $(".help-block").hide();
+            $(".help-block").html("");
+            $("#inputMobileNumber").css("border-color", "#444");
+            $(".btnSubmitTenant").attr("disabled", false);
+        } 
+    } else {
+        if(mobileNumber.length != 12){
+            $(".help-block").css("border-color", "red");
+            $(".help-block").show();
+            $(".help-block").text("* Enter the 10 digit Mobile Number");
+            $("#inputMobileNumber").css("border-color", "red");
+            $(".btnSubmitTenant").attr("disabled", true);
+            return false;
+        }  else {
+            $(".help-block").css("border-color", "#444");
+            $(".help-block").hide();
+            $(".help-block").html("");
+            $("#inputMobileNumber").css("border-color", "#444");
+            $(".btnSubmitTenant").attr("disabled", false);
+        }
+    }
 
     if (title == "Select Title") {
         $(".help-block").css("border-color", "red");
@@ -1179,11 +1218,14 @@ $(".btnSubmitTenant").click(function() {
         
         var getFormatEndDate = endDate.split(".");
         var finalEndDate = getFormatEndDate[2] + "-" + getFormatEndDate[1] + "-" + getFormatEndDate[0];
-        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '", "Country":"'+ getcountryCode +'","AddProperty":"' + finalDataAddProperty + '"}';
+        var dataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '", "Country":"'+ getcountryCode +'","PropertyID":"' + propertyId + '","NoOfTenants":"' + NoOfTenants + '","AddProperty":"' + finalDataAddProperty + '"}';
+
+        var updateDataForm = '{"Title":"' + title + '","Name":"' + name + '","LastName":"' + lastName + '","MobileNumber":"' + mobileNumber + '","StartDate":"' + finalStartDate + '","EndDate":"' + finalEndDate + '","Email":"' + emailID + '","UserImage":"' + imageUrl1 + '","IsAppInstalled":"' + isAppInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"0","IsLeadTenant":"' + hiddenIsLeadTenant + '", "Country":"'+ getcountryCode +'","PropertyID":"' + propertyId + '","AddProperty":"' + finalDataAddProperty + '"}';
         console.log(dataForm);
         if (tenantID == 0) {
             var sendURL = domainAddress + 'CreateUserTenant';
             console.log(sendURL);
+            $("#getLoadingModalContent").addClass('md-show');
             $.ajax({
                 type: "POST",
                 url: sendURL,
@@ -1232,7 +1274,7 @@ $(".btnSubmitTenant").click(function() {
             $.ajax({
                 type: "POST",
                 url: sendURL,
-                data: dataForm,
+                data: updateDataForm,
                 success: function(dataCheck) {
                     console.log(dataCheck);
                     if (dataCheck.success == 0) {
@@ -1265,9 +1307,7 @@ $(".btnSubmitTenant").click(function() {
                         $("#getLoadingModalContent").removeClass('md-show');
                         $(".md-input-wrapper").removeClass("md-input-filled");
                         $(".tenantContent").hide();
-                        UIkit.modal.alert('Tenant Updated Successfully');
-                        
-                        
+                        UIkit.modal.alert('Tenant Updated Successfully');    
                     }
 
                 }
