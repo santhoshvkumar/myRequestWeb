@@ -960,8 +960,18 @@
   logOutClearCatch();
 });
 
+$('#inputFirstName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
  $("#inputFirstName").keyup(function() {
-  var name = $("#inputFirstName").val();
+  var name = $.trim($("#inputFirstName").val());
   if (name == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
@@ -977,9 +987,18 @@
   }
 });
 
-
+$('#inputFirstName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+  
  $("#inputLastName").keyup(function() {
-  var lastName = $("#inputLastName").val();
+  var lastName = $.trim($("#inputLastName").val());
   if (lastName == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
@@ -997,12 +1016,18 @@
 
 
 
- $("#inputContractorEmailID").keyup(function() {
+$("#inputContractorEmailID").keyup(function() {
   var inputContractorEmailID = $("#inputContractorEmailID").val();
   if (inputContractorEmailID == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
     $(".help-block").text("* Enter the Email");
+    $(".btnSubmitContractor").attr("disabled", true);
+    return false;
+  } else if (!isValidEmailAddress(inputContractorEmailID)){
+    $(".help-block").css("border-color", "red");
+    $(".help-block").show();
+    $(".help-block").text("* Please Enter the Proper Email ID.");
     $(".btnSubmitContractor").attr("disabled", true);
     return false;
   } else {
@@ -1018,7 +1043,7 @@
 
 
  $("#inputAddressLine1").keyup(function() {
-  var inputAddressLine1 = $("#inputAddressLine1").val();
+  var inputAddressLine1 = $.trim($("#inputAddressLine1").val());
   if (inputAddressLine1 == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
@@ -1036,7 +1061,7 @@
 
 
  $("#inputAddressLine2").keyup(function() {
-  var inputAddressLine2 = $("#inputAddressLine2").val();
+  var inputAddressLine2 = $.trim($("#inputAddressLine2").val());
   if (inputAddressLine2 == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
@@ -1144,19 +1169,26 @@
   }
 });
 
+$('#inputZip').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
 
-
- $("#inputZip").keyup(function() {
-  var inputZip = $("#inputZip").val();
+$("#inputZip").keyup(function() {
+  var inputZip = $.trim($("#inputZip").val());
   if (inputZip == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
-    if(getPhoneCode == '+44'){
-      $(".help-block").text("* Enter the Post Code");
-    } else {
-      $(".help-block").text("* Enter the Zip Code");
-    }
-    // $(".help-block").text("* Enter the Zip");
+      if(getcountryCode == "UK"){
+        $(".help-block").text("* Enter the Post Code");
+      } else {
+        $(".help-block").text("* Enter the Zip Code");
+      }
     $(".btnSubmitContractor").attr("disabled", true);
     return false;
   } else {
@@ -1188,29 +1220,98 @@
     $(".help-block").text("");
     $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
     $(".btnSubmitContractor").attr("disabled", false);
-    return false;
+  }
+
+  if(getcountryCode == "UK" || getcountryCode == "India"){
+    if(inputPhoneNo1.length != 10){
+      $(".mno-prefix").hide();
+      $("#inputPhoneNo1").removeAttr('style');
+      $("#inputPhoneNo1").css("border-color", "red");
+      $(".help-block").show();
+      $(".help-block").text("* Enter 10 digit Mobile Number");
+      $(".btnSubmitContractor").attr("disabled", true);
+      return false;
+    }  else {
+      $(".mno-prefix").show();
+      $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
+      $(".btnSubmitContractor").attr("disabled", false);
+    } 
+  } else {
+    if(inputPhoneNo1.length != 10){
+      $(".mno-prefix").hide();
+      $("#inputPhoneNo1").removeAttr('style');
+      $("#inputPhoneNo1").css("border-color", "red");
+      $(".help-block").show();
+      $(".help-block").text("* Enter 10 digit Mobile Number");
+      $(".btnSubmitContractor").attr("disabled", true);
+      return false;
+    }  else {
+      $(".mno-prefix").show();
+      $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
+      $(".btnSubmitContractor").attr("disabled", false);
+    }
   }
 });
 
 
  $("#inputAlternateNo").keyup(function() {
   var inputAlternateNo = $("#inputAlternateNo").val();
-  if (inputAlternateNo == "") {
-    $(".ano-prefix").hide();
-    $("#inputAlternateNo").removeAttr('style');
-    $("#inputAlternateNo").css("border-color", "red");
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Alternate Number");
-    $(".btnSubmitContractor").attr("disabled", true);
-    return false;
+  if(inputAlternateNo == ""){
+      $(".ano-prefix").hide();
+      $("#inputAlternateNo").removeAttr('style');
+      $("#inputAlternateNo").css("border-color", "red");
+      $(".help-block").show();
+      $(".help-block").text("* Enter the Mobile Number");
+      $(".btnSubmitContractor").attr("disabled", true);
+      return false;
+    }  else {
+      $(".ano-prefix").show();
+      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
+      $(".btnSubmitContractor").attr("disabled", false);
+    } 
+  if(getcountryCode == "UK" || getcountryCode == "India"){
+    if(inputAlternateNo.length != 10){
+      $(".ano-prefix").hide();
+      $("#inputAlternateNo").removeAttr('style');
+      $("#inputAlternateNo").css("border-color", "red");
+      $(".help-block").show();
+      $(".help-block").text("* Enter 10 digit Mobile Number");
+      $(".btnSubmitContractor").attr("disabled", true);
+      return false;
+    }  else {
+      $(".ano-prefix").show();
+      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
+      $(".btnSubmitContractor").attr("disabled", false);
+    } 
   } else {
-    $(".ano-prefix").show();
-    $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
-    $(".help-block").hide();
-    $(".help-block").text("");
-    $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
-    $(".btnSubmitContractor").attr("disabled", false);
-    return false;
+    if(inputAlternateNo.length != 10){
+      $(".ano-prefix").hide();
+      $("#inputAlternateNo").removeAttr('style');
+      $("#inputAlternateNo").css("border-color", "red");
+      $(".help-block").show();
+      $(".help-block").text("* Enter 10 digit Mobile Number");
+      $(".btnSubmitContractor").attr("disabled", true);
+      return false;
+    }  else {
+      $(".ano-prefix").show();
+      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $(".help-block").hide();
+      $(".help-block").text("");
+      $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
+      $(".btnSubmitContractor").attr("disabled", false);
+    }
   }
 });
 
@@ -1289,22 +1390,22 @@
 });
 
 
-//  $("#inputContractValidTill").keyup(function() {
-//   var inputContractValidTill = $("#inputContractValidTill").val();
-//   if (inputContractValidTill == "") {
-//     $("#inputContractValidTill").css("border-color", "red");
-//     $(".help-block").show();
-//     $(".help-block").text("* Enter the Contract Valid Till");
-//     $(".btnSubmitContractor").attr("disabled", true);
-//     return false;
-//   } else {
-//     $(".help-block").hide();
-//     $(".help-block").text("");
-//     $("#inputContractValidTill").css("border-color", "rgba(0,0,0,.12)");
-//     $(".btnSubmitContractor").attr("disabled", false);
-//     return false;
-//   }
-// });
+ $("#inputContractValidTill").keyup(function() {
+  var inputContractValidTill = $("#inputContractValidTill").val();
+  if (inputContractValidTill == "") {
+    $("#inputContractValidTill").css("border-color", "red");
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Contract Valid Till");
+    $(".btnSubmitContractor").attr("disabled", true);
+    return false;
+  } else {
+    $(".help-block").hide();
+    $(".help-block").text("");
+    $("#inputContractValidTill").css("border-color", "rgba(0,0,0,.12)");
+    $(".btnSubmitContractor").attr("disabled", false);
+    return false;
+  }
+});
 
 //  $("#inputTradeCertificateNo").keyup(function() {
 //   var inputTradeCertificateNo = $("#inputTradeCertificateNo").val();
@@ -1383,16 +1484,16 @@
 
   var contractorID = $("#hiddenContractorID").val();
   var title = $("#select2-inputTitle-container").html();
-  var name = $("#inputFirstName").val();
-  var lastName = $("#inputLastName").val();
+  var name = $.trim($("#inputFirstName").val());
+  var lastName = $.trim($("#inputLastName").val());
   var email = $("#inputContractorEmailID").val();
 
-  var addressLine1 = $("#inputAddressLine1").val().replace(/["']/g, "`");
+  var addressLine1 = $.trim($("#inputAddressLine1").val());
   var addressLin2 = $("#inputAddressLine2").val();
   var locality = $("#inputLocality").val();
   var state = $("#select2-inputState-container").html();
   var city = $("#select2-inputCity-container").html();
-  var zip = $("#inputZip").val();
+  var zip = $.trim($("#inputZip").val());
   var country = $("#inputCountry").val();
   var phoneNo1 = getPhoneCode+$("#inputPhoneNo1").val();
   var alternateNo = getPhoneCode+$("#inputAlternateNo").val();
@@ -1505,6 +1606,56 @@
         $("#inputPhoneNo1").css("border-color", "red");
         $(".btnSubmitContractor").attr("disabled", true);
         return false;
+      } else if(phoneNo1 == ""){
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Enter the Mobile Number");
+        $("#inputPhoneNo1").css("border-color", "red");
+        $(".btnSubmitContractor").attr("disabled", true);
+        return false;
+      } else {
+        $(".mno-prefix").show();
+        $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+        $(".help-block").hide();
+        $(".help-block").text("");
+        $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
+        $(".btnSubmitContractor").attr("disabled", false);
+      }
+
+      if(getcountryCode == "UK" || getcountryCode == "India"){
+        if(phoneNo1.length != 13){
+          $(".mno-prefix").hide();
+          $("#inputPhoneNo1").removeAttr('style');
+          $("#inputPhoneNo1").css("border-color", "red");
+          $(".help-block").show();
+          $(".help-block").text("* Enter 10 digit Mobile Number");
+          $(".btnSubmitContractor").attr("disabled", true);
+          return false;
+        }  else {
+          $(".mno-prefix").show();
+          $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+          $(".help-block").hide();
+          $(".help-block").text("");
+          $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
+          $(".btnSubmitContractor").attr("disabled", false);
+        } 
+      } else {
+        if(phoneNo1.length != 12){
+          $(".mno-prefix").hide();
+          $("#inputPhoneNo1").removeAttr('style');
+          $("#inputPhoneNo1").css("border-color", "red");
+          $(".help-block").show();
+          $(".help-block").text("* Enter 10 digit Mobile Number");
+          $(".btnSubmitContractor").attr("disabled", true);
+          return false;
+        }  else {
+          $(".mno-prefix").show();
+          $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+          $(".help-block").hide();
+          $(".help-block").text("");
+          $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
+          $(".btnSubmitContractor").attr("disabled", false);
+        }
       }
 
       // if (alternateNo == "+44" || alternateNo == "+91" || alternateNo == "+1") {
@@ -1666,14 +1817,14 @@
         return false;
       }
 
-      // if (contractValidTill == "") {
-      //   $(".help-block").css("border-color", "red");
-      //   $(".help-block").show();
-      //   $(".help-block").text("* Enter the Contract Valid Till");
-      //   $("#inputContractValidTill").css("border-color", "red");
-      //   $(".btnSubmitContractor").attr("disabled", true);
-      //   return false;
-      // }
+      if (contractValidTill == "") {
+        $(".help-block").css("border-color", "red");
+        $(".help-block").show();
+        $(".help-block").text("* Enter the Contract Valid Till");
+        $("#inputContractValidTill").css("border-color", "red");
+        $(".btnSubmitContractor").attr("disabled", true);
+        return false;
+      }
 
 
       // if (imageUrl2 == "") {
