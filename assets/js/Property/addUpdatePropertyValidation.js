@@ -335,7 +335,15 @@ function addUpdatePropertyValidation() {
             $("#"+mobileID).css("border-color", "red");
             $(".btnSubmitProperty").attr("disabled", true);
             return false;
-        }  if(inputTitle == "Select Title"){
+        }
+        if (inputMobile.length != 10){
+            $(".errorInfo").show();
+            $(".errorInfo").text("* Enter 10 digit Mobile Number.");
+            $("#"+mobileID).css("border-color", "red");
+            $(".btnSubmitProperty").attr("disabled", true);
+            return false;
+        }
+        if(inputTitle == "Select Title"){
             $(".errorInfo").show();
             $(".errorInfo").text("* Select Title");
             $("#select2-"+titleID+"-container").css("border", "1px solid red");
