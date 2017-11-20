@@ -451,6 +451,7 @@
                             if(result.records[getUtility].PropGasStatus == "" || result.records[getUtility].PropGasStatus == null){
                                 $("#select2-inputGasInfo-container").html("Action Taken");
                             } else {
+                                $("#inputGasInfo").val(result.records[getUtility].PropGasStatus);
                                 $("#select2-inputGasInfo-container").html(result.records[getUtility].PropGasStatus);
                             }           
 
