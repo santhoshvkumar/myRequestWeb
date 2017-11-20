@@ -12,8 +12,8 @@ else{
 $(".btnSubmitAdmin").click(function() {
    var hiddenAdminID = $("#hiddenAdminID").val();
    var title = $("#inputSubTitle").val();
-   var firstName = $("#firstName").val();
-   var lastName = $("#lastName").val();
+   var firstName = $.trim($("#firstName").val());
+   var lastName = $.trim($("#lastName").val());
    var phoneNumber = getPhoneCode + $("#phoneNumber").val();
    var emailID = $("#emailID").val();
    var password = $("#hiddenPassword").val();

@@ -697,17 +697,55 @@ getExistPrivacypolicy();
            }).submit();
 });
 
+$('#inputFirstName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+$('#inputLastName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+$("#inputTitle").on('change', function() {
+   var inputTitle = $("#inputTitle").val();
+   if (inputTitle == "" || inputTitle == undefined) {
+     $(".billingHelp-block").css("border-color", "red");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Select the Title");
+     $("#select2-inputTitle-container").css("border", "1px solid red");
+     $(".btnSubmitProperty").attr("disabled", true);
+     return false;
+   } else {
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
+     $("#select2-inputTitle-container").css("border", "");
+     $(".btnSubmitProperty").attr("disabled", false);
+   }
+ });
 
  $("#inputFirstName").keyup(function() {
-   var inputFirstName = $("#inputFirstName").val();
+   var inputFirstName = $.trim($("#inputFirstName").val());
    if (inputFirstName == "") {
      $(".help-block").show();
      $(".help-block").text("* Enter the First Name");
+     $("#inputFirstName").css("border-color", "red");
      $(".btnUpdate").attr("disabled", true);
      return false;
    } else {
      $(".help-block").hide();
      $(".help-block").text("");
+     $("#inputFirstName").css("border-color", "rgba(0,0,0,.12)");
      $(".btnUpdate").attr("disabled", false);
    }
  });
@@ -799,7 +837,7 @@ $("#inputState").on('change', function() {
 
 
  $("#inputEmail").keyup(function() {
-   var inputEmail = $("#inputEmail").val();
+   var inputEmail = $.trim($("#inputEmail").val());
    if (inputEmail == "") {
      $(".help-block").show();
      $(".help-block").text("* Enter the EmailID");
@@ -818,11 +856,13 @@ $("#inputState").on('change', function() {
    if (inputPassword == "") {
      $(".help-block").show();
      $(".help-block").text("* Enter the Password");
+     $("#inputPassword").css("border-color", "red");
      $(".btnUpdate").attr("disabled", true);
      return false;
    } else {
      $(".help-block").hide();
      $(".help-block").text("");
+     $("#inputPassword").css("border-color", "rgba(0,0,0,.12)");
      $(".btnUpdate").attr("disabled", false);
    }
  });
@@ -854,8 +894,16 @@ $("#inputState").on('change', function() {
      $(".help-block").text("* Enter the Phone Number");
      $(".btnUpdate").attr("disabled", true);
      return false;
-   } else {
+   } else if (inputPhoneNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputPhoneNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Phone Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  } else {
      $(".phno-prefix").show();
+     $("#inputPhoneNumber").css("border-color", "rgba(0,0,0,.12)");
      $("#inputPhoneNumber").css("padding", "10px 10px 13px 30px");
      $(".help-block").hide();
      $(".help-block").text("");
@@ -873,8 +921,16 @@ $("#inputState").on('change', function() {
      $(".help-block").text("* Enter the Emergency Number");
      $(".btnUpdate").attr("disabled", true);
      return false;
-   } else {
+   } else if (inputEmergencyNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputEmergencyNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Emergency Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  } else {
      $(".adminEmerno-prefix").show();
+     $("#inputEmergencyNumber").css("border-color", "rgba(0,0,0,.12)");
      $("#inputEmergencyNumber").css("padding", "10px 10px 10px 32px");
      $(".help-block").hide();
      $(".help-block").text("");
@@ -891,8 +947,16 @@ $("#inputState").on('change', function() {
      $(".help-block").text("* Enter the Emergency Number");
      $(".btnUpdate").attr("disabled", true);
      return false;
-   } else {
+   } else if (inputEmergencyElectricityNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputEmergencyElectricityNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Emergency Electricity Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  } else {
      $(".emerElectno-prefix").show();
+     $("#inputEmergencyElectricityNumber").css("border-color", "rgba(0,0,0,.12)");
      $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 10px 32px");
      $(".help-block").hide();
      $(".help-block").text("");
@@ -901,8 +965,28 @@ $("#inputState").on('change', function() {
  });
 
 
+ $('#firstName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+$('#lastName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
  $("#firstName").keyup(function() {
-   var inputFirstName = $("#firstName").val();
+   var inputFirstName = $.trim($("#firstName").val());
    if (inputFirstName == "") {
      $(".errorInfo").show();
      $("#firstName").css("border-color", "red");
@@ -918,11 +1002,11 @@ $("#inputState").on('change', function() {
  });
 
  $("#lastName").keyup(function() {
-   var inputFirstName = $("#lastName").val();
-   if (inputFirstName == "") {
+   var inputLastName = $.trim($("#lastName").val());
+   if (inputLastName == "") {
      $(".errorInfo").show();
      $("#lastName").css("border-color", "red");
-     $(".errorInfo").text("* Enter the First Name");
+     $(".errorInfo").text("* Enter the Last Name");
      $(".btnUpdate").attr("disabled", true);
      return false;
    } else {
@@ -935,7 +1019,7 @@ $("#inputState").on('change', function() {
 
 
  $("#emailID").keyup(function() {
-   var inputEmail = $("#emailID").val();
+   var inputEmail = $.trim($("#emailID").val());
    if (inputEmail == "") {
      $(".errorInfo").show();
      $("#emailID").css("border-color", "red");
@@ -952,13 +1036,21 @@ $("#inputState").on('change', function() {
 
 
  $("#phoneNumber").keyup(function() {
-   var inputPhoneNumber = $("#phoneNumber").val();
+   var inputPhoneNumber = $.trim($("#phoneNumber").val());
    if (inputPhoneNumber == "") {
      $(".subAdminPhno-prefix").hide();
      $("#phoneNumber").removeAttr('style');
      $(".errorInfo").show();
      $("#phoneNumber").css("border-color", "red");
      $(".errorInfo").text("* Enter the Phone Number");
+     $(".btnUpdate").attr("disabled", true);
+     return false;
+   } else if (inputPhoneNumber.length != 10) {
+     $(".subAdminPhno-prefix").hide();
+     $("#phoneNumber").removeAttr('style');
+     $(".errorInfo").show();
+     $("#phoneNumber").css("border-color", "red");
+     $(".errorInfo").text("* Enter the 10 digit Phone Number");
      $(".btnUpdate").attr("disabled", true);
      return false;
    } else {
@@ -1251,14 +1343,14 @@ $("#getAddprivacy").click(function() {
  $(".btnUpdate").click(function() {
    var userProfileID = localStorage.getItem("MyRequestAdmin_UserID");
    var inputTitle = $("#inputTitle").val();
-   var inputFirstName = $("#inputFirstName").val();
-   var inputLastName = $("#inputLastName").val();
+   var inputFirstName = $.trim($("#inputFirstName").val());
+   var inputLastName = $.trim($("#inputLastName").val());
    var inputPhoneNumber = $("#inputPhoneNumber").val();
    var inputEmergencyNumber = $("#inputEmergencyNumber").val();
    var inputUrlRent = $("#inputUrlRent").val();
    var inputEmergencyElectricityNumber = $("#inputEmergencyElectricityNumber").val();
-   var inputEmail = $("#inputEmail").val();
-   var inputPassword = $("#inputPassword").val();
+   var inputEmail = $.trim($("#inputEmail").val());
+   var inputPassword = $.trim($("#inputPassword").val());
    var inputLocality = $("#inputLocality").val();
    var inputCity = $("#inputCity").val();
    var inputState = $("#inputState").val();
@@ -1278,6 +1370,7 @@ $("#getAddprivacy").click(function() {
    if (inputFirstName == "") {
      $(".help-block").css('color', 'red');
      $(".help-block").show();
+     $("#inputFirstName").css("border-color", "red");
      $(".help-block").text("* Enter the First Name");
      $(".btnUpdate").attr("disabled", true);
      return false;
@@ -1286,6 +1379,7 @@ $("#getAddprivacy").click(function() {
    if (inputLastName == "") {
      $(".help-block").css('color', 'red');
      $(".help-block").show();
+     $("#inputLastName").css("border-color", "red");
      $(".help-block").text("* Enter the Last Name");
      $(".btnUpdate").attr("disabled", true);
      return false;
@@ -1294,7 +1388,17 @@ $("#getAddprivacy").click(function() {
    if (inputPhoneNumber == "") {
     $(".help-block").css('color', 'red'); 
     $(".help-block").show();
+    $("#inputPhoneNumber").css("border-color", "red");
     $(".help-block").text("* Enter the Phone Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  }
+
+  if (inputPhoneNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputPhoneNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Phone Number");
     $(".btnUpdate").attr("disabled", true);
     return false;
   }
@@ -1306,6 +1410,15 @@ $("#getAddprivacy").click(function() {
    $(".btnUpdate").attr("disabled", true);
    return false;
  }
+
+ if (inputEmergencyNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputEmergencyNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Emergency Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  }
 
  if (inputUrlRent == "") {
    $(".help-block").css('color', 'red');
@@ -1324,6 +1437,15 @@ $("#getAddprivacy").click(function() {
    return false;
  }
 
+ if (inputEmergencyElectricityNumber.length != 10) {
+    $(".help-block").css('color', 'red'); 
+    $(".help-block").show();
+    $("#inputEmergencyElectricityNumber").css("border-color", "red");
+    $(".help-block").text("* Enter the 10 digit Emergency Electricity Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  }
+
 
  if (inputEmail == "") {
    $(".help-block").css('color', 'red');
@@ -1336,6 +1458,7 @@ $("#getAddprivacy").click(function() {
  if (inputPassword == "") {
    $(".help-block").css('color', 'red');
    $(".help-block").show();
+   $("#inputPassword").css("border-color", "red");
    $(".help-block").text("* Enter the Password");
    $(".btnUpdate").attr("disabled", true);
    return false;
@@ -1429,65 +1552,97 @@ $("#getAddprivacy").click(function() {
  }); // #btnUpdateProfile 
 
  $("#inputBillingTitle").on('change', function() {
-   var inputBillingTitle = $("#inputBillingTitle").html();
-   if (inputBillingTitle == "" || inputBillingTitle == undefined) {
-     $(".errorInfo").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Select the County");
+   var inputBillingTitle = $("#inputBillingTitle").val();
+   if (inputBillingTitle == "" || inputBillingTitle == undefined || inputBillingTitle == "0") {
+     $(".billingHelp-block").css("border-color", "red");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Select the Title");
      $("#select2-inputBillingTitle-container").css("border", "1px solid red");
      $(".btnSubmitProperty").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#select2-inputBillingTitle-container").css("border", "");
      $(".btnSubmitProperty").attr("disabled", false);
    }
  });
 
+ $('#inputBillingFirstName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+$('#inputBillingLastName').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+
+$('#inputBillingPostalCode').keypress(function (e) {
+    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
+    if (regex.test(str)) {
+        return true;
+    }
+    e.preventDefault();
+    return false;
+});
+
+
  $("#inputBillingFirstName").keyup(function() {
-   var inputBillingFirstName = $("#inputBillingFirstName").val();
+   var inputBillingFirstName = $.trim($("#inputBillingFirstName").val());
    if (inputBillingFirstName == "") {
      $("#inputBillingFirstName").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Enter the First Name");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Enter the First Name");
      $(".btnSubmitBillingAddress").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#inputBillingFirstName").css("border-color", "rgba(0,0,0,.12)");
      $(".btnSubmitBillingAddress").attr("disabled", false);
    }
  });
 
  $("#inputBillingLastName").keyup(function() {
-   var inputBillingLastName = $("#inputBillingLastName").val();
+   var inputBillingLastName = $.trim($("#inputBillingLastName").val());
    if (inputBillingLastName == "") {
      $("#inputBillingLastName").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Enter the Last Name");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Enter the Last Name");
      $(".btnSubmitBillingAddress").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#inputBillingLastName").css("border-color", "rgba(0,0,0,.12)");
      $(".btnSubmitBillingAddress").attr("disabled", false);
    }
  });
 
  $("#inputBillingAddress").keyup(function() {
-   var inputBillingAddress = $("#inputBillingAddress").val();
+   var inputBillingAddress = $.trim($("#inputBillingAddress").val());
    if (inputBillingAddress == "") {
      $("#inputBillingAddress").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Enter the Address");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Enter the Address");
      $(".btnSubmitBillingAddress").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#inputBillingAddress").css("border-color", "rgba(0,0,0,.12)");
      $(".btnSubmitBillingAddress").attr("disabled", false);
    }
@@ -1496,15 +1651,15 @@ $("#getAddprivacy").click(function() {
  $("#inputCounty").on('change', function() {
    var inputCounty = $("#inputCounty").val();
    if (inputCounty == "" || inputCounty == undefined) {
-     $(".errorInfo").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Select the County");
+     $(".billingHelp-block").css("border-color", "red");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Select the County");
      $("#select2-inputCounty-container").css("border", "1px solid red");
      $(".btnSubmitProperty").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#select2-inputCounty-container").css("border", "");
      $(".btnSubmitProperty").attr("disabled", false);
    }
@@ -1513,31 +1668,31 @@ $("#getAddprivacy").click(function() {
  $("#inputBillingCity").on('change', function() {
    var inputBillingCity = $("#inputBillingCity").val();
    if (inputBillingCity == "" || inputCounty == undefined) {
-     $(".errorInfo").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Select the City");
+     $(".billingHelp-block").css("border-color", "red");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Select the City");
      $("#select2-inputBillingCity-container").css("border", "1px solid red");
      $(".btnSubmitProperty").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#select2-inputBillingCity-container").css("border", "");
      $(".btnSubmitProperty").attr("disabled", false);
    }
  });
 
  $("#inputBillingPostalCode").keyup(function() {
-   var inputBillingPostalCode = $("#inputBillingPostalCode").val();
+   var inputBillingPostalCode = $.trim($("#inputBillingPostalCode").val());
    if (inputBillingPostalCode == "") {
      $("#inputBillingPostalCode").css("border-color", "red");
-     $(".errorInfo").show();
-     $(".errorInfo").text("* Enter the Postal Code");
+     $(".billingHelp-block").show();
+     $(".billingHelp-block").text("* Enter the Postal Code");
      $(".btnSubmitBillingAddress").attr("disabled", true);
      return false;
    } else {
-     $(".errorInfo").hide();
-     $(".errorInfo").text("");
+     $(".billingHelp-block").hide();
+     $(".billingHelp-block").text("");
      $("#inputBillingPostalCode").css("border-color", "rgba(0,0,0,.12)");
      $(".btnSubmitBillingAddress").attr("disabled", false);
    }
@@ -1545,15 +1700,14 @@ $("#getAddprivacy").click(function() {
 
 
  $(".btnSubmitBillingAddress").click(function() {
-  $("#getLoadingModalContent").addClass('md-show');
   var isBillingAddress = $("#isBillingAddress").prop("checked");
   var inputBillingTitle = $("#inputBillingTitle").val();
-  var inputBillingFirstName = $("#inputBillingFirstName").val();
-  var inputBillingLastName = $("#inputBillingLastName").val();
-  var inputBillingAddress = $("#inputBillingAddress").val();
+  var inputBillingFirstName = $.trim($("#inputBillingFirstName").val());
+  var inputBillingLastName = $.trim($("#inputBillingLastName").val());
+  var inputBillingAddress = $.trim($("#inputBillingAddress").val());
   var inputBillingCounty = $("#select2-inputCounty-container").html();
   var inputBillingCity = $("#select2-inputBillingCity-container").html();
-  var inputBillingPostalCode = $("#inputBillingPostalCode").val();
+  var inputBillingPostalCode = $.trim($("#inputBillingPostalCode").val());
 
 
   if (inputBillingTitle == "" || inputBillingTitle == undefined) {
@@ -1623,6 +1777,7 @@ $("#getAddprivacy").click(function() {
    } else {
      isBillingAddress = 0;
    }
+    $("#getLoadingModalContent").addClass('md-show'); 
    var dataForm = '{"IsBillingAddress":"' + isBillingAddress + '","BillingTitle":"' + inputBillingTitle + '","BillingFirstName":"' + inputBillingFirstName + '","BillingLastName":"' + inputBillingLastName + '","BillingAddress":"' + inputBillingAddress + '","BillingCity":"' + inputBillingCity + '","BillingCounty":"' + inputBillingCounty + '","BillingPostalCode":"' + inputBillingPostalCode + '"}';
    var sendURL = domainAddress + 'UpdateAdminBillingAddress/' + adminUserID;
    console.log(dataForm);
