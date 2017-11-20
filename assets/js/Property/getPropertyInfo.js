@@ -129,13 +129,26 @@ $(document).ready(function() {
                       }
 
                       isVoid = resultGetProperty.records[property].IsVoid;
-                      if (isVoid == "Agency") {
-                          $("#voidPartYes").iCheck('check');
-                          $("#voidPartNo").iCheck('uncheck');
-                      } else {
-                          $("#voidPartYes").iCheck('uncheck');
-                          $("#voidPartNo").iCheck('check');
-                      }
+                        if (isVoid == "Agency") {
+                            $("#voidPartYes").iCheck('check');
+                            $("#voidPartNo").iCheck('uncheck');
+                            $(".isLLAddress").show();
+                            var LLAddress = resultGetProperty.records[property].IsLLAddress;
+                            if(LLAddress == "1"){
+                                $("#isLLAddressYes").iCheck('check');
+                                $("#isLLAddressNo").iCheck('uncheck');
+                                $("#voidbill").hide();
+                            } else {
+                                $("#isLLAddressYes").iCheck('uncheck');
+                                $("#isLLAddressNo").iCheck('check');
+                                $("#voidbill").show();
+                            }
+                        } else {
+                            $("#voidPartYes").iCheck('uncheck');
+                            $("#voidPartNo").iCheck('check');
+                            $(".isLLAddress").hide();
+                            $("#voidbill").hide();
+                        }
 
                       isTenantRequired = resultGetProperty.records[property].IsTenantRequired;
                       if (isTenantRequired == 1) {
@@ -146,17 +159,6 @@ $(document).ready(function() {
                           $("#tenantYes").iCheck('uncheck');
                           $("#tenantNo").iCheck('check');
                           $(".getTenantList").hide();
-                      }
-
-                      var LLAddress = resultGetProperty.records[property].IsLLAddress;
-                      if(LLAddress == "1"){
-                        //   alert("One===>"+LLAddress);
-                        $("#isLLAddressYes").iCheck('check');
-                        $("#isLLAddressNo").iCheck('uncheck');
-                      } else {
-                        //   alert("Zero===>"+LLAddress);
-                        $("#isLLAddressYes").iCheck('uncheck');
-                        $("#isLLAddressNo").iCheck('check');
                       }
 
                       $("#inputLandlordTitle").val(resultGetProperty.records[property].Title);
