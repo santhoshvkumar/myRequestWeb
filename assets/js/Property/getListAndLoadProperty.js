@@ -3,6 +3,10 @@
     $('#propertyList').dataTable({
         "ordering": false
     });
+    $(".dataTables_length").hide();
+    $(".dataTables_filter").hide();
+    $(".dataTables_paginate").hide();
+    $(".dataTables_info").hide();
 
        
       var dataForm = "";
