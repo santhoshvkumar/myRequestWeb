@@ -741,7 +741,7 @@ function loadUserTenantsList(result) {
                     
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
                     $(".tenantcno-prefix").show();
-                    $("#inputMobileNumber").css("padding", "10px 25px 12px 35px");
+                    $("#inputMobileNumber").css("padding", "10px 25px 11px 35px");
                     if (isAppInstalled == 1) {
                         $(".tenantContent").css("border", "1px solid greenyellow");
                     } else {
@@ -1029,7 +1029,7 @@ $("#inputMobileNumber").keyup(function() {
         return false;
     } else {
         $(".tenantcno-prefix").show();
-        $("#inputMobileNumber").css("padding", "10px 25px 12px 30px");
+        $("#inputMobileNumber").css("padding", "10px 25px 11px 35px !important");
         $(".help-block").hide();
         $(".help-block").text("");
         $("#inputMobileNumber").css("border-color", "rgba(0,0,0,.12)");
@@ -1078,8 +1078,8 @@ $(".btnSubmitTenant").click(function() {
 
     var tenantID = $("#hiddenTenantID").val();
     var title = $("#select2-inputTitle-container").html();
-    var name = $.trim($("#getName").val());
-    var lastName = $.trim($("#getLastName").val());
+    var name = $.trim($("#getName").val().replace(/["']/g, "`"));
+    var lastName = $.trim($("#getLastName").val().replace(/["']/g, "`"));
     var mobileNumber = getPhoneCode+$("#inputMobileNumber").val();
     var emailID = $("#inputEmailID").val();
     var startDate = $("#inputStartDate").val();
