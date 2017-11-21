@@ -17,7 +17,7 @@ function addUpdateAdvertisement(){
 
 
         $(".btnSearch").click(function () {
-            getValue = $("#inputSearch").val();
+            getValue = $("#inputSearch").val().replace(/["']/g, "`");
             $("#getLoadingModalContent").addClass('md-show');
             getAdvertisementList(getValue);
         });

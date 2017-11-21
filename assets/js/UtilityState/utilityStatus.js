@@ -169,7 +169,7 @@
 
 
         $(".btnSearch").click(function () {
-            getValue = $("#inputSearch").val();
+            getValue = $("#inputSearch").val().replace(/["']/g, "`");
             getUtilityList(getValue);
         });
 

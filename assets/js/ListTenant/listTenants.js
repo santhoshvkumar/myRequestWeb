@@ -223,7 +223,7 @@ $("#inputMobileNumber").on('blur', function(e) {
 });
 
 $(".btnSearch").click(function() {
-    getValue = $("#inputSearch").val();
+    getValue = $("#inputSearch").val().replace(/["']/g, "`");
     getTenantsList(getValue);
 });
 

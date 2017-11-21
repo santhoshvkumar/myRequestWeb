@@ -329,7 +329,7 @@ $("#advancedSearch").on('click', function() {
 
 $(".btnSearch").click(function() {
     problemCountLimit = 0;
-    getValue = $("#searchCase").val();
+    getValue = $("#searchCase").val().replace(/["']/g, "`");
     $(".ListAllProblem").html("");
     loadProblems(getValue);
 });
@@ -369,8 +369,9 @@ function loadProblems(getValue) {
                 if (recordCountOnReady == 0) {
                     console.log("No records found on page ready");
                     $(".ListAllProblem").html("");
-                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> </tr>");
+                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>");
                     $("#getLoadingModalContent").removeClass('md-show');
+                    $(".loadMoreButton").hide();
                 } else {
                     console.log("that's all db values");
                 }

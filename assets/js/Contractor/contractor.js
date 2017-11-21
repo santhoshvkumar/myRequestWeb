@@ -2103,7 +2103,7 @@ $("#inputZip").keyup(function() {
 });
 
  $(".btnSearch").click(function() {
-  getValue = $("#inputSearch").val();
+  getValue = $("#inputSearch").val().replace(/["']/g, "`");
   getContractorsList(getValue);
 
 
@@ -2133,7 +2133,7 @@ $("#inputZip").keyup(function() {
 
       if (result.record_count == 0 && result.All_Records_Count == 0) {
         $(".allContractorList").html('');
-        $(".allContractorList").append('<div class="md-card md-card-hover"><div class="md-card-head"> <div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/no_image_found.png" alt="" class="contractorImage"/></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div>');
+        $(".allContractorList").append('<div class="md-card md-card-hover"><div class="md-card-head"> <div class="uk-text-center"><img class="md-card-head-avatar" src="assets/img/no_image_found.png" alt="" class="contractorImage"/><h4>No Contractors Found</h4></div><h3 class="md-card-head-text uk-text-center"><span class="uk-text-truncate"></span></h3></div><div class="md-card-content"><ul class="md-list"><li><div class="md-list-content"><span class="md-list-heading">Speciality</span><span class="uk-text-small uk-text-muted">No Speciality Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Validity</span><span class="uk-text-small uk-text-muted uk-text-truncate">No Validity Found</span></div></li><li><div class="md-list-content"><span class="md-list-heading">Phone</span><span class="uk-text-small uk-text-muted">No Phone Number Found</span></div></li></ul></div></div>');
         $("#getLoadingModalContent").removeClass('md-show');
         $(".getPagination").hide();
       } else {
