@@ -373,7 +373,7 @@ $('#inputSpecialityName').keypress(function (e) {
 });
 
 $('#inputSpecialityDescription').keypress(function (e) {
-    var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
+    var regex = new RegExp("^[A-Za-z0-9.? ,_-]+$");
     var str = String.fromCharCode(!e.charCode ? e.which : e.charCode);
     if (regex.test(str)) {
         return true;
@@ -386,7 +386,7 @@ $(".btnSubmitSpeciality").click(function() {
     var specialityID = $("#hiddenSpecialityID").val();
     var specialityName = $.trim($("#inputSpecialityName").val());
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
-    var specialityDescription = $.trim($("#inputSpecialityDescription").val());
+    var specialityDescription = $.trim($("#inputSpecialityDescription").val().replace(/["']/g, "`"));
     userID = localStorage.getItem("ReportUserID");
 
     if (specialityName == "") {
