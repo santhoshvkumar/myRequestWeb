@@ -428,12 +428,11 @@ $(document).ready(function() {
 $("#inputTitle").select2();
 $("#inputSubTitle").select2();
 $("#inputBillingTitle").select2();
-alert(getinputCountry);
-// if(getinputCountry == "US"){
-//   $("#postcodebasedcountry").text("Zip Code *");
-// } else {
-//   $("#postcodebasedcountry").text("Postal Code *");
-// }
+if(getinputCountry == "US"){
+  $("#postcodebasedcountry").text("Zip Code *");
+} else {
+  $("#postcodebasedcountry").text("Postal Code *");
+}
 
 $("#inputCounty").select2()
 .on("change", function(e) {
