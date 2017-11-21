@@ -107,7 +107,7 @@
           success: function(result) {
                   if (result.record_count == 0 && result.All_Records_Count == 0) {
                       $(".listAllAdminProperty").html('');
-                      $(".listAllAdminProperty").append("<tr id='rowID-0'><td style='text-align:center; vertical-align: middle;' id='propOwnerName-0'>No Records Found</td><td style='text-align:center;vertical-align: middle;' id='propAddress-0'></td> <td style='text-align:center;vertical-align: middle;' id='propOwnerPhone-0'> </td><td style='text-align:center;vertical-align: middle;' id='propOwnerEmail-0'></td>  <td></td> <td></td> </tr>");
+                      $(".listAllAdminProperty").append("<tr id='rowID-0'><td style='text-align:center; vertical-align: middle;' id='propOwnerName-0'>No Records Found</td><td style='text-align:center;vertical-align: middle;' id='propAddress-0'></td> <td style='text-align:center;vertical-align: middle;' id='propOwnerPhone-0'> </td><td style='text-align:center;vertical-align: middle;' id='propOwnerEmail-0'></td>  <td></td> </tr>");
                   } else {
                       loadUserPropertyList(result);
                   }

@@ -369,7 +369,7 @@ function loadProblems(getValue) {
                 if (recordCountOnReady == 0) {
                     console.log("No records found on page ready");
                     $(".ListAllProblem").html("");
-                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> <td> </td> <td> </td> </tr>");
+                    $(".ListAllProblem").html("<tr id='rowID-0'> <td id='problemID-0'>No records Found</td>  <td id='problemImage-0'> </td>  <td id='specialityName-0'> </td>   <td id='contractorName-0'> </td> <td id='userName-0'> </td> <td> </td> <td> </td> <td> </td> </tr>");
                     $("#getLoadingModalContent").removeClass('md-show');
                 } else {
                     console.log("that's all db values");
