@@ -1,9 +1,10 @@
  var inputBusinessName = "";
  var inputAgencyCode = "";
+ var getinputCountry = "";
  $(function() {
   var getPhoneCode = localStorage.getItem("MyRequest_PhoneCode-prefix");
   var adminType = localStorage.getItem("MyRequest_AdminType");
-  var getinputCountry = localStorage.getItem("MyRequest_countryCode");
+  getinputCountry = localStorage.getItem("MyRequest_countryCode");
 
   if(adminType == "SuperAdmin"){
     $(".phno-prefix").text("+44");
@@ -427,6 +428,12 @@ $(document).ready(function() {
 $("#inputTitle").select2();
 $("#inputSubTitle").select2();
 $("#inputBillingTitle").select2();
+alert(getinputCountry);
+// if(getinputCountry == "US"){
+//   $("#postcodebasedcountry").text("Zip Code *");
+// } else {
+//   $("#postcodebasedcountry").text("Postal Code *");
+// }
 
 $("#inputCounty").select2()
 .on("change", function(e) {
@@ -1216,10 +1223,10 @@ $('#lastName').keypress(function (e) {
        }
        $(".md-input-wrapper").addClass("md-input-filled");
 
-       if (IsUpdate) {
-        //  window.location.href = 'http://localhost:8888/Navaneeth/myRequestHome/myrequestagent/Dashboard.html';
-        window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
-       }
+      //  if (IsUpdate) {
+      //   //  window.location.href = 'http://localhost:8888/Navaneeth/myRequestHome/myrequestagent/Dashboard.html';
+      //   window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
+      //  }
      });
 }
 
@@ -1539,7 +1546,7 @@ $("#getAddprivacy").click(function() {
          $("#progressbox1").hide();
          UIkit.modal.alert("Profile Updated Successfully");
         //  window.location.href = 'http://localhost:8888/Navaneeth/myRequestHome/myrequestagent/Dashboard.html';
-        window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
+        // window.location.href = 'https://agent.myrequest.co.uk/Dashboard.html';
        } else {
          $("#progressbox1").hide();
          UIkit.modal.alert(dataCheck.message_text);
