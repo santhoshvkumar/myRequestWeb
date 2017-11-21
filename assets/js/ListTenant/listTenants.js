@@ -203,7 +203,8 @@ $(document).ready(function() {
 
 $("#inputMobileNumber").on('blur', function(e) {
     var getMobileNumber = $("#" + this.id).val();
-    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode, function(result) {
+    console.log(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode+"/"+adminUserID);
+    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode+"/"+adminUserID, function(result) {
         if (result.record_count == 0) {} else {
             for (var getUserDetails in result.records) {
                 $("#hiddenTenantID").val(result.records[getUserDetails].UserRegID);
@@ -741,7 +742,7 @@ function loadUserTenantsList(result) {
                     
                     isAppInstalled = resultGetTenant.records[getTenant].AppInstalled;
                     $(".tenantcno-prefix").show();
-                    $("#inputMobileNumber").css("padding", "10px 25px 11px 35px");
+                    $("#inputMobileNumber").css("padding", "10px 25px 11px 35px !important");
                     if (isAppInstalled == 1) {
                         $(".tenantContent").css("border", "1px solid greenyellow");
                     } else {
