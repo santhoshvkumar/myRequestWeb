@@ -79,7 +79,7 @@
          });
 
          $(".btnSearch").click(function () {
-            getValue = $("#inputSearch").val();
+            getValue = $("#inputSearch").val().replace(/["']/g, "`");
             getPropertyList(getValue);
             $('html, body').animate({
                scrollTop: $(".lblPropertyList").offset().top -25

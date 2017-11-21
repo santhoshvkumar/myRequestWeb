@@ -145,7 +145,7 @@ $(".getSpeciality").click(function() {
 });
 
 $(".btnSearch").click(function() {
-    getValue = $("#inputSearch").val();
+    getValue = $("#inputSearch").val().replace(/["']/g, "`");
     getSpecialityList(getValue);
 });
 
