@@ -215,7 +215,7 @@ var getNotificationContentIDforUpdate = 0;
   }); // ready
 
   $(".btnSearch").click(function() {
-      getValue = $("#inputSearch").val();
+      getValue = $("#inputSearch").val().replace(/["']/g, "`");
       $("#getLoadingModalContent").addClass('md-show');
       pollingLimitCount = 0;
       getAllNewsLetter(getValue);
