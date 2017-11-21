@@ -432,7 +432,7 @@ function loadNewsLetter() {
 
                     if (result.record_count == 0 && result.All_Records_Count == 0) {
                         $(".allNewsLetterList").html('');
-                        $(".allNewsLetterList").append("<tr class='odd gradeX' id='rowID-0'> <td id='titleName-0'>No Records Found</td> <td id='noOfViews-0'></td> <td class='editNewsLetter' id='editNewsLetter-0'> </td> <td class='deleteNewsLetter' id='deleteNewsLetter-0' > </td></tr> ");
+                        $(".allNewsLetterList").append("<tr class='odd gradeX' id='rowID-0'> <td id='titleName-0'>No Records Found</td> <td id='noOfViews-0'></td> <td class='editNewsLetter' id='editNewsLetter-0'> </td> <td class='deleteNewsLetter' id='deleteNewsLetter-0' > </td><td></td></tr> ");
                         $("#getLoadingModalContent").removeClass('md-show');
                     } else {
                         loadNewsLetterList(result);

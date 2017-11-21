@@ -444,7 +444,7 @@ $(".btnSearch").click(function () {
                console.log(getResultPolling);
                if(getResultPolling.record_count==0  && getResultPolling.All_Records_Count == 0){
                      $(".allPollingList").html('');
-                    $(".allPollingList").append("<tr class='odd gradeX' id='rowID-0'><td id='titleName-0'>No Records Found</td> <td id='noOfAnswered-0'></td> <td> </td> <td>  </td></tr>");
+                    $(".allPollingList").append("<tr class='odd gradeX' id='rowID-0'><td id='titleName-0'>No Records Found</td> <td id='noOfAnswered-0'></td> <td> </td> <td>  </td><td>  </td></tr>");
                     $("#getLoadingModalContent").removeClass('md-show');
                }
                else{
