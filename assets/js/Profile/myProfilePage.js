@@ -1715,6 +1715,8 @@ $('#inputBillingPostalCode').keypress(function (e) {
   var inputBillingCity = $("#select2-inputBillingCity-container").html();
   var inputBillingPostalCode = $.trim($("#inputBillingPostalCode").val());
 
+  var inputVoid = $("#hiddenIsVoid").val();
+  var inputAvail = $("#hiddenIsAgree").val();
 
   if (inputBillingTitle == "" || inputBillingTitle == undefined) {
    $(".billingHelp-block").css('color', 'red');
@@ -1784,7 +1786,7 @@ $('#inputBillingPostalCode').keypress(function (e) {
      isBillingAddress = 0;
    }
     $("#getLoadingModalContent").addClass('md-show'); 
-   var dataForm = '{"IsBillingAddress":"' + isBillingAddress + '","BillingTitle":"' + inputBillingTitle + '","BillingFirstName":"' + inputBillingFirstName + '","BillingLastName":"' + inputBillingLastName + '","BillingAddress":"' + inputBillingAddress + '","BillingCity":"' + inputBillingCity + '","BillingCounty":"' + inputBillingCounty + '","BillingPostalCode":"' + inputBillingPostalCode + '"}';
+   var dataForm = '{"IsBillingAddress":"' + isBillingAddress + '","BillingTitle":"' + inputBillingTitle + '","BillingFirstName":"' + inputBillingFirstName + '","BillingLastName":"' + inputBillingLastName + '","BillingAddress":"' + inputBillingAddress + '","BillingCity":"' + inputBillingCity + '","BillingCounty":"' + inputBillingCounty + '","BillingPostalCode":"' + inputBillingPostalCode + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '"}';
    var sendURL = domainAddress + 'UpdateAdminBillingAddress/' + adminUserID;
    console.log(dataForm);
    console.log(sendURL);
