@@ -2466,3 +2466,7 @@ form#FileURLUploadImage1 {
         height: 98% !important;
     }
 }
+
+.inputMobile{
+    padding: 10px 25px 10px 32px !important;
+}

@@ -22,13 +22,13 @@ function addUpdatePropertyValidation() {
     var bedrooms = $("#select2-inputBedrooms-container").html();
     var propertyStatus = $("#select2-inputPropertyStatus-container").html();
     var city = $("#select2-inputCity-container").html();
-    var zip = $.trim($("#inpuZip").val());
+    var zip = $.trim($("#inpuZip").val().replace(/["']/g, "`"));
     var country = $("#inputCountry").val();
     var hmoLicenseNumber = $.trim($("#inputHmoLicenseNumber").val());
 
     var landlordTitle = $("#select2-inputLandlordTitle-container").html();
-    var name = $.trim($("#getName").val());
-    var lastName = $.trim($("#getLastName").val());
+    var name = $.trim($("#getName").val().replace(/["']/g, "`"));
+    var lastName = $.trim($("#getLastName").val().replace(/["']/g, "`"));
     var emailID = $("#inputEmailID").val();
     var mobileNumber = $.trim($("#inputMobileNumber").val());
     var getAppYes = $('.appYes > div').hasClass('checked');
@@ -47,7 +47,7 @@ function addUpdatePropertyValidation() {
 
     var landlordState = $("#select2-inputState1-container").html();
     var landlordCity = $("#select2-inputCity1-container").html();
-    var landlordZip = $.trim($("#inpuZip1").val());
+    var landlordZip = $.trim($("#inpuZip1").val().replace(/["']/g, "`"));
     var landlordAddress = $.trim($("#inputAddress1").val());
 
 
@@ -178,7 +178,7 @@ function addUpdatePropertyValidation() {
     if(isTenantRequired == 1){
         $('.inputName').each(function () {
             nameID = this.id;
-            inputName = $("#"+nameID).val();
+            inputName = $("#"+nameID).val().replace(/["']/g, "`");
             if(inputName == ""){
                 $(".errorInfo").show();
                 $(".errorInfo").text("* Enter Tenant's First Name");
@@ -195,7 +195,7 @@ function addUpdatePropertyValidation() {
 
         $('.inputLastName').each(function () {
             lastNameID = this.id;
-            inputLastName = $("#"+lastNameID).val();
+            inputLastName = $("#"+lastNameID).val().replace(/["']/g, "`");
             if(inputLastName == ""){
                 $(".errorInfo").show();
                 $(".errorInfo").text("* Enter Tenant's Last Name");
