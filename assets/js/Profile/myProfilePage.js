@@ -519,7 +519,7 @@ $("#inputState").select2()
                 } else {
                     for (inputState in getResult.records) {
                       $("#inputState").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
-                      // $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
+                      $("#inputCounty").append("<option value='" + getResult.records[inputState].StateName + "'>" + getResult.records[inputState].StateName + "</option>");
                     }
                 }
                 $("#inputState").select2();
