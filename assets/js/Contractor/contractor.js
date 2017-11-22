@@ -1215,7 +1215,7 @@ $("#inputZip").keyup(function() {
     return false;
   } else {
     $(".mno-prefix").show();
-    $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+    $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
     $(".help-block").hide();
     $(".help-block").text("");
     $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -1233,7 +1233,7 @@ $("#inputZip").keyup(function() {
       return false;
     }  else {
       $(".mno-prefix").show();
-      $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+      $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
       $(".help-block").hide();
       $(".help-block").text("");
       $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -1250,7 +1250,7 @@ $("#inputZip").keyup(function() {
       return false;
     }  else {
       $(".mno-prefix").show();
-      $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+      $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
       $(".help-block").hide();
       $(".help-block").text("");
       $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -1272,7 +1272,7 @@ $("#inputZip").keyup(function() {
       return false;
     }  else {
       $(".ano-prefix").show();
-      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $("#inputAlternateNo").css("padding", "10px 25px 11px 34px");
       $(".help-block").hide();
       $(".help-block").text("");
       $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
@@ -1289,7 +1289,7 @@ $("#inputZip").keyup(function() {
       return false;
     }  else {
       $(".ano-prefix").show();
-      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $("#inputAlternateNo").css("padding", "10px 25px 11px 34px");
       $(".help-block").hide();
       $(".help-block").text("");
       $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
@@ -1306,7 +1306,7 @@ $("#inputZip").keyup(function() {
       return false;
     }  else {
       $(".ano-prefix").show();
-      $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+      $("#inputAlternateNo").css("padding", "10px 25px 11px 34px");
       $(".help-block").hide();
       $(".help-block").text("");
       $("#inputAlternateNo").css("border-color", "rgba(0,0,0,.12)");
@@ -1615,7 +1615,7 @@ $("#inputZip").keyup(function() {
         return false;
       } else {
         $(".mno-prefix").show();
-        $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+        $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
         $(".help-block").hide();
         $(".help-block").text("");
         $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -1633,7 +1633,7 @@ $("#inputZip").keyup(function() {
           return false;
         }  else {
           $(".mno-prefix").show();
-          $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+          $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
           $(".help-block").hide();
           $(".help-block").text("");
           $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -1650,7 +1650,7 @@ $("#inputZip").keyup(function() {
           return false;
         }  else {
           $(".mno-prefix").show();
-          $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+          $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
           $(".help-block").hide();
           $(".help-block").text("");
           $("#inputPhoneNo1").css("border-color", "rgba(0,0,0,.12)");
@@ -2359,10 +2359,10 @@ function loadContractorsList(resultAllContractor) {
                 $("#imgTradeCertificate").val(result.records[contractor].imageUrl3);
 
                 $(".mno-prefix").show();
-                $("#inputPhoneNo1").css("padding", "10px 25px 12px 32px");
+                $("#inputPhoneNo1").css("padding", "10px 25px 11px 34px");
 
                 $(".ano-prefix").show();
-                $("#inputAlternateNo").css("padding", "10px 25px 12px 32px");
+                $("#inputAlternateNo").css("padding", "10px 25px 11px 34px");
 
                 isSmartPhone = result.records[contractor].isSmartPhone;
 

@@ -403,7 +403,7 @@ var getPropLat, getPropLong, isEdit=false;
             return false;
         } else {
             $(".electricMPAN-prefix").show();
-            $("#inputElectricMPAN").css("padding", "10px 25px 12px 20px");
+            $("#inputElectricMPAN").css("padding", "10px 25px 10px 18px");
             $("#inputElectricMPAN").css("border-color", "rgba(0,0,0,.12)");
             return false;
         }

@@ -343,7 +343,7 @@ $("#inputMobileNumber").keyup(function() {
         return false;
     } else {
         $(".mno-prefix").show();
-        $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
+        $("#inputMobileNumber").css("padding", "10px 25px 10px 35px");
         $(".errorInfo").hide();
         $(".errorInfo").text("");
         $("#inputMobileNumber").css("border-color", "rgba(0,0,0,.12)");

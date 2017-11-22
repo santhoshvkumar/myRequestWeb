@@ -337,8 +337,8 @@ $(document).ready(function() {
 
                       $(".bno-prefix").show();
                       $(".mno-prefix").show();
-                      $("#inputMobileNumber").css("padding", "10px 25px 12px 32px");
-                      $("#inputMobile-1").css("padding", "10px 25px 12px 32px");
+                      $("#inputMobileNumber").css("padding", "10px 25px 10px 35px");
+                      $("#inputMobile-1").css("padding", "10px 25px 10px 35px");
 
                       $("#inputHmoLicenseNumber").val(resultGetProperty.records[property].HmoLicenseNumb);
                       
