@@ -43,7 +43,7 @@ function getDbReportProblem(getProblemID) {
               getContractorName = resultProblem.ProblemRecord[Problem].ContractorName;
               var getLastName = resultProblem.ProblemRecord[Problem].LastName;
               var getContractorImage = resultProblem.ProblemRecord[Problem].ContractorImage;
-              var getFixedAmount = resultProblem.ProblemRecord[Problem].FixedAmount;
+              var getFixedAmount = parseFloat(resultProblem.ProblemRecord[Problem].FixedAmount).toFixed(2);
               getSpecialityID = resultProblem.ProblemRecord[Problem].SpecialityID;
               var getAddress = resultProblem.ProblemRecord[Problem].GetAddress;
               console.log(JSON.stringify(resultProblem.ProblemRecord));
