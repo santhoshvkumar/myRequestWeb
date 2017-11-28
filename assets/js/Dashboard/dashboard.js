@@ -208,10 +208,10 @@
                         else{
                             if (result.records[getDashBoardValuesForSuperadmin].TotalAmount.length > 7){
                                 $("#dashAmount").css("font-size","24px");
-                                $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount).toFixed(2);
+                                $("#dashAmount").text(parseFloat(result.records[getDashBoardValuesForSuperadmin].TotalAmount).toFixed(2));
                             } else {
                                 $("#dashAmount").css("font-size","20px");
-                                $("#dashAmount").text(result.records[getDashBoardValuesForSuperadmin].TotalAmount).toFixed(2);
+                                $("#dashAmount").text(parseFloat(result.records[getDashBoardValuesForSuperadmin].TotalAmount).toFixed(2));
                             }
                         }
                         
@@ -353,7 +353,8 @@
                         }
                         $("#dashCompleted").text(result.records[getDashBoardValues].NoCompleted);
                         $("#dashOpen1").text(result.records[getDashBoardValues].NoOpen);
-                        $("#dashAmount").text(result.records[getDashBoardValues].TotalAmount).toFixed(2);
+                        debugger;
+                        $("#dashAmount").text(parseFloat(result.records[getDashBoardValues].TotalAmount).toFixed(2));
                         $(".dashComplaints").text(result.records[getDashBoardValues].TotalComplaints);
                         //$("#dashPproperties").text(result.records[getDashBoardValues].TotalProperty);
                         $("#dashTenants").text(result.records[getDashBoardValues].TotalTenants);
