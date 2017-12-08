@@ -353,7 +353,7 @@
                         }
                         $("#dashCompleted").text(result.records[getDashBoardValues].NoCompleted);
                         $("#dashOpen1").text(result.records[getDashBoardValues].NoOpen);
-                        debugger;
+                        
                         $("#dashAmount").text(parseFloat(result.records[getDashBoardValues].TotalAmount).toFixed(2));
                         $(".dashComplaints").text(result.records[getDashBoardValues].TotalComplaints);
                         //$("#dashPproperties").text(result.records[getDashBoardValues].TotalProperty);
@@ -1886,7 +1886,7 @@
         modal.hide();
     });
 
-
+    
 
   function getLastTwoDaysMessages(adminUserID){
     
