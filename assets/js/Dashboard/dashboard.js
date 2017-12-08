@@ -1921,9 +1921,15 @@
                 else{
                     getImage = domainAddress+result.records[workLogNotes].GetImage;
                 }
-                $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'> <img src='"+getImage+"' class='imgUserCircle'/> </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> <h3><b>"+result.records[workLogNotes].WorkAssignedBy+"</b></h3> </div> <div class='uk-width-4-10'> <span class='dashWorkLogDate'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+"</span> </div> </div> <p class='dashWorkLogContent'>"+result.records[workLogNotes].Content+"</p> <p class='dashWorkLogCaseNo'> <a href='https://agent.myrequest.co.uk/particularProblem.php?ProblemID="+result.records[workLogNotes].RequestID+"' style='cursor:poiter;'>( Request # "+result.records[workLogNotes].RequestID+" )</a> </p> </div> </div> </li> <hr/>");
+                $(".messageNotesContent").append("<li> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-2-10'> <img src='"+getImage+"' class='imgUserCircle'/> </div>  <div class='uk-width-7-10'>  <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-6-10'> <h3><b>"+result.records[workLogNotes].WorkAssignedBy+"</b></h3> </div> <div class='uk-width-4-10'> <span class='dashWorkLogDate'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+"</span> </div> </div> <p class='dashWorkLogContent'>"+result.records[workLogNotes].Content+"</p> <p class='dashWorkLogCaseNo'> <a class='getRequestID' id='getRequestID-"+result.records[workLogNotes].ProblemID+"' style='cursor:poiter;'>( Request # "+result.records[workLogNotes].RequestID+" )</a> </p> </div> </div> </li> <hr/>");
             }   
 
+            $(".getRequestID").on('click', function() {
+                var getRequestID = this.id.replace('getRequestID-', '');
+                console.log(getRequestID);
+                localStorage.setItem("ParticularProblemID", getRequestID);
+                window.location.href="https://agent.myrequest.co.uk/particularProblem.php";
+            });
 
             $(" .getMessages").on('click', function() {
                 var getWorkLogID = this.id.replace('getMessages-', '');
