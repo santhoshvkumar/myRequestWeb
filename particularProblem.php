@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
-    $problemID = urldecode($_GET['ProblemID']);
+    // $problemID = urldecode($_GET['ProblemID']);
 ?>
 
     <head>
@@ -723,7 +723,6 @@
         <script>
             var getProblemID = 0;
             var requestID = 0;
-            getProblemID = "<?php echo $problemID;?>";
         </script>
 
         <div class="md-overlay"></div>
