@@ -46,7 +46,7 @@ function getDbReportProblem(getProblemID) {
               var getFixedAmount = parseFloat(resultProblem.ProblemRecord[Problem].FixedAmount).toFixed(2);
               getSpecialityID = resultProblem.ProblemRecord[Problem].SpecialityID;
               var getAddress = resultProblem.ProblemRecord[Problem].GetAddress;
-              console.log(JSON.stringify(resultProblem.ProblemRecord));
+              
               if(getSpecialityID!=""){
                 getProblemSpeciality(getSpecialityID);
               }

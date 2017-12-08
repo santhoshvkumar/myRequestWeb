@@ -1,6 +1,8 @@
-var getProblemID = "";
 $(function() {
-    getProblemID = localStorage.getItem("ParticularProblemID");
+    if(getProblemID==0){
+        getProblemID = localStorage.getItem("ParticularProblemID");
+    }
+    
     $('#full_screen_toggle').on('click', function(e) {
         e.preventDefault();
         screenfull.toggle();
@@ -118,7 +120,7 @@ $(document).ready(function() {
     var isFilled = localStorage.getItem("MyRequest_profileFill");
     var getCountry = localStorage.getItem('MyRequest_countryCode');
     var costSymbol = '';
-    getProblemID = localStorage.getItem("ParticularProblemID");
+    
 
     if (isFilled == "true") {
         window.location.href = 'http://myrequest.co.uk/myRequestAdmin/MyProfile.html';
@@ -279,7 +281,6 @@ var getImgValue = "";
 var isAssignedContractor = 0;
 var localProblem = localStorage.getItem("MyRequestDetails");
 var localProblemAdminNotes = localStorage.getItem("MyRequestAdminNotes");
-getProblemID = localStorage.getItem("ParticularProblemID");
 
 function getParticularProblemInfo(getProblemID) {
     /************* To get Problem Image - Start ***********/
