@@ -721,7 +721,7 @@
             });
         </script>
         <script>
-            var getProblemID = "<? echo $problemID; ?>";
+            var getProblemID = "<?php echo $problemID; ?>";
             console.log(getProblemID);
             var requestID = 0;
         </script>
