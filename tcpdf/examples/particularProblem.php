@@ -42,8 +42,18 @@ if (! $rsd){
 
 		$StatusRow = $rs['problemStatus'];
 
-		$img = file_get_contents($domainAddress.$rs['problemImage']);
-		$pdf->Image('@' . $img, 17, 87, 57, 68,  'JPG', '', '', false, 150, '', false, false, 0, false, false, false);
+		$imageLocation = $domainAddress.$rs['problemImage'];
+		$ext = end(explode(".", $imageLocation));
+		// $image = file_get_contents($imageLocation);
+		
+		
+		if($ext == 'JPG' || $ext == 'JPEG' || $ext == 'jpg' || $ext == 'jpeg'){
+			$img = file_get_contents($domainAddress.$rs['problemImage']);
+			$pdf->Image('@' . $img, 17, 87, 57, 68,  'JPG', '', '', false, 150, '', false, false, 0, false, false, false);
+		} else {
+			$img = file_get_contents($domainAddress.$rs['problemImage']);
+			$pdf->Image('@' . $img, 17, 87, 57, 68,  'PNG', '', '', false, 150, '', false, false, 0, false, false, false);
+		}
 
 		if($rs['name']==null || $rs['name']=="" || $rs['emailID'] == null || $rs['emailID']== "" || $rs['phoneNumber'] == null || $rs['phoneNumber'] == ""){
 			$Name = $rs['firstName'] ." " .$rs['lastName'];
@@ -258,6 +268,9 @@ $html = '<div>
 	</div>';
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
+
+// $pdf->writeHTML("<img src='data:image/$ext;base64,$image'>");
+
 $pdf->lastPage();
 ob_clean();
-$pdf->Output('ParticularProblem.pdf', 'D');
+$pdf->Output('ParticularProblem.pdf', 'I');
