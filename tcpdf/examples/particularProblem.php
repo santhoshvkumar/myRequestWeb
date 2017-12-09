@@ -27,135 +27,237 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 $problemID = $_GET['problemID'];
 $adminID = $_GET['adminID'];
 
-//$domainAddress = "http://localhost:8888/myrequestadmin/api/";
-$domainAddress = "http://api.myrequest.co.uk/";
+$domainAddress = "http://localhost:8888/myRequestHome/myrequestapi/";
+// $domainAddress = "http://api.myrequest.co.uk/";
 
-$query = "SELECT tblGAP.problemID, tblGAP.problemImage, tblUR.name,tblUR.emailID, tblUR.phoneNumber, tblS.SpecialityName as SpecialityName, tblGAP.notes as ProblemNotes, tblGAP.problemStatus, tblGAP.startDate, tblGAP.endDate, tblGAP.startTime, tblGAP.endTime, tblGAP.latitude, tblGAP.longitude, tblGAP.contractorID, tblGAP.fixedAmount, tblGAP.DateTime, tblGAP.whenToRespond, tblC.contractorName  FROM  tblGetAllProblem tblGAP left join tblSpeciality tblS on tblGAP.specialityID = tblS.specialityID left join tblUserRegister tblUR on tblGAP.userRegisterID = tblUR.userRegID left join tblContractor tblC on tblGAP.contractorID = tblC.contractorID WHERE tblGAP.problemID='$problemID'  AND tblGAP.adminID='$adminID'";
+$query = "SELECT tblGAP.problemID, tblGAP.problemImage, tblUR.name, tblUR.emailID, tblUR.phoneNumber, tblUR.userRegID, tblS.SpecialityName AS SpecialityName, tblGAP.notes AS ProblemNotes, tblGAP.problemStatus, tblGAP.startDate, tblGAP.endDate, tblGAP.startTime, tblGAP.endTime, tblGAP.latitude, tblGAP.longitude, tblGAP.contractorID, tblGAP.fixedAmount, tblGAP.DateTime, tblGAP.whenToRespond, tblGAP.subAdminID AS subAdminID, tblC.contractorName, tblAd.firstName,tblAd.lastName,tblAd.businessEmail,tblAd.phoneNumber AS adminPhone, tblAd.logo  FROM  tblGetAllProblem tblGAP LEFT JOIN tblSpeciality tblS ON tblGAP.specialityID = tblS.specialityID LEFT JOIN tblUserRegister tblUR ON tblGAP.userRegisterID = tblUR.userRegID LEFT JOIN tblContractor tblC ON tblGAP.contractorID = tblC.contractorID LEFT JOIN tblAdmin tblAd ON tblGAP.adminID = tblAd.adminID WHERE tblGAP.problemID='$problemID'  AND tblGAP.adminID='$adminID'";
 $rsd = mysqli_query($connect_var,$query);
+
 $count = 0;
-	if (! $rsd){
-		echo 'Database error: ' . mysqli_error(); 
-	} else {
-		$fixedAmount = "";
-		while($rs = mysqli_fetch_assoc($rsd)){
-			
-			if($rs['fixedAmount']==null || $rs['fixedAmount']=="null"){
-				$fixedAmount .= '';
-			} else {
-				$fixedAmount .= $rs['fixedAmount'];
+if (! $rsd){
+	echo 'Database error: ' . mysqli_error(); 
+} else {
+	$FixedAmount = "";
+	while($rs = mysqli_fetch_assoc($rsd)){
+
+		$StatusRow = $rs['problemStatus'];
+
+		$img = file_get_contents($domainAddress.$rs['problemImage']);
+		$pdf->Image('@' . $img, 17, 87, 57, 68,  'JPG', '', '', false, 150, '', false, false, 0, false, false, false);
+
+		if($rs['name']==null || $rs['name']=="" || $rs['emailID'] == null || $rs['emailID']== "" || $rs['phoneNumber'] == null || $rs['phoneNumber'] == ""){
+			$Name = $rs['firstName'] ." " .$rs['lastName'];
+			$FullName =  $Name." (Admin)";
+			$EmailID = $rs['businessEmail'];
+			$PhoneNumber = $rs['adminPhone'];
+		} else {
+			$FullName = $rs['name'];
+			$EmailID = $rs['emailID'];
+			$PhoneNumber = $rs['phoneNumber'];
+		}
+
+		if($rs['subAdminID'] != null && $rs['userRegID'] == null) {
+			$getSubAdminID = $rs['subAdminID'];
+			$querygetSubAdmin = "SELECT subAdminID, firstName, lastName, phoneNumber, emailID, logo FROM tblSubAdmin WHERE subAdminID='$getSubAdminID'";
+			$rsdSub = mysqli_query($connect_var,$querygetSubAdmin);
+			while($rsSub = mysqli_fetch_assoc($rsdSub)){
+				$FullName = $rsSub['firstName'] ." " .$rsSub['lastName']." (Sub-Admin)";
+				$EmailID = $rsSub['emailID'];
+				$PhoneNumber = $rsSub['phoneNumber'];
 			}
+		}
 
-	   		$statusrow = $rs['problemStatus'];
+		if($rs['fixedAmount']==null || $rs['fixedAmount']=="null"){
+			$FixedAmount .= '-';
+		} else {
+			$FixedAmount .= $rs['fixedAmount'];
+		}
 
-			$img = file_get_contents($domainAddress.$rs['problemImage']);
-			$pdf->Image('@' . $img, 17, 87, 57, 68,  'JPG', '', '', false, 150, '', false, false, 0, false, false, false);
-			
-			$row = '<tr>
-						<td colspan="2" rowspan="7"></td>
-						<td><b>Name</b></td>
-						<td colspan="3">'.$rs['name'].'</td>
-					</tr>';
+		if($FullName == null || $FullName == ''){
+			$FullName = '-';
+		} else {
+			$FullName = $FullName;
+		}
 
-			$row1 = '<tr>
-						<td><b>EmailID</b></td>
-						<td colspan="3">'.$rs['emailID'].'</td>
-					</tr>
-					<tr>
-						<td><b>Mobile #</b></td>
-						<td colspan="3">'.$rs['phoneNumber'].'</td>
-					</tr>
-					<tr>
-						<td><b>When Created</b></td>
-						<td colspan="3">'.$rs['DateTime'].'</td>
-					</tr>
-					<tr>
-						<td><b>When Needed</b></td>
-						<td colspan="3">'.$rs['whenToRespond'].'</td>
-					</tr>
-					<tr>
-						<td><b>Fixed Amount</b></td>
-						<td colspan="3">'.$fixedAmount.'</td>
-					</tr>
-					<tr>
-						<td><b>Message</b></td>
-						<td colspan="3">'.$rs['ProblemNotes'].'</td>
-					</tr>';
+		if($EmailID == null || $EmailID == ''){
+			$EmailID = '-';
+		} else {
+			$EmailID = $EmailID;
+		}
 
-					$arrStartDate = explode('-', $rs['startDate']);
-					$newStartDate = $arrStartDate[2].'.'.$arrStartDate[1].'.'.$arrStartDate[0];
+		if($PhoneNumber == null || $PhoneNumber == ''){
+			$PhoneNumber = '-';
+		} else {
+			$PhoneNumber = $PhoneNumber;
+		}
 
-					$arrEndDate = explode('-', $rs['endDate']);
-					$newEndDate = $arrEndDate[2].'.'.$arrEndDate[1].'.'.$arrEndDate[0];
+		if($rs['DateTime'] == null || $rs['DateTime'] == ''){
+			$WhenCreated = '-';
+		} else {
+			$WhenCreated = $rs['DateTime'];
+		}
 
-					$row2 = '<tr>
-								<td colspan="1"><b>Contractor Name</b></td>
-								<td colspan="2">'.$rs['contractorName'].'</td>
-								<td colspan="1"><b>Speciality Name</b></td>
-								<td colspan="2">'.$rs['SpecialityName'].'</td>
-							</tr>
+		if($rs['whenToRespond'] == null || $rs['whenToRespond'] == ''){
+			$WhenToTespond = '-';
+		} else {
+			$WhenToTespond = $rs['whenToRespond'];
+		}
 
-							<tr>
-								<td colspan="1"><b>Start Date</b></td>
-								<td colspan="2">'.$newStartDate.'</td>
-								<td colspan="1"><b>Start Time</b></td>
-								<td colspan="2">'.$rs['startTime'].'</td>
-							</tr>
+		if($rs['ProblemNotes'] == null || $rs['ProblemNotes'] == ''){
+			$ProblemNotes = '-';
+		} else {
+			$ProblemNotes = $rs['ProblemNotes'];
+		}		
+		
+		$row = '<tr>
+					<td colspan="2" rowspan="7"></td>
+					<td><b>Name</b></td>
+					<td colspan="3">'.$FullName.'</td>
+				</tr>';
 
-							<tr>
-								<td colspan="1"><b>End Date</b></td>
-								<td colspan="2">'.$newEndDate.'</td>
-								<td colspan="1"><b>End Time</b></td>
-								<td colspan="2">'.$rs['endTime'].'</td>
-							</tr>';
+		$row1 = '<tr>
+					<td><b>EmailID</b></td>
+					<td colspan="3">'.$EmailID.'</td>
+				</tr>
+				<tr>
+					<td><b>Mobile #</b></td>
+					<td colspan="3">'.$PhoneNumber.'</td>
+				</tr>
+				<tr>
+					<td><b>When Created</b></td>
+					<td colspan="3">'.$WhenCreated.'</td>
+				</tr>
+				<tr>
+					<td><b>When Needed</b></td>
+					<td colspan="3">'.$WhenToTespond.'</td>
+				</tr>
+				<tr>
+					<td><b>Fixed Amount</b></td>
+					<td colspan="3">'.$FixedAmount.'</td>
+				</tr>
+				<tr>
+					<td><b>Message</b></td>
+					<td colspan="3">'.$ProblemNotes.'</td>
+				</tr>';
 
-							$queryNotes = "SELECT workLog.workLogID, workLog.content, workLog.status, workLog.workCreatedDate, workLog.problemID, workLog.workAssignedBy, tblC.image1 FROM tblWorkLog workLog left join tblGetAllProblem prob on workLog.problemID=prob.problemID left join tblContractor tblC on tblC.contractorID=prob.contractorID WHERE workLog.problemID='$problemID' order by workLog.workLogID desc";
-		    				$rsdNotes = mysqli_query($connect_var,$queryNotes);
-    						$countNotes=0;
-    						while($res = mysqli_fetch_assoc($rsdNotes)){
-								$row5 .= '<tr><td colspan="6"><p><b>'.$res['workAssignedBy'].'</b> '.$res['workCreatedDate'].'</p><p>'.$res['status'].'-'.$res['content'].'</p></td></tr>';
-    							$countNotes++;
-    						}
-							$count++; 
+		$arrStartDate = explode('-', $rs['startDate']);
+		$NewStartDate = $arrStartDate[2].'.'.$arrStartDate[1].'.'.$arrStartDate[0];
+
+		$arrEndDate = explode('-', $rs['endDate']);
+		$NewEndDate = $arrEndDate[2].'.'.$arrEndDate[1].'.'.$arrEndDate[0];
+
+		if($NewStartDate == '' || $NewStartDate == '..'){
+			$NewStartDate = '-';
+		} else {
+			$NewStartDate = $NewStartDate;
+		}
+
+		if($NewEndDate == '' || $NewEndDate == '..'){
+			$NewEndDate = '-';
+		} else {
+			$NewEndDate = $NewEndDate;
+		}
+
+		if($rs['startTime'] == '' || $rs['startTime'] == ':'){
+			$NewStartTime = '-';
+		} else {
+			$NewStartTime = $rs['startTime'];
+		}
+
+		if($rs['endTime'] == '' || $rs['endTime'] == ':'){
+			$NewEndTime = '-';
+		} else {
+			$NewEndTime = $rs['endTime'];
+		}
+
+		if($rs['contractorName'] == '' || $rs['contractorName'] == NULL){
+			$ContractorName = '-';
+		} else {
+			$ContractorName = $rs['contractorName'];
+		}
+
+		if($rs['SpecialityName'] == '' || $rs['SpecialityName'] == NULL){
+			$SpecialityName = '-';
+		} else {
+			$SpecialityName = $rs['SpecialityName'];
+		}
+
+		$row2 = '<tr>
+					<td colspan="1"><b>Contractor Name</b></td>
+					<td colspan="2">'.$ContractorName.'</td>
+					<td colspan="1"><b>Speciality Name</b></td>
+					<td colspan="2">'.$SpecialityName.'</td>
+				</tr>
+
+				<tr>
+					<td colspan="1"><b>Start Date</b></td>
+					<td colspan="2">'.$NewStartDate.'</td>
+					<td colspan="1"><b>Start Time</b></td>
+					<td colspan="2">'.$NewStartTime.'</td>
+				</tr>
+
+				<tr>
+					<td colspan="1"><b>End Date</b></td>
+					<td colspan="2">'.$NewEndDate.'</td>
+					<td colspan="1"><b>End Time</b></td>
+					<td colspan="2">'.$NewEndTime.'</td>
+				</tr>';
+
+				$queryNotes = "SELECT workLog.workLogID, workLog.content, workLog.status, workLog.workCreatedDate, workLog.problemID, workLog.workAssignedBy, tblC.image1 FROM tblWorkLog workLog LEFT JOIN tblGetAllProblem prob ON workLog.problemID=prob.problemID LEFT JOIN tblContractor tblC ON tblC.contractorID=prob.contractorID WHERE workLog.problemID='$problemID' ORDER BY workLog.workLogID DESC";
+				$rsdNotes = mysqli_query($connect_var,$queryNotes);
+				$countNotes=0;
+
+						if($rsdNotes === FALSE) {
+							die(mysql_error());
+						}
+				$emptyRow = '<tr><td colspan="6"><p>No Work log Notes Found</p></td></tr>'; 
+				while($res = mysqli_fetch_assoc($rsdNotes)){
+					$row3 .= '<tr><td colspan="6"><p><b>'.$res['workAssignedBy'].'</b> '.$res['workCreatedDate'].'</p><p>'.$res['status'].'-'.$res['content'].'</p></td></tr>';
+					$emptyRow = '';
+					$countNotes++;
+				}
+				$count++; 
 	}
 }
 
 $html = '<div>
-			<table border="1" cellpadding="10">
-        		<tr>
-            		<th colspan="6" style="text-align: center;"><center><img src="images/myRequestLogo.png" style="width: 150px;"></center></th>
-        		</tr>
+		<table border="1" cellpadding="10">
+			<tr>
+				<th colspan="6" style="text-align: center;"><center><img src="images/myRequestLogo.png" style="width: 150px;"></center></th>
+			</tr>
 
-				<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
-					<td colspan="6"><h2 style="margin-top: 1%;">Problem Details</h2></td>
-				</tr>
+			<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
+				<td colspan="6"><h2 style="margin-top: 1%;">Problem Details</h2></td>
+			</tr>
 
-				<tr>
-					<td colspan="6" style="text-align:center;"><h3>'.$statusrow.'</h3></td>
-				</tr>
+			<tr>
+				<td colspan="6" style="text-align:center;"><h3>'.$StatusRow.'</h3></td>
+			</tr>
 
-				<tr>
-					<th colspan="2" style="text-align:center; font-weight: bold;">Problem Image</th>
-					<th colspan="4" style="text-align:center; font-weight: bold;">Problem Raised By</th>
-				</tr>
+			<tr>
+				<th colspan="2" style="text-align:center; font-weight: bold;">Problem Image</th>
+				<th colspan="4" style="text-align:center; font-weight: bold;">Problem Raised By</th>
+			</tr>
 
-				'.$row.'
+			'.$row.'
 
-				'.$row1.'
+			'.$row1.'
 
-				<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
-					<td colspan="6"><center><h4>Contractor Details</h4></center></td>
-				</tr>
+			<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
+				<td colspan="6"><center><h4>Contractor Details</h4></center></td>
+			</tr>
 
-				'.$row2.'
+			'.$row2.'
 
-				<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
-					<td colspan="6"><center><h4>Work Logs</h4></center></td>
-				</tr>
-				'.$row5.'		
-    		</table>
-		</div>';
+			<tr style="text-align:center; background-color:#fcdb34; color: #000000;">
+				<td colspan="6"><center><h4>Work Logs</h4></center></td>
+			</tr>
+			'.$emptyRow.'
+			'.$row3.'
+		</table>
+	</div>';
 
 $pdf->writeHTMLCell(0, 0, '', '', $html, 0, 1, 0, true, '', true);
 $pdf->lastPage();
 ob_clean();
-$pdf->Output('ParticularProblem.pdf', 'I');
+$pdf->Output('ParticularProblem.pdf', 'D');

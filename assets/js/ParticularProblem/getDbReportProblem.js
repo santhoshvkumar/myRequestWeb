@@ -1,6 +1,7 @@
 function getDbReportProblem(getProblemID) {
       /********** To get Particular Problem Details - Start ********/
       $.get(domainAddress + "GetParticularProblem/" + getProblemID, {}, function(resultProblem) {
+          console.log(domainAddress + "GetParticularProblem/" + getProblemID);
           $(".problemNotes").html('');
           $(".userNotes").html('');
           $(".noteHide").html('');
@@ -587,7 +588,7 @@ function getDbReportProblem(getProblemID) {
                   return false;
               } else if (notesVal != "") {
                   $("#getLoadingModalContent").addClass('md-show');
-                  var dataForm = '{"Status":"Notes","Content":"' + notesVal + '","ProblemID":"' + getProblemID + '","AssignedBy":"' + adminUserName + '","ProblemStatus":"' + problemStatus2 + '","Approved":"","Rating":""}';
+                  var dataForm = '{"Status":"Notes","Content":"' + notesVal + '","ProblemID":"' + getProblemID + '","AssignedBy":"' + adminUserName + '","ProblemStatus":"' + problemStatus2 + '","Approved":"","Rating":"", "WorkStatusDateTime":"'+moment().format('YYYY-MM-DD HH:mm:ss')+'"}';
                   console.log(dataForm);
                   problemStatus2 = localStorage.getItem("MyRequestStatus");
                   userRegisterID = localStorage.getItem("MyRequestUserRegisterID");
