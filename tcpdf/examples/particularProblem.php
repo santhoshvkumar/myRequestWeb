@@ -27,8 +27,8 @@ if (@file_exists(dirname(__FILE__).'/lang/eng.php')) {
 $problemID = $_GET['problemID'];
 $adminID = $_GET['adminID'];
 
-$domainAddress = "http://localhost:8888/myRequestHome/myrequestapi/";
-// $domainAddress = "http://api.myrequest.co.uk/";
+// $domainAddress = "http://localhost:8888/myRequestHome/myrequestapi/";
+$domainAddress = "https://api.myrequest.co.uk/";
 
 $query = "SELECT tblGAP.problemID, tblGAP.problemImage, tblUR.name, tblUR.emailID, tblUR.phoneNumber, tblUR.userRegID, tblS.SpecialityName AS SpecialityName, tblGAP.notes AS ProblemNotes, tblGAP.problemStatus, tblGAP.startDate, tblGAP.endDate, tblGAP.startTime, tblGAP.endTime, tblGAP.latitude, tblGAP.longitude, tblGAP.contractorID, tblGAP.fixedAmount, tblGAP.DateTime, tblGAP.whenToRespond, tblGAP.subAdminID AS subAdminID, tblC.contractorName, tblAd.firstName,tblAd.lastName,tblAd.businessEmail,tblAd.phoneNumber AS adminPhone, tblAd.logo  FROM  tblGetAllProblem tblGAP LEFT JOIN tblSpeciality tblS ON tblGAP.specialityID = tblS.specialityID LEFT JOIN tblUserRegister tblUR ON tblGAP.userRegisterID = tblUR.userRegID LEFT JOIN tblContractor tblC ON tblGAP.contractorID = tblC.contractorID LEFT JOIN tblAdmin tblAd ON tblGAP.adminID = tblAd.adminID WHERE tblGAP.problemID='$problemID'  AND tblGAP.adminID='$adminID'";
 $rsd = mysqli_query($connect_var,$query);
