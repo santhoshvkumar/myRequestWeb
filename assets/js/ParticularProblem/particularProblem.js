@@ -1,8 +1,6 @@
 $(function() {
-    if(getProblemID==0){
-        getProblemID = localStorage.getItem("ParticularProblemID");
-    }
-    
+    getProblemID = localStorage.getItem("ParticularProblemID");
+        
     $('#full_screen_toggle').on('click', function(e) {
         e.preventDefault();
         screenfull.toggle();

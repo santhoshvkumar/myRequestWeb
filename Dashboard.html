@@ -655,7 +655,7 @@
                                                 <div class="clndr_events">
                                                     <i class="material-icons clndr_events_close_button">&#xE5CD;</i> {{#each eventsThisMonth}}
                                                     <div class="clndr_event" data-clndr-event="{{ dateFormat this.date format='YYYY-MM-DD' }}">
-                                                        <a href="{{ this.url }}">
+                                                        <a class="dashbordProblemLink" id="eventTitleID-{{ this.ProblemID }}">
                                                             <span class="clndr_event_title">{{ this.title }}</span>
                                                             <span class="clndr_event_more_info">
                                                                                 {{~dateFormat this.date format='MMM Do'}}
@@ -966,7 +966,7 @@
                                 </div>
                             </div>
                             <br/>
-                            <div class="portlet" style="width: 500px; height=440px; overflow-y:hidden;">
+                            <div class="portlet" style="width: 500px; height:440px; overflow-y:hidden;">
                                 <div class="portlet-title">
                                     <div class="caption">
                                         <i class="fa fa-comments"></i>Work Logs

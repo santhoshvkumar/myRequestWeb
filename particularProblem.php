@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
-     $problemID = urldecode($_GET['ProblemID']);
+    //  $problemID = urldecode($_GET['ProblemID']);
 ?>
 
     <head>
@@ -721,8 +721,6 @@
             });
         </script>
         <script>
-            var getProblemID = "<?php echo $problemID; ?>";
-            console.log(getProblemID);
             var requestID = 0;
         </script>
 
