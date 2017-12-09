@@ -43,7 +43,7 @@ if (! $rsd){
 		$StatusRow = $rs['problemStatus'];
 
 		$img = file_get_contents($domainAddress.$rs['problemImage']);
-		$pdf->Image('@' . $img, 17, 87, 57, 68,  'PNG', '', '', false, 150, '', false, false, 0, false, false, false);
+		$pdf->Image('@' . $img, 17, 87, 57, 68,  'JPG', '', '', false, 150, '', false, false, 0, false, false, false);
 
 		if($rs['name']==null || $rs['name']=="" || $rs['emailID'] == null || $rs['emailID']== "" || $rs['phoneNumber'] == null || $rs['phoneNumber'] == ""){
 			$Name = $rs['firstName'] ." " .$rs['lastName'];
