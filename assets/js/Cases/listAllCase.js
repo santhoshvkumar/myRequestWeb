@@ -115,6 +115,8 @@ var inputWhenTime = "";
 var getDate = "";
 var countDateTime = 0;
 var businessName = "";
+var getUserType = "";
+var getAllUserTypeID = "";
 
 $(window).load(function() {
     $("#getLoadingModalContent").removeClass('md-show');
@@ -122,6 +124,8 @@ $(window).load(function() {
 
 $(document).ready(function(){
     localStorage.removeItem('ParticularProblemID');
+    localStorage.removeItem('MyRequest_UserType');
+    localStorage.removeItem('MyRequest_AllUserID');
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     var adminUserName = localStorage.getItem("MyRequest_UserName");
     var adminType = localStorage.getItem("MyRequest_AdminType");

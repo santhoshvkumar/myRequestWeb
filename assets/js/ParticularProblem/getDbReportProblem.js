@@ -47,6 +47,11 @@ function getDbReportProblem(getProblemID) {
               var getFixedAmount = parseFloat(resultProblem.ProblemRecord[Problem].FixedAmount).toFixed(2);
               getSpecialityID = resultProblem.ProblemRecord[Problem].SpecialityID;
               var getAddress = resultProblem.ProblemRecord[Problem].GetAddress;
+              var userType = resultProblem.ProblemRecord[Problem].UserType;
+              var AllUserTypeID = resultProblem.ProblemRecord[Problem].GetTenantAdminSubAdminID;
+
+              localStorage.setItem("MyRequest_UserType", userType);
+              localStorage.setItem("MyRequest_AllUserID", AllUserTypeID);
               
               if(getSpecialityID!=""){
                 getProblemSpeciality(getSpecialityID);
@@ -56,6 +61,11 @@ function getDbReportProblem(getProblemID) {
                   $("#btnFixedAmount").show();
                   $("#btnFixedAmount").html("No Final Cost found");
               } else {
+                  if (isNaN(getFixedAmount)) {
+                        getFixedAmount = "0.00";
+                    } else {
+                        getFixedAmount = getFixedAmount;
+                    }
                   $("#btnFixedAmount").show();
                   $("#btnFixedAmount").html(getFixedAmount + " ( Final Cost )");
               }

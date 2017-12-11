@@ -1,6 +1,9 @@
 getProblemID = localStorage.getItem("ParticularProblemID");
 $("#btnGetExcel").click(function() {
-    window.location.href = domainAddress+"excelParticularProblems.php?problemID=" + getProblemID + "&adminID=" + adminUserID;
+    getUserType = localStorage.getItem("MyRequest_UserType");
+    getAllUserTypeID = localStorage.getItem('MyRequest_AllUserID');
+    window.location.href = domainAddress+"excelParticularProblems.php?problemID=" + getProblemID + "&adminID=" + adminUserID + "&UserType=" + getUserType + "&AllUserTypeID=" + getAllUserTypeID;
+    console.log(domainAddress+"excelParticularProblems.php?problemID=" + getProblemID + "&adminID=" + adminUserID + "&UserType=" + getUserType + "&AllUserTypeID=" + getAllUserTypeID);
 });
 
 $("#btnPrintPartProblems").click(function() {
