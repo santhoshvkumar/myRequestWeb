@@ -506,9 +506,10 @@ function getAddTenant(count) {
     function existTenantCheck(getMobileNumber,getcountryCode,getCountValue,hiddenPropertyID){
         // console.log(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID +"/"+getcountryCode);
         // console.log(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode);
+        console.log(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode+"/"+adminUserID);
         $.get(domainAddress + "GetExistTenantForProperty/" + getMobileNumber +"/"+hiddenPropertyID +"/"+getcountryCode, function(result) {
                 if (result.record_count == 0) { 
-                    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode, function(result) {
+                    $.get(domainAddress + "GetUserDetailsValue/" + getMobileNumber + "/"+getcountryCode+"/"+adminUserID, function(result) {
                         if (result.record_count == 0) {
                             // no tenants found
                         } else {
@@ -615,9 +616,9 @@ function getAddTenant(count) {
                 var hiddenIsWater = $("#hiddenIsWater-"+getCountValue).val();
                 var hiddenIsCouncil = $("#hiddenIsCouncil-"+getCountValue).val();
                 var hiddenAvailTenantInsurance = $("#hiddenAvailTenantInsurance-"+getCountValue).val();
-
+                var NoOfTenants = $("#inputHMONoOfTenent").val();
                 var dataAddPropertyForm = "{'Property_RegisterID':'" + hiddenPropertyID + "','AdminID':'" + adminUserID + "','PropertyAddress':'"+inputPropertyAddress+"','IsElectricity':'"+hiddenIsElectricity+"','IsGas':'"+hiddenIsGas+"','IsWater':'"+hiddenIsWater+"','IsCouncil':'"+hiddenIsCouncil+"','IsAvailTenantInsurance':'"+hiddenAvailTenantInsurance+"'}";
-                var dataForm = '{"Title":"' + inputTitle + '","Name":"' + inputName + '","LastName":"' + inputLastName + '","MobileNumber":"' + inputMobile + '","Email":"' + inputEmail + '","UserImage":"","IsAppInstalled":"' + appInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + isLeadTenant + '","StartDate":"'+finalStartDate+'","EndDate":"'+finalEndDate+'", "Country":"'+ getcountryCode +'","AddProperty":"' + dataAddPropertyForm + '"}';
+                var dataForm = '{"Title":"' + inputTitle + '","Name":"' + inputName + '","LastName":"' + inputLastName + '","MobileNumber":"' + inputMobile + '","Email":"' + inputEmail + '","UserImage":"","IsAppInstalled":"' + appInstalled + '","AdminID":"' + adminUserID + '","LettingAgencyCode":"' + agencyCode + '","IsLeadTenant":"' + isLeadTenant + '","StartDate":"'+finalStartDate+'","EndDate":"'+finalEndDate+'", "Country":"'+ getcountryCode +'","PropertyID":"' + hiddenPropertyID + '","NoOfTenants":"' + NoOfTenants + '","AddProperty":"' + dataAddPropertyForm + '"}';
                 console.log(dataForm);
                 var sendURL = domainAddress + 'CreateUserTenant';
                 console.log(sendURL);
