@@ -7,7 +7,7 @@
     $(".dataTables_filter").hide();
     $(".dataTables_paginate").hide();
     $(".dataTables_info").hide();
-
+    $("#enterPageNO").attr("disabled", true);
        
       var dataForm = "";
       var sendURL = "";
@@ -126,7 +126,7 @@
           $("#enterPageNO").val(enterPageNO);
           $("#enterPageNO").attr("disabled", true);
       } else {
-          $("#enterPageNO").attr("disabled", false);
+          $("#enterPageNO").attr("disabled", true);
           $(".listAllAdminProperty").html('');
           if (result.record_count == result.All_Records_Count) {
               $(".pageCount").show();
