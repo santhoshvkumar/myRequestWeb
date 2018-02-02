@@ -419,6 +419,7 @@
                UIkit.modal.confirm("Your Selected Country is : "+countryCode, function(){
                     // will be executed on confirm.
                     localStorage.setItem("MyRequest_countryCode",countryCode);
+                    localStorage.setItem("MyRequest_NewCountryCode",countryCode);
                     localStorage.setItem("MyRequest_PhoneCode",phoneCode);
                     localStorage.setItem("MyRequest_GMT",gmt);
                     modalMap.hide();
@@ -454,7 +455,7 @@
                 return false;
             } else {
                 var userTokenId = "";
-                // validationCheckForLogin(emailID, password, userTokenId);
+                validationCheckForLogin(emailID, password, userTokenId);
                 OneSignal.push(["getUserId", function(userTokenId) {
                      
                     console.log("OneSignal User ID:", userTokenId);
