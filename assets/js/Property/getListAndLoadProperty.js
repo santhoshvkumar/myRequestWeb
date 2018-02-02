@@ -8,7 +8,6 @@
     $(".dataTables_paginate").hide();
     $(".dataTables_info").hide();
     $("#enterPageNO").attr("disabled", true);
-       
       var dataForm = "";
       var sendURL = "";
       if (getValue == "" || getValue == undefined) {
@@ -118,9 +117,11 @@
   }
 
   function loadUserPropertyList(result) {
-
+    debugger;
       if (result.record_count == 0) {
           $("#nextPage").attr("disabled", true);
+          $("#rightArrow").attr("disabled", true);
+          $("#leftArrow").attr("disabled", true);
           var enterPageNO = $("#enterPageNO").val();
           enterPageNO--;
           $("#enterPageNO").val(enterPageNO);
@@ -129,14 +130,31 @@
           $("#enterPageNO").attr("disabled", true);
           $(".listAllAdminProperty").html('');
           if (result.record_count == result.All_Records_Count) {
-              $(".pageCount").show();
-              $("#nextPage").attr("disabled", "disabled");
+               $(".pageCount").show();
+            //   $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
+            $("#leftArrow").attr("disabled", true);
           } else if (result.record_count < 9 && result.record_count != 0) {
               $(".pageCount").show();
-              $("#nextPage").attr("disabled", "disabled");
+            //   $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
+            $("#leftArrow").attr("disabled", true);
           } else if (result.record_count >= 9) {
-              $("#nextPage").removeAttr("disabled");
+            //   $("#nextPage").removeAttr("disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#enterPageNO").attr("disabled", false);
+            $("#nextPage").attr("disabled", false);
+            $("#rightArrow").attr("disabled", false);
+            $("#previousPage").attr("disabled", false);
+            $("#leftArrow").attr("disabled", false);
               $(".pageCount").show();
+              
           }
           totalRecordCount = result.All_Records_Count;
           lastPage = parseInt(result.All_Records_Count / 9) + 1;

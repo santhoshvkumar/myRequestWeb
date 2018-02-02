@@ -2,10 +2,10 @@
       userPropertyCountLimit = 0;
       maxProp = 1;
       $("#enterPageNO").val(1);
-      getPropertyList(getValue);
       if (maxProp < lastPage) {
           $("#getLoadingModalContent").addClass('md-show');
           $("#nextPage").attr("disabled", false);
+          getPropertyList(getValue);
       }
   });
 
@@ -30,12 +30,13 @@
       }
       maxProp--;
       if (maxProp == 0) {
-          $("#enterPageNO").val('');
+          $("#enterPageNO").val('1');
       } else {
           $("#enterPageNO").val(maxProp);
+          $("#getLoadingModalContent").addClass('md-show');
+          getPropertyList(getValue);
       }
-      $("#getLoadingModalContent").addClass('md-show');
-      getPropertyList(getValue);
+      
   });
 
 
