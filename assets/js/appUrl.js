@@ -4,13 +4,23 @@
 
 var domainAddress = "https://api.myrequest.co.uk/";
 
-// var domainAddress = "http://localhost:8888/myRequestHome/myrequestapi/";
+// var domainAddress = "http://localhost:8888/Navaneeth/myRequestHome/myrequestapi/";
 
 var getCountry = localStorage.getItem("MyRequest_countryCode");
+var getNewCountryCode = localStorage.getItem("MyRequest_NewCountryCode");
 
 var adminType = localStorage.getItem("MyRequest_AdminType");
     if(adminType == "SuperAdmin"){
-        $("body").addClass("bgUKImage");
+        // $("body").addClass("bgUKImage");
+        if(getNewCountryCode == "US"){
+            $("body").addClass("bgUSImage");
+        } else if(getNewCountryCode == "Canada"){
+            $("body").addClass("bgCanImage");
+        } else if(getNewCountryCode == "India"){
+            $("body").addClass("bgIndImage");
+        } else {
+            $("body").addClass("bgUKImage");
+        }
     }
 
     if(getCountry == "UK"){

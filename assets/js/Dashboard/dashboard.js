@@ -1,5 +1,6 @@
   $(function() {
             var getCountry = localStorage.getItem("MyRequest_countryCode");
+            var adminType = localStorage.getItem("MyRequest_AdminType");
             switch(getCountry){
                 case "UK":
                     $("#dashTotalIcon").removeClass();
@@ -33,6 +34,38 @@
                     $("#commissionEarnedIcon").removeClass();
                     $("#commissionEarnedIcon").addClass("fa fa-usd");
                     break;
+            }
+
+            if(adminType == "SuperAdmin"){
+                if(getNewCountryCode == "US"){
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-usd");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-usd");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-usd");
+                } else if(getNewCountryCode == "Canada"){
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-usd");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-usd");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-usd");
+                } else if(getNewCountryCode == "India"){
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-inr");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-inr");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-inr");
+                } else {
+                    $("#dashTotalIcon").removeClass();
+                    $("#dashTotalIcon").addClass("fa fa-gbp");
+                    $("#repairChargeIcon").removeClass();
+                    $("#repairChargeIcon").addClass("fa fa-gbp");
+                    $("#commissionEarnedIcon").removeClass();
+                    $("#commissionEarnedIcon").addClass("fa fa-gbp");
+                }
             }
 
 

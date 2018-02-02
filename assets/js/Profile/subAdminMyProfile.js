@@ -581,13 +581,15 @@
  
 
  $(".logOut").click(function() {
-     localStorage.setItem("MyRequest_AdminID", "");
-     localStorage.setItem("MyRequest_UserName", "");
-     localStorage.setItem("MyRequest_AdminType", "");
-     localStorage.setItem("MyRequest_BusinessName");
-     localStorage.setItem("MyRequest_LettingAgencyCode", "");
-     localStorage.setItem("MyRequest_Logo", "");
-     localStorage.setItem("MyRequest_profileFill", "");
+    localStorage.setItem("MyRequest_AdminID", "");
+    localStorage.setItem("MyRequest_UserName", "");
+    localStorage.setItem("MyRequest_AdminType", "");
+    localStorage.setItem("MyRequest_BusinessName");
+    localStorage.setItem("MyRequest_LettingAgencyCode", "");
+    localStorage.setItem("MyRequest_Logo", "");
+    localStorage.setItem("MyRequest_profileFill", "");
+    localStorage.setItem("MyRequest_NewCountryCode", "");
+    localStorage.setItem("MyRequest_PhoneCode","");
  });
 
 
