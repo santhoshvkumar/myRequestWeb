@@ -1070,7 +1070,7 @@ if(superAdminType == "USSuperAdmin"){
       $("#enterPageNO").val(enterPageNO);
       $("#enterPageNO").attr("disabled", true);
     } else {
-      $("#enterPageNO").attr("disabled", false);
+      $("#enterPageNO").attr("disabled", true);
       $(".allAdminList").html('');
       if (result.record_count == result.All_Records_Count) {
               //console.log("equal to 9");
