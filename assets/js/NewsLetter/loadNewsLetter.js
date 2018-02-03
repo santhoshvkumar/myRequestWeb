@@ -4,6 +4,12 @@ function loadNewsLetter() {
     var lastPage = 0;
     var maxProp = 0;
     var getValue = "";
+    var checkMaxCount = 0;
+	$("#leftArrow").attr("disabled",true);
+    $("#previousPage").attr("disabled",true);
+    $("#nextPage").attr("disabled",false);
+    $("#rightArrow").attr("disabled",false);
+    $("#enterPageNO").attr("disabled", true);
     var AdminCountry = localStorage.getItem("MyRequest_countryCode");
     $(window).load(function() {
         $("#getLoadingModalContent").removeClass('md-show');
@@ -158,38 +164,47 @@ function loadNewsLetter() {
 
 
     $("#leftArrow").click(function() {
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
         newsLetterCountLimit = 0;
         maxProp = 1;
+        checkMaxCount=0;
         $("#enterPageNO").val(1);
-        $("#getLoadingModalContent").addClass('md-show');
         getAllNewsLetter(getValue);
-
         if (maxProp < lastPage) {
             $("#nextPage").attr("disabled", false);
+            $("#previousPage").attr("disabled", "disabled");
+            $("#leftArrow").attr("disabled", "disabled");
         }
     });
 
     $("#rightArrow").click(function() {
+        checkMaxCount=0;
+        $("#leftArrow").attr("disabled", false);
         $("#previousPage").removeAttr("disabled");
-        newsLetterCountLimit = (9 * lastPage) - 9;
+        newsLetterCountLimit = (9 * lastPage);
+        newsLetterCountLimit -=9;
         maxProp = lastPage;
-        $("#enterPageNO").val(lastPage);
-        $("#getLoadingModalContent").addClass('md-show');
+        checkMaxCount+=(9 * lastPage);
+        $("#enterPageNO").val(maxProp);
         getAllNewsLetter(getValue);
     });
 
     $("#previousPage").click(function() {
-        //console.log("inital count : "+newsLetterCountLimit);
+        $("#nextPage").attr("disabled", false);
+        checkMaxCount=0;
         if (newsLetterCountLimit == 0) {
             newsLetterCountLimit = 0;
-            $("#previousPage").attr("disabled", "disabled");
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
         } else {
+            checkMaxCount=newsLetterCountLimit-checkMaxCount;
             newsLetterCountLimit -= 9;
             $("#previousPage").removeAttr("disabled");
         }
-        //console.log("prev count : "+newsLetterCountLimit);
         if (newsLetterCountLimit == 0) {
-            $("#previousPage").attr("disabled", "disabled");
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
         }
         maxProp--;
         if (maxProp == 0) {
@@ -197,17 +212,17 @@ function loadNewsLetter() {
         } else {
             $("#enterPageNO").val(maxProp);
         }
-        $("#getLoadingModalContent").addClass('md-show');
         getAllNewsLetter(getValue);
     });
 
 
     $("#nextPage").click(function() {
-        //console.log("next inital count : "+newsLetterCountLimit);
+        checkMaxCount=0;
+        $("#leftArrow").attr("disabled", false);
         $("#previousPage").removeAttr("disabled");
+        checkMaxCount = newsLetterCountLimit+checkMaxCount+18;
         newsLetterCountLimit += 9;
-        //console.log("next count : "+newsLetterCountLimit);
-
+        
         if (maxProp == lastPage) {
             $("#nextPage").attr("disabled", true);
         } else {
@@ -215,53 +230,35 @@ function loadNewsLetter() {
             maxProp++;
             $("#enterPageNO").val(maxProp);
             if (maxProp <= lastPage) {
-                $("#getLoadingModalContent").addClass('md-show');
                 getAllNewsLetter(getValue);
             }
         }
-
-    });
-
-
-
-    $("#enterPageNO").on("change", function(e) {
-        console.log("THis is called" + $("#enterPageNO").val());
-        if ($("#enterPageNO").val() < lastPage) {
-            maxProp++;
-            $("#enterPageNO").val(maxProp);
-        }
-
-        console.log("next inital count : " + newsLetterCountLimit + " page # : " + maxProp);
-        newsLetterCountLimit = 9 * ($("#enterPageNO").val() - 1);
-        //console.log("next count : " + newsLetterCountLimit);
-        if (newsLetterCountLimit == 0) {
-            $("#previousPage").attr("disabled", "disabled");
-        } else {
-            $("#previousPage").removeAttr("disabled");
-        }
-        $("#getLoadingModalContent").addClass('md-show');
-        getAllNewsLetter(getValue);
     });
 
     $("#enterPageNO").keyup(function() {
-        console.log("THis is called" + $("#enterPageNO").val());
-        if ($("#enterPageNO").val() < lastPage) {
-            maxProp++;
+        if ($("#enterPageNO").val() <= lastPage && $("#enterPageNO").val()!=0) {
+            maxProp = $("#enterPageNO").val();
             $("#enterPageNO").val(maxProp);
-        }
-
-        console.log("next inital count : " + newsLetterCountLimit + " page # : " + maxProp);
-        newsLetterCountLimit = 9 * ($("#enterPageNO").val() - 1);
-        //console.log("next count : " + newsLetterCountLimit);
-        if (newsLetterCountLimit == 0) {
-            $("#previousPage").attr("disabled", "disabled");
-        } else {
-            $("#previousPage").removeAttr("disabled");
-        }
-        $("#getLoadingModalContent").addClass('md-show');
-        getAllNewsLetter(getValue);
+            if (maxProp == lastPage) {
+                $("#leftArrow").attr("disabled", false);
+                $("#previousPage").removeAttr("disabled");
+                $("#nextPage").attr("disabled", true);
+            } else {
+                if(maxProp > 1){
+                    $("#previousPage").attr("disabled", false);
+                    $("#rightArrow").attr("disabled", false);
+                    $("#leftArrow").attr("disabled", false);
+                } else {
+                    $("#previousPage").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
+                    $("#leftArrow").attr("disabled", true);
+                }
+                $("#nextPage").attr("disabled", false);
+            }
+            newsLetterCountLimit = 9 * ($("#enterPageNO").val() - 1);
+            getAllNewsLetter(getValue);
+        } 
     });
-
 
     $("#inputNewsLetterName").keyup(function() {
         var inputNewsLetterName = $("#inputNewsLetterName").val();
@@ -456,17 +453,27 @@ function loadNewsLetter() {
             $("#enterPageNO").attr("disabled", true);
             $("#getLoadingModalContent").removeClass('md-show');
         } else {
-            $("#enterPageNO").attr("disabled", false);
             $(".allNewsLetterList").html('');
             if (result.record_count == result.All_Records_Count) {
                 console.log("equal to 9");
-                $("#nextPage").attr("disabled", "disabled");
+                $("#enterPageNO").attr("disabled", true);
+                $("#nextPage").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
             } else if (result.record_count < 9 && result.record_count != 0) {
                 console.log("less than 9");
-                $("#nextPage").attr("disabled", "disabled");
+                $("#enterPageNO").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
+                $("#nextPage").attr("disabled", true);
             } else if (result.record_count >= 9) {
                 console.log("great than 9");
-                $("#nextLastPage").removeAttr("disabled");
+                $("#enterPageNO").attr("disabled", false);
+                if(checkMaxCount==result.All_Records_Count){
+                    $("#nextPage").attr("disabled", "disabled");
+                    $("#rightArrow").attr("disabled", "disabled");
+                } else {
+                    $("#nextPage").removeAttr("disabled");
+                    $("#rightArrow").removeAttr("disabled");
+                }
             }
             lastPage = parseInt(result.All_Records_Count / 9) + 1;
             console.log(lastPage);

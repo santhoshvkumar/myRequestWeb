@@ -58,7 +58,7 @@
     checkMaxCount=0;
     $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
-    checkMaxCount = userPropertyCountLimit+checkMaxCount+40;
+    checkMaxCount = userPropertyCountLimit+checkMaxCount+18;
     userPropertyCountLimit += 9;
     
     if (maxProp == lastPage) {

@@ -2056,7 +2056,7 @@ $("#inputZip").keyup(function() {
     checkMaxCount=0;
     $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
-    checkMaxCount = contractorsCountLimit+checkMaxCount+40;
+    checkMaxCount = contractorsCountLimit+checkMaxCount+20;
     contractorsCountLimit += 10;
     
     if (maxProp == lastPage) {
@@ -2070,8 +2070,6 @@ $("#inputZip").keyup(function() {
         }
     }
   });
-
-
 
   $("#enterPageNO").keyup(function() {
     if ($("#enterPageNO").val() <= lastPage && $("#enterPageNO").val()!=0) {
