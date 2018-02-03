@@ -117,90 +117,81 @@
   }
 
   function loadUserPropertyList(result) {
-      if (result.record_count == 0) {
-          $("#nextPage").attr("disabled", true);
-          $("#rightArrow").attr("disabled", true);
-          $("#leftArrow").attr("disabled", true);
-          var enterPageNO = $("#enterPageNO").val();
-          enterPageNO--;
-          $("#enterPageNO").val(enterPageNO);
-          $("#enterPageNO").attr("disabled", true);
-      } else {
-          $("#enterPageNO").attr("disabled", true);
-          $(".listAllAdminProperty").html('');
-          if (result.record_count == result.All_Records_Count) {
-               $(".pageCount").show();
-            //   $("#nextPage").attr("disabled", "disabled");
+    if (result.record_count == 0) {
+        $("#nextPage").attr("disabled", true);
+        $("#rightArrow").attr("disabled", true);
+        $("#leftArrow").attr("disabled", true);
+        var enterPageNO = $("#enterPageNO").val();
+        enterPageNO--;
+        $("#enterPageNO").val(enterPageNO);
+        $("#enterPageNO").attr("disabled", true);
+    } else {
+        $("#enterPageNO").attr("disabled", true);
+        $(".listAllAdminProperty").html('');
+        if (result.record_count == result.All_Records_Count) {
             $("#enterPageNO").attr("disabled", true);
             $("#nextPage").attr("disabled", true);
             $("#rightArrow").attr("disabled", true);
-            $("#previousPage").attr("disabled", true);
-            $("#leftArrow").attr("disabled", true);
-          } else if (result.record_count < 9 && result.record_count != 0) {
-              $(".pageCount").show();
-            //   $("#nextPage").attr("disabled", "disabled");
+        } else if (result.record_count < 9 && result.record_count != 0) {
             $("#enterPageNO").attr("disabled", true);
-            $("#nextPage").attr("disabled", true);
             $("#rightArrow").attr("disabled", true);
-            $("#previousPage").attr("disabled", true);
-            $("#leftArrow").attr("disabled", true);
-          } else if (result.record_count >= 9) {
-            //   $("#nextPage").removeAttr("disabled");
-            $("#enterPageNO").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+        } else if (result.record_count >= 9) {
             $("#enterPageNO").attr("disabled", false);
-            $("#nextPage").attr("disabled", false);
-            $("#rightArrow").attr("disabled", false);
-            $("#previousPage").attr("disabled", false);
-            $("#leftArrow").attr("disabled", false);
-              $(".pageCount").show();
-              
-          }
-          totalRecordCount = result.All_Records_Count;
-          lastPage = parseInt(result.All_Records_Count / 9) + 1;
-          for (Property in result.records) {
-              if (result.records[Property].PropOwnerName == "" || result.records[Property].PropOwnerName == null) {
-                  result.records[Property].PropOwnerName = "";
-              }
-              $(".listAllAdminProperty").append("<tr id='rowID-" + result.records[Property].PropertyRegister + "'><td style='text-align:center;vertical-align: middle;' id='propAddress-" + result.records[Property].PropertyRegister + "'>" + result.records[Property].PropAddress + "</td><td style='text-align:center;vertical-align: middle;' id='propPostalCode-" + result.records[Property].PropertyRegister + "'>" + result.records[Property].PropPostalCode + "</td><td style='text-align:center;vertical-align: middle;' id='propOwnerEmail-" + result.records[Property].PropertyRegister + "'><a href='mailto:" + result.records[Property].PropOwnerEmail + "' target='_top'>" + result.records[Property].PropOwnerEmail + "</a> </td>  <td><a class='editProperty' id='editPropertyID-" + result.records[Property].PropertyRegister + "' > <i style='vertical-align: middle;'class='fa fa-pencil pencil fa-1x'></i> </a></td><td><a class='deleteProperty' id='deletePropertyID-" + result.records[Property].PropertyRegister + "'> <i class='fa fa-trash trash fa-1x'></i> </a></td></tr> ");
+            if(checkMaxCount==result.All_Records_Count){
+                $("#nextPage").attr("disabled", "disabled");
+                $("#rightArrow").attr("disabled", "disabled");
+            } else {
+                $("#nextPage").removeAttr("disabled");
+                $("#rightArrow").removeAttr("disabled");
+            }
+        }
+        lastPage = Math.ceil(result.All_Records_Count / 9);
+        totalRecordCount = result.All_Records_Count;
+        for (Property in result.records) {
+            if (result.records[Property].PropOwnerName == "" || result.records[Property].PropOwnerName == null) {
+                result.records[Property].PropOwnerName = "";
+            }
+            $(".listAllAdminProperty").append("<tr id='rowID-" + result.records[Property].PropertyRegister + "'><td style='text-align:center;vertical-align: middle;' id='propAddress-" + result.records[Property].PropertyRegister + "'>" + result.records[Property].PropAddress + "</td><td style='text-align:center;vertical-align: middle;' id='propPostalCode-" + result.records[Property].PropertyRegister + "'>" + result.records[Property].PropPostalCode + "</td><td style='text-align:center;vertical-align: middle;' id='propOwnerEmail-" + result.records[Property].PropertyRegister + "'><a href='mailto:" + result.records[Property].PropOwnerEmail + "' target='_top'>" + result.records[Property].PropOwnerEmail + "</a> </td>  <td><a class='editProperty' id='editPropertyID-" + result.records[Property].PropertyRegister + "' > <i style='vertical-align: middle;'class='fa fa-pencil pencil fa-1x'></i> </a></td><td><a class='deleteProperty' id='deletePropertyID-" + result.records[Property].PropertyRegister + "'> <i class='fa fa-trash trash fa-1x'></i> </a></td></tr> ");
 
-          }
-
-
-          $("#getLoadingModalContent").removeClass('md-show');
-
-          $('#propertyList').DataTable({
-              createdRow: function(row) {
-                  $('td', row).attr('tabindex', 0);
-              }
-          });
-
-          $(".dataTables_paginate").hide();
-          $(".dataTables_length").hide();
-          $(".dataTables_info").hide();
-          $("#propertyList_filter").hide();
+        }
 
 
-          var isFourExistNo = 0;
+        $("#getLoadingModalContent").removeClass('md-show');
 
-          $(".editProperty").on('click', function(e) {
+        $('#propertyList').DataTable({
+            createdRow: function(row) {
+                $('td', row).attr('tabindex', 0);
+            }
+        });
+
+        $(".dataTables_paginate").hide();
+        $(".dataTables_length").hide();
+        $(".dataTables_info").hide();
+        $("#propertyList_filter").hide();
 
 
-              var editPropertyID = this.id.replace('editPropertyID-', '');
-              getPropertyInfo(editPropertyID);
- 
+        var isFourExistNo = 0;
 
-          }); // editProperty
+        $(".editProperty").on('click', function(e) {
 
 
-          $(".deleteProperty").on('click', function(e) {
-              var deletePropertyID = this.id.replace('deletePropertyID-', '');
-              UIkit.modal.confirm('Are you sure?', function() {
-                  $.post(domainAddress + 'DeletePropertyRegister/' + deletePropertyID, function(e) {
-                      $("#rowID-" + deletePropertyID).remove();
-                      getPropertyList(getValue);
-                      UIkit.modal.alert('Property Deleted Successfully');
-                  });
-              });
-          }); // deleteProperty
-      }
+            var editPropertyID = this.id.replace('editPropertyID-', '');
+            getPropertyInfo(editPropertyID);
+
+
+        }); // editProperty
+
+
+        $(".deleteProperty").on('click', function(e) {
+            var deletePropertyID = this.id.replace('deletePropertyID-', '');
+            UIkit.modal.confirm('Are you sure?', function() {
+                $.post(domainAddress + 'DeletePropertyRegister/' + deletePropertyID, function(e) {
+                    $("#rowID-" + deletePropertyID).remove();
+                    getPropertyList(getValue);
+                    UIkit.modal.alert('Property Deleted Successfully');
+                });
+            });
+        }); // deleteProperty
+    }
   }

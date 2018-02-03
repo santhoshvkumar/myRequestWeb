@@ -122,6 +122,11 @@ var getPropLat, getPropLong, isEdit=false;
  var totalRecordCount = 0;
  var getTenantObjArr = new Array();
  var mapCountCheck = 0;
+ var checkMaxCount = 0;
+ $("#leftArrow").attr("disabled",true);
+ $("#previousPage").attr("disabled",true);
+ $("#nextPage").attr("disabled",false);
+ $("#rightArrow").attr("disabled",false);
 
  $(document).ready(function() {
      $("#inputCountry").val("UK");
