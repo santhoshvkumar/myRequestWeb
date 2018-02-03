@@ -84,6 +84,7 @@ var getPropertyManaged = "";
 var imageUrl1 = "";
 var userTenantCountLimit = 0;
 var maxProp = 1;
+var checkMaxCount = 0;
 var propertyId = "";
 var dataAddPropertyForm = "";
 var dataAddPropertyFormArr = new Array();
@@ -156,8 +157,6 @@ $(document).ready(function() {
 
 
 
-    $("#previousPage").attr("disabled", true);
-
     $.get(domainAddress + "GetSpecialityList", function(result) {
         $("#inputSpeciality").html('');
         $("#inputSpeciality").html("<option value='0'>Select Speciality</option>");
@@ -171,7 +170,12 @@ $(document).ready(function() {
         }
     });
 
-
+    $("#leftArrow").attr("disabled", true);
+    $("#previousPage").attr("disabled", true);
+    $("#enterPageNO").attr("disabled", true);
+    $("#nextPage").attr("disabled", true);
+    $("#rightArrow").attr("disabled", true);
+    
     $("#enterPageNO").val(maxProp);
     getTenantsList(getValue);
     $(".getLettingAgencyBusinessName").text("My Tenants - " + businessName );
@@ -558,35 +562,46 @@ $(".logOut").click(function() {
 });
 
 $("#leftArrow").click(function() {
+    $("#leftArrow").attr("disabled", true);
+    $("#previousPage").attr("disabled", true);
     userTenantCountLimit = 0;
     maxProp = 1;
+    checkMaxCount=0;
     $("#enterPageNO").val(1);
-    $("#getLoadingModalContent").addClass('md-show');
     getTenantsList(getValue);
     if (maxProp < lastPage) {
         $("#nextPage").attr("disabled", false);
+        $("#previousPage").attr("disabled", "disabled");
+        $("#leftArrow").attr("disabled", "disabled");
     }
 });
 
 $("#rightArrow").click(function() {
+    checkMaxCount=0;
+    $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
-    userTenantCountLimit = (9 * lastPage) - 9;
+    userTenantCountLimit = (9 * lastPage);
+    userTenantCountLimit -=9;
     maxProp = lastPage;
+    checkMaxCount+=(9 * lastPage);
     $("#enterPageNO").val(lastPage);
-    $("#getLoadingModalContent").addClass('md-show');
     getTenantsList(getValue);
 });
 
 $("#previousPage").click(function() {
     $("#nextPage").attr("disabled", false);
+    checkMaxCount=0;
     if (userTenantCountLimit == 0) {
         userTenantCountLimit = 0;
+        $("#leftArrow").attr("disabled", true);
         $("#previousPage").attr("disabled", "disabled");
     } else {
+        checkMaxCount=userTenantCountLimit-checkMaxCount;
         userTenantCountLimit -= 9;
         $("#previousPage").removeAttr("disabled");
     }
     if (userTenantCountLimit == 0) {
+        $("#leftArrow").attr("disabled", true);
         $("#previousPage").attr("disabled", "disabled");
     }
     maxProp--;
@@ -595,15 +610,16 @@ $("#previousPage").click(function() {
     } else {
         $("#enterPageNO").val(maxProp);
     }
-    $("#getLoadingModalContent").addClass('md-show');
     getTenantsList(getValue);
 });
 
 
 $("#nextPage").click(function() {
+    $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
+    checkMaxCount = userTenantCountLimit+checkMaxCount+18;
     userTenantCountLimit += 9;
-    
+
     if (maxProp == lastPage) {
         $("#nextPage").attr("disabled", true);
     } else {
@@ -611,7 +627,6 @@ $("#nextPage").click(function() {
         maxProp++;
         $("#enterPageNO").val(maxProp);
         if (maxProp <= lastPage) {
-            $("#getLoadingModalContent").addClass('md-show');
             getTenantsList(getValue);
         }
     }
@@ -645,6 +660,7 @@ $("#enterPageNO").keyup(function() {
 
 
 function getTenantsList(getValue) {
+    $("#getLoadingModalContent").addClass('md-show');
     if (getValue == "" || getValue == undefined) {
         dataForm = '{"Limit":"' + parseInt(userTenantCountLimit) + '","AdminID":"' + adminUserID + '"}';
         sendURL = domainAddress + "UserTenantsByCount";
@@ -652,20 +668,19 @@ function getTenantsList(getValue) {
         dataForm = '{"Limit":"' + parseInt(userTenantCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
         sendURL = domainAddress + "SearchTenantList";
     }
-    console.log(dataForm);
-    console.log(sendURL);
-
+    
     $.ajax({
         type: "POST",
         url: sendURL,
         data: dataForm,
         success: function(result) {
-            console.log(result);
-
             if (result.record_count == 0 && result.All_Records_Count == 0) {
                 $(".allTenantList").html('');
                 $(".allTenantList").append("<tr id='rowID-0'><td id='name-0'>No Records Found</td> <td id='phoneNumber-0'>  </td><td id='emailID-0'> </td>  <td> </td> <td> </td></tr> ");
                 $("#getLoadingModalContent").removeClass('md-show');
+                $("#enterPageNO").attr("disabled", true);
+                $("#nextPage").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
             } else {
                 loadUserTenantsList(result);
             }
@@ -688,16 +703,27 @@ function loadUserTenantsList(result) {
 
         if (result.record_count == result.All_Records_Count) {
             $(".pageCount").show();
-            $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
         } else if (result.record_count < 9 && result.record_count != 0) {
             $(".pageCount").show();
-            $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
         } else if (result.record_count >= 9) {
-            $("#nextPage").removeAttr("disabled");
             $(".pageCount").show();
+            $("#enterPageNO").attr("disabled", true);
+            if(checkMaxCount==result.All_Records_Count){
+                $("#nextPage").attr("disabled", "disabled");
+                $("#rightArrow").attr("disabled", "disabled");
+            } else {
+                $("#nextPage").removeAttr("disabled");
+                $("#rightArrow").removeAttr("disabled");
+            }
         }
 
-        lastPage = parseInt(result.All_Records_Count / 9) + 1;
+        lastPage = Math.ceil(result.All_Records_Count / 9);
         for (Client in result.records) {
             $(".allTenantList").append("<tr id='rowID-" + result.records[Client].UserRegID + "'><td id='name-" + result.records[Client].UserRegID + "'>" + result.records[Client].Name + " " + result.records[Client].LastName + "</td> <td id='phoneNumber-" + result.records[Client].UserRegID + "'> <a href='tel:" + result.records[Client].PhoneNumber + "'>" + result.records[Client].PhoneNumber + "</a></td><td id='emailID-" + result.records[Client].UserRegID + "'><a href='mailto:" + result.records[Client].EmailID + "' target='_top'>" + result.records[Client].EmailID + "</a> </td>  <td><a class='editTenant' id='editTenantID-" + result.records[Client].UserRegID + "' > <i class='fa fa-pencil pencil fa-1x'></i> </a></td><td><a class='deleteTenant' id='deleteTenantID-" + result.records[Client].UserRegID + "'> <i class='fa fa-trash trash fa-1x'></i> </a></td></tr> ");
         }
