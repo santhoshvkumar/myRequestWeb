@@ -117,7 +117,6 @@
   }
 
   function loadUserPropertyList(result) {
-    debugger;
       if (result.record_count == 0) {
           $("#nextPage").attr("disabled", true);
           $("#rightArrow").attr("disabled", true);

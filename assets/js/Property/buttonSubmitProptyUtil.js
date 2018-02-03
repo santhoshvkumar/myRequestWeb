@@ -91,7 +91,7 @@ var buttonSubmitProptyUtil = function() {
 
     var feul = $("#select2-inputFuel-container").html().replace(/["']/g, "`");
     var supplierElectric = $("#select2-inputSupplierElectric-container").html();
-    var supplierGas = $("#select2-inputSupplierGas-container").html();
+    var supplierGas = $("#select2-inputSupplierGas-container").text();
     var read1 = $("#inputRead1").val();
     var read2 = $("#inputRead2").val();
     var serial1 = $("#inputSerial1").val();
@@ -317,12 +317,12 @@ var buttonSubmitProptyUtil = function() {
     $("#getLoadingModalContent").addClass('md-show');
     if (hiddenPropertyID == 0) {
         var sendURL = domainAddress + 'CreatePropertyRegister';
-        console.log(sendURL);
+        console.log(sendURL);        
         $.ajax({
             type: "POST",
             url: sendURL,
             data: dataForm,
-            success: function(dataCheck) {
+            success: function(dataCheck) {                
                 console.log(dataCheck);
                 getAddTenantArr = new Array();
                 $("#select2-inputLandlordTitle-container").html("Select Title");
