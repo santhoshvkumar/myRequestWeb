@@ -559,6 +559,12 @@ var getPropLat, getPropLong, isEdit=false;
                                 map.setCenter(new google.maps.LatLng(Latitude, Longitude));
                                 map.setZoom(10);
                             }, 100)
+
+                            google.maps.event.addListener(marker, 'dragend', function (event) {
+                                Latitude = this.getPosition().lat();
+                                Longitude = this.getPosition().lng();
+                            }); 
+
                             if( mapCount === 0){
                                 $(".propertyLocationGoogleMap").googleMap({
                                     zoom: 10, // Initial zoom level (optional)
