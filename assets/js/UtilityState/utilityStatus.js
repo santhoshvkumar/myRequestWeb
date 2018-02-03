@@ -1,7 +1,7 @@
   $(function() {
 
 
-              $('#full_screen_toggle').on('click',function(e) {
+            $('#full_screen_toggle').on('click',function(e) {
                 e.preventDefault();
                 screenfull.toggle();
                 $window.resize();
@@ -75,7 +75,7 @@
         var utilityListCountLimit = 0;
         var maxProp =1;
         var getValue = "";
-       
+        var checkMaxCount = 0;
        
         var agencyCode = localStorage.getItem('MyRequest_LettingAgencyCode');
 
@@ -85,9 +85,8 @@
             });
 
         $(document).ready(function() {
-            console.log("ready call");
             $(".getUserUtilityListContact").hide('slow');
-             $(".getUtility").show();
+            $(".getUtility").show();
             adminUserID = localStorage.getItem("MyRequest_AdminID");
             var adminUserName = localStorage.getItem("MyRequest_UserName");
             var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -141,10 +140,12 @@
 
 
 
-            $("#previousPage").attr("disabled",true);
-            $("#enterPageNO").val(maxProp);
+            $("#enterPageNO").attr("disabled", true);
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
             $(".getLettingAgencyBusinessName").text("Utility Management - " +businessName);
-
             $("#enterPageNO").val(maxProp); 
             getUtilityList(getValue);
             $("#inputFuel").select2();
@@ -209,17 +210,14 @@
 
             else{
                  var dataForm = '{"UtilityID":"' + hiddenUtilityID + '","PropertyID":"' + hiddenPropertyID + '","UserRegID":"' + hiddenUserRegID + '","Notes":"' + inputNotes + '","RequirementType":"' + inputRequirement + '","GasStatus":"' + inputGasStatus + '","GasNotes":"' + inputGasNotes + '","ElectricityStatus":"' + inputElectricityStatus + '","ElectricityNotes":"' + inputElectricityNotes+ '","CouncilStatus":"' + inputCouncilStatus + '","CouncilNotes":"' + inputCouncilNotes + '","WaterSewerageStatus":"' + inputWaterSewerageStatus + '","WaterSewerageNotes":"' + inputWaterSewerageNotes + '","BroadBandStatus":"' + inputBroadBandStatus+ '","BroadBandNotes":"' + inputBroadBandNotes+ '","MediaStatus":"' + inputMediaStatus+ '","MediaNotes":"' + inputMediaNotes+ '"}';
-                console.log(dataForm);
                         
                 var sendURL = domainAddress + 'CreateUtilityLog';
-                console.log(sendURL);
-
+                
                 $.ajax({       
                     type: "POST",
                     url: sendURL,
                     data: dataForm,
                     success: function(dataCheck) {
-                        //console.log(dataCheck);
                         getUtilityList(getValue);
                         $(".utilityContent").hide();
                         $("#getName").val('');
@@ -256,76 +254,86 @@
         }); 
 
         $("#leftArrow").click(function(){
-            $("#previousPage").removeAttr("disabled");
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", true);
             utilityListCountLimit = 0;
-           
-            maxProp=1;
+            maxProp = 1;
+            checkMaxCount=0;
             $("#enterPageNO").val(1);
-             $("#getLoadingModalContent").addClass('md-show');
             getUtilityList(getValue);
-            if(maxProp<lastPage){
-                $("#nextPage").attr("disabled",false);
+            if (maxProp < lastPage) {
+                $("#nextPage").attr("disabled", false);
+                $("#previousPage").attr("disabled", "disabled");
+                $("#leftArrow").attr("disabled", "disabled");
             }
         });     
 
         $("#rightArrow").click(function(){
+            checkMaxCount=0;
+            $("#leftArrow").attr("disabled", false);
             $("#previousPage").removeAttr("disabled");
-            utilityListCountLimit = (9*lastPage)-9;
-           
-            maxProp=lastPage;
-            $("#enterPageNO").val(lastPage);
-             $("#getLoadingModalContent").addClass('md-show');
+            utilityListCountLimit = (9 * lastPage);
+            utilityListCountLimit -=9;
+            maxProp = lastPage;
+            checkMaxCount+=(9 * lastPage);
+            $("#enterPageNO").val(maxProp);
             getUtilityList(getValue);
         });
             
         $("#previousPage").click(function(){
-            
+            $("#nextPage").attr("disabled", false);
+            checkMaxCount=0;
             if(utilityListCountLimit == 0)
             {
-              utilityListCountLimit = 0;
-               $("#previousPage").attr("disabled","disabled");
-            }
-            else
-            {
-              utilityListCountLimit -= 9;
-              $("#previousPage").removeAttr("disabled");
+                utilityListCountLimit = 0;
+                $("#leftArrow").attr("disabled", true);
+                $("#previousPage").attr("disabled", "disabled");
+            }  else {
+                checkMaxCount=utilityListCountLimit-checkMaxCount;
+                utilityListCountLimit -= 9;
+                $("#previousPage").removeAttr("disabled");
             }
            
             if(utilityListCountLimit == 0)
             {
-              $("#previousPage").attr("disabled","disabled");
+                $("#leftArrow").attr("disabled", true);
+                $("#previousPage").attr("disabled", "disabled");
             }
             maxProp--;
             if(maxProp==0){
                 $("#enterPageNO").val('');
-            }
-            else{
+            } else{
                 $("#enterPageNO").val(maxProp);
             }
-             $("#getLoadingModalContent").addClass('md-show');
             getUtilityList(getValue);
         });
             
                 
         $("#nextPage").click(function(){
+            $("#leftArrow").attr("disabled", false);
             $("#previousPage").removeAttr("disabled");
+            checkMaxCount = utilityListCountLimit+checkMaxCount+18;
             utilityListCountLimit += 9;
-            maxProp++;
-            $("#enterPageNO").val(maxProp);
-             $("#getLoadingModalContent").addClass('md-show');
-            getUtilityList(getValue);
+            if (maxProp == lastPage) {
+                $("#nextPage").attr("disabled", true);
+            } else {
+                $("#nextPage").attr("disabled", false);
+                maxProp++;
+                $("#enterPageNO").val(maxProp);
+                if (maxProp <= lastPage) {
+                    getUtilityList(getValue);
+                }
+            }
         });
 
 
 
         $("#enterPageNO").on("change",function(e){
-             console.log("THis is called"+$("#enterPageNO").val());
-             if( $("#enterPageNO").val() > maxProp){
+            if( $("#enterPageNO").val() > maxProp){
                 maxProp++;
                 $("#enterPageNO").val(maxProp);
-             }
+            }
             
-            console.log("next inital count : " + utilityListCountLimit);
             utilityListCountLimit = 9*$("#enterPageNO").val();
             if (utilityListCountLimit == 0) {
                 $("#previousPage").attr("disabled", "disabled");
@@ -341,8 +349,8 @@
 
 
          function getUtilityList(getValue){
-
-             if(getValue=="" || getValue==undefined){
+            $("#getLoadingModalContent").addClass('md-show');
+            if(getValue=="" || getValue==undefined){
                   dataForm = '{"Limit":"'+parseInt(utilityListCountLimit)+'","AdminID":"'+adminUserID+'"}';
                   sendURL = domainAddress+"AdminUtilityListByCount";
             }
@@ -350,21 +358,19 @@
                  dataForm = '{"Limit":"'+parseInt(utilityListCountLimit)+'","SearchValue":"'+getValue+'","AdminID":"'+adminUserID+'"}';
                  sendURL = domainAddress+"SearchUtilityStatusAdminList";
             } 
-                
-             console.log(dataForm);
-            console.log(sendURL);
-
+            
             $.ajax({
                 type: "POST",
                 url: sendURL,
                 data: dataForm,
                 success: function (result) {
-                   console.log(result); 
-                
                    if(result.record_count==0  && result.All_Records_Count == 0){
                     $(".adminUtilityList").html('');
                     $(".adminUtilityList").append("<tr id='rowID-0'><td id='getUtilityType-0'>No Records Found</td>   <td id='address-0'> </td>  <td id='name-0'> </td> <td id='getDate-0'> </td> <td id='status-0'> </td> <td></td>  </tr> ");
                     $("#getLoadingModalContent").removeClass('md-show');
+                    $("#enterPageNO").attr("disabled", true);
+                    $("#nextPage").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
                    }
                    else{
                         loadUtilityStatusList(result);
@@ -379,24 +385,32 @@
 
             if (result.record_count == 0) {
                 $("#nextPage").attr("disabled", true);
+                var enterPageNO = $("#enterPageNO").val();
+                enterPageNO--;
+                $("#enterPageNO").val(enterPageNO);
             } else {
                 $(".adminUtilityList").html('');
                 if (result.record_count == result.All_Records_Count) {
-                    console.log("equal to 9");
-                    $(".pageCount").show();
-                    $("#nextPage").attr("disabled", "disabled");
+                    $("#enterPageNO").attr("disabled", true);
+                    $("#nextPage").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
                 } else if (result.record_count < 9 && result.record_count != 0) {
-                    console.log("less than 9");
-                    $(".pageCount").show();
-                    $("#nextPage").attr("disabled", "disabled");
+                    $("#enterPageNO").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
+                    $("#nextPage").attr("disabled", true);
                 } else if (result.record_count >= 9) {
-                    console.log("great than 9");
-                    $("#nextPage").removeAttr("disabled");
-                    $(".pageCount").show();
+                    $("#enterPageNO").attr("disabled", true);
+                    if(checkMaxCount==result.All_Records_Count){
+                        $("#nextPage").attr("disabled", "disabled");
+                        $("#rightArrow").attr("disabled", "disabled");
+                    } else {
+                        $("#nextPage").removeAttr("disabled");
+                        $("#rightArrow").removeAttr("disabled");
+                    }
                 }
 
-                lastPage = parseInt(result.All_Records_Count / 9) + 1;
-                console.log(lastPage);
+                lastPage = Math.ceil(result.All_Records_Count / 9);
+                
                 var utilityType = "";
                 for (utility in result.records) {
                     if(result.records[utility].UtilityRegType=="move-in"){
@@ -686,7 +700,6 @@
                     var deleteUtilityID = this.id.replace('deleteUtilityID-', '');
                     UIkit.modal.confirm('Are you sure?', function() {
                         $.post(domainAddress + 'DeleteUtility/' + deleteUtilityID + "/", function(e) {
-                            console.log(e);
                             $("#rowID-" + deleteUtilityID).remove();
                             getUtilityList(getValue);
                             UIkit.modal.alert('Utility Deleted Successfully');
