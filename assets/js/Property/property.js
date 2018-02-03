@@ -533,7 +533,6 @@ var getPropLat, getPropLong, isEdit=false;
                     geocoder.geocode({
                         'address': wholeAddress
                     }, function (results, status) {
-                        debugger;
                         if(results.length == 0){
                             Latitude = 51.528308;
                             Longitude = -0.3817961;
@@ -547,7 +546,7 @@ var getPropLat, getPropLong, isEdit=false;
                             Latitude = this.getPosition().lat();
                             Longitude = this.getPosition().lng();
                         });
-                        
+
                             var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
                             var myCenter = new google.maps.LatLng(Latitude, Longitude);
                             var mapCanvas = document.getElementById("propertyLocationGoogleMap");
