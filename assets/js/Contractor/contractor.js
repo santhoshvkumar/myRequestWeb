@@ -173,6 +173,7 @@
  var contractorsCountLimit = 0;
  var maxProp = 0;
  var getValue = "";
+ var checkMaxCount = 0;
 
  $("#addSpl").on("click", function() {
   var specialityName = $("#SpecialityName").val();
@@ -1999,92 +2000,103 @@ $("#inputZip").keyup(function() {
 
 
  $("#leftArrow").click(function() {
-  $("#previousPage").removeAttr("disabled");
+  $("#leftArrow").attr("disabled", true);
+  $("#previousPage").attr("disabled", true);
   contractorsCountLimit = 0;
   maxProp = 1;
+  checkMaxCount=0;
   $("#enterPageNO").val(1);
   getContractorsList(getValue);
+  if (maxProp < lastPage) {
+      $("#nextPage").attr("disabled", false);
+      $("#previousPage").attr("disabled", "disabled");
+      $("#leftArrow").attr("disabled", "disabled");
+  }
 });
 
  $("#rightArrow").click(function() {
+  checkMaxCount=0;
+  $("#leftArrow").attr("disabled", false);
   $("#previousPage").removeAttr("disabled");
-  contractorsCountLimit = (9 * lastPage) - 9;
+  contractorsCountLimit = (10 * lastPage);
+  contractorsCountLimit -=10;
   maxProp = lastPage;
-  $("#enterPageNO").val(lastPage);
+  checkMaxCount+=(10 * lastPage);
+  $("#enterPageNO").val(maxProp);
   getContractorsList(getValue);
 });
 
  $("#previousPage").click(function() {
-      //console.log("inital count : "+contractorsCountLimit);
-      if (contractorsCountLimit == 0) {
+    $("#nextPage").attr("disabled", false);
+    checkMaxCount=0;
+    if (contractorsCountLimit == 0) {
         contractorsCountLimit = 0;
-        $("#previousPage").attr("disabled", "disabled");
-      } else {
-        contractorsCountLimit -= 9;
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
+    } else {
+        checkMaxCount=contractorsCountLimit-checkMaxCount;
+        contractorsCountLimit -= 10;
         $("#previousPage").removeAttr("disabled");
-      }
-      //console.log("prev count : "+contractorsCountLimit);
-      if (contractorsCountLimit == 0) {
-        $("#previousPage").attr("disabled", "disabled");
-      }
-      maxProp--;
-      if (maxProp == 0) {
+    }
+    if (contractorsCountLimit == 0) {
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
+    }
+    maxProp--;
+    if (maxProp == 0) {
         $("#enterPageNO").val('');
-      } else {
+    } else {
         $("#enterPageNO").val(maxProp);
-      }
-
-      getContractorsList(getValue);
-    });
+    }
+    getContractorsList(getValue);
+  });
 
 
  $("#nextPage").click(function() {
-      //console.log("next inital count : "+contractorsCountLimit);
-      $("#previousPage").removeAttr("disabled");
-      contractorsCountLimit += 9;
-      //console.log("next count : "+contractorsCountLimit);
-      maxProp++;
-      $("#enterPageNO").val(maxProp);
-      getContractorsList(getValue);
-    });
-
-
-
- $("#enterPageNO").on("change", function(e) {
-  if ($("#enterPageNO").val() > maxProp) {
-    maxProp++;
-    $("#enterPageNO").val(maxProp);
-  }
-
-      //console.log("next inital count : " + contractorsCountLimit + " page # : " + maxProp);
-      contractorsCountLimit = 9 * $("#enterPageNO").val();
-      //console.log("next count : " + contractorsCountLimit);
-      if (contractorsCountLimit == 0) {
-        $("#previousPage").attr("disabled", "disabled");
-      } else {
-        $("#previousPage").removeAttr("disabled");
-      }
-      getContractorsList(getValue);
-    });
-
- $("#enterPageNO").keyup(function() {
-      //console.log("THis is called" + $("#enterPageNO").val());
-      if ($("#enterPageNO").val() > maxProp) {
+    checkMaxCount=0;
+    $("#leftArrow").attr("disabled", false);
+    $("#previousPage").removeAttr("disabled");
+    checkMaxCount = contractorsCountLimit+checkMaxCount+40;
+    contractorsCountLimit += 10;
+    
+    if (maxProp == lastPage) {
+        $("#nextPage").attr("disabled", true);
+    } else {
+        $("#nextPage").attr("disabled", false);
         maxProp++;
         $("#enterPageNO").val(maxProp);
-      }
+        if (maxProp <= lastPage) {
+          getContractorsList(getValue);
+        }
+    }
+  });
 
-      //console.log("next inital count : " + contractorsCountLimit + " page # : " + maxProp);
-      contractorsCountLimit = 9 * $("#enterPageNO").val();
-      //console.log("next count : " + contractorsCountLimit);
-      if (contractorsCountLimit == 0) {
-        $("#previousPage").attr("disabled", "disabled");
-      } else {
-        $("#previousPage").removeAttr("disabled");
-      }
-      getContractorsList(getValue);
-    });
 
+
+  $("#enterPageNO").keyup(function() {
+    if ($("#enterPageNO").val() <= lastPage && $("#enterPageNO").val()!=0) {
+        maxProp = $("#enterPageNO").val();
+        $("#enterPageNO").val(maxProp);
+        if (maxProp == lastPage) {
+            $("#leftArrow").attr("disabled", false);
+            $("#previousPage").removeAttr("disabled");
+            $("#nextPage").attr("disabled", true);
+        } else {
+            if(maxProp > 1){
+                $("#previousPage").attr("disabled", false);
+                $("#rightArrow").attr("disabled", false);
+                $("#leftArrow").attr("disabled", false);
+            } else {
+                $("#previousPage").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
+                $("#leftArrow").attr("disabled", true);
+            }
+            $("#nextPage").attr("disabled", false);
+        }
+        contractorsCountLimit = 10 * ($("#enterPageNO").val() - 1);
+        getContractorsList(getValue);
+    } 
+  });
 
  $("#inputContractValidTill").click(function() {
   $("#inputContractValidTill").css("border-color", "rgba(0,0,0,.12)");
@@ -2156,18 +2168,28 @@ function loadContractorsList(resultAllContractor) {
   } else {
     $(".allContractorList").html('');
     if (resultAllContractor.record_count == resultAllContractor.All_Records_Count) {
-      console.log("equal to 9");
-      $("#nextPage").attr("disabled", "disabled");
-    } else if (resultAllContractor.record_count < 9 && resultAllContractor.record_count != 0) {
-      console.log("less than 9");
-      $("#nextPage").attr("disabled", "disabled");
-    } else if (resultAllContractor.record_count >= 9) {
-      console.log("great than 9");
-      $("#nextPage").removeAttr("disabled");
+      console.log("equal to 10");
+      $("#enterPageNO").attr("disabled", true);
+      $("#nextPage").attr("disabled", true);
+      $("#rightArrow").attr("disabled", true);
+    } else if (resultAllContractor.record_count < 10 && resultAllContractor.record_count != 10) {
+      $("#enterPageNO").attr("disabled", true);
+      $("#rightArrow").attr("disabled", true);
+      $("#nextPage").attr("disabled", true);
+    } else if (resultAllContractor.record_count >= 10) {
+      console.log("great than 10");
+        $("#enterPageNO").attr("disabled", false);
+        if(checkMaxCount==resultAllContractor.All_Records_Count){
+            $("#nextPage").attr("disabled", "disabled");
+            $("#rightArrow").attr("disabled", "disabled");
+        } else {
+            $("#nextPage").removeAttr("disabled");
+            $("#rightArrow").removeAttr("disabled");
+        }
               //$("#nextLastPage").show();
             }
             var contractorUserImage = "";
-            lastPage = parseInt(resultAllContractor.All_Records_Count / 9) + 1;
+            lastPage = parseInt(resultAllContractor.All_Records_Count / 10) + 1;
             for (Contractor in resultAllContractor.records) {
               if (resultAllContractor.records[Contractor].ContractValidTill == null) {
                 contractorValidity = "No Validity Found";
