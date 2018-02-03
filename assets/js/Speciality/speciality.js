@@ -73,10 +73,10 @@ var lastPage = 0;
 var adminUserID = 0;
 var specialityCountLimit = 0;
 var maxProp = 0;
+var checkMaxCount = 0;
 var getValue = "";
 
 $(document).ready(function() {
-    console.log("ready call");
     adminUserID = localStorage.getItem("MyRequest_AdminID");
     var adminUserName = localStorage.getItem("MyRequest_UserName");
     var adminType = localStorage.getItem("MyRequest_AdminType");
@@ -123,6 +123,11 @@ $(document).ready(function() {
                 $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
             }
         }
+        $("#enterPageNO").attr("disabled", true);
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
+        $("#nextPage").attr("disabled", true);
+        $("#rightArrow").attr("disabled", true);
     }
      
     $(".getLettingAgencyBusinessName").text("Speciality - " + businessName);
@@ -154,34 +159,46 @@ $(".logOut").click(function() {
 });
 
 $("#leftArrow").click(function() {
+    $("#leftArrow").attr("disabled", true);
+    $("#previousPage").attr("disabled", true);
     specialityCountLimit = 0;
     maxProp = 1;
+    checkMaxCount=0;
     $("#enterPageNO").val(1);
-    $("#getLoadingModalContent").addClass('md-show');
     getSpecialityList(getValue);
     if (maxProp < lastPage) {
         $("#nextPage").attr("disabled", false);
+        $("#previousPage").attr("disabled", "disabled");
+        $("#leftArrow").attr("disabled", "disabled");
     }
 });
 
 $("#rightArrow").click(function() {
+    checkMaxCount=0;
+    $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
-    specialityCountLimit = (9 * lastPage) - 9;
+    specialityCountLimit = (9 * lastPage);
+    specialityCountLimit -=9;
     maxProp = lastPage;
-    $("#enterPageNO").val(lastPage);
-    $("#getLoadingModalContent").addClass('md-show');
+    checkMaxCount+=(9 * lastPage);
+    $("#enterPageNO").val(maxProp);
     getSpecialityList(getValue);
 });
 
 $("#previousPage").click(function() {
+    $("#nextPage").attr("disabled", false);
+    checkMaxCount=0;
     if (specialityCountLimit == 0) {
         specialityCountLimit = 0;
+        $("#leftArrow").attr("disabled", true);
         $("#previousPage").attr("disabled", "disabled");
     } else {
+        checkMaxCount=specialityCountLimit-checkMaxCount;
         specialityCountLimit -= 9;
         $("#previousPage").removeAttr("disabled");
     }
     if (specialityCountLimit == 0) {
+        $("#leftArrow").attr("disabled", true);
         $("#previousPage").attr("disabled", "disabled");
     }
     maxProp--;
@@ -190,13 +207,14 @@ $("#previousPage").click(function() {
     } else {
         $("#enterPageNO").val(maxProp);
     }
-    $("#getLoadingModalContent").addClass('md-show');
     getSpecialityList(getValue);
 });
 
 
 $("#nextPage").click(function() {
+    $("#leftArrow").attr("disabled", false);
     $("#previousPage").removeAttr("disabled");
+    checkMaxCount = specialityCountLimit+checkMaxCount+18;
     specialityCountLimit += 9;
     if (maxProp == lastPage) {
         $("#nextPage").attr("disabled", true);
@@ -205,7 +223,6 @@ $("#nextPage").click(function() {
         maxProp++;
         $("#enterPageNO").val(maxProp);
         if (maxProp <= lastPage) {
-            $("#getLoadingModalContent").addClass('md-show');
             getSpecialityList(getValue);
         }
     }
@@ -220,7 +237,6 @@ $("#enterPageNO").on("change", function(e) {
     console.log("next inital count : " + specialityCountLimit + " page # : " + maxProp);
     specialityCountLimit = 9 * ($("#enterPageNO").val() - 1);
     console.log("change count : " + specialityCountLimit);
-    $("#getLoadingModalContent").addClass('md-show');
     getSpecialityList(getValue);
 });
 
@@ -233,11 +249,11 @@ $("#enterPageNO").keyup(function() {
     console.log("next inital count : " + specialityCountLimit + " page # : " + maxProp);
     specialityCountLimit = 9 * ($("#enterPageNO").val() - 1);
     console.log("change count : " + specialityCountLimit);
-    $("#getLoadingModalContent").addClass('md-show');
     getSpecialityList(getValue);
 });
 
 function getSpecialityList(getValue) {
+    $("#getLoadingModalContent").addClass('md-show');
     if (getValue == "" || getValue == undefined) {
         dataForm = '{"Limit":"' + parseInt(specialityCountLimit) + '","AdminID":"' + adminUserID + '"}';
         sendURL = domainAddress + "AdminSpecialityListByCount";
@@ -245,19 +261,19 @@ function getSpecialityList(getValue) {
         dataForm = '{"Limit":"' + parseInt(specialityCountLimit) + '","SearchValue":"' + getValue + '","AdminID":"' + adminUserID + '"}';
         sendURL = domainAddress + "SearchSpecialityList";
     }
-    console.log(dataForm);
-    console.log(sendURL);
-
+    
     $.ajax({
         type: "POST",
         url: sendURL,
         data: dataForm,
         success: function(result) {
-                console.log(result);
                 if (result.record_count == 0 && result.All_Records_Count == 0) {
                     $(".allSpecialityList").html('');
                     $(".allSpecialityList").append("<tr id='rowID-0'> <td class='getSpecialityID' id='inputSpecialityName-0'>No Records Found</td> <td> </td> <td> </td>  </tr>");
                     $("#getLoadingModalContent").removeClass('md-show');
+                    $("#enterPageNO").attr("disabled", true);
+                    $("#nextPage").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
                 } else {
                     loadSpecialityList(result);
 
@@ -272,24 +288,28 @@ function loadSpecialityList(resultAllSpeciality) {
         var enterPageNO = $("#enterPageNO").val();
         enterPageNO--;
         $("#enterPageNO").val(enterPageNO);
-        $("#enterPageNO").attr("disabled", true);
     } else {
-        $("#enterPageNO").attr("disabled", false);
         $(".allSpecialityList").html('');
         if (resultAllSpeciality.record_count == resultAllSpeciality.All_Records_Count) {
-            console.log("equal to 9");
-            $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
         } else if (resultAllSpeciality.record_count < 9 && resultAllSpeciality.record_count != 0) {
-            console.log("less than 9");
-            $("#nextPage").attr("disabled", "disabled");
+            $("#enterPageNO").attr("disabled", true);
+            $("#rightArrow").attr("disabled", true);
+            $("#nextPage").attr("disabled", true);
         } else if (resultAllSpeciality.record_count >= 9) {
-            console.log("great than 9");
-            $("#nextLastPage").removeAttr("disabled");
-            //$("#nextLastPage").show();
+            $("#enterPageNO").attr("disabled", true);
+            if(checkMaxCount==resultAllSpeciality.All_Records_Count){
+                $("#nextPage").attr("disabled", "disabled");
+                $("#rightArrow").attr("disabled", "disabled");
+            } else {
+                $("#nextPage").removeAttr("disabled");
+                $("#rightArrow").removeAttr("disabled");
+            }
         }
-        lastPage = parseInt(resultAllSpeciality.All_Records_Count / 9) + 1;
-        console.log(lastPage);
-
+        lastPage = Math.ceil(resultAllSpeciality.All_Records_Count / 9);
+        
         for (Speciality in resultAllSpeciality.records) {
             $(".allSpecialityList").append("<tr id='rowID-" + resultAllSpeciality.records[Speciality].SpecialityID + "'> <td class='getSpecialityID' id='inputSpecialityName-" + resultAllSpeciality.records[Speciality].SpecialityID + "'>" + resultAllSpeciality.records[Speciality].SpecialityName + "</td> <td><a class='editSpeciality' id='editSpecialityID-" + resultAllSpeciality.records[Speciality].SpecialityID + "'> <i class='fa fa-pencil pencil fa-1x' ></i> </a></td><td><a class='deleteSpeciality' id='deleteSpecialityID-" + resultAllSpeciality.records[Speciality].SpecialityID + "' data-toggle='modal' class='config' href='Speciality.html#CreateSpecialityModal'> <i class='fa fa-trash trash fa-1x'></i> </a></td><input type='hidden' id='hiddenSpecialityDescription-" + resultAllSpeciality.records[Speciality].SpecialityID + "' value='" + resultAllSpeciality.records[Speciality].SpecialityDescription + "' /></tr> ");
         }
