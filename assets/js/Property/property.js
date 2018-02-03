@@ -541,18 +541,11 @@ var getPropLat, getPropLong, isEdit=false;
                             Longitude = results[0].geometry.location.lng();
                         }
                         console.log(Latitude+" || "+ Longitude);
-
-                        google.maps.event.addListener(marker, 'dragend', function (event) {
-                            Latitude = this.getPosition().lat();
-                            Longitude = this.getPosition().lng();
-                        });
-
                             var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
                             var myCenter = new google.maps.LatLng(Latitude, Longitude);
                             var mapCanvas = document.getElementById("propertyLocationGoogleMap");
                             var mapOptions = {center: myCenter, zoom: 10};
                             map = new google.maps.Map(mapCanvas, mapOptions);
-
                             var marker = new google.maps.Marker({
                                 position:myCenter,
                                 position: myCenter,
@@ -560,13 +553,11 @@ var getPropLat, getPropLong, isEdit=false;
                                 animation: google.maps.Animation.DROP
                             });
                             marker.setMap(map);
-
                             setTimeout(function() {
                                 google.maps.event.trigger(map,'resize');
                                 map.setCenter(new google.maps.LatLng(Latitude, Longitude));
                                 map.setZoom(10);
-                            }, 100)                            
-
+                            }, 100)
                             if( mapCount === 0){
                                 $(".propertyLocationGoogleMap").googleMap({
                                     zoom: 10, // Initial zoom level (optional)
