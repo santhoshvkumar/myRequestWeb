@@ -12,6 +12,12 @@
     $(".emerElectno-prefix").text("+44");
     $(".emerGasno-prefix").text("+44");
     $(".subAdminPhno-prefix").text("+44");
+  } else if (adminType == "USSuperAdmin"){
+    $(".phno-prefix").text("+1");
+    $(".adminEmerno-prefix").text("+1");
+    $(".emerElectno-prefix").text("+1");
+    $(".emerGasno-prefix").text("+1");
+    $(".subAdminPhno-prefix").text("+1");
   } else {
     $(".phno-prefix").text(getPhoneCode);
     $(".adminEmerno-prefix").text(getPhoneCode);

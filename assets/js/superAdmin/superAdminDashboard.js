@@ -131,7 +131,7 @@
         $("#stateLabel").text('County');
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
-          $("#inputState").html("<option value='0'>Choose State</option>");
+          $("#inputState").html("<option value='0'>Choose County</option>");
           var getResult = JSON.parse(result);
           console.log(getResult);
           for (inputState in getResult.records) {
@@ -173,7 +173,7 @@
       }
 
       else if(countryID == "Canada"){
-        $("#stateLabel").text('County');
+        $("#stateLabel").text('State');
         $.get("CityState/getState.php?countryID=" + countryID, function(result) {
           $("#inputState").html('');
           $("#inputState").html("<option value='0'>Choose State</option>");
@@ -278,6 +278,7 @@ $(".getAdmin").click(function() {
   $("#inputLastName").val('');
   $("#inputBusinessName").val('');
   $("#inputLocality").val('');
+  $("#select2-inputCountry-container").html("Select Country");
   $("#select2-inputState-container").html("Select County");
   $("#select2-inputCity-container").html("Select City");
   $("#inputCountry").val("UK");
@@ -288,6 +289,7 @@ $(".getAdmin").click(function() {
   $("#getVoid").val('');
   $("#getAvail").val('');
   $("#inputEmergencyElectricityNumber").val('');
+  $("#inputEmergencyGasNumber").val('');
   $(".cphno-prefix").hide();
   $(".emerElectno-prefix").hide();
   $(".emerGasno-prefix").hide();
@@ -295,6 +297,7 @@ $(".getAdmin").click(function() {
   $(".emerno-prefix").hide();
   $("#inputEmergencyNumber").removeAttr("style");
   $("#inputEmergencyElectricityNumber").removeAttr("style");
+  $("#inputEmergencyGasNumber").removeAttr("style");
   $(".md-input-wrapper").addClass("md-input-filled");
   $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
   filePath = "";
@@ -860,6 +863,16 @@ $(".btnSubmitAdmin").click(function() {
   }
 
   if (state == "Choose State") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Select the State");
+    $("#select2-inputState-container").css("border", "1px solid red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (state == "Choose County") {
     $(".help-block").css('color', 'red');
     $(".help-block").show();
     $(".help-block").text("* Select the County");
