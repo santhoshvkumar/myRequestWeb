@@ -508,7 +508,7 @@ var getPropLat, getPropLong, isEdit=false;
          var getCity = $("#select2-inputCity-container").html();
          var postalCode = $("#inpuZip").val();
          var getCountryName = localStorage.getItem("MyRequest_countryCode");
-         var wholeAddress = getAddress + " " + getCounty + "," + getCity + ", " + postalCode + " ," + getCountryName;
+         var wholeAddress = getAddress + "," + getCounty + "," + getCity + ", " + postalCode + " ," + getCountryName;
          var Latitude = "";
          var Longitude = "";
          console.log(wholeAddress);
@@ -547,7 +547,12 @@ var getPropLat, getPropLong, isEdit=false;
                             var mapCanvas = document.getElementById("propertyLocationGoogleMap");
                             var mapOptions = {center: myCenter, zoom: 10};
                             map = new google.maps.Map(mapCanvas, mapOptions);
-                            var marker = new google.maps.Marker({position:myCenter});
+                            var marker = new google.maps.Marker({
+                                position:myCenter,
+                                position: myCenter,
+                                draggable: true,
+                                animation: google.maps.Animation.DROP
+                            });
                             marker.setMap(map);
                             setTimeout(function() {
                                 google.maps.event.trigger(map,'resize');
