@@ -495,10 +495,6 @@ var getPropLat, getPropLong, isEdit=false;
      });
  } // getCityCouncilList(); 
 
- $(".closeMap").click(function(){
-     var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
-     modalUtilityList.hide(); 
- });
  $(".errorinfoforcode").hide();
  var mapCount = 0;
  $("#inpuZip").on('blur', function(e) {
@@ -574,6 +570,13 @@ var getPropLat, getPropLong, isEdit=false;
                                     getLongitude = e.lon;
                                 }
                             });
+
+                            google.maps.event.addListener(marker, 'dragend', function (event) {
+                                alert(this.getPosition().lat());
+                                getLatitude = this.getPosition().lat();
+                                getLongitude = this.getPosition().lng();
+                            });
+
                             modalUtilityList.show(); 
                         
                     });
@@ -581,6 +584,11 @@ var getPropLat, getPropLong, isEdit=false;
             }
         }
  }); // inputAddress
+
+$(".closeMap").click(function(){
+    var modalUtilityList = UIkit.modal("#googleMap",{bgclose: false, keyboard:false});
+    modalUtilityList.hide(); 
+});
  
  $("#googleMap").on('hide.uk.modal', function () { 
      map = ''; 
