@@ -13,4 +13,8 @@ var logOutClearCatch = function() {
 	localStorage.removeItem( "MyRequest_ContractorName" );
 	localStorage.removeItem( "MyRequest_RepairStatus" );
 	localStorage.removeItem( "MyRequest_Country" );
+	localStorage.removeItem("MyRequest_countryCode");
+	localStorage.removeItem("MyRequest_NewCountryCode");
+	localStorage.removeItem("MyRequest_PhoneCode");
+	localStorage.removeItem("MyRequest_GMT");
 };

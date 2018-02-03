@@ -201,22 +201,25 @@
         $(".cphno-prefix").text(setCountryCode);
         $(".emerno-prefix").text(setCountryCode);
         $(".emerElectno-prefix").text(setCountryCode);
+        $(".emerGasno-prefix").text(setCountryCode);        
       } else if(setCountryCode == "+1"){
         $(".cphno-prefix").text(setCountryCode);
         $(".emerno-prefix").text(setCountryCode);
         $(".emerElectno-prefix").text(setCountryCode);
+        $(".emerGasno-prefix").text(setCountryCode);
       }
       else if(setCountryCode == "+91"){
         $(".cphno-prefix").text(setCountryCode);
         $(".emerno-prefix").text(setCountryCode);
         $(".emerElectno-prefix").text(setCountryCode);
+        $(".emerGasno-prefix").text(setCountryCode);
       }
       else if(setCountryCode == "Canada"){
         setCountryCode = '+1';
         $(".cphno-prefix").text('+1');
         $(".emerno-prefix").text('+1');
         $(".emerElectno-prefix").text('+1');
-                // console.log($(".cphno-prefix").text('+1'))
+        $(".emerGasno-prefix").text('+1');
               } 
 
             });
@@ -281,6 +284,7 @@ $(".getAdmin").click(function() {
   $("#inputEmergencyElectricityNumber").val('');
   $(".cphno-prefix").hide();
   $(".emerElectno-prefix").hide();
+  $(".emerGasno-prefix").hide();
   $("#inputPhoneNumber").removeAttr("style");
   $(".emerno-prefix").hide();
   $("#inputEmergencyNumber").removeAttr("style");
@@ -697,7 +701,7 @@ $("#inputEmergencyElectricityNumber").keyup(function() {
     $("#inputEmergencyElectricityNumber").removeAttr('style');
     $("#inputEmergencyElectricityNumber").css("border-color", "red");
     $(".help-block").show();
-    $(".help-block").text("* Enter the Emergency Number");
+    $(".help-block").text("* Enter the Electricity Emergency Number");
     $(".btnSubmitAdmin").attr("disabled", true);
     return false;
   } else {
@@ -706,6 +710,27 @@ $("#inputEmergencyElectricityNumber").keyup(function() {
     $(".help-block").hide();
     $(".help-block").text("");
     $("#inputEmergencyElectricityNumber").css("border-color", "rgba(0,0,0,.12)");
+    $(".btnSubmitAdmin").attr("disabled", false);
+    return false;
+  }
+});
+
+$("#inputEmergencyGasNumber").keyup(function() {
+  var inputEmergencyGasNumber = $("#inputEmergencyGasNumber").val();
+  if (inputEmergencyGasNumber == "") {
+    $(".emerGasno-prefix").hide();
+    $("#inputEmergencyGasNumber").removeAttr('style');
+    $("#inputEmergencyGasNumber").css("border-color", "red");
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Gas Emergency Number");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    return false;
+  } else {
+    $(".emerGasno-prefix").show();
+    $("#inputEmergencyGasNumber").css("padding", "10px 25px 12px 32px");
+    $(".help-block").hide();
+    $(".help-block").text("");
+    $("#inputEmergencyGasNumber").css("border-color", "rgba(0,0,0,.12)");
     $(".btnSubmitAdmin").attr("disabled", false);
     return false;
   }
@@ -1257,50 +1282,132 @@ if(superAdminType == "USSuperAdmin"){
                     $("#inputEmailID").val(result.records[getAdmin].BusinessEmail);
                     $("#inputUrlRent").val(result.records[getAdmin].UrlForRent);
 
-                    isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
-                    var isFourExistNoNew = result.records[getAdmin].PhoneNumber.slice(0, 2);
+                    // isFourExistNo = result.records[getAdmin].PhoneNumber.slice(0, 3);
+                    // var isFourExistNoNew = result.records[getAdmin].PhoneNumber.slice(0, 2);
                      
-                      if (isFourExistNo === "+44" || isFourExistNo === "+91") {
-                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
-                        $(".cphno-prefix").show();
-                        $(".cphno-prefix").text(isFourExistNo);
-                        $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
-                      } else {
-                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(2));
-                        $(".cphno-prefix").show();
-                        $(".cphno-prefix").text(isFourExistNoNew);
-                        $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
-                      }
+                      // if (isFourExistNo === "+44" || isFourExistNo === "+91") {
+                      //   $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(3));
+                      //   $(".cphno-prefix").show();
+                      //   $(".cphno-prefix").text(isFourExistNo);
+                      //   $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
+                      // } else {
+                      //   $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber.slice(2));
+                      //   $(".cphno-prefix").show();
+                      //   $(".cphno-prefix").text(isFourExistNoNew);
+                      //   $("#inputPhoneNumber").css("padding", "10px 10px 12px 31px");
+                      // }
 
-                      isEmerFourExistNo = result.records[getAdmin].EmergencyNumber.slice(0, 3);
-                      var isEmerFourExistNoNew = result.records[getAdmin].EmergencyNumber.slice(0, 2);
+                      // isEmerFourExistNo = result.records[getAdmin].EmergencyNumber.slice(0, 3);
+                      // var isEmerFourExistNoNew = result.records[getAdmin].EmergencyNumber.slice(0, 2);
                       
-                      if (isEmerFourExistNo === "+44" || isEmerFourExistNo === "+91" || isEmerFourExistNo === "+1") {
-                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(3));
-                        $(".emerno-prefix").text(isEmerFourExistNo);
-                        $(".emerno-prefix").show();
-                        $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
-                      } else {
-                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(2));
-                        $(".emerno-prefix").text(isEmerFourExistNoNew);
-                        $(".emerno-prefix").show();
-                        $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
-                      }
+                      // if (isEmerFourExistNo === "+44" || isEmerFourExistNo === "+91" || isEmerFourExistNo === "+1") {
+                      //   $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(3));
+                      //   $(".emerno-prefix").text(isEmerFourExistNo);
+                      //   $(".emerno-prefix").show();
+                      //   $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
+                      // } else {
+                      //   $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber.slice(2));
+                      //   $(".emerno-prefix").text(isEmerFourExistNoNew);
+                      //   $(".emerno-prefix").show();
+                      //   $("#inputEmergencyNumber").css("padding", "10px 25px 12px 32px");
+                      // }
 
 
-                      isEmerElecFourExistNo = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 3);
-                     var isEmerElecFourExistNoNew = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 2);
+                    //   isEmerElecFourExistNo = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 3);
+                    //  var isEmerElecFourExistNoNew = result.records[getAdmin].EmergencyElectricityNumber.slice(0, 2);
                       
-                      if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
-                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
-                        $(".emerElectno-prefix").text(isEmerElecFourExistNo);
+                      // if (isEmerElecFourExistNo === "+44" || isEmerElecFourExistNo === "+91" || isEmerElecFourExistNo === "+1") {
+                      //   $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(3));
+                      //   $(".emerElectno-prefix").text(isEmerElecFourExistNo);
+                      //   $(".emerElectno-prefix").show();
+                      //   $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
+                      // } else {
+                      //    $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(2));
+                      //    $(".emerElectno-prefix").text(isEmerElecFourExistNoNew);
+                      //    $(".emerElectno-prefix").show();
+                      //    $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
+                      // }
+                      var getNewCountryVal = result.records[getAdmin].Country;
+                      if(getNewCountryVal == 'US'){
+                        $(".cphno-prefix").show();
+                        $(".cphno-prefix").text("+1");
+                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
+                        $("#inputPhoneNumber").css("padding", "10px 25px 12px 32px");
+  
+                        $(".emerno-prefix").show();
+                        $(".emerno-prefix").text("+1");
+                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber);
+                        $("#inputEmergencyNumber").css("padding", "11px 25px 10px 32px");
+  
                         $(".emerElectno-prefix").show();
-                        $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
-                      } else {
-                         $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber.slice(2));
-                         $(".emerElectno-prefix").text(isEmerElecFourExistNoNew);
-                         $(".emerElectno-prefix").show();
-                         $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 12px 31px");
+                        $(".emerElectno-prefix").text("+1");
+                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyElectricityNumber").css("padding", "11px 14px 10px 32px");
+
+                        $(".emerGasno-prefix").show();
+                        $(".emerGasno-prefix").text("+1");
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
+                      } else if (getNewCountryVal == 'Canada'){                      
+                        $(".cphno-prefix").show();
+                        $(".cphno-prefix").text("+1");
+                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
+                        $("#inputPhoneNumber").css("padding", "10px 25px 12px 32px");
+  
+                        $(".emerno-prefix").show();
+                        $(".emerno-prefix").text("+1");
+                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber);
+                        $("#inputEmergencyNumber").css("padding", "11px 25px 10px 32px");
+  
+                        $(".emerElectno-prefix").show();
+                        $(".emerElectno-prefix").text("+1");
+                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyElectricityNumber").css("padding", "11px 14px 10px 32px");
+
+                        $(".emerGasno-prefix").show();
+                        $(".emerGasno-prefix").text("+1");
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
+                      } else if (getNewCountryVal == 'India'){                      
+                        $(".cphno-prefix").show();
+                        $(".cphno-prefix").text("+91");
+                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
+                        $("#inputPhoneNumber").css("padding", "10px 25px 12px 32px");
+  
+                        $(".emerno-prefix").show();
+                        $(".emerno-prefix").text("+91");
+                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber);
+                        $("#inputEmergencyNumber").css("padding", "11px 25px 10px 32px");
+  
+                        $(".emerElectno-prefix").show();
+                        $(".emerElectno-prefix").text("+91");
+                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyElectricityNumber").css("padding", "11px 14px 10px 32px");
+
+                        $(".emerGasno-prefix").show();
+                        $(".emerGasno-prefix").text("+91");
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
+                      } else {                      
+                        $(".cphno-prefix").show();
+                        $(".cphno-prefix").text("+44");
+                        $("#inputPhoneNumber").css("padding", "10px 25px 12px 32px");
+                        $("#inputPhoneNumber").val(result.records[getAdmin].PhoneNumber);
+  
+                        $(".emerno-prefix").show();
+                        $(".emerno-prefix").text("+44");
+                        $("#inputEmergencyNumber").val(result.records[getAdmin].EmergencyNumber);
+                        $("#inputEmergencyNumber").css("padding", "11px 25px 10px 32px");
+  
+                        $(".emerElectno-prefix").show();
+                        $(".emerElectno-prefix").text("+44");
+                        $("#inputEmergencyElectricityNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyElectricityNumber").css("padding", "11px 14px 10px 32px");
+
+                        $(".emerGasno-prefix").show();
+                        $(".emerGasno-prefix").text("+44");
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
                       }
 
                       if (result.records[getAdmin].Logo == "" || result.records[getAdmin].Logo == null) {

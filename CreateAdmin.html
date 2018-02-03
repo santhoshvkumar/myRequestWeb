@@ -254,6 +254,19 @@
           <span class="emerElectno-prefix"></span>
         </div>
       </div>
+
+      <div class="uk-width-medium-1-4">
+        <div class="parsley-row">
+
+          <!--Sathish Have a look at the UI FIX-->
+          <label for="inputEmergencyGasNumber">Emergency Gas Number<span class="req">*</span></label>
+          <input type="text" id="inputEmergencyGasNumber" name="emergencyGasNumber" maxlength="10" required class="md-input" />
+          <span class="emerGasno-prefix"></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="uk-grid" data-uk-grid-margin>
       <div class="uk-width-medium-1-4">
         <div class="parsley-row">
           <label for="urlRent">Url For How To Rent<span class="req">*</span></label>
@@ -261,9 +274,8 @@
           
         </div>
       </div>
-
     </div>
-
+    
 
 
     <div class="uk-grid" data-uk-grid-margin>
@@ -349,7 +361,7 @@
   <div class="parsley-row" style="margin-left:445px;"> 
    <button id="leftArrow" type="button" class="md-btn md-btn-primary leftArrow"><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;"></i> </button> 
    <button id="previousPage" type="button" class="md-btn md-btn-primary previousPage"><i class="fa fa-angle-left" style="padding-right: 0px;"></i> Previous</button>
-   <input type="text" id="enterPageNO" placeholder="Page #" min="0"/>
+   <input type="number" id="enterPageNO" placeholder="Page #" min="0"/>
    <button id="nextPage" type="button" class="md-btn md-btn-primary nextPage">Next  <i class="fa fa-angle-right"></i></button>
    <button id="rightArrow" type="button" class="md-btn md-btn-primary rightArrow"><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i> </button>
  </div>

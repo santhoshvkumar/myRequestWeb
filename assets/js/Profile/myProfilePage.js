@@ -11,8 +11,7 @@
     $(".adminEmerno-prefix").text("+44");
     $(".emerElectno-prefix").text("+44");
     $(".subAdminPhno-prefix").text("+44");
-  }
-  else{
+  } else {
     $(".phno-prefix").text(getPhoneCode);
     $(".adminEmerno-prefix").text(getPhoneCode);
     $(".emerElectno-prefix").text(getPhoneCode);
@@ -337,7 +336,7 @@ $(document).ready(function() {
    var logo = localStorage.getItem("MyRequest_Logo");
    localStorage.setItem("MyRequest_RepairStatus", "");
 
-   if (adminType == "SuperAdmin") {
+   if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
     $(".myRequestAdminLogo").addClass("requestAdminLogo");
     $(".requestAdminLogo").removeClass("myRequestAdminLogo");
     $("#lettingAgentMenu").hide();
