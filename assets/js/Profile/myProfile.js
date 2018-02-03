@@ -332,7 +332,7 @@
       }
 
 
-      if (adminType == "SuperAdmin") {
+      if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
           $(".forAdmin").hide();
           $(".forSuperAdmin").show();
       } else {
