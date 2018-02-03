@@ -1,49 +1,24 @@
 function loadPolling(){
 	var optionCount = 2;
     var AdminCountry = localStorage.getItem("MyRequest_countryCode");
-    $(".btnAddOption").on("click", function(e) {
-        optionCount++;
+    var lastPage = 0;
+    var adminUserID = 0;
+    var getAddPollingArr = new Array();
+    var getMainCount = 0;
+    var maxProp =1;
+    var pollingLimitCount = 0;
+    var getValue = "";
+    var checkMaxCount = 0;
+    var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Yellow", "YellowGreen"];
+    $("#inputDropValue").select2();
 
-        if (optionCount > 2)
-            $(".btnRemoveOption").show()
-
-        $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">  <label for="inputPollingOption' + optionCount + '">Polling Options ' + optionCount + '<span class="req">*</span></label>     <input type="text" id="inputPollingOption' + optionCount + '" name="pollingOption" class="md-input inputPollingOption" />       <span class="md-input-bar"></span>    </div> </div> </div> </div>');
-
-
-         $(".inputPollingOption").keyup(function(){
-            var optionValue = $("#"+this.id).val();
-            if(optionValue==""){
-                $(".errorInfo").show();
-                $(".errorInfo").text("*Enter the Polling Options");
-                $("#"+this.id).css("border-color","red");
-                $(".btnSubmitPolling").attr("disabled", true);
-            }
-            else{
-                $(".errorInfo").hide();
-                $(".errorInfo").text("");
-                $("#"+this.id).css("border-color","rgba(0,0,0,.12)");
-                $(".btnSubmitPolling").attr("disabled", false);
-            }
-        });
-             
-
-    });
-    $(".btnRemoveOption").on("click", function(e) {
-        if (optionCount == 3)
-            $(".btnRemoveOption").hide();
-        $(".newOption-" + optionCount).remove();
-        $("#inputPollingOption" + optionCount).remove();
-
-
-        optionCount--;
-    });
     $(function() {
 
          $('#full_screen_toggle').on('click',function(e) {
-        e.preventDefault();
-        screenfull.toggle();
-        $window.resize();
-    })
+            e.preventDefault();
+            screenfull.toggle();
+            $window.resize();
+        })
          
         var $switcher = $('#style_switcher'),
             $switcher_toggle = $('#style_switcher_toggle'),
@@ -108,22 +83,14 @@ function loadPolling(){
         }
     });
 
-    var lastPage = 0;
-    var adminUserID = 0;
-    var getAddPollingArr = new Array();
-    var getMainCount = 0;
-    var maxProp =1;
-    var pollingLimitCount = 0;
-    var CSS_COLOR_NAMES = ["AliceBlue", "AntiqueWhite", "Aqua", "Aquamarine", "Azure", "Beige", "Bisque", "Black", "BlanchedAlmond", "Blue", "BlueViolet", "Brown", "BurlyWood", "CadetBlue", "Chartreuse", "Chocolate", "Coral", "CornflowerBlue", "Cornsilk", "Crimson", "Cyan", "DarkBlue", "DarkCyan", "DarkGoldenRod", "DarkGray", "DarkGrey", "DarkGreen", "DarkKhaki", "DarkMagenta", "DarkOliveGreen", "Darkorange", "DarkOrchid", "DarkRed", "DarkSalmon", "DarkSeaGreen", "DarkSlateBlue", "DarkSlateGray", "DarkSlateGrey", "DarkTurquoise", "DarkViolet", "DeepPink", "DeepSkyBlue", "DimGray", "DimGrey", "DodgerBlue", "FireBrick", "FloralWhite", "ForestGreen", "Fuchsia", "Gainsboro", "GhostWhite", "Gold", "GoldenRod", "Gray", "Grey", "Green", "GreenYellow", "HoneyDew", "HotPink", "IndianRed", "Indigo", "Ivory", "Khaki", "Lavender", "LavenderBlush", "LawnGreen", "LemonChiffon", "LightBlue", "LightCoral", "LightCyan", "LightGoldenRodYellow", "LightGray", "LightGrey", "LightGreen", "LightPink", "LightSalmon", "LightSeaGreen", "LightSkyBlue", "LightSlateGray", "LightSlateGrey", "LightSteelBlue", "LightYellow", "Lime", "LimeGreen", "Linen", "Magenta", "Maroon", "MediumAquaMarine", "MediumBlue", "MediumOrchid", "MediumPurple", "MediumSeaGreen", "MediumSlateBlue", "MediumSpringGreen", "MediumTurquoise", "MediumVioletRed", "MidnightBlue", "MintCream", "MistyRose", "Moccasin", "NavajoWhite", "Navy", "OldLace", "Olive", "OliveDrab", "Orange", "OrangeRed", "Orchid", "PaleGoldenRod", "PaleGreen", "PaleTurquoise", "PaleVioletRed", "PapayaWhip", "PeachPuff", "Peru", "Pink", "Plum", "PowderBlue", "Purple", "Red", "RosyBrown", "RoyalBlue", "SaddleBrown", "Salmon", "SandyBrown", "SeaGreen", "SeaShell", "Sienna", "Silver", "SkyBlue", "SlateBlue", "SlateGray", "SlateGrey", "Snow", "SpringGreen", "SteelBlue", "Tan", "Teal", "Thistle", "Tomato", "Turquoise", "Violet", "Yellow", "YellowGreen"];
-    var getValue = "";
-    $("#inputDropValue").select2();
+    
 
-     $(window).load(function() {
+    $(window).load(function() {
         $("#getLoadingModalContent").removeClass('md-show');
     });
 
     $(document).ready(function() {
-                adminUserID = localStorage.getItem("MyRequest_AdminID");
+        adminUserID = localStorage.getItem("MyRequest_AdminID");
         var adminUserName = localStorage.getItem("MyRequest_UserName");
         var adminType = localStorage.getItem("MyRequest_AdminType");
 
@@ -173,18 +140,54 @@ function loadPolling(){
              }
         }
 
-       $("#previousPage").attr("disabled",true);
-       $("#enterPageNO").val(maxProp);
-
-       $(".getLettingAgencyBusinessName").text("Polling - " + businessName );
-
-       getallPolling(getValue);
-
-
+        $("#enterPageNO").attr("disabled", true);
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
+        $("#nextPage").attr("disabled", true);
+        $("#rightArrow").attr("disabled", true);
+        $("#enterPageNO").val(maxProp);
+        $(".getLettingAgencyBusinessName").text("Polling - " + businessName );
+        getallPolling(getValue);
     }); // ready
 
     $(".logOut").click(function() {
         logOutClearCatch();
+    });
+
+
+    $(".btnAddOption").on("click", function(e) {
+        optionCount++;
+
+        if (optionCount > 2)
+            $(".btnRemoveOption").show()
+
+        $(".addNewOptions").append('<div class="uk-grid newOption-' + optionCount + '"  data-uk-grid-margin>     <div class="uk-width-medium-1-1">  <div class="parsley-row"> <div class="md-input-wrapper">  <label for="inputPollingOption' + optionCount + '">Polling Options ' + optionCount + '<span class="req">*</span></label>     <input type="text" id="inputPollingOption' + optionCount + '" name="pollingOption" class="md-input inputPollingOption" />       <span class="md-input-bar"></span>    </div> </div> </div> </div>');
+
+
+         $(".inputPollingOption").keyup(function(){
+            var optionValue = $("#"+this.id).val();
+            if(optionValue==""){
+                $(".errorInfo").show();
+                $(".errorInfo").text("*Enter the Polling Options");
+                $("#"+this.id).css("border-color","red");
+                $(".btnSubmitPolling").attr("disabled", true);
+            }
+            else{
+                $(".errorInfo").hide();
+                $(".errorInfo").text("");
+                $("#"+this.id).css("border-color","rgba(0,0,0,.12)");
+                $(".btnSubmitPolling").attr("disabled", false);
+            }
+        });
+             
+    });
+
+    $(".btnRemoveOption").on("click", function(e) {
+        if (optionCount == 3)
+            $(".btnRemoveOption").hide();
+            $(".newOption-" + optionCount).remove();
+            $("#inputPollingOption" + optionCount).remove();
+            optionCount--;
     });
 
     $(".inputPollingOption").keyup(function(){
@@ -205,41 +208,50 @@ function loadPolling(){
 
 
     $("#leftArrow").click(function(){
-        $("#previousPage").removeAttr("disabled");
+        $("#leftArrow").attr("disabled", true);
+        $("#previousPage").attr("disabled", true);
         pollingLimitCount = 0;
-        //console.log("next count : "+pollingLimitCount);
-        maxProp=1;
+        maxProp = 1;
+        checkMaxCount=0;
         $("#enterPageNO").val(1);
-         $("#getLoadingModalContent").addClass('md-show');
         getallPolling(getValue);
+        if (maxProp < lastPage) {
+            $("#nextPage").attr("disabled", false);
+            $("#previousPage").attr("disabled", "disabled");
+            $("#leftArrow").attr("disabled", "disabled");
+        }
     });
 
     $("#rightArrow").click(function(){
+        checkMaxCount=0;
+        $("#leftArrow").attr("disabled", false);
         $("#previousPage").removeAttr("disabled");
-        pollingLimitCount = (9*lastPage)-9;
-        //console.log("next count : "+pollingLimitCount);
-        maxProp=lastPage;
-        $("#enterPageNO").val(lastPage);
-         $("#getLoadingModalContent").addClass('md-show');
+        pollingLimitCount = (9 * lastPage);
+        pollingLimitCount -=9;
+        maxProp = lastPage;
+        checkMaxCount+=(9 * lastPage);
+        $("#enterPageNO").val(maxProp);
         getallPolling(getValue);
     });
 
     $("#previousPage").click(function(){
-        //console.log("inital count : "+pollingLimitCount);
+        $("#nextPage").attr("disabled", false);
+        checkMaxCount=0;
         if(pollingLimitCount == 0)
         {
-          pollingLimitCount = 0;
-           $("#previousPage").attr("disabled","disabled");
+            pollingLimitCount = 0;
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", "disabled");
+        } else {
+            checkMaxCount=pollingLimitCount-checkMaxCount;
+            pollingLimitCount -= 9;
+            $("#previousPage").removeAttr("disabled");
         }
-        else
-        {
-          pollingLimitCount -= 9;
-          $("#previousPage").removeAttr("disabled");
-        }
-        //console.log("prev count : "+pollingLimitCount);
+        
         if(pollingLimitCount == 0)
         {
-          $("#previousPage").attr("disabled","disabled");
+            $("#leftArrow").attr("disabled", true);
+            $("#previousPage").attr("disabled", "disabled");
         }
         maxProp--;
         if(maxProp==0){
@@ -248,34 +260,37 @@ function loadPolling(){
         else{
             $("#enterPageNO").val(maxProp);
         }
-         $("#getLoadingModalContent").addClass('md-show');
         getallPolling(getValue);
     });
 
        
     $("#nextPage").click(function(){
-        //console.log("next inital count : "+pollingLimitCount);
+        $("#leftArrow").attr("disabled", false);
         $("#previousPage").removeAttr("disabled");
+        checkMaxCount = pollingLimitCount+checkMaxCount+18;
         pollingLimitCount += 9;
-        //console.log("next count : "+pollingLimitCount);
-        maxProp++;
-        $("#enterPageNO").val(maxProp);
-         $("#getLoadingModalContent").addClass('md-show');
-        getallPolling(getValue);
+        if (maxProp == lastPage) {
+            $("#nextPage").attr("disabled", true);
+        } else {
+            $("#nextPage").attr("disabled", false);
+            maxProp++;
+            $("#enterPageNO").val(maxProp);
+            if (maxProp <= lastPage) {
+                getallPolling(getValue);
+            }
+        }
     });
 
 
 
     $("#enterPageNO").on("change",function(e){
-/*                 console.log("THis is called"+$("#enterPageNO").val());
-*/                 if( $("#enterPageNO").val() > maxProp){
+        if( $("#enterPageNO").val() > maxProp){
             maxProp++;
             $("#enterPageNO").val(maxProp);
          }
     
-/*                console.log("next inital count : " + pollingLimitCount);
-*/                pollingLimitCount = 9*$("#enterPageNO").val();
-        //console.log("next count : " + pollingLimitCount);
+
+                pollingLimitCount = 9*$("#enterPageNO").val();
         if (pollingLimitCount == 0) {
             $("#previousPage").attr("disabled", "disabled");
         } else {
@@ -384,8 +399,6 @@ $(".btnSearch").click(function () {
         if(pollingTitle != "" && getAddPollingArr!="") {
             var dataForm = '{"PollingTitle":"' + pollingTitle + '","IsUtilityPolling":"0","PollingFor":"' +inputDropValue+ '","AdminID":"' + adminUserID + '","PollingOptionArr":"' + getAddPollingArr + '","Getcountry":"' + AdminCountry + '"}';
             var sendURL = domainAddress + 'CreatePolling';
-            console.log(dataForm);
-            console.log(sendURL);
             $.ajax({
                 type:  "POST",
                 url: sendURL,
@@ -402,7 +415,7 @@ $(".btnSearch").click(function () {
                     }
                     // debugger;
                      $.post( callForPush, {StatusMessage:"Polling : " + pollingTitle, adminID:adminUserID, Title:'Polling'}, function(result) {
-                         console.log(result);
+                         //console.log(result);
                      });
                      /*  For Push Notification to All Tenant & Contractor */
 
@@ -425,59 +438,67 @@ $(".btnSearch").click(function () {
 
 
     function getallPolling(getValue) {
-    var adminUserID = localStorage.getItem("MyRequest_AdminID");
-     if(getValue=="" || getValue==undefined){
-          dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
-          sendURL = domainAddress+"PollingListByCount";
-    }
-    else{
-         dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","SearchValue":"'+getValue+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
-         sendURL = domainAddress+"SearchPollingList";
-    }
-        console.log(dataForm);
-        console.log(sendURL);
+        $("#getLoadingModalContent").addClass('md-show');
+        var adminUserID = localStorage.getItem("MyRequest_AdminID");
+        if(getValue=="" || getValue==undefined){
+            dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
+            sendURL = domainAddress+"PollingListByCount";
+        }
+        else{
+            dataForm = '{"Limit":"'+parseInt(pollingLimitCount)+'","SearchValue":"'+getValue+'","AdminID":"'+adminUserID+'","Getcountry":"' + AdminCountry + '"}';
+            sendURL = domainAddress+"SearchPollingList";
+        }
+        
         $.ajax({
             type: "POST",
             url: sendURL,
             data: dataForm,
             success: function(getResultPolling) {
-               console.log(getResultPolling);
-               if(getResultPolling.record_count==0  && getResultPolling.All_Records_Count == 0){
-                     $(".allPollingList").html('');
+                if(getResultPolling.record_count==0  && getResultPolling.All_Records_Count == 0){
+                    $(".allPollingList").html('');
                     $(".allPollingList").append("<tr class='odd gradeX' id='rowID-0'><td id='titleName-0'>No Records Found</td> <td id='noOfAnswered-0'></td> <td> </td> <td>  </td><td>  </td></tr>");
                     $("#getLoadingModalContent").removeClass('md-show');
-               }
-               else{
+                    $("#enterPageNO").attr("disabled", true);
+                    $("#nextPage").attr("disabled", true);
+                    $("#rightArrow").attr("disabled", true);
+                }
+                else{
                     loadPollingList(getResultPolling);
-               }
+                }
             }
         }); 
     }
 
 
     function loadPollingList(getResultPolling){
-
-
-        if(getResultPolling.record_count == 0){
-            $("#nextPage").attr("disabled",true);
-            $("#getLoadingModalContent").removeClass('md-show');
-        }
-        else{
+        if (getResultPolling.record_count == 0) {
+            $("#nextPage").attr("disabled", true);
+            var enterPageNO = $("#enterPageNO").val();
+            enterPageNO--;
+            $("#enterPageNO").val(enterPageNO);
+        } else {
             $(".allPollingList").html('');
             if(getResultPolling.record_count == getResultPolling.All_Records_Count ){ 
-                        $(".pageCount").show();
-                $("#nextPage").attr("disabled","disabled");
-            }
-            else if(getResultPolling.record_count < 9 && getResultPolling.record_count != 0 ){ 
-                        $(".pageCount").show();
-                $("#nextPage").attr("disabled","disabled");
+                $("#enterPageNO").attr("disabled", true);
+                $("#nextPage").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
+            } else if(getResultPolling.record_count < 9 && getResultPolling.record_count != 0 ){ 
+                $("#enterPageNO").attr("disabled", true);
+                $("#rightArrow").attr("disabled", true);
+                $("#nextPage").attr("disabled", true);
             }
             else if(getResultPolling.record_count >= 9){  
-                        $("#nextPage").removeAttr("disabled");
-                $(".pageCount").show();
+                $("#enterPageNO").attr("disabled", true);
+                if(checkMaxCount==getResultPolling.All_Records_Count){
+                    $("#nextPage").attr("disabled", "disabled");
+                    $("#rightArrow").attr("disabled", "disabled");
+                } else {
+                    $("#nextPage").removeAttr("disabled");
+                    $("#rightArrow").removeAttr("disabled");
+                }
             } 
 
-             lastPage = parseInt(getResultPolling.All_Records_Count/ 9) + 1;
+             lastPage = Math.ceil(getResultPolling.All_Records_Count / 9);
 
 
             for (var getPolling in getResultPolling.records) {
@@ -574,7 +595,6 @@ $(".btnSearch").click(function () {
                         		
 
                         		$.get(domainAddress + "GetPollingAnsweredUsersList/" + getNotificationContentID +"/"+ pieChartData[getPollingInfo].pollingOptionID +"/"+ adminUserID, {}, function(result) {
-			                        console.log(result);
 			                        $(".getAnsweredUsersList").show();
 			                        $(".listAnsweredUsers").html('');
        								if(result.record_count==0){
