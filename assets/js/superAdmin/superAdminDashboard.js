@@ -1150,7 +1150,7 @@ if(superAdminType == "USSuperAdmin"){
               $("#nextPage").attr("disabled", "disabled");
             } else if (result.record_count >= 9) {
               //console.log("great than 9");
-              $("#nextLastPage").removeAttr("disabled");
+              $("#nextPage").removeAttr("disabled");
               //$("#nextLastPage").show();
             }
             lastPage = parseInt(result.All_Records_Count / 9) + 1;
