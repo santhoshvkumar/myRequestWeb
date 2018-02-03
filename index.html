@@ -377,6 +377,12 @@
         $("#btnLogin").click(function() {
             callLogin();
         });
+        $(".bgUKImage").removeClass();
+        $(".bgUSImage").removeClass();
+        $(".bgCanImage").removeClass();
+        $(".bgIndImage").removeClass();
+
+        $("body").addClass("bgLoginImage");
 
         function selectedCountry(state){
            var countryCode, gmt, phoneCode;
