@@ -10,11 +10,13 @@
     $(".phno-prefix").text("+44");
     $(".adminEmerno-prefix").text("+44");
     $(".emerElectno-prefix").text("+44");
+    $(".emerGasno-prefix").text("+44");
     $(".subAdminPhno-prefix").text("+44");
   } else {
     $(".phno-prefix").text(getPhoneCode);
     $(".adminEmerno-prefix").text(getPhoneCode);
     $(".emerElectno-prefix").text(getPhoneCode);
+    $(".emerGasno-prefix").text(getPhoneCode);
     $(".subAdminPhno-prefix").text(getPhoneCode);
   }
 
@@ -611,6 +613,12 @@ getExistPrivacypolicy();
    }
  });
 
+ $("#inputEmergencyGasNumber").keypress(function(e) {
+  if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+    return false;
+  }
+});
+
  $("#phoneNumber").keypress(function(e) {
    if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
      return false;
@@ -969,6 +977,31 @@ $("#inputState").on('change', function() {
    }
  });
 
+ $("#inputEmergencyGasNumber").keyup(function() {
+  var inputEmergencyGasNumber = $("#inputEmergencyGasNumber").val();
+  if (inputEmergencyGasNumber == "") {
+    $(".emerGasno-prefix").hide();
+    $("#inputEmergencyGasNumber").removeAttr('style');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Gas Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  } else if (inputEmergencyGasNumber.length != 10) {
+   $(".help-block").css('color', 'red'); 
+   $(".help-block").show();
+   $("#inputEmergencyGasNumber").css("border-color", "red");
+   $(".help-block").text("* Enter the 10 digit Emergency Gas Number");
+   $(".btnUpdate").attr("disabled", true);
+   return false;
+ } else {
+    $(".emerGasno-prefix").show();
+    $("#inputEmergencyGasNumber").css("border-color", "rgba(0,0,0,.12)");
+    $("#inputEmergencyGasNumber").css("padding", "10px 10px 10px 32px");
+    $(".help-block").hide();
+    $(".help-block").text("");
+    $(".btnUpdate").attr("disabled", false);
+  }
+});
 
  $('#firstName').keypress(function (e) {
     var regex = new RegExp("^[A-Za-z0-9? ,_-]+$");
@@ -1130,9 +1163,15 @@ $('#lastName').keypress(function (e) {
                $("#inputEmergencyElectricityNumber").val(result.records[getUserInfo].EmergencyElectricityNumber);
              }
 
+             if (result.records[getUserInfo].EmergencyGasNumber == null) {
+               $("#inputEmergencyGasNumber").val();
+             } else {
+               $("#inputEmergencyGasNumber").val(result.records[getUserInfo].EmergencyGasNumber);
+             }
+
              if (result.records[getUserInfo].UrlForRent == "") {
                $("#inputUrlRent").val("https://www.gov.uk/government/publications/how-to-rent/how-to-rent-the-checklist-for-renting-in-england");
-             } else
+             } 
              $("#inputUrlRent").val(result.records[getUserInfo].UrlForRent);
              $("#inputEmail").val(result.records[getUserInfo].BusinessEmail);
              $("#inputPassword").val(result.records[getUserInfo].BusinessPassword);
@@ -1142,8 +1181,10 @@ $('#lastName').keypress(function (e) {
              $(".phno-prefix").show();
              $("#inputEmergencyNumber").css("padding", "10px 10px 10px 32px");
              $("#inputEmergencyElectricityNumber").css("padding", "10px 10px 10px 32px");
+             $("#inputEmergencyGasNumber").css("padding", "10px 10px 10px 32px");
              $(".adminEmerno-prefix").show();
              $(".emerElectno-prefix").show();
+             $(".emerGasno-prefix").show();
              if (result.records[getUserInfo].Logo == null || result.records[getUserInfo].Logo == "" || result.records[getUserInfo].Logo=="Fail upload folder with read access.") {
                $("#adminLogoImage").show();
              } else {
@@ -1354,6 +1395,7 @@ $("#getAddprivacy").click(function() {
    var inputEmergencyNumber = $("#inputEmergencyNumber").val();
    var inputUrlRent = $("#inputUrlRent").val();
    var inputEmergencyElectricityNumber = $("#inputEmergencyElectricityNumber").val();
+   var inputEmergencyGasNumber = $("#inputEmergencyGasNumber").val();
    var inputEmail = $.trim($("#inputEmail").val());
    var inputPassword = $.trim($("#inputPassword").val());
    var inputLocality = $("#inputLocality").val();
@@ -1451,6 +1493,22 @@ $("#getAddprivacy").click(function() {
     return false;
   }
 
+  if (inputEmergencyGasNumber == "") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Emergency Gas Number");
+    $(".btnUpdate").attr("disabled", true);
+    return false;
+  }
+ 
+  if (inputEmergencyGasNumber.length != 10) {
+     $(".help-block").css('color', 'red'); 
+     $(".help-block").show();
+     $("#inputEmergencyGasNumber").css("border-color", "red");
+     $(".help-block").text("* Enter the 10 digit Emergency Gas Number");
+     $(".btnUpdate").attr("disabled", true);
+     return false;
+   }
 
  if (inputEmail == "") {
    $(".help-block").css('color', 'red');
@@ -1527,7 +1585,7 @@ $("#getAddprivacy").click(function() {
    var state = $("#select2-inputState-container").html();
    var city = $("#select2-inputCity-container").html();
 
-   var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '", "PhoneCode": "' +getPhoneCode+ '"}';
+   var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + inputFirstName + '","AdminLastName":"' + inputLastName + '","BusinessName":"' + inputBusinessName + '","Locality":"' + inputLocality + '","City":"' + city + '","State":"' + state + '","Country":"' + inputCountry + '","BusinessEmail":"' + inputEmail + '","BusinessPassword":"'+inputPassword+'","AutoGenerate":"' + inputAgencyCode + '","PhoneNumber":"' + inputPhoneNumber + '","EmergencyNumber":"' + inputEmergencyNumber + '","EmergencyElectricityNumber":"' + inputEmergencyElectricityNumber + '","EmergencyGasNumber":"' + inputEmergencyGasNumber + '","UrlForRent":"' + inputUrlRent + '","IsVoid":"' + inputVoid + '","Avail":"' + inputAvail + '","Logo":"' + imageUrl1 + '", "PhoneCode": "' +getPhoneCode+ '"}';
    var sendURL = domainAddress + 'updateAdminDetails/' + adminUserID;
    console.log(dataForm);
    console.log(sendURL);

@@ -242,6 +242,12 @@
       }
     });
 
+    $("#inputEmergencyGasNumber").keypress(function(e) {
+      if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
+        return false;
+      }
+    });
+
     $("#inputPhoneNumber").keypress(function(e) {
       if (e.which != 8 && e.which != 0 && (e.which < 48 || e.which > 57)) {
         return false;
@@ -600,18 +606,19 @@ $("#inputCity").on('change', function() {
 });
 
 
-$("#inputCountry").keyup(function() {
+$("#inputCountry").on('change', function() {
   var inputCountry = $("#inputCountry").val();
   if (inputCountry == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
-    $(".help-block").text("* Enter the Country");
+    $(".help-block").text("* Select the Country");
+    $("#select2-inputCountry-container").css("border", "1px solid red");
     $(".btnSubmitAdmin").attr("disabled", true);
     return false;
   } else {
     $(".help-block").hide();
     $(".help-block").text("");
-    $("#inputCountry").css("border-color", "rgba(0,0,0,.12)");
+    $("#select2-inputCountry-container").css("border", "");
     $(".btnSubmitAdmin").attr("disabled", false);
     return false;
   }
@@ -753,6 +760,7 @@ $(".btnSubmitAdmin").click(function() {
   var getPhoneNumber =  $("#inputPhoneNumber").val();
   var getEmergencyNumber =  $("#inputEmergencyNumber").val();
   var getEmergencyElectricityNumber =  $("#inputEmergencyElectricityNumber").val();
+  var getEmergencyGasNumber =  $("#inputEmergencyGasNumber").val();
   var autoGenerate = $("#inputCountry").val();
   var getAvailIsVoid = $("#getAvail").prop("checked");
   if(getAvailIsVoid==true){
@@ -821,37 +829,6 @@ $(".btnSubmitAdmin").click(function() {
     return false;
   }
 
-  if (getLocality == "") {
-    $(".help-block").css('color', 'red');
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Locality");
-    $("#inputLocality").css("border-color", "red");
-    $(".btnSubmitAdmin").attr("disabled", true);
-    $("#getLoadingModalContent").removeClass('md-show');
-    return false;
-  }
-
-  if (state == "Select County") {
-    $(".help-block").css('color', 'red');
-    $(".help-block").show();
-    $(".help-block").text("* Select the County");
-    $("#select2-inputState-container").css("border", "1px solid red");
-    $(".btnSubmitAdmin").attr("disabled", true);
-    $("#getLoadingModalContent").removeClass('md-show');
-    return false;
-  }
-
-
-  if (city == "Choose City" || city == undefined) {
-    $(".errorInfo").css("border-color", "red");
-    $(".errorInfo").show();
-    $(".errorInfo").text("* Select the City");
-    $("#select2-inputCity-container").css("border", "1px solid red");
-    $(".btnSubmitAdmin").attr("disabled", true);
-    $("#getLoadingModalContent").removeClass('md-show');
-    return false;
-  }
-
   if (getEmail == "") {
     $(".help-block").css('color', 'red');
     $(".help-block").show();
@@ -872,7 +849,48 @@ $(".btnSubmitAdmin").click(function() {
     return false;
   }
 
-  if (getPhoneNumber == "+44" || getPhoneNumber === "+91" || getPhoneNumber === "+1") {
+  if (getCountry == "Select Country") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Select the Country");
+    $("#select2-inputCountry-container").css("border", "1px solid red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (state == "Choose State") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Select the County");
+    $("#select2-inputState-container").css("border", "1px solid red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+
+  if (city == "Choose City" || city == undefined) {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Select the City");
+    $("#select2-inputCity-container").css("border", "1px solid red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (getLocality == "") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Locality");
+    $("#inputLocality").css("border-color", "red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (getPhoneNumber == "+44" || getPhoneNumber === "+91" || getPhoneNumber === "+1" || getPhoneNumber === "") {
     $(".help-block").css('color', 'red');
     $(".help-block").show();
     $(".help-block").text("* Enter the Phone Number");
@@ -882,6 +900,35 @@ $(".btnSubmitAdmin").click(function() {
     return false;
   }
 
+  if (getEmergencyNumber === "+44" || getEmergencyNumber === "+91" || getEmergencyNumber === "+1" || getEmergencyNumber === "") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Emergency Number");
+    $("#inputEmergencyNumber").css("border-color", "red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (getEmergencyElectricityNumber === "+44" || getEmergencyElectricityNumber === "+91" || getEmergencyElectricityNumber === "+1" || getEmergencyElectricityNumber === "") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Emergency Electricity Number");
+    $("#inputEmergencyElectricityNumber").css("border-color", "red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
+
+  if (getEmergencyGasNumber === "+44" || getEmergencyGasNumber === "+91" || getEmergencyGasNumber === "+1" || getEmergencyGasNumber === "") {
+    $(".help-block").css('color', 'red');
+    $(".help-block").show();
+    $(".help-block").text("* Enter the Emergency Gas Number");
+    $("#inputEmergencyGasNumber").css("border-color", "red");
+    $(".btnSubmitAdmin").attr("disabled", true);
+    $("#getLoadingModalContent").removeClass('md-show');
+    return false;
+  }
 
   if (getUrl == "") {
     $(".help-block").css('color', 'red');
@@ -893,27 +940,7 @@ $(".btnSubmitAdmin").click(function() {
     return false;
   }
 
-  if (getEmergencyNumber === "+44" || getEmergencyNumber === "+91" || getEmergencyNumber === "+1") {
-    $(".help-block").css('color', 'red');
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Emergency Number");
-    $("#inputEmergencyNumber").css("border-color", "red");
-    $(".btnSubmitAdmin").attr("disabled", true);
-    $("#getLoadingModalContent").removeClass('md-show');
-    return false;
-  }
-
-  if (getEmergencyElectricityNumber === "+44" || getEmergencyElectricityNumber === "+91" || getEmergencyElectricityNumber === "+1") {
-    $(".help-block").css('color', 'red');
-    $(".help-block").show();
-    $(".help-block").text("* Enter the Emergency Electricity Number");
-    $("#inputEmergencyElectricityNumber").css("border-color", "red");
-    $(".btnSubmitAdmin").attr("disabled", true);
-    $("#getLoadingModalContent").removeClass('md-show');
-    return false;
-  }
-
-  if (getUrl == "") {
+  if (filePath == "") {
     $(".help-block").css("border-color", "red");
     $(".help-block").show();
     $(".help-block").text("* Upload the Logo");
@@ -922,7 +949,7 @@ $(".btnSubmitAdmin").click(function() {
     $("#getLoadingModalContent").removeClass('md-show');
     return false;
   } else {
-    var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + inputAvail + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
+    var dataForm = '{"AdminTitle":"' + inputTitle + '","AdminFirstName":"' + adminFirstName + '","AdminLastName":"' + adminLastName + '","BusinessName":"' + businessName + '", "Locality":"' + getLocality + '","State":"' + state + '","City":"' + city + '","Country":"' + getCountry + '","IsVoid":"' + inputAvail + '","Avail":"' + inputAvail + '","BusinessEmail":"' + getEmail + '","UrlForRent":"' + getUrl + '","EmergencyElectricityNumber":"' + getEmergencyElectricityNumber + '","EmergencyGasNumber":"' + getEmergencyGasNumber + '","BusinessPassword":"' + getPassword + '","PhoneNumber":"' + getPhoneNumber + '","EmergencyNumber":"' + getEmergencyNumber + '","AutoGenerate":"' + autoGenerate + '","Logo":"' + filePath + '","IsUtility":"' + inputUtility + '"}';
     console.log(dataForm);
     if (hiddenAdminID == 0) {
       var sendURL = domainAddress + 'CreateAdmin';
@@ -951,12 +978,14 @@ $(".btnSubmitAdmin").click(function() {
             $("#inputEmergencyNumber").val('');
             $(".cphno-prefix").hide();
             $("#inputEmergencyElectricityNumber").val('');
+            $("#inputEmergencyGasNumber").val('');
 
             $("#inputPhoneNumber").removeAttr("style");
             $(".emerno-prefix").hide();
             $(".emerElectno-prefix").hide();
             $("#inputEmergencyNumber").removeAttr("style");
             $("#inputEmergencyElectricityNumber").removeAttr("style");
+            $("#inputEmergencyGasNumber").removeAttr("style");
             $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
             filePath = "";
             $(".adminContent").hide();
@@ -964,6 +993,7 @@ $(".btnSubmitAdmin").click(function() {
             UIkit.modal.alert(dataCheck.message_text);
           } else {
             UIkit.modal.alert(dataCheck.message_text);
+            $("#getLoadingModalContent").removeClass('md-show');
             return false;
           }
           $("#getLoadingModalContent").removeClass('md-show');
@@ -998,12 +1028,14 @@ $(".btnSubmitAdmin").click(function() {
             $("#inputEmergencyNumber").val('');
             $(".cphno-prefix").hide();
             $("#inputEmergencyElectricityNumber").val('');
+            $("#inputEmergencyGasNumber").val('');
             $(".cphno-prefix").hide();
             $("#inputPhoneNumber").removeAttr("style");
             $(".emerno-prefix").hide();
             $(".emerElectno-prefix").hide();
             $("#inputEmergencyNumber").removeAttr("style");
             $("#inputEmergencyElectricityNumber").removeAttr("style");
+            $("#inputEmergencyGasNumber").removeAttr("style");
             $(".adminContent").hide();
             $("#imgAdminLogo").attr("src", "assets/img/noImage.gif");
             filePath = "";
@@ -1346,7 +1378,7 @@ if(superAdminType == "USSuperAdmin"){
 
                         $(".emerGasno-prefix").show();
                         $(".emerGasno-prefix").text("+1");
-                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyGasNumber);
                         $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
                       } else if (getNewCountryVal == 'Canada'){                      
                         $(".cphno-prefix").show();
@@ -1366,7 +1398,7 @@ if(superAdminType == "USSuperAdmin"){
 
                         $(".emerGasno-prefix").show();
                         $(".emerGasno-prefix").text("+1");
-                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyGasNumber);
                         $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
                       } else if (getNewCountryVal == 'India'){                      
                         $(".cphno-prefix").show();
@@ -1386,7 +1418,7 @@ if(superAdminType == "USSuperAdmin"){
 
                         $(".emerGasno-prefix").show();
                         $(".emerGasno-prefix").text("+91");
-                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyGasNumber);
                         $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
                       } else {                      
                         $(".cphno-prefix").show();
@@ -1406,7 +1438,7 @@ if(superAdminType == "USSuperAdmin"){
 
                         $(".emerGasno-prefix").show();
                         $(".emerGasno-prefix").text("+44");
-                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyElectricityNumber);
+                        $("#inputEmergencyGasNumber").val(result.records[getAdmin].EmergencyGasNumber);
                         $("#inputEmergencyGasNumber").css("padding", "11px 14px 10px 32px");
                       }
 
