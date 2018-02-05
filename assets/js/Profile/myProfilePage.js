@@ -51,29 +51,31 @@
 
 
    $("#getLoadingModalContent").addClass('md-show');
-   $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
-             //console.log(result);
-             if (result.record_count == 0) {
-               $("#hiddenTermsAndConditionID").val(0);
-               $(".btnSubmitTermsAndCondition").show();
-               $("#getLoadingModalContent").removeClass('md-show');
-             } else {
-               for (var getTermsCondition in result.records) {
-                     //console.log(result.records[getTermsCondition].TermsCondition);
-                     content = result.records[getTermsCondition].TermsCondition;
+   
+  $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
+      //console.log(result);
+      if (result.record_count == 0) {
+        $("#hiddenTermsAndConditionID").val(0);
+        $(".btnSubmitTermsAndCondition").show();
+        $("#getLoadingModalContent").removeClass('md-show');
+      } else {
+            for (var getTermsCondition in result.records) {
+              //console.log(result.records[getTermsCondition].TermsCondition);
+              content = result.records[getTermsCondition].TermsCondition;
+              setTimeout(function() {
+                tinyMCE.get('inputTermsAndCondition').setContent(decodeURIComponent(content));  
+              }, 500);
 
-                     tinyMCE.get('inputTermsAndCondition').setContent(decodeURIComponent(result.records[getTermsCondition].TermsCondition));
-
-                     $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
-                   }
-                   $("#getLoadingModalContent").removeClass('md-show');
-                   $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
-                   $(".btnSubmitTermsAndCondition").show();
-                   $(".md-fab-wrapper").hide();
+              $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
+            }
+            $("#getLoadingModalContent").removeClass('md-show');
+            $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
+            $(".btnSubmitTermsAndCondition").show();
+            $(".md-fab-wrapper").hide();
 
 
-                 }
-               });
+      }
+  });
 
 });
 
