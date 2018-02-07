@@ -64,7 +64,7 @@
               content = result.records[getTermsCondition].TermsCondition;
               setTimeout(function() {
                 tinyMCE.get('inputTermsAndCondition').setContent(decodeURIComponent(content));  
-              }, 500);
+              }, 500); 
 
               $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
             }
