@@ -1783,7 +1783,7 @@ $('#inputBillingPostalCode').keypress(function (e) {
   var inputVoid = $("#hiddenIsVoid").val();
   var inputAvail = $("#hiddenIsAgree").val();
 
-  if (inputBillingTitle == "" || inputBillingTitle == undefined) {
+  if (inputBillingTitle == "" || inputBillingTitle == undefined || inputBillingTitle == "0") {
    $(".billingHelp-block").css('color', 'red');
    $(".billingHelp-block").show();
    $(".billingHelp-block").text("* Select the Title");
