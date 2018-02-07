@@ -1,5 +1,10 @@
 $(function() {
-    getProblemID = localStorage.getItem("ParticularProblemID");
+    if(getProblemID!=''){
+        localStorage.setItem("ParticularProblemID", getProblemID);
+    } else {
+        getProblemID = localStorage.getItem("ParticularProblemID");
+    }
+    
         
     $('#full_screen_toggle').on('click', function(e) {
         e.preventDefault();

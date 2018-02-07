@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <?php
-    //  $problemID = urldecode($_GET['ProblemID']);
+    $problemID  = base64_decode($_GET['ProblemID']);
 ?>
 
     <head>
@@ -719,10 +719,11 @@
                     FastClick.attach(document.body);
                 }
             });
+            var getProblemID = '<?php echo $problemID; ?>';
         </script>
-        <script>
+        <!-- <script>
             var requestID = 0;
-        </script>
+        </script> -->
 
         <div class="md-overlay"></div>
     </body>
