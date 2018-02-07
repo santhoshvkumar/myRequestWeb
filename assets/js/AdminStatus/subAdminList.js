@@ -114,10 +114,9 @@ $(".btnSubmitAdmin").click(function() {
                        $(".md-fab-wrapper").hide();
                        UIkit.modal.alert(dataCheck.message_text);
                    } else {
-                    $("#getLoadingModalContent").removeClass('md-show');
-                    UIkit.modal.alert(dataCheck.message_text);
-                    return false;
-                }
+                        $("#getLoadingModalContent").removeClass('md-show');
+                        UIkit.modal.alert(dataCheck.message_text);
+                    }
                 $(".cphno-prefix").hide();
                 $("#getLoadingModalContent").removeClass('md-show');
             }
@@ -150,6 +149,7 @@ $(".btnSubmitAdmin").click(function() {
                getAllSubAdminList(adminUserID);
                UIkit.modal.alert(dataCheck.message_text);
            } else {
+            $("#getLoadingModalContent").removeClass('md-show');
                UIkit.modal.alert(dataCheck.message_text);
                return false;
            }
