@@ -92,7 +92,7 @@
      }
      //Not to allow Page
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
-    //  $("#getLoadingModalContent").addClass('md-show');
+     $("#getLoadingModalContent").addClass('md-show');
      
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
@@ -146,6 +146,7 @@ function getExistTermsAndCondition() {
         if (result.record_count == 0) {
             $("#hiddenTermsAndConditionID").val(0);
             $(".btnSubmitTermsAndCondition").show();
+            $("#getLoadingModalContent").removeClass('md-show');
         } else {
             for (var getTermsCondition in result.records) {
                 $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
@@ -248,7 +249,7 @@ $("#getAddedit").click(function() {
 });
 
 $(".btnSubmitTermsAndCondition").click(function() {
-    $("#getLoadingModalContent").addClass('md-show');
+    
     var termsAndConditionID = $("#hiddenTermsAndConditionID").val();
     var adminUserID = localStorage.getItem("MyRequest_AdminID");
     var termsAndCondition = encodeURI(tinyMCE.activeEditor.getContent());
@@ -264,6 +265,7 @@ $(".btnSubmitTermsAndCondition").click(function() {
 
         if (termsAndCondition != "") {
             if (termsAndConditionID == 0) {
+                $("#getLoadingModalContent").addClass('md-show');
                 var sendURL = domainAddress + 'CreateTermsAndCondition';
                 console.log(sendURL);
                 $.ajax({
@@ -283,6 +285,7 @@ $(".btnSubmitTermsAndCondition").click(function() {
                     }
                 });
             } else {
+                $("#getLoadingModalContent").addClass('md-show');
                 var sendURL = domainAddress + 'updateTermsAndCondition/' + termsAndConditionID;
                 console.log(sendURL);
                 $.ajax({
