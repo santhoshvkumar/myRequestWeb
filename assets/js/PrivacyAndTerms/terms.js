@@ -92,7 +92,7 @@
      }
      //Not to allow Page
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");
-     $("#getLoadingModalContent").addClass('md-show');
+    //  $("#getLoadingModalContent").addClass('md-show');
      
      if (adminUserID == "" || adminUserID == null) {
          window.location.href = "index.html";
