@@ -16,20 +16,20 @@
      });
 
      $theme_switcher.children('li').click(function(e) {
-         e.preventDefault();
-         var $this = $(this),
-             this_theme = $this.attr('data-app-theme');
+        e.preventDefault();
+        var $this = $(this),
+        this_theme = $this.attr('data-app-theme');
 
-         $theme_switcher.children('li').removeClass('active_theme');
-         $(this).addClass('active_theme');
-         $('body')
-             .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
-             .addClass(this_theme);
+        $theme_switcher.children('li').removeClass('active_theme');
+        $(this).addClass('active_theme');
+        $('body')
+            .removeClass('app_theme_a app_theme_b app_theme_c app_theme_d app_theme_e app_theme_f app_theme_g')
+            .addClass(this_theme);
 
-         if (this_theme == '') {
-             localStorage.removeItem('altair_theme');
+        if (this_theme == '') {
+            localStorage.removeItem('altair_theme');
          } else {
-             localStorage.setItem("altair_theme", this_theme);
+            localStorage.setItem("altair_theme", this_theme);
          }
 
      });
@@ -103,6 +103,7 @@
      if (adminType == "SuperAdmin") {
         $(".myRequestAdminLogo").addClass("requestAdminLogo");
         $(".requestAdminLogo").removeClass("myRequestAdminLogo");
+        $("#getLoadingModalContent").removeClass('md-show');
      } else {
         $("#getLoadingModalContent").addClass('md-show');
         $.get(domainAddress + "GetDateDiff/" + adminUserID, {}, function(result) {
@@ -139,185 +140,166 @@
 
  }); //ready
 
- function getExistTermsAndCondition() {
-     $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
-         console.log(result);
-         $("#getLoadingModalContent").addClass('md-show');
-
-         if (result.record_count == 0) {
-             $("#hiddenTermsAndConditionID").val(0);
-             $(".btnSubmitTermsAndCondition").show();
-
-         } else {
-             for (var getTermsCondition in result.records) {
-
-
-                 $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
-
-             }
-
-             $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
-             $("#getLoadingModalContent").removeClass('md-show');
-             $(".btnSubmitTermsAndCondition").hide();
-
-         }
-     });
- }
+function getExistTermsAndCondition() {
+    $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
+        $("#getLoadingModalContent").addClass('md-show');
+        if (result.record_count == 0) {
+            $("#hiddenTermsAndConditionID").val(0);
+            $(".btnSubmitTermsAndCondition").show();
+        } else {
+            for (var getTermsCondition in result.records) {
+                $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
+            }
+            
+            $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
+            $("#getLoadingModalContent").removeClass('md-show');
+            $(".btnSubmitTermsAndCondition").hide();
+        }
+    });
+}
 
  
- $("#getAddedit").click(function() {
-     $("#getLoadingModalContent").addClass('md-show');
-     $(".inputTinymce").toggle();
-     tinymce.init({
-         selector: "textarea",
-         plugins: [
-             "advlist autolink lists link image charmap print preview anchor",
-             "searchreplace visualblocks code fullscreen",
-             "insertdatetime media table contextmenu paste"
-         ],
-         toolbar: "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
+$("#getAddedit").click(function() {
+    $("#getLoadingModalContent").addClass('md-show');
+    $(".inputTinymce").toggle();
+    tinymce.init({
+        selector: "textarea",
+        plugins: [
+            "advlist autolink lists link image charmap print preview anchor",
+            "searchreplace visualblocks code fullscreen",
+            "insertdatetime media table contextmenu paste"
+        ],
+        toolbar: "styleselect | bold italic | alignleft aligncenter alignright alignjustify | bullist numlist outdent indent | link image",
 
-         relative_urls: false,
+        relative_urls: false,
 
-         convert_urls: false,
+        convert_urls: false,
 
-         remove_script_host: false,
+        remove_script_host: false,
 
-         menubar: false,
-         toolbar_items_size: 'small',
+        menubar: false,
+        toolbar_items_size: 'small',
 
-         style_formats: [{
-             title: 'Bold text',
-             inline: 'b'
-         }, {
-             title: 'Red text',
-             inline: 'span',
-             styles: {
-                 color: '#ff0000'
-             }
-         }, {
-             title: 'Red header',
-             block: 'h1',
-             styles: {
-                 color: '#ff0000'
-             }
-         }, {
-             title: 'Example 1',
-             inline: 'span',
-             classes: 'example1'
-         }, {
-             title: 'Example 2',
-             inline: 'span',
-             classes: 'example2'
-         }, {
-             title: 'Table styles'
-         }, {
-             title: 'Table row 1',
-             selector: 'tr',
-             classes: 'tablerow1'
-         }],
+        style_formats: [{
+            title: 'Bold text',
+            inline: 'b'
+        }, {
+            title: 'Red text',
+            inline: 'span',
+            styles: {
+                color: '#ff0000'
+            }
+        }, {
+            title: 'Red header',
+            block: 'h1',
+            styles: {
+                color: '#ff0000'
+            }
+        }, {
+            title: 'Example 1',
+            inline: 'span',
+            classes: 'example1'
+        }, {
+            title: 'Example 2',
+            inline: 'span',
+            classes: 'example2'
+        }, {
+            title: 'Table styles'
+        }, {
+            title: 'Table row 1',
+            selector: 'tr',
+            classes: 'tablerow1'
+        }],
 
+        file_browser_callback: function(field_name, url, type, win) {
+            if (type == 'image') $('#my_form input').click();
+        },
 
+        onpageload: function() {
+            console.log("onpageload");
+        }
 
-         file_browser_callback: function(field_name, url, type, win) {
-             if (type == 'image') $('#my_form input').click();
-         },
+    }); // tinymce  
 
-         onpageload: function() {
-             console.log("onpageload");
+    $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
+        if (result.record_count == 0) {
+            $("#hiddenTermsAndConditionID").val(0);
+            $(".btnSubmitTermsAndCondition").show();
+            $("#getLoadingModalContent").removeClass('md-show');
+        } else {
+            for (var getTermsCondition in result.records) {
+                //  content = result.records[getTermsCondition].TermsCondition;
+                // tinyMCE.activeEditor.setContent(decodeURIComponent(result.records[getTermsCondition].TermsCondition), {
+                //     format: 'raw'
+                // });
 
-         }
+                content = result.records[getTermsCondition].TermsCondition;
+                setTimeout(function() {
+                    tinyMCE.get('inputTermsAndCondition').setContent(decodeURIComponent(content));  
+                }, 500);
 
-     }); // tinymce  
+                $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
+            }
+            $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
+            $("#getLoadingModalContent").removeClass('md-show');
+            $(".btnSubmitTermsAndCondition").show();
+        }
+    });
+});
 
-     $.get(domainAddress + "GetTermCondition/" + adminUserID, {}, function(result) {
-         console.log(result);
-         if (result.record_count == 0) {
-             $("#hiddenTermsAndConditionID").val(0);
-             $(".btnSubmitTermsAndCondition").show();
-         } else {
-             for (var getTermsCondition in result.records) {
-                 console.log(result.records[getTermsCondition].TermsCondition);
-                 content = result.records[getTermsCondition].TermsCondition;
+$(".btnSubmitTermsAndCondition").click(function() {
+    $("#getLoadingModalContent").addClass('md-show');
+    var termsAndConditionID = $("#hiddenTermsAndConditionID").val();
+    var adminUserID = localStorage.getItem("MyRequest_AdminID");
+    var termsAndCondition = encodeURI(tinyMCE.activeEditor.getContent());
+    userID = localStorage.getItem("ReportUserID");
+    if (termsAndCondition == "") {
+        $(".errorInfo").show();
+        $(".errorInfo").text("* Enter the Terms And Condition");
+        $(".btnSubmitTermsAndCondition").attr("disabled", true);
+        return false;
+    } else {
+        var dataForm = '{"TermsAndCondition":"' + termsAndCondition.replace(/["']/g, "`") + '","AdminID":"' + adminUserID + '"}';
+        console.log(dataForm);
 
+        if (termsAndCondition != "") {
+            if (termsAndConditionID == 0) {
+                var sendURL = domainAddress + 'CreateTermsAndCondition';
+                console.log(sendURL);
+                $.ajax({
+                    type: "POST",
+                    url: sendURL,
+                    data: dataForm,
+                    success: function(dataCheck) {
+                        console.log(dataCheck);
 
-
-                 tinyMCE.activeEditor.setContent(decodeURIComponent(result.records[getTermsCondition].TermsCondition), {
-                     format: 'raw'
-                 });
-
-                 $("#hiddenTermsAndConditionID").val(result.records[getTermsCondition].TermID);
-             }
-             $(".btnSubmitTermsAndCondition").text("Update Terms And Condition");
-             $("#getLoadingModalContent").removeClass('md-show');
-             $(".btnSubmitTermsAndCondition").show();
-
-
-
-
-         }
-     });
-
- });
-
- $(".btnSubmitTermsAndCondition").click(function() {
-     $("#getLoadingModalContent").addClass('md-show');
-     var termsAndConditionID = $("#hiddenTermsAndConditionID").val();
-     var adminUserID = localStorage.getItem("MyRequest_AdminID");
-     var termsAndCondition = encodeURI(tinyMCE.activeEditor.getContent());
-     userID = localStorage.getItem("ReportUserID");
-     if (termsAndCondition == "") {
-         $(".errorInfo").show();
-         $(".errorInfo").text("* Enter the Terms And Condition");
-         $(".btnSubmitTermsAndCondition").attr("disabled", true);
-         return false;
-     } else {
-         var dataForm = '{"TermsAndCondition":"' + termsAndCondition.replace(/["']/g, "`") + '","AdminID":"' + adminUserID + '"}';
-         console.log(dataForm);
-
-         if (termsAndCondition != "") {
-             if (termsAndConditionID == 0) {
-                 var sendURL = domainAddress + 'CreateTermsAndCondition';
-                 console.log(sendURL);
-                 $.ajax({
-                     type: "POST",
-                     url: sendURL,
-                     data: dataForm,
-                     success: function(dataCheck) {
-                         console.log(dataCheck);
-
-                         UIkit.modal.alert('TermsAndCondition Created Successfully');
-                         $(".inputTinymce").hide();
-                         $("#getLoadingModalContent").removeClass('md-show');
-                         tinyMCE.get("inputTermsAndCondition").setContent("");
-                         getExistTermsAndCondition();
+                        UIkit.modal.alert('TermsAndCondition Created Successfully');
+                        $(".inputTinymce").hide();
+                        $("#getLoadingModalContent").removeClass('md-show');
+                        tinyMCE.get("inputTermsAndCondition").setContent("");
+                        getExistTermsAndCondition();
 
 
-                     }
-                 });
-             } else {
-                 var sendURL = domainAddress + 'updateTermsAndCondition/' + termsAndConditionID;
-                 console.log(sendURL);
-                 $.ajax({
-                     type: "POST",
-                     url: sendURL,
-                     data: dataForm,
-                     success: function(dataCheck) {
-                         console.log(dataCheck);
+                    }
+                });
+            } else {
+                var sendURL = domainAddress + 'updateTermsAndCondition/' + termsAndConditionID;
+                console.log(sendURL);
+                $.ajax({
+                    type: "POST",
+                    url: sendURL,
+                    data: dataForm,
+                    success: function(dataCheck) {
+                        console.log(dataCheck);
 
-                         UIkit.modal.alert('TermsAndCondition Updated Successfully');
-                         $(".inputTinymce").hide();
-                         $("#getLoadingModalContent").removeClass('md-show');
-                         tinyMCE.get("inputTermsAndCondition").setContent("");
-                         getExistTermsAndCondition();
-                     }
-                 });
-             } // sec if TermsAndConditionID
-
-
-
-         } // first if
-
-     }
-
- }); // #createTermsAndConditon
+                        UIkit.modal.alert('TermsAndCondition Updated Successfully');
+                        $(".inputTinymce").hide();
+                        $("#getLoadingModalContent").removeClass('md-show');
+                        tinyMCE.get("inputTermsAndCondition").setContent("");
+                        getExistTermsAndCondition();
+                    }
+                });
+            } // sec if TermsAndConditionID
+        } // first if
+    }
+}); // #createTermsAndConditon
