@@ -291,10 +291,10 @@ $(document).ready(function() {
             // Get All Contractors Count For SuperAdmin Starts
             $.get(domainAddress + 'GetTotalTenantContractorsForSuperAdmin/'+Getcountry, {}, function(result) {
                 if (result.record_count == 0) {
-                    $(".noOfAppContractors").text(0);
-                    $(".noOfContractors").text(0);
-                    $(".noOfContractorApps").prop("data-percent", 0);
-                    $(".noOfContractorApps").attr("data-percent", 0);
+                    // $(".noOfAppContractors").text(0);
+                    // $(".noOfContractors").text(0);
+                    // $(".noOfContractorApps").prop("data-percent", 0);
+                    // $(".noOfContractorApps").attr("data-percent", 0);
                 } else {                  
                     if(result.records[1].TotalAppContractors==null){
                         result.records[1].TotalAppContractors = 0;
@@ -353,43 +353,57 @@ $(document).ready(function() {
             // Get All Works Pie Chart For SuperAdmin Starts
             $.get(domainAddress + "GetAllProblemWorkStatusCount/"+Getcountry, {}, function(result) {
                 pieChartData = new Array();
-                for (var problemStatusCount in result.records) {
-                    if (result.records[problemStatusCount].ProblemStatus == "Awaiting Info") {
-                        getColor = "lightblue";
-                        $(".awaitingInfoCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Assigned") {
-                        getColor = "lightgrey";
-                        $(".assignedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Awaiting Approval") {
-                        getColor = "#0097a7";
-                        $(".awaitingApprovalCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Approved") {
-                        getColor = "blue";
-                        $(".approvedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Completed") {
-                        getColor = "green";
-                        $(".completedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Closed") {
-                        getColor = "purple";
-                        $(".closedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "CheckIn") {
-                        getColor = "orange";
-                        $(".closedCountAdmin").text("(" + result.records[problemStatusCount].CountTotal + ")");
-                    } else if (result.records[problemStatusCount].ProblemStatus == "Started") {
-                        getColor = "brown";
-                        $(".closedCountAdmin").text("(" + result.records[problemStatusCount].CountTotal + ")");
+
+                var myLine;
+                pieChartData = new Array();
+                statusCount = {};
+
+                if(result.record_count==0){
+                    $(".getRepairStatus").show();
+                    $("#smallPieChartLocAdmin").hide();
+                    $("#repairStatus").show();
+                    $("#repairStatus").text("No status found");
+                } else {
+                    $(".getRepairStatus").show();
+                    $("#repairStatus").hide();
+                    $("#smallPieChartLocAdmin").show();
+                    for (var problemStatusCount in result.records) {
+                        if (result.records[problemStatusCount].ProblemStatus == "Awaiting Info") {
+                            getColor = "lightblue";
+                            $(".awaitingInfoCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Assigned") {
+                            getColor = "lightgrey";
+                            $(".assignedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Awaiting Approval") {
+                            getColor = "#0097a7";
+                            $(".awaitingApprovalCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Approved") {
+                            getColor = "blue";
+                            $(".approvedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Completed") {
+                            getColor = "green";
+                            $(".completedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Closed") {
+                            getColor = "purple";
+                            $(".closedCount").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "CheckIn") {
+                            getColor = "orange";
+                            $(".closedCountAdmin").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        } else if (result.records[problemStatusCount].ProblemStatus == "Started") {
+                            getColor = "brown";
+                            $(".closedCountAdmin").text("(" + result.records[problemStatusCount].CountTotal + ")");
+                        }
+                        
+                        statusCount = {
+                            value: result.records[problemStatusCount].CountTotal,
+                            color: getColor,
+                            label: result.records[problemStatusCount].ProblemStatus,
+                        };
+                        pieChartData.push(statusCount);
                     }
-
-                    statusCount = {
-                        value: result.records[problemStatusCount].CountTotal,
-                        color: getColor,
-                        label: result.records[problemStatusCount].ProblemStatus,
-                    };
-
-                    pieChartData.push(statusCount);
+                    var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
                 }
-               
-                var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
+                
             });
             // Get All Works Pie Chart For SuperAdmin Ends
             
@@ -515,13 +529,19 @@ $(document).ready(function() {
 
             // Get Particular Admin Works Pie Chart For SuperAdmin Starts
             $.get(domainAddress + "GetAllProblemWorkStatusCountAdmin/" + adminUserID, {}, function(result) {
+                var myLine;
                 pieChartData = new Array();
                 statusCount = {};
+
                 if(result.record_count==0){
                     $(".getRepairStatus").show();
+                    $("#smallPieChartLocAdmin").hide();
+                    $("#repairStatus").show();
                     $("#repairStatus").text("No status found");
                 } else {
                     $(".getRepairStatus").show();
+                    $("#repairStatus").hide();
+                    $("#smallPieChartLocAdmin").show();
                     for (var problemStatusCount in result.records) {
                         if (result.records[problemStatusCount].ProblemStatus == "Awaiting Info") {
                             getColor = "#FFA500 ";
@@ -556,12 +576,7 @@ $(document).ready(function() {
                         };
                         pieChartData.push(statusCount);
                     }
-                    var getPieChartID = document.getElementById("smallPieChartLocAdmin");
-                    if (getPieChartID != null){
-                        var myLine = new Chart(document.getElementById("myChart").getContext('2d')).Pie(pieChartData);
-                    } else {
-                        $("#repairStatus").text("No status found");
-                    }
+                    var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
                 }
                 
             });
