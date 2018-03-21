@@ -346,15 +346,21 @@ $(document).ready(function() {
    var logo = localStorage.getItem("MyRequest_Logo");
    localStorage.setItem("MyRequest_RepairStatus", "");
 
-   if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
+  if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin") {
     $(".myRequestAdminLogo").addClass("requestAdminLogo");
     $(".requestAdminLogo").removeClass("myRequestAdminLogo");
-    $("#lettingAgentMenu").hide();
-    $("#superAdminMenu").show();
+    $(".lettingAgentMenu").hide();
+    $(".USSuperAdminMenu").hide();
+    $(".superAdminMenu").show();
+  } else if (adminType == "USSuperAdmin" ) {
+    $(".lettingAgentMenu").hide();    
+    $(".superAdminMenu").hide();
+    $(".USSuperAdminMenu").show();
   } else {
     $(".myRequestAdminLogo").removeClass("requestAdminLogo");
-    $("#lettingAgentMenu").show();
-    $("#superAdminMenu").hide();
+    $(".superAdminMenu").hide();
+    $(".USSuperAdminMenu").hide();
+    $(".lettingAgentMenu").show();
   }
      //Not to allow Page
      $(".md-overlay").css("background", "rgba(0,0,0,0.5)");

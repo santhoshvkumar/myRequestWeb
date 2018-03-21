@@ -52,7 +52,6 @@ function loadNewsLetter() {
         if (adminType == "SuperAdmin") {
 
         } else {
-            getDateDiff(adminUserID);
             if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
                 $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
              }
@@ -67,6 +66,26 @@ function loadNewsLetter() {
                     $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
                 }
              }
+        }
+
+        var superAdminType = localStorage.getItem("MyRequest_AdminType");
+        var Getcountry = '';
+        if (superAdminType == "SuperAdmin"){
+            Getcountry = "All";
+            $(".USSuperAdminMenu").hide();
+            $(".superAdminMenu").show();
+        } 
+        
+        if(superAdminType == "UKSuperAdmin"){
+            Getcountry = "UK";
+            $(".USSuperAdminMenu").hide();
+            $(".superAdminMenu").show();
+        }
+        
+        if(superAdminType == "USSuperAdmin"){
+            Getcountry = "US";
+            $(".superAdminMenu").hide();
+            $(".USSuperAdminMenu").show();
         }
 
 

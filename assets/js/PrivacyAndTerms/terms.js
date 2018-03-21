@@ -100,6 +100,26 @@
          $(".getUserName").text(adminUserName);
      }
 
+    var superAdminType = localStorage.getItem("MyRequest_AdminType");
+    var Getcountry = '';
+    if (superAdminType == "SuperAdmin"){
+        Getcountry = "All";
+        $(".USSuperAdminMenu").hide();
+        $(".superAdminMenu").show();
+    } 
+    
+    if(superAdminType == "UKSuperAdmin"){
+        Getcountry = "UK";
+        $(".USSuperAdminMenu").hide();
+        $(".superAdminMenu").show();
+    }
+    
+    if(superAdminType == "USSuperAdmin"){
+        Getcountry = "US";
+        $(".superAdminMenu").hide();
+        $(".USSuperAdminMenu").show();
+    }
+
      if (adminType == "SuperAdmin") {
         $(".myRequestAdminLogo").addClass("requestAdminLogo");
         $(".requestAdminLogo").removeClass("myRequestAdminLogo");

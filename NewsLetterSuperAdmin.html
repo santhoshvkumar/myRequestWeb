@@ -27,9 +27,17 @@
 
     <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css"/>
     <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
-     <link rel="stylesheet" type="text/css" href="assets/css/loaders.css"/>
+    <link rel="stylesheet" type="text/css" href="assets/css/loaders.css"/>
     <link rel="stylesheet" href="assets/css/modalEffects.css">
-    
+    <style>
+        #sidebar_main .menu_section>ul>li.current_NewsLetterSA>a .menu_title {
+            color: #4285F4;
+        }
+
+        .current_NewsLetterSA > a > span.menu_icon > i.fa {
+            color: #4285F4;
+        }
+    </style>
     <!-- matchMedia polyfill for testing media queries in JS -->
     <!--[if lte IE 9]>
         <script type="text/javascript" src="bower_components/matchMedia/matchMedia.js"></script>
@@ -38,155 +46,113 @@
 
 </head>
 <body class="sidebar_main_swipe">
-    <div class="md-modal md-effect-19" id="getLoadingModalContent">
-           <div class="md-content commonGetLoading" style="width: 50%;">
-
-               <div>
-                   <div class="wrapper wrapper-content">
-
-                       <br/>
-
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="center">
-                                  <div class="loaders">
-                                    <div class="loader">
-                                        <div class="loader-inner pacman">
-                                          <div></div>
-                                          <div></div>
-                                          <div></div>
-                                          <div></div>
-                                          <div></div>
+        <div class="md-modal md-effect-19" id="getLoadingModalContent">
+            <div class="md-content commonGetLoading" style="width: 50%;">
+    
+                <div>
+                    <div class="wrapper wrapper-content">
+    
+                        <br/>
+    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center">
+                                    <div class="loaders">
+                                        <div class="loader">
+                                            <div class="loader-inner pacman">
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                                <div></div>
+                                            </div>
                                         </div>
-                                     </div>
+                                    </div>
                                 </div>
-                               </div>
-                           </div>
-                       </div>
-
-                       <br/>
-
-                       <div class="row">
-                           <div class="col-md-12">
-                               <div class="center">
-                                   <h2 class="loading">Loading...</h2>
-                               </div>
-                           </div>
-                       </div>
-
-                   </div>
-               </div>
-           </div>
+                            </div>
+                        </div>
+    
+                        <br/>
+    
+                        <div class="row">
+                            <div class="col-md-12">
+                                <div class="center">
+                                    <h2 class="loading">Loading...</h2>
+                                </div>
+                            </div>
+                        </div>
+    
+                    </div>
+                </div>
+            </div>
         </div>
-     <div id="mainBody">
-    <!-- main header -->
-    <header id="header_main">
-        <div class="header_main_content">
-             <nav class="uk-navbar">
-                    <!-- main sidebar switch -->
-                    <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
-                        <span class="sSwitchIcon"></span>
-                    </a>
-                   <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
-                          <a href="" class="getLettingAgencyBusinessName"></a>
-                   </div>
-                   
-                    <div class="uk-float-left" style="margin-left:5%;"> 
-                         <input type="text" id="inputSearch" name="search" required class="md-input searchCase" placeholder="Search"/>
-                    </div>  
-
-                    <button type="button" class="md-btn md-btn-primary btnSearch" style="margin:8px;"><i class="fa fa-search"></i></button>
-                    
-                      <div class="uk-navbar-flip">
-                        <ul class="uk-navbar-nav user_actions">
-                            <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE5D0;</i></a></li>
-                            
-                            <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
-                                <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
-                                <div class="uk-dropdown uk-dropdown-small">
-                                    <ul class="uk-nav js-uk-prevent">
+        <div id="mainBody">
+            <!-- main header -->
+            <header id="header_main">
+                <div class="header_main_content">
+                    <nav class="uk-navbar">
+                        <!-- main sidebar switch -->
+                        <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                            <span class="sSwitchIcon"></span>
+                        </a>
+                        <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                            <a href="" class="getLettingAgencyBusinessName"></a>
+                        </div>
+    
+    
+                        <div class="uk-navbar-flip">
+                            <ul class="uk-navbar-nav user_actions">
+                                <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE5D0;</i></a></li>
+    
+                                <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                                    <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                    <div class="uk-dropdown uk-dropdown-small">
+                                        <ul class="uk-nav js-uk-prevent">
                                             <li><a href="myProfilePage.html">myProfile</a></li>
                                             <li class="logOut"><a href="index.html">Logout</a></li>
-                                    </ul>
-                                </div>
-                            </li>
-                        </ul>
+                                        </ul>
+                                    </div>
+                                </li>
+                            </ul>
+                        </div>
+                    </nav>
+                </div>
+                <div class="header_main_search_form">
+                    <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+                    <form class="uk-form">
+                        <input type="text" class="header_main_search_input" />
+                        <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+                    </form>
+                </div>
+            </header>
+            <!-- main header endd -->
+    
+            <!-- main sidebar -->
+            <aside id="sidebar_main" class="superAdminMenu">
+                <div class="sidebar_main_header">
+                  <div class="sidebar_logo">
+                        <a href="Dashboard.html" class="sSidebar_hide">
+                           <img src="assets/img/myRequestLogo.png" class="myRequestLogo" alt="myRequestLogo"/>
+                        </a>
+                        <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32"/></a>
                     </div>
-                </nav>
-        </div>
-        <div class="header_main_search_form">
-            <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
-            <form class="uk-form">
-                <input type="text" class="header_main_search_input" />
-                <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
-            </form>
-        </div>
-    </header><!-- main header end -->
-
-    <!-- main sidebar -->
-    <aside id="sidebar_main">
-        <div class="sidebar_main_header">
-            <div class="sidebar_logo">
-                <a href="Dashboard.html" class="sSidebar_hide">
-                   <img src="assets/img/logo.jpg" class="myRequestAdminLogo" alt="myRequestLogo"/>
-                </a>
-                <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32"/></a>
-            </div>
-            
-        </div>
-        <div class="menu_section">
-            <ul>
-                <li title="Dashboard" class="current_dashboard">
-                    <a href="Dashboard.html">
-                        <span class="menu_icon"><i class="fa fa-bar-chart fa-2x"></i></span>
-                        <span class="menu_title">Dashboard</span>
-                    </a>
-                </li>
-               
-                <li title="CreateAdmin.html" class="current_createAdmin">
-                    <a href="CreateAdmin.html">
-                        <span class="menu_icon"><i class="fa fa-user fa-2x"></i></span>
-                        <span class="menu_title">Create Admin</span>
-                    </a>
-                </li>
+                </div>
+                <div w3-include-html="SuperAdminMenu.html"></div>
+            </aside><!-- main sidebar end -->
         
-                <li title="Enquiry"  class="current_enquiry">
-                    <a href="Enquiry.html">
-                        <span class="menu_icon"><i class="fa fa-lock fa-2x"></i></span>
-                        <span class="menu_title">Enquiry</span>
-                    </a>
-                </li>
         
-                <li title="TermsAndCondition"  class="current_termsAndCondition">
-                    <a href="TermsAndCondition.html">
-                        <span class="menu_icon"><i class="fa fa-list fa-2x"></i></span>
-                        <span class="menu_title">Terms And Conditions</span>
-                    </a>
-                </li>
-                
-                <li title="PrivacyPolicy"  class="current_privacyPolicy">
-                    <a href="PrivacyPolicy.html">
-                        <span class="menu_icon"><i class="fa fa-eye fa-2x"></i></span>
-                        <span class="menu_title">Privacy Policy</span>
-                    </a>
-                </li>
-        
-                <li title="NewsLetter">
-                    <a href="NewsLetterSuperAdmin.html">
-                        <span class="menu_icon"><i class="fa fa-newspaper-o fa-2x"></i></span>
-                        <span class="menu_title">News Letter</span>
-                    </a>
-                </li>
-        
-                <li title="ModifyRequestUber"  class="current_privacyPolicy" style="display:none;">
-                    <a href="ModifyRequestUber.html">
-                        <span class="menu_icon"><i class="fa fa-car fa-2x"></i></span>
-                        <span class="menu_title">Uber Test</span>
-                    </a>
-                </li>
-            </ul>
-        </div>
-    </aside><!-- main sidebar end -->
+            <!-- main sidebar -->
+            <aside id="sidebar_main" class="USSuperAdminMenu">
+                <div class="sidebar_main_header">
+                    <div class="sidebar_logo">
+                        <a href="USDashboard.html" class="sSidebar_hide">
+                           <img src="assets/img/myRequestLogo.png" class="myRequestLogo" alt="myRequestLogo"/>
+                        </a>
+                        <a href="USDashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32"/></a>
+                    </div>
+                </div>
+                <div id="ussuperAdminMenu" w3-include-html="USSuperAdminMenu.html"></div>
+            </aside><!-- main sidebar end -->
 
     <div id="page_content">
         <div id="page_content_inner">
@@ -386,6 +352,7 @@
     <script src="tinymce/tinymce.min.js" type="text/javascript"></script>
     <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
     <script src="assets/js/select2.min.js"></script>
+    <script src="assets/js/w3data.js"></script>
     <script src="assets/js/screenfull.js"></script>
     <script src="assets/js/NewsLetter/loadNewsLetterSuperAdmin.js"></script>
     <script src="assets/js/logOutClearCatch.js"></script>
@@ -397,6 +364,7 @@
             if(Modernizr.touch) {
                 FastClick.attach(document.body);
             }
+            w3IncludeHTML();
         });
       </script>
 <script>

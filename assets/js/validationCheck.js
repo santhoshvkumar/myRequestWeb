@@ -5,7 +5,8 @@ var sendURL = domainAddress + 'LoginAdminUser', userName = "", adminUserID = 0, 
     businessEmail = "", isAgreeCheck = "", diffDate, count, user, validationCheckForLogin, isNumber, isValidEmailAddress, phoneCode, country, countryCode, gmt, phoneCode;
 validationCheckForLogin = function( emailID, password, userTokenID ) {
   var dataForm = '{"Email":"' + emailID + '","Password":"' + password + '","UserToken":"' + userTokenID + '"}';
-  console.log( sendURL );
+//   console.log( sendURL );
+//   console.log( sendURL );
   $.ajax( {
           type: "POST",
           url: sendURL,
@@ -51,39 +52,40 @@ validationCheckForLogin = function( emailID, password, userTokenID ) {
             }
 
             if ( count === 0 ) {
-              alert( "Please Check the UserName or Password" );
-              return false;
+                alert( "Please Check the UserName or Password" );
+                return false;
             } else {
-              localStorage.setItem( "MyRequest_AdminID", adminUserID );
-              localStorage.setItem( "MyRequest_UserName", userName );
-              localStorage.setItem( "MyRequest_AdminType", adminType );
-              localStorage.setItem( "MyRequest_BusinessName", businessName );
-              localStorage.setItem( "MyRequest_BusinessEmailID", businessEmail );
-              localStorage.setItem( "MyRequest_LettingAgencyCode", lettingAgencyCode );
-              localStorage.setItem( "MyRequest_myDiffDate", diffDate );
-              localStorage.setItem( "MyRequest_Logo", logo );
-              localStorage.setItem( "MyRequest_countryCode", countryCode );
-              localStorage.setItem( "MyRequest_GMT", gmt );
-              localStorage.setItem( "MyRequest_PhoneCode-prefix", phoneCode );
-              localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
-              localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
-              if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
-                    localStorage.setItem( "MyRequest_profileFill", "" );
-                    window.location.href = "Dashboard.html";
-               } else {
-                   $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {
-                    if ( result.records[ 0 ].AdminFirstName === "" || result.records[ 0 ].Logo === "" || result.records[ 0 ].AdminLastName === "" || result.records[ 0 ].BusinessName === "" ||
-                          result.records[ 0 ].Locality === "" || result.records[ 0 ].City === "" || result.records[ 0 ].State === "" || result.records[ 0 ].PhoneNumber === "" ||
-                          result.records[ 0 ].EmergencyNumber === "" || result.records[ 0 ].EmergencyElectricityNumber === "" || result.records[ 0 ].UrlForRent === "" || result.records[ 0 ].BusinessEmail === "" ) {
-                        localStorage.setItem( "MyRequest_profileFill", "true" );
-                        window.location.href = 'MyProfile.html';
-                    } else {
-                       localStorage.setItem( "MyRequest_profileFill", "" );
+                localStorage.setItem( "MyRequest_AdminID", adminUserID );
+                localStorage.setItem( "MyRequest_UserName", userName );
+                localStorage.setItem( "MyRequest_AdminType", adminType );
+                localStorage.setItem( "MyRequest_BusinessName", businessName );
+                localStorage.setItem( "MyRequest_BusinessEmailID", businessEmail );
+                localStorage.setItem( "MyRequest_LettingAgencyCode", lettingAgencyCode );
+                localStorage.setItem( "MyRequest_myDiffDate", diffDate );
+                localStorage.setItem( "MyRequest_Logo", logo );
+                localStorage.setItem( "MyRequest_countryCode", countryCode );
+                localStorage.setItem( "MyRequest_GMT", gmt );
+                localStorage.setItem( "MyRequest_PhoneCode-prefix", phoneCode );
+                localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
+                localStorage.setItem( "MyRequest_IsAgreeUtility", isAgreeCheck );
+                if ( adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin") {
+                        localStorage.setItem( "MyRequest_profileFill", "" );
                         window.location.href = "Dashboard.html";
-                    }
-                } );
-
-                  
+                } else if (adminType == "USSuperAdmin" ) {
+                    localStorage.setItem( "MyRequest_profileFill", "" );
+                    window.location.href = "USDashboard.html";
+                } else {
+                    $.get( domainAddress + "getAdminDetails/" + adminUserID, function( result ) {
+                        if ( result.records[ 0 ].AdminFirstName === "" || result.records[ 0 ].Logo === "" || result.records[ 0 ].AdminLastName === "" || result.records[ 0 ].BusinessName === "" ||
+                            result.records[ 0 ].Locality === "" || result.records[ 0 ].City === "" || result.records[ 0 ].State === "" || result.records[ 0 ].PhoneNumber === "" ||
+                            result.records[ 0 ].EmergencyNumber === "" || result.records[ 0 ].EmergencyElectricityNumber === "" || result.records[ 0 ].UrlForRent === "" || result.records[ 0 ].BusinessEmail === "" ) {
+                            localStorage.setItem( "MyRequest_profileFill", "true" );
+                            window.location.href = 'MyProfile.html';
+                        } else {
+                            localStorage.setItem( "MyRequest_profileFill", "" );
+                            window.location.href = "Dashboard.html";
+                        }
+                    });                  
                 }  // Else for Admin Type
             }
           }

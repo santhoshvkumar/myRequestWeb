@@ -1076,17 +1076,23 @@ $(".btnSubmitAdmin").click(function() {
 
 var superAdminType = localStorage.getItem("MyRequest_AdminType");
 var Getcountry = '';
-if (superAdminType == "SuperAdmin"){
+  if (superAdminType == "SuperAdmin"){
     Getcountry = "All";
-} 
+    $(".USSuperAdminMenu").hide();
+    $(".superAdminMenu").show();
+  } 
 
-if(superAdminType == "UKSuperAdmin"){
+  if(superAdminType == "UKSuperAdmin"){
     Getcountry = "UK";
-}
+    $(".USSuperAdminMenu").hide();
+    $(".superAdminMenu").show();
+  }
 
-if(superAdminType == "USSuperAdmin"){
+  if(superAdminType == "USSuperAdmin"){
     Getcountry = "US";
-}
+    $(".superAdminMenu").hide();
+    $(".USSuperAdminMenu").show();
+  }
   function getAllAdminList(getValue) {
 
     if (getValue == "" || getValue == undefined) {

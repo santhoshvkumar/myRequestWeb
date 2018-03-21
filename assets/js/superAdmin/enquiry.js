@@ -144,14 +144,20 @@ $(function() {
     var Getcountry = '';
     if (superAdminType == "SuperAdmin"){
         Getcountry = "All";
+        $(".USSuperAdminMenu").hide();
+        $(".superAdminMenu").show();
     } 
-
+    
     if(superAdminType == "UKSuperAdmin"){
         Getcountry = "UK";
+        $(".USSuperAdminMenu").hide();
+        $(".superAdminMenu").show();
     }
-
+    
     if(superAdminType == "USSuperAdmin"){
         Getcountry = "US";
+        $(".superAdminMenu").hide();
+        $(".USSuperAdminMenu").show();
     }
 
     function getAllNewAdminList(){
