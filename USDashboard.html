@@ -138,12 +138,279 @@
                             </div>
                         </div>    
                     </div>
+
+                    <div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler" data-uk-grid-margin="">
+                        <div class="uk-row-first" style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/Property-1.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large"># of Properties</span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe" id="dashPproperties" style="padding:10px;">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/Tenant-1.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large"># of Tenants</span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe noOfTenants">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/contractor.svg" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large"># of Contractors</span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe noOfContractors">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/SA-2.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large"># of Sub Admins</span>
+                                    <h2 class="uk-margin-remove" id="peity_live_text"><span class="countUpMe noOfSA">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid uk-grid-width-large-1-4 uk-grid-width-medium-1-2 uk-grid-medium uk-sortable sortable-handler" data-uk-grid-margin="">
+                        <div class="uk-row-first" style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/Repair-Cost.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large">Repair Charges</span>
+                                    <h2 class="uk-margin-remove">$ <span class="countUpMe" id="dashAmount">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/OpenIssues.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large">Open Issues</span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMe" id="dashOpen1" style="padding:10px;">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/move-in.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large">Move In</span>
+                                    <h2 class="uk-margin-remove"><span class="countUpMoveIn" id="utilityCount">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="">
+                            <div class="md-card">
+                                <div class="md-card-content">
+                                    <div class="uk-float-right uk-margin-large-right" style="margin-right: 0px !important;">
+                                        <img src="assets/img/dashboardImages/move-out.png" style="height: 50px; width: 50px;">
+                                    </div>
+                                    <span class="uk-text-muted uk-text-large">Move Out</span>
+                                    <h2 class="uk-margin-remove" id="peity_live_text"><span  class="countUpMoveOut" id="utilityCount">0</span></h2>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid uk-grid-width-small-1-2 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-3 uk-text-center uk-sortable sortable-handler" id="dashboard_sortable_cards" data-uk-grid-margin="">
+                        <div class="uk-row-first">
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="countTenantAppInstalled"id=" getAwaitingApprovalCases">
+                                        <span class="epc_chart_text"><span class="countUpMe noOfApprovalRequired">0</span></span>
+                                    </div>
+                                </div>
+                                
+                                <div class="md-card-overlay-content awatingApproval">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3>Awaiting Approval</h3>
+                                    </div>
+                                    # of Approval needed <span class="noOfApprovalRequired">0</span>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="epc_chart noOfDays" data-percent="0" data-bar-color="#9c27b0">
+                                        <span class="epc_chart_text" style="font-size:17px;"><i class="material-icons">&#xE858;</i>/ 30 Days </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="md-card-overlay-content">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3>Subscription</h3>
+                                    </div>
+                                    <table>
+                                        <tr>
+                                            <td># of Property :</td>
+                                            <td></td>
+                                            <td><b class="dashTenants"></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Due :</td>
+                                            <td></td>
+                                            <td><i class="fa fa-gbp" id="dashTotalIcon" style="padding: 0px;"></i> <b class="dashTotalAmount"></b></td>
+                                        </tr>
+                                        <tr>
+                                            <td>Days Left :</td>
+                                            <td></td>
+                                            <td><b class="dashTotalDaysLeft"></b></td>
+                                        </tr>
+                                    </table>
+                                    <br/>
+                                    <button class="md-btn md-btn-primary  uk-btn-CenterAlign" style="margin-top:6px;"><a href="https://dashboard.gocardless.com/api/paylinks/113KHDBWH0" style="color:white;" target="_blank">Pay Now</a></button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="epc_chart noOfCommission" data-percent="0" data-bar-color="#9c27b0">
+                                        <span class="epc_chart_text">
+                                        <i class="fa fa-gbp" id="commissionEarnedIcon" style="padding: 0px;"></i>
+                                        <span class="countUpMe">0</span></span>
+                                    </div>
+                                </div>
+
+                                <div class="md-card-overlay-content">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3> Commission Earned</h3>
+                                    </div>
+                                    Commission Earned :<b> <span class="countUpMe">0</span> </b>
+                                    <br/> <br/> <br/>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="uk-grid uk-grid-width-small-1-2 uk-grid-width-large-1-3 uk-grid-width-xlarge-1-3 uk-text-center uk-sortable sortable-handler" id="dashboard_sortable_cards" data-uk-grid-margin="">
+                        <div class="uk-row-first">
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="epc_chart countTenantAppInstalled" data-percent="0" data-bar-color="#9c27b0">
+                                        <span class="epc_chart_text">
+                                            <i class="material-icons">&#xE7FD;</i>
+                                            <span class="countUpMe noOfTenants">0</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="md-card-overlay-content">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3> Tenant App </h3>
+                                    </div>
+
+                                    <td style="font-family:Avenir-Heavy;"> # of Tenant :</td> <span class="noOfTenants">0</span>
+                                    <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppInstalled">0</span> </b>
+                                    <br/> <br/> <br/>
+                                    <button class="md-btn md-btn-primary btnSubmitTenantMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                </div>                                    
+                            </div>
+                        </div>
+                        <div>
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="epc_chart countContractorAppInstalled" data-percent="0" data-bar-color="#9c27b0">
+                                        <span class="epc_chart_text">
+                                            <i class="material-icons">&#xE7FD;</i>
+                                            <span class="countUpMe noOfContractors">0</span>
+                                        </span>
+                                    </div>
+                                </div>
+                                
+                                <div class="md-card-overlay-content">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3> Contractor App</h3>
+                                    </div>
+
+                                    <td style="font-family:Avenir-Heavy;"> # of Contractor :</td> <span class="noOfContractors">0</span>
+                                    <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfAppContractors">0</span> </b>
+                                    <br/> <br/> <br/>
+                                    <button class="md-btn md-btn-primary btnSubmitContractorMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="md-card md-card-hover md-card-overlay">
+                                <div class="md-card-content">
+                                    <div class="epc_chart countTenantAppInstalled" data-percent="0" data-bar-color="#9c27b0">
+                                        <span class="epc_chart_text">
+                                            <i class="material-icons">&#xE7FD;</i>
+                                            <span class="countUpMe noOfSA">0</span>
+                                        </span>
+                                    </div>
+                                </div>
+
+                                <div class="md-card-overlay-content">
+                                    <div class="uk-clearfix md-card-overlay-header">
+                                        <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
+                                        <h3> Sub Admin App </h3>
+                                    </div>
+
+                                    <td style="font-family:Avenir-Heavy;"> # of Sub Admin :</td> <span class="noOfSA">0</span>
+                                    <br/> <br/> <br/> # of App Installed :<b> <span class="countUpMe noOfSAAppInstalled">0</span> </b>
+                                    <!-- <br/> <br/> <br/>
+                                    <button class="md-btn md-btn-primary btnSubmitTenantMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button> -->
+                                </div>                                    
+                            </div>
+                        </div>
+                    </div>                    
+
+                    <div class="uk-grid" data-uk-grid-margin="" data-uk-grid-match="{target:'.md-card-content'}">
+                        <div class="uk-width-medium-1-2 uk-row-first">
+                            <div class="md-card">
+                                <div class="md-card-content" style="min-height: 280px;">
+                                    <div class="uk-overflow-container">
+                                        <div class="hierarchical_show">
+                                            <div class="md-card getRepairStatus">
+                                                <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">Repair Status</h3>
+                                                <hr style="margin-bottom: 0px;" />
+                                                <div class="md-card-content" style="background-color:#ececec">
+                                                    <div class="uk-width-1-1">
+                                                        <div id="repairStatus"></div>
+                                                        <canvas id="smallPieChartLocAdmin" style="width:100%"></canvas>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                     
-                    <div class="uk-grid" data-uk-grid-margin>
+                    <!-- <div class="uk-grid" data-uk-grid-margin>
                         <div class="uk-width-6-10">
-                            <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-grid" data-uk-grid-margin> -->
                                 <!-- Internal Grid One -->
-                                <div class="uk-width-1-2">
+                                <!-- <div class="uk-width-1-2">
                                     <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                         <div class="md-card md-card-hover md-card-overlay" style="height: 166px;">
                                             <div class="md-card-content uk-flex uk-flex-center uk-flex-middle" id="getAwaitingApprovalCases" style="cursor:pointer;">
@@ -192,9 +459,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Subscription Ends Here -->
-                                    <br/>
+                                    <!-- <br/>
 
                                     <div class="uk-width-1-1">
                                         <div style="cursor: default;" class="hierarchical_show  minuteMargin">
@@ -215,9 +482,9 @@
                                                 </div>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Tenant App Ends Here -->
-                                    <br/>
+                                    <!-- <br/>
                                     
                                     <div class="uk-width-1-1">
                                         <div style="cursor: default;" class="hierarchical_show  minuteMargin">
@@ -284,9 +551,9 @@
                                     <div class="uk-width-medium-1-2">
                                         <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardYellow" id="getTenants" style="cursor: pointer;height: 100px;">
-                                                <div class="md-card-content">
+                                                <div class="md-card-content"> -->
                                                     <!-- <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
-                                                    <b class="uk-text-muted headerSpanText"># of Tenants</b>
+                                                    <!-- <b class="uk-text-muted headerSpanText"># of Tenants</b>
                                                     <h2 style="margin-left: 20px;margin-top: 15px;"> 
                                                             <span  class="countUpMe noOfTenants" style="padding:10px;">0</span></h2>
                                                 </div>
@@ -299,11 +566,11 @@
 
                                         <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardOrange" id="getTenants" style="height: 100px;">
-                                                <div class="md-card-content">
+                                                <div class="md-card-content"> -->
                                                     <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
-                                                    <b class="uk-text-muted headerSpanText"># MoveIn</b>
+                                                    <!-- <b class="uk-text-muted headerSpanText"># MoveIn</b>
                                                     <h2 style="margin-left: 20px;margin-top: 15px;"> 
-                                                            <span  class="countUpMoveIn" id="utilityCount" style="padding:10px;">0</span></h2>
+                                                            <span class="countUpMoveIn" id="utilityCount" style="padding:10px;">0</span></h2>
                                                 </div>
                                             </div>
 
@@ -315,9 +582,9 @@
 
                                         <div style="cursor: default;" class="hierarchical_show  minuteMargin">
                                             <div class="md-card dashboardOrange" id="getTenants" style="height: 100px;">
-                                                <div class="md-card-content">
+                                                <div class="md-card-content"> -->
                                                     <!--  <div class="uk-float-right uk-margin-top uk-margin-small-right"><span class="peity_orders peity_data">64/100</span></div>  -->
-                                                    <b class="uk-text-muted headerSpanText"># MoveOut</b>
+                                                    <!-- <b class="uk-text-muted headerSpanText"># MoveOut</b>
                                                     <h2 style="margin-left: 20px;margin-top: 15px;"> 
                                                             <span  class="countUpMoveOut" id="utilityCount" style="padding:10px;">0</span></h2>
                                                 </div>
@@ -327,12 +594,12 @@
 
                                     </div>
                                 </div>
-                                <br/> <br/>
+                                <br/> <br/> -->
 
-                                <div class="hierarchical_show">
-                                    <div class="md-card getRepairStatus ">
+                                <!-- <div class="hierarchical_show">
+                                    <div class="md-card getRepairStatus "> -->
                                         <!-- Repair Status Starts -->
-                                        <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">
+                                        <!-- <h3 class="md-card-toolbar-heading-text" style="text-align: center; float: none;">
                                                     Repair Status
                                             </h3>
                                         <hr style="margin-bottom: 0px;" />
@@ -342,13 +609,13 @@
                                                 <canvas id="smallPieChartLocAdmin" style="width:100%"></canvas>
                                             </div>
                                         </div>
-                                    </div>
+                                    </div> -->
                                     <!-- Repair Status Ends Here -->
-                                </div>
+                                <!-- </div>
                                 <br/> <br/>
 
 
-                                <div class="uk-grid hierarchical_show">
+                                <div class="uk-grid hierarchical_show"> -->
                                     <!--<div class="uk-width-1-2">
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="md-card-content">
@@ -385,8 +652,8 @@
                                             </div>
                                         </div>
                                     </div>-->
-                                </div>
-                                <div class="uk-grid hierarchical_show">
+                                <!-- </div>
+                                <div class="uk-grid hierarchical_show"> -->
                                     <!-- Utitlity Interest Count -->
                                     <!--<div class="uk-width-1-2">
                                         <div class="md-card md-card-hover md-card-overlay">
@@ -424,17 +691,16 @@
                                             </div>
                                         </div>
                                     </div>-->
-                                </div>
+                                <!-- </div> -->
                                 <!-- End Utitlity Interest Count -->
 
                                  
-                                <div class="uk-width-1-1">
+                                <!-- <div class="uk-width-1-1">
                                     <div style="cursor: default;" class="hierarchical_show  minuteMargin">
 
                                         <div class="md-card md-card-hover md-card-overlay">
                                             <div class="epc_chart noOfCommission" data-percent="0" data-bar-color="#9c27b0">
                                                 <span class="epc_chart_text">
-                                                <!-- <i class="material-icons">&#xE7FD;</i> -->
                                                 <i class="fa fa-gbp" id="commissionEarnedIcon" style="padding: 0px;"></i>
                                                 <span class="countUpMe">0</span></span>
                                             </div>
@@ -443,26 +709,24 @@
                                                     <i class="md-icon material-icons md-card-overlay-toggler">&#xE5D4;</i>
                                                     <h3> Commission Earned</h3>
                                                 </div>
-
-                                                <!-- <td style="font-family:Avenir-Heavy;"> # of Request :</td> <span class="noOfAppContractors">0</span> -->
-                                                <!-- <br/> <br/> <br/>  -->Commission Earned :<b> <span class="countUpMe">0</span> </b>
+                                                Commission Earned :<b> <span class="countUpMe">0</span> </b>
                                                 <br/> <br/> <br/>
-                                                <!-- <button class="md-btn md-btn-primary btnSubmitMail uk-btn-CenterAlign" style="color:white;margin-top:-15px;">Reminder Mail</button> -->
                                             </div>
                                         </div>
                                     </div>
-                                </div>
+                                </div> -->
 
 
-                            </div>
+                            <!-- </div>
 
-                        </div>
+                        </div> -->
                         <!-- Internal Grid Ends Here -->
-                    </div> <!-- 6-10 -->
+                    <!-- </div>  -->
+                    <!-- 6-10 -->
 
 
 
-                    <div class="uk-width-4-10 hierarchical_show">
+                    <!-- <div class="uk-width-4-10 hierarchical_show"> -->
                         <!-- <div class="parsley-row">
                             <div class="md-card md-card-hover">
                                 <div class="uk-grid getTenantWorkList" data-uk-grid-margin>
@@ -496,7 +760,7 @@
                                 </div>
                             </div>
                         </div> -->
-                        <br /><br />
+                        <!-- <br /><br /> -->
                         <!-- <div class="parsley-row">
                             <div class="md-card md-card-hover">
                                 <div class="uk-grid getTenantWorkList" data-uk-grid-margin>
@@ -530,7 +794,7 @@
                             </div>
                         </div> -->
 
-                        <br/><br/>
+                        <!-- <br/><br/>
                         <div class="uk-grid" data-uk-grid-margin>
                             <div class="uk-width-1-1">
 
@@ -668,7 +932,7 @@
                                     </div>
                                 </div>
                             </div>
-                        </div>
+                        </div> -->
                         <!-- <div class="uk-grid hierarchical_show getTenantWorkList" data-uk-grid-margin>
                             <div class="uk-width-1-1">
                                 <div class="parsley-row">
@@ -698,10 +962,10 @@
                                 </div>
                             </div>
                         </div> -->
-                    </div>
+                    <!-- </div>
                 </div>
 
-               <br/><br/> 
+               <br/><br/>  -->
 
                 <!-- <div class="uk-grid" data-uk-grid-margin>
                     <div class="uk-width-1-1 hierarchical_show">
@@ -788,7 +1052,7 @@
                 </div> -->
 
             
-                <div class="uk-modal" id="modal_header_footer">
+                <!-- <div class="uk-modal" id="modal_header_footer">
                     <div class="uk-modal-dialog" style="width:30%;">
                         <div class="uk-modal-header modelHeaderStyle">
                             <h3 class="uk-modal-title fontStyle">Create Request</h3>
@@ -978,18 +1242,18 @@
                             </div>
                        </p> 
                     </div>
-                </div>
+                </div> -->
 
 
 
 
                 <!--Tenancy Renewal Modal Starts Here-->
-                <div class="uk-modal" id="getTenancyRenew">
+                <!-- <div class="uk-modal" id="getTenancyRenew">
                     <div class="uk-modal-dialog">
                         <div class="uk-modal-header">
-                            <h3 class="uk-modal-title" style="text-align:center;">Tenancy Renewal <span class="closeTenantPopup" style="float:right;"><i class="fa fa-times-circle" style="font-size:25px;" aria-hidden="true"></i></span></h3>
+                            <h3 class="uk-modal-title" style="text-align:center;">Tenancy Renewal <span class="closeTenantPopup" style="float:right;"><i class="fa fa-times-circle" style="font-size:25px;" aria-hidden="true"></i></span></h3> -->
                             <!-- <h3 class="uk-modal-title" style="text-align: center;">Tenancy Renewal</h3> -->
-                        </div>
+                        <!-- </div>
                         <p>
                             <div class="uk-grid" data-uk-grid-margin>
                                  
@@ -1025,16 +1289,16 @@
                             </div>
                        </p> 
                     </div>
-                </div>
+                </div> -->
                 <!--Tenancy Renewal Modal Ends Here-->
 
                 <!--Contractor Renewal Modal Starts Here-->
-                <div class="uk-modal" id="getContractRenewal">
+                <!-- <div class="uk-modal" id="getContractRenewal">
                     <div class="uk-modal-dialog">
                         <div class="uk-modal-header">
-                            <h3 class="uk-modal-title" style="text-align:center;">Contract Renewal <span class="closeContractorPopup" style="float:right;"><i class="fa fa-times-circle" style="font-size:25px;" aria-hidden="true"></i></span></h3>
+                            <h3 class="uk-modal-title" style="text-align:center;">Contract Renewal <span class="closeContractorPopup" style="float:right;"><i class="fa fa-times-circle" style="font-size:25px;" aria-hidden="true"></i></span></h3> -->
                             <!-- <h3 class="uk-modal-title" style="text-align: center;">Contract Renewal</h3> -->
-                        </div>
+                        <!-- </div>
                         <p>
                             <div class="uk-grid" data-uk-grid-margin>
                                  
@@ -1070,7 +1334,7 @@
                             </div>
                        </p> 
                     </div>
-                </div>
+                </div> -->
                 <!--Contractor Renewal Modal Ends Here-->
 
             </div>  <!-- page inner container -->

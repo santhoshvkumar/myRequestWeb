@@ -212,7 +212,8 @@ $(document).ready(function() {
         });
     }
 
-    if(adminType == "SuperAdmin" ||  adminType == "UKSuperAdmin" || adminType == "USSuperAdmin" ) {
+    if(adminType == "USSuperAdmin"){
+        // window.location.href = "usd.html";        
         var Getcountry = '';
         if (adminType == "SuperAdmin"){
             Getcountry = "All";
@@ -287,6 +288,18 @@ $(document).ready(function() {
                 }
             });
             // Get All Tenants Count For SuperAdmin Ends
+
+            // Get All SA Count For SuperAdmin Starts
+            $.get(domainAddress + 'GetSubAdminCountForSuperAdmin/'+Getcountry, {}, function(result) {
+                if(result.record_count == 0){
+                    $(".noOfSA").text(0);
+                    $(".noOfSAAppInstalled").text(0);
+                }else{
+                    $(".noOfSA").text(result.records[0].TotalSubAdminCount);
+                    $(".noOfSAAppInstalled").text(result.records[0].TotalSubAdminAppInstalledsCount);
+                }
+            });
+            // Get All SA Count For SuperAdmin Ends
 
             // Get All Contractors Count For SuperAdmin Starts
             $.get(domainAddress + 'GetTotalTenantContractorsForSuperAdmin/'+Getcountry, {}, function(result) {
@@ -401,7 +414,7 @@ $(document).ready(function() {
                         };
                         pieChartData.push(statusCount);
                     }
-                    var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
+                    myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
                 }
                 
             });
@@ -462,6 +475,18 @@ $(document).ready(function() {
                 }   
             });
             // Get Particular Admin Contractors Count Ends
+
+            // Get Particular SA Count For SuperAdmin Starts
+            $.get(domainAddress + 'GetSubAdminCountForParticularAdmin/'+adminUserID, {}, function(result) {
+                if(result.record_count == 0){
+                    $(".noOfSA").text(0);
+                    $(".noOfSAAppInstalled").text(0);
+                }else{
+                    $(".noOfSA").text(result.records[0].TotalSubAdminCount);
+                    $(".noOfSAAppInstalled").text(result.records[0].TotalSubAdminAppInstalledsCount);
+                }
+            });
+            // Get Particular SA Count For SuperAdmin Ends
 
             // Get Particular Admin Repairs Charges Starts
             $.get(domainAddress + 'getDashboardDetails/' + adminUserID, {}, function(result) {
@@ -542,6 +567,7 @@ $(document).ready(function() {
                     $(".getRepairStatus").show();
                     $("#repairStatus").hide();
                     $("#smallPieChartLocAdmin").show();
+                    var getColor = '';
                     for (var problemStatusCount in result.records) {
                         if (result.records[problemStatusCount].ProblemStatus == "Awaiting Info") {
                             getColor = "#FFA500 ";
@@ -576,131 +602,13 @@ $(document).ready(function() {
                         };
                         pieChartData.push(statusCount);
                     }
-                    var myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
+                    myLine = new Chart(document.getElementById("smallPieChartLocAdmin").getContext("2d")).Pie(pieChartData);
                 }
                 
             });
             // Get Particular Admin Works Pie Chart For SuperAdmin Ends
 
         }
-
-    } else {
-        $(".forAdmin").show();
-        $(".forSuperAdmin").hide();
-        $("#pieChartLoc").hide();
-        $(".getLettingAgencyBusinessName").text("Dashboard - " + businessName);
-        if(logo==undefined || logo==null || logo=="undefined" || logo=="Fail upload folder with read access."){
-            $(".myRequestAdminLogo").attr("src", "assets/img/myRequestLogo.png").show();
-        } else {
-            $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-            var getLogoImagePath = logo.slice(0,4);
-            if(getLogoImagePath=="api/"){
-                getLogoImagePath = logo.slice(4);
-                $(".myRequestAdminLogo").attr("src", domainAddress + getLogoImagePath).show();
-            }
-            else{
-                $(".myRequestAdminLogo").attr("src", domainAddress + logo).show();
-            }
-        }
-        
-        
-        
-            
-        getLastTwoDaysMessages(adminUserID);         
-
-        $.get(domainAddress + 'GetWorkNotesDetails/' + adminUserID, {}, function(result) {
-            //console.log(result);
-            $(".notesContent").html('');
-            if (result.record_count == 0) {
-                $(".notesContent").html("<p>No records found</p>");
-            } else {
-                for (workLogNotes in result.records) {
-                    var getDateTime = result.records[workLogNotes].WorkCreatedDate.split(" ");
-                    var getCreateDate = getDateTime[0];
-                    var getDate = getCreateDate.split("-");
-                    var getStatus = result.records[workLogNotes].Status;
-                    var logo = result.records[workLogNotes].GetImage;
-
-                    if (logo == "assets/img/sign-in.jpg") {
-                        logo = "assets/img/sign-in.jpg";
-                    } else {
-                        
-                        if(result.records[workLogNotes].WorkAssignedBy==adminUserName){
-                            logo = domainAddress + logo;
-                        }
-                        else{
-                            logo = domainAddress + logo;
-                        }
-                    }
-
-                    if (getStatus == "Notes") {
-                        $(".notesContent").append("<li id='notesID-" + result.records[workLogNotes].WorkLogID + "' style='border-bottom: 1px solid #A9A4A4;'> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-medium-1-10'> <div class='parsley-row'>  <img class='avatar img-responsive' alt='' src='" + logo + "' style='height: 40px;min-width: 40px;'/> </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'> <h3>" + result.records[workLogNotes].WorkAssignedBy + "</h3> </div> </div>  <div class='uk-width-medium-1-3'>  <div class='parsley-row' style='float: right;font-size: 11px;'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+" </div> </div> </div>      <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  " + result.records[workLogNotes].Content + "  </div> </div>    </div>   <br/>  <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  ( Case #" + result.records[workLogNotes].ProblemID + " )  </div> </div>    </div>  </li>");
-                    }
-
-                    if (getStatus == "TNotes") {
-                        $(".notesContent").append("<li id='notesID-" + result.records[workLogNotes].WorkLogID + "' style='border-bottom: 1px solid #A9A4A4;'> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-medium-1-10'> <div class='parsley-row'>  <img class='avatar img-responsive' alt='' src='" + logo + "' style='height: 40px;min-width: 40px;'/> </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'> <h3>" + result.records[workLogNotes].WorkAssignedBy + "</h3> </div> </div>  <div class='uk-width-medium-1-3'>  <div class='parsley-row' style='float: right;font-size: 11px;'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+" </div> </div> </div>      <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  " + result.records[workLogNotes].Content + "  </div> </div>  </div>   <br/>  <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  ( Case #" + result.records[workLogNotes].ProblemID + " )  </div> </div>    </div> </li>");
-
-                    }
-
-                    if (getStatus == "CNotes") {
-                        $(".notesContent").append("<li id='notesID-" + result.records[workLogNotes].WorkLogID + "' style='border-bottom: 1px solid #A9A4A4;'> <div class='uk-grid' data-uk-grid-margin> <div class='uk-width-medium-1-10'> <div class='parsley-row'>  <img class='avatar img-responsive' alt='' src='" + logo + "' style='height: 40px;min-width: 40px;'/> </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'> <h3>" + result.records[workLogNotes].WorkAssignedBy + "</h3> </div> </div>  <div class='uk-width-medium-1-3'>  <div class='parsley-row' style='float: right;font-size: 11px;'>"+moment(result.records[workLogNotes].WorkCreatedDate).format('Do MMM YYYY,  h:mm a')+" </div> </div> </div>      <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  " + result.records[workLogNotes].Content + "  </div> </div>  </div>   <br/>  <div class='uk-grid' data-uk-grid-margin style='margin-top: 0px;'> <div class='uk-width-medium-1-10'> <div class='parsley-row'>   </div> </div> <div class='uk-width-medium-1-2'>  <div class='parsley-row'>  ( Case #" + result.records[workLogNotes].ProblemID + " )  </div> </div>    </div> </li>");
-                    }   
-
-                    $(".notesContent").append("<input type='hidden' id='hiddenProblemID-" + result.records[workLogNotes].WorkLogID + "' value='" + result.records[workLogNotes].ProblemID + "' /> ");
-
-                }
-
-
-            }   
-        });
-
-        
-
-        
-
-
-        $.get(domainAddress + "GetAllSpecialityList/"+adminUserID, {}, function(result) {
-            //console.log(result);
-            $("#caseSpecialisation").html('');
-            $("#calSpecialisation").html('');
-            if(result.record_count==0){
-                $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                $("#caseSpecialisation").html("<option value='0'>No Speciality Found</option>");
-                $("#calSpecialisation").html("<option value='0'>No Speciality Found</option>");
-            }
-            else{
-                $("#caseSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                $("#calSpecialisation").html("<option value='0'>Select the Speciality</option>");
-                for (var Speciality in result.records) {
-                    $("#caseSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
-                    $("#calSpecialisation").append("<option value='" + result.records[Speciality].SpecialityID + "'>" + result.records[Speciality].SpecialityName + "</option>");
-                }
-                $("#caseContractor").html("");
-                $("#caseContractor").html("<option value='0'>Select the Speciality to view Contractor</option>");
-            }
-            $("#caseSpecialisation").select2();
-            $("#caseContractor").select2();
-        }); // GetAllEventList
-
-        $.get(domainAddress + "GetPropertyName/" + adminUserID, {}, function(result) {
-            //console.log(result);
-            $("#caseProperty").html('');
-            if(result.record_count==0){
-                $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
-                $("#caseProperty").html("<option value='0' ref='0'>No Property Found</option>");
-            }
-            else{
-                $("#caseProperty").html("<option value='0' ref='0'>Select the Property</option>");
-                for (var Property in result.records) {
-                    if(result.records[Property].PropertyRegister != undefined && result.records[Property].PropOwnerName != undefined && result.records[Property].PropAddress != undefined &&result.records[Property].PropCity != undefined && result.records[Property].PropState != undefined && result.records[Property].PropCountry != undefined && result.records[Property].PropPostalCode != undefined)
-                    {
-                    $("#caseProperty").append("<option value='" + result.records[Property].PropertyRegister + "' ref='"+ result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode +"'>" + result.records[Property].PropOwnerName + "-" + result.records[Property].PropAddress + "-" + result.records[Property].PropCity + "-" + result.records[Property].PropState + "-" + result.records[Property].PropCountry + "-" + result.records[Property].PropPostalCode + "</option>");
-                    }
-                }
-            }
-            $("#caseProperty").select2();
-        });        
     }
 
 }); // ready
