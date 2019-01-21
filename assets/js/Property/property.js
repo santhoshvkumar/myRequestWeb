@@ -729,7 +729,7 @@ $('#moveinCSV').on("submit", function(e){
     e.preventDefault(); //form will not submitted  
     $.ajax({  
         // url:"http://localhost:8888/myRequestHome/myrequestapi/UploadCSV/move-in.php",  
-        url:"https://api.myrequest.co.uk/UploadCSV/move-in.php",
+        url:"https://api.myrequest.co.uk/UploadCSV/aptUpload.php",
         method:"POST",  
         data:new FormData(this),  
         contentType:false,          // The content type used when sending data to the server. 
