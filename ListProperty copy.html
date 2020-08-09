@@ -1,0 +1,1641 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="initial-scale=1.0,maximum-scale=1.0,user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="msapplication-tap-highlight" content="no" />
+    <link href="assets/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="assets/img/faviconMyRequest-32x32.png" sizes="32x32">
+
+    <title>myRequest-List Property</title>
+    <link rel="stylesheet" href="bower_components/uikit/css/uikit.almost-flat.min.css" media="all">
+    <link rel="stylesheet" href="assets/icons/flags/flags.min.css" media="all">
+    <link rel="stylesheet" href="assets/css/main.css" media="all">
+    <link rel="stylesheet" href="assets/css/custom.css" media="all">
+    <link rel="stylesheet" type="text/css" href="assets/css/select2.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/jquery.dataTables.min.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/loaders.css" />
+    <link rel="stylesheet" href="assets/css/modalEffects.css">
+    <style>
+        #sidebar_main .menu_section>ul>li.current_listProperty>a .menu_title {
+            color: #4285F4;
+        }
+
+        .current_listProperty > a > span.menu_icon > i.fa {
+            color: #4285F4;
+        }
+    </style>
+
+</head>
+
+<body class="sidebar_main_swipe">
+    <div class="md-modal md-effect-19" id="getLoadingModalContent">
+        <div class="md-content commonGetLoading" style="width: 50%;">
+
+            <div>
+                <div class="wrapper wrapper-content">
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <div class="loaders">
+                                    <div class="loader">
+                                        <div class="loader-inner pacman">
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                            <div></div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <br/>
+
+                    <div class="row">
+                        <div class="col-md-12">
+                            <div class="center">
+                                <h2 class="loading">Loading...</h2>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+    </div>
+    <div id="mainBody">
+        <!-- main headerrr -->
+        <header id="header_main">
+            <div class="header_main_content">
+                <nav class="uk-navbar">
+                    <!-- main sidebar switch -->
+                    <a href="#" id="sidebar_main_toggle" class="sSwitch sSwitch_left">
+                        <span class="sSwitchIcon"></span>
+                    </a>
+                    <div id="menu_top_dropdown" class="uk-float-left uk-hidden-small">
+                        <a href="" class="getLettingAgencyBusinessName"></a>
+                    </div>
+                    <div class="uk-float-left" style="margin-left:5%;">
+                        <input type="text" id="inputSearch" name="search" required class="md-input searchCase" placeholder="Search" />
+                    </div>
+
+                    <button type="button" class="md-btn md-btn-primary btnSearch" style="margin:8px;"><i class="fa fa-search"></i></button>
+
+
+                    <div class="uk-navbar-flip">
+                        <ul class="uk-navbar-nav user_actions">
+                            <li><a href="#" id="full_screen_toggle" class="user_action_icon uk-visible-large"><i class="material-icons md-24 md-light"  style="color:#000;">&#xE5D0;</i></a></li>
+
+                            <li data-uk-dropdown="{mode:'click',pos:'bottom-right'}">
+                                <a href="#" class="user_action_image"><span class="getUserName"></span> <i class="fa fa-cog" style="color:black;"></i></a>
+                                <div class="uk-dropdown uk-dropdown-small">
+                                    <ul class="uk-nav js-uk-prevent">
+                                        <li><a href="myProfilePage.html">myProfile</a></li>
+                                        <li class="Logout"><a href="index.html">Logout</a></li>
+                                    </ul>
+                                </div>
+                            </li>
+                        </ul>
+                    </div>
+                </nav>
+            </div>
+            <div class="header_main_search_form">
+                <i class="md-icon header_main_search_close material-icons">&#xE5CD;</i>
+                <form class="uk-form">
+                    <input type="text" class="header_main_search_input" />
+                    <button class="header_main_search_btn uk-button-link"><i class="md-icon material-icons">&#xE8B6;</i></button>
+                </form>
+            </div>
+        </header>
+        <!-- main header endd -->
+
+        <!-- main sidebar -->
+        <aside id="sidebar_main">
+            <div class="sidebar_main_header">
+                <div class="sidebar_logo">
+                    <a href="Dashboard.html" class="sSidebar_hide">
+                        <img src="assets/img/logo.jpg" class="myRequestAdminLogo" alt="myRequestLogo" />
+                    </a>
+                    <a href="Dashboard.html" class="sSidebar_show"><img src="" alt="" height="32" width="32" /></a>
+                </div>
+
+            </div>
+            <div w3-include-html="LettingAgentMenu.html"></div>
+        </aside>
+        <!-- main sidebar end -->
+
+        <div id="page_content">
+            <div id="page_content_inner">
+                <div class="uk-width-1-1">
+                    <button type="submit" class="md-btn md-btn-primary getProperty" style="font-style: 13px;"><i class="fa fa-plus-circle"></i> Add Property</button>
+                </div>
+                </br>
+                </br>
+
+                <!--  <h3 class="heading_b uk-margin-bottom getProperty" style="cursor: pointer;margin-left:530px;">+ List Property</h3>  -->
+
+                <div class="md-card">
+                    <div class="md-card-content large-padding propertyContent" style="display:block;">
+                        <div id="form_validation" class="uk-form-stacked">
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label><b>Property Details</b></label>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3" style="margin-top: 10px;">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:414px;">
+                                            <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
+                                            <div class="parsley-row">
+                                                <label for="address">Address<span class="req">*</span></label>
+                                                <input type="text" id="inputAddress" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:65px;">
+                                                <label for="hasCounty" style="margin-top:-30px;"><b>County</b><span class="req">*</span></label>
+                                                <select id="inputState" name="state" required class="md-input">
+                                                    <option value="0">Select County</option>
+                                                    <option value='53'>Aberdeen City</option>
+                                                    <option value='54'>Aberdeenshire</option>
+                                                    <option value='55'>Angus</option>
+                                                    <option value='56'>Argyll and Bute</option>
+                                                    <option value='57'>Bath Avon</option>
+                                                    <option value='58'>Bedfordshire</option>
+                                                    <option value='59'>Belfast</option>
+                                                    <option value='60'>Berkshire</option>
+                                                    <option value='61'>Blaenau Gwent</option>
+                                                    <option value='62'>Bournemouth</option>
+                                                    <option value='63'>Bradford</option>
+                                                    <option value='64'>Bridgend</option>
+                                                    <option value='65'>Brighton and Hove</option>
+                                                    <option value='66'>Bristol</option>
+                                                    <option value='67'>Bristol Avon</option>
+                                                    <option value='68'>Buckinghamshire</option>
+                                                    <option value='69'>Caerphilly</option>
+                                                    <option value='70'>Cambridgeshire</option>
+                                                    <option value='71'>Cardiff</option>
+                                                    <option value='72'>Carmarthenshire</option>
+                                                    <option value='73'>Ceredigion</option>
+                                                    <option value='74'>Channel Islands</option>
+                                                    <option value='75'>Cheshire</option>
+                                                    <option value='76'>City of Edinburgh</option>
+                                                    <option value='77'>Clackmannanshire</option>
+                                                    <option value='78'>Conwy</option>
+                                                    <option value='79'>Cornwall</option>
+                                                    <option value='80'>County Armagh</option>
+                                                    <option value='81'>County Down</option>
+                                                    <option value='82'>County Durham</option>
+                                                    <option value='83'>County Fermanagh</option>
+                                                    <option value='84'>County Londonderry</option>
+                                                    <option value='85'>County Tyrone</option>
+                                                    <option value='86'>Cumbria</option>
+                                                    <option value='87'>Darlington</option>
+                                                    <option value='88'>Denbighshire</option>
+                                                    <option value='89'>Derby</option>
+                                                    <option value='90'>Derbyshire</option>
+                                                    <option value='91'>Devon</option>
+                                                    <option value='92'>Dorset</option>
+                                                    <option value='93'>Dumfries and Galloway</option>
+                                                    <option value='94'>Dundee City</option>
+                                                    <option value='95'>E Riding of Yorkshire</option>
+                                                    <option value='96'>East Ayrshire</option>
+                                                    <option value='97'>East Dunbartonshire</option>
+                                                    <option value='98'>East Lothian</option>
+                                                    <option value='99'>East Renfrewshire</option>
+                                                    <option value='100'>East Sussex</option>
+                                                    <option value='101'>Essex</option>
+                                                    <option value='102'>Falkirk</option>
+                                                    <option value='103'>Fife</option>
+                                                    <option value='104'>Flintshire</option>
+                                                    <option value='105'>Glasgow City</option>
+                                                    <option value='106'>Gloucestershire</option>
+                                                    <option value='107'>Greater London</option>
+                                                    <option value='108'>Greater Manchester</option>
+                                                    <option value='109'>Gwynedd</option>
+                                                    <option value='110'>Hampshire</option>
+                                                    <option value='111'>Hartlepool</option>
+                                                    <option value='112'>Hereford and Worcester</option>
+                                                    <option value='113'>Hertfordshire</option>
+                                                    <option value='114'>Highland</option>
+                                                    <option value='115'>Inverclyde</option>
+                                                    <option value='116'>Isle of Anglesey</option>
+                                                    <option value='117'>Isle of Man</option>
+                                                    <option value='118'>Isle of Wight</option>
+                                                    <option value='119'>Isles of Scilly</option>
+                                                    <option value='120'>Kent</option>
+                                                    <option value='121'>Kingston upon Hull</option>
+                                                    <option value='122'>Lancashire</option>
+                                                    <option value='123'>Leicester</option>
+                                                    <option value='124'>Leicestershire</option>
+                                                    <option value='125'>Lincolnshire</option>
+                                                    <option value='126'>London</option>
+                                                    <option value='127'>Luton</option>
+                                                    <option value='128'>Merseyside</option>
+                                                    <option value='129'>Merthyr Tydfil</option>
+                                                    <option value='130'>Middlesbrough</option>
+                                                    <option value='131'>Midlothian</option>
+                                                    <option value='132'>Milton Keynes</option>
+                                                    <option value='133'>Monmouthshire</option>
+                                                    <option value='134'>Moray</option>
+                                                    <option value='135'>Neath Port Talbot</option>
+                                                    <option value='136'>Newport</option>
+                                                    <option value='137'>Norfolk</option>
+                                                    <option value='138'>North Ayrshire</option>
+                                                    <option value='139'>North Eart Lincolnshire</option>
+                                                    <option value='140'>North Lanarkshire</option>
+                                                    <option value='141'>North Lincolnshire</option>
+                                                    <option value='142'>North Somerset</option>
+                                                    <option value='143'>North Yorkshire</option>
+                                                    <option value='144'>Northamptonshire</option>
+                                                    <option value='145'>Northumberland</option>
+                                                    <option value='146'>Nottinghamshire</option>
+                                                    <option value='147'>Orkney Islands</option>
+                                                    <option value='148'>Oxfordshire</option>
+                                                    <option value='149'>Pembrokeshire</option>
+                                                    <option value='150'>Perth and Kinross</option>
+                                                    <option value='151'>Poole</option>
+                                                    <option value='152'>Portsmouth</option>
+                                                    <option value='153'>Powys</option>
+                                                    <option value='154'>Redcar and Cleveland</option>
+                                                    <option value='155'>Renfrewshire</option>
+                                                    <option value='156'>Rhondda Cynon Taff</option>
+                                                    <option value='157'>Rutland</option>
+                                                    <option value='158'>Scottish Borders</option>
+                                                    <option value='159'>Shetland Islands</option>
+                                                    <option value='160'>Shropshire</option>
+                                                    <option value='161'>Somerset</option>
+                                                    <option value='162'>South Ayrshire</option>
+                                                    <option value='163'>South Gloucestershire</option>
+                                                    <option value='164'>South Lanarkshire</option>
+                                                    <option value='165'>South Yorkshire</option>
+                                                    <option value='166'>Southampton</option>
+                                                    <option value='167'>Staffordshire</option>
+                                                    <option value='168'>Stirling</option>
+                                                    <option value='169'>Stockton-on-Tees</option>
+                                                    <option value='170'>Stoke-on-Trent</option>
+                                                    <option value='171'>Suffolk</option>
+                                                    <option value='172'>Surrey</option>
+                                                    <option value='173'>Swansea</option>
+                                                    <option value='174'>Swindon</option>
+                                                    <option value='175'>Torfaen</option>
+                                                    <option value='176'>Tyne and Wear</option>
+                                                    <option value='177'>Vale of Glamorgan</option>
+                                                    <option value='178'>Warwickshire</option>
+                                                    <option value='179'>West Dunbart</option>
+                                                    <option value='180'>West Lothian</option>
+                                                    <option value='181'>West Midlands</option>
+                                                    <option value='182'>West Sussex</option>
+                                                    <option value='183'>West Yorkshire</option>
+                                                    <option value='184'>Western Isles</option>
+                                                    <option value='185'>Wiltshire</option>
+                                                    <option value='186'>Wolverhampton</option>
+                                                    <option value='187'>Wrexham</option>
+                                                    <option value='188'>York</option>
+                                                </select>
+
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:50px;">
+                                                <label for="hasCity" style="margin-top:-20px;"><b>City</b><span class="req">*</span></label>
+                                                <select id="inputCity" name="city" required class="md-input" style="width:100%;margin-top: 17px;">
+                                        <option value="0">Select County to enable City</option>
+                                    </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <div class="parsley-row">
+                                                    <label for="zip">Post Code<span class="req">*</span></label>
+                                                    <input type="text" id="inpuZip" name="zip" required class="md-input" />
+                                                </div>
+                                            </div>
+                                            <div class="uk-grid" data-uk-grid-margin>
+                                                <div class="uk-width-medium-1-2">
+                                                    <div class="parsley-row" style="margin-top:15px;">
+
+                                                        <label for="isVoid" class="isVoid">Part Of Void<span class="req">*</span></label>
+                                                        <p>
+                                                            <span class="icheck-inline agency">
+                                        <input type="radio" name="voidPart" id="voidPartYes" data-md-icheck />
+                                        <label for="voidPartYes" class="inline-label">Yes</label>
+                                    </span>
+                                                            <span class="icheck-inline landlord">
+                                        <input type="radio" name="voidPart" id="voidPartNo" data-md-icheck />
+                                        <label for="voidPartNo" class="inline-label">No</label>
+                                    </span></p>
+                                                    </div>
+                                                </div>
+
+                                                <!--   <div class="uk-width-medium-1-2">
+                                                    <div class="parsley-row" style="margin-top:15px;">
+                                                        <ul class="uk-navbar-nav user_actions">
+
+                                                            <li><a href="#" class="user_action_icon " data-uk-modal="{target:'#modal_header_footer'}" style="color:#000;"><i class="fa fa-map-marker"  style="color:#000;"></i> </a></li>
+
+
+                                                        </ul>
+
+                                                    </div>
+                                                </div>  -->
+
+                                            </div>
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="uk-width-medium-1-3" style="margin-top: 10px;">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:414px;">
+                                            <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
+                                            <div class="parsley-row">
+                                                <label for="propertyManaged" class="propertyMan">Property Managed<span class="req">*</span></label>
+                                                <p>
+                                                    <span class="icheck-inline propManageFull">
+                                        <input type="radio" name="propManaged" id="propertyManageFull" data-md-icheck  value="Full" /> 
+                                        <label for="propertyManageFull" class="inline-label" style="font-size: 13px;">Full</label>
+                                    </span>
+                                                    <span class="icheck-inline propManageSemi">
+                                        <input type="radio" name="propManaged" id="propertyManageSemi" data-md-icheck value="semi" />
+                                        <label for="propertyManageSemi" class="inline-label" style="font-size: 13px;">Part</label>
+                                    </span>
+                                                    <span class="icheck-inline propManageLet">
+                                        <input type="radio" name="propManaged" id="propertyManageLet" data-md-icheck value="semi" />
+                                        <label for="propertyManageLet" class="inline-label" style="font-size: 13px;">Let Only</label>
+                                    </span></p>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:43px;">
+                                                <label for="property" style="margin-top:-25px;"><b>Property Type*</b><span class="req"></span></label>
+                                                <select id="inputProperty" name="propertyType" required class="md-input" style="margin-top:-25px; width:100%;">
+                                        <option value="0">Select Property Type</option>
+                                        <option value="1">Apt</option>
+                                        <option value="2">Detached</option>
+                                        <option value="3">Semi Detached</option>
+                                        <option value="4">Mid Terraced</option>
+                                        <option value="5">End Terraced</option>
+                                        <option value="5">Annex</option>
+                                        <option value="5">Other</option>
+                                        <option value="5">Town House</option>
+                                    </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:60px;">
+                                                <label for="property" style="margin-top:-25px;"><b>Number Of Bedrooms*</b><span class="req"></span></label>
+                                                <select id="inputBedrooms" name="city" required class="md-input" style="margin-top:-25px; width:100%;">
+                                        <option value="0">Select Bedrooms</option>
+                                         <option value="1">None</option>
+                                        <option value="1">1</option>
+                                        <option value="2">2</option>
+                                        <option value="3">3</option>
+                                        <option value="4">4</option>
+                                        <option value="5">5 or More</option>
+                                    </select>
+                                            </div>
+
+
+                                            <div class="parsley-row" style="margin-top:60px;">
+                                                <label for="propertyStatus" style="margin-top:-25px;"><b>Property Status*</b><span class="req"></span></label>
+                                                <select id="inputPropertyStatus" name="propertyStatus" required class="md-input" style="margin-top:-25px; width:100%;">
+                                        <option value="0">Select Property Status</option>
+                                        <option value="1">MoveIn</option>
+                                        <option value="2">MoveOut</option>
+                                        <option value="3">Void-Currently Empty</option>
+                                        <option value="4">New Instruction</option>
+                                    </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <label for="homeInsurance" class="homeIns">Landlord Building Insurance<span class="req">*</span></label>
+                                                <p>
+                                                    <span class="icheck-inline homeInsurNo">
+                                        <input type="radio" name="landlordIns" id="landBuildInsurNo" data-md-icheck />
+                                        <label for="landBuildInsurNo" class="inline-label">No</label>
+                                    </span>
+                                                    <span class="icheck-inline homeInsurYes">
+                                        <input type="radio" name="landlordIns" id="landBuildInsurYes" data-md-icheck />
+                                        <label for="landBuildInsurYes" class="inline-label">Yes</label>
+                                    </span></p>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="uk-width-medium-1-3" style="margin-top: 10px;">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:414px;">
+
+                                            <div class="parsley-row">
+                                                <label for="propertyManaged">Is property HMO?<span class="req"></span></label>
+                                                <p>
+                                                    <span class="icheck-inline propSingle">
+                                        <input id="singleHmo"  type="radio"  name="hmoSelect" id="radio_demo_inline_11" data-md-icheck  value="single" />
+                                        <label for="radio_demo_inline_11" class="inline-label" style="font-size: 13px;">No</label>
+                                    </span>
+                                                    <span class="icheck-inline propMultiple">
+                                        <input  id="multipleHmo" type="radio" name="hmoSelect" id="radio_demo_inline_12" data-md-icheck value="multiple" />
+                                        <label for="radio_demo_inline_12" class="inline-label" style="font-size: 13px;">Yes</label>
+                                    </span></p>
+                                            </div>
+
+                                            <div class="parsley-row hmoLicenseNumber" style="margin-top: 20px;">
+                                                <label for="hmoLicenseNumber">HMO License Number</label>
+                                                <input type="text" id="inputHmoLicenseNumber" name="hmoLicenseNumber" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 30px;">
+                                                <label for="hmoNoOfTenent">Number Of Tenant<span class="req">*</span></label>
+                                                <input type="number" id="inputHMONoOfTenent" required class="md-input" value="1" min="1" />
+                                            </div>
+
+
+                                            <div class="parsley-row uploadHMO" style="margin-top: 30px;">
+                                                <form id="FileURLUploadImage4" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                    <div class="">
+                                                        <img id="imgHmoUploadPic" style="z-index:-99;height: 100px; width: 120px; margin: 10px 10px 10px -10px;" src="assets/img/noImage.gif" class="">
+                                                    </div>
+
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                        <div class="input-group-btn" style="margin: -90px 0px 70px 125px;font-size: 11px;">
+                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new" >Upload HMO <input type="file" id="hmoUploadPic" name="photoimg" style="height: 50px;margin-top: -20px;"></span>
+
+                                                            </span>
+                                                        </div>
+                                                        <div id="preview4" style="display:none"></div>
+
+
+                                                        <div class='progressbox getProgressBox' id='progressbox4'>
+                                                            <div class="progressbar" id="progressbar4" style="display:none">
+                                                                <span id="statustxt4" class="getStatusText"></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+
+                                            </div>
+
+
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+                            </div>
+
+
+
+
+
+                            <hr/>
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row getLandlordInfo" id="getLandlordInfo" style="cursor:pointer;">
+                                        <label><b class="landLordTitle">+ Landlord Details</b></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-grid landlordInfo" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-2" style="margin-top: 10px;">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding">
+
+                                            <div class="parsley-row">
+                                                <label>Landlord Title*</label><br />
+                                                <select id="inputLandlordTitle" name="inputTitle" style="width:100%;margin-top: 10px;" required class="md-input">
+                                 <option value="">Select Title</option>
+                                 <option value="Mr.">Mr.</option>
+                                 <option value="Mrs.">Mrs.</option>
+                                 <option value="Ms.">Ms.</option>
+                                 <option value="Miss.">Miss.</option>
+                                 </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label for="getName">Landlord First Name<span class="req">*</span></label>
+                                                <input type="text" id="getName" name="getName" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label for="getLastName">Landlord Last Name<span class="req">*</span></label>
+                                                <input type="text" id="getLastName" name="getLastName" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label for="emailID">Landlord Email<span class="req">*</span></label>
+                                                <input type="text" id="inputEmailID" name="emailID" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label for="mobileNumber">Landlord Phone<span class="req">*</span></label>
+                                                <input type="text" id="inputMobileNumber" name="mobileNumber" required class="md-input" maxlength="10" />
+                                                <span class="mno-prefix landlord-prefix"> </span>
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+                                <div class="uk-width-medium-1-2" style="margin-top: 10px;">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:293px;">
+                                            <span class="closeCard" id="closeCard-' + count + '" style="display:none;float:right;cursor:pointer;"><i class="fa fa-times"></i></span>
+                                            <div class="parsley-row">
+                                                <label for="address">Address<span class="req">*</span></label>
+                                                <input type="text" id="inputAddress1" style="width:100%;" name="address" cols="5" rows="3" required class="md-input">
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:45px;">
+                                                <label for="hasCounty" style="margin-top:-30px;"><b>County*<span class="req"></span></b></label>
+                                                <select id="inputState1" name="state" required class="md-input" style="width: 100%;">
+                                        <option value="0">Select County</option>
+                                        <option value='53'>Aberdeen City</option>
+                                        <option value='54'>Aberdeenshire</option>
+                                        <option value='55'>Angus</option>
+                                        <option value='56'>Argyll and Bute</option>
+                                        <option value='57'>Bath Avon</option>
+                                        <option value='58'>Bedfordshire</option>
+                                        <option value='59'>Belfast</option>
+                                        <option value='60'>Berkshire</option>
+                                        <option value='61'>Blaenau Gwent</option>
+                                        <option value='62'>Bournemouth</option>
+                                        <option value='63'>Bradford</option>
+                                        <option value='64'>Bridgend</option>
+                                        <option value='65'>Brighton and Hove</option>
+                                        <option value='66'>Bristol</option>
+                                        <option value='67'>Bristol Avon</option>
+                                        <option value='68'>Buckinghamshire</option>
+                                        <option value='69'>Caerphilly</option>
+                                        <option value='70'>Cambridgeshire</option>
+                                        <option value='71'>Cardiff</option>
+                                        <option value='72'>Carmarthenshire</option>
+                                        <option value='73'>Ceredigion</option>
+                                        <option value='74'>Channel Islands</option>
+                                        <option value='75'>Cheshire</option>
+                                        <option value='76'>City of Edinburgh</option>
+                                        <option value='77'>Clackmannanshire</option>
+                                        <option value='78'>Conwy</option>
+                                        <option value='79'>Cornwall</option>
+                                        <option value='80'>County Armagh</option>
+                                        <option value='81'>County Down</option>
+                                        <option value='82'>County Durham</option>
+                                        <option value='83'>County Fermanagh</option>
+                                        <option value='84'>County Londonderry</option>
+                                        <option value='85'>County Tyrone</option>
+                                        <option value='86'>Cumbria</option>
+                                        <option value='87'>Darlington</option>
+                                        <option value='88'>Denbighshire</option>
+                                        <option value='89'>Derby</option>
+                                        <option value='90'>Derbyshire</option>
+                                        <option value='91'>Devon</option>
+                                        <option value='92'>Dorset</option>
+                                        <option value='93'>Dumfries and Galloway</option>
+                                        <option value='94'>Dundee City</option>
+                                        <option value='95'>E Riding of Yorkshire</option>
+                                        <option value='96'>East Ayrshire</option>
+                                        <option value='97'>East Dunbartonshire</option>
+                                        <option value='98'>East Lothian</option>
+                                        <option value='99'>East Renfrewshire</option>
+                                        <option value='100'>East Sussex</option>
+                                        <option value='101'>Essex</option>
+                                        <option value='102'>Falkirk</option>
+                                        <option value='103'>Fife</option>
+                                        <option value='104'>Flintshire</option>
+                                        <option value='105'>Glasgow City</option>
+                                        <option value='106'>Gloucestershire</option>
+                                        <option value='107'>Greater London</option>
+                                        <option value='108'>Greater Manchester</option>
+                                        <option value='109'>Gwynedd</option>
+                                        <option value='110'>Hampshire</option>
+                                        <option value='111'>Hartlepool</option>
+                                        <option value='112'>Hereford and Worcester</option>
+                                        <option value='113'>Hertfordshire</option>
+                                        <option value='114'>Highland</option>
+                                        <option value='115'>Inverclyde</option>
+                                        <option value='116'>Isle of Anglesey</option>
+                                        <option value='117'>Isle of Man</option>
+                                        <option value='118'>Isle of Wight</option>
+                                        <option value='119'>Isles of Scilly</option>
+                                        <option value='120'>Kent</option>
+                                        <option value='121'>Kingston upon Hull</option>
+                                        <option value='122'>Lancashire</option>
+                                        <option value='123'>Leicester</option>
+                                        <option value='124'>Leicestershire</option>
+                                        <option value='125'>Lincolnshire</option>
+                                        <option value='126'>London</option>
+                                        <option value='127'>Luton</option>
+                                        <option value='128'>Merseyside</option>
+                                        <option value='129'>Merthyr Tydfil</option>
+                                        <option value='130'>Middlesbrough</option>
+                                        <option value='131'>Midlothian</option>
+                                        <option value='132'>Milton Keynes</option>
+                                        <option value='133'>Monmouthshire</option>
+                                        <option value='134'>Moray</option>
+                                        <option value='135'>Neath Port Talbot</option>
+                                        <option value='136'>Newport</option>
+                                        <option value='137'>Norfolk</option>
+                                        <option value='138'>North Ayrshire</option>
+                                        <option value='139'>North Eart Lincolnshire</option>
+                                        <option value='140'>North Lanarkshire</option>
+                                        <option value='141'>North Lincolnshire</option>
+                                        <option value='142'>North Somerset</option>
+                                        <option value='143'>North Yorkshire</option>
+                                        <option value='144'>Northamptonshire</option>
+                                        <option value='145'>Northumberland</option>
+                                        <option value='146'>Nottinghamshire</option>
+                                        <option value='147'>Orkney Islands</option>
+                                        <option value='148'>Oxfordshire</option>
+                                        <option value='149'>Pembrokeshire</option>
+                                        <option value='150'>Perth and Kinross</option>
+                                        <option value='151'>Poole</option>
+                                        <option value='152'>Portsmouth</option>
+                                        <option value='153'>Powys</option>
+                                        <option value='154'>Redcar and Cleveland</option>
+                                        <option value='155'>Renfrewshire</option>
+                                        <option value='156'>Rhondda Cynon Taff</option>
+                                        <option value='157'>Rutland</option>
+                                        <option value='158'>Scottish Borders</option>
+                                        <option value='159'>Shetland Islands</option>
+                                        <option value='160'>Shropshire</option>
+                                        <option value='161'>Somerset</option>
+                                        <option value='162'>South Ayrshire</option>
+                                        <option value='163'>South Gloucestershire</option>
+                                        <option value='164'>South Lanarkshire</option>
+                                        <option value='165'>South Yorkshire</option>
+                                        <option value='166'>Southampton</option>
+                                        <option value='167'>Staffordshire</option>
+                                        <option value='168'>Stirling</option>
+                                        <option value='169'>Stockton-on-Tees</option>
+                                        <option value='170'>Stoke-on-Trent</option>
+                                        <option value='171'>Suffolk</option>
+                                        <option value='172'>Surrey</option>
+                                        <option value='173'>Swansea</option>
+                                        <option value='174'>Swindon</option>
+                                        <option value='175'>Torfaen</option>
+                                        <option value='176'>Tyne and Wear</option>
+                                        <option value='177'>Vale of Glamorgan</option>
+                                        <option value='178'>Warwickshire</option>
+                                        <option value='179'>West Dunbart</option>
+                                        <option value='180'>West Lothian</option>
+                                        <option value='181'>West Midlands</option>
+                                        <option value='182'>West Sussex</option>
+                                        <option value='183'>West Yorkshire</option>
+                                        <option value='184'>Western Isles</option>
+                                        <option value='185'>Wiltshire</option>
+                                        <option value='186'>Wolverhampton</option>
+                                        <option value='187'>Wrexham</option>
+                                        <option value='188'>York</option>
+                                    </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top:32px;">
+                                                <label for="hasCounty" style="margin-top:-20px;"><b>City*<span class="req"></span></b></label>
+                                                <select id="inputCity1" name="city" required class="md-input" style="width:100%;">
+                                        <option value="0">Select County to enable City</option>
+                                    </select>
+                                            </div>
+
+
+
+
+
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <label for="zip">Post Code<span class="req">*</span></label>
+                                                <input type="text" id="inpuZip1" name="zip" required class="md-input" />
+                                            </div>
+
+
+                                        </div>
+                                    </div>
+
+
+
+                                </div>
+
+
+                            </div>
+                            <hr/>
+
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label><b class="getUtilityInfo" style="cursor:pointer;">+ Utility Management Details</b></label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <h3>Gas <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                </div>
+
+                                <div class="uk-width-medium-1-3">
+                                    <h3>Electricity <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                </div>
+
+                                <div class="uk-width-medium-1-3">
+                                    <h3>Water & Council <span class="errorGasInfo" style="color: red;font-size: 12px;"></span> </h3>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid utilityInfo" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:250px;">
+                                            <div class="parsley-row">
+                                                <label>Fuel Type*</label><br />
+                                                <select id="inputFuel" name="inputFuel" style="width:100%;margin-top: 10px;" required class="md-input">
+
+                                            <option value="1">Dual</option>
+                                            <option value="2">Single</option>
+                                            <option value="3">Don't Know</option>
+                                        </select>
+                                            </div>
+
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label>Gas Supplier*</label><br />
+                                                <select id="inputSupplierGas" name="inputSupplierGas" style="width:100%;margin-top: 10px;" required class="md-input">
+                                            <option value="0">Select Supplier Gas</option>
+                                            <option value="1">British Gas</option>
+                                            <option value="1">Contract Natural Gas</option>
+                                            <option value="2">Co-operative Energy</option>
+                                            <option value="1">E-On</option>
+                                            <option value="2">E(Gas & Electric)</option>
+                                            <option value="1">E+</option>
+                                            <option value="2">EBICO</option>
+                                            <option value="1">Economy Energy</option>
+                                            <option value="2">Ecotricity</option>
+                                            <option value="1">EDF</option>
+                                            <option value="2">Extra Energy</option>
+                                            <option value="1">First Utility</option>
+                                            <option value="2">Flow Utility</option>
+                                            <option value="1">GB Energy</option>
+                                            <option value="2">Good Energy</option>
+                                            <option value="1">Green Star</option>
+                                            <option value="2">I Supply</option>
+                                            <option value="1">LOCO2</option>
+                                            <option value="2">Flow Energy</option>
+                                            <option value="1">M & S</option>
+                                            <option value="2">N Power</option>
+                                            <option value="1">Opus</option>
+                                            <option value="2">Other/Not Know</option>
+                                            <option value="1">OVO</option>
+                                            <option value="2">Poineer</option>
+                                            
+                                            <option value="1">Power NI</option>
+                                            <option value="2">Sainsbury's</option>
+                                            <option value="1">Scottish & Southern</option>
+                                            <option value="2">Scottish Hydro</option>
+                                            <option value="1">Scottish Hydro</option>
+                                            <option value="2">Southern Electric</option>
+                                            <option value="1">Spark Energy</option>
+                                            <option value="2">SWALEC</option>
+                                            <option value="1">Thamesway</option>
+                                            <option value="2">Utilita</option>
+                                            <option value="2">Utility Warehouse</option>
+                                            <option value="2">Woodland Trust</option>
+                                    </select>
+                                            </div>
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <label for="gas" class="ele1">Gas Meter Reading<span class="req">*</span></label>
+                                                <input type="text" id="inputGas" name="gasMeterRead" required class="md-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+
+                                <div class="uk-width-medium-1-3">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:250px;">
+                                            <div class="parsley-row" style="margin-top: 15px;">
+                                                <label>Supplier Electric*</label><br />
+                                                <select id="inputSupplierElectric" name="inputSupplierElectric" style="width:100%;margin-top: 10px;" required class="md-input">
+                                        <option value="0">Select Supplier Electric</option>
+                                        <option value="1">British Gas</option>
+                                        <option value="2">Co-operative Energy</option>
+                                        <option value="1">E-On</option>
+                                        <option value="2">E(Gas & Electric)</option>
+                                        <option value="1">E+</option>
+                                        <option value="2">EBICO</option>
+                                        <option value="1">Economy Energy</option>
+                                        <option value="2">Ecotricity</option>
+                                        <option value="1">EDF</option>
+                                        <option value="2">Extra Energy</option>
+                                        <option value="1">First Utility</option>
+                                        <option value="2">Flow Utility</option>
+                                        <option value="1">GB Energy</option>
+                                        <option value="2">Good Energy</option>
+                                        <option value="1">Green Star</option>
+                                        <option value="2">I Supply</option>
+                                        <option value="1">LOCO2</option>
+                                        <option value="2">Flow Energy</option>
+                                        <option value="1">M & S</option>
+                                        <option value="2">N Power</option>
+                                        <option value="1">Opus</option>
+                                        <option value="2">Other/Not Know</option>
+                                        <option value="1">OVO</option>
+                                        <option value="2">Poineer</option>
+                                         
+                                        <option value="1">Power NI</option>
+                                        <option value="2">Sainsbury's</option>
+                                        <option value="1">Scottish & Southern</option>
+                                        <option value="2">Scottish Hydro</option>
+                                        <option value="1">Scottish Hydro</option>
+                                        <option value="2">Southern Electric</option>
+                                        <option value="1">Spark Energy</option>
+                                        <option value="2">SWALEC</option>
+                                        <option value="1">Thamesway</option>
+                                        <option value="2">Utilita</option>
+                                        <option value="2">Utility Warehouse</option>
+                                        <option value="2">Woodland Trust</option>
+                                 </select>
+                                            </div>
+
+
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <span class="icheck-inline economy7">
+                                        <label for="zip" class="economy7">Economy 7*</label>
+                                       <input type="checkbox" name="economy7" data-switchery data-switchery-color="#ffb300" id="inputEconomy7" >
+                                       <input type="hidden" id="hiddenIsEconomy7" value="0"/>
+                                    </span>
+                                            </div>
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <label for="zip">Electricity Meter Reading 1<span class="req">*</span></label>
+                                                <input type="text" id="inputRead1" name="read1" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row electMeter" style="margin-top:15px;">
+                                                <label for="zip">Electricity Meter Reading 2<span class="req">*</span></label>
+                                                <input type="text" id="inputRead2" name="read2" required class="md-input" />
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="uk-width-medium-1-3">
+                                    <div class="md-card">
+
+                                        <div class="md-card-content large-padding" style="height:250px;">
+                                            <div class="parsley-row" style="margin-top:-7px;">
+                                                <label>Council Authority*</label><br />
+                                                <select id="inputTaxAuthority" name="city" required class="md-input" style="width:100%;">
+                                       <option value="0">Select Council</option>
+                                   </select>
+                                            </div>
+                                            <div class="parsley-row" style="margin-top:15px;">
+                                                <span class="icheck-inline waterMeter">
+                                        <label for="zip">Water<span class="req">*</span></label>
+                                                <input type="checkbox" data-switchery data-switchery-color="#ffb300" id="inputWaterMeter">
+                                                <input type="hidden" id="hiddenIsWaterMeter" value="0" />
+                                                </span>
+                                            </div>
+
+                                            <div class="parsley-row waterMet" style="margin-top:15px;">
+                                                <label for="zip" >Water Meter Reading<span class="req">*</span></label>
+                                                <input type="text" id="inputWater" name="waterMeterReading" required class="md-input" />
+                                            </div>
+
+                                            <div class="parsley-row waterMet" style="margin-top:25px;">
+                                                <label class="waterAuthority">Water Authority*</label><br />
+                                                <select id="inputWaterAuthority" name="water" required class="md-input" style="margin-top:-25px; width:100%;">
+                                        <option value="0">Select Water Authority</option>
+                                        <option value="1">Affinity Water</option>
+                                        <option value="2">Albion Water</option>
+                                        <option value="3">DAnglian Water</option>
+                                        <option value="4">Bournemouth Water</option>
+                                        <option value="5">Bristol Water</option>
+                                        <option value="6">Cambridge Water Company</option>
+                                        <option value="7">Cholderton and District Water Company</option>
+                                        <option value="8">Dee Valley Water</option>
+                                        <option value="9">Dŵr Cymru Welsh Water</option>
+                                        <option value="10">Essex and Suffolk Water</option>
+                                        <option value="11">Hartlepool Water</option>
+                                        <option value="12">Isle of Man Water Authority</option>
+                                        <option value="13">Northern Ireland Water</option>
+                                        <option value="14">Northumbrian Water</option>
+                                        <option value="15">Portsmouth Water</option>
+                                        <option value="16">Scottish Water</option>
+                                        <option value="17">Severn Trent Water</option>
+                                        <option value="18">South East Water</option>
+                                        <option value="19">South Staffordshire Water</option>
+                                        <option value="20">Southern Water</option>
+                                        <option value="21">South West Water</option>
+                                        <option value="22">Sutton and East Surrey Water</option>
+                                        <option value="23">Thames Water</option>
+                                        <option value="24">United Utilities</option>
+                                        <option value="26">Wessex Water</option>
+                                        <option value="27">Yorkshire Water</option>
+                                        <option value="28">Youlgrave Waterworks</option><option value="29">Anglian Water</option>
+                                        <option value="30">Dŵr Cymru Welsh Water</option>
+                                        <option value="31">Isle of Man Water and Sewerage Authority</option>
+                                        <option value="32">Northumbrian Water</option>
+                                        <option value="33">Southern Water</option>
+                                        <option value="34">South West Water</option>
+                                        <option value="35">Thames Water</option>
+                                        <option value="36">United Utilities</option>
+                                        <option value="37">Wessex Water</option>
+                                        <option value="38">Yorkshire Water</option>
+                                    </select>
+                                            </div>
+
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <hr/>
+
+                            <div class="uk-grid" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label><b class="getPropMandatoryInfo" style="cursor:pointer;">+ Property Mandatory Details</b></label>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid propMandatoryContent" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label>Energy Performance Certificate</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md-card propMandatoryContent" style="display:none;">
+                                <div class="md-card-content large-padding">
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="validFrom">Valid From</label>
+                                                <input class="md-input" type="text" id="validFrom" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="validTo">Valid To</label>
+                                                <input class="md-input" type="text" id="validTo" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <form id="FileURLUploadImage1" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+
+                                                    <div class="">
+                                                        <img id="imgEnergyPerformanceCertificate" style="height: 80px; width: 100px; " src="assets/img/noImage.gif" class="">
+                                                    </div>
+
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                        <div class="input-group-btn" style="margin: -50px 0px 30px 125px;">
+                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new" >Upload <input type="file" id="energyPerformanceCertificate" name="photoimg"></span> </span>
+                                                        </div>
+                                                        <div id="preview1" style="display:none"></div>
+
+
+                                                        <div class='progressbox getProgressBox' id='progressbox1'>
+                                                            <div class="progressbar" id="progressbar1" style="display:none">
+                                                                <span id="statustxt1" class="getStatusText"></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid propMandatoryContent" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label>Portable Appliance Testing</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md-card propMandatoryContent" style="display:none;">
+                                <div class="md-card-content large-padding">
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="electricityValidFrom">Valid From</label>
+                                                <input class="md-input" type="text" id="electricityValidFrom" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="electricityValidTo">Valid To</label>
+                                                <input class="md-input" type="text" id="electricityValidTo" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <form id="FileURLUploadImage2" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                    <div class="">
+                                                        <img id="imgElectricityCertificate" style="height: 80px; width: 100px;" src="assets/img/noImage.gif" class="">
+                                                    </div>
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                        <div class="input-group-btn" style="margin: -50px 0px 30px 125px;">
+
+                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Upload  <input type="file" id="electricityCertificate" name="photoimg"></span></span>
+                                                        </div>
+                                                        <div id="preview2" style="display:none"></div>
+
+
+                                                        <div class='progressbox getProgressBox' id='progressbox2'>
+                                                            <div class="progressbar" id="progressbar2" style="display:none">
+                                                                <span id="statustxt2" class="getStatusText"></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+
+
+                            <div class="uk-grid propMandatoryContent" style="display:none;" data-uk-grid-margin>
+                                <div class="uk-width-medium-1-3">
+                                    <div class="parsley-row">
+                                        <label>Gas Certificate</label>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="md-card propMandatoryContent" style="display:none;">
+                                <div class="md-card-content large-padding">
+                                    <div class="uk-grid" data-uk-grid-margin>
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="gasValidFrom">Valid From</label>
+                                                <input class="md-input" type="text" id="gasValidFrom" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <label for="gasValidTo">Valid To</label>
+                                                <input class="md-input" type="text" id="gasValidTo" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                            </div>
+                                        </div>
+
+                                        <div class="uk-width-medium-1-3">
+                                            <div class="parsley-row">
+                                                <form id="FileURLUploadImage3" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                    <div class="">
+                                                        <img id="imgGasCertificate" style="height: 80px; width: 100px;" src="assets/img/noImage.gif" class="">
+                                                    </div>
+                                                    <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                        <div class="input-group-btn" style="margin: -50px 0px 30px 125px;">
+
+                                                            <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Upload <input type="file" id="gasCertificate" name="photoimg"></span></span>
+                                                        </div>
+                                                        <div id="preview3" style="display:none"></div>
+
+
+                                                        <div class='progressbox getProgressBox' id='progressbox3'>
+                                                            <div class="progressbar" id="progressbar3" style="display:none">
+                                                                <span id="statustxt3" class="getStatusText"></span>
+                                                            </div>
+                                                        </div>
+
+                                                    </div>
+                                                </form>
+
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <hr/>
+
+
+                        <div class="uk-grid propMandatoryContent" style="display:none;" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <label>Legionella Test</label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="md-card propMandatoryContent" style="display:none;">
+                            <div class="md-card-content large-padding">
+                                <div class="uk-grid" data-uk-grid-margin>
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="parsley-row">
+                                            <label for="legValidFrom">Valid From</label>
+                                            <input class="md-input" type="text" id="legValidFrom" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="parsley-row">
+                                            <label for="legValidTo">Valid To</label>
+                                            <input class="md-input" type="text" id="legValidTo" data-uk-datepicker="{format:'DD.MM.YYYY'}">
+                                        </div>
+                                    </div>
+
+                                    <div class="uk-width-medium-1-3">
+                                        <div class="parsley-row">
+                                            <form id="FileURLUploadImage5" method="post" enctype="multipart/form-data" action="" class="form-horizontal">
+                                                <div class="">
+                                                    <img id="imgLegCertificate" style="height: 80px; width: 100px;" src="assets/img/noImage.gif" class="">
+                                                </div>
+                                                <div class="fileupload fileupload-new" data-provides="fileupload">
+
+                                                    <div class="input-group-btn" style="margin: -50px 0px 30px 125px;">
+
+                                                        <span class="btn btn-default btn-file"><span class="md-btn md-btn-primary fileupload-new">Upload <input type="file" id="legCertificate" name="photoimg"></span></span>
+                                                    </div>
+                                                    <div id="preview5" style="display:none"></div>
+
+
+                                                    <div class='progressbox getProgressBox' id='progressbox5'>
+                                                        <div class="progressbar" id="progressbar5" style="display:none">
+                                                            <span id="statustxt5" class="getStatusText"></span>
+                                                        </div>
+                                                    </div>
+
+                                                </div>
+                                            </form>
+
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                        </div>
+
+
+                        <div class="uk-grid getPropertyUtility" data-uk-grid-margin style="display:none;">
+                            <div class="uk-width-medium-1-1">
+                                <div class="parsley-row">
+                                    <div class="md-card md-card-hover">
+                                        <div class="uk-grid getWorkList" data-uk-grid-margin>
+                                            <div class="uk-width-medium-1-1">
+                                                <div class="md-card-content">
+                                                    <div class="uk-overflow-container">
+                                                        <table class="uk-table uk-table-striped" id="propertyUtilityListData">
+
+                                                            <thead>
+                                                                <tr>
+                                                                    <th>Utility Type</th>
+                                                                    <th>Tenant Name</th>
+                                                                    <th>EmailID</th>
+                                                                    <th>Mobile Number</th>
+                                                                    <th>Request Date</th>
+                                                                    <th>Electricity</th>
+                                                                    <th>Gas</th>
+                                                                    <th>Water</th>
+                                                                    <th>Council</th>
+                                                                    <th>Status</th>
+                                                                </tr>
+                                                            </thead>
+                                                            <tbody class="propertyUtility">
+
+
+                                                            </tbody>
+                                                        </table>
+                                                    </div>
+                                                </div>
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="uk-grid" data-uk-grid-margin>
+                            <div class="uk-width-medium-1-3">
+                                <div class="parsley-row">
+                                    <label><b class="getTenantsInfo" style="cursor:pointer;">+ Occupant</b></label>
+                                </div>
+                            </div>
+                        </div>
+
+                        <br/>
+
+                        <div class="uk-grid getTenantList">
+
+                        </div>
+
+                        <br/>
+
+                        <div class="uk-grid">
+                            <div class="uk-width-1-1">
+                                <button type="submit" class="md-btn md-btn-primary btnSubmitProperty">Add Property &amp; Update Utility</button>
+                                <button type="submit" class="md-btn md-btn-primary btnSubmitPropertyMoveOut">All Tenants Move-Out</button>
+                                <span class="errorInfo" style="color:red;"></span>
+                                <input type="hidden" id="hiddenPropertyID" value="0" />
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+
+                <br/>
+
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="uk-width-medium-1-2">
+                        <div class="parsley-row">
+                            <h3 class="heading_a uk-margin-bottom lblPropertyList">Property History</h3>
+
+                        </div>
+                    </div>
+
+                </div>
+
+
+                <div class="md-card uk-margin-medium-bottom">
+                    <div class="md-card-content">
+                        <div class="uk-overflow-container">
+                            <table id="propertyList" class="uk-table uk-table-striped">
+                                <thead>
+                                    <tr style="height: 50px">
+                                        <th style="text-align: center;">Property Address</th>
+                                        <th style="text-align: center;">Post Code</th>
+                                        <th style="text-align: center;">Landlord EmailID</th>
+                                        <th>View</th>
+                                        <th>Delete</th>
+                                    </tr>
+                                </thead>
+                                <tbody class="listAllAdminProperty">
+
+
+                                </tbody>
+                            </table>
+                            <input type="hidden" id="hiddenPassword" value="Password#1" />
+                        </div>
+                    </div>
+                </div>
+
+                <div class="parsley-row" style="margin-left:480px;">
+                    <button id="leftArrow" type="button" class="md-btn md-btn-primary leftArrow addFont"><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-left" style="padding-right: 0px;color: #000;font-size: 20px;" ></i> </button>
+                    <button id="previousPage" type="button" class="md-btn md-btn-primary previousPage addFont"> <i class="fa fa-angle-left" style="padding-right: 0px;"></i> Previous</button>
+                    <input type="number" id="enterPageNO" placeholder="Page #" min="0" style="width:50px;height: 30px;border-radius: 5px;" />
+                    <button id="nextPage" type="button" class="md-btn md-btn-primary nextPage addFont">Next  <i class="fa fa-angle-right"></i></button>
+                    <button id="rightArrow" type="button" class="md-btn md-btn-primary rightArrow addFont"><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i><i class="fa fa-angle-right" style="padding-right: 0px;color: #000;font-size: 20px;"></i> </button>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-modal location" id="modal_header_footer">
+            <div class="uk-modal-dialog" style="width:30%;">
+                <div class="uk-modal-header modelHeaderStyle">
+                    <h3 class="uk-modal-title fontStyle">Location  </h3>
+                </div>
+                <p>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <label for="latitude">Latitude<span class="req">*</span></label>
+                                <input type="text" id="latitude" name="latitude" required class="md-input" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <label for="longitude">Longitude<span class="req">*</span></label>
+                                <input type="text" id="longitude" name="longitude" required class="md-input" />
+                            </div>
+                        </div>
+                    </div>
+
+
+                </p>
+                <p>
+                    <span class="help-block"></span>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmit" id="btnSubmit">Submit</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="uk-modal" id="googleMap">
+            <div class="uk-modal-dialog" style="width:50%;">
+                <div class="uk-modal-header modelHeaderStyle">
+                    <h3 class="uk-modal-title fontStyle">Location <span class="closeMap">X</span></h3>
+                </div>
+                <div class="uk-grid" data-uk-grid-margin>
+                    <div class="propertyLocationGoogleMap" id="propertyLocationGoogleMap" style='border:0;height: 400px;width: 100%;'>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+
+        <div class="uk-modal" id="modalAgreeSkip">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-header">
+                    <h3 class="uk-modal-title">Is Agree ?</h3>
+                </div>
+                <p>
+                    <p>In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. </p>
+                    <p>Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.</p>
+
+                    <p>The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.</p>
+
+                    <p>A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.</p>
+                </p>
+                <p>
+                    <span class="help-block"></span>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Skip</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>
+                    <input type="hidden" id="hiddenIsAgree" value="0" />
+                </div>
+            </div>
+        </div>
+
+
+        <div class="uk-modal" id="modalUtilityList">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-header modelHeaderStyle">
+                    <h3 class="uk-modal-title fontStyle">Select insurance preferences?</h3>
+                </div>
+                <p>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <span class="icheck-inline isLandLordInsurance">
+                            <label for="radio_demo_inline_1" class="inline-label">Do you want to take a Landlord Insurance ?</label>
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getLandlordInsurance" />
+                            <input type="hidden" id="hiddenIsLandlordInsurance" value="0"/>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <hr/>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <span class="icheck-inline isRentProtectionInsurance">
+                            <label for="radio_demo_inline_2" class="inline-label">Do you want to take legal expenses & rent protection insurance?</label>
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getRentProtectionInsurance" />
+                            <input type="hidden" id="hiddenIsRentProtectionInsurance" value="0"/>
+                        </span>
+                            </div>
+                        </div>
+                    </div>
+                </p>
+                <p>
+                    <span class="help-block"></span>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmitUtility" style="background-color: #fcdb34;">ADD INSURANCE</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmitSendUtility" style="display: none;">Send Utility</button>
+                </div>
+            </div>
+        </div>
+
+
+        <div class="uk-modal" id="modalAgreeSkip">
+            <div class="uk-modal-dialog">
+                <div class="uk-modal-header">
+                    <h3 class="uk-modal-title">Is Agree ?</h3>
+                </div>
+                <p>
+                    <p>In publishing and graphic design, lorem ipsum (derived from Latin dolorem ipsum, translated as "pain itself") is a filler text commonly used to demonstrate the graphic elements of a document or visual presentation. </p>
+                    <p>Replacing meaningful content with placeholder text allows viewers to focus on graphic aspects such as font, typography, and page layout without being distracted by the content. It also reduces the need for the designer to come up with meaningful text, as they can instead use quickly-generated lorem ipsum.</p>
+
+                    <p>The lorem ipsum text is typically a scrambled section of De finibus bonorum et malorum, a 1st-century BC Latin text by Cicero, with words altered, added, and removed to make it nonsensical, improper Latin.</p>
+
+                    <p>A variation of the ordinary lorem ipsum text has been used in typesetting since the 1960s or earlier, when it was popularized by advertisements for Letraset transfer sheets. It was introduced to the Information Age in the mid-1980s by Aldus Corporation, which employed it in graphics and word processing templates for its desktop publishing program, PageMaker, for the Apple Macintosh.</p>
+                </p>
+                <p>
+                    <span class="help-block"></span>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset isAgreeReset">Skip</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmitIsAgree">Agree</button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+
+
+        <div class="uk-modal" id="modalTenantInsurance">
+            <div class="uk-modal-dialog">
+
+                <div class="uk-modal-header modelHeaderStyle">
+                    <h3 class="uk-modal-title fontStyle">Do you want to avail these services?</h3>
+                </div>
+
+                <p>
+
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <span class="icheck-inline isElectricity">
+                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getElect" />
+                        <!--    <input type="checkBox" name="radio_demo_inline1" id="getElect" data-md-icheck /> -->
+                            <label for="radio_demo_inline_1" class="inline-label">Electricity</label>
+                            <input type="hidden" id="hiddenIsElectricity" value="0"/>
+                        </span>
+                                <span class="icheck-inline isGas">
+                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getGas" />
+                      <!--  <input type="checkBox" name="radio_demo_inline2" id="getGas" data-md-icheck />-->
+                            <label for="radio_demo_inline_2" class="inline-label">Gas</label>
+                            <input type="hidden" id="hiddenIsGas" value="0"/>
+                        </span>
+                                <span class="icheck-inline isWater">
+                        <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getWater" />
+                           <!--     <input type="checkBox" name="radio_demo_inline3" id="getWater" data-md-icheck /> -->
+                                <label for="radio_demo_inline_1" class="inline-label">Water</label>
+                                <input type="hidden" id="hiddenIsWater" value="0"/>
+                            </span>
+                                <span class="icheck-inline isCouncil">
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getCouncil" />
+                            <!--    <input type="checkBox" name="radio_demo_inline4" id="getCouncil" data-md-icheck /> -->
+                                <label for="radio_demo_inline_2" class="inline-label">Council</label>
+                                <input type="hidden" id="hiddenIsCouncil" value="0"/>
+                            </span>
+                            </div>
+
+                        </div>
+                    </div>
+                    <hr/>
+                    <div class="uk-grid" data-uk-grid-margin>
+                        <div class="uk-width-medium-1-1">
+                            <div class="parsley-row">
+                                <span class="icheck-inline isAvailTenantInsurance">
+                            
+                            <label for="radio_demo_inline_2" class="inline-label">Do you want to avail tenant insurance?</label>
+                            <input type="checkbox" data-switchery  data-switchery-color="#ffb300"  id="getAvailTenantInsurance" />
+                            <input type="hidden" id="hiddenIsTenantInsurance" value="0"/>
+                        </span>
+
+
+                            </div>
+
+                        </div>
+                    </div>
+                </p>
+                <div class="uk-modal-footer uk-text-right">
+                    <button type="button" class="md-btn md-btn-flat uk-modal-close reset">Close</button>
+                    <button type="button" class="md-btn md-btn-flat btnSubmitTenantInsurance" value="0" style="background-color: #fcdb34;">Submit</button>
+
+                </div>
+            </div>
+        </div>
+
+
+
+        <!-- google web fonts -->
+        <script>
+            WebFontConfig = {
+                google: {
+                    families: [
+                        'Source+Code+Pro:400,700:latin',
+                        'Roboto:400,300,500,700,400italic:latin'
+                    ]
+                }
+            };
+            (function() {
+                var wf = document.createElement('script');
+                wf.src = ('https:' == document.location.protocol ? 'https' : 'http') +
+                    '://ajax.googleapis.com/ajax/libs/webfont/1/webfont.js';
+                wf.type = 'text/javascript';
+                wf.async = 'true';
+                var s = document.getElementsByTagName('script')[0];
+                s.parentNode.insertBefore(wf, s);
+            })();
+        </script>
+
+        <!-- common functions -->
+        <script src="assets/js/common.min.js"></script>
+        <!-- uikit functions -->
+        <script src="assets/js/uikit_custom.min.js"></script>
+        <!-- altair common functions/helpers -->
+        <script src="assets/js/altair_admin_common.min.js"></script>
+        <script src="assets/js/w3data.js"></script>
+        <!-- page specific plugins -->
+        <!-- parsley (validation) -->
+        <script>
+            // load parsley config (altair_admin_common.js)
+            altair_forms.parsley_validation_config();
+        </script>
+        <script src="bower_components/parsleyjs/dist/parsley.min.js"></script>
+
+        <!--  forms validation functions -->
+        <script src="assets/js/pages/forms_validation.min.js"></script>
+        <script src="assets/js/const.js"></script>
+        <script src="assets/js/appUrl.js"></script>
+        <script src="assets/js/validationCheck.js" type="text/javascript"></script>
+        <script src="assets/js/jquery.form.js" type="text/javascript"></script>
+        <script src="assets/js/select2.min.js"></script>
+        <script src="assets/js/moment.min.js"></script>
+        <script src="assets/js/Property/ValidationProperty.js"></script>
+        <script src="assets/js/checkDateDiff.js"></script>
+        <script src="assets/js/logOutClearCatch.js"></script>
+        <script src="assets/js/Property/property.js"></script>
+        <script src="assets/js/Property/getPropertyInfo.js"></script>
+        <script src="assets/js/Property/getAddRemoveTenant.js"></script>
+        <script src="assets/js/Property/addUpdatePropertyValidation.js"></script>
+        <script src="assets/js/Property/changesRadioProperty.js"></script>
+        <script src="assets/js/Property/getListAndLoadProperty.js"></script>
+        <script src="assets/js/Property/Pagination.js"></script>
+        <script src="assets/js/Property/clearAllValues.js"></script>
+        <script src="assets/js/Property/ImageUpload.js"></script>
+        <script src="assets/js/Property/common.js"></script>
+        <script src="assets/js/Property/moveOut.js"></script>
+        <script src="assets/js/Property/buttonSubmitProptyUtil.js"></script>
+        <script src="assets/js/Property/getValueOfTenant.js"></script>
+        <script type="text/javascript" src="assets/js/jquery.dataTables.min.js"></script>
+        <script src="assets/js/screenfull.js"></script>
+        <script type="text/javascript" src="assets/js/loaders.js"></script>
+        <script type="text/javascript" src="assets/js/modalEffects.js"></script>
+        <script type="text/javascript" src="assets/js/modalEffectsClassie.js"></script>
+        <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyD0djw7GLfE_LXXBcQhx8iry3XV5g-10RU"></script>
+        <!-- <script type="text/javascript" src="assets/js/jquery.googlemap.js"></script> -->
+        <script>
+            $(function() {
+                // enable hires images
+                altair_helpers.retina_images();
+                // fastClick (touch devices)
+                if (Modernizr.touch) {
+                    FastClick.attach(document.body);
+                }
+                w3IncludeHTML();
+            });
+            changesRadioProperty();
+            ImageUpload();
+        </script>
+ 
+    </div>
+    <div class="md-overlay"></div>
+</body>
+
+</html>
